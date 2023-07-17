@@ -72,7 +72,6 @@ export default function Home() {
         <BasicCard url={"next2"} className="py-3 my-3" />
         <BasicCard url={"next2"} className="py-3 my-3" />
         <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
       </div>
 
       <div className='row mx-3 mt-5 mb-3'>

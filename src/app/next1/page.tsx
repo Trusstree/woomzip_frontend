@@ -3,6 +3,7 @@ import CheckBoxs from '@/components/CheckBoxs'
 import Submit from '@/components/Submit'
 import Radios from '@/components/Radios'
 import BasicCard from '@/components/BasicCard'
+import MultiRangeSlider from '@/components/MultiRangeSlider'
 
 export default function Home() {
   return (
@@ -11,6 +12,11 @@ export default function Home() {
       {/* https://mdbootstrap.com/docs/standard/forms/search/ */}
 
       <div className='row w-100'>
+
+        <div className='col-12 mb-5'>
+          <SearchBar title={"목표"} />
+        </div>
+        
         <CheckBoxs className="col-2" title="용도">
           {["단독주택", "다가구주택", "상가건물"]}
         </CheckBoxs>
@@ -20,11 +26,11 @@ export default function Home() {
         </Radios>
 
         <div className='col-6'>
-          <SearchBar />
-          <SearchBar />
-          <SearchBar />
-          <SearchBar />
+          <MultiRangeSlider title={"목표1"} />
+          <MultiRangeSlider title={"목표2"} />
+          <MultiRangeSlider title={"목표3"} />
         </div>
+
         <div className='col-2'>
           <Submit />
         </div>
