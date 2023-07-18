@@ -26,9 +26,9 @@ export default function Home() {
         </Radios>
 
         <div className='col-6'>
-          <MultiRangeSlider title={"목표1"} />
-          <MultiRangeSlider title={"목표2"} />
-          <MultiRangeSlider title={"목표3"} />
+          <MultiRangeSlider title={"면적"} unit={"m^2"} min={10} max={1000} step={10} />
+          <MultiRangeSlider title={"층수"} unit={"층"} min={1} max={10} step={1} />
+          <MultiRangeSlider title={"가격"} unit={"만 원"} min={100} max={10000} step={100} />
         </div>
 
         <div className='col-2'>
@@ -37,7 +37,6 @@ export default function Home() {
       </div>
 
       <div className='row mx-3 mt-5 mb-3'>
-        <BasicCard url={"next2"} className="py-3 my-3" />
         <BasicCard url={"next2"} className="py-3 my-3" />
         <BasicCard url={"next2"} className="py-3 my-3" />
         <BasicCard url={"next2"} className="py-3 my-3" />

@@ -5,13 +5,16 @@ import { ChangeEvent, useState } from "react";
 import styles from './MultiRangeSlider.module.css'
 
 type MultiRangeSliderProps = {
-  title:string
+  title:string;
+  unit:string;
+  min:number;
+  max:number;
+  step:number;
 }
 
 export default function MultiRangeSlider(props: MultiRangeSliderProps) {
-  const { title } = props;
+  const { title, unit, min, max, step } = props;
   
-  const min=0, max=100;
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
 
@@ -24,23 +27,23 @@ export default function MultiRangeSlider(props: MultiRangeSliderProps) {
 
   return (
     <div className={`${styles.middle} m-0`}>
-      <label><span className="fs-5 fw-bold">{title}</span> {minValue}만원 ~ {maxValue}만원</label>
+      <label><span className="fs-5 fw-bold">{title}</span> {minValue}{unit} ~ {maxValue}{unit}</label>
       <div className={`${styles.multiRangeSlider}`}>
         
         <input
           type="range" className={`form-range inputLeft ${styles.inputLeft}`}
-          min={min} max={max} id={`${title}InputLeft`} value={minValue} onChange={setMin}
+          min={min} max={max} step={step} id={`${title}InputLeft`} value={minValue} onChange={setMin}
         />
         <input
           type="range" className={`form-range inputRight ${styles.inputRight}`}
-          min={min} max={max} id={`${title}InputRight`} value={maxValue} onChange={setMax}
+          min={min} max={max} step={step} id={`${title}InputRight`} value={maxValue} onChange={setMax}
         />
     
         <div id={`${title}Slider`} className={`slider ${styles.slider}`}>
           <div id={`${title}Track`} className={`track ${styles.track}`}></div>
-          <div id={`${title}Range`} className={`range ${styles.range}`} style={{left:`${minValue}%`, right:`${100-maxValue}%`}}></div>
-          <div id={`${title}ThumbLeft`} className={`thumbleft ${styles.thumbleft}`} style={{left:`${minValue}%`}} ></div>
-          <div id={`${title}ThumbRight`} className={`thumbright ${styles.thumbright}`} style={{right:`${100-maxValue}%`}} ></div>
+          <div id={`${title}Range`} className={`range ${styles.range}`} style={{left:`${100*(minValue-min)/(max-min)}%`, right:`${100*(max-maxValue)/(max-min)}%`}}></div>
+          <div id={`${title}ThumbLeft`} className={`thumbleft ${styles.thumbleft}`} style={{left:`${100*(minValue-min)/(max-min)}%`}} ></div>
+          <div id={`${title}ThumbRight`} className={`thumbright ${styles.thumbright}`} style={{right:`${100*(max-maxValue)/(max-min)}%`}} ></div>
         </div>
 
       </div>
