@@ -37,12 +37,24 @@ export default function Home() {
       </div>
 
       <div className='row mx-3 mt-5 mb-3'>
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={'next2'} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={'next2'} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={'next2'} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={'next2'} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={'next2'} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={'next2'} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
       </div>
     </main>
   )

@@ -33,7 +33,7 @@ export default function Home() {
       
 
       <div className={`py-4 align-self-end`}>
-        <RouteButton dir={'/next4'}>집들이 요청하기</RouteButton>
+        <RouteButton url={'/next4'}>집들이 요청하기</RouteButton>
       </div>
       
     </main>

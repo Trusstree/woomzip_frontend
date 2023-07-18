@@ -4,6 +4,7 @@ import BasicCard from '@/components/BasicCard'
 import BossCard from '@/components/BossCard'
 import InfoCard from '@/components/InfoCard'
 import ReviewCard from '@/components/ReviewCard'
+import RouteButton from '@/components/RouteButton'
 import Image from 'next/image'
 
 export default function Home() {
@@ -47,18 +48,9 @@ export default function Home() {
             </div>
 
             <div>
-              <button type="button" className="mx-4 px-4 py-2 btn btn-primary rounded-lg"
-                onClick={()=>{console.log(3)}}>
-                장바구니 담기
-              </button>
-              <button type="button" className="mx-4 px-4 py-2 btn btn-primary rounded-lg"
-                onClick={()=>{console.log(4)}}>
-                집들이 하러가기
-              </button>
-              <button type="button" className="mx-4 px-4 py-2 btn btn-primary rounded-lg"
-                onClick={()=>{console.log(5)}}>
-                원스톱 의뢰하기
-              </button>
+              <RouteButton className={"mx-4 px-4 py-2 btn btn-primary rounded-lg"} url={'/next4'}>장바구니 담기</RouteButton>
+              <RouteButton className={"mx-4 px-4 py-2 btn btn-primary rounded-lg"} url={'/next3'}>집들이 하러가기</RouteButton>
+              <RouteButton className={"mx-4 px-4 py-2 btn btn-primary rounded-lg"} url={'/next3'}>원스톱 의뢰하기</RouteButton>
             </div>
 
           </div>
@@ -66,12 +58,24 @@ export default function Home() {
       </div>
 
       <div className='row mx-3 mt-5 mb-3'>
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
-        <BasicCard url={"next2"} className="py-3 my-3" />
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={"next2"} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={"next2"} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={"next2"} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={"next2"} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={"next2"} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} url={"next2"} className="py-3 my-3" >
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
       </div>
 
       <div className='row mx-3 mt-5 mb-3'>

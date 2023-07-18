@@ -1,21 +1,30 @@
 "use client"
 
+import { Children } from "@/type/props"
+import { useRouter } from "next/navigation";
+
 type CardProps = {
-  url: string;
-  className?: string;
+  title: string
+  children: Children
+  url?: string
+  src?: string
+  className?: string
 }
 
 export default function BasicCard(props: CardProps) {
-  const { url, className }=props;
-
+  const { title, children, url, src, className }=props;
+  const router = useRouter();
+  
   return (
-    <div className={`${className} col-3 col-md-4 col-sm-6`}>
+    <div className={`${className?className:''} col-3 col-md-4 col-sm-6`}>
       <div className={`card rounded-0 border-0`}>
-        <img src="image1.jpg" className="card-img-top rounded-0" alt="..." />
+        {src?
+          <img src={src} className="card-img-top rounded-0" alt="..."
+          onClick={()=>{url?router.push(url):undefined;}} style={url?{cursor:"pointer"}:undefined} /> : undefined
+        }
         <div className="card-body">
-          <h5 className="card-title my-2">Card title12</h5>
-          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href={url} className="btn btn-primary">Go somewhere</a>
+          <h5 className="card-title my-2">{title}</h5>
+          <p className="card-text">{children}</p>
         </div>
       </div>
     </div>

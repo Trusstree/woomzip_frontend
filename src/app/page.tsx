@@ -8,18 +8,36 @@ export default function Home() {
       <h1>설레는 건축의 시작</h1>
       <h1>트러스와 함께 하세요!</h1>
       <HorizontalScroll>
-        <BasicCard url={"next2"} className="w-100"/>
-        <BasicCard url={"next2"} className="w-100"/>
-        <BasicCard url={"next2"} className="w-100"/>
-        <BasicCard url={"next2"} className="w-100"/>
-        <BasicCard url={"next2"} className="w-100"/>
-        <BasicCard url={"next2"} className="w-100"/>
-        <BasicCard url={"next2"} className="w-100"/>
-        <BasicCard url={"next2"} className="w-100"/>
-        <BasicCard url={"next2"} className="w-100"/>
+        <BasicCard src={"image1.jpg"} title={"Card title"} className="w-100">
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} className="w-100">
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} className="w-100">
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} className="w-100">
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} className="w-100">
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} className="w-100">
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} className="w-100">
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} className="w-100">
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
+        <BasicCard src={"image1.jpg"} title={"Card title"} className="w-100">
+          대충 그럴듯한 설명이 담긴 글
+        </BasicCard>
       </HorizontalScroll>
       <div className={`py-4 align-self-end`}>
-        <RouteButton dir={'/next1'}>다음 페이지</RouteButton>
+        <RouteButton url={'/next1'} className={''}>다음 페이지</RouteButton>
       </div>
     </main>
   )
