@@ -17,9 +17,9 @@ export default function BasicCard(props: CardProps) {
   
   return (
     <div className={`${className?className:''} col-3 col-md-4 col-sm-6`}>
-      <div className={`card rounded-0 border-0`}>
+      <div className={`card rounded-4 border-0`}>
         {src?
-          <img src={src} className="card-img-top rounded-0" alt="..."
+          <img src={src} className="card-img-top rounded-top-4" alt="..."
           onClick={()=>{url?router.push(url):undefined;}} style={url?{cursor:"pointer"}:undefined} /> : undefined
         }
         <div className="card-body">
