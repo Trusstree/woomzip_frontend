@@ -1,0 +1,30 @@
+.circle {
+  z-index: 2;
+  position: absolute;
+  border:solid;
+  border-radius: 5px;
+  border-width: 5px;
+  border-color: #3174F4;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+}
+
+.label {
+  color: black;
+  transform: translate(-20px, -35px);
+}
+
+.selected {
+  color: #3174F4;
+  font-weight: bold;
+}
+
+.guidebar {
+  z-index: 1;
+  position: absolute;
+  height: 3px;
+  background-color: #3174F4;
+  color:#3174F4;
+  transform: translate(16px, 12px);
+}

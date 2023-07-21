@@ -1,14 +1,23 @@
+import styles from "./SearchBar.module.css";
+
 type SearchBarProps = {
-  title: string
+  placeholder: string
+  title?: string
   className?: string
 }
 
 export default function SearchBar(props: SearchBarProps) {
-  const { title, className } = props; 
+  const { placeholder, title, className } = props; 
   return (
-    <div className="mt-3">
-      <label>{title}</label>
-      <input type="search" className={`${className} form-control form-outline form-control-lg rounded`} placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+    <div>
+      {title?<label>{title}</label>:undefined}
+      <input
+        type="search"
+        className={`${className} ${styles.input} form-control form-outline form-control-lg rounded-0`}
+        placeholder={placeholder}
+        aria-label="Search"
+        aria-describedby="search-addon"
+      />
     </div>
     
   );

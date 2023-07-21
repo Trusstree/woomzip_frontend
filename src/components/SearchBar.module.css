@@ -1,0 +1,7 @@
+.input[type="search"] {
+  background-color:#E4E4E4;
+}
+
+.input[type="search"]::placeholder {
+  color: white;
+}

@@ -14,7 +14,7 @@ export default function Home() {
       <div className='row w-100'>
 
         <div className='col-12 mb-5'>
-          <SearchBar title={"목표"} />
+          <SearchBar title={"목표"} placeholder={"ex) 공세동 한보라2동 141"} />
         </div>
         
         <CheckBoxs className="col-2" title="용도">
