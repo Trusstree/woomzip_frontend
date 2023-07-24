@@ -1,15 +1,20 @@
-import SearchBar from "@/components/SearchBar";
-import Map from "@/components/Map";
-import RouteButton from "@/components/RouteButton";
-import Submit from "@/components/Submit";
-import GuideLine from "@/components/GuideLine";
+import SearchBar from "@/components/forms/SearchBar";
+import Image from 'next/image'
+import Submit from "@/components/forms/Submit";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <main className={`container d-flex justify-content-center flex-column align-items-center`} >
       <div className={`row w-100`}>
         <div className={`col-6`}>
-          <Map></Map>
+          <Image
+            className={`m-5`}
+            src="/koreaMap.png"
+            alt="Truss Logo"
+            width={340}
+            height={570}
+          />
         </div>
 
         <div className={`col-6 d-flex justify-content-center flex-column`}>
@@ -24,11 +29,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="row w-100 mt-5">
-        <div className="col-7 px-5 mt-4"><GuideLine page={"service1"}></GuideLine></div>
-        <div className="col-2"></div>
-        <div className="col-3"><RouteButton url={'/service2'} className="px-5 mx-auto align-self-left">다음 단계로 이동하기</RouteButton></div>
-      </div>
+      <Footer page={"위치 선정"} url={'/service2'} />
     </main>
   )
 }

@@ -1,9 +1,9 @@
-import SearchBar from '@/components/SearchBar'
+import SearchBar from '@/components/forms/SearchBar'
 import CheckBoxs from '@/components/CheckBoxs'
-import Submit from '@/components/Submit'
-import Radios from '@/components/Radios'
+import Submit from '@/components/forms/Submit'
+import Radios from '@/components/forms/Radios'
 import BasicCard from '@/components/BasicCard'
-import MultiRangeSlider from '@/components/MultiRangeSlider'
+import MultiRangeSlider from '@/components/forms/MultiRangeSlider'
 
 export default function Home() {
   return (

@@ -1,7 +1,4 @@
-import BossCard from "@/components/BossCard";
 import Footer from "@/components/Footer";
-import GuideLine from "@/components/GuideLine";
-import RouteButton from "@/components/RouteButton";
 
 export default function Home() {
   return (
@@ -11,11 +8,10 @@ export default function Home() {
         <h2 className='fw-bold text-left'>건설사들의 프로필을 확인해보고 마음에 드는 건설사들을 선택하세요.</h2>
 
         <div className="my-5">
-          <BossCard url={""}></BossCard>
         </div>
       </div>
-
-      <Footer page={"세부정보 보기"} url={'/service5'} />
+      
+      <Footer page={"세부내역 작성"} url={'/service6'} />
     </main>
   )
 }

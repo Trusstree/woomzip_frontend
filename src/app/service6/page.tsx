@@ -1,7 +1,5 @@
 import BossCard from "@/components/BossCard";
 import Footer from "@/components/Footer";
-import GuideLine from "@/components/GuideLine";
-import RouteButton from "@/components/RouteButton";
 
 export default function Home() {
   return (
@@ -15,7 +13,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer page={"세부정보 보기"} url={'/service5'} />
+      <Footer page={"건축의뢰 완료"} url={'/'} />
     </main>
   )
 }

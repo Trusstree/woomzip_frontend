@@ -1,9 +1,9 @@
 import React from "react";
 import Image from 'next/image'
 
-type Props = {};
+type HeaderProps = {};
 
-function Header({}: Props) {
+export default function Header(props: HeaderProps) {
   return (
     <div className={`d-flex sticky-top pb-2`} style={{backgroundColor:"#E1ECEF"}}>
       <Image
@@ -30,5 +30,3 @@ function Header({}: Props) {
     </div>
   );
 }
-
-export default Header;
