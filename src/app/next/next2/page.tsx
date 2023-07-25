@@ -2,8 +2,6 @@
 
 import BasicCard from '@/components/BasicCard'
 import BossCard from '@/components/BossCard'
-import InfoCard from '@/components/InfoCard'
-import ReviewCard from '@/components/ReviewCard'
 import RouteButton from '@/components/RouteButton'
 import Image from 'next/image'
 
@@ -80,8 +78,6 @@ export default function Home() {
 
       <div className='row mx-3 mt-5 mb-3'>
         <BossCard url={"next2"} className="py-3 my-3" />
-        <InfoCard url={"next2"} className="py-3 my-3" />
-        <ReviewCard url={"next2"} className="py-3 my-3" />
       </div>
       
     </main>

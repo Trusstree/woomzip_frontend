@@ -13,10 +13,10 @@ type BuildingData = {
 export default function Home() {
 
   const data = [
-    {title:"단독 주택", src:"image1.jpg", minDate:"8", maxDate:"15", minPrice:"8320"},
-    {title:"다가구 주택", src:"image1.jpg", minDate:"16", maxDate:"29", minPrice:"53400"},
-    {title:"상가주택", src:"image1.jpg", minDate:"22", maxDate:"37", minPrice:"83255"},
-    {title:"상가", src:"image1.jpg", minDate:"31", maxDate:"42", minPrice:"103825"},
+    {title:"단독 주택", src:"단독 주택.png", minDate:"8", maxDate:"15", minPrice:"8320"},
+    {title:"다가구 주택", src:"다가구 주택.png", minDate:"16", maxDate:"29", minPrice:"53400"},
+    {title:"상가주택", src:"상가주택.png", minDate:"22", maxDate:"37", minPrice:"83255"},
+    {title:"상가", src:"상가.png", minDate:"31", maxDate:"42", minPrice:"103825"},
   ] as BuildingData[];
 
   return (
@@ -26,9 +26,10 @@ export default function Home() {
         <h2 className='fw-bold text-start'>건축하실 건물의 종류를 선택해주세요.</h2>
         <HorizontalScroll>
           {data.map((e,i)=>(
-            <BasicCard key={i} className="w-100"
+            <BasicCard key={i} className="w-100 h-100"
               src={e.src}
-              title={e.title} >
+              title={e.title}
+              href={"/service3"}>
               <div className="row mb-3">
                 <div className="col-6 my-1 text-start">공사기간</div>
                 <div className="col-6 my-1 text-end">{e.minDate}주 ~ {e.maxDate}주</div>

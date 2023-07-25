@@ -1,0 +1,7 @@
+.input {
+  background-color:#E4E4E4;
+}
+
+.input::placeholder {
+  color: white;
+}
