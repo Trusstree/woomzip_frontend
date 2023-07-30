@@ -13,10 +13,10 @@ type BuildingData = {
 export default function Home() {
 
   const data = [
-    {title:"단독 주택", src:"단독 주택.png", minDate:"8", maxDate:"15", minPrice:"8320"},
-    {title:"다가구 주택", src:"다가구 주택.png", minDate:"16", maxDate:"29", minPrice:"53400"},
-    {title:"상가주택", src:"상가주택.png", minDate:"22", maxDate:"37", minPrice:"83255"},
-    {title:"상가", src:"상가.png", minDate:"31", maxDate:"42", minPrice:"103825"},
+    {title:"단독 주택", src:"/SoloHouse.png", minDate:"8", maxDate:"15", minPrice:"8320"},
+    {title:"다가구 주택", src:"/FamilyHouse.png", minDate:"16", maxDate:"29", minPrice:"53400"},
+    {title:"상가주택", src:"/SangaHouse.png", minDate:"22", maxDate:"37", minPrice:"83255"},
+    {title:"상가", src:"/Sanga.png", minDate:"31", maxDate:"42", minPrice:"103825"},
   ] as BuildingData[];
 
   return (

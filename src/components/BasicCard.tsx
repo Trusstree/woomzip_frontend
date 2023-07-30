@@ -11,19 +11,22 @@ type BasicCardProps = {
   className?: string
   selected?: boolean
   href?: string
+  width?: number | `${number}`
+  height?: number | `${number}`
 }
 
 export default function BasicCard(props: BasicCardProps) {
-  const { title, children, url, src, className, href }=props;
+  const { title, children, url, src, className, href, width, height }=props;
   const router = useRouter();
   
   return (
     <div className={`${className?className:''} shadow rounded-4`}
-      onClick={href?()=>{router.push(href)}:undefined} style={href?{cursor:"pointer"}:undefined}>
-      <div className={`card rounded-3 border-0`}>
+      onClick={href?()=>{router.push(href)}:undefined} style={{cursor:href?"pointer":"auto"}}>
+      <div className={`card rounded-3 border-0 h-100`}>
         {src?
-          <img src={src} height="300px" className="card-img-top rounded-top-3" alt="..."
-          onClick={()=>{url?router.push(url):undefined;}} style={url?{cursor:"pointer"}:undefined} />
+          <img src={src} className="card-img-top rounded-top-3" alt="..."
+          height={height?height:"auto"} width={width?width:"auto"}
+          onClick={()=>{url?router.push(url):undefined;}} style={{cursor:url?"pointer":"auto"}} />
           :undefined
         }
         <div className="card-body">

@@ -2,7 +2,23 @@ import BasicCard from '@/components/BasicCard'
 import HorizontalScroll from '@/components/HorizontalScroll'
 import RouteButton from '@/components/RouteButton'
 
+type DesignData = {
+  title: string
+  src: string
+  desc: string
+}
+
 export default function Home() {
+
+  const data = [
+    {title: "자연품은 작은 주택", src:"/NaturalHouse.png", desc:"자연과 함께하는 주택"},
+    {title: "나만의 럭셔리 하우스", src:"/LuxuryHouse.png", desc:"휘황찬란한 멋진 하우스"},
+    {title: "네모난 해뜨는 집", src:"/NemoSunriseHouse.png", desc:"해가 잘 보이는 집"},
+    {title: "네모 블럭블럭 주택", src:"/NemoBlockHouse.png", desc:" 사각형의 철학이 담긴 주택"},
+    {title: "피라미드", src:"/Pyramid.PNG", desc:"고대 이집트인들의 건축물"},
+    {title: "뉴질랜드 조립식 주택", src:"/NewZealandMiniHouse.png", desc:"뉴질랜드식 초소형 주택"},
+  ] as DesignData[];
+
   return (
     <main
       style={{backgroundColor:"#E1ECEF"}}>
@@ -16,34 +32,12 @@ export default function Home() {
           </div>
 
           <div className={`col-8`}>
-            <HorizontalScroll>
-              <BasicCard key={1} src={"image1.jpg"} title={"Card title"} className="w-100">
-                대충 그럴듯한 설명이 담긴 글
-              </BasicCard>
-              <BasicCard key={2} src={"image1.jpg"} title={"Card title"} className="w-100">
-                대충 그럴듯한 설명이 담긴 글
-              </BasicCard>
-              <BasicCard key={3} src={"image1.jpg"} title={"Card title"} className="w-100">
-                대충 그럴듯한 설명이 담긴 글
-              </BasicCard>
-              <BasicCard key={4} src={"image1.jpg"} title={"Card title"} className="w-100">
-                대충 그럴듯한 설명이 담긴 글
-              </BasicCard>
-              <BasicCard key={5} src={"image1.jpg"} title={"Card title"} className="w-100">
-                대충 그럴듯한 설명이 담긴 글
-              </BasicCard>
-              <BasicCard key={6} src={"image1.jpg"} title={"Card title"} className="w-100">
-                대충 그럴듯한 설명이 담긴 글
-              </BasicCard>
-              <BasicCard key={7} src={"image1.jpg"} title={"Card title"} className="w-100">
-                대충 그럴듯한 설명이 담긴 글
-              </BasicCard>
-              <BasicCard key={8} src={"image1.jpg"} title={"Card title"} className="w-100">
-                대충 그럴듯한 설명이 담긴 글
-              </BasicCard>
-              <BasicCard key={9} src={"image1.jpg"} title={"Card title"} className="w-100">
-                대충 그럴듯한 설명이 담긴 글
-              </BasicCard>
+            <HorizontalScroll className='w-50'>
+              {data.map((e, i)=>(
+                <BasicCard key={i} src={e.src} width={300} height={300} title={e.title} className="w-100">
+                  {e.desc}
+                </BasicCard>
+              ))}
             </HorizontalScroll>
           </div>
         </div>

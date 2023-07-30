@@ -9,12 +9,12 @@ type DesignData = {
 
 export default function Home() {
   const data = [
-    {title: "자연품은 작은 주택", src:"자연품은 작은 주택.png", price:"2억 3천만원"},
-    {title: "나만의 럭셔리 하우스", src:"나만의 럭셔리 하우스.png", price:"5억 2천만원"},
-    {title: "네모난 해뜨는 집", src:"네모난 해뜨는 집.png", price:"3억 9천만원"},
-    {title: "네모 블럭블럭 주택", src:"네모 블럭블럭 주택.png", price:"7억원"},
-    {title: "피라미드", src:"피라미드.png", price:"257조원"},
-    {title: "뉴질랜드 초소형 조립식 주택", src:"뉴질랜드 초소형 조립식 주택.png", price:"2천만원"},
+    {title: "자연품은 작은 주택", src:"/NaturalHouse.png", price:"2억 3천만원"},
+    {title: "나만의 럭셔리 하우스", src:"/LuxuryHouse.png", price:"5억 2천만원"},
+    {title: "네모난 해뜨는 집", src:"/NemoSunriseHouse.png", price:"3억 9천만원"},
+    {title: "네모 블럭블럭 주택", src:"/NemoBlockHouse.png", price:"7억원"},
+    {title: "피라미드", src:"/Pyramid.PNG", price:"257조원"},
+    {title: "뉴질랜드 초소형 조립식 주택", src:"/NewZealandMiniHouse.png", price:"2천만원"},
   ] as DesignData[];
 
   const building = "단독 주택";

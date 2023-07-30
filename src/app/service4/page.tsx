@@ -17,12 +17,12 @@ export default function Home() {
   }
 
   const resultData = [
-    {src:"나만의 럭셔리 하우스.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
-    {src:"나만의 럭셔리 하우스.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
-    {src:"나만의 럭셔리 하우스.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
-    {src:"나만의 럭셔리 하우스.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
-    {src:"나만의 럭셔리 하우스.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
-    {src:"나만의 럭셔리 하우스.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
+    {src:"/LuxuryHouse.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
+    {src:"/LuxuryHouse.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
+    {src:"/LuxuryHouse.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
+    {src:"/LuxuryHouse.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
+    {src:"/LuxuryHouse.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
+    {src:"/LuxuryHouse.png", price:"5억 1000만원", period:"5개월 8일", rate:4.6},
   ]
 
   const number = 6;
