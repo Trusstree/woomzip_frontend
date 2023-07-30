@@ -68,7 +68,7 @@ export default function Home() {
 
                 <Image
                   className={`styles.logo`}
-                  src="/나만의 럭셔리 하우스.png"
+                  src="/LuxuryHouse.png"
                   alt="Truss Logo"
                   width={488}
                   height={400}
@@ -77,7 +77,7 @@ export default function Home() {
                 <div className="d-flex flex-column justify-content-around">
                   <Image
                     className={`styles.logo`}
-                    src="/나만의 럭셔리 하우스.png"
+                    src="/LuxuryHouse.png"
                     alt="Truss Logo"
                     width={244}
                     height={200}
@@ -85,7 +85,7 @@ export default function Home() {
                   />
                   <Image
                     className={`styles.logo`}
-                    src="/나만의 럭셔리 하우스.png"
+                    src="/LuxuryHouse.png"
                     alt="Truss Logo"
                     width={244}
                     height={200}
