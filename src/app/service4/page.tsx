@@ -129,7 +129,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer page={"세부정보 보기"} url={'/service5'} />
+      <Footer page={"세부정보 보기"} />
     </main>
   )
 }

@@ -70,7 +70,7 @@ export default function Home() {
         </div>
 
       </div>
-      <Footer page={"디자인 선택"} url={'/service4'} />
+      <Footer page={"디자인 선택"} />
     </main>
   )
 }

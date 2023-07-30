@@ -41,7 +41,7 @@ export default function Home() {
         </HorizontalScroll>
       </div>
 
-      <Footer page={"건축 종류 선택"} url={'/service3'} />
+      <Footer page={"건축 종류 선택"} />
     </main>
   )
 }
