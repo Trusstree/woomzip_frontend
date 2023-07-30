@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 type BasicCardProps = {
   title?: string
   children?: Children
-  url?: string
   src?: string
   className?: string
   selected?: boolean
@@ -16,7 +15,7 @@ type BasicCardProps = {
 }
 
 export default function BasicCard(props: BasicCardProps) {
-  const { title, children, url, src, className, href, width, height }=props;
+  const { title, children, src, className, href, width, height }=props;
   const router = useRouter();
   
   return (
@@ -26,7 +25,7 @@ export default function BasicCard(props: BasicCardProps) {
         {src?
           <img src={src} className="card-img-top rounded-top-3" alt="..."
           height={height?height:"auto"} width={width?width:"auto"}
-          onClick={()=>{url?router.push(url):undefined;}} style={{cursor:url?"pointer":"auto"}} />
+          onClick={()=>{href?router.push(href):undefined;}} style={{cursor:href?"pointer":"auto"}} />
           :undefined
         }
         <div className="card-body">
