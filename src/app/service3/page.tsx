@@ -1,50 +1,76 @@
 import BasicCard from "@/components/BasicCard";
-import GuideLine from "@/components/GuideLine";
-import HorizontalScroll from "@/components/HorizontalScroll";
-import RouteButton from "@/components/RouteButton";
+import Footer from "@/components/Footer";
+
+type DesignData = {
+  title: string
+  src: string
+  price: string
+}
 
 export default function Home() {
+  const data = [
+    {title: "자연품은 작은 주택", src:"/NaturalHouse.png", price:"2억 3천만원"},
+    {title: "나만의 럭셔리 하우스", src:"/LuxuryHouse.png", price:"5억 2천만원"},
+    {title: "네모난 해뜨는 집", src:"/NemoSunriseHouse.png", price:"3억 9천만원"},
+    {title: "네모 블럭블럭 주택", src:"/NemoBlockHouse.png", price:"7억원"},
+    {title: "피라미드", src:"/Pyramid.PNG", price:"257조원"},
+    {title: "뉴질랜드 초소형 조립식 주택", src:"/NewZealandMiniHouse.png", price:"2천만원"},
+  ] as DesignData[];
+
+  const building = "단독 주택";
+
   return (
     <main className={`container d-flex justify-content-center flex-column align-items-center`}>
       <div className={`mt-5`}>
-        <h5 className='fw-bold text-left' style={{color:"#1F74F4"}}>200개 이상의 예시 디자인 중</h5>
-        <h2 className='fw-bold text-left'>마음에 드는 단독 주택의 디자인을 마음껏 선택해주세요.</h2>
-        <HorizontalScroll>
-          <BasicCard key={1} src={"image1.jpg"} title={"Card title"} className="w-100">
-            대충 그럴듯한 설명이 담긴 글
-          </BasicCard>
-          <BasicCard key={2} src={"image1.jpg"} title={"Card title"} className="w-100">
-            대충 그럴듯한 설명이 담긴 글
-          </BasicCard>
-          <BasicCard key={3} src={"image1.jpg"} title={"Card title"} className="w-100">
-            대충 그럴듯한 설명이 담긴 글
-          </BasicCard>
-          <BasicCard key={4} src={"image1.jpg"} title={"Card title"} className="w-100">
-            대충 그럴듯한 설명이 담긴 글
-          </BasicCard>
-          <BasicCard key={5} src={"image1.jpg"} title={"Card title"} className="w-100">
-            대충 그럴듯한 설명이 담긴 글
-          </BasicCard>
-          <BasicCard key={6} src={"image1.jpg"} title={"Card title"} className="w-100">
-            대충 그럴듯한 설명이 담긴 글
-          </BasicCard>
-          <BasicCard key={7} src={"image1.jpg"} title={"Card title"} className="w-100">
-            대충 그럴듯한 설명이 담긴 글
-          </BasicCard>
-          <BasicCard key={8} src={"image1.jpg"} title={"Card title"} className="w-100">
-            대충 그럴듯한 설명이 담긴 글
-          </BasicCard>
-          <BasicCard key={9} src={"image1.jpg"} title={"Card title"} className="w-100">
-            대충 그럴듯한 설명이 담긴 글
-          </BasicCard>
-        </HorizontalScroll>
 
-        <div className="row w-100 mt-5">
-          <div className="col-7 px-5 mt-4"><GuideLine page={"service3"}></GuideLine></div>
-          <div className="col-2"></div>
-          <div className="col-3"><RouteButton url={'/service4'} className="px-5 mx-auto align-self-left">다음 단계로 이동하기</RouteButton></div>
+        <div className="row">
+          <div className="col-5">
+            <h5 className='fw-bold text-start' style={{color:"#1F74F4"}}>32개의 시공사례를 통해</h5>
+            <h2 className='fw-bold text-start'>마음에 드는 {building}의 디자인을 마음껏 선택해주세요.</h2>
+          </div>
+
+          <div className="col-7 d-flex">
+            <div className="mx-3 d-flex flex-column align-items-center" style={{width:"120px"}}>
+              <div className="btn py-1 bg-primary text-white rounded-3">가격</div>
+              <div className="text-center">2억 1천만원~6억원</div>
+            </div>
+
+            <div className="mx-3 d-flex flex-column align-items-center" style={{width:"120px"}}>
+              <div className="btn py-1 bg-primary text-white rounded-3">면적</div>
+              <div className="text-center">35평~57평</div>
+            </div>
+
+            <div className="mx-3 d-flex flex-column align-items-center" style={{width:"120px"}}>
+              <div className="btn py-1 bg-primary text-white rounded-3">층수</div>
+              <div className="text-center">1층~2층</div>
+            </div>
+
+            <div className="mx-3 d-flex flex-column align-items-center" style={{width:"120px"}}>
+              <div className="btn py-1 bg-primary text-white rounded-3">디자인</div>
+              <div className="text-center">아메리칸 스타일</div>
+            </div>
+
+          </div>
         </div>
+        
+        <div className="row g-4 d-flex justify-content-between">
+          {
+          data.map((e, i)=>(
+            <div className="col-4" key={i}>
+              <BasicCard
+                src={e.src}
+                title={e.title}
+                href={"/service4"}
+                className="p-0 w-100 h-100">
+                {e.price}
+              </BasicCard>
+            </div>
+          ))
+          }
+        </div>
+
       </div>
+      <Footer page={"디자인 선택"} />
     </main>
   )
 }

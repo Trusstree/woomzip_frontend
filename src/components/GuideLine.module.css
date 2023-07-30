@@ -8,11 +8,13 @@
   width: 30px;
   height: 30px;
   background-color: white;
+  transform: translateY(-15px);
 }
 
 .label {
   color: black;
-  transform: translate(-20px, -35px);
+  position: absolute;
+  transform: translateY(-45px);
 }
 
 .selected {
@@ -21,10 +23,7 @@
 }
 
 .guidebar {
-  z-index: 1;
-  position: absolute;
   height: 3px;
   background-color: #3174F4;
   color:#3174F4;
-  transform: translate(16px, 12px);
 }

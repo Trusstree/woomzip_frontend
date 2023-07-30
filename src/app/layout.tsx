@@ -3,7 +3,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script';
-import Footer from './Footer';
 import Header from './Header';
 
 
@@ -30,7 +29,6 @@ export default function Layout({
       <body className={inter.className}>
         <Header />
         {children}
-        {/* <Footer /> */}
       </body>
     </html>
   )

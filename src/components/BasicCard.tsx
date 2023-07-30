@@ -3,28 +3,35 @@
 import { Children } from "@/type/props"
 import { useRouter } from "next/navigation";
 
-type CardProps = {
-  title: string
-  children: Children
+type BasicCardProps = {
+  title?: string
+  children?: Children
   url?: string
   src?: string
   className?: string
+  selected?: boolean
+  href?: string
+  width?: number | `${number}`
+  height?: number | `${number}`
 }
 
-export default function BasicCard(props: CardProps) {
-  const { title, children, url, src, className }=props;
+export default function BasicCard(props: BasicCardProps) {
+  const { title, children, url, src, className, href, width, height }=props;
   const router = useRouter();
   
   return (
-    <div className={`${className?className:''} col-3 col-md-4 col-sm-6`}>
-      <div className={`card rounded-4 border-0`}>
+    <div className={`${className?className:''} shadow rounded-4`}
+      onClick={href?()=>{router.push(href)}:undefined} style={{cursor:href?"pointer":"auto"}}>
+      <div className={`card rounded-3 border-0 h-100`}>
         {src?
-          <img src={src} className="card-img-top rounded-top-4" alt="..."
-          onClick={()=>{url?router.push(url):undefined;}} style={url?{cursor:"pointer"}:undefined} /> : undefined
+          <img src={src} className="card-img-top rounded-top-3" alt="..."
+          height={height?height:"auto"} width={width?width:"auto"}
+          onClick={()=>{url?router.push(url):undefined;}} style={{cursor:url?"pointer":"auto"}} />
+          :undefined
         }
         <div className="card-body">
-          <h5 className="card-title my-2">{title}</h5>
-          <p className="card-text">{children}</p>
+          {title?<h5 className="card-title mx-3 my-2 fw-bold">{title}</h5>:undefined}
+          <div className="card-text mx-3">{children}</div>
         </div>
       </div>
     </div>
