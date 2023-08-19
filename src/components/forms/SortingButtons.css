@@ -1,0 +1,7 @@
+/* SortingButtons.css */
+.sorting-buttons {
+    display: flex;
+    justify-content: right;
+    margin: 20px;
+  }
+  

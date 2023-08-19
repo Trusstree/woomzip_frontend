@@ -1,0 +1,43 @@
+/* RatingBox.css */
+
+.rating-box {
+    /* Add any overall styles for the container div here */
+  }
+  
+  .rating-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .rating-label,
+  .rating-value,
+  .rating-divider {
+    display: block;
+    opacity: 0.5;
+    font-size: 12px;
+  }
+  
+  .rating-label {
+    margin-top: 10px;
+  }
+  
+  .rating-value {
+    margin-left: 5px;
+    font-weight: bold;
+    color: rgb(5, 173, 68);
+    margin-top: 10px;
+    font-size: 30px;
+  }
+  
+  .rating-divider {
+    margin-left: 5px;
+    margin-top: 17px;
+  }
+  
+  .divider {
+    width: 100%;
+    height: 2px;
+    background: #000;
+    margin: 20px 0;
+  }
+  
