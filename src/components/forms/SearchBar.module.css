@@ -1,7 +1,25 @@
+/* SearchBar.module.css */
+
+/* Add a custom class name */
+.search-bar-container {
+  /* Set a transparent background color */
+  background-color: transparent;
+  /* Set a transparent border */
+  border: none;
+  /* Set padding and other styles as needed */
+  width: 100%; /* Set width to 100% to fill the screen */
+}
+
+/* Set the input background color and placeholder color */
 .input[type="search"] {
-  background-color:#E4E4E4;
+  background-color: transparent; /* Change background color to transparent */
+  color: white; /* Set text color */
+  /* Set a transparent border */
+  border: none;
+  /* Set padding and other styles as needed */
 }
 
 .input[type="search"]::placeholder {
-  color: white;
+  color: white; /* Set placeholder text color */
+  /* Set padding and other styles as needed */
 }

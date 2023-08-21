@@ -1,1 +1,8 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
+
+body {
+    background: linear-gradient(to bottom, blue, white, white);
+    margin: 0;
+    padding: 0;
+  }
+  

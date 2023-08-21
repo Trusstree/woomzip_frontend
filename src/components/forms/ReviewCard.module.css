@@ -1,0 +1,20 @@
+/* ReviewCard.module.css */
+.card-container {
+  border-top: 2px solid #ffffff; /* Add a thick top border */
+  padding: 20px;
+  margin-top: 20px;
+  color: white;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.left-align {
+  text-align: left;
+}
+
+.right-align {
+  text-align: right;
+}

@@ -1,0 +1,28 @@
+/* LoginButton.module.css */
+
+.button-group {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.btn {
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  background-color: white;
+  color: none; /* Change this to an appropriate color value */
+}
+
+.login-button {
+  background-color: none; /* Change this to an appropriate color value */
+  color: white;
+}
+
+.login-button:hover {
+  background-color: none; /* Change this to an appropriate color value */
+}

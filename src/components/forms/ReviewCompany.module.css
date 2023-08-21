@@ -1,0 +1,10 @@
+/* ReviewCompany.module.css */
+.card-container {
+    background: linear-gradient(to bottom, rgb(20, 20, 104), rgb(20, 20, 104), rgb(200,200,200));
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  /* Add or modify other styles as needed */
+  
