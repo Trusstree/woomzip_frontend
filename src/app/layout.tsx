@@ -27,7 +27,7 @@ export default function Layout({
       </head>
       
       <body className={inter.className}>
-        <Header />
+        {/* <Header /> */}
         {children}
       </body>
     </html>

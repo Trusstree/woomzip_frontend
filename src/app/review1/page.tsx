@@ -1,372 +1,47 @@
-import ReviewCompany from "@/components/forms/ReviewCompany";
-import ReviewCard from "@/components/forms/ReviewCard";
-import React from "react";
-import SortingButtonStyles from "@/components/forms/SortingButtonsStyles";
-import RatingInfo from "@/components/forms/Ratinginfo"; // Adjust the import path
-import Image from "next/image";
-import LoginButton from "@/components/forms/LoginButton";
-import SearchBar from "@/components/forms/SearchBar";
-import SatisfactionText from "@/components/forms/RatingSatisfiy";
+import BasicCard from '@/components/BasicCard'
+import HorizontalScroll from '@/components/HorizontalScroll'
+import RouteButton from '@/components/RouteButton'
+
+type DesignData = {
+  title: string
+  src: string
+  desc: string
+}
 
 export default function Home() {
+
+  const data = [
+    {title: "자연품은 작은 주택", src:"/NaturalHouse.png", desc:"자연과 함께하는 주택"},
+    {title: "나만의 럭셔리 하우스", src:"/LuxuryHouse.png", desc:"휘황찬란한 멋진 하우스"},
+    {title: "네모난 해뜨는 집", src:"/NemoSunriseHouse.png", desc:"해가 잘 보이는 집"},
+    {title: "네모 블럭블럭 주택", src:"/NemoBlockHouse.png", desc:" 사각형의 철학이 담긴 주택"},
+    {title: "피라미드", src:"/Pyramid.PNG", desc:"고대 이집트인들의 건축물"},
+    {title: "뉴질랜드 조립식 주택", src:"/NewZealandMiniHouse.png", desc:"뉴질랜드식 초소형 주택"},
+  ] as DesignData[];
+
   return (
     <main
-      className={`container d-flex ustify-content-start flex-column align-items-start`}
-    >
-      <div>
-        <span className="d-flex align-items-center">
-          <Image
-            className={`mr-auto m-3`}
-            src="/logo1.png"
-            alt="Truss Logo"
-            width={109}
-            height={64}
-            style={{ filter: "brightness(0) invert(1)" }}
-          />
+      style={{backgroundColor:"#E1ECEF"}}>
+      <div className={`container py-5 d-flex justify-content-center flex-column align-items-center`}>
+        <div className={`row`}>
+          <div className={`col-4 d-flex justify-content-center flex-column`}>
+            <h5 className='fw-bold text-left ps-3 ms-5' style={{color:"#1F74F4"}}>설계부터 시공사 선정, 혹시 모를 분쟁에<br/> 걱정만 하고 계시진 않나요?</h5>
+            <h2 className='fw-bold text-left mt-3 ps-3 ms-5'>행복해지기 위한 건축,</h2>
+            <h2 className='fw-bold text-left mb-4 ps-3 ms-5'>이젠 트러스와 즐기세요.</h2>
+            <RouteButton url={'/service1'} className="px-5 mx-auto align-self-left">트러스와 건축 시작하기</RouteButton>
+          </div>
 
-          <h1 style={{ marginTop: "20px", fontWeight: "bold", color: "white" }}>
-            시공사, 건축사사무소 리뷰 공간
-          </h1>
-
-          <span
-            className="btn-group ms-auto me-5"
-            style={{ marginTop: "20px", color: "white" }}
-          >
-            <LoginButton></LoginButton>
-          </span>
-        </span>
-
-        {/* 시공사, 건축사무소 검색하기 */}
-        <span
-          style={{
-            borderRadius: "10px",
-            background: "#0496bd",
-            width: "100%",
-            padding: "10px", // Adjust padding as needed
-            display: "flex",
-          }}
-        >
-          <svg
-            width="36"
-            height="36"
-            fill="white"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="10" />
-            <line x1="30" y1="30" x2="18.65" y2="18.65" />
-          </svg>
-
-          <SearchBar
-            placeholder="시공사, 건축사무소 검색하기"
-            className="invest-search" // Optional custom CSS classes
-          />
-        </span>
-
-        {/* 후기쓰기, 후기요청하기 */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "20px",
-          }}
-        >
-          <button
-            style={{
-              background: "#0496bd",
-              borderRadius: "10px",
-              border: "None",
-              width: "30%",
-            }}
-          >
-            <a
-              target="_blank"
-              href="https://docs.google.com/forms/d/e/1FAIpQLScNXPgZ2jTJmEOcZ1Y8Q4_VZKwNro9i6GEbc9bd-W-9Fjwq8A/viewform?usp=sf_link"
-              style={{
-                color: "white",
-                justifyContent: "center", // Center-align the content horizontally
-                alignItems: "center", // Center-align the content vertically
-                textDecoration: "none", // Remove underline
-              }}
-            >
-              <div
-                className="public"
-                style={{ fontSize: "25px", marginTop: "5px" }}
-              >
-                <p>건설사 후기 쓰기</p>
-                <p style={{ fontSize: "13px" }}>
-                  다음 건축주를 위해 당신의 건축 이야기를 남겨주세요!
-                </p>
-              </div>
-            </a>
-          </button>
-          <button
-            style={{
-              background: "#0496bd",
-              borderRadius: "10px",
-              border: "None",
-              width: "30%",
-            }}
-          >
-            <a
-              target="_blank"
-              href="https://naver.com"
-              style={{
-                fontSize: "25px",
-                color: "white",
-                textDecoration: "none", // Remove underline
-              }}
-            >
-              <p className="public" style={{ fontSize: "25px" }}>
-                <div>건설사 후기 요청하기</div>
-                <span style={{ fontSize: "13px" }}>
-                  원하시는 업체의 리뷰가 없다면 요청해주세요!
-                </span>
-              </p>
-            </a>
-          </button>
+          <div className={`col-8`}>
+            <HorizontalScroll className='w-50'>
+              {data.map((e, i)=>(
+                <BasicCard key={i} src={e.src} width={300} height={300} title={e.title} className="w-100">
+                  {e.desc}
+                </BasicCard>
+              ))}
+            </HorizontalScroll>
+          </div>
         </div>
-
-        {/* 최신순, 추천순, 리뷰 많은 순 정렬 버튼 */}
-        <div>
-          <SortingButtonStyles />
-        </div>
-
-        {/* 회사 간 리뷰 */}
-        <ReviewCompany>
-          <span style={{ color: "white" }}>
-            <p>시공사</p>
-            <p style={{ fontSize: "30px" }}>(주)00종합건설 / 용인시</p>
-            <p>평균평점</p>
-            <span
-              style={{
-                display: "flex",
-              }}
-            >
-              <RatingInfo rating={8.5} />
-              <div style={{ marginRight: "60px" }}>
-                소통
-                <SatisfactionText text="매우 만족" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                가격
-                <SatisfactionText text="만족" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                시공결과
-                <SatisfactionText text="보통" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                일정준수
-                <SatisfactionText text="불만족" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                A/S
-                <SatisfactionText text="매우 불만족" />
-              </div>
-            </span>
-          </span>
-
-          <ReviewCard>
-            <span
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "20px",
-              }}
-            >
-              <p>건축진행</p>
-              <p>용인시, 일반주택</p>
-            </span>
-            <RatingInfo rating={8} />
-            <span>
-              000000000000000000000000000000000000000000000000000
-              000000000000000000000000000000000000000000000000000
-              00000000000000000000000000000000000000000000000000
-              00000000000000000000000000000000000000 000000000000
-            </span>
-          </ReviewCard>
-
-          <ReviewCard>
-            <span
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "20px",
-              }}
-            >
-              <p>건축진행</p>
-              <p>광명시, 일반주택</p>
-            </span>
-            <RatingInfo rating={9} />
-            <span>
-              1111111111111111111111111111111111111111111
-              1111111111111111111111111111111111111111
-              111111111111111111111111111111111111111111111111111
-              1111111111111111111111111111111111111111111111
-              11111111111111111111111111111111111111111111111111
-              11111111111111111111111111111111111111111111111
-            </span>
-          </ReviewCard>
-        </ReviewCompany>
-
-        {/* 회사 간 리뷰 */}
-        <ReviewCompany>
-          <span style={{ color: "white" }}>
-            <p>시공사</p>
-            <p style={{ fontSize: "30px" }}>(주)00종합건설 / 용인시</p>
-            <p>평균평점</p>
-            <span
-              style={{
-                display: "flex",
-              }}
-            >
-              <RatingInfo rating={8.5} />
-              <div style={{ marginRight: "60px" }}>
-                소통
-                <SatisfactionText text="매우 만족" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                가격
-                <SatisfactionText text="만족" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                시공결과
-                <SatisfactionText text="보통" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                일정준수
-                <SatisfactionText text="불만족" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                A/S
-                <SatisfactionText text="매우 불만족" />
-              </div>
-            </span>
-          </span>
-
-          <ReviewCard>
-            <span
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "20px",
-              }}
-            >
-              <p>건축진행</p>
-              <p>용인시, 일반주택</p>
-            </span>
-            <RatingInfo rating={8} />
-            <span>
-              000000000000000000000000000000000000000000000000000
-              000000000000000000000000000000000000000000000000000
-              00000000000000000000000000000000000000000000000000
-              00000000000000000000000000000000000000 000000000000
-            </span>
-          </ReviewCard>
-
-          <ReviewCard>
-            <span
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "20px",
-              }}
-            >
-              <p>건축진행</p>
-              <p>광명시, 일반주택</p>
-            </span>
-            <RatingInfo rating={9} />
-            <span>
-              1111111111111111111111111111111111111111111
-              1111111111111111111111111111111111111111
-              111111111111111111111111111111111111111111111111111
-              1111111111111111111111111111111111111111111111
-              11111111111111111111111111111111111111111111111111
-              11111111111111111111111111111111111111111111111
-            </span>
-          </ReviewCard>
-        </ReviewCompany>
-
-        {/* 회사 간 리뷰 */}
-        <ReviewCompany>
-          <span style={{ color: "white" }}>
-            <p>시공사</p>
-            <p style={{ fontSize: "30px" }}>(주)00종합건설 / 용인시</p>
-            <p>평균평점</p>
-            <span
-              style={{
-                display: "flex",
-              }}
-            >
-              <RatingInfo rating={8.5} />
-              <div style={{ marginRight: "60px" }}>
-                소통
-                <SatisfactionText text="매우 만족" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                가격
-                <SatisfactionText text="만족" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                시공결과
-                <SatisfactionText text="보통" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                일정준수
-                <SatisfactionText text="불만족" />
-              </div>
-              <div style={{ marginRight: "60px" }}>
-                A/S
-                <SatisfactionText text="매우 불만족" />
-              </div>
-            </span>
-          </span>
-
-          <ReviewCard>
-            <span
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "20px",
-              }}
-            >
-              <p>건축진행</p>
-              <p>용인시, 일반주택</p>
-            </span>
-            <RatingInfo rating={8} />
-            <span>
-              000000000000000000000000000000000000000000000000000
-              000000000000000000000000000000000000000000000000000
-              00000000000000000000000000000000000000000000000000
-              00000000000000000000000000000000000000 000000000000
-            </span>
-          </ReviewCard>
-
-          <ReviewCard>
-            <span
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                marginTop: "20px",
-              }}
-            >
-              <p>건축진행</p>
-              <p>광명시, 일반주택</p>
-            </span>
-            <RatingInfo rating={9} />
-            <span>
-              1111111111111111111111111111111111111111111
-              1111111111111111111111111111111111111111
-              111111111111111111111111111111111111111111111111111
-              1111111111111111111111111111111111111111111111
-              11111111111111111111111111111111111111111111111111
-              11111111111111111111111111111111111111111111111
-            </span>
-          </ReviewCard>
-        </ReviewCompany>
-
       </div>
     </main>
-  );
+  )
 }
