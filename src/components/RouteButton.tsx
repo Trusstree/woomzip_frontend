@@ -14,7 +14,7 @@ export default function RouteButton(props: RouteButtonProps) {
   return (
   <button type="button"
     style={{backgroundColor:"#6764F7"}}
-    className={`${className?className:""} px-4 py-2 btn btn-primary rounded-lg fw-bold fs-5`}
+    className={`${className?className:""} px-4 py-2 btn text-white rounded-lg fw-bold fs-5`}
     onClick={()=>{router.push(url);}}>
     {children}
   </button>

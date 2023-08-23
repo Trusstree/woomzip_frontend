@@ -13,7 +13,7 @@ export default function ReviewCard(props: ReviewCardProps) {
 
   return (
     <div className={`${ReviewCardStyles["card-container"]}`}>
-      <div className={ReviewCardStyles.contentContainer}>
+      <div className={`${ReviewCardStyles.contentContainer} mx-3`}>
         {children}
       </div>
     </div>

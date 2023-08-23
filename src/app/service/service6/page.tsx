@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import SearchBar from "@/components/forms/SearchBar";
-import Submit from "@/components/forms/Submit";
+import Submit from "@/components/forms/SubmitButton";
 
 export default function Home() {
   return (

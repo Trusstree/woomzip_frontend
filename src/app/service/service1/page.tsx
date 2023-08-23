@@ -1,6 +1,6 @@
 import SearchBar from "@/components/forms/SearchBar";
 import Image from 'next/image'
-import Submit from "@/components/forms/Submit";
+import Submit from "@/components/forms/SubmitButton";
 import Footer from "@/components/Footer";
 
 export default function Home() {
