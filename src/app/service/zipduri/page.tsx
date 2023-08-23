@@ -1,4 +1,4 @@
-import SearchBar from "@/components/forms/SearchBar";
+import SearchBar from "@/components/forms/SearchBox";
 import Image from 'next/image'
 import Submit from "@/components/forms/SubmitButton";
 import SearchBox from "@/components/forms/SearchBox";
@@ -37,11 +37,11 @@ export default function Home() {
 
           <div className="my-3">
             <label className='fw-bold fs-4 text-start'>일정관련하여 세부사항을 적어주세요.</label>
-            <div className="col-10"><SearchBox placeholder={"ex) 저녁 7시 이후가 좋을 것 같아요."} rows={3} /></div>
+            <div className="col-10"><SearchBox placeholder={"ex) 저녁 7시 이후가 좋을 것 같아요."} /></div>
           </div>
 
           <div className="m-5 d-flex justify-content-end">
-            <Submit>집들이 요청하기</Submit>
+            {/* <Submit>집들이 요청하기</Submit> */}
           </div>
           
         </div>

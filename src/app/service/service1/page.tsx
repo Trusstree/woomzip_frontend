@@ -1,4 +1,4 @@
-import SearchBar from "@/components/forms/SearchBar";
+import SearchBar from "@/components/forms/SearchBox";
 import Image from 'next/image'
 import Submit from "@/components/forms/SubmitButton";
 import Footer from "@/components/Footer";
@@ -23,7 +23,7 @@ export default function Home() {
           
           <div className="row mt-5">
             <div className="col-10"><SearchBar placeholder={"ex) 공세동 한보라2동 141"} /></div>
-            <div className="col-2"><Submit>Submit</Submit></div>
+            {/* <div className="col-2"><Submit>Submit</Submit></div> */}
           </div>
           <div className='fw-bold text-start' style={{color:"#1F74F4"}}>자세한 주소를 제출해주시면 보다 정확한 서비스 이용이 가능합니다.</div>
         </div>

@@ -38,13 +38,13 @@ export default function Home() {
           {/* 다음 건축주를 위해 당신의 건축 이야기를 남겨주세요! */}
           <RouteButton
             className="py-3"
-            url="http://localhost:3000/review2">
+            url="/review2">
             건설사 후기 쓰기
           </RouteButton>
 
           <RouteButton
           className="py-3"
-            url="http://localhost:3000/review3">
+            url="/review3">
             건설사 후기 요청하기
           </RouteButton>
         </div>
