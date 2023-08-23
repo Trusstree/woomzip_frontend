@@ -33,9 +33,9 @@ export default function ReviewCompany(props: ReviewCompanyProps) {
         </div>
 
         {<>{
-          company["constructor"].map((constructor: any)=>{
+          company["constructor"].map((constructor: any, i)=>{
             return (
-              <ReviewCard>
+              <ReviewCard key={i}>
                 <div className="d-flex justify-content-between">
                   <div>건축진행</div>
                   <div>{constructor["location"]}, {constructor["type"]}</div>

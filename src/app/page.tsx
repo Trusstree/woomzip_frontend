@@ -56,9 +56,9 @@ export default function Home() {
 
         {/* 회사 간 리뷰 */}
         {<>{
-          data.map((company)=>{
+          data.map((company,i)=>{
             return(
-              <ReviewCompany company={company} />
+              <ReviewCompany company={company} key={i}/>
             );
           })
         }</>}

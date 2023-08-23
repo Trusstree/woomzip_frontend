@@ -66,8 +66,8 @@ export default function Home() {
       <div className="fw-bold my-5 fs-5 text-white">
         안녕하십니까, 트러스팀입니다.<br/>
         트러스는 건설시장 내 건축주와 건설사간 정보의 비대칭을 해소하고자 건축주들이 건설사들의 리뷰를 남길 수 있는 공간을 제공하고자 합니다.<br/><br/>
-        폐쇄적인 건설 시장의 문제를 '건축주의 리뷰'를 통해 투명하고 합리적인 시장으로의 변화를 만들어가고자 합니다.<br/>
-        이를 위한 처음 단계로 '건설사 리뷰 공간'의 첫 리뷰어 여러분을 모시고 있습니다.<br/>
+        폐쇄적인 건설 시장의 문제를 {"'"}건축주의 리뷰{"'"}를 통해 투명하고 합리적인 시장으로의 변화를 만들어가고자 합니다.<br/>
+        이를 위한 처음 단계로 {"'"}건설사 리뷰 공간{"'"}의 첫 리뷰어 여러분을 모시고 있습니다.<br/>
         리뷰어님의 실제 건설 공사를 통해 얻은 귀중한 경험을 바탕으로 소중한 리뷰를 남겨주시면, 플랫폼이 더 나은 방향으로 나아갈 수 있을 것입니다.<br/><br/>
         개인정보는 공개하지 않으며, 리뷰를 웹페이지에 게재한 이후에는 직접 확인하실 수 있도록 링크를 발송하도록 하겠습니다!<br/>
         감사합니다. 좋은 하루 되세요!
@@ -161,7 +161,7 @@ export default function Home() {
           handleSubmit={handleSubmit}
           values={values}
           errors={errors}
-          keys={['name', 'phoneNumber', 'type', 'location', 'agree']}
+          keys={["name", "phoneNumber", "type", "location", "agree"]}
           allRequired={true}
         />
       </form>
