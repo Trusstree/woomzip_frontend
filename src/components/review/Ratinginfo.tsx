@@ -1,7 +1,7 @@
 // 평점 8 / 10
 
 import React from "react";
-import "./RatingInfo.css"; // Import the CSS file
+import "./Ratinginfo.css"; // Import the CSS file
 
 interface RatingInfoProps {
   rating: number; // Optional prop for the rating value
