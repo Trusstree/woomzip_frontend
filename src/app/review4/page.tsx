@@ -1,7 +1,6 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { postBuilder } from "@/api/builderAPI";
 import Radios from "@/components/forms/Radios";
 import SubmitButton from "@/components/forms/SubmitButton";
 import TextBox from "@/components/forms/Textbox";
@@ -11,6 +10,7 @@ import { isRequired } from "@/uilts/validator";
 import Image from "next/image";
 import { satisfaction } from "@/type/form";
 import TextArea from "@/components/forms/TextArea";
+import { postConstructor } from "@/api/constructorAPI";
 
 type builder = {
   name: string;
@@ -41,7 +41,7 @@ const validate = (values: builder) => {
 export default function Home() {
   const router = useRouter();
   const callback = async (values: builder) => {
-    const { data,error } = await postBuilder(values);
+    const { data,error } = await postConstructor(values);
     if (error) console.log(error);
     else console.log(data);
   
