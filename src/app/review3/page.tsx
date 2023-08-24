@@ -18,7 +18,7 @@ type builder = {
   price: satisfaction;
   sigongResult: satisfaction;
   dateJunsu: satisfaction;
-  AS: satisfaction;
+  afterService: satisfaction;
   satisfaction: string;
   description: string;
 }
@@ -30,7 +30,7 @@ const validate = (values: builder) => {
     price: isRequired(values.price),
     sigongResult: isRequired(values.sigongResult),
     dateJunsu: isRequired(values.dateJunsu),
-    as: isRequired(values.AS),
+    afterService: isRequired(values.afterService),
     satisfaction: isRequired(values.satisfaction),
     description: isRequired(values.description),
   };
@@ -155,15 +155,15 @@ export default function Home() {
 
           {/*A/S 만족도*/}
           <Radios
-            name="as"
-            id="as"
+            name="afterService"
+            id="afterService"
             label="A/S 만족도 (시공업체의 A/S 보장에 대한 신뢰도 및 실행력에 대한 만족도입니다.)"
             disabled={false}
             readonly={false}
             handleChange={handleChange}
             handleClick={handleClick}
-            value={values['AS']}
-            error={errors['AS']}
+            value={values['afterService']}
+            error={errors['afterService']}
           >
             {["매우 만족", "만족", "보통", "불만족", "매우 불만족"]}
           </Radios>
@@ -204,7 +204,7 @@ export default function Home() {
           handleSubmit={handleSubmit}
           values={values}
           errors={errors}
-          keys={['name', 'sotong', 'price', 'sigongResult', 'dateJunsu', 'AS', 'satisfaction', 'description']}
+          keys={['name', 'sotong', 'price', 'sigongResult', 'dateJunsu', 'afterService', 'satisfaction', 'description']}
           allRequired={true}
         />
       </form>
