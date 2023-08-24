@@ -18,8 +18,8 @@ type builder = {
   price: satisfaction;
   sigongResult: satisfaction;
   dateJunsu: satisfaction;
-  as: satisfaction;
-  satisfaction: 1|2|3|4|5|6|7|8|9|10;
+  AS: satisfaction;
+  satisfaction: string;
   description: string;
 }
 
@@ -30,7 +30,7 @@ const validate = (values: builder) => {
     price: isRequired(values.price),
     sigongResult: isRequired(values.sigongResult),
     dateJunsu: isRequired(values.dateJunsu),
-    as: isRequired(values.as),
+    as: isRequired(values.AS),
     satisfaction: isRequired(values.satisfaction),
     description: isRequired(values.description),
   };
@@ -162,8 +162,8 @@ export default function Home() {
             readonly={false}
             handleChange={handleChange}
             handleClick={handleClick}
-            value={values['as']}
-            error={errors['as']}
+            value={values['AS']}
+            error={errors['AS']}
           >
             {["매우 만족", "만족", "보통", "불만족", "매우 불만족"]}
           </Radios>
@@ -185,17 +185,17 @@ export default function Home() {
 
           {/*이름*/}
           <TextArea
-            name="name"
-            id="name"
+            name="description"
+            id="description"
             label="해당 시공사의 서비스와 건축 전반에 대하여 전체적인 후기를 부탁드립니다."
-            type="name"
+            type="description"
             placeholder=""
             disabled={false}
             readonly={false}
             handleChange={handleChange}
             handleClick={handleClick}
-            value={values['name']}
-            error={errors['name']}
+            value={values['description']}
+            error={errors['description']}
           />
         </div>
 
@@ -204,7 +204,7 @@ export default function Home() {
           handleSubmit={handleSubmit}
           values={values}
           errors={errors}
-          keys={['name', 'sotong', 'price', 'sigongResult', 'dateJunsu', 'as', 'satisfaction']}
+          keys={['name', 'sotong', 'price', 'sigongResult', 'dateJunsu', 'AS', 'satisfaction', 'description']}
           allRequired={true}
         />
       </form>
