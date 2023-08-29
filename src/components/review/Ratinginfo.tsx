@@ -1,21 +1,15 @@
-// 평점 8 / 10
-
 import React from "react";
-import "./Ratinginfo.css"; // Import the CSS file
 
 interface RatingInfoProps {
-  rating: number; // Optional prop for the rating value
+  rating: number;
 }
 
-export default function RatingInfo({ rating }: RatingInfoProps) {
+export default function RatingInfo(props: RatingInfoProps) {
+  const { rating } = props;
+
   return (
-    <div className="rating">
-      <span
-        style={{ fontSize: "30px", color: "green" }}
-      >
-        {rating}
-      </span>
-      <span className="rating-divider" style={{ marginRight : "300px"}}>/ 10</span>
+    <div className="rating fs-5">
+      <span className="text-success">{rating}</span>{" / 10"}
     </div>
   );
 }

@@ -3,7 +3,6 @@
 import RatingInfo from "./Ratinginfo";
 import SatisfactionText from "./RatingSatisfiy";
 import ReviewCard from "./ReviewCard";
-import ReviewCompanyStyles from "./ReviewCompany.module.css"; // Import the CSS file
 
 type ReviewCompanyProps = {
   title?: string;
@@ -15,20 +14,20 @@ export default function ReviewCompany(props: ReviewCompanyProps) {
   const { title, className, company } = props;
 
   return (
-    <div className={`${className ? className : ""} ${ReviewCompanyStyles["card-container"]} shadow rounded-4`}>
+    <div className={`${className ? className : ""} shadow rounded-4 my-5`} style={{backgroundColor:"#141466"}}>
       <h5 className="card-title mx-3 my-2 fw-bold">{title}</h5>
-      <div className="card-text mx-4 text-white fw-bold">
+      <div className="card-text mx-4 text-white fw-bold px-3 py-5">
         <div className="py-2">시공사</div>
-        <div className="py-2 fs-2">{company["sigongsa"]}</div>
-        <div className="mx-3 pt-2 fs-5">평균평점</div>
-        <div className="d-flex mx-3">
+        <h2 className="py-2 fw-bold">{company["sigongsa"]}</h2>
+        <h5 className="mx-3 pt-2 fw-bold">평균평점</h5>
+        <div className="d-flex justify-content-between mx-3">
           <RatingInfo rating={company["sigongsaRate"]} />
-          <div className="d-flex fs-5">
-            <SatisfactionText item="소통" text={company["sotong"]}/>
-            <SatisfactionText item="가격" text={company["price"]} />
-            <SatisfactionText item="시공결과" text={company["sigongResult"]} />
-            <SatisfactionText item="일정준수" text={company["dateJunsu"]} />
-            <SatisfactionText item="A/S" text={company["as"]} />
+          <div className="fs-5 d-flex justify-content-between">
+            <SatisfactionText className="" item="소통" text={company["sotong"]}/>
+            <SatisfactionText className="" item="가격" text={company["price"]} />
+            <SatisfactionText className="" item="시공결과" text={company["sigongResult"]} />
+            <SatisfactionText className="" item="일정준수" text={company["dateJunsu"]} />
+            <SatisfactionText className="" item="A/S" text={company["as"]} />
           </div>
         </div>
 
