@@ -30,7 +30,7 @@ const validate = (values: contructor) => {
     price: isRequired(values.price),
     sigongResult: isRequired(values.sigongResult),
     dateJunsu: isRequired(values.dateJunsu),
-    as: isRequired(values.afterService),
+    afterService: isRequired(values.afterService),
     satisfaction: isRequired(values.satisfaction),
     description: isRequired(values.description),
   };

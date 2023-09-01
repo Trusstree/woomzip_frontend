@@ -17,7 +17,7 @@ export default function ReviewCompany(props: ReviewCompanyProps) {
     <div className={`${className ? className : ""} shadow rounded-4 my-5`} style={{backgroundColor:"#141466"}}>
       <h5 className="card-title mx-3 my-2 fw-bold">{title}</h5>
       <div className="card-text mx-4 text-white fw-bold px-3 py-5">
-        <div className="py-2">시공사</div>
+        {/* <div className="py-2">시공사</div> */}
         <h2 className="py-2 fw-bold">{company["sigongsa"]}</h2>
         <h5 className="mx-3 pt-2 fw-bold">평균평점</h5>
         <div className="d-flex justify-content-between mx-3">
