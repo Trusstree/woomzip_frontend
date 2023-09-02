@@ -3,14 +3,27 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script';
-import Header from './Header';
+import Header from '../app/Header';
 
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'Truss',
-  description: 'Truss',
+export const metadata = {
+  openGraph: {
+    title: 'Truss',
+    description: 'Truss',
+    url: 'https://buildintruss.com',
+    siteName: 'Truss',
+    images: [
+      {
+        url: '/log1.png',
+        width: 804,
+        height: 804,
+      },
+    ],
+    locale: 'kr',
+    type: 'website',
+  }
 }
 
 export default function Layout({
@@ -27,7 +40,7 @@ export default function Layout({
       </head>
       
       <body className={inter.className}>
-        {/* <Header /> */}
+        <Header />
         {children}
       </body>
     </html>

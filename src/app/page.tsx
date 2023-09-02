@@ -1,34 +1,13 @@
 import ReviewCompany from "@/components/review/ReviewCompany";
 import React from "react";
-import SortingButtonStyles from "@/components/review/SortingButtonsStyles";
-import Image from "next/image";
-import LoginButton from "@/components/review/LoginButton";
 import RouteButton from "@/components/RouteButton";
 import SearchBox from "@/components/forms/SearchBox";
 import { satisfaction } from "@/type/form";
 
 export default function Home() {
   return (
-    <main className={`container my-5 d-flex ustify-content-start flex-column align-items-start`}>
+    <main className={`container my-5 d-flex justify-content-center`}>
       <div>
-        <div className="d-flex align-items-center">
-          <Image
-            className={`mr-auto m-3`}
-            src="/logo1.png"
-            alt="Truss Logo"
-            width={109}
-            height={64}
-            style={{ filter: "brightness(0) invert(1)" }}
-          />
-
-          <h1 className="fw-bold text-white">
-            시공사, 건축사사무소 리뷰 공간
-          </h1>
-
-          <div className="btn-group ms-auto me-5">
-            <LoginButton />
-          </div>
-        </div>
 
         {/* 시공사, 건축사무소 검색하기 */}
         <SearchBox placeholder="시공사, 건축사무소 검색하기"/>
@@ -36,23 +15,19 @@ export default function Home() {
         {/* 후기쓰기, 후기요청하기 */}
         <div className="d-flex justify-content-between my-4">
           {/* 다음 건축주를 위해 당신의 건축 이야기를 남겨주세요! */}
-          <RouteButton
-            className="py-3"
-            url="/review2">
+          <RouteButton className="py-3" url="/review2">
             건설사 후기 쓰기
           </RouteButton>
 
-          <RouteButton
-          className="py-3"
-            url="/review3">
+          <RouteButton className="py-3" url="/requestion">
             건설사 후기 요청하기
           </RouteButton>
         </div>
 
         {/* 최신순, 추천순, 리뷰 많은 순 정렬 버튼 */}
-        <div>
+        {/* <div>
           <SortingButtonStyles />
-        </div>
+        </div> */}
 
         {/* 회사 간 리뷰 */}
         {<>{

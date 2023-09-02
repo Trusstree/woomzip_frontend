@@ -5,27 +5,25 @@ type HeaderProps = {};
 
 export default function Header(props: HeaderProps) {
   return (
-    <div className={`d-flex sticky-top pb-2`} style={{backgroundColor:"#E1ECEF"}}>
-      <Image
-        className={`mr-auto m-3`}
-        src="/logo1.png"
-        alt="Truss Logo"
-        width={109}
-        height={64}
-        priority
-      />
-
-      <div className="btn-group">
-        <button type="button" className="btn">서비스 소개</button>
-        <button type="button" className="btn">요금안내</button>
-        <button type="button" className="btn">건축현장</button>
-        <button type="button" className="btn">고객지원</button>
+    <div className={`d-flex justify-content-around  mt-5 pb-2 text-white`}
+    // style={{backgroundColor:"#141468"}} sticky-top
+    > 
+      <div className="fs-1 fw-bold align-self-center">
+        <Image
+          className={`mr-auto m-3`}
+          src="/logo1.png"
+          alt="Truss Logo"
+          width={109}
+          height={64}
+          priority
+          style={{ filter: "brightness(0) invert(1)" }}
+        />
+        시공사, 건축사사무소 리뷰 공간
       </div>
 
-      <div className="btn-group ms-auto me-5">
-        <button type="button" className="btn">파트너스 사이트</button>
-        <button type="button" className="btn">로그인</button>
-        <button type="button" className="btn">회원가입</button>
+      <div className="btn-group me-5">
+        <button type="button" className="btn text-white">로그인</button>
+        <button type="button" className="btn text-white">회원가입</button>
       </div>
     </div>
   );
