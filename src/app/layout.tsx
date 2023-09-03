@@ -1,6 +1,4 @@
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import './globals.css'
-import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script';
 import Header from '../app/Header';
@@ -11,14 +9,15 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   openGraph: {
     title: 'Truss',
-    description: 'Truss',
+    description: '건설사, 시공사 순위 리뷰 후기 확인은 트러스!',
     url: 'http://buildintruss.com',
     siteName: 'Truss',
     images: [
       {
         url: '/logo1.png',
-        width: 804,
-        height: 804,
+        width: 218,
+        height: 128,
+        alt: "truss logo"
       },
     ],
     locale: 'kr',
