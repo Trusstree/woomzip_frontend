@@ -8,33 +8,27 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   openGraph: {
-    title: 'Truss',
+    title: '건설사, 시공사 순위 리뷰 후기 확인은 트러스!',
     description: '건설사, 시공사 순위 리뷰 후기 확인은 트러스!',
     url: 'http://buildintruss.com',
     siteName: 'Truss',
     images: [
       {
-        url: '/logo1.png',
+        url: 'http://buildintruss.com/logo1.png',
         width: 218,
         height: 128,
         alt: "truss logo"
       },
     ],
-    locale: 'kr',
+    locale: 'ko',
     type: 'website',
   }
 }
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
-    <html lang="kr">
+    <html lang="ko">
       <head>
-        <title></title>
-        <link rel="icon" href="/favicon.ico" />
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"/>
       </head>
       
