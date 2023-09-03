@@ -12,11 +12,11 @@ export const metadata = {
   openGraph: {
     title: 'Truss',
     description: 'Truss',
-    url: 'https://buildintruss.com',
+    url: 'http://buildintruss.com',
     siteName: 'Truss',
     images: [
       {
-        url: '/log1.png',
+        url: '/logo1.png',
         width: 804,
         height: 804,
       },
