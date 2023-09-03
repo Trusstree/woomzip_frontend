@@ -44,13 +44,14 @@ export default function Home() {
 
 const data=[
   {
-    sigongsa:"제이디홈플랜 / 서귀포시",
-    sigongsaRate:9,
-    sotong:"만족" as satisfaction,
+    officeType: "시공사",
+    officeName:"제이디홈플랜 / 서귀포시",
+    officeRate:9,
+    communication:"만족" as satisfaction,
     price:"매우 만족" as satisfaction,
-    sigongResult:"만족" as satisfaction,
-    dateJunsu:"매우 만족" as satisfaction,
-    as:"매우 만족" as satisfaction,
+    result:"만족" as satisfaction,
+    keepingDeadline:"매우 만족" as satisfaction,
+    afterService:"매우 만족" as satisfaction,
     constructor:[
       {
         location:"서귀포시",
@@ -68,13 +69,14 @@ const data=[
     ]
   },
   {
-    sigongsa:"유타건축사사무소 / 서울시",
-    sigongsaRate:9,
-    sotong:"매우 만족" as satisfaction,
+    officeType: "건축사사무소",
+    officeName:"유타건축사사무소 / 서울시",
+    officeRate:9,
+    communication:"매우 만족" as satisfaction,
     price:"보통" as satisfaction,
-    sigongResult:"매우 만족" as satisfaction,
-    dateJunsu:"매우 만족" as satisfaction,
-    as:"매우 만족" as satisfaction,
+    result:"매우 만족" as satisfaction,
+    keepingDeadline:"매우 만족" as satisfaction,
+    afterService:"매우 만족" as satisfaction,
     constructor:[
       {
         location:"서귀포시",

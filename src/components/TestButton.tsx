@@ -1,6 +1,6 @@
 "use client"
 
-import { postBuilder } from "@/api/builderAPI"
+import { postBuilder } from "@/api/officeAPI"
 
 type TestButtonProps = {
   url?: string

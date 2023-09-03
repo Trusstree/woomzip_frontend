@@ -1,10 +1,10 @@
 import { ApiClient } from "@/api/apiClient";
 
-export const getBuilders = async () => {
+export const getOffices = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/builder`, {
+    const result = await ApiClient.get(`/api/office`, {
       params: {},
       headers: {}
     });
@@ -16,11 +16,11 @@ export const getBuilders = async () => {
   return { data, error };
 };
 
-export const getBuilder = async (builderNum: number) => {
+export const getOffice = async (officeNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/builder/${builderNum}`, {
+    const result = await ApiClient.get(`/api/office/${officeNum}`, {
       params: {},
       headers: {}
     });
@@ -32,11 +32,11 @@ export const getBuilder = async (builderNum: number) => {
   return { data, error };
 };
 
-export const postBuilder = async (builder: any) => {
+export const postOffice = async (office: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.post(`/api/builder/`, builder, { headers: {} });
+    const result = await ApiClient.post(`/api/office/`, office, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;
