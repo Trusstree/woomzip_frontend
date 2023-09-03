@@ -7,8 +7,9 @@ import Header from '../app/Header';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
+  metadataBase: new URL("http://buildintruss.com"),
   openGraph: {
-    title: '건설사, 시공사 순위 리뷰 후기 확인은 트러스!',
+    title: 'Truss',
     description: '건설사, 시공사 순위 리뷰 후기 확인은 트러스!',
     url: 'http://buildintruss.com',
     siteName: 'Truss',
