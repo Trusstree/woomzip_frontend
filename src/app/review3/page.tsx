@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { postBuilder } from "@/api/officeAPI";
+import { postOffice } from "@/api/officeAPI";
 import Radios from "@/components/forms/Radios";
 import SubmitButton from "@/components/forms/SubmitButton";
 import TextBox from "@/components/forms/Textbox";
@@ -39,7 +39,8 @@ const validate = (values: builder) => {
 export default function Home() {
   const router = useRouter();
   const callback = async (values: builder) => {
-    const { data,error } = await postBuilder(values);
+    
+    const { data,error } = await postOffice({...values, officeType:"시공사"});
     if (error) console.log(error);
     else console.log(data);
   

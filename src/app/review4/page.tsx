@@ -8,7 +8,7 @@ import useForm from "@/hooks/useForm";
 import { isRequired } from "@/utils/validator";
 import { satisfaction } from "@/type/form";
 import TextArea from "@/components/forms/TextArea";
-import { postConstructor } from "@/api/constructorAPI";
+import { postOffice } from "@/api/officeAPI";
 import { alertSuccess } from "@/utils/alertSuccess";
 
 type contructor = {
@@ -40,7 +40,7 @@ const validate = (values: contructor) => {
 export default function Home() {
   const router = useRouter();
   const callback = async (values: contructor) => {
-    const { data,error } = await postConstructor(values);
+    const { data,error } = await postOffice({...values, officeType:"건축사사무소"});
     if (error) console.log(error);
     else console.log(data);
   
