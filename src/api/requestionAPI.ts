@@ -1,10 +1,10 @@
 import { ApiClient } from "@/api/apiClient";
 
-export const getConstructors = async () => {
+export const getRequestions = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/constructor`, {
+    const result = await ApiClient.get(`/api/requestion`, {
       params: {},
       headers: {}
     });
@@ -16,11 +16,11 @@ export const getConstructors = async () => {
   return { data, error };
 };
 
-export const getConstructor = async (constructorNum: number) => {
+export const getRequestion = async (requestionNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/constructor/${constructorNum}`, {
+    const result = await ApiClient.get(`/api/requestion/${requestionNum}`, {
       params: {},
       headers: {}
     });
@@ -32,11 +32,11 @@ export const getConstructor = async (constructorNum: number) => {
   return { data, error };
 };
 
-export const postConstructor = async (constructor: any) => {
+export const postRequestion = async (requestion: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.post(`/api/constructor/`, constructor, { headers: {} });
+    const result = await ApiClient.post(`/api/requestion/`, requestion, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;

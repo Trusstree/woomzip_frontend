@@ -1,5 +1,3 @@
-import React from "react";
-
 interface SatisfactionProps {
   item: "소통" | "가격" | "시공결과" | "일정준수" | "A/S"
   text: "매우 만족" | "만족" | "보통" | "불만족" | "매우 불만족"

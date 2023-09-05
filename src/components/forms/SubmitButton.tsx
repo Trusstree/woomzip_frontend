@@ -26,7 +26,7 @@ export default function SubmitButton(props: SubmitButtonProps) {
   );
 
   return (
-    <button type="submit" className={`w-100 btn btn-lg btn-dark`} onClick={handleSubmit} disabled={disabled}>
+    <button type="submit" className={`w-100 btn btn-lg fw-bold ${disabled?"btn-secondary":"btn-light"}`} onClick={handleSubmit} disabled={disabled}>
       {title}
     </button>
   );

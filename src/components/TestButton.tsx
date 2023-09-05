@@ -1,6 +1,6 @@
 "use client"
 
-import { postBuilder } from "@/api/builderAPI"
+import { postOffice } from "@/api/officeAPI"
 
 type TestButtonProps = {
   url?: string
@@ -17,7 +17,7 @@ export default function TestButton(props: TestButtonProps) {
     style={{backgroundColor:"#6764F7"}}
     className={`${className?className:""} px-4 py-2 btn btn-primary rounded-lg fw-bold fs-5`}
     onClick={async ()=>{
-      const { data, error } = await postBuilder({name:"test", url: "truss url"});
+      const { data, error } = await postOffice({name:"test", url: "truss url"});
       console.log(data);
       number+=1;
       }}>

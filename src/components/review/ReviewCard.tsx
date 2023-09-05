@@ -1,7 +1,4 @@
-"use client";
-// ReviewCard.tsx
 import { Children } from "@/type/props";
-import ReviewCardStyles from "./ReviewCard.module.css"; // Import the CSS file
 
 type ReviewCardProps = {
   title?: string;
@@ -12,8 +9,8 @@ export default function ReviewCard(props: ReviewCardProps) {
   const { title, children } = props;
 
   return (
-    <div className={`${ReviewCardStyles["card-container"]}`}>
-      <div className={`${ReviewCardStyles.contentContainer} mx-3`}>
+    <div className={`d-flex flex-column mt-4 pt-4`} style={{borderTopStyle:"solid", borderTopColor:"white", borderTopWidth:"2px"}}>
+      <div>
         {children}
       </div>
     </div>
