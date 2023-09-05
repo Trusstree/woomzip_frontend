@@ -1,17 +1,22 @@
 import ReviewCompany from "@/components/review/ReviewCompany";
-import React from "react";
 import SortingButtonStyles from "@/components/review/SortingButtonsStyles";
 import Image from "next/image";
 import LoginButton from "@/components/review/LoginButton";
-import SearchBar from "@/components/review/SearchBar";
+import RouteButton from "@/components/RouteButton";
+import SearchBox from "@/components/forms/SearchBox";
+import { satisfaction } from "@/type/form";
+import React, { useState, useEffect } from "react";
+import { getConstructors } from "@/api/constructorAPI";
+import { getAllBuilders } from "@/api/builderAPI";
+import { getPersons } from "@/api/personAPI";
 
 export default function Home() {
   return (
     <main
-      className={`container d-flex ustify-content-start flex-column align-items-start`}
+      className={`container-half my-5 d-flex ustify-content-start flex-column align-items-start`}
     >
       <div>
-        <span className="d-flex align-items-center">
+        <div className="d-flex align-items-center">
           <Image
             className={`mr-auto m-3`}
             src="/logo1.png"
@@ -21,107 +26,26 @@ export default function Home() {
             style={{ filter: "brightness(0) invert(1)" }}
           />
 
-          <h1 style={{ marginTop: "20px", fontWeight: "bold", color: "white" }}>
-            시공사, 건축사사무소 리뷰 공간
-          </h1>
+          <h1 className="fw-bold text-white">시공사, 건축사사무소 리뷰 공간</h1>
 
-          <span
-            className="btn-group ms-auto me-5"
-            style={{ marginTop: "20px", color: "white" }}
-          >
+          <div className="btn-group ms-auto me-5">
             <LoginButton />
-          </span>
-        </span>
+          </div>
+        </div>
 
         {/* 시공사, 건축사무소 검색하기 */}
-        <span
-          style={{
-            borderRadius: "10px",
-            background: "#0496bd",
-            width: "100%",
-            padding: "10px", // Adjust padding as needed
-            display: "flex",
-          }}
-        >
-          <svg
-            width="36"
-            height="36"
-            fill="white"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="10" />
-            <line x1="30" y1="30" x2="18.65" y2="18.65" />
-          </svg>
-
-          <SearchBar
-            placeholder="시공사, 건축사무소 검색하기"
-            className="invest-search" // Optional custom CSS classes
-          />
-        </span>
+        <SearchBox placeholder="시공사, 건축사무소 검색하기" />
 
         {/* 후기쓰기, 후기요청하기 */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "20px",
-          }}
-        >
-          <button
-            style={{
-              background: "#0496bd",
-              borderRadius: "10px",
-              border: "None",
-              width: "30%",
-            }}
-          >
-            <a
-              target="_blank"
-              href="https://docs.google.com/forms/d/e/1FAIpQLScNXPgZ2jTJmEOcZ1Y8Q4_VZKwNro9i6GEbc9bd-W-9Fjwq8A/viewform?usp=sf_link"
-              style={{
-                color: "white",
-                justifyContent: "center", // Center-align the content horizontally
-                alignItems: "center", // Center-align the content vertically
-                textDecoration: "none", // Remove underline
-              }}
-            >
-              <div
-                className="public"
-                style={{ fontSize: "25px", marginTop: "5px" }}
-              >
-                <p>건설사 후기 쓰기</p>
-                <p style={{ fontSize: "13px" }}>
-                  다음 건축주를 위해 당신의 건축 이야기를 남겨주세요!
-                </p>
-              </div>
-            </a>
-          </button>
-          <button
-            style={{
-              background: "#0496bd",
-              borderRadius: "10px",
-              border: "None",
-              width: "30%",
-            }}
-          >
-            <a
-              target="_blank"
-              href="https://naver.com"
-              style={{
-                fontSize: "25px",
-                color: "white",
-                textDecoration: "none", // Remove underline
-              }}
-            >
-              <p className="public" style={{ fontSize: "25px" }}>
-                <div>건설사 후기 요청하기</div>
-                <span style={{ fontSize: "13px" }}>
-                  원하시는 업체의 리뷰가 없다면 요청해주세요!
-                </span>
-              </p>
-            </a>
-          </button>
+        <div className="d-flex justify-content-between my-4">
+          {/* 다음 건축주를 위해 당신의 건축 이야기를 남겨주세요! */}
+          <RouteButton className="py-3" url="/review2">
+            건설사 후기 쓰기
+          </RouteButton>
+
+          <RouteButton className="py-3" url="/review3">
+            건설사 후기 요청하기
+          </RouteButton>
         </div>
 
         {/* 최신순, 추천순, 리뷰 많은 순 정렬 버튼 */}
@@ -130,52 +54,86 @@ export default function Home() {
         </div>
 
         {/* 회사 간 리뷰 */}
-        {<>{
-          data.map((company)=>{
-            return(
-              <ReviewCompany company={company} />
-            );
-          })
-        }</>}
+        {
+          <>
+            {data.map((company, i) => {
+              return <ReviewCompany company={company} key={i} />;
+            })}
+            {data2.map((builder, i) => (
+              <ReviewCompany company={builder} key={i} />
+            ))}
+            {data3.map((constructor, i) => (
+              <ReviewCompany company={constructor} key={i} />
+            ))}
+            {data4.map((person, i) => (
+              <ReviewCompany company={person} key={i} />
+            ))}
+          </>
+        }
       </div>
     </main>
   );
 }
 
+const [data4, setData4] = useState([]);
+const [data2, setData2] = useState([]);
+const [data3, setData3] = useState([]);
 
+useEffect(() => {
+  // Fetch data using the provided functions
+  getConstructors()
+    .then((result) => {
+      setData2(result.data);
+    })
+    .catch((error) => {
+      console.error("데이터를 가져오는 중 오류 발생:", error);
+    });
 
+  getAllBuilders()
+    .then((result) => {
+      setData3(result.data);
+    })
+    .catch((error) => {
+      console.error("데이터를 가져오는 중 오류 발생:", error);
+    });
 
+  getPersons()
+    .then((result) => {
+      setData4(result.data);
+    })
+    .catch((error) => {
+      console.error("데이터를 가져오는 중 오류 발생:", error);
+    });
+}, []);
 
-
-
-type rate= "매우 만족" | "만족" | "보통" | "불만족" | "매우 불만족";
-const data=[
+const data = [
   {
-    sigongsa:"(주)00종합건설 / 용인시",
-    sigongsaRate:8.5,
-    sotong:"매우 만족" as rate,
-    price:"만족" as rate,
-    sigongResult:"보통" as rate,
-    dateJunsu:"불만족" as rate,
-    as:"매우 불만족" as rate,
-    building:[
+    sigongsa: "(주)00종합건설 / 용인시",
+    sigongsaRate: 8.5,
+    sotong: "매우 만족" as satisfaction,
+    price: "만족" as satisfaction,
+    sigongResult: "보통" as satisfaction,
+    dateJunsu: "불만족" as satisfaction,
+    as: "매우 불만족" as satisfaction,
+    constructor: [
       {
-        location:"용인시",
-        type:"일반주택",
-        rate:8,
-        description:
-        <span>
-          000000000000000000000000000000000000000000000000000
-          000000000000000000000000000000000000000000000000000
-          00000000000000000000000000000000000000000000000000
-          00000000000000000000000000000000000000 000000000000
-        </span>
+        location: "용인시",
+        type: "일반주택",
+        rate: 8,
+        description: (
+          <span>
+            000000000000000000000000000000000000000000000000000
+            000000000000000000000000000000000000000000000000000
+            00000000000000000000000000000000000000000000000000
+            00000000000000000000000000000000000000 000000000000
+          </span>
+        ),
       },
       {
-        location:"광명시",
-        type:"일반주택",
-        rate:9,
-        description:
+        location: "광명시",
+        type: "일반주택",
+        rate: 9,
+        description: (
           <span>
             1111111111111111111111111111111111111111111
             1111111111111111111111111111111111111111
@@ -184,35 +142,37 @@ const data=[
             11111111111111111111111111111111111111111111111111
             11111111111111111111111111111111111111111111111
           </span>
-      }
-    ]
+        ),
+      },
+    ],
   },
   {
-    sigongsa:"(주)00종합건설 / 용인시",
-    sigongsaRate:8.5,
-    sotong:"매우 만족" as rate,
-    price:"만족" as rate,
-    sigongResult:"보통" as rate,
-    dateJunsu:"불만족" as rate,
-    as:"매우 불만족" as rate,
-    building:[
+    sigongsa: "(주)00종합건설 / 용인시",
+    sigongsaRate: 8.5,
+    sotong: "매우 만족" as satisfaction,
+    price: "만족" as satisfaction,
+    sigongResult: "보통" as satisfaction,
+    dateJunsu: "불만족" as satisfaction,
+    as: "매우 불만족" as satisfaction,
+    constructor: [
       {
-        location:"용인시",
-        type:"일반주택",
-        rate:8,
-        description:
-        <span>
-          000000000000000000000000000000000000000000000000000
-          000000000000000000000000000000000000000000000000000
-          00000000000000000000000000000000000000000000000000
-          00000000000000000000000000000000000000 000000000000
-        </span>
+        location: "용인시",
+        type: "일반주택",
+        rate: 8,
+        description: (
+          <span>
+            000000000000000000000000000000000000000000000000000
+            000000000000000000000000000000000000000000000000000
+            00000000000000000000000000000000000000000000000000
+            00000000000000000000000000000000000000 000000000000
+          </span>
+        ),
       },
       {
-        location:"광명시",
-        type:"일반주택",
-        rate:9,
-        description:
+        location: "광명시",
+        type: "일반주택",
+        rate: 9,
+        description: (
           <span>
             1111111111111111111111111111111111111111111
             1111111111111111111111111111111111111111
@@ -221,35 +181,37 @@ const data=[
             11111111111111111111111111111111111111111111111111
             11111111111111111111111111111111111111111111111
           </span>
-      }
-    ]
+        ),
+      },
+    ],
   },
   {
-    sigongsa:"(주)00종합건설 / 용인시",
-    sigongsaRate:8.5,
-    sotong:"매우 만족" as rate,
-    price:"만족" as rate,
-    sigongResult:"보통" as rate,
-    dateJunsu:"불만족" as rate,
-    as:"매우 불만족" as rate,
-    building:[
+    sigongsa: "(주)00종합건설 / 용인시",
+    sigongsaRate: 8.5,
+    sotong: "매우 만족" as satisfaction,
+    price: "만족" as satisfaction,
+    sigongResult: "보통" as satisfaction,
+    dateJunsu: "불만족" as satisfaction,
+    as: "매우 불만족" as satisfaction,
+    constructor: [
       {
-        location:"용인시",
-        type:"일반주택",
-        rate:8,
-        description:
-        <span>
-          000000000000000000000000000000000000000000000000000
-          000000000000000000000000000000000000000000000000000
-          00000000000000000000000000000000000000000000000000
-          00000000000000000000000000000000000000 000000000000
-        </span>
+        location: "용인시",
+        type: "일반주택",
+        rate: 8,
+        description: (
+          <span>
+            000000000000000000000000000000000000000000000000000
+            000000000000000000000000000000000000000000000000000
+            00000000000000000000000000000000000000000000000000
+            00000000000000000000000000000000000000 000000000000
+          </span>
+        ),
       },
       {
-        location:"광명시",
-        type:"일반주택",
-        rate:9,
-        description:
+        location: "광명시",
+        type: "일반주택",
+        rate: 9,
+        description: (
           <span>
             1111111111111111111111111111111111111111111
             1111111111111111111111111111111111111111
@@ -258,7 +220,8 @@ const data=[
             11111111111111111111111111111111111111111111111111
             11111111111111111111111111111111111111111111111
           </span>
-      }
-    ]
-  }
+        ),
+      },
+    ],
+  },
 ];

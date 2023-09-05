@@ -2,13 +2,11 @@
 
 .button-group {
   display: inline-block;
-  margin-top: 20px;
 }
 
 .btn {
   color: white;
   border: none;
-  padding: 8px 16px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }

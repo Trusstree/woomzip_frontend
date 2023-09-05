@@ -14,8 +14,7 @@ const sortingButtonStyles = {
   
   export default function sortingButton() {
     return (
-      <div className="sorting-button" style={{ display: "flex", justifyContent: "right", margin: "20px" }}>
-
+      <div className="sorting-button d-flex justify-content-right m-3">
           <button style={sortingButtonStyles.button}>최신순</button>
           <button style={sortingButtonStyles.button}>추천순</button>
           <button style={sortingButtonStyles.button}>리뷰 많은 순</button>

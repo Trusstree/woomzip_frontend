@@ -1,0 +1,1 @@
+export type satisfaction = "매우 만족" | "만족" | "보통" | "불만족" | "매우 불만족";
