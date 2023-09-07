@@ -1,22 +1,17 @@
+"use client" 
+// client side 랜더링을 해준다는 명시적인 표현
 import ReviewCompany from "@/components/review/ReviewCompany";
-<<<<<<< HEAD
 import SortingButtonStyles from "@/components/review/SortingButtonsStyles";
 import Image from "next/image";
-import LoginButton from "@/components/review/LoginButton";
-=======
-import React from "react";
->>>>>>> cbba0caef48dd2285ba3dd4ffef55e25807096fc
 import RouteButton from "@/components/RouteButton";
 import SearchBox from "@/components/forms/SearchBox";
 import { satisfaction } from "@/type/form";
 import React, { useState, useEffect } from "react";
-import { getConstructors } from "@/api/constructorAPI";
-import { getAllBuilders } from "@/api/builderAPI";
+import { getOffices } from "@/api/officeAPI"
 import { getPersons } from "@/api/personAPI";
 
 export default function Home() {
   return (
-<<<<<<< HEAD
     <main
       className={`container-half my-5 d-flex ustify-content-start flex-column align-items-start`}
     >
@@ -33,14 +28,7 @@ export default function Home() {
 
           <h1 className="fw-bold text-white">시공사, 건축사사무소 리뷰 공간</h1>
 
-          <div className="btn-group ms-auto me-5">
-            <LoginButton />
-          </div>
         </div>
-=======
-    <main className={`container my-5 d-flex justify-content-center`}>
-      <div>
->>>>>>> cbba0caef48dd2285ba3dd4ffef55e25807096fc
 
         {/* 시공사, 건축사무소 검색하기 */}
         <SearchBox placeholder="시공사, 건축사무소 검색하기" />
@@ -52,11 +40,7 @@ export default function Home() {
             건설사 후기 쓰기
           </RouteButton>
 
-<<<<<<< HEAD
           <RouteButton className="py-3" url="/review3">
-=======
-          <RouteButton className="py-3" url="/requestion">
->>>>>>> cbba0caef48dd2285ba3dd4ffef55e25807096fc
             건설사 후기 요청하기
           </RouteButton>
         </div>
@@ -94,17 +78,9 @@ const [data3, setData3] = useState([]);
 
 useEffect(() => {
   // Fetch data using the provided functions
-  getConstructors()
+  getOffices()
     .then((result) => {
       setData2(result.data);
-    })
-    .catch((error) => {
-      console.error("데이터를 가져오는 중 오류 발생:", error);
-    });
-
-  getAllBuilders()
-    .then((result) => {
-      setData3(result.data);
     })
     .catch((error) => {
       console.error("데이터를 가져오는 중 오류 발생:", error);
@@ -121,124 +97,6 @@ useEffect(() => {
 
 const data = [
   {
-<<<<<<< HEAD
-    sigongsa: "(주)00종합건설 / 용인시",
-    sigongsaRate: 8.5,
-    sotong: "매우 만족" as satisfaction,
-    price: "만족" as satisfaction,
-    sigongResult: "보통" as satisfaction,
-    dateJunsu: "불만족" as satisfaction,
-    as: "매우 불만족" as satisfaction,
-    constructor: [
-      {
-        location: "용인시",
-        type: "일반주택",
-        rate: 8,
-        description: (
-          <span>
-            000000000000000000000000000000000000000000000000000
-            000000000000000000000000000000000000000000000000000
-            00000000000000000000000000000000000000000000000000
-            00000000000000000000000000000000000000 000000000000
-          </span>
-        ),
-      },
-      {
-        location: "광명시",
-        type: "일반주택",
-        rate: 9,
-        description: (
-          <span>
-            1111111111111111111111111111111111111111111
-            1111111111111111111111111111111111111111
-            111111111111111111111111111111111111111111111111111
-            1111111111111111111111111111111111111111111111
-            11111111111111111111111111111111111111111111111111
-            11111111111111111111111111111111111111111111111
-          </span>
-        ),
-      },
-    ],
-  },
-  {
-    sigongsa: "(주)00종합건설 / 용인시",
-    sigongsaRate: 8.5,
-    sotong: "매우 만족" as satisfaction,
-    price: "만족" as satisfaction,
-    sigongResult: "보통" as satisfaction,
-    dateJunsu: "불만족" as satisfaction,
-    as: "매우 불만족" as satisfaction,
-    constructor: [
-      {
-        location: "용인시",
-        type: "일반주택",
-        rate: 8,
-        description: (
-          <span>
-            000000000000000000000000000000000000000000000000000
-            000000000000000000000000000000000000000000000000000
-            00000000000000000000000000000000000000000000000000
-            00000000000000000000000000000000000000 000000000000
-          </span>
-        ),
-      },
-      {
-        location: "광명시",
-        type: "일반주택",
-        rate: 9,
-        description: (
-          <span>
-            1111111111111111111111111111111111111111111
-            1111111111111111111111111111111111111111
-            111111111111111111111111111111111111111111111111111
-            1111111111111111111111111111111111111111111111
-            11111111111111111111111111111111111111111111111111
-            11111111111111111111111111111111111111111111111
-          </span>
-        ),
-      },
-    ],
-  },
-  {
-    sigongsa: "(주)00종합건설 / 용인시",
-    sigongsaRate: 8.5,
-    sotong: "매우 만족" as satisfaction,
-    price: "만족" as satisfaction,
-    sigongResult: "보통" as satisfaction,
-    dateJunsu: "불만족" as satisfaction,
-    as: "매우 불만족" as satisfaction,
-    constructor: [
-      {
-        location: "용인시",
-        type: "일반주택",
-        rate: 8,
-        description: (
-          <span>
-            000000000000000000000000000000000000000000000000000
-            000000000000000000000000000000000000000000000000000
-            00000000000000000000000000000000000000000000000000
-            00000000000000000000000000000000000000 000000000000
-          </span>
-        ),
-      },
-      {
-        location: "광명시",
-        type: "일반주택",
-        rate: 9,
-        description: (
-          <span>
-            1111111111111111111111111111111111111111111
-            1111111111111111111111111111111111111111
-            111111111111111111111111111111111111111111111111111
-            1111111111111111111111111111111111111111111111
-            11111111111111111111111111111111111111111111111111
-            11111111111111111111111111111111111111111111111
-          </span>
-        ),
-      },
-    ],
-  },
-=======
     officeType: "시공사",
     officeName:"제이디홈플랜 / 서귀포시",
     officeRate:9,
@@ -285,5 +143,4 @@ const data = [
       },
     ]
   }
->>>>>>> cbba0caef48dd2285ba3dd4ffef55e25807096fc
 ];

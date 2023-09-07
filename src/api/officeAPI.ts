@@ -44,8 +44,3 @@ export const postOffice = async (office: any) => {
 
   return { data, error };
 };
-
-// 추가
-export const getAllBuilders = async () => {
-  return await getBuilders();
-};
