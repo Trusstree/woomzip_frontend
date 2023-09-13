@@ -1,46 +1,25 @@
-"use client" 
-// client side 랜더링을 해준다는 명시적인 표현
 import ReviewCompany from "@/components/review/ReviewCompany";
-import SortingButtonStyles from "@/components/review/SortingButtonsStyles";
-import Image from "next/image";
+import React from "react";
 import RouteButton from "@/components/RouteButton";
 import SearchBox from "@/components/forms/SearchBox";
 import { satisfaction } from "@/type/form";
-import React, { useState, useEffect } from "react";
-import { getOffices } from "@/api/officeAPI"
-import { getPersons } from "@/api/personAPI";
 
 export default function Home() {
   return (
-    <main
-      className={`container-half my-5 d-flex ustify-content-start flex-column align-items-start`}
-    >
+    <main className={`container my-5 d-flex justify-content-center`}>
       <div>
-        <div className="d-flex align-items-center">
-          <Image
-            className={`mr-auto m-3`}
-            src="/logo1.png"
-            alt="Truss Logo"
-            width={109}
-            height={64}
-            style={{ filter: "brightness(0) invert(1)" }}
-          />
-
-          <h1 className="fw-bold text-white">시공사, 건축사사무소 리뷰 공간</h1>
-
-        </div>
-
         {/* 시공사, 건축사무소 검색하기 */}
-        <SearchBox placeholder="시공사, 건축사무소 검색하기" />
+        <SearchBox placeholder="시공사, 건축사무소 검색하기"/>
 
         {/* 후기쓰기, 후기요청하기 */}
         <div className="d-flex justify-content-between my-4">
+          
           {/* 다음 건축주를 위해 당신의 건축 이야기를 남겨주세요! */}
           <RouteButton className="py-3" url="/review2">
             건설사 후기 쓰기
           </RouteButton>
 
-          <RouteButton className="py-3" url="/review3">
+          <RouteButton className="py-3" url="/requestion">
             건설사 후기 요청하기
           </RouteButton>
         </div>
@@ -51,51 +30,19 @@ export default function Home() {
         </div> */}
 
         {/* 회사 간 리뷰 */}
-        {
-          <>
-            {data.map((company, i) => {
-              return <ReviewCompany company={company} key={i} />;
-            })}
-            {data2.map((builder, i) => (
-              <ReviewCompany company={builder} key={i} />
-            ))}
-            {data3.map((constructor, i) => (
-              <ReviewCompany company={constructor} key={i} />
-            ))}
-            {data4.map((person, i) => (
-              <ReviewCompany company={person} key={i} />
-            ))}
-          </>
-        }
+        {<>{
+          data.map((company,i)=>{
+            return(
+              <ReviewCompany company={company} key={i}/>
+            );
+          })
+        }</>}
       </div>
     </main>
   );
 }
 
-const [data4, setData4] = useState([]);
-const [data2, setData2] = useState([]);
-const [data3, setData3] = useState([]);
-
-useEffect(() => {
-  // Fetch data using the provided functions
-  getOffices()
-    .then((result) => {
-      setData2(result.data);
-    })
-    .catch((error) => {
-      console.error("데이터를 가져오는 중 오류 발생:", error);
-    });
-
-  getPersons()
-    .then((result) => {
-      setData4(result.data);
-    })
-    .catch((error) => {
-      console.error("데이터를 가져오는 중 오류 발생:", error);
-    });
-}, []);
-
-const data = [
+const data=[
   {
     officeType: "시공사",
     officeName:"제이디홈플랜 / 서귀포시",
