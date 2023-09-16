@@ -1,29 +1,44 @@
+import RouteButton from "@/components/RouteButton";
 import React from "react";
-import Image from 'next/image'
 
 type HeaderProps = {};
 
 export default function Header(props: HeaderProps) {
   return (
-    <div className={`d-flex justify-content-around  mt-5 pb-2 text-white`}
-    // style={{backgroundColor:"#141468"}} sticky-top
+    <div className={`absolute`}
+      style={{color:"#141468", borderBottomStyle:"solid", borderBottomColor:"#101648", borderBottomWidth:"2px"}}// sticky-top
     > 
-      <div className="fs-1 fw-bold align-self-center">
-        <Image
-          className={`mr-auto m-3`}
-          src="/logo1.png"
-          alt="Truss Logo"
-          width={109}
-          height={64}
-          priority
-          style={{ filter: "brightness(0) invert(1)" }}
-        />
-        시공사, 건축사사무소 리뷰 공간
-      </div>
+      <div className="container d-flex mt-3 pb-3">
+        <RouteButton url={"/"}
+          className="me-5 ms-4">
+          <img
+            className=""
+            src="/truss_logo.png"
+            alt="Truss Logo"
+            width={100}
+          />
+        </RouteButton>
 
-      <div className="btn-group me-5">
-        <button type="button" className="btn text-white">로그인</button>
-        <button type="button" className="btn text-white">회원가입</button>
+        <div className="d-flex align-items-center me-auto">
+          <RouteButton url={"/reviews"} className="fs-4">
+            리뷰
+          </RouteButton>
+          <RouteButton url={"/community"} className="fs-4">
+            커뮤니티
+          </RouteButton>
+          <RouteButton url={"/posts"} className="fs-4">
+            칼럼
+          </RouteButton>
+        </div>
+
+        <div className="btn-group ms-5">
+          <RouteButton url={"/sign"}>
+            로그인/회원가입
+          </RouteButton>
+          <RouteButton url={"/service"}>
+            기업서비스
+          </RouteButton>
+        </div>
       </div>
     </div>
   );
