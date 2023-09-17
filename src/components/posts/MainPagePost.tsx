@@ -3,16 +3,17 @@
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
-type IconProps = {
+type MainPagePostProps = {
   url: string
+  src: string
   children: string
   className?: string
   style?: CSSProperties
 }
 
-export default function Icon(props: IconProps) {
+export default function MainPagePost(props: MainPagePostProps) {
   const router = useRouter();
-  const { className, children, url,  style } = props;
+  const { url, src, children, className, style } = props;
 
   return (
     <div className="d-flex flex-column align-items-center">
@@ -22,10 +23,10 @@ export default function Icon(props: IconProps) {
       onClick={()=>{router.push(url);}}>
         <img
           className=""
-          src="truss_logo.png"
-          width={80} height={80}/>
+          src={`${src}`}
+          width={250} height={250}/>
       </button>
-      <div>
+      <div className="w-100 text-left px-4">
         {children}
       </div>
     </div>

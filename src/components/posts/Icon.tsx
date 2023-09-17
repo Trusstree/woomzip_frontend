@@ -3,15 +3,17 @@
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
-type CardProps = {
+type IconProps = {
   url: string
+  src: string
+  children: string
   className?: string
   style?: CSSProperties
 }
 
-export default function Card(props: CardProps) {
+export default function Icon(props: IconProps) {
   const router = useRouter();
-  const { className, url,  style } = props;
+  const { className, children, url, src, style } = props;
 
   return (
     <div className="d-flex flex-column align-items-center">
@@ -21,11 +23,11 @@ export default function Card(props: CardProps) {
       onClick={()=>{router.push(url);}}>
         <img
           className=""
-          src="truss_logo.png"
-          width={250} height={250}/>
+          src={src}
+          width={80} height={80}/>
       </button>
-      <div className="w-100 text-left px-4">
-        ㅎㅇㅎㅇ
+      <div>
+        {children}
       </div>
     </div>
     

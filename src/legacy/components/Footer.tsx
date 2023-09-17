@@ -1,4 +1,4 @@
-import GuideLine from "@/components/GuideLine";
+import GuideLine from "@/legacy/components/GuideLine";
 import RouteButton from "@/components/RouteButton";
 import React from "react";
 

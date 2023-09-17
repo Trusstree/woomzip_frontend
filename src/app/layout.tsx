@@ -4,7 +4,6 @@ import Script from 'next/script';
 import Header from '../app/Header';
 import Footer from '../app/Footer';
 
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {

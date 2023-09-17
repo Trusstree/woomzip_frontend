@@ -1,4 +1,4 @@
-import BasicCard from "@/components/BasicCard";
+import BasicCard from "@/components/components/BasicCard";
 import Footer from "@/components/Footer";
 
 type DesignData = {

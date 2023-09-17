@@ -1,6 +1,6 @@
-import BasicCard from "@/components/BasicCard";
-import BossCard from "@/components/BossCard";
-import Footer from "@/components/Footer";
+import BasicCard from "@/legacy/components/BasicCard";
+import BossCard from "@/legacy/components/BossCard";
+import Footer from "@/legacy/components/Footer";
 import RouteButton from "@/components/RouteButton";
 import Image from 'next/image'
 
