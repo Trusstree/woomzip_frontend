@@ -2,6 +2,7 @@ import SearchBox from "@/components/forms/SearchBox";
 import MainPagePost from "@/components/posts/MainPagePost";
 import Icon from "@/components/posts/Icon";
 import PostMenu from "@/components/posts/PostMenu";
+import Carousel from "@/components/posts/Carousel";
 
 export default function Home() {
   return (
@@ -16,12 +17,7 @@ export default function Home() {
 
       {/* 캐러셀 */}
       <div className={`my-5 row`}>
-        <img
-          className="col-10 p-0"
-          alt="main post"
-          src="truss_logo.png"
-          height={500}
-        />
+        <Carousel className={"col-10"} data={data} height={500} />
         <img
           className="col-2 p-0"
           alt="main post"
@@ -80,3 +76,33 @@ export default function Home() {
     </main>
   );
 }
+
+
+type data = {
+  src: string
+  label: string
+  expl: string
+}
+
+const data = [
+  {
+    src:"Sanga.png",
+    label:"First slide label",
+    expl:"Some representative placeholder content for the first slide."
+  },
+  {
+    src:"Pyramid.png",
+    label:"Second slide label",
+    expl:"Some representative placeholder content for the second slide."
+  },
+  {
+    src:"SangaHouse.png",
+    label:"Third slide label",
+    expl:"Some representative placeholder content for the third slide."
+  },
+  {
+    src:"SoloHouse.png",
+    label:"Fourth slide label",
+    expl:"Some representative placeholder content for the fourth slide."
+  },  
+] as data[];
