@@ -39,7 +39,7 @@ export default function Carousel(props: CarouselProps){
 
         {data.map((e, i)=>(
           <div className={`carousel-item ${i==0?"active":""}`}>
-            <img src={e.src} className="d-block w-100" alt="truss_logo.png" height={height}/>
+            <img src={e.src} className="d-block w-100 rounded-4" alt="truss_logo.png" height={height}/>
             <div className="carousel-caption d-none d-md-block text-start fw-bold text-white" >
               <h5>{e.label}</h5>
               <p>{e.expl}</p>

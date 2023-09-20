@@ -14,7 +14,7 @@ export default function SearchBox(props: SearchBoxProps) {
       {title?<label>{title}</label>:undefined}
 
       <div className="input-group-prepend" id="search-addon">
-        <span className="input-group-text bg-white rounded-start-4 rounded-end-0"
+        <span className="input-group-text bg-white rounded-start-5 rounded-end-0"
           style={{
             borderColor:"#101648",
             borderWidth:"3px",
@@ -39,7 +39,7 @@ export default function SearchBox(props: SearchBoxProps) {
         }}
       />
 
-      <button className="btn btn-lg btn-outline-white fw-bold rounded-start-0 rounded-end-4"
+      <button className="btn btn-lg btn-outline-white fw-bold rounded-start-0 rounded-end-5"
         type="button"
         id="button-addon2"
         style={{

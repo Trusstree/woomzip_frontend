@@ -1,4 +1,4 @@
-import Editor from "@/components/post/Editor";
+import Editor from "@/components/posts/Editor";
 
 export default function Home() {
   return (
