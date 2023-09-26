@@ -1,10 +1,10 @@
-import { ApiClient } from "@/api/apiClient";
+import { apiClient } from "@/configs/apiClient";
 
 export const getPersons = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/person`, {
+    const result = await apiClient.get(`/api/person`, {
       params: {},
       headers: {}
     });
@@ -20,7 +20,7 @@ export const getPerson = async (personNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/person/${personNum}`, {
+    const result = await apiClient.get(`/api/person/${personNum}`, {
       params: {},
       headers: {}
     });
@@ -36,7 +36,7 @@ export const postPerson = async (person: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.post(`/api/person/`, person, { headers: {} });
+    const result = await apiClient.post(`/api/person/`, person, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;

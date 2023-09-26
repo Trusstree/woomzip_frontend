@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "aws-sdk": "^2.1463.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "dotenv": "^16.3.1",
@@ -19,7 +20,8 @@
     "react-bootstrap": "^2.8.0",
     "react-dom": "18.2.0",
     "react-quill": "^2.0.0",
-    "sweetalert2": "^11.7.27"
+    "sweetalert2": "^11.7.27",
+    "universal-cookie": "^6.1.1"
   },
   "devDependencies": {
     "@types/node": "20.4.2",

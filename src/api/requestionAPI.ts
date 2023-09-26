@@ -1,10 +1,10 @@
-import { ApiClient } from "@/api/apiClient";
+import { apiClient } from "@/configs/apiClient";
 
 export const getRequestions = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/requestion`, {
+    const result = await apiClient.get(`/api/requestion`, {
       params: {},
       headers: {}
     });
@@ -20,7 +20,7 @@ export const getRequestion = async (requestionNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/requestion/${requestionNum}`, {
+    const result = await apiClient.get(`/api/requestion/${requestionNum}`, {
       params: {},
       headers: {}
     });
@@ -36,7 +36,7 @@ export const postRequestion = async (requestion: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.post(`/api/requestion/`, requestion, { headers: {} });
+    const result = await apiClient.post(`/api/requestion/`, requestion, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;
