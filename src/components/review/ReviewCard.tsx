@@ -1,4 +1,4 @@
-import { Children } from "@/type/props";
+import { Children } from "@/types/props";
 
 type ReviewCardProps = {
   title?: string;

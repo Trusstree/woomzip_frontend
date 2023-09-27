@@ -1,6 +1,6 @@
 "use client"
 
-import { Children } from "@/type/props"
+import { Children } from "@/types/props"
 import { useRouter } from "next/navigation";
 
 type BasicCardProps = {

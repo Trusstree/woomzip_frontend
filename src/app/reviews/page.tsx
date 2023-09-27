@@ -1,7 +1,7 @@
 import ReviewCompany from "@/components/review/ReviewCompany";
 import RouteButton from "@/components/RouteButton";
 import SearchBox from "@/components/forms/SearchBox";
-import { satisfaction } from "@/type/form";
+import { satisfaction } from "@/types/form";
 
 export default function Home() {
   return (

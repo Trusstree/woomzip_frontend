@@ -5,6 +5,8 @@ import useForm from "@/hooks/useForm";
 import { isRequired } from "@/utils/validator";
 import SigninBox from "./SigninBox";
 import SubmitButton from "./SubmitButton";
+import { encrypt, getUserdataByToken } from "@/utils/security";
+import { setUserInfo } from "@/utils/cookieUtil";
 
 type Signin = {
   id: string
@@ -28,9 +30,14 @@ export default function SigninForm(props: SigninFormProps) {
   const {} = props;
 
   const callback = async (values: Signin) => {
-    const { data,error } = await signinUser(values);
-    if (error) console.log(error);
-    else console.log(data);
+    const { data,error } = await signinUser({...values, password:encrypt(values.password)});
+    if (error) {console.log(error); return;}
+    
+    console.log(data);
+
+    const userInfo = getUserdataByToken(data);
+    setUserInfo(userInfo);
+
     return;
   };
 

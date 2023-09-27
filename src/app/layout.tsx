@@ -30,6 +30,10 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
   return (
     <html lang="ko">
       <head>
+        <Script
+          src='https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js'
+          strategy='beforeInteractive'
+        />
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"/>
       </head>
       
