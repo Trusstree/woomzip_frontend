@@ -1,10 +1,9 @@
 "use client"
 
 import axios from "axios";
-import router from "next/router";
 import { useState, useCallback, useEffect } from "react";
 
-const useNaverLogin = ()=>{ 
+export default function useNaverSignin() { 
     const [isLoading, setIsLoading] = useState(true);
   
     const handleLoadingToggle = (flag: boolean) => {
@@ -21,6 +20,8 @@ const useNaverLogin = ()=>{
             }
            }
            )
+
+           console.log(response);
          }catch(error){
             console.error(error)
             setIsLoading(false)
@@ -29,14 +30,13 @@ const useNaverLogin = ()=>{
     }, [])
   
     useEffect(()=>{
-      const token = router?.asPath?.split('=')[1]?.split('&')[0];
+      const token = window.location.href.split('#')[1].split("&").find((e)=>(e.includes("access_token"))).split("=")[1];
+      console.log(token);
       // 네이버 아이디 로그인이 query에 accesstoken으로 넘겨주는 값을 추출해옵니다.
   
-      if(token) handleNaverLogin(token)
+      if(token) handleNaverLogin(token);
   
     },[])
   
     return {isLoading, onLoadingToggle : handleLoadingToggle}
   }
-  
-  export default useNaverLogin;

@@ -18,6 +18,7 @@ export default function OauthSigninForm(props: any) {
 		<div>
 			<div>
         <button className="btn m-0 p-0" ref={naverRef} id='naverIdLogin' onClick={handleNaverLoginClick} />
+        <button className="btn m-0 p-0" ref={naverRef} id='naverIdLogin' onClick={handleNaverLoginClick} />
       </div>
 		</div>
 	);

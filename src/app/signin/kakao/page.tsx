@@ -1,10 +1,10 @@
 "use client"
 
-import useNaverSignin from "@/hooks/useNaverSignin";
+import useKakaoSignin from "@/hooks/useKakaoSignin";
 
-export default function NaverLoginPage () {
+export default function KakaoLoginPage () {
 	const isLoading=true;
-	useNaverSignin();
+	useKakaoSignin();
 	return (
 		<div>
 		...

@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script';
 import Header from '../app/Header';
 import Footer from '../app/Footer';
+import { SessionProvider } from "next-auth/react"
+import { Session } from 'next-auth';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,20 +29,19 @@ export const metadata = {
 }
 
 export default function RootLayout({children,}: {children: React.ReactNode}) {
+  const session = {} as Session;
   return (
     <html lang="ko">
       <head>
-        <Script
-          src='https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js'
-          strategy='beforeInteractive'
-        />
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"/>
       </head>
       
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+        <SessionProvider session={session}>
+          <Header />
+          {children}
+          <Footer />
+        </SessionProvider>
       </body>
     </html>
   )
