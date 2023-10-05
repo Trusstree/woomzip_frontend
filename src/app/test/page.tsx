@@ -1,13 +1,13 @@
 import TestButton from "@/components/test/TestButton";
 import SigninForm from "@/components/forms/SigninForm";
-import OauthSigninForm from "@/components/forms/OauthSigninForm";
+import SigninButton from "@/components/auth/SigninButton";
 
 export default function Home() {
   return (
     <main className={`container`}>
       <TestButton >테스트</TestButton>
       <SigninForm />
-      <OauthSigninForm />
+      <SigninButton/>
     </main>
   )
 }
