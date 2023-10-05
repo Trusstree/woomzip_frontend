@@ -18,9 +18,9 @@ type PostType = {
 export default function Home() {
 
   return (
-    <main className={`container my-5`}>
+    <main className={`container my-2`}>
       {/* search bar */}
-      <div className={`my-5`}>
+      <div className={`my-2`}>
         <SearchBox
           className="text-black"
           placeholder={"찾고 싶은 내용을 검색해보세요!"}

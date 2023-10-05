@@ -6,21 +6,22 @@ export default function SigninButton(){
   const { data: session } = useSession();
   
   return (
-    <div>
-      {session?.user?.email}
+    <>
       {session?
-        <div
-          className="button"
+        <button type="button"
+          style={{color:"#101648"}}
+          className={`px-4 py-2 btn rounded-lg fw-bold`}
           onClick={()=>{signOut()}}
-          > sign out
-        </div>
+          > 로그아웃
+        </button>
         :
-        <div
-          className="button"
+        <button type="button"
+          style={{color:"#101648"}}
+          className={`px-4 py-2 btn rounded-lg fw-bold`}
           onClick={()=>{signIn()}}
-          > sign in
-        </div>
+          > 로그인/회원가입
+        </button>
       }
-    </div>
+    </>
   )
 }

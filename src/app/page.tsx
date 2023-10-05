@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className={`container px-5`}>
       {/* 검색창 */}
-      <div className={`my-5`}>
+      <div className={`my-3`}>
         <SearchBox
           className="text-black"
           placeholder={"찾고 싶은 내용을 검색해보세요!"}
@@ -16,7 +16,7 @@ export default function Home() {
       </div>
 
       {/* 캐러셀 */}
-      <div className={`my-5 row`}>
+      <div className={`my-3 row`}>
         <Carousel className={"col-10"} data={data} height={500} />
         <img
           className="col-2 p-0"

@@ -5,7 +5,7 @@ import { satisfaction } from "@/types/form";
 
 export default function Home() {
   return (
-    <main className={`container my-5 d-flex justify-content-center`}>
+    <main className={`container my-2 d-flex justify-content-center`}>
       <div>
         {/* 시공사, 건축사무소 검색하기 */}
         <SearchBox placeholder="시공사, 건축사무소 검색하기"/>
