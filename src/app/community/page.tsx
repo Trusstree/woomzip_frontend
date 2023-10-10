@@ -30,11 +30,11 @@ export default function Home() {
       <PostMenu
         title={"관심있는 주제를 선택해보세요!"}>
         <div className="d-flex">
-          <Icon src={"truss_logo.png"} url={"/"}>모듈형주택</Icon>
-          <Icon src={"truss_logo.png"} url={"/"}>일반주택</Icon>
-          <Icon src={"truss_logo.png"} url={"/"}>다세대주택</Icon>
-          <Icon src={"truss_logo.png"} url={"/"}>상가주택</Icon>
-          <Icon src={"truss_logo.png"} url={"/"}>상가</Icon>
+        <Icon src={"icon_moduledhouse.png"} url={"/"}>모듈형주택</Icon>
+          <Icon src={"icon_house.png"} url={"/"}>일반주택</Icon>
+          <Icon src={"icon_multihouse.png"} url={"/"}>다세대주택</Icon>
+          <Icon src={"icon_sangahouse.png"} url={"/"}>상가주택</Icon>
+          <Icon src={"icon_sanga.png"} url={"/"}>상가</Icon>
         </div>
       </PostMenu>
 
@@ -58,7 +58,7 @@ const post=[
     title: "제목제목제목제목",
     text: "내용내용내용내용",
     author: "글쓴이",
-    profilePicture:"/truss_logo.png",
+    profilePicture:"/logo_truss.png",
     timestamp: 3000,
     viewCount: 2,
     commentCount: 0,
@@ -69,7 +69,7 @@ const post=[
     title: "제목제목제목제목2",
     text: "내용내용내용내용",
     author: "글쓴이",
-    profilePicture:"/truss_logo.png",
+    profilePicture:"/logo_truss.png",
     timestamp: 3000,
     viewCount: 2,
     commentCount: 0,
@@ -80,7 +80,7 @@ const post=[
     title: "제목제목제목제목3",
     text: "내용내용내용내용",
     author: "글쓴이",
-    profilePicture:"/truss_logo.png",
+    profilePicture:"/logo_truss.png",
     timestamp: 3000,
     viewCount: 2,
     commentCount: 0,
@@ -91,7 +91,7 @@ const post=[
     title: "제목제목제목제목4",
     text: "내용내용내용내용",
     author: "글쓴이",
-    profilePicture:"/truss_logo.png",
+    profilePicture:"/logo_truss.png",
     timestamp: 3000,
     viewCount: 2,
     commentCount: 0,
@@ -102,7 +102,7 @@ const post=[
     title: "제목제목제목제목5",
     text: "내용내용내용내용",
     author: "글쓴이",
-    profilePicture:"/truss_logo.png",
+    profilePicture:"/logo_truss.png",
     timestamp: 3000,
     viewCount: 2,
     commentCount: 0,

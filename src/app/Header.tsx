@@ -16,7 +16,7 @@ export default function Header(props: HeaderProps) {
             className="me-5 ms-4">
             <img
               className=""
-              src="/truss_logo.png"
+              src="/logo_truss.png"
               alt="Truss Logo"
               width={70}
             />
@@ -48,18 +48,18 @@ export default function Header(props: HeaderProps) {
 }
 
 const collapsedPage = [
-  (<div className="collapse collapsedBar" id={"collapsedBar"}
+  (<div className="collapse collapsedBar row" id={"collapsedBar"}
   style={{color:"#141468", borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
-  <div className="container d-flex align-items-center me-auto">
-    <RouteButton url={"/reviews"} className="fs-4">
-      설계
-    </RouteButton>
-    <RouteButton url={"/community"} className="fs-4">
-      시공
-    </RouteButton>
-    <RouteButton url={"/posts"} className="fs-4">
-      관리
-    </RouteButton>
-  </div>
-</div>)
+    <div className="col-7 container d-flex align-items-center me-auto">
+      <RouteButton url={"/reviews"} className="fs-4">
+        설계
+      </RouteButton>
+      <RouteButton url={"/community"} className="fs-4">
+        시공
+      </RouteButton>
+      <RouteButton url={"/posts"} className="fs-4">
+        관리
+      </RouteButton>
+    </div>
+  </div>)
 ]

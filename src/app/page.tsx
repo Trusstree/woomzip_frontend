@@ -21,7 +21,7 @@ export default function Home() {
         <img
           className="col-2 p-0"
           alt="main post"
-          src="truss_logo.png"
+          src="logo_truss.png"
         />
       </div>
 
@@ -30,11 +30,11 @@ export default function Home() {
         routeUrl={"/community"}
         routeText={"더보기"}>
         <div className="d-flex">
-          <Icon src={"truss_logo.png"} url={"/"}>모듈형주택</Icon>
-          <Icon src={"truss_logo.png"} url={"/"}>일반주택</Icon>
-          <Icon src={"truss_logo.png"} url={"/"}>다세대주택</Icon>
-          <Icon src={"truss_logo.png"} url={"/"}>상가주택</Icon>
-          <Icon src={"truss_logo.png"} url={"/"}>상가</Icon>
+          <Icon src={"icon_moduledhouse.png"} url={"/"}>모듈형주택</Icon>
+          <Icon src={"icon_house.png"} url={"/"}>일반주택</Icon>
+          <Icon src={"icon_multihouse.png"} url={"/"}>다세대주택</Icon>
+          <Icon src={"icon_sangahouse.png"} url={"/"}>상가주택</Icon>
+          <Icon src={"icon_sanga.png"} url={"/"}>상가</Icon>
         </div>
       </PostMenu>
 
@@ -43,10 +43,10 @@ export default function Home() {
         routeUrl={"/posts"}
         routeText={"더보기"}>
         <div className="d-flex justify-content-center">
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
         </div>
       </PostMenu>
 
@@ -55,10 +55,10 @@ export default function Home() {
         routeUrl={"/posts"}
         routeText={"더보기"}>
         <div className="d-flex justify-content-center">
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
         </div>
       </PostMenu>
 
@@ -67,10 +67,10 @@ export default function Home() {
         routeUrl={"/community"}
         routeText={"더보기"}>
         <div className="d-flex justify-content-center">
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"truss_logo.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
         </div>
       </PostMenu>
     </main>
