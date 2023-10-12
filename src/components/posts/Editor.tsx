@@ -1,11 +1,15 @@
 "use client"
 
 import 'react-quill/dist/quill.snow.css';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useMemo, useRef } from 'react';
 import ReactQuill from 'react-quill';
-import EditorSaveButton from './EditorSaveButton';
 import * as DOMPurify from "dompurify";
 import AWS from "aws-sdk";
+import useForm from '@/hooks/useForm';
+import SubmitButton from '../forms/SubmitButton';
+import { isRequired } from '@/utils/validator';
+import { postPost } from '@/api/postAPI';
+import TextBox from '../forms/Textbox';
 
 type EditorProps = {
 }
@@ -24,11 +28,33 @@ const formats = [
   'image',
 ];
 
+const validate = (values: any) => {
+  const errors = {
+    title: isRequired(values.title),
+    text: isRequired(values.text),
+  };
+
+  return errors;
+};
+
 export default function Editor(props: EditorProps) {
-  const [data, setData] = useState('');
+  const callback = async (postData:any)=>{
+    const { data, error } = await postPost({
+      ...postData,
+      viewCount:0,
+      likeCount:0,
+      comments:""
+    });
+    console.log(data);
+    if(error)console.log(error);
+  };
+  
+  const { handleChange, handleClick, handleSubmit, values, errors } = useForm(callback, validate);
+
   const quillRef = useRef();
 
   const imageHandler = async () => {
+    if(document) return;
     const input = document.createElement("input");
     input.setAttribute("type", "file");
     input.setAttribute("accept", "image/*");
@@ -107,47 +133,61 @@ export default function Editor(props: EditorProps) {
     },
   }),[]);
 
-  useEffect(()=>{
-    console.log(data);
-  },[data]);
-
   return (
     <div>
-      <div className='d-flex justify-content-center'>
-        <EditorSaveButton
-          className="mx-2 my-3 btn-secondary">
-          LOAD
-        </EditorSaveButton>
-        <EditorSaveButton
-          className="mx-2 my-3 text-white btn-success">
-          SAVE
-        </EditorSaveButton>
-        <EditorSaveButton
-          className="mx-2 my-3 text-white"
-          style={{backgroundColor:"#101648"}}>
-          POST
-        </EditorSaveButton>
-      </div>
+      <form>
+        <div className='d-flex justify-content-center'>
+          {/* <EditorSaveButton
+            className="mx-2 my-3 btn-secondary"
+            postData={data}>
+            LOAD
+          </EditorSaveButton>
+          <EditorSaveButton
+            className="mx-2 my-3 text-white btn-success"
+            postData={data}>
+            SAVE
+          </EditorSaveButton> */}
 
-      <ReactQuill
-        ref={quillRef}
-        className='mb-3'
-        value={data}
-        onChange={setData}
-        modules={modules}
-        formats={formats}
-        placeholder={'트러스 포스팅을 위한 플레이스 홀더'}
-        theme="snow"
-      />
 
-      {data && (
+          <SubmitButton
+            title={'LOAD'}
+            handleSubmit={handleSubmit}
+            values={values}
+            errors={errors}
+            keys={["title", "text"]}
+            allRequired={true}
+          />
+        </div>
+        <TextBox
+          id={''}
+          label={''}
+          placeholder={''}
+          disabled={false}
+          readonly={false}
+          handleChange={handleChange}
+          name={''}
+          value={values["title"]}/>
+
+        <ReactQuill
+          ref={quillRef}
+          className='mb-3'
+          value={values["text"]}
+          onChange={values["text"]}
+          modules={modules}
+          formats={formats}
+          placeholder={'트러스 포스팅을 위한 플레이스 홀더'}
+          theme="snow"
+        />
+      </form>
+
+      {values["text"] && (
         <div
           style={{
             width: "60vw",
             whiteSpace: "normal",
           }}
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(String(data)),
+            __html: DOMPurify.sanitize(String(values["text"])),
           }}
         />
       )}
