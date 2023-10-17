@@ -7,7 +7,7 @@ import useForm from "@/hooks/useForm";
 import { isRequired } from "@/utils/validator";
 import TextArea from "@/components/forms/TextArea";
 import { postRequestion } from "@/api/requestionAPI";
-import { alertSuccess } from "@/utils/alertSuccess";
+import { alertSuccess } from "@/utils/alertUtil";
 
 type requestion = {
   name: string;

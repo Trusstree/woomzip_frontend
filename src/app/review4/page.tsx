@@ -9,7 +9,7 @@ import { isRequired } from "@/utils/validator";
 import { satisfaction } from "@/types/form";
 import TextArea from "@/components/forms/TextArea";
 import { postOffice } from "@/api/officeAPI";
-import { alertSuccess } from "@/utils/alertSuccess";
+import { alertSuccess } from "@/utils/alertUtil";
 
 type office = {
   officeType: string;

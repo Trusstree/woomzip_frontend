@@ -1,7 +1,7 @@
 "use client"
 
 import 'react-quill/dist/quill.snow.css';
-import { ChangeEvent, useMemo, useRef } from 'react';
+import { ChangeEvent, useCallback, useMemo, useRef, useState } from 'react';
 import ReactQuill from 'react-quill';
 import * as DOMPurify from "dompurify";
 import AWS from "aws-sdk";
@@ -10,6 +10,8 @@ import SubmitButton from '../forms/SubmitButton';
 import { isRequired } from '@/utils/validator';
 import { postPost } from '@/api/postAPI';
 import TextBox from '../forms/Textbox';
+import { confirmSuccess } from '@/utils/alertUtil';
+import SelectBox from '../forms/SelectBox';
 
 type EditorProps = {
 }
@@ -38,6 +40,11 @@ const validate = (values: any) => {
 };
 
 export default function Editor(props: EditorProps) {
+
+  const [dataTitle, setDataTitle] = useState("");
+  const [dataText, setDataText] = useState("");
+  const [dataCategory, setDataCategory] = useState("일반");
+
   const callback = async (postData:any)=>{
     const { data, error } = await postPost({
       ...postData,
@@ -48,8 +55,6 @@ export default function Editor(props: EditorProps) {
     console.log(data);
     if(error)console.log(error);
   };
-  
-  const { handleChange, handleClick, handleSubmit, values, errors } = useForm(callback, validate);
 
   const quillRef = useRef();
 
@@ -133,61 +138,72 @@ export default function Editor(props: EditorProps) {
     },
   }),[]);
 
+  const handleSubmit = useCallback(async ()=>{
+
+    const result = await confirmSuccess("포스팅 확인", "현재 입력하신 정보가 모두 맞습니까?", '맞습니다!', '아닙니다.');
+
+    if (result.isConfirmed) {
+      console.log({
+        "dataTitle":dataTitle,
+        "dataText":dataText,
+        "dataCategory":dataCategory
+      })
+    }
+    
+  },[dataTitle, dataText]);
+
   return (
     <div>
-      <form>
-        <div className='d-flex justify-content-center'>
-          {/* <EditorSaveButton
-            className="mx-2 my-3 btn-secondary"
-            postData={data}>
-            LOAD
-          </EditorSaveButton>
-          <EditorSaveButton
-            className="mx-2 my-3 text-white btn-success"
-            postData={data}>
-            SAVE
-          </EditorSaveButton> */}
-
-
-          <SubmitButton
-            title={'LOAD'}
-            handleSubmit={handleSubmit}
-            values={values}
-            errors={errors}
-            keys={["title", "text"]}
-            allRequired={true}
+      <form className='my-3'>
+        <div className='d-flex'>
+          <input
+            type={'text'}
+            className={`col-10 py-2 px-4`}
+            placeholder={`제목`}
+            onChange={(e)=>{setDataTitle(e.target?.value || "");}}
+            value={dataTitle}
+          />
+          <SelectBox
+            className={`col-2`}
+            value={dataCategory}
+            handleChange={setDataCategory}
+            array={["일반"]}
           />
         </div>
-        <TextBox
-          id={''}
-          label={''}
-          placeholder={''}
-          disabled={false}
-          readonly={false}
-          handleChange={handleChange}
-          name={''}
-          value={values["title"]}/>
 
         <ReactQuill
           ref={quillRef}
-          className='mb-3'
-          value={values["text"]}
-          onChange={values["text"]}
+          className='mb-5'
+          style={{height:"25vw"}}
+          value={dataText}
+          onChange={setDataText}
           modules={modules}
           formats={formats}
           placeholder={'트러스 포스팅을 위한 플레이스 홀더'}
           theme="snow"
         />
+
+        <div className='d-flex justify-content-center'>
+          <button
+            type="button"
+            className={`w-100 btn btn-lg fw-bold btn-light`}
+            onClick={()=>{
+              handleSubmit();
+            }}
+            >
+            Post
+          </button>
+        </div>
       </form>
 
-      {values["text"] && (
+      {dataText && (
         <div
           style={{
             width: "60vw",
             whiteSpace: "normal",
           }}
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(String(values["text"])),
+            __html: DOMPurify.sanitize(String(dataText)),
           }}
         />
       )}
