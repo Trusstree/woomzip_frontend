@@ -30,7 +30,6 @@ export default function Postpage(props: PostpageProps){
     const getPostq = async () => {
       const { data, error } = await getPost(pid);
       
-      console.log(data);
       setPostData(data);
     }
     getPostq();

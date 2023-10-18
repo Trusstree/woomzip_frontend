@@ -38,7 +38,7 @@ export default function Home() {
         </div>
       </PostMenu>
 
-      <PostMenu
+      {/* <PostMenu
         title={"인기 건축칼럼을 확인해보세요!"}
         routeUrl={"/posts"}
         routeText={"더보기"}>
@@ -48,7 +48,7 @@ export default function Home() {
           <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
           <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
         </div>
-      </PostMenu>
+      </PostMenu> */}
 
       <PostMenu
         title={"건축이 처음이라면? 확인해야 할 정보!"}
@@ -62,7 +62,7 @@ export default function Home() {
         </div>
       </PostMenu>
 
-      <PostMenu
+      {/* <PostMenu
         title={"건축주들의 고민상담소, 만담장소"}
         routeUrl={"/community"}
         routeText={"더보기"}>
@@ -72,7 +72,7 @@ export default function Home() {
           <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
           <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
         </div>
-      </PostMenu>
+      </PostMenu> */}
     </main>
   );
 }
