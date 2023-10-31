@@ -3,25 +3,16 @@
 type TestButtonProps = {
   children?: string
   className?: string
+  src: string
+  setSrc:any
 }
 
 let number=0;
 
 export default function TestButton(props: TestButtonProps) {
-  const { className, children } = props;
+  const { className, children, src, setSrc } = props;
 
-  const testFunction = () => {
-
-  };
-
-  return (
-  <button type="button"
-    style={{backgroundColor:"#6764F7"}}
-    className={`${className?className:""} px-4 py-2 btn btn-primary rounded-lg fw-bold fs-5`}
-    onClick={()=>{testFunction()}}>
-    {children?children:"TEST"}
-  </button>
-  );
+  return (<></>);
 }
 
 

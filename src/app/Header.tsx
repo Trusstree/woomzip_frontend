@@ -23,43 +23,50 @@ export default function Header(props: HeaderProps) {
           </RouteButton>
 
           <div className="d-flex align-items-center me-auto">
-            <RouteButton url={"/reviews"} className="fs-4">
+            <RouteButton url={"/"} className="fs-5">
+              홈
+            </RouteButton>
+            {/* <RouteButton url={"/reviews"} className="fs-5">
               리뷰
+            </RouteButton> */}
+            <RouteButton url={"/test"} className="fs-5">
+              내집찾기
             </RouteButton>
-            <RouteButton url={"/community"} className="fs-4">
+            {/* <CollapsingButton collapsedId="collapsedBar" className="fs-5">
+              내집찾기
+            </CollapsingButton> */}
+            {/* <RouteButton url={"/community"} className="fs-5">
               커뮤니티
-            </RouteButton>
-            <CollapsingButton collapsedId="collapsedBar" className="fs-4">
-              설계/시공/관리
-            </CollapsingButton>
+            </RouteButton> */}
+            
           </div>
 
           <div className="d-flex align-items-center ms-5">
             <SigninButton/>
-            <RouteButton url={"/service"}>
+            {/* <RouteButton url={"/service"}>
               기업서비스
-            </RouteButton>
+            </RouteButton> */}
           </div>
         </div>
-        {collapsedPage}
+        {/* {collapsedPage} */}
       </div>
     </div>
   );
 }
 
-const collapsedPage = [
-  (<div className="collapse collapsedBar row" id={"collapsedBar"}
-  style={{color:"#141468", borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
-    <div className="col-7 container d-flex align-items-center me-auto">
-      <RouteButton url={"/reviews"} className="fs-4">
-        설계
-      </RouteButton>
-      <RouteButton url={"/community"} className="fs-4">
-        시공
-      </RouteButton>
-      <RouteButton url={"/posts"} className="fs-4">
-        관리
-      </RouteButton>
-    </div>
-  </div>)
-]
+// const collapsedPage = [
+//   (<div className="collapse collapsedBar row" id={"collapsedBar"}
+//   style={{color:"#141468", borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+//     <div className="col-7 container d-flex align-items-center me-auto">
+//       <RouteButton url={"/reviews"} className="fs-4">
+//         설계
+//       </RouteButton>
+//       <RouteButton url={"/community"} className="fs-4">
+//         시공
+//       </RouteButton>
+//       <RouteButton url={"/posts"} className="fs-4">
+//         관리
+//       </RouteButton>
+//     </div>
+//   </div>)
+// ]
