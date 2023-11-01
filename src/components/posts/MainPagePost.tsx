@@ -1,12 +1,13 @@
 "use client"
 
+import { Children } from "@/types/props";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
 type MainPagePostProps = {
   url: string
   src: string
-  children: string
+  children: Children
   className?: string
   style?: CSSProperties
 }
