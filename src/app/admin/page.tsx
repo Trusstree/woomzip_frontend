@@ -1,9 +1,10 @@
-import TestButton from "@/components/TestButton";
+import AdminClient from "./AdminClient";
 
 export default function Home() {
+
   return (
     <main className={`container`}>
-      <TestButton >테스트</TestButton>
+      <AdminClient/>
     </main>
   )
 }

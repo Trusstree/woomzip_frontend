@@ -1,10 +1,10 @@
-import { ApiClient } from "@/api/apiClient";
+import { apiClient } from "@/configs/apiClient";
 
 export const getOffices = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/office`, {
+    const result = await apiClient.get(`/api/office`, {
       params: {},
       headers: {}
     });
@@ -20,7 +20,7 @@ export const getOffice = async (officeNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.get(`/api/office/${officeNum}`, {
+    const result = await apiClient.get(`/api/office/${officeNum}`, {
       params: {},
       headers: {}
     });
@@ -36,7 +36,7 @@ export const postOffice = async (office: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await ApiClient.post(`/api/office/`, office, { headers: {} });
+    const result = await apiClient.post(`/api/office/`, office, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;

@@ -2,7 +2,8 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Script from 'next/script';
 import Header from '../app/Header';
-
+import Footer from '../app/Footer';
+import AuthSession from './AuthSession';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +27,8 @@ export const metadata = {
   }
 }
 
-export default function RootLayout({children,}: {children: React.ReactNode}) {
+export default function RootLayout({children, }: {children: React.ReactNode, }) {
+  //const session = {} as Session;
   return (
     <html lang="ko">
       <head>
@@ -34,8 +36,11 @@ export default function RootLayout({children,}: {children: React.ReactNode}) {
       </head>
       
       <body className={inter.className}>
-        <Header />
-        {children}
+        <AuthSession>
+          <Header />
+          {children}
+          <Footer />
+        </AuthSession>
       </body>
     </html>
   )

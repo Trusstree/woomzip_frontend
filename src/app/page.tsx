@@ -1,93 +1,85 @@
-import ReviewCompany from "@/components/review/ReviewCompany";
-import React from "react";
-import RouteButton from "@/components/RouteButton";
-import SearchBox from "@/components/forms/SearchBox";
-import { satisfaction } from "@/type/form";
+import PostMenu from "@/components/posts/PostMenu";
+import Carousel from "@/components/posts/Carousel";
+import { HousePost } from "@/components/house/HousePost";
 
 export default function Home() {
   return (
-    <main className={`container my-5 d-flex justify-content-center`}>
-      <div>
-        {/* 시공사, 건축사무소 검색하기 */}
-        <SearchBox placeholder="시공사, 건축사무소 검색하기"/>
+    <main className={`container px-5`}>
+      
+      {/* 검색창
+      <div className={`my-3`}>
+        <SearchBox
+          className="text-black"
+          placeholder={"찾고 싶은 내용을 검색해보세요!"}
+        />
+      </div> */}
 
-        {/* 후기쓰기, 후기요청하기 */}
-        <div className="d-flex justify-content-between my-4">
-          
-          {/* 다음 건축주를 위해 당신의 건축 이야기를 남겨주세요! */}
-          <RouteButton className="py-3" url="/review2">
-            건설사 후기 쓰기
-          </RouteButton>
-
-          <RouteButton className="py-3" url="/requestion">
-            건설사 후기 요청하기
-          </RouteButton>
-        </div>
-
-        {/* 최신순, 추천순, 리뷰 많은 순 정렬 버튼 */}
-        {/* <div>
-          <SortingButtonStyles />
-        </div> */}
-
-        {/* 회사 간 리뷰 */}
-        {<>{
-          data.map((company,i)=>{
-            return(
-              <ReviewCompany company={company} key={i}/>
-            );
-          })
-        }</>}
+      {/* 캐러셀 */}
+      <div className={`my-3 row`}>
+        <Carousel className={"col-10"} height={500} />
+        <img
+          className="col-2 p-0 rounded-4"
+          alt="main post"
+          src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/%EA%B4%91%EA%B3%A0+%EC%98%88%EC%8B%9C.PNG"
+        />
       </div>
+
+      {/* <PostMenu
+        title={"다양한 건축고민을 나누어보세요!"}
+        routeUrl={"/community"}
+        routeText={"더보기"}>
+        <div className="d-flex">
+          <Icon src={"icon_moduledhouse.png"} url={"/"}>모듈형주택</Icon>
+          <Icon src={"icon_house.png"} url={"/"}>일반주택</Icon>
+          <Icon src={"icon_multihouse.png"} url={"/"}>다세대주택</Icon>
+          <Icon src={"icon_sangahouse.png"} url={"/"}>상가주택</Icon>
+          <Icon src={"icon_sanga.png"} url={"/"}>상가</Icon>
+        </div>
+      </PostMenu> */}
+
+      <PostMenu
+        title={"1억 미만으로 지을 수 있는 북유럽 스타일 주택들을 구경해보세요!"}
+        routeUrl={"/"}
+        routeText={"더보기"}>
+        <HousePost />
+        
+      </PostMenu>
+
+      {/* <PostMenu
+        title={"인기 건축칼럼을 확인해보세요!"}
+        routeUrl={"/posts"}
+        routeText={"더보기"}>
+        <div className="d-flex justify-content-center">
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+        </div>
+      </PostMenu> */}
+
+      {/* <PostMenu
+        title={"건축이 처음이라면? 확인해야 할 정보!"}
+        routeUrl={"/posts"}
+        routeText={"더보기"}>
+        <div className="d-flex justify-content-center">
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+        </div>
+      </PostMenu> */}
+
+      {/* <PostMenu
+        title={"건축주들의 고민상담소, 만담장소"}
+        routeUrl={"/community"}
+        routeText={"더보기"}>
+        <div className="d-flex justify-content-center">
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
+        </div>
+      </PostMenu> */}
     </main>
   );
 }
-
-const data=[
-  {
-    officeType: "시공사",
-    officeName:"제이디홈플랜 / 서귀포시",
-    officeRate:9,
-    communication:"만족" as satisfaction,
-    price:"매우 만족" as satisfaction,
-    result:"만족" as satisfaction,
-    keepingDeadline:"매우 만족" as satisfaction,
-    afterService:"매우 만족" as satisfaction,
-    constructor:[
-      {
-        location:"서귀포시",
-        type:"일반주택",
-        rate:9,
-        description:
-        <span>
-          우크라이나 러시아 전쟁때문에 물가가 오름에도 불구하고 비용적인 측면에서 인상이나, 원가절감없이 시공하였음.<br/>
-          완공 2년 후에 틈새에 물이 새어들어가 작은 면적의 나무가 썩는일이 발생하였으나, 주변의 다른 주택 시공 중에 직원분이 오셔서 무료로 A/S 해주심.<br/><br/>
-          반면, 시공중에 건축사의 감리가 있더라도 구조 변경이나 원가 절감 등이 없는지 건축주(아버지)께서 주에 3일이상은 체크를 하러 갔었음.<br/>
-          시공중에 시공사 사장의 비용적인 측면에서 남는 것이 없다고 신세한탄 하기도함.<br/>
-          느낀점으로 건축주의 정밀한 확인이 없다면 시공사 측에서 얼마든지 원가절감이나 비용인상을 할 수도 있겠다고 생각함.
-        </span>
-      },
-    ]
-  },
-  {
-    officeType: "건축사사무소",
-    officeName:"유타건축사사무소 / 서울시",
-    officeRate:9,
-    communication:"매우 만족" as satisfaction,
-    price:"보통" as satisfaction,
-    result:"매우 만족" as satisfaction,
-    keepingDeadline:"매우 만족" as satisfaction,
-    afterService:"매우 만족" as satisfaction,
-    constructor:[
-      {
-        location:"서귀포시",
-        type:"일반주택",
-        rate:9,
-        description:
-        <span>
-          가격적인 측면에서는 타 건축사보다 비쌌지만, 건축주의 라이프스타일을 반영하는 하나의 예술작품처럼 건축물을 대하였음.<br/>
-          유명건축가이기도 하고 결과물적으로도 만족함.
-        </span>
-      },
-    ]
-  }
-];

@@ -1,20 +1,26 @@
 "use client"
 
-import { useRouter } from "next/navigation";
+import { Children } from "@/types/props";
+import { usePathname, useRouter } from "next/navigation";
+import { CSSProperties } from "react";
 
 type RouteButtonProps = {
   url: string
-  children: string
-  className?:string
+  children: Children
+  className?: string
+  style?: CSSProperties
 }
 
 export default function RouteButton(props: RouteButtonProps) {
   const router = useRouter();
-  const { className, url, children } = props;
+  const pathname = usePathname();
+  
+  const { className, url, children, style } = props;
+  
   return (
   <button type="button"
-    style={{backgroundColor:"#101648"}}
-    className={`${className?className:""} px-4 py-2 btn text-white rounded-lg fw-bold fs-5`}
+    style={{...style, color:"#101648"}}
+    className={`${className?className:""} px-4 py-2 btn rounded-lg ${(pathname.includes(url))?"fw-bold":""} align-self-end`}
     onClick={()=>{router.push(url);}}>
     {children}
   </button>

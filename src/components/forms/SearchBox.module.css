@@ -1,7 +1,4 @@
-.input {
-  background-color: #101648;
-}
-
 .input::placeholder {
-  color: gray;
+  color: #101648;
+  font-weight: bold;
 }

@@ -1,30 +1,72 @@
+import CollapsingButton from "@/components/CollapsingButton";
+import RouteButton from "@/components/RouteButton";
+import SigninButton from "@/components/auth/SigninButton";
 import React from "react";
-import Image from 'next/image'
 
 type HeaderProps = {};
 
 export default function Header(props: HeaderProps) {
   return (
-    <div className={`d-flex justify-content-around  mt-5 pb-2 text-white`}
-    // style={{backgroundColor:"#141468"}} sticky-top
+    <div className={`absolute`}
+      style={{color:"#141468", borderBottomStyle:"solid", borderBottomColor:"#101648", borderBottomWidth:"2px"}}// sticky-top
     > 
-      <div className="fs-1 fw-bold align-self-center">
-        <Image
-          className={`mr-auto m-3`}
-          src="/logo1.png"
-          alt="Truss Logo"
-          width={109}
-          height={64}
-          priority
-          style={{ filter: "brightness(0) invert(1)" }}
-        />
-        시공사, 건축사사무소 리뷰 공간
-      </div>
+      <div className="mt-1 pb-1">
+        <div className="container d-flex">
+          <RouteButton url={"/"}
+            className="me-5 ms-4">
+            <img
+              className=""
+              src="/logo_truss.png"
+              alt="Truss Logo"
+              width={70}
+            />
+          </RouteButton>
 
-      <div className="btn-group me-5">
-        <button type="button" className="btn text-white">로그인</button>
-        <button type="button" className="btn text-white">회원가입</button>
+          <div className="d-flex align-items-center me-auto">
+            <RouteButton url={"/"} className="fs-5">
+              홈
+            </RouteButton>
+            {/* <RouteButton url={"/reviews"} className="fs-5">
+              리뷰
+            </RouteButton> */}
+            {/* <RouteButton url={"/house"} className="fs-5">
+              내집찾기
+            </RouteButton> */}
+            {/* <CollapsingButton collapsedId="collapsedBar" className="fs-5">
+              내집찾기
+            </CollapsingButton> */}
+            {/* <RouteButton url={"/community"} className="fs-5">
+              커뮤니티
+            </RouteButton> */}
+            
+          </div>
+
+          <div className="d-flex align-items-center ms-5">
+            {/* <SigninButton/> */}
+            {/* <RouteButton url={"/service"}>
+              기업서비스
+            </RouteButton> */}
+          </div>
+        </div>
+        {/* {collapsedPage} */}
       </div>
     </div>
   );
 }
+
+// const collapsedPage = [
+//   (<div className="collapse collapsedBar row" id={"collapsedBar"}
+//   style={{color:"#141468", borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+//     <div className="col-7 container d-flex align-items-center me-auto">
+//       <RouteButton url={"/reviews"} className="fs-4">
+//         설계
+//       </RouteButton>
+//       <RouteButton url={"/community"} className="fs-4">
+//         시공
+//       </RouteButton>
+//       <RouteButton url={"/posts"} className="fs-4">
+//         관리
+//       </RouteButton>
+//     </div>
+//   </div>)
+// ]
