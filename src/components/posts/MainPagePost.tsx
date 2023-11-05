@@ -23,7 +23,7 @@ export default function MainPagePost(props: MainPagePostProps) {
       className={`${className?className:""} px-4 py-2 btn rounded-lg fw-bold`}
       onClick={()=>{router.push(url);}}>
         <img
-          className=""
+          className="rounded-4"
           src={`${src}`}
           width={250} height={250}/>
       </button>

@@ -1,23 +1,36 @@
-type data = {
-  src: string
-  label: string
-  expl: string
-}
+"use client"
+
+import { getHouses } from "@/api/HouseAPI"
+import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
 
 type CarouselProps = {
   height: number
-  data: data[]
   className: string
 }
 
 export default function Carousel(props: CarouselProps){
-  const { height, data, className } = props;
+  const { height, className } = props;
+  const router = useRouter();
+  
+  const [houseData, setHouseData] = useState(undefined as any);
 
+  useEffect( () => {
+    (async ()=>{
+      const { data, error } = await getHouses();
+      if(!error) setHouseData(data);
+      else console.log(error);
+
+      console.log(houseData);
+    })();
+  },[])
+  
   return (
     <div id="Carousel" className={`carousel slide ${className}`}>
       <div className="carousel-indicators">
-        {data.map((e, i)=>(
+        {houseData?.map((e, i)=>(
           <button
+            key={i}
             type="button"
             data-bs-target="#Carousel"
             data-bs-slide-to={`${i}`}
@@ -37,12 +50,11 @@ export default function Carousel(props: CarouselProps){
           <span className="visually-hidden">Next</span>
         </button>
 
-        {data.map((e, i)=>(
-          <div className={`carousel-item ${i==0?"active":""}`}>
-            <img src={e.src} className="d-block w-100 rounded-4" alt="truss_logo.png" height={height}/>
+        {houseData?.map((e, i)=>(
+          <div key={i} className={`carousel-item ${i==0?"active":""}`}>
+            <img src={e.image} className="d-block w-100 rounded-4" alt="truss_logo.png" height={height} onClick={()=>{router.push(`/${e.id}`);}}/>
             <div className="carousel-caption d-none d-md-block text-start fw-bold text-white" >
-              <h5>{e.label}</h5>
-              <p>{e.expl}</p>
+              <h5 className="fw-bold">{e.title}</h5>
             </div>
           </div>
         ))}

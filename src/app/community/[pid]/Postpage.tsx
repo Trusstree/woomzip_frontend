@@ -27,12 +27,13 @@ export default function Postpage(props: PostpageProps){
   const [postData, setPostData]=useState(undefined as PostData|undefined);
   
   useEffect( () => {
-    const getPostq = async () => {
+    const getPostdata = async () => {
       const { data, error } = await getPost(pid);
       
-      setPostData(data);
+      if(error) console.log(error);
+      else setPostData(data);
     }
-    getPostq();
+    getPostdata();
   },[]);
 
   return (postData?

@@ -1,4 +1,4 @@
-import Postpage from "@/components/posts/Postpage";
+import Postpage from "@/app/community/[pid]/Postpage";
 
 type PageParams = {
   pid: number

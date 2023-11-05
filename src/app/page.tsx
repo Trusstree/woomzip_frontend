@@ -1,31 +1,30 @@
-import SearchBox from "@/components/forms/SearchBox";
-import MainPagePost from "@/components/posts/MainPagePost";
-import Icon from "@/components/posts/Icon";
 import PostMenu from "@/components/posts/PostMenu";
 import Carousel from "@/components/posts/Carousel";
+import { HousePost } from "@/components/house/HousePost";
 
 export default function Home() {
   return (
     <main className={`container px-5`}>
-      {/* 검색창 */}
+      
+      {/* 검색창
       <div className={`my-3`}>
         <SearchBox
           className="text-black"
           placeholder={"찾고 싶은 내용을 검색해보세요!"}
         />
-      </div>
+      </div> */}
 
       {/* 캐러셀 */}
       <div className={`my-3 row`}>
-        <Carousel className={"col-10"} data={data} height={500} />
+        <Carousel className={"col-10"} height={500} />
         <img
-          className="col-2 p-0"
+          className="col-2 p-0 rounded-4"
           alt="main post"
-          src="logo_truss.png"
+          src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/%EA%B4%91%EA%B3%A0+%EC%98%88%EC%8B%9C.PNG"
         />
       </div>
 
-      <PostMenu
+      {/* <PostMenu
         title={"다양한 건축고민을 나누어보세요!"}
         routeUrl={"/community"}
         routeText={"더보기"}>
@@ -36,6 +35,14 @@ export default function Home() {
           <Icon src={"icon_sangahouse.png"} url={"/"}>상가주택</Icon>
           <Icon src={"icon_sanga.png"} url={"/"}>상가</Icon>
         </div>
+      </PostMenu> */}
+
+      <PostMenu
+        title={"1억 미만으로 지을 수 있는 북유럽 스타일 주택들을 구경해보세요!"}
+        routeUrl={"/"}
+        routeText={"더보기"}>
+        <HousePost />
+        
       </PostMenu>
 
       {/* <PostMenu
@@ -50,7 +57,7 @@ export default function Home() {
         </div>
       </PostMenu> */}
 
-      <PostMenu
+      {/* <PostMenu
         title={"건축이 처음이라면? 확인해야 할 정보!"}
         routeUrl={"/posts"}
         routeText={"더보기"}>
@@ -60,7 +67,7 @@ export default function Home() {
           <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
           <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
         </div>
-      </PostMenu>
+      </PostMenu> */}
 
       {/* <PostMenu
         title={"건축주들의 고민상담소, 만담장소"}
@@ -76,33 +83,3 @@ export default function Home() {
     </main>
   );
 }
-
-
-type data = {
-  src: string
-  label: string
-  expl: string
-}
-
-const data = [
-  {
-    src:"Sanga.png",
-    label:"First slide label",
-    expl:"Some representative placeholder content for the first slide."
-  },
-  {
-    src:"Pyramid.png",
-    label:"Second slide label",
-    expl:"Some representative placeholder content for the second slide."
-  },
-  {
-    src:"SangaHouse.png",
-    label:"Third slide label",
-    expl:"Some representative placeholder content for the third slide."
-  },
-  {
-    src:"SoloHouse.png",
-    label:"Fourth slide label",
-    expl:"Some representative placeholder content for the fourth slide."
-  },  
-] as data[];
