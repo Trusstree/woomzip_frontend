@@ -1,5 +1,5 @@
-import BasicCard from '@/components/components/BasicCard'
-import HorizontalScroll from '@/components/HorizontalScroll'
+// import BasicCard from '@/components/components/BasicCard'
+// import HorizontalScroll from '@/components/HorizontalScroll'
 import RouteButton from '@/components/RouteButton'
 
 type DesignData = {
@@ -32,13 +32,13 @@ export default function Home() {
           </div>
 
           <div className={`col-8`}>
-            <HorizontalScroll className='w-50'>
+            {/* <HorizontalScroll className='w-50'>
               {data.map((e, i)=>(
                 <BasicCard key={i} src={e.src} width={300} height={300} title={e.title} className="w-100">
                   {e.desc}
                 </BasicCard>
               ))}
-            </HorizontalScroll>
+            </HorizontalScroll> */}
           </div>
         </div>
       </div>
