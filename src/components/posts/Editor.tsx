@@ -55,7 +55,7 @@ export default function Editor(props: EditorProps) {
     if(error)console.log(error);
   };
 
-  const quillRef = useRef();
+  const quillRef = useRef(null);
 
   const imageHandler = async () => {
     if(document) return;
@@ -170,7 +170,7 @@ export default function Editor(props: EditorProps) {
           />
         </div>
 
-        <ReactQuill
+        {/* <ReactQuill
           ref={quillRef}
           className='mb-5'
           style={{height:"25vw"}}
@@ -180,7 +180,7 @@ export default function Editor(props: EditorProps) {
           formats={formats}
           placeholder={'트러스 포스팅을 위한 플레이스 홀더'}
           theme="snow"
-        />
+        /> */}
 
         <div className='d-flex justify-content-center'>
           <button

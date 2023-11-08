@@ -22,7 +22,7 @@ export default function EditorSaveButton(props: EditorSaveButtonProps) {
     });
     console.log(data);
     if(error)console.log(error);
-  },[postData])
+  },[])
 
   return (
     <button

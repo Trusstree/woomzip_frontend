@@ -1,7 +1,7 @@
 import SearchBar from "@/components/forms/SearchBox";
 import Image from 'next/image'
 import Submit from "@/components/forms/SubmitButton";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -29,7 +29,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer page={"위치 선정"} url={'/service2'} />
+      {/* <Footer page={"위치 선정"} url={'/service2'} /> */}
     </main>
   )
 }

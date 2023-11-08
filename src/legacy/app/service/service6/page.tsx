@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import SearchBar from "@/components/forms/SearchBox";
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
         트러스가 건축주님의 편안한 건축과정을 위한 안내자가 되겠습니다.
       </p>
 
-      <Footer page={"건축의뢰 완료"} />
+      {/* <Footer page={"건축의뢰 완료"} /> */}
     </main>
   )
 }

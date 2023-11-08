@@ -1,6 +1,6 @@
-import BasicCard from "@/components/components/BasicCard";
-import Footer from "@/components/Footer";
-import HorizontalScroll from "@/components/HorizontalScroll";
+// import BasicCard from "@//components/BasicCard";
+// import Footer from "@/components/Footer";
+// import HorizontalScroll from "@/components/HorizontalScroll";
 
 type BuildingData = {
   title: string
@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <main className={`container d-flex justify-content-center flex-column align-items-center`}>
-      <div className={`mt-5`}>
+      {/* <div className={`mt-5`}>
         <h5 className='fw-bold text-start' style={{color:"#1F74F4"}}>주택부터 상가까지</h5>
         <h2 className='fw-bold text-start'>건축하실 건물의 종류를 선택해주세요.</h2>
         <HorizontalScroll>
@@ -41,7 +41,7 @@ export default function Home() {
         </HorizontalScroll>
       </div>
 
-      <Footer page={"건축 종류 선택"} />
+      <Footer page={"건축 종류 선택"} /> */}
     </main>
   )
 }
