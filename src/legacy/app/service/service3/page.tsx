@@ -1,5 +1,5 @@
-import BasicCard from "@/components/components/BasicCard";
-import Footer from "@/components/Footer";
+// import BasicCard from "@/components/components/BasicCard";
+// import Footer from "@/components/Footer";
 
 type DesignData = {
   title: string
@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <main className={`container d-flex justify-content-center flex-column align-items-center`}>
-      <div className={`mt-5`}>
+      {/* <div className={`mt-5`}>
 
         <div className="row">
           <div className="col-5">
@@ -70,7 +70,7 @@ export default function Home() {
         </div>
 
       </div>
-      <Footer page={"디자인 선택"} />
+      <Footer page={"디자인 선택"} /> */}
     </main>
   )
 }

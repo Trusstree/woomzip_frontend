@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import SearchBox from "@/components/forms/SearchBox";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer page={"세부내역 작성"} url={'/service6'} />
+      {/* <Footer page={"세부내역 작성"} url={'/service6'} /> */}
     </main>
   )
 }

@@ -137,12 +137,12 @@ export function HouseClient (props: HouseComponentProps) {
         title={`평점 ${getAvg(houseData).toFixed(1)}/5.0`}
         >
         <div className="d-flex justify-content-center">
-          {houseData.ratingPost?houseData.ratingPost.map((e)=>(
-            <MainPagePost url={"/"} src={e.src}>
+          {houseData.ratingPost?houseData.ratingPost.map((e, i)=>(
+            <MainPagePost url={"/"} src={e.src} key={i}>
               <div>{e.title}</div>
               <div>({e.rate})</div>
             </MainPagePost>
-          )):<div>"평점 없음"</div>}
+          )):<div>평점 없음</div>}
         </div>
       </PostMenu>
 
