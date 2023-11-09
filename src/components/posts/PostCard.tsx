@@ -7,6 +7,7 @@ type PostCardProps = {
 }
 
 type DataProps = {
+  id: number,
   category: string,
   title: string,
   text: string,
@@ -24,7 +25,7 @@ export default function PostCard (props: PostCardProps) {
   
   return (
     <div className="col-md-4 col-lg-3">
-      <div className="card rounded-5 p-2" onClick={()=>{router.push(`/community?posts=${data.title}`);}}>
+      <div className="card rounded-5 p-2" onClick={()=>{router.push(`/community/${data.id}`);}}>
         <div className={`card-header rounded-top-5 bg-${"white"} border-${"white"}`}>
           <div className="fw-normal d-flex justify-content-between mx-2">
           <span>{data.category}</span>
