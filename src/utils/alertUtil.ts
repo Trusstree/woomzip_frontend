@@ -10,9 +10,9 @@ export const alertSuccess = (title: string, text: string) => {
 };
 
 // 성공 확인 질문
-export const confirmSuccess = async (title: string, text: string, confirmText: string, denyText: string) => {
+export const confirmSuccess = async (title: string, text: string, confirmText: string, denyText: string, imgSrc?: string) => {
   return Swal.fire({
-    icon: 'success',
+    // icon: 'success',
     title: title,
     text: text,
     allowOutsideClick: false,
@@ -21,6 +21,30 @@ export const confirmSuccess = async (title: string, text: string, confirmText: s
     confirmButtonText: confirmText,
     confirmButtonColor: '#81c147',
     denyButtonText: denyText,
-    denyButtonColor: '#d33'
+    denyButtonColor: '#d33',
+    imageUrl: imgSrc?imgSrc:""
   });
 };
+
+export const confirmThumbnail =async ( ) => {
+  const { value: file } = await Swal.fire({
+    title: "Select image",
+    input: "file",
+    inputAttributes: {
+      "accept": "image/*",
+      "aria-label": "Upload your profile picture"
+    }
+  });
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      Swal.fire({
+        title: "Your uploaded picture",
+        imageUrl: e.target.result.toString(),
+        imageAlt: "The uploaded picture"
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+}

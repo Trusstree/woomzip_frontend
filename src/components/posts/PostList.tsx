@@ -34,18 +34,16 @@ export default function PostList (props: PostListProps) {
 			if(error) console.log(error);
 			else {
 				console.log(data);
-				setPosts(data);
+				setPosts(data.slice(0,4));
 			}
 		})();
 	},[]);
 
 	return(
-		<div>
-			<div className={"row g-4 my-2"}>
-				{posts.map((e: any, i:number)=>(
-					<PostCard data={e} key={i}/>
-				))}
-			</div>
-		</div>
+		<>
+			{posts.map((e: any, i:number)=>(
+				<PostCard data={e} key={i} className={``}/>
+			))}
+		</>
 	)
 }

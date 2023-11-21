@@ -52,7 +52,7 @@ export default function Carousel(props: CarouselProps){
 
         {houseData?.map((e, i)=>(
           <div key={i} className={`carousel-item ${i==0?"active":""}`}>
-            <img src={e.image} className="d-block w-100 rounded-4" alt="truss_logo.png" height={height} onClick={()=>{router.push(`/${e.id}`);}}/>
+            <img src={e.image} className="d-block w-100 rounded-4" alt="truss_logo.png" height={height} onClick={()=>{router.push(`/house/${e.id}`);}}/>
             <div className="carousel-caption d-none d-md-block text-start fw-bold text-white" >
               <h5 className="fw-bold">{e.title}</h5>
             </div>

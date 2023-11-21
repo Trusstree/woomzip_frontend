@@ -29,7 +29,7 @@ export default function Header(props: HeaderProps) {
             {/* <RouteButton url={"/reviews"} className="fs-5">
               리뷰
             </RouteButton> */}
-            {/* <RouteButton url={"/house"} className="fs-5">
+            <RouteButton url={"/house"} className="fs-5">
               내집찾기
             </RouteButton> 
             {/* <CollapsingButton collapsedId="collapsedBar" className="fs-5">

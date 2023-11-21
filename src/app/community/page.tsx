@@ -9,14 +9,14 @@ export default function Home() {
   return (
     <main className={`container my-2`}>
       {/* search bar */}
-      <div className={`my-2`}>
+      {/* <div className={`my-2`}>
         <SearchBox
           className="text-black"
           placeholder={"찾고 싶은 내용을 검색해보세요!"}
         />
-      </div>
+      </div> */}
 
-      <PostMenu
+      {/* <PostMenu
         title={"관심있는 주제를 선택해보세요!"}>
         <div className="d-flex">
         <Icon src={"icon_moduledhouse.png"} url={`/community?search=모듈형주택`}>모듈형주택</Icon>
@@ -25,7 +25,7 @@ export default function Home() {
           <Icon src={"icon_sangahouse.png"} url={`/community?search=상가주택`}>상가주택</Icon>
           <Icon src={"icon_sanga.png"} url={`/community?search=상가`}>상가</Icon>
         </div>
-      </PostMenu>
+      </PostMenu> */}
 
       <PostMenu
         title={"다양한 건축고민을 나누어보세요!"}

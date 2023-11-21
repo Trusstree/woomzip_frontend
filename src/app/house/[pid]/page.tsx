@@ -1,4 +1,4 @@
-import { HouseClient } from "@/app/[pid]/HouseClient";
+import { HouseClient } from "@/app/house/[pid]/HouseClient";
 
 
 type PageParams = {

@@ -1,9 +1,11 @@
 "use client"
 
 import { useRouter } from "next/navigation";
+import DOMPurify from "dompurify";
 
 type PostCardProps = {
-  data: DataProps
+  data: DataProps,
+  className?: string
 }
 
 type DataProps = {
@@ -20,11 +22,11 @@ type DataProps = {
 }
 
 export default function PostCard (props: PostCardProps) {
-  const { data } = props;
+  const { data, className } = props;
   const router = useRouter();
   
   return (
-    <div className="col-md-4 col-lg-3">
+    <div className={`${className?className:""} col-md-4 col-lg-3`}>
       <div className="card rounded-5 p-2" onClick={()=>{router.push(`/community/${data.id}`);}}>
         <div className={`card-header rounded-top-5 bg-${"white"} border-${"white"}`}>
           <div className="fw-normal d-flex justify-content-between mx-2">
@@ -34,13 +36,17 @@ export default function PostCard (props: PostCardProps) {
           <div className="fw-bold my-2">{data.title}</div>
         </div>
         <div className="card-body fw-normal">
-          {data.text}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(String(data.text)),
+            }}
+          />
         </div>
         <div className={`card-footer rounded-bottom-5 bg-${"white"} border-${"white"} fw-normal`}>
-          <div className="d-flex">
+          {/* <div className="d-flex">
             <img src={data.profilePicture} width={40} height={40}/>
             <div className="mx-3 fw-bold align-self-center">{data.author}</div>
-          </div>
+          </div> */}
           <div className="fw-normal d-flex justify-content-end">
             <div className="m-2">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" width={25}>

@@ -21,7 +21,7 @@ export default function PostMenu(props: PostMenuProps) {
         </RouteButton>)
         :undefined}
       </div>
-      <div>
+      <div className="row g-4 my-2">
         {children}
       </div>
     </div>
