@@ -9,8 +9,6 @@ import { useSession } from "next-auth/react";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 
 export default function AdminClient() {
-  const { data: session } = useSession();
-  
   const [houseData, setHouseData] = useState({
     title : "test 1",
     image: "",
@@ -26,11 +24,6 @@ export default function AdminClient() {
     toiletNumber : 0,
     hasLoft : true
   });
-
-  useEffect(()=>{
-    // console.log(session); // 로그인 정보 확인용
-  },[])
-
 
   const handleTitle = (e:ChangeEvent<HTMLInputElement>, name:string):ChangeEventHandler<HTMLInputElement> => {
     if (e) e.preventDefault();

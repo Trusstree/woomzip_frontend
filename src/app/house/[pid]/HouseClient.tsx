@@ -151,7 +151,7 @@ export function HouseClient (props: HouseComponentProps) {
         title={"1억 미만으로 지을 수 있는 북유럽 스타일 주택들을 구경해보세요!"}
         routeUrl={"/posts"}
         routeText={"더보기"}>
-        <HousePost />
+        <HousePost number={4}/>
       </PostMenu>
     </div>
   ):(

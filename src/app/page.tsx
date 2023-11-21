@@ -1,6 +1,8 @@
 import PostMenu from "@/components/posts/PostMenu";
 import Carousel from "@/components/posts/Carousel";
 import { HousePost } from "@/components/house/HousePost";
+import MainPagePost from "@/components/posts/MainPagePost";
+import PostList from "@/components/posts/PostList";
 
 export default function Home() {
   return (
@@ -20,7 +22,7 @@ export default function Home() {
         <img
           className="col-2 p-0 rounded-4"
           alt="main post"
-          src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/%EA%B4%91%EA%B3%A0+%EC%98%88%EC%8B%9C.PNG"
+          src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
         />
       </div>
 
@@ -41,7 +43,7 @@ export default function Home() {
         title={"1억 미만으로 지을 수 있는 북유럽 스타일 주택들을 구경해보세요!"}
         routeUrl={"/"}
         routeText={"더보기"}>
-        <HousePost />
+        <HousePost number={4}/>
         
       </PostMenu>
 
@@ -57,17 +59,12 @@ export default function Home() {
         </div>
       </PostMenu> */}
 
-      {/* <PostMenu
+      <PostMenu
         title={"건축이 처음이라면? 확인해야 할 정보!"}
         routeUrl={"/posts"}
         routeText={"더보기"}>
-        <div className="d-flex justify-content-center">
-          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
-          <MainPagePost url={"/"} src={"logo_truss.png"}>ㅎㅇㅎㅇ</MainPagePost>
-        </div>
-      </PostMenu> */}
+        <PostList />
+      </PostMenu>
 
       {/* <PostMenu
         title={"건축주들의 고민상담소, 만담장소"}

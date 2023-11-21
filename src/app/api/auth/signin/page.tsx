@@ -9,7 +9,7 @@ export default async function SignInPage() {
     return { redirect: { destination: '/' } }
   }
 
-  const providers = await getProviders()
+  const providers = await getProviders();
 
   return (
     <main className={`container my-5`}>

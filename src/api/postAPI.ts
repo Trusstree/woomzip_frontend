@@ -1,11 +1,11 @@
 import { apiClient } from "@/configs/apiClient";
 
-export const getPosts = async () => {
+export const getPosts = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
     const result = await apiClient.get(`/api/post`, {
-      params: {},
+      params: params,
       headers: {}
     });
     data = result?.data;

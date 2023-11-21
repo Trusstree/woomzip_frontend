@@ -3,7 +3,7 @@
 import 'react-quill/dist/quill.snow.css';
 import { ChangeEvent, useCallback, useMemo, useRef, useState } from 'react';
 import ReactQuill from 'react-quill';
-import * as DOMPurify from "dompurify";
+import DOMPurify from "dompurify";
 import useForm from '@/hooks/useForm';
 import SubmitButton from '../forms/SubmitButton';
 import { isRequired } from '@/utils/validator';
@@ -11,6 +11,8 @@ import { postPost } from '@/api/postAPI';
 import TextBox from '../forms/Textbox';
 import { confirmSuccess } from '@/utils/alertUtil';
 import SelectBox from '../forms/SelectBox';
+import { setS3Url } from '@/utils/s3Util';
+import Swal from 'sweetalert2';
 
 type EditorProps = {
 }
@@ -43,6 +45,7 @@ export default function Editor(props: EditorProps) {
   const [dataTitle, setDataTitle] = useState("");
   const [dataText, setDataText] = useState("");
   const [dataCategory, setDataCategory] = useState("일반");
+  const [dataThumbnail, setDataThumbnail] = useState("");
 
   const callback = async (postData:any)=>{
     const { data, error } = await postPost({
@@ -58,66 +61,25 @@ export default function Editor(props: EditorProps) {
   const quillRef = useRef(null);
 
   const imageHandler = async () => {
-    if(document) return;
+    if(!document) return;
     const input = document.createElement("input");
     input.setAttribute("type", "file");
     input.setAttribute("accept", "image/*");
     input.click();
 
-    
+    input.addEventListener("change", async () => {
+      //이미지를 담아 전송할 file을 만든다
+      const file = input.files?.[0];
+      console.log(file);
 
-    // input.addEventListener("change", async () => {
-    //   //생성한 s3 관련 설정들
-    //   const config = {
-    //     bucketName: process.env.AWS_S3_BUCKETNAME,
-    //     region: process.env.AWS_S3_REGION,
-    //     accessKeyId: process.env.AWS_S3_ACCESS_KEY,
-    //     secretAccessKey: process.env.AWS_S3_SECRET,
-    //   };
-    //   AWS.config.update(config);
-
-    //   //이미지를 담아 전송할 file을 만든다
-    //   const file = input.files?.[0];
-    //   console.log(file);
-    //   try {
-    //     //업로드할 파일의 이름으로 Date 사용
-    //     const name = Date.now();
-        
-
-    //     //앞서 생성한 file을 담아 s3에 업로드하는 객체를 만든다
-    //     const upload = new AWS.S3.ManagedUpload({
-    //       params: {
-    //         ACL: "public-read",
-    //         Bucket: process.env.AWS_S3_BUCKETNAME, //버킷 이름
-    //         Key: `upload/${name}`,
-    //         Body: file,
-    //       },
-    //     });
-
-  //       //이미지 업로드 후 곧바로 업로드 된 이미지 url을 가져오기
-  //       //useRef를 사용해 에디터에 접근한 후 에디터의 현재 커서 위치에 이미지 삽입
-
-  //       const IMG_URL = await upload.promise().then((res) => res.Location);
-  //       console.log(IMG_URL);
-  //       // const editor = quillRef.current.getEditor();
-  //       // const range = editor.getSelection();
-
-  //       // // 가져온 위치에 이미지를 삽입한다
-  //       // editor.insertEmbed(range.index, "image", IMG_URL);
-
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   });
+      const key = "key";
+      await setS3Url(key , file);
+      const editor = quillRef.current.getEditor();
+      const range = editor.getSelection();
+      // 가져온 위치에 이미지를 삽입한다
+      editor.insertEmbed(range.index, "image", `https://trussbucket.s3.ap-northeast-2.amazonaws.com/${key}`);
+    });
   };
-
-
-
-
-
-
-
-
 
   const modules = useMemo(() => ({
     toolbar: {
@@ -125,12 +87,12 @@ export default function Editor(props: EditorProps) {
         [{ header: [1, 2, 3, 4, 5, false] }],
         ['bold', 'italic', 'underline', 'strike'],
         [{ list: 'ordered' }, { list: 'bullet' }, { align: [] },],
-        ['image'],
+        // ['image'],
         ['clean']
       ],
-      handlers: {
-        image: imageHandler,
-      },
+      // handlers: {
+      //   image: imageHandler,
+      // },
     },
     clipboard: {
       matchVisual: false,
@@ -139,15 +101,34 @@ export default function Editor(props: EditorProps) {
 
   const handleSubmit = useCallback(async ()=>{
 
-    const result = await confirmSuccess("포스팅 확인", "현재 입력하신 정보가 모두 맞습니까?", '맞습니다!', '아닙니다.');
+    const { value: file } = await Swal.fire({
+      title: "Select image",
+      input: "file",
+      inputAttributes: {
+        "accept": "image/*",
+        "aria-label": "Upload your profile picture"
+      }
+    });
+    console.log(file);
 
+    const key = "thumbnail";
+    await setS3Url(key , file);
+    
+    const result = await confirmSuccess("포스팅 확인", "현재 입력하신 정보가 모두 맞습니까?", '맞습니다!', '아닙니다.', `https://trussbucket.s3.ap-northeast-2.amazonaws.com/${key}`);
     if (result.isConfirmed) {
-      console.log({
-        "dataTitle":dataTitle,
-        "dataText":dataText,
-        "dataCategory":dataCategory
+      postPost({
+        "title": dataTitle,
+        "text": dataText,
+        "category": dataCategory,
+        "thumbnail": `https://trussbucket.s3.ap-northeast-2.amazonaws.com/${key}`,
+        "author": "",
+        "likeCount": 0,
+        "viewCount": 0,
+        "comments": ""
       })
     }
+
+    
     
   },[dataTitle, dataText]);
 
@@ -170,7 +151,7 @@ export default function Editor(props: EditorProps) {
           />
         </div>
 
-        {/* <ReactQuill
+        <ReactQuill
           ref={quillRef}
           className='mb-5'
           style={{height:"25vw"}}
@@ -180,7 +161,7 @@ export default function Editor(props: EditorProps) {
           formats={formats}
           placeholder={'트러스 포스팅을 위한 플레이스 홀더'}
           theme="snow"
-        /> */}
+        />
 
         <div className='d-flex justify-content-center'>
           <button
