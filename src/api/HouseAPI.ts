@@ -37,7 +37,7 @@ export const postHouse = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/api/house/`, house, { headers: {} });
+    const result = await apiClient.post(`/api/house`, house, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;
