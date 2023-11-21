@@ -18,7 +18,7 @@ export function HousePost(props: HousePostProps) {
       if(!error) setHouseData(data);
       else console.log(error);
 
-      console.log(houseData.slice(0, number));
+      // console.log(houseData?.slice(0, number));
     })();
   },[])
 

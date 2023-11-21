@@ -20,8 +20,6 @@ export default function Carousel(props: CarouselProps){
       const { data, error } = await getHouses();
       if(!error) setHouseData(data);
       else console.log(error);
-
-      console.log(houseData);
     })();
   },[])
   
