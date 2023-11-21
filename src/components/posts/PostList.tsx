@@ -28,12 +28,10 @@ export default function PostList (props: PostListProps) {
 	
 	useEffect(() => {
 		( async() => {
-			console.log(searchParam.toString())
 			const { data, error } = await getPosts(searchParam);
 			
 			if(error) console.log(error);
 			else {
-				console.log(data);
 				setPosts(data.slice(0,4));
 			}
 		})();
