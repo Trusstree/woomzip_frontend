@@ -21,6 +21,7 @@ type HouseData = {
   image: string
   subImage1: string
   subImage2: string
+  detailImage: string
   buildingImage: string
   blueprint: string
   costImage: string
@@ -116,7 +117,7 @@ export function HouseClient (props: HouseComponentProps) {
         <div className="collapse collapsedExplanation row mb-3" id={"collapsedExplanation"}>
           <img
             alt="main post"
-            src="Newspaper.png"
+            src={houseData.detailImage}
           />
         </div>
         <button
