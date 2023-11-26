@@ -14,6 +14,7 @@ export default function AdminClient() {
     image: "",
     subImage1: "",
     subImage2: "",
+    detailImage: "",
     buildingImage: "",
     blueprint: "",
     costImage: "",
@@ -109,6 +110,21 @@ export default function AdminClient() {
               multiple
               type="file" 
               onChange={(e)=>{testFunction(e, "subImage2")}}
+            />
+          </div>
+          <img src={houseData["subImage2"]} width={200} height={100}/>
+        </div>
+
+        {/* detailImage */}
+        <div className="d-flex justify-content-center align-items-center">
+          <div>
+            <label htmlFor={"detailImage"}>detailImage</label>
+            <input
+              id={"detailImage"}
+              accept="image/*"
+              multiple
+              type="file" 
+              onChange={(e)=>{testFunction(e, "detailImage")}}
             />
           </div>
           <img src={houseData["subImage2"]} width={200} height={100}/>
