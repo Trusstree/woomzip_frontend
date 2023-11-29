@@ -1,6 +1,6 @@
 "use client"
 
-import { getHouseCount, postHouse } from "@/api/HouseAPI";
+import { getHouseLast, postHouse } from "@/api/HouseAPI";
 import SubmitButton from "@/components/forms/SubmitButton";
 import useForm from "@/hooks/useForm";
 import { getS3Url, setS3Url } from "@/utils/s3Util";
@@ -23,7 +23,7 @@ export default function AdminClient() {
     floorSpace : 0,
     roomNumber : 0,
     toiletNumber : 0,
-    hasLoft : true
+    hasLoft : 1
   });
 
   const handleTitle = (e:ChangeEvent<HTMLInputElement>, name:string):ChangeEventHandler<HTMLInputElement> => {
@@ -41,8 +41,10 @@ export default function AdminClient() {
 
   const testFunction = async (e:ChangeEvent<HTMLInputElement>, name:string) => {
     const img = e.target.files[0];
-    const count = await getHouseCount();
-    const pid = count.data+1;
+    const count = await getHouseLast();
+    console.log(count.data?.id);
+    console.log(count.error);
+    const pid = count.data?count.data.id+1:1;
     const {response, error} = await setS3Url(`houses/${pid}/${name}.${img.type.split("/")[1]}`, img);
     if(!error) {
       setHouseData((oldValues) => (
@@ -127,7 +129,7 @@ export default function AdminClient() {
               onChange={(e)=>{testFunction(e, "detailImage")}}
             />
           </div>
-          <img src={houseData["subImage2"]} width={200} height={100}/>
+          <img src={houseData["detailImage"]} width={200} height={100}/>
         </div>
 
         {/* buildingImage */}
@@ -237,6 +239,36 @@ export default function AdminClient() {
           />
           <span>{houseData["toiletNumber"]!=0 &&houseData["toiletNumber"]}</span>
         </div>
+
+        {/* <div className="form-check">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="flexRadioDefault"
+            id="flexRadioDefault1"
+            value={houseData["hasLoft"]}
+            onChange={()=>{
+              houseData["hasLoft"]=1;
+            }}
+            checked/>
+          <label className="form-check-label" htmlFor="flexRadioDefault1">
+            yes
+          </label>
+        </div>
+        <div className="form-check">
+          <input
+          className="form-check-input"
+          type="radio"
+          name="flexRadioDefault"
+          id="flexRadioDefault2"
+          value={houseData["hasLoft"]}
+          onChange={()=>{
+            houseData["hasLoft"]=0;
+          }}/>
+          <label className="form-check-label" htmlFor="flexRadioDefault2">
+            no
+          </label>
+        </div> */}
       </div>
 
       <div className="d-flex justify-content-center">

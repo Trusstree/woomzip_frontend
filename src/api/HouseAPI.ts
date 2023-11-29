@@ -1,11 +1,11 @@
 import { apiClient } from "@/configs/apiClient";
 
-export const getHouses = async () => {
+export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
     const result = await apiClient.get(`/api/house`, {
-      params: {},
+      params: params,
       headers: {}
     });
     data = result?.data;
@@ -46,11 +46,14 @@ export const postHouse = async (house: any) => {
   return { data, error };
 };
 
-export const getHouseCount = async () => {
+export const getHouseLast = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/house/count/`, { headers: {} });
+    const result = await apiClient.get(`/api/house/last`, {
+      params: {},
+      headers: {}
+    });
     data = result?.data;
   } catch (err) {
     error = err;

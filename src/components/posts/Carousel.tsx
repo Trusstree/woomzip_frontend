@@ -7,17 +7,22 @@ import { useEffect, useState } from "react"
 type CarouselProps = {
   height: number
   className: string
+  skip: number
+  limit: number
 }
 
 export default function Carousel(props: CarouselProps){
-  const { height, className } = props;
+  const { height, className, skip, limit } = props;
   const router = useRouter();
   
   const [houseData, setHouseData] = useState(undefined as any);
 
   useEffect( () => {
     (async ()=>{
-      const { data, error } = await getHouses();
+      const { data, error } = await getHouses({
+        skip: skip,
+        limit: limit
+      });
       if(!error) setHouseData(data);
       else console.log(error);
     })();
@@ -50,9 +55,16 @@ export default function Carousel(props: CarouselProps){
 
         {houseData?.map((e, i)=>(
           <div key={i} className={`carousel-item ${i==0?"active":""}`}>
-            <img src={e.image} className="d-block w-100 rounded-4" alt="truss_logo.png" height={height} onClick={()=>{router.push(`/house/${e.id}`);}}/>
+            <img
+              src={e.image}
+              className="d-block w-100 rounded-4"
+              alt="truss_logo.png"
+              height={height}
+              onClick={()=>{router.push(`/house/${e.id}`);}}
+              style={{objectFit:"cover"}}/>
             <div className="carousel-caption d-none d-md-block text-start fw-bold text-white" >
-              <h5 className="fw-bold">{e.title}</h5>
+              <h3 className="fw-bold my-0">{e.title}</h3>
+              <span className="my-0">#{e.price}만원 #{e.floorSpace}평 #방{e.roomNumber}개 #화장실{e.toiletNumber}개</span>
             </div>
           </div>
         ))}

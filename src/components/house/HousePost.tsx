@@ -5,22 +5,27 @@ import { useEffect, useState } from "react";
 import MainPagePost from "../posts/MainPagePost";
 
 type HousePostProps = {
-  number: number;
+  skip: number;
+  limit: number;
+  searchCondition: any;
 }
 
 export function HousePost(props: HousePostProps) {
-  const { number } = props;
+  const { skip, limit, searchCondition } = props;
   const [houseData, setHouseData] = useState(undefined as any);
 
   useEffect( () => {
     (async ()=>{
-      const { data, error } = await getHouses();
+      const params={
+        skip: skip,
+        limit: limit,
+        ...searchCondition
+      };
+      const { data, error } = await getHouses(params);
       if(!error) setHouseData(data);
       else console.log(error);
-
-      // console.log(houseData?.slice(0, number));
     })();
-  },[])
+  },[searchCondition])
 
   return (
     <>

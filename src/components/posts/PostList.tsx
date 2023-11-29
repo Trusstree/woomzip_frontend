@@ -28,7 +28,6 @@ export default function PostList (props: PostListProps) {
 	
 	useEffect(() => {
 		( async() => {
-			console.log(searchParam.get("key"));
 			const { data, error } = await getPosts(searchParam.get("key"));
 			
 			if(error) console.log(error);

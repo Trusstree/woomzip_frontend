@@ -14,13 +14,15 @@ type RouteButtonProps = {
 export default function RouteButton(props: RouteButtonProps) {
   const router = useRouter();
   const pathname = usePathname();
-  
+
   const { className, url, children, style } = props;
-  
+
+  let path=pathname.split("/")[1];
+
   return (
   <button type="button"
     style={{...style, color:"#101648"}}
-    className={`${className?className:""} px-4 py-2 btn rounded-lg ${(pathname.includes(url))?"fw-bold":""} align-self-end`}
+    className={`${className?className:""} px-4 py-2 btn rounded-lg ${`/${path}`==url?"fw-bold":""} align-self-end`}
     onClick={()=>{router.push(url);}}>
     {children}
   </button>

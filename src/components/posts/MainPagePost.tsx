@@ -18,15 +18,16 @@ export default function MainPagePost(props: MainPagePostProps) {
 
   return (
     <div className="col-md-4 col-lg-3">
-      <div className="d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center w-100">
         <button type="button"
         style={{...style, color:"#101648"}}
-        className={`${className?className:""} px-4 py-2 btn rounded-lg fw-bold`}
+        className={`${className?className:""} d-flex btn rounded-lg fw-bold p-0 w-100`}
         onClick={()=>{router.push(url);}}>
           <img
-            className="rounded-4"
+            className="rounded-4 w-100 m-0 p-0"
             src={`${src}`}
-            width={250} height={250}/>
+            width={250} height={250}
+            style={{objectFit:"cover"}}/>
         </button>
         <div className="w-100 text-left px-4">
           {children}
