@@ -102,12 +102,13 @@ export function HouseClient (props: HouseComponentProps) {
       <div>
         <PostMenu
           title={"집 상세정보"}
-          routeUrl={"/posts"}>
+          routeUrl={"/posts"}
+          routeText={"더보기"}>
           <div className="d-flex justify-content-center">
-            <MainPagePost url={"/"} src={houseData.buildingImage}>완공 사진</MainPagePost>
-            <MainPagePost url={"/"} src={houseData.blueprint}>설계도</MainPagePost>
-            <MainPagePost url={"/"} src={houseData.costImage}>원가표</MainPagePost>
-            <MainPagePost url={"/"} src={houseData.officeImage}>책임시공사</MainPagePost>
+            <MainPagePost url={"/"} src={houseData.buildingImage}>실외 사진</MainPagePost>
+            <MainPagePost url={"/"} src={houseData.blueprint}>실내 사진</MainPagePost>
+            <MainPagePost url={"/"} src={houseData.costImage}>설계구조</MainPagePost>
+            <MainPagePost url={"/"} src={houseData.officeImage}>판매자정보</MainPagePost>
           </div>
         </PostMenu>
       </div>
@@ -136,14 +137,20 @@ export function HouseClient (props: HouseComponentProps) {
       {/* 평점 */}
       <PostMenu
         title={`평점 ${getAvg(houseData).toFixed(1)}/5.0`}
+        routeUrl={"/posts"}
         >
         <div className="d-flex justify-content-center">
-          {houseData.ratingPost?houseData.ratingPost.map((e, i)=>(
+          {
+          houseData.ratingPost?houseData.ratingPost.map((e, i)=>(
             <MainPagePost url={"/"} src={e.src} key={i}>
               <div>{e.title}</div>
               <div>({e.rate})</div>
             </MainPagePost>
-          )):<div>평점 없음</div>}
+          )):
+          <div>
+            평점이 없습니다. 가장 먼저 리뷰를 남겨보세요!
+          </div>
+          }
         </div>
       </PostMenu>
 
@@ -152,7 +159,7 @@ export function HouseClient (props: HouseComponentProps) {
         title={"1억 미만으로 지을 수 있는 북유럽 스타일 주택들을 구경해보세요!"}
         routeUrl={"/posts"}
         routeText={"더보기"}>
-        <HousePost number={4}/>
+        <HousePost />
       </PostMenu>
     </div>
   ):(
