@@ -7,7 +7,7 @@ import MainPagePost from "../posts/MainPagePost";
 type HousePostProps = {
   skip: number;
   limit: number;
-  searchCondition: any;
+  searchCondition?: any;
 }
 
 export function HousePost(props: HousePostProps) {
@@ -21,6 +21,8 @@ export function HousePost(props: HousePostProps) {
         limit: limit,
         ...searchCondition
       };
+
+      console.log(params)
       const { data, error } = await getHouses(params);
       if(!error) setHouseData(data);
       else console.log(error);
