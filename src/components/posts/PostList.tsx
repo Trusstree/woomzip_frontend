@@ -19,10 +19,12 @@ type Post = {
 }
 
 type PostListProps = {
+	skip: number;
+  limit: number;
 }
 
 export default function PostList (props: PostListProps) {
-	const { } = props;
+	const { skip, limit } = props;
   const [posts, setPosts] = useState([] as Post[]);
 	const searchParam = useSearchParams(); 
 	
@@ -32,7 +34,7 @@ export default function PostList (props: PostListProps) {
 			
 			if(error) console.log(error);
 			else {
-				setPosts(data.slice(0,4));
+				setPosts(data.slice(skip,limit));
 			}
 		})();
 	},[]);

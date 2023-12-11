@@ -10,10 +10,10 @@ export default function Header(props: HeaderProps) {
     <div className={`absolute`}
       style={{color:"#141468", borderBottomStyle:"solid", borderBottomColor:"#101648", borderBottomWidth:"2px"}}// sticky-top
     > 
-      <div className="mt-1 pb-1">
-        <div className="container d-flex">
+      <div className="container">
+        <div className="d-flex">
           <RouteButton url={"/"}
-            className="me-5 ms-4">
+            className="me-3 ms-4">
             <img
               className=""
               src="/logo_truss.png"
@@ -38,7 +38,6 @@ export default function Header(props: HeaderProps) {
             <RouteButton url={"/community"} className="fs-5">
               커뮤니티
             </RouteButton>
-            
           </div>
 
           <div className="d-flex align-items-center ms-5">

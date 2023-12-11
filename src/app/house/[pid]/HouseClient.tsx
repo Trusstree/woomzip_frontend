@@ -57,7 +57,7 @@ export function HouseClient (props: HouseComponentProps) {
   }
 
   return houseData?(
-    <div>
+    <>
       {/* 제목 */}
       <div className={`mt-5 mb-3`}>
         <div className="fs-1 fw-bold">{houseData.title}</div>
@@ -72,32 +72,33 @@ export function HouseClient (props: HouseComponentProps) {
       </div>
 
       {/* 사진 */}
-      <div className={`row justify-content-center`}>
-        <div className="col-8 m-0 p-0">
-          <img
-            height={600}
-            alt="main BoardComponent"
-            src={houseData.image}
-            className="rounded-5 w-100 p-1"
-          />
-        </div>
+      <div className={`d-flex justify-content-center`}>
+        <div className={`row w-100`}>
+          <div className="col-8 m-0 p-0">
+            <img
+              height={600}
+              alt="main BoardComponent"
+              src={houseData.image}
+              className="rounded-5 w-100 p-1"
+            />
+          </div>
 
-        <div className="col-4 m-0 p-0">
-          <img
-            height={300}
-            alt="sub post 1"
-            src={houseData.subImage1}
-            className="rounded-5 w-100 p-1"
-          />
-          <img
-            height={300}
-            alt="sub post 2"
-            src={houseData.subImage2}
-            className="rounded-5 w-100 p-1"
-          />
+          <div className="col-4 m-0 p-0">
+            <img
+              height={300}
+              alt="sub post 1"
+              src={houseData.subImage1}
+              className="rounded-5 w-100 p-1"
+            />
+            <img
+              height={300}
+              alt="sub post 2"
+              src={houseData.subImage2}
+              className="rounded-5 w-100 p-1"
+            />
+          </div>
         </div>
       </div>
-
       {/* 상세정보 */}
       <div>
         <PostMenu
@@ -161,10 +162,10 @@ export function HouseClient (props: HouseComponentProps) {
         routeText={"더보기"}>
         <HousePost skip={0} limit={0}/>
       </PostMenu>
-    </div>
+    </>
   ):(
-    <div>
+    <>
       로딩 중
-    </div>
+    </>
   )
 }

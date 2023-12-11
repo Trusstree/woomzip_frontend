@@ -38,7 +38,9 @@ export default function RootLayout({children, }: {children: React.ReactNode, }) 
       <body className={inter.className}>
         <AuthSession>
           <Header />
+          <main className={`container px-5`}>
           {children}
+          </main>
           <Footer />
         </AuthSession>
       </body>
