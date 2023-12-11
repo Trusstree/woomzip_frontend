@@ -24,7 +24,7 @@ export default function MainPagePost(props: MainPagePostProps) {
         className={`${className?className:""} d-flex btn rounded-lg fw-bold p-0 w-100`}
         onClick={()=>{router.push(url);}}>
           <img
-            className="rounded-4 w-100 m-0 p-0"
+            className="rounded-4 w-100 m-0 p-1"
             src={`${src}`}
             width={250} height={250}
             style={{objectFit:"cover"}}/>

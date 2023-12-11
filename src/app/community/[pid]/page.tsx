@@ -1,4 +1,4 @@
-import Postpage from "@/app/community/[pid]/Postpage";
+import PostClient from "@/app/community/[pid]/PostClient";
 
 type PageParams = {
   pid: number
@@ -8,8 +8,8 @@ export default function page( {params} : {params: PageParams} ) {
   const { pid } = params;
 
   return (
-    <div>
-      <Postpage pid={pid} />
-    </div>
+    <main className={`container px-5`}>
+      <PostClient pid={pid} />
+    </main>
   );
 }

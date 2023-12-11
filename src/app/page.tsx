@@ -6,7 +6,6 @@ import PostList from "@/components/posts/PostList";
 export default function Home() {
   return (
     <main className={`container px-5`}>
-      
       {/* 검색창
       <div className={`my-3`}>
         <SearchBox
@@ -62,7 +61,7 @@ export default function Home() {
         title={"건축이 처음이라면? 확인해야 할 정보!"}
         routeUrl={"/posts"}
         routeText={"더보기"}>
-        <PostList />
+        <PostList skip={0} limit={4}/>
       </PostMenu>
 
       {/* <PostMenu

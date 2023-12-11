@@ -23,7 +23,7 @@ type PostData = {
   viewCount: number
 }
 
-export default function Postpage(props: PostpageProps){
+export default function PostClient(props: PostpageProps){
   const { pid } = props;
   const [postData, setPostData]=useState(undefined as PostData|undefined);
   
@@ -44,7 +44,7 @@ export default function Postpage(props: PostpageProps){
           {postData.category}
         </h5>
         <h5 className="fw-normal d-flex justify-content-end">
-          게시일 {postData.updated_at.split("T")[0]}
+          {postData.updated_at.split("T")[0]}
         </h5>
       </div>
       

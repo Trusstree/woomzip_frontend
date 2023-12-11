@@ -1,13 +1,9 @@
-import SearchBox from "@/components/forms/SearchBox";
-import Icon from "@/components/posts/Icon";
 import PostList from "@/components/posts/PostList";
 import PostMenu from "@/components/posts/PostMenu";
 
-
-
 export default function Home() {
   return (
-    <main className={`container my-2`}>
+    <main className={`container px-5 my-2`}>
       {/* search bar */}
       {/* <div className={`my-2`}>
         <SearchBox
@@ -31,71 +27,8 @@ export default function Home() {
         title={"다양한 건축고민을 나누어보세요!"}
         routeUrl={"/community/write"}
         routeText={"글쓰기"}>
-        <PostList />
+        <PostList skip={0} limit={12}/>
       </PostMenu>      
     </main>
   );
 }
-
-const posts=[
-  {
-    id: 1,
-    category:"자유주제",
-    title: "제목제목제목제목",
-    text: "내용내용내용내용",
-    author: "글쓴이",
-    profilePicture:"/logo_truss.png",
-    timestamp: 3000,
-    viewCount: 2,
-    commentCount: 0,
-    likeCount:0
-  },
-  {
-    id:2,
-    category:"자유주제2",
-    title: "제목제목제목제목2",
-    text: "내용내용내용내용",
-    author: "글쓴이",
-    profilePicture:"/logo_truss.png",
-    timestamp: 3000,
-    viewCount: 2,
-    commentCount: 0,
-    likeCount:0
-  },
-  {
-    id:3,
-    category:"자유주제3",
-    title: "제목제목제목제목3",
-    text: "내용내용내용내용",
-    author: "글쓴이",
-    profilePicture:"/logo_truss.png",
-    timestamp: 3000,
-    viewCount: 2,
-    commentCount: 0,
-    likeCount:0
-  },
-  {
-    id:4,
-    category:"자유주제4",
-    title: "제목제목제목제목4",
-    text: "내용내용내용내용",
-    author: "글쓴이",
-    profilePicture:"/logo_truss.png",
-    timestamp: 3000,
-    viewCount: 2,
-    commentCount: 0,
-    likeCount:0
-  },
-  {
-    id:5,
-    category:"자유주제5",
-    title: "제목제목제목제목5",
-    text: "내용내용내용내용",
-    author: "글쓴이",
-    profilePicture:"/logo_truss.png",
-    timestamp: 3000,
-    viewCount: 2,
-    commentCount: 0,
-    likeCount:0
-  }
-]

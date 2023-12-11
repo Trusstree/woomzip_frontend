@@ -39,7 +39,7 @@ const validate = (values: any) => {
 };
 
 export default function Editor(props: EditorProps) {
-  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+  // const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
   const [dataTitle, setDataTitle] = useState("");
   const [dataText, setDataText] = useState("");
   const [dataCategory, setDataCategory] = useState("일반");
@@ -97,6 +97,10 @@ export default function Editor(props: EditorProps) {
     },
   }),[]);
 
+  const handleDataText = useCallback( async (e)=>{
+    
+  },[]);
+
   const handleSubmit = useCallback(async ()=>{
     // const { value: file } = await Swal.fire({
     //   title: "Select image",
@@ -146,7 +150,7 @@ export default function Editor(props: EditorProps) {
           />
         </div>
 
-        {<ReactQuill
+        <ReactQuill
           className='mb-5'
           style={{height:"25vw"}}
           value={dataText}
@@ -155,7 +159,7 @@ export default function Editor(props: EditorProps) {
           formats={formats}
           placeholder={'트러스 포스팅을 위한 플레이스 홀더'}
           theme="snow"
-        />}
+        />
 
         <div className='d-flex justify-content-center'>
           <button
