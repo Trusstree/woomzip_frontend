@@ -2,7 +2,7 @@
 
 import 'react-quill/dist/quill.snow.css';
 import { useCallback, useMemo, useRef, useState } from 'react';
-import ReactQuill from 'react-quill';
+//import ReactQuill from 'react-quill';
 import DOMPurify from "dompurify";
 import { isRequired } from '@/utils/validator';
 import { postPost } from '@/api/postAPI';
@@ -29,17 +29,19 @@ const formats = [
   'image',
 ];
 
-const validate = (values: any) => {
-  const errors = {
-    title: isRequired(values.title),
-    text: isRequired(values.text),
-  };
+// const validate = (values: any) => {
+//   const errors = {
+//     title: isRequired(values.title),
+//     text: isRequired(values.text),
+//   };
 
-  return errors;
-};
+//   return errors;
+// };
+
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 export default function Editor(props: EditorProps) {
-  // const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+  
   const [dataTitle, setDataTitle] = useState("");
   const [dataText, setDataText] = useState("");
   const [dataCategory, setDataCategory] = useState("일반");
