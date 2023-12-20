@@ -2,17 +2,12 @@
 
 import PostMenu from "@/components/posts/PostMenu";
 import { HousePost } from "@/components/house/HousePost";
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { useState } from "react";
+import HouseConditionForm from "@/components/house/HouseConditionForm";
 
 export default function Home() {
   const [searchCondition, setSearchCondition]=useState({});
-
-  const handleData = (e:ChangeEvent<HTMLInputElement>, name:string):ChangeEventHandler<HTMLInputElement> => {
-    if (e) e.preventDefault();
-
-    setSearchCondition((oldValues) => ({...oldValues, [name]: e.target.value||0}));
-    return;
-  }
+  const [numShowItems, numShowPages] = [12, 10];
 
   return (
     <div>
@@ -20,48 +15,44 @@ export default function Home() {
       <h5 className={`fw-bold`}>집을 지을 때 필요한 조건을 검색해보세요!</h5>
         <div className={`row`}>
           {/* price */}
-          <div className="col-3 d-flex flex-column align-items-left">
-            <label htmlFor={"price"}>최대 가격</label>
-            <input
-              type='text'
-              id={"price"}
-              onChange={(e)=>handleData(e, "price")}
-              value={searchCondition["price"]|| ''}
-            />
-          </div>
+          <HouseConditionForm
+            className="col-3"
+            title={"가격 (단위: 원)"}
+            searchCondition={searchCondition}
+            setSearchCondition={setSearchCondition}
+            minValue={"minPrice"}
+            maxValue={"maxPrice"}          
+          />
 
           {/* floorSpace */}
-          <div className="col-3 d-flex flex-column align-items-left">
-            <label htmlFor={"floorSpace"}>최대 평수</label>
-            <input
-              type='text'
-              id={"floorSpace"}
-              onChange={(e)=>handleData(e, "floorSpace")}
-              value={searchCondition["floorSpace"]|| ''}
-            />
-          </div>
+          <HouseConditionForm
+            className="col-3"
+            title={"평수 (단위: 평)"}
+            searchCondition={searchCondition}
+            setSearchCondition={setSearchCondition}
+            minValue={"minFloorSpace"}
+            maxValue={"maxFloorSpace"}          
+          />
 
           {/* roomNumber */}
-          <div className="col-3 d-flex flex-column align-items-left">
-            <label htmlFor={"roomNumber"}>방개수</label>
-            <input
-              type='text'
-              id={"roomNumber"}
-              onChange={(e)=>handleData(e, "roomNumber")}
-              value={searchCondition["roomNumber"]|| ''}
-            />
-          </div>
+          <HouseConditionForm
+            className="col-3"
+            title={"방개수 (단위: 개)"}
+            searchCondition={searchCondition}
+            setSearchCondition={setSearchCondition}
+            minValue={"minRoomNumber"}
+            maxValue={"maxRoomNumber"}          
+          />
 
           {/* toiletNumber */}
-          <div className="col-3 d-flex flex-column align-items-left">
-            <label htmlFor={"toiletNumber"}>화장실개수</label>
-            <input
-              type='text'
-              id={"toiletNumber"}
-              onChange={(e)=>handleData(e, "toiletNumber")}
-              value={searchCondition["toiletNumber"]|| ''}
-            />
-          </div>
+          <HouseConditionForm
+            className="col-3"
+            title={"화장실개수 (단위: 개)"}
+            searchCondition={searchCondition}
+            setSearchCondition={setSearchCondition}
+            minValue={"minToiletNumber"}
+            maxValue={"maxToiletNumber"}          
+          />
         </div>
       </div>
 
@@ -70,8 +61,8 @@ export default function Home() {
         routeUrl={"/"}
         routeText={"더보기"}>
         <HousePost
-          skip={0}
-          limit={12}
+          numShowItems={numShowItems}
+          numShowPages={numShowPages}
           searchCondition={searchCondition}
           />
       </PostMenu>
