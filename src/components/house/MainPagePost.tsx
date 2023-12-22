@@ -31,7 +31,7 @@ export default function MainPagePost(props: MainPagePostProps) {
           <div>{truncatedText(data.title,13)}</div>
 
           <div className="row g-0 fs-6" style={{textDecoration:"none"}}>
-            <div className="col-6">{data.price}원</div>
+            <div className="col-6">{data.price}만원</div>
             <div className="col-3">{data.floorSpace}평</div>
             <div className="col-3">4.8/5.0</div>
           </div>
