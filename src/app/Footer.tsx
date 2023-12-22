@@ -44,7 +44,7 @@ export default function Footer(props: FooterProps) {
         </div>
         <div className="mb-0 text-white d-flex flex-column">
             <span>대표 이메일: zxcomkt@gmail.com</span>
-            <span>대표 전화번호: 010-6358-9460</span>
+            <span>대표 전화번호: 010-7742-2286</span> 
         </div>
 
         <div className="mt-3 mb-0 text-white">
