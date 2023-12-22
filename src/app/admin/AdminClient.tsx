@@ -41,7 +41,7 @@ export default function AdminClient() {
 
   const testFunction = async (e:ChangeEvent<HTMLInputElement>, name:string) => {
     const img = e.target.files[0];
-    const count = await getHouseLast();
+    const count = await getHouseLast({});
     console.log(count.data?.id);
     console.log(count.error);
     const pid = count.data?count.data.id+1:1;

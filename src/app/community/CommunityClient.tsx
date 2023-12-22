@@ -3,12 +3,11 @@
 import PostList from "@/components/posts/PostList";
 import PostMenu from "@/components/posts/PostMenu";
 import { useSearchParams } from "next/navigation";
-import {  useState } from "react";
+import { useState } from "react";
 
-export default function communityClient() {
+export default function CommunityClient() {
   const [searchCondition, setSearchCondition]=useState({});
   const [numShowItems, numShowPages] = [24, 10];
-  
 
   return (
     <main className={`container px-5 my-2`}>
