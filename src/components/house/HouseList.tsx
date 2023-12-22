@@ -4,15 +4,15 @@ import { getHouseCount, getHouses } from "@/api/HouseAPI";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination";
-import MainPagePost from "../posts/MainPagePost";
+import MainPagePost from "./MainPagePost";
 
 type HousePostProps = {
   numShowItems: number
-  numShowPages: number
+  numShowPages?: number
   searchCondition: {}
 }
 
-export function HousePost(props: HousePostProps) {
+export function HouseList(props: HousePostProps) {
   const { numShowItems, numShowPages, searchCondition } = props;
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
@@ -20,14 +20,6 @@ export function HousePost(props: HousePostProps) {
   const [houseData, setHouseData] = useState(undefined as any);
   const [count, setCount] = useState(0);
 
-  useEffect(()=>{
-    (async ()=>{
-      const params=searchCondition;
-      const { count, error } = await getHouseCount(params);
-      console.log(error);
-      setCount(count);
-    })();
-  },[]);
   useEffect( () => {
     (async ()=>{
       const params={
@@ -36,31 +28,30 @@ export function HousePost(props: HousePostProps) {
         ...searchCondition
       };
 
-      console.log(`count: ${count}`)
-      
+      const { count, countError } = await getHouseCount(searchCondition);
+      if(countError) {console.log(countError); return;}
+      setCount(count);
+
       const { data, error } = await getHouses(params);
-      if(!error) setHouseData(data);
-      else console.log(error);
+      if(error) {console.log(error); return;}
+      setHouseData(data);
     })();
   },[searchCondition, page])
-        
+  
   return houseData && (
     <>
       {houseData.map((e, i)=>{
         return (
         <MainPagePost
           key={i}
-          url={`/house/${e.id}`}
-          src={e.image}>
-          {e.title}
-        </MainPagePost>
+          data={e} />
         )
       })}
-      <Pagination
+      {numShowPages && <Pagination
         numItems={count}
         numShowItems={numShowItems}
         numShowPages={numShowPages}
-        />
+        />}
     </>
   );
 }

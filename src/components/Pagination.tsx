@@ -15,7 +15,7 @@ export default function Pagination(props: PagenationProps) {
   const pathname = usePathname()
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
-  const page = Number.isNaN(rawPage)?1:rawPage;
+  const page = rawPage>0?rawPage:1;
   
   const maxPageNumber = Math.ceil(numItems / numShowItems); //페이지네이션에서 가장 큰 페이지 값
   const remainder = (page-1) % numShowPages; //페이지네이션에서 페이지 변수가 현재 보이는 숫자 중에 몇 번째?

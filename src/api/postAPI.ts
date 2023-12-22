@@ -1,11 +1,11 @@
 import { apiClient } from "@/configs/apiClient";
 
-export const getPosts = async (params?: any) => {
+export const getPosts = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
     const result = await apiClient.get(`/api/post`, {
-      params: params?params:{},
+      params: params,
       headers: {}
     });
     data = result?.data;
@@ -30,6 +30,22 @@ export const getPost = async (postNum: number) => {
   }
 
   return { data, error };
+};
+
+export const getPostCount = async (params: any) => {
+  let [count, countError] = [undefined, undefined] as any;
+
+  try {
+    const result = await apiClient.get(`/api/post/count`, {
+      params: params,
+      headers: {}
+    });
+    count = result?.data;
+  } catch (err) {
+    countError = err;
+  }
+
+  return { count, countError };
 };
 
 export const postPost = async (post: any) => {

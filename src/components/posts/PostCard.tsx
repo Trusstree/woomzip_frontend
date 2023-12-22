@@ -1,5 +1,6 @@
 "use client"
 
+import { truncatedText } from "@/utils/stringUtil";
 import DOMPurify from "dompurify";
 import Link from "next/link";
 
@@ -15,46 +16,53 @@ type DataProps = {
   text: string,
   author: string,
   profilePicture:string,
-  timestamp: number,
+  updated_at: string,
   viewCount: number,
   commentCount: number,
   likeCount:number
 }
 
+const style={
+  "일반":{backgroundColor:"#FFFFEE"},
+  "공지":{backgroundColor:"#FFDDDD"},
+  "질문":{backgroundColor:"#C8CCF2"}
+}
+
 export default function PostCard (props: PostCardProps) {
   const { data, className } = props;
   
-  const parsedText=data.text.replace(/<[a-z]>/gi,"").replace(/<\/[a-z]>/gi,"");
-  const truncatedText=parsedText.length>9?data.text.substring(0, 9)+'...':data.text;
-
   return (
-    <div className={`${className?className:""} col-md-4 col-lg-3`}>
-      <div className="card rounded-5 p-2">
-        <div className={`card-header rounded-top-5 bg-${"white"} border-${"white"}`}>
-          <div className="fw-normal d-flex justify-content-between mx-2">
+    <div className={`${className?className:""} col-md-4 col-lg-3 fs-6`}>
+      <div className="card rounded-5 p-2" style={{backgroundColor:style[data.category].backgroundColor}}>
+        <div
+          className={`card-header rounded-top-5 py-0`}
+          style={{backgroundColor:style[data.category].backgroundColor, borderColor:style[data.category].backgroundColor}}>
+          <div className="fw-normal d-flex justify-content-between mt-3">
             <span>{data.category}</span>
-            <span>{data.timestamp}</span>
+            <span>{data.updated_at.split("T")[0]}</span>
           </div>
           <Link
-            className="fw-bold my-2 text-black text-truncate"
+            className="fs-4 fw-bold text-black text-truncate"
             href={{ pathname: `/community/${data.id}`,}}
             style={{textDecoration:"none", display: "block"}}
             >
             {data.title}
           </Link>
         </div>
-        <div className="card-body fw-normal">
+        <div className="card-body fw-normal py-0 mb-0">
           <Link
-            className="my-2 text-black text-truncate"
+            className="mt-2  text-black text-truncate"
             href={{ pathname: `/community/${data.id}`,}}
             style={{textDecoration:"none", display: "block"}}
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(String(truncatedText)),
+              __html: DOMPurify.sanitize(String(truncatedText(data.text, 15))),
             }}
           />
 
         </div>
-        <div className={`card-footer rounded-bottom-5 bg-${"white"} border-${"white"} fw-normal`}>
+        <div
+          className={`card-footer rounded-bottom-5 fw-normal`}
+          style={{backgroundColor:style[data.category].backgroundColor, borderColor:style[data.category].backgroundColor}}>
           {/* <div className="d-flex">
             <img src={data.profilePicture} width={40} height={40}/>
             <div className="mx-3 fw-bold align-self-center">{data.author}</div>

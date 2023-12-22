@@ -1,6 +1,6 @@
 import PostMenu from "@/components/posts/PostMenu";
 import Carousel from "@/components/posts/Carousel";
-import { HousePost } from "@/components/house/HousePost";
+import { HouseList } from "@/components/house/HouseList";
 import PostList from "@/components/posts/PostList";
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
         title={"1억 미만으로 지을 수 있는 주택들을 구경해보세요!"}
         routeUrl={"/"}
         routeText={"더보기"}>
-        <HousePost skip={0} limit={4}/>
+        <HouseList numShowItems={4} searchCondition={undefined} />
         
       </PostMenu>
 
@@ -61,7 +61,7 @@ export default function Home() {
         title={"건축이 처음이라면? 확인해야 할 정보!"}
         routeUrl={"/posts"}
         routeText={"더보기"}>
-        <PostList skip={0} limit={4}/>
+        <PostList numShowItems={4} searchCondition={{}} />
       </PostMenu>
 
       {/* <PostMenu

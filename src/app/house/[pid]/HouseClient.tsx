@@ -1,8 +1,8 @@
 "use client"
 
 import { getHouse } from "@/api/HouseAPI";
-import { HousePost } from "@/components/house/HousePost";
-import MainPagePost from "@/components/posts/MainPagePost";
+import { HouseList } from "@/components/house/HouseList";
+import MainPagePost from "@/components/house/MainPagePost";
 import PostMenu from "@/components/posts/PostMenu";
 import { useEffect, useState } from "react";
 
@@ -106,10 +106,10 @@ export function HouseClient (props: HouseComponentProps) {
           routeUrl={"/posts"}
           routeText={"더보기"}>
           <div className="d-flex justify-content-center">
-            <MainPagePost url={"/"} src={houseData.buildingImage}>실외 사진</MainPagePost>
+            {/* <MainPagePost url={"/"} src={houseData.buildingImage}>실외 사진</MainPagePost>
             <MainPagePost url={"/"} src={houseData.blueprint}>실내 사진</MainPagePost>
             <MainPagePost url={"/"} src={houseData.costImage}>설계구조</MainPagePost>
-            <MainPagePost url={"/"} src={houseData.officeImage}>판매자정보</MainPagePost>
+            <MainPagePost url={"/"} src={houseData.officeImage}>판매자정보</MainPagePost> */}
           </div>
         </PostMenu>
       </div>
@@ -143,10 +143,7 @@ export function HouseClient (props: HouseComponentProps) {
         <div className="d-flex justify-content-center">
           {
           houseData.ratingPost?houseData.ratingPost.map((e, i)=>(
-            <MainPagePost url={"/"} src={e.src} key={i}>
-              <div>{e.title}</div>
-              <div>({e.rate})</div>
-            </MainPagePost>
+            <MainPagePost data={e} key={i}/>
           )):
           <div>
             평점이 없습니다. 가장 먼저 리뷰를 남겨보세요!
@@ -160,7 +157,7 @@ export function HouseClient (props: HouseComponentProps) {
         title={"1억 미만으로 지을 수 있는 북유럽 스타일 주택들을 구경해보세요!"}
         routeUrl={"/posts"}
         routeText={"더보기"}>
-        <HousePost skip={0} limit={0}/>
+        <HouseList numShowItems={4} searchCondition={{}} />
       </PostMenu>
     </>
   ):(

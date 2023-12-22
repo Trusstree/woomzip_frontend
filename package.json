@@ -24,6 +24,7 @@
     "react-bootstrap": "^2.8.0",
     "react-dom": "18.2.0",
     "react-quill": "^2.0.0",
+    "react-social-icons": "^6.7.0",
     "sweetalert2": "^11.6.13",
     "universal-cookie": "^6.1.1"
   },
