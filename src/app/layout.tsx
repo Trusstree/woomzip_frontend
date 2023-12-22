@@ -8,15 +8,15 @@ import AuthSession from './AuthSession';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  metadataBase: new URL("http://buildintruss.com"),
+  metadataBase: new URL("https://buildintruss.com"),
   openGraph: {
     title: 'Truss',
     description: '건설사, 시공사 순위 리뷰 후기 확인은 트러스!',
-    url: 'http://buildintruss.com',
+    url: 'https://buildintruss.com',
     siteName: 'Truss',
     images: [
       {
-        url: 'http://buildintruss.com/logo1.png',
+        url: 'https://buildintruss.com/logo_truss.png',
         width: 218,
         height: 128,
         alt: "truss logo"

@@ -22,7 +22,7 @@ export default function RouteButton(props: RouteButtonProps) {
   return (
   <button type="button"
     style={{...style, color:"#101648"}}
-    className={`${className?className:""} px-4 py-2 btn rounded-lg ${`/${path}`==url?"fw-bold":""} align-self-end`}
+    className={`${className?`${className} `:""}btn rounded-lg ${`/${path}`==url?"fw-bold":""} align-self-end`}
     onClick={()=>{router.push(url);}}>
     {children}
   </button>

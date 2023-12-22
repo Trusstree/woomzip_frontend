@@ -2,48 +2,65 @@
 
 import { useEffect, useState } from "react";
 import PostCard from "./PostCard";
-import { getPosts } from "@/api/postAPI";
+import { getPostCount, getPosts } from "@/api/postAPI";
 import { useSearchParams } from "next/navigation";
+import Pagination from "../Pagination";
 
-type Post = {
-  id: number,
-  category: string,
-  title: string,
-  text: string,
-  author: string,
-  profilePicture:string,
-  timestamp: number,
-  viewCount: number,
-  commentCount: number,
-  likeCount:number
-}
+// type Post = {
+//   id: number
+//   category: string
+//   title: string
+//   text: string
+//   author: string
+//   profilePicture:string
+//   timestamp: number
+//   viewCount: number
+//   commentCount: number
+//   likeCount:number
+// }
 
 type PostListProps = {
-	skip: number;
-  limit: number;
+	numShowItems: number
+	numShowPages?: number
+	searchCondition: {}
 }
 
 export default function PostList (props: PostListProps) {
-	const { skip, limit } = props;
-  const [posts, setPosts] = useState([] as Post[]);
-	const searchParam = useSearchParams(); 
-	
-	useEffect(() => {
-		( async() => {
-			const { data, error } = await getPosts(searchParam.get("key"));
+	const { numShowItems, numShowPages, searchCondition } = props;
+	const searchParams = useSearchParams();
+  const rawPage = Number(searchParams.get("page"));
+  const page = (rawPage>0)?rawPage:1;
+  const [count, setCount] = useState(0);
+	const [postData, setPostData] = useState([]);
+
+  useEffect( () => {
+    (async ()=>{
+      const params={
+        skip: numShowItems*(page-1),
+        limit: numShowItems,
+        ...searchCondition
+      };
 			
-			if(error) console.log(error);
-			else {
-				setPosts(data.slice(skip,limit));
-			}
-		})();
-	},[]);
+      const { count, countError } = await getPostCount(searchCondition);
+      if(countError) {console.log(countError); return;}
+      setCount(count);
+
+      const { data, error } = await getPosts(params);
+      if(error) {console.log(error); return;}
+      setPostData(data);
+    })();
+  },[searchCondition, page])
 
 	return(
 		<>
-			{posts.map((e: any, i:number)=>(
+			{postData.map((e: any, i:number)=>(
 				<PostCard data={e} key={i} className={``}/>
 			))}
+			{numShowPages && <Pagination
+        numItems={count}
+        numShowItems={numShowItems}
+        numShowPages={numShowPages}
+      />}
 		</>
 	)
 }

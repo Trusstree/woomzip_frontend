@@ -13,7 +13,7 @@ export default function Header(props: HeaderProps) {
       <div className="container">
         <div className="d-flex">
           <RouteButton url={"/"}
-            className="me-3 ms-4">
+            className="me-3 ms-4 px-4 py-2">
             <img
               className=""
               src="/logo_truss.png"

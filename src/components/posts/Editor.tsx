@@ -11,6 +11,7 @@ import SelectBox from '../forms/SelectBox';
 import { setS3Url } from '@/utils/s3Util';
 import Swal from 'sweetalert2';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 
 type EditorProps = {
 }
@@ -41,7 +42,7 @@ const formats = [
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 export default function Editor(props: EditorProps) {
-  
+  const router=useRouter();
   const [dataTitle, setDataTitle] = useState("");
   const [dataText, setDataText] = useState("");
   const [dataCategory, setDataCategory] = useState("일반");
@@ -119,7 +120,7 @@ export default function Editor(props: EditorProps) {
     
     const result = await confirmSuccess("포스팅 확인", "현재 입력하신 정보가 모두 맞습니까?", '맞습니다!', '아닙니다.');
     if (result.isConfirmed) {
-      postPost({
+      const { data, error }= await postPost({
         "title": dataTitle,
         "text": dataText,
         "category": dataCategory,
@@ -130,6 +131,8 @@ export default function Editor(props: EditorProps) {
         "viewCount": 0,
         "comments": ""
       })
+      if(error){console.log(error); return;}
+      router.push(`/community/${data.id}`);
     }
   },[dataTitle, dataText]);
 
@@ -148,7 +151,7 @@ export default function Editor(props: EditorProps) {
             className={`col-2`}
             value={dataCategory}
             handleChange={setDataCategory}
-            array={["일반"]}
+            array={["일반", "질문", "공지"]}
           />
         </div>
 

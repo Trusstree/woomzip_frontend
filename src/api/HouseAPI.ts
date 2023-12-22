@@ -46,12 +46,12 @@ export const postHouse = async (house: any) => {
   return { data, error };
 };
 
-export const getHouseLast = async () => {
+export const getHouseLast = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
     const result = await apiClient.get(`/api/house/last`, {
-      params: {},
+      params: params,
       headers: {}
     });
     data = result?.data;
@@ -60,4 +60,20 @@ export const getHouseLast = async () => {
   }
 
   return { data, error };
+}
+
+export const getHouseCount = async (params: any) => {
+  let [count, countError] = [undefined, undefined] as any;
+
+  try {
+    const result = await apiClient.get(`/api/house/count`, {
+      params: params,
+      headers: {}
+    });
+    count = result?.data;
+  } catch (err) {
+    countError = err;
+  }
+
+  return { count, countError };
 }

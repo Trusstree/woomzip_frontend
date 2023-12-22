@@ -2,8 +2,8 @@ import Editor from "@/components/posts/Editor";
 
 export default function Write() {
   return (
-    <main className={`container px-5`}>
+    <div className={`px-5 my-5`}>
       <Editor />
-    </main>
+    </div>
   )
 }
