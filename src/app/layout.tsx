@@ -23,6 +23,9 @@ export const metadata = {
         alt: "truss logo"
       },
     ],
+    icons: {
+      icon: '/favicon.ico',
+    },
     locale: 'ko',
     type: 'website',
   }
