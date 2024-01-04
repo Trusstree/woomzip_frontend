@@ -1,16 +1,9 @@
 import { getProviders } from 'next-auth/react'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '../[...nextauth]/route'
 import SocialSigninButton from '@/components/auth/SocialSigninButton'
 
 export default async function SignInPage() {
-  const session = await getServerSession(authOptions)
-  if (session) {
-    return { redirect: { destination: '/' } }
-  }
-
   const providers = await getProviders();
-
+  
   return (
     <main className={`container my-5`}>
       <div className={`mt-5 py-5 rounded-3 text-center fw-bold fs-2`}>

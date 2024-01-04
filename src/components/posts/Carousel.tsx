@@ -62,9 +62,9 @@ export default function Carousel(props: CarouselProps){
               height={height}
               onClick={()=>{router.push(`/house/${e.id}`);}}
               style={{objectFit:"cover"}}/>
-            <div className="carousel-caption d-none d-md-block text-start fw-bold text-white" >
-              <h3 className="fw-bold my-0">{e.title}</h3>
-              <span className="my-0">#{e.price}만원 #{e.floorSpace}평 #방{e.roomNumber}개 #화장실{e.toiletNumber}개</span>
+            <div className="carousel-caption d-none d-md-block text-start bg-secondary bg-opacity-50 rounded-5">
+              <h3 className="fw-bold mx-3 my-0 text-white">{e.title}</h3>
+              <span className="my-0 mx-3 ">#{e.price}만원 #{e.floorSpace}평 #방{e.roomNumber}개 #화장실{e.toiletNumber}개</span>
             </div>
           </div>
         ))}
