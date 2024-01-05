@@ -2,7 +2,7 @@
 
 import { getHouses } from "@/api/HouseAPI"
 import { useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
+import { Key, useEffect, useState } from "react"
 
 type CarouselProps = {
   height: number
@@ -16,6 +16,7 @@ export default function Carousel(props: CarouselProps){
   const router = useRouter();
   
   const [houseData, setHouseData] = useState(undefined as any);
+  const interval=5;
 
   useEffect( () => {
     (async ()=>{
@@ -29,9 +30,9 @@ export default function Carousel(props: CarouselProps){
   },[])
   
   return (
-    <div id="Carousel" className={`carousel slide ${className}`}>
+    <div id="Carousel" className={`carousel slide ${className}`} data-bs-ride="carousel">
       <div className="carousel-indicators">
-        {houseData?.map((e, i)=>(
+        {houseData?.map((_, i)=>(
           <button
             key={i}
             type="button"
@@ -44,17 +45,12 @@ export default function Carousel(props: CarouselProps){
         ))}
       </div>
       <div className="carousel-inner">
-        <button className="carousel-control-prev" type="button" data-bs-target="#Carousel" data-bs-slide="prev" style={{ mixBlendMode: "difference"}}>
-          <span className="carousel-control-prev-icon" aria-hidden="true"/>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className="carousel-control-next" type="button" data-bs-target="#Carousel" data-bs-slide="next" style={{ mixBlendMode: "difference"}}>
-          <span className="carousel-control-next-icon" aria-hidden="true"/>
-          <span className="visually-hidden">Next</span>
-        </button>
-
         {houseData?.map((e, i)=>(
-          <div key={i} className={`carousel-item ${i==0?"active":""}`}>
+          <div
+            key={i}
+            className={`carousel-item ${i==0?"active":""}`}
+            data-bs-interval={(interval*1000).toString()}
+            >
             <img
               src={e.image}
               className="d-block w-100 rounded-4"
@@ -69,6 +65,14 @@ export default function Carousel(props: CarouselProps){
           </div>
         ))}
       </div>
+      <button className="carousel-control-prev" type="button" data-bs-target="#Carousel" data-bs-slide="prev" style={{ mixBlendMode: "difference"}}>
+        <span className="carousel-control-prev-icon" aria-hidden="true"/>
+        <span className="visually-hidden">Previous</span>
+      </button>
+      <button className="carousel-control-next" type="button" data-bs-target="#Carousel" data-bs-slide="next" style={{ mixBlendMode: "difference"}}>
+        <span className="carousel-control-next-icon" aria-hidden="true"/>
+        <span className="visually-hidden">Next</span>
+      </button>
     </div>
   );
 }

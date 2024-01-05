@@ -22,14 +22,13 @@ import Pagination from "../Pagination";
 type PostListProps = {
 	numShowItems: number
 	numShowPages?: number
-	searchCondition: {}
 }
 
 export default function PostList (props: PostListProps) {
-	const { numShowItems, numShowPages, searchCondition } = props;
+	const { numShowItems, numShowPages } = props;
 	const searchParams = useSearchParams();
-  const rawPage = Number(searchParams.get("page"));
-  const page = (rawPage>0)?rawPage:1;
+  const page = (searchParams.has("page"))?Number(searchParams.get("page")):1;
+  const category = searchParams.get("category");
   const [count, setCount] = useState(0);
 	const [postData, setPostData] = useState([]);
 
@@ -38,10 +37,11 @@ export default function PostList (props: PostListProps) {
       const params={
         skip: numShowItems*(page-1),
         limit: numShowItems,
-        ...searchCondition
       };
+      if(category) params["category"]=category;
+      console.log(params);
 			
-      const { count, countError } = await getPostCount(searchCondition);
+      const { count, countError } = await getPostCount(params);
       if(countError) {console.log(countError); return;}
       setCount(count);
 
@@ -49,7 +49,7 @@ export default function PostList (props: PostListProps) {
       if(error) {console.log(error); return;}
       setPostData(data);
     })();
-  },[searchCondition, page])
+  },[searchParams, page])
 
 	return(
 		<>

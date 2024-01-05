@@ -9,6 +9,7 @@ import { Analytics } from '@/components/Analytics';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
+  title: 'Truss',
   metadataBase: new URL("https://buildintruss.com"),
   openGraph: {
     title: 'Truss',
