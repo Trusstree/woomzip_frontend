@@ -1,5 +1,3 @@
-'use client';
-
 import { ClientSafeProvider, signIn } from 'next-auth/react';
 
 type IProps = {

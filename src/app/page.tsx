@@ -61,7 +61,7 @@ export default function Home() {
         title={"건축이 처음이라면? 확인해야 할 정보!"}
         routeUrl={"/community"}
         routeText={"더보기"}>
-        <PostList numShowItems={4} searchCondition={{}} />
+        <PostList numShowItems={4} />
       </PostMenu>
 
       {/* <PostMenu
