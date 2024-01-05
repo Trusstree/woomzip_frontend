@@ -24,7 +24,7 @@ type PostListProps = {
 	numShowPages?: number
 }
 
-export default function PostList (props: PostListProps) {
+export default function PostList(props: PostListProps) {
 	const { numShowItems, numShowPages } = props;
 	const searchParams = useSearchParams();
   const page = (searchParams.has("page"))?Number(searchParams.get("page")):1;
