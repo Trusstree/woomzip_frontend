@@ -39,7 +39,7 @@ export default function Home() {
 
       <PostMenu
         title={"1억 미만으로 지을 수 있는 주택들을 구경해보세요!"}
-        routeUrl={"/"}
+        routeUrl={"/house"}
         routeText={"더보기"}>
         <HouseList numShowItems={4} searchCondition={undefined} />
         
@@ -59,7 +59,7 @@ export default function Home() {
 
       <PostMenu
         title={"건축이 처음이라면? 확인해야 할 정보!"}
-        routeUrl={"/posts"}
+        routeUrl={"/community"}
         routeText={"더보기"}>
         <PostList numShowItems={4} searchCondition={{}} />
       </PostMenu>

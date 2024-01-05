@@ -12,7 +12,7 @@ export const alertSuccess = (title: string, text: string) => {
 // 성공 확인 질문
 export const confirmSuccess = async (title: string, text: string, confirmText: string, denyText: string, imgSrc?: string) => {
   return Swal.fire({
-    // icon: 'success',
+    icon: 'success',
     title: title,
     text: text,
     allowOutsideClick: false,
@@ -23,6 +23,16 @@ export const confirmSuccess = async (title: string, text: string, confirmText: s
     denyButtonText: denyText,
     denyButtonColor: '#d33',
     imageUrl: imgSrc?imgSrc:""
+  });
+};
+
+// 성공 알림
+export const alertImage = (title: string, src:string) => {
+  return Swal.fire({
+    title: title,
+    imageUrl: src,
+    imageWidth: 400,
+    imageAlt: title,
   });
 };
 

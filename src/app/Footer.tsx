@@ -10,7 +10,7 @@ type FooterProps = {};
 
 export default function Footer(props: FooterProps) {
   const router = useRouter();
-  const infoURL="https://www.instagram.com/buildintruss/";
+  const infoURL="https://diagnostic-lace-a24.notion.site/f9b2d562f52b4b5a8cad9299d37c6540";
   const youtubeURL="https://www.youtube.com/@qazedc6690";
   const instagrmaURL="https://www.instagram.com/buildintruss/";
   const naverBlogURL="https://blog.naver.com/truss369";
@@ -20,11 +20,6 @@ export default function Footer(props: FooterProps) {
       className="text-muted text-left pt-4 pb-5 text-white"
       style={{backgroundColor:"#101648"}}>
       <div className="container">
-        {/* <button type="button"
-          className="btn btn-link link-light"
-          onClick={()=>{window.scrollTo(0, 0);}}>
-          Back to top
-        </button> */}
         <div className="pt-3 text-white d-flex justify-content-between align-items-center">
           <div id={"navigator"}>
             <Link className="text-white" href={infoURL}>회사 소개</Link>

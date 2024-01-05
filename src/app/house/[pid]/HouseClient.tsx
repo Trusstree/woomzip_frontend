@@ -1,6 +1,7 @@
 "use client"
 
 import { getHouse } from "@/api/HouseAPI";
+import DetailPost from "@/components/house/DetailPost";
 import { HouseList } from "@/components/house/HouseList";
 import MainPagePost from "@/components/house/MainPagePost";
 import PostMenu from "@/components/posts/PostMenu";
@@ -80,6 +81,7 @@ export function HouseClient (props: HouseComponentProps) {
               alt="main BoardComponent"
               src={houseData.image}
               className="rounded-5 w-100 p-1"
+              style={{objectFit:"cover"}}
             />
           </div>
 
@@ -89,12 +91,14 @@ export function HouseClient (props: HouseComponentProps) {
               alt="sub post 1"
               src={houseData.subImage1}
               className="rounded-5 w-100 p-1"
+              style={{objectFit:"cover"}}
             />
             <img
               height={300}
               alt="sub post 2"
               src={houseData.subImage2}
               className="rounded-5 w-100 p-1"
+              style={{objectFit:"cover"}}
             />
           </div>
         </div>
@@ -102,14 +106,12 @@ export function HouseClient (props: HouseComponentProps) {
       {/* 상세정보 */}
       <div>
         <PostMenu
-          title={"집 상세정보"}
-          routeUrl={"/posts"}
-          routeText={"더보기"}>
+          title={"집 상세정보"}>
           <div className="d-flex justify-content-center">
-            {/* <MainPagePost url={"/"} src={houseData.buildingImage}>실외 사진</MainPagePost>
-            <MainPagePost url={"/"} src={houseData.blueprint}>실내 사진</MainPagePost>
-            <MainPagePost url={"/"} src={houseData.costImage}>설계구조</MainPagePost>
-            <MainPagePost url={"/"} src={houseData.officeImage}>판매자정보</MainPagePost> */}
+            <DetailPost src={houseData.buildingImage}>실외 사진</DetailPost>
+            <DetailPost src={houseData.blueprint}>실내 사진</DetailPost>
+            <DetailPost src={houseData.costImage}>설계구조</DetailPost>
+            <DetailPost src={houseData.officeImage}>판매자정보</DetailPost>
           </div>
         </PostMenu>
       </div>

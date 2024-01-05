@@ -14,8 +14,7 @@ export default function SocialSigninButton({ providers }: IProps) {
           <button
             className='btn btn-lg rounded-3 p-3 my-3 w-100 fw-bold'
             onClick={() => {
-              console.log(provider.callbackUrl);
-              signIn(provider.id, { redirect: true, callbackUrl: provider.callbackUrl })
+              signIn(provider.id);
             }}
             style={{backgroundColor:"#101648", color:"#ffffff"}}>
             {provider.id.toUpperCase()} 로그인

@@ -7,13 +7,25 @@ export default function Test() {
 	const { data: session } = useSession();
   useEffect(()=>{
     console.log(session); // 로그인 정보 확인용
-  },[])
-  return (
+  },[session])
+  
+  return session?.user?(
     <div>
-			{session?.expires}
-			{session?.user?.email}
-			<img src={`${session?.user?.image}`} alt={`${session?.user?.image}`}></img>
-			{session?.user?.name}
+			<div>
+        {session.expires}
+        </div>
+			<div>
+        {session.user.email}
+        </div>
+			<div>
+        <img src={`${session.user.image}`} alt={`유저 이미지`}></img>
+      </div>
+			<div>{session.user.name}
+      </div>
+    </div>
+  ):(
+    <div>
+      유저 정보가 없습니다~
     </div>
   )
 }
