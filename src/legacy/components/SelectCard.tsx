@@ -1,6 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type SelectCardProps = {
   title: string
@@ -17,8 +18,15 @@ export default function SelectCard(props: SelectCardProps) {
     <div className={`${className?className:''} w-100 shadow col-3 col-md-4 col-sm-6 rounded-4`}>
       <div className={`card rounded-4 border-0`}>
         {src?
-          <img src={src} className="card-img-top" alt="..."
-          onClick={()=>{url?router.push(url):undefined;}} style={url?{cursor:"pointer"}:undefined} /> : undefined
+          <Image
+            src={src}
+            className="card-img-top"
+            alt="..."
+            width={300}
+            height={300}
+            onClick={()=>{url?router.push(url):undefined;}}
+            style={url?{cursor:"pointer"}:undefined} />
+          :undefined
         }
         <div className="card-body">
           <h5 className="card-title my-2">{title}</h5>

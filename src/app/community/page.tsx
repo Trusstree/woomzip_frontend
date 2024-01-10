@@ -19,10 +19,10 @@ export default function Home() {
       <PostMenu
         title={"관심있는 주제를 선택해보세요!"}>
         <div className="d-flex mt-0">
-          <Icon src={"category_all.png"}>전체</Icon>
-          <Icon src={"category_notice.png"} param={`공지`}>공지</Icon>
-          <Icon src={"category_qna.png"} param={`질문`}>질문</Icon>
-          <Icon src={"category_normal.png"} param={`일반`}>일반</Icon>
+          <Icon src={"/category_all.png"}>전체</Icon>
+          <Icon src={"/category_notice.png"} param={`공지`}>공지</Icon>
+          <Icon src={"/category_qna.png"} param={`질문`}>질문</Icon>
+          <Icon src={"/category_normal.png"} param={`일반`}>일반</Icon>
         </div>
       </PostMenu>
 

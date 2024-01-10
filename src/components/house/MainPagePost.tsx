@@ -1,6 +1,7 @@
 "use client"
 
-import { truncatedText } from "@/utils/stringUtil";
+import { truncatedText } from "@/lib/stringUtil";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
@@ -21,11 +22,15 @@ export default function MainPagePost(props: MainPagePostProps) {
           style={{...style, color:"#101648"}}
           className={`${className?className:""} d-flex btn rounded-lg p-0 w-100`}
           onClick={()=>{router.push(`/house/${data.id}`);}}>
-          <img
+          <Image
             className="rounded-4 w-100 m-0 p-1"
             src={`${data?.image?data.image:""}`}
-            width={250} height={250}
-            style={{objectFit:"cover"}} />
+            alt={`${data.title}`}
+            width={250}
+            height={250}
+            style={{objectFit:"cover"}}
+            placeholder={"blur"}
+            blurDataURL={"/blur_image.png"} />
         </button>
         <div className="w-100 text-left px-1">
           <div>{truncatedText(data.title,13)}</div>

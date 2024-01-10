@@ -5,6 +5,7 @@ import PostCard from "./PostCard";
 import { getPostCount, getPosts } from "@/api/postAPI";
 import { useSearchParams } from "next/navigation";
 import Pagination from "../Pagination";
+import PostCardPlaceHolder from "./PostCardPlaceholder";
 
 // type Post = {
 //   id: number
@@ -30,7 +31,7 @@ export default function PostList(props: PostListProps) {
   const page = (searchParams.has("page"))?Number(searchParams.get("page")):1;
   const category = searchParams.get("category");
   const [count, setCount] = useState(0);
-	const [postData, setPostData] = useState([]);
+	const [postData, setPostData] = useState(undefined);
 
   useEffect( () => {
     (async ()=>{
@@ -39,7 +40,6 @@ export default function PostList(props: PostListProps) {
         limit: numShowItems,
       };
       if(category) params["category"]=category;
-      console.log(params);
 			
       const { count, countError } = await getPostCount(params);
       if(countError) {console.log(countError); return;}
@@ -51,16 +51,20 @@ export default function PostList(props: PostListProps) {
     })();
   },[searchParams, page])
 
-	return(
+	return (
 		<>
-			{postData.map((e: any, i:number)=>(
-				<PostCard data={e} key={i} className={``}/>
-			))}
+			{postData?
+        postData.map((e: any, i:number)=>(
+          <PostCard data={e} key={i} className={``}/>
+        ))
+      :
+        new Array(numShowItems).fill(0).map((e: any, i:number)=>(
+          <PostCardPlaceHolder key={i}/>
+        ))}
 			{numShowPages && <Pagination
         numItems={count}
         numShowItems={numShowItems}
         numShowPages={numShowPages}
       />}
-		</>
-	)
+  </>);
 }

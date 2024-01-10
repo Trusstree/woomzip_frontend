@@ -4,6 +4,7 @@ import { getHouseCount, getHouses } from "@/api/HouseAPI";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Pagination from "../Pagination";
+import MainPagePlaceholder from "./MainPagePlaceholder";
 import MainPagePost from "./MainPagePost";
 
 type HousePostProps = {
@@ -38,7 +39,7 @@ export function HouseList(props: HousePostProps) {
     })();
   },[searchCondition, page])
   
-  return houseData && (
+  return houseData ? 
     <>
       {houseData.map((e, i)=>{
         return (
@@ -53,5 +54,15 @@ export function HouseList(props: HousePostProps) {
         numShowPages={numShowPages}
         />}
     </>
-  );
+    :
+    <>
+      {new Array(numShowItems).fill(0).map((e, i)=>{
+        return <MainPagePlaceholder key={i} />
+       })}
+      {numShowPages && <Pagination
+        numItems={count}
+        numShowItems={numShowItems}
+        numShowPages={numShowPages}
+        />}
+    </>;
 }

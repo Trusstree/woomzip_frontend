@@ -1,6 +1,6 @@
 "use client"
 
-import { truncatedText } from "@/utils/stringUtil";
+import { truncatedText } from "@/lib/stringUtil";
 import DOMPurify from "dompurify";
 import Link from "next/link";
 
@@ -23,8 +23,8 @@ type DataProps = {
 }
 
 const style={
-  "일반":{backgroundColor:"#FFFFEE"},
-  "공지":{backgroundColor:"#FFDDDD"},
+  "일반":{backgroundColor:"#FFFFDD"},
+  "공지":{backgroundColor:"#FFD2D2"},
   "질문":{backgroundColor:"#C8CCF2"}
 }
 
@@ -33,14 +33,17 @@ export default function PostCard (props: PostCardProps) {
   
   return (
     <div className={`${className?className:""} col-md-4 col-lg-3 fs-6`}>
-      <div className="card rounded-5 p-2" style={{backgroundColor:style[data.category].backgroundColor}}>
-        <div
-          className={`card-header rounded-top-5 py-0`}
-          style={{backgroundColor:style[data.category].backgroundColor, borderColor:style[data.category].backgroundColor}}>
-          <div className="fw-normal d-flex justify-content-between mt-3">
+      <div className="card rounded-3">
+        <div className={`card-header pb-2`}style={{backgroundColor:style[data.category].backgroundColor, borderColor:style[data.category].backgroundColor}}>
+          <div
+            className="fw-normal d-flex justify-content-between mt-2"
+            >
             <span>{data.category}</span>
             <span>{data.updated_at.split("T")[0]}</span>
           </div>
+          
+        </div>
+        <div className="card-body fw-normal pt-3 mb-0">
           <Link
             className="fs-4 fw-bold text-black text-truncate"
             href={{ pathname: `/community/${data.id}`,}}
@@ -48,10 +51,8 @@ export default function PostCard (props: PostCardProps) {
             >
             {data.title}
           </Link>
-        </div>
-        <div className="card-body fw-normal py-0 mb-0">
           <Link
-            className="mt-2  text-black text-truncate"
+            className="mt-3 text-black text-truncate"
             href={{ pathname: `/community/${data.id}`,}}
             style={{textDecoration:"none", display: "block"}}
             dangerouslySetInnerHTML={{
@@ -61,8 +62,8 @@ export default function PostCard (props: PostCardProps) {
 
         </div>
         <div
-          className={`card-footer rounded-bottom-5 fw-normal`}
-          style={{backgroundColor:style[data.category].backgroundColor, borderColor:style[data.category].backgroundColor}}>
+          className={`card-footer rounded-bottom-3 fw-normal`}
+          style={{backgroundColor:"white", borderColor:"white"}}>
           {/* <div className="d-flex">
             <img src={data.profilePicture} width={40} height={40}/>
             <div className="mx-3 fw-bold align-self-center">{data.author}</div>

@@ -1,6 +1,7 @@
 "use client"
 
 import useQuery from "@/hooks/useQuery";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
@@ -23,10 +24,12 @@ export default function Icon(props: IconProps) {
         style={{...style, color:"#101648"}}
         className={`${className?className:""} px-4 py-2 btn rounded-lg fw-bold`}
         onClick={()=>{router.push(createQueryString('category', param));}}>
-        <img
+        <Image
           className=""
           src={src}
-          width={80} height={80}/>
+          alt={`${children}`}
+          width={80}
+          height={80} />
       </button>
       <div>
         {children}

@@ -3,7 +3,6 @@ import KakaoProvider from "next-auth/providers/kakao"
 import GoogleProvider from "next-auth/providers/google"
 
 export const authOptions = {
-  // Configure one or more authentication providers
   providers: [
     NaverProvider({
       clientId: process.env.NAVER_CLIENT_ID,
@@ -26,7 +25,7 @@ export const authOptions = {
 		newUser: '/api/auth/new-user' // New users will be directed here on first sign in
 	},
   callbacks: {
-    async signIn({ user, account, profile }) {
+    async signIn({ user, account, profile, email, credentials }) {
       // profile 객체에 이름이나 이메일 값이 있으면 해당 값을 user 객체에 저장
       if (profile) {
         user.name = profile.response?.name || user.name;
@@ -62,22 +61,20 @@ export const authOptions = {
         return false;
       }
     },
-    async jwt ({token, account}) {
+    async jwt({ token, user, account, profile, isNewUser }) {
       if (account) {
         token.accessToken = account.access_token
       }
       return token
     },
-    async session({session, token, user}) {
+    async session({ session, user, token }) {
       return session
     },
-    async redirect ({url, baseUrl}) {
-      if (url.startsWith("/")) {
-        return `${baseUrl}${url}`
-      }
-      else if ( new URL(url).origin === baseUrl) {
-        return `${baseUrl}`
-      }
+    async redirect({ url, baseUrl }) {
+      // Allows relative callback URLs
+      if (url.startsWith("/")) return `${baseUrl}${url}`
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url
       return baseUrl
     }
   },

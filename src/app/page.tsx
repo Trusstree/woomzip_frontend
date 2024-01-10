@@ -2,6 +2,7 @@ import PostMenu from "@/components/posts/PostMenu";
 import Carousel from "@/components/posts/Carousel";
 import { HouseList } from "@/components/house/HouseList";
 import PostList from "@/components/posts/PostList";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -16,11 +17,19 @@ export default function Home() {
 
       {/* 캐러셀 */}
       <div className={`my-3 row g-3`}>
-        <Carousel className={"col-10"} height={500} skip={0} limit={4} />
-        <img
+        <Carousel
+          className={"col-10"}
+          width={500}
+          height={500}
+          skip={0}
+          limit={4} />
+        <Image
           className="col-2 rounded-4"
           alt="main post"
           src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
+          width={100}
+          height={500}
+          unoptimized={true}
         />
       </div>
 
@@ -41,8 +50,9 @@ export default function Home() {
         title={"1억 미만으로 지을 수 있는 주택들을 구경해보세요!"}
         routeUrl={"/house"}
         routeText={"더보기"}>
-        <HouseList numShowItems={4} searchCondition={undefined} />
-        
+        <HouseList
+          numShowItems={4}
+          searchCondition={undefined} />
       </PostMenu>
 
       {/* <PostMenu

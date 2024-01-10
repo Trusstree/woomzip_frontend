@@ -6,6 +6,7 @@ import { HouseList } from "@/components/house/HouseList";
 import MainPagePost from "@/components/house/MainPagePost";
 import PostMenu from "@/components/posts/PostMenu";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 type HouseComponentProps = {
   pid:number
@@ -76,30 +77,31 @@ export function HouseClient (props: HouseComponentProps) {
       <div className={`d-flex justify-content-center`}>
         <div className={`row w-100`}>
           <div className="col-8 m-0 p-0">
-            <img
-              height={600}
-              alt="main BoardComponent"
-              src={houseData.image}
+            <Image
               className="rounded-5 w-100 p-1"
               style={{objectFit:"cover"}}
-            />
+              src={houseData.image}
+              alt="main BoardComponent"
+              width={600}
+              height={600} />
+
           </div>
 
           <div className="col-4 m-0 p-0">
-            <img
-              height={300}
+            <Image
+              className="rounded-5 w-100 p-1"
+              style={{objectFit:"cover"}}
+              src={houseData.subImage1} 
               alt="sub post 1"
-              src={houseData.subImage1}
+              width={300}
+              height={300} />
+            <Image
               className="rounded-5 w-100 p-1"
               style={{objectFit:"cover"}}
-            />
-            <img
-              height={300}
+              src={houseData.subImage2} 
               alt="sub post 2"
-              src={houseData.subImage2}
-              className="rounded-5 w-100 p-1"
-              style={{objectFit:"cover"}}
-            />
+              width={300}
+              height={300} />
           </div>
         </div>
       </div>
@@ -119,9 +121,11 @@ export function HouseClient (props: HouseComponentProps) {
       {/* 상세설명 */}
       <div>
         <div className="collapse collapsedExplanation row mb-3" id={"collapsedExplanation"}>
-          <img
+          <Image
             alt="main post"
             src={houseData.detailImage}
+            width={600}
+            height={600}
           />
         </div>
         <button
