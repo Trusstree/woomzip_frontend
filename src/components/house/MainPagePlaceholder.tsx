@@ -8,11 +8,8 @@ type MainPagePostProps = {
 }
 
 export default function MainPagePlaceholder(props: MainPagePostProps) {
-  const { className, style } = props;
-  console.log("123123");
-
   return (
-    <div className="col-md-4 col-lg-3">
+    <div className="col-3">
       <div className="d-flex flex-column align-items-center w-100">
         <Image
           className="rounded-4 w-100 m-0 p-1"

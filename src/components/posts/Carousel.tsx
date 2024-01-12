@@ -3,18 +3,18 @@
 import { getHouses } from "@/api/HouseAPI"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { Key, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 type CarouselProps = {
-  className: string
   width: number
   height: number
   skip: number
   limit: number
+  className?: string
 }
 
 export default function Carousel(props: CarouselProps){
-  const { className, width, height, skip, limit } = props;
+  const { width, height, skip, limit, className } = props;
   const router = useRouter();
   
   const [houseData, setHouseData] = useState(undefined as any);
@@ -32,7 +32,11 @@ export default function Carousel(props: CarouselProps){
   },[])
   
   return (
-    <div id="Carousel" className={`carousel slide ${className}`} data-bs-ride="carousel">
+    <div
+      id="Carousel"
+      className={`carousel slide ${className}`}
+      data-bs-ride="carousel"
+      style={{width:width, height:height}}>
       <div className="carousel-indicators">
         {houseData?.map((_, i)=>(
           <button

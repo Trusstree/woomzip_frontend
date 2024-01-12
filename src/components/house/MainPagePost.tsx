@@ -16,7 +16,7 @@ export default function MainPagePost(props: MainPagePostProps) {
   const { data, className, style } = props;
 
   return (
-    <div className="col-md-4 col-lg-3">
+    <div className="col-3">
       <div className="d-flex flex-column align-items-center w-100">
         <button type="button"
           style={{...style, color:"#101648"}}
@@ -34,7 +34,6 @@ export default function MainPagePost(props: MainPagePostProps) {
         </button>
         <div className="w-100 text-left px-1">
           <div>{truncatedText(data.title,13)}</div>
-
           <div className="row g-0 fs-6" style={{textDecoration:"none"}}>
             <div className="col-6">{data.price}만원</div>
             <div className="col-3">{data.floorSpace}평</div>

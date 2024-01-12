@@ -23,9 +23,9 @@ type DataProps = {
 }
 
 const style={
-  "일반":{backgroundColor:"#FFFFDD"},
-  "공지":{backgroundColor:"#FFD2D2"},
-  "질문":{backgroundColor:"#C8CCF2"}
+  "일반":{backgroundColor:"#101648"},
+  "공지":{backgroundColor:"#FF7070"},
+  "질문":{backgroundColor:"#00B6B6"}
 }
 
 export default function PostCard (props: PostCardProps) {
@@ -35,9 +35,7 @@ export default function PostCard (props: PostCardProps) {
     <div className={`${className?className:""} col-md-4 col-lg-3 fs-6`}>
       <div className="card rounded-3">
         <div className={`card-header pb-2`}style={{backgroundColor:style[data.category].backgroundColor, borderColor:style[data.category].backgroundColor}}>
-          <div
-            className="fw-normal d-flex justify-content-between mt-2"
-            >
+          <div className="fw-bold d-flex justify-content-between mt-2 text-white">
             <span>{data.category}</span>
             <span>{data.updated_at.split("T")[0]}</span>
           </div>

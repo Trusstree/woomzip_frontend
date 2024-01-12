@@ -16,7 +16,7 @@ export default function Header(props: HeaderProps) {
           <RouteButton url={"/"}
             className="me-3 ms-4 px-4 py-2">
             <Image
-              src={"/logo_truss.png"}
+              src={"/logo/logo_truss.png"}
               alt={"Truss Logo"}
               width={70}
               height={50} />

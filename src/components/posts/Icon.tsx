@@ -7,7 +7,9 @@ import { CSSProperties } from "react";
 
 type IconProps = {
   src: string
-  children: string
+  title: string
+  width: number
+  height: number
   param?: string
   className?: string
   style?: CSSProperties
@@ -15,7 +17,7 @@ type IconProps = {
 
 export default function Icon(props: IconProps) {
   const router = useRouter();
-  const { className, children, param, src, style } = props;
+  const { className, title, width, height, param, src, style } = props;
   const { createQueryString } = useQuery();
 
   return (
@@ -25,15 +27,11 @@ export default function Icon(props: IconProps) {
         className={`${className?className:""} px-4 py-2 btn rounded-lg fw-bold`}
         onClick={()=>{router.push(createQueryString('category', param));}}>
         <Image
-          className=""
           src={src}
-          alt={`${children}`}
-          width={80}
-          height={80} />
+          alt={`${title}`}
+          width={width}
+          height={height} />
       </button>
-      <div>
-        {children}
-      </div>
     </div>
     
   );

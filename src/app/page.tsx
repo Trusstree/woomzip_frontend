@@ -16,18 +16,18 @@ export default function Home() {
       </div> */}
 
       {/* 캐러셀 */}
-      <div className={`my-3 row g-3`}>
+      <div className={`my-3 d-flex`}>
         <Carousel
-          className={"col-10"}
-          width={500}
+          className="me-3"
+          width={900}
           height={500}
           skip={0}
           limit={4} />
         <Image
-          className="col-2 rounded-4"
+          className="ms-3 rounded-4"
           alt="main post"
           src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
-          width={100}
+          width={200}
           height={500}
           unoptimized={true}
         />
