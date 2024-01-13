@@ -6,9 +6,17 @@ import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
 type MainPagePostProps = {
-  data: any
+  data: DataProps
   className?: string
   style?: CSSProperties
+}
+
+type DataProps = {
+  idx: number,
+  image: string,
+  title: string,
+  price: string,
+  floorSpace: string
 }
 
 export default function MainPagePost(props: MainPagePostProps) {
@@ -21,7 +29,7 @@ export default function MainPagePost(props: MainPagePostProps) {
         <button type="button"
           style={{...style, color:"#101648"}}
           className={`${className?className:""} d-flex btn rounded-lg p-0 w-100`}
-          onClick={()=>{router.push(`/house/${data.id}`);}}>
+          onClick={()=>{router.push(`/house/${data.idx}`);}}>
           <Image
             className="rounded-4 w-100 m-0 p-1"
             src={`${data?.image?data.image:""}`}
@@ -39,7 +47,6 @@ export default function MainPagePost(props: MainPagePostProps) {
             <div className="col-3">{data.floorSpace}평</div>
             <div className="col-3">4.8/5.0</div>
           </div>
-
         </div>
       </div>
     </div>

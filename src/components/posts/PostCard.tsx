@@ -10,7 +10,7 @@ type PostCardProps = {
 }
 
 type DataProps = {
-  id: number,
+  idx: number,
   category: string,
   title: string,
   text: string,
@@ -44,14 +44,14 @@ export default function PostCard (props: PostCardProps) {
         <div className="card-body fw-normal pt-3 mb-0">
           <Link
             className="fs-4 fw-bold text-black text-truncate"
-            href={{ pathname: `/community/${data.id}`,}}
+            href={{ pathname: `/community/${data.idx}`,}}
             style={{textDecoration:"none", display: "block"}}
             >
             {data.title}
           </Link>
           <Link
             className="mt-3 text-black text-truncate"
-            href={{ pathname: `/community/${data.id}`,}}
+            href={{ pathname: `/community/${data.idx}`,}}
             style={{textDecoration:"none", display: "block"}}
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(String(truncatedText(data.text, 15))),

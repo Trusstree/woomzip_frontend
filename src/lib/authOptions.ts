@@ -1,6 +1,7 @@
 import NaverProvider from "next-auth/providers/naver"
 import KakaoProvider from "next-auth/providers/kakao"
 import GoogleProvider from "next-auth/providers/google"
+import { getUser, postUser } from "@/api/userAPI";
 
 export const authOptions = {
   providers: [
@@ -26,34 +27,27 @@ export const authOptions = {
 	},
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+      
       // profile 객체에 이름이나 이메일 값이 있으면 해당 값을 user 객체에 저장
       if (profile) {
+        user.id = profile.response?.id || user.id;
         user.name = profile.response?.name || user.name;
-        user.email = profile.response?.email || user.email;
       }
 
       try {
-        // //데이터베이스에 유저가 있는지 확인
-        // let db_user = await prisma.user.findUnique({
-        //   where: { email: user.email! },
-        // });
+        //데이터베이스에 유저가 있는지 확인
+        let db_user = await getUser(user.id);
 
-        // // 없으면 데이터베이스에 유저 추가
-        // if (!db_user) {
-        //   db_user = await prisma.user.create({
-        //     data: {
-        //       name: user.name!,
-        //       email: user.email!,
-        //       cart: {
-        //         create: {},
-        //       },
-        //     },
-        //   });
-        // }
+        // 없으면 데이터베이스에 유저 추가
+        if (!db_user.data.length) {
+          const post_user = await postUser(user);
+          console.log(post_user.data);
+          if(post_user.error){throw post_user.error}
+        }
 
-        // // 유저 정보에 데이터베이스 아이디, 역할 연결
-        // user.id = db_user.id;
-        // user.role = db_user.role;
+        // 유저 정보에 데이터베이스 아이디, 역할 연결
+        user.id = db_user.data?.id;
+        user.role = db_user.data?.role;
 
         return true;
       } catch (error) {
@@ -65,10 +59,12 @@ export const authOptions = {
       if (account) {
         token.accessToken = account.access_token
       }
-      return token
+      //console.log(token);
+      return token;
     },
     async session({ session, user, token }) {
-      return session
+      //console.log(session);
+      return session;
     },
     async redirect({ url, baseUrl }) {
       // Allows relative callback URLs
