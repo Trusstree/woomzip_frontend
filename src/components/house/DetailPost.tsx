@@ -1,7 +1,8 @@
 "use client"
 
-import { alertImage } from "@/utils/alertUtil";
-import { truncatedText } from "@/utils/stringUtil";
+import { alertImage } from "@/lib/alertUtil";
+import { truncatedText } from "@/lib/stringUtil";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
@@ -24,10 +25,12 @@ export default function DetailPost(props: DetailPostProps) {
           onClick={async ()=>{
             await alertImage(children, src);
           }}>
-          <img
+          <Image
             className="rounded-4 w-100 m-0 p-1"
             src={src}
-            width={250} height={250}
+            alt={`${src}`}
+            width={250}
+            height={250}
             style={{objectFit:"cover"}} />
         </button>
         <div className="w-100 text-center px-1">

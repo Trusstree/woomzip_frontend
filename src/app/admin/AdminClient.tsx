@@ -3,10 +3,11 @@
 import { getHouseLast, postHouse } from "@/api/HouseAPI";
 import SubmitButton from "@/components/forms/SubmitButton";
 import useForm from "@/hooks/useForm";
-import { getS3Url, setS3Url } from "@/utils/s3Util";
-import { isRequired } from "@/utils/validator";
+import { getS3Url, setS3Url } from "@/lib/s3Util";
+import { isRequired } from "@/lib/validator";
 import { useSession } from "next-auth/react";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function AdminClient() {
   const [houseData, setHouseData] = useState({
@@ -84,7 +85,11 @@ export default function AdminClient() {
               onChange={(e)=>{testFunction(e, "image")}}
             />
           </div>
-          <img src={houseData["image"]} width={200} height={100}/>
+          <Image
+            src={houseData["image"]}
+            alt={"image"}
+            width={200}
+            height={100} />
         </div>
 
         {/* subImage1 */}
@@ -99,7 +104,11 @@ export default function AdminClient() {
               onChange={(e)=>{testFunction(e, "subImage1")}}
             />
           </div>
-          <img src={houseData["subImage1"]} width={200} height={100}/>
+          <Image
+            src={houseData["subImage1"]}
+            alt={"subImage1"}
+            width={200}
+            height={100} />
         </div>
 
         {/* subImage2 */}
@@ -114,7 +123,11 @@ export default function AdminClient() {
               onChange={(e)=>{testFunction(e, "subImage2")}}
             />
           </div>
-          <img src={houseData["subImage2"]} width={200} height={100}/>
+          <Image
+            src={houseData["subImage2"]}
+            alt={"subImage2"}
+            width={200}
+            height={100} />
         </div>
 
         {/* detailImage */}
@@ -129,7 +142,11 @@ export default function AdminClient() {
               onChange={(e)=>{testFunction(e, "detailImage")}}
             />
           </div>
-          <img src={houseData["detailImage"]} width={200} height={100}/>
+          <Image
+            src={houseData["detailImage"]}
+            alt={"detailImage"}
+            width={200}
+            height={100} />
         </div>
 
         {/* buildingImage */}
@@ -144,7 +161,11 @@ export default function AdminClient() {
               onChange={(e)=>{testFunction(e, "buildingImage")}}
             />
           </div>
-          <img src={houseData["buildingImage"]} width={200} height={100}/>
+          <Image
+            src={houseData["buildingImage"]}
+            alt={"buildingImage"}
+            width={200}
+            height={100} />
         </div>
 
         {/* blueprint */}
@@ -159,7 +180,11 @@ export default function AdminClient() {
               onChange={(e)=>{testFunction(e, "blueprint")}}
             />
           </div>
-          <img src={houseData["blueprint"]} width={200} height={100}/>
+          <Image
+            src={houseData["blueprint"]}
+            alt={"blueprint"}
+            width={200}
+            height={100} />
         </div>
 
         {/* costImage */}
@@ -174,7 +199,12 @@ export default function AdminClient() {
               onChange={(e)=>{testFunction(e, "costImage")}}
             />
           </div>
-          <img src={houseData["costImage"]} width={200} height={100}/>
+          <Image
+            src={houseData["costImage"]}
+            alt={"costImage"}
+            width={200}
+            height={100} />
+          
         </div>
 
         {/* officeImage */}
@@ -189,7 +219,11 @@ export default function AdminClient() {
               onChange={(e)=>{testFunction(e, "officeImage")}}
             />
           </div>
-          <img src={houseData["officeImage"]} width={200} height={100}/>
+          <Image
+            src={houseData["officeImage"]}
+            alt={"officeImage"}
+            width={200}
+            height={100} />
         </div>
 
         {/* price */}

@@ -12,7 +12,7 @@ export default function PostMenu(props: PostMenuProps) {
   const { title, children, routeUrl, routeText } = props;
 
   return (
-    <div className="my-5 fw-bold fs-5">
+    <div className="my-4 fw-bold fs-5">
       <div className="d-flex justify-content-between my-2 fs-5">
         <div>{title}</div>
         {(routeText&&routeUrl)?(

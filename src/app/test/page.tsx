@@ -1,6 +1,7 @@
 "use client"
 
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import { useEffect } from "react";
 
 export default function Test() {
@@ -18,7 +19,11 @@ export default function Test() {
         {session.user.email}
         </div>
 			<div>
-        <img src={`${session.user.image}`} alt={`유저 이미지`}></img>
+        <Image
+          src={`${session.user.image}`}
+          alt={`유저 이미지`}
+          width={300}
+          height={300} />
       </div>
 			<div>{session.user.name}
       </div>

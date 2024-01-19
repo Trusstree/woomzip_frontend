@@ -2,6 +2,7 @@ import CollapsingButton from "@/components/CollapsingButton";
 import RouteButton from "@/components/RouteButton";
 import SigninButton from "@/components/auth/SigninButton";
 import React from "react";
+import Image from "next/image";
 
 type HeaderProps = {};
 
@@ -14,12 +15,11 @@ export default function Header(props: HeaderProps) {
         <div className="d-flex">
           <RouteButton url={"/"}
             className="me-3 ms-4 px-4 py-2">
-            <img
-              className=""
-              src="/logo_truss.png"
-              alt="Truss Logo"
+            <Image
+              src={"/logo/logo_truss.png"}
+              alt={"Truss Logo"}
               width={70}
-            />
+              height={50} />
           </RouteButton>
 
           <div className="d-flex align-items-center me-auto">
@@ -41,7 +41,7 @@ export default function Header(props: HeaderProps) {
           </div>
 
           <div className="d-flex align-items-center ms-5">
-            {/* <SigninButton/>  */}
+            <SigninButton/>
             {/* <RouteButton url={"/service"}>
               기업서비스
             </RouteButton> */}

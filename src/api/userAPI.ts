@@ -1,11 +1,11 @@
 import { apiClient } from "@/configs/apiClient";
 
-export const getUser = async (userNum: number) => {
+export const getUser = async (id: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/user/${userNum}`, {
-      params: {},
+    const result = await apiClient.get(`/api/user`, {
+      params: {id: id},
       headers: {}
     });
     data = result?.data;

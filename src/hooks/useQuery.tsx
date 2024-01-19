@@ -2,8 +2,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 
 export default function useQuery(){
-  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
