@@ -34,7 +34,7 @@ type HouseData = {
   toiletNumber: number
   hasLoft: boolean
   tag: string[],
-  ratingPost: RatingPost[]
+  ratingPost: any[]
 }
 
 export function HouseClient (props: HouseComponentProps) {
