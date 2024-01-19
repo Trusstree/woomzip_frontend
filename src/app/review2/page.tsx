@@ -5,7 +5,7 @@ import Radios from "@/components/forms/Radios";
 import SubmitButton from "@/components/forms/SubmitButton";
 import TextBox from "@/components/forms/Textbox";
 import useForm from "@/hooks/useForm";
-import { isRequired } from "@/utils/validator";
+import { isRequired } from "@/lib/validator";
 import { postPerson } from "@/api/personAPI";
 
 type personalInfo = {
