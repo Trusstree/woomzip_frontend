@@ -18,9 +18,9 @@ export const metadata = {
     siteName: 'Truss',
     images: [
       {
-        url: 'https://buildintruss.com/logo_truss.png',
-        width: 218,
-        height: 128,
+        url: 'https://buildintruss.com/logo/truss_icon.png',
+        width: 1600,
+        height: 1600,
         alt: "truss logo"
       },
     ],

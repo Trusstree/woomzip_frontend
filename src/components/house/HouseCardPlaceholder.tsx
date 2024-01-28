@@ -7,7 +7,7 @@ type MainPagePostProps = {
   style?: CSSProperties
 }
 
-export default function MainPagePlaceholder(props: MainPagePostProps) {
+export default function HouseCardPlaceholder(props: MainPagePostProps) {
   return (
     <div className="col-3">
       <div className="d-flex flex-column align-items-center w-100">

@@ -64,7 +64,7 @@ export default function Carousel(props: CarouselProps){
                 alt="truss_logo.png"
                 width={width}
                 height={height}
-                onClick={()=>{router.push(`/house/${e.id}`);}}
+                onClick={()=>{router.push(`/house/${e.idx}`);}}
                 style={{objectFit:"cover"}}
                 placeholder={"blur"}
                 blurDataURL={"/placeholder.png"}/>

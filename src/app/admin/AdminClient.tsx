@@ -131,12 +131,10 @@ export default function AdminClient() {
             style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
             <h4 className="fw-bold mb-4">가격에 포함된 것</h4>
             <div className="row">
-              <AdminSwitchComponent className="col-2" data={houseData} name={"gunchuck"} title={"건축"} onChange={handleText} />
+              <AdminSwitchComponent className="col-2" data={houseData} name={"gagu"} title={"가구"} onChange={handleText} />
               <AdminSwitchComponent className="col-2" data={houseData} name={"interior"} title={"인테리어"} onChange={handleText} />
-              <AdminSwitchComponent className="col-2" data={houseData} name={"eunsong"} title={"운송비"} onChange={handleText} />
-              <AdminSwitchComponent className="col-2" data={houseData} name={"additionalTax"} title={"부가세"} onChange={handleText} />
-              <AdminSwitchComponent className="col-2" data={houseData} name={"afterService"} title={"AS"} onChange={handleText} />
-              <AdminSwitchComponent className="col-2" data={houseData} name={"etc"} title={"기타등등"} onChange={handleText} />
+              <AdminSwitchComponent className="col-2" data={houseData} name={"transportation"} title={"운송비"} onChange={handleText} />
+              <AdminSwitchComponent className="col-2" data={houseData} name={"installation"} title={"설치비"} onChange={handleText} />
             </div>
           </div>
 
@@ -146,11 +144,14 @@ export default function AdminClient() {
             <h4 className="fw-bold mb-4">추가로 고려해야 할 비용</h4>
 
             <div className="row g-3">
-              <AdminSwitchTextComponent className={"col-2"} data={houseData} name={"surveying"} title={"측량"} onChange={handleText} />
-              <AdminSwitchTextComponent className={"col-2"} data={houseData} name={"inheoga"} title={"인허가"} onChange={handleText} />
-              <AdminSwitchTextComponent className={"col-2"} data={houseData} name={"tomok"} title={"토목"} onChange={handleText} />
-              <AdminSwitchTextComponent className={"col-2"} data={houseData} name={"inip"} title={"인입"} onChange={handleText} />
-              <AdminSwitchTextComponent className={"col-2"} data={houseData} name={"tax"} title={"세금"} onChange={handleText} />
+              <AdminSwitchTextComponent data={houseData} name={"inheoga"} title={"인허가비용"} onChange={handleText} />
+              <AdminSwitchTextComponent data={houseData} name={"gicho"} title={"기초공사"} onChange={handleText} />
+              <AdminSwitchTextComponent data={houseData} name={"tomok"} title={"토목공사"} onChange={handleText} />
+              <AdminSwitchTextComponent data={houseData} name={"electroInip"} title={"전기인입"} onChange={handleText} />
+              <AdminSwitchTextComponent data={houseData} name={"sudoInip"} title={"수도인입"} onChange={handleText} />
+              <AdminSwitchTextComponent data={houseData} name={"tax"} title={"세금"} onChange={handleText} />
+              <AdminSwitchTextComponent data={houseData} name={"bohum"} title={"보험"} onChange={handleText} />
+              <AdminSwitchTextComponent data={houseData} name={"etc"} title={"기타"} onChange={handleText} />
             </div>
           </div>
         </div>

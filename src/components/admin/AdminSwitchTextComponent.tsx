@@ -16,7 +16,7 @@ export function AdminSwitchTextComponent(props: SwitchTextComponentProps) {
   const [check, setCheck] = useState(false);
   return (
     <>
-      <div className={`${className} d-flex`}>
+      <div className={`${className} col-3 d-flex`}>
         <div className="form-check form-switch ps-0 w-100">
           <input
             style={{display:"none"}}
@@ -34,7 +34,7 @@ export function AdminSwitchTextComponent(props: SwitchTextComponentProps) {
         </div>
       </div>
       <input
-        className="col-6"
+        className="col-5"
         type='text'
         id={name+"Text"}
         name={name}

@@ -82,9 +82,7 @@ export default function Home() {
       </div>
 
       <PostMenu
-        title={"내가 원하는 주택들을 검색하여 구경해보세요!"}
-        routeUrl={"/"}
-        routeText={"더보기"}>
+        title={"내가 원하는 주택들을 검색하여 구경해보세요!"}>
         <HouseList
           numShowItems={numShowItems}
           numShowPages={numShowPages}

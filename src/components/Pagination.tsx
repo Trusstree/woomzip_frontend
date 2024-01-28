@@ -1,5 +1,5 @@
 import useQuery from "@/hooks/useQuery";
-import { isNumber } from "@/utils/validator";
+import { isNumber } from "@/lib/validator";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 //컴포넌트가 받을 props
