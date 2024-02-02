@@ -6,15 +6,13 @@ import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 type CarouselProps = {
-  width: number
-  height: number
   skip: number
   limit: number
   className?: string
 }
 
 export default function Carousel(props: CarouselProps){
-  const { width, height, skip, limit, className } = props;
+  const { skip, limit, className } = props;
   const router = useRouter();
   
   const [houseData, setHouseData] = useState(undefined as any);
@@ -35,8 +33,7 @@ export default function Carousel(props: CarouselProps){
     <div
       id="Carousel"
       className={`carousel slide ${className}`}
-      data-bs-ride="carousel"
-      style={{width:width, height:height}}>
+      data-bs-ride="carousel">
       <div className="carousel-indicators">
         {houseData?.map((_, i)=>(
           <button
@@ -62,8 +59,8 @@ export default function Carousel(props: CarouselProps){
                 className="d-block w-100 rounded-4"
                 src={e.image}
                 alt="truss_logo.png"
-                width={width}
-                height={height}
+                width={400}
+                height={500}
                 onClick={()=>{router.push(`/house/${e.idx}`);}}
                 style={{objectFit:"cover"}}
                 placeholder={"blur"}
@@ -81,8 +78,6 @@ export default function Carousel(props: CarouselProps){
             backgroundColor:"gray",
             borderColor:"gray",
             objectFit:"cover",
-            width:`${width}px`,
-            height:`${height}px`
           }}/>
         }
       </div>

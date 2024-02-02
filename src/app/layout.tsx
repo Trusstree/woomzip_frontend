@@ -44,7 +44,7 @@ export default function RootLayout({children, }: {children: React.ReactNode, }) 
         <AuthSession>
           <Analytics />
           <Header />
-          <main className={`container px-5`}>
+          <main className={`container-md`}>
           {children}
           </main>
           <Footer />

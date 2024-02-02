@@ -6,14 +6,15 @@ type PostMenuProps = {
   children: Children
   routeUrl?: string
   routeText?: string
+  horizontalScroll?: boolean
 }
 
 export default function PostMenu(props: PostMenuProps) {
-  const { title, children, routeUrl, routeText } = props;
+  const { title, children, routeUrl, routeText, horizontalScroll } = props;
 
   return (
     <div className="my-4 fw-bold fs-5">
-      <div className="d-flex justify-content-between my-2 fs-5">
+      <div className="d-flex justify-content-between mt-2 mb-1 fs-5">
         <div>{title}</div>
         {(routeText&&routeUrl)?(
         <RouteButton url={routeUrl}>
@@ -21,7 +22,7 @@ export default function PostMenu(props: PostMenuProps) {
         </RouteButton>)
         :undefined}
       </div>
-      <div className="row g-4 my-2">
+      <div className={`w-100 row g-2 mb-2 ${horizontalScroll&&"flex-nowrap overflow-auto"}`}>
         {children}
       </div>
     </div>

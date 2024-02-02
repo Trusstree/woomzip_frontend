@@ -11,25 +11,38 @@ import { ChangeEvent, ChangeEventHandler, useState } from "react";
 
 export default function AdminClient() {
   const [houseData, setHouseData] = useState({
-    title : "test 1",
-    price : 0,
-    floorSpace : 0,
-    roomNumber : 0,
-    toiletNumber : 0,
-    hasLoft : "no",
-    hasModel : "no",
+    image: "",
+    gubun: "",
+    company: "",
+
+    title: "",
+    price: 0,
     discount: 0,
-    gunchuck: "no",
+
+    floorSpace: 0,
+    gunchuckSpace: 0,
+    roomNumber: 0,
+    toiletNumber: 0,
+
+    duration: 0,
+    afterService: 0,
+
+    moduler: "no",
+    hasModel: "no",
+
+    gagu: "no",
     interior: "no",
-    eunsong: "no",
-    addtionalTax: "no",
-    afterService: "no",
-    etc: "no",
-    serveying: 0,
+    transportation: "no",
+    installation: "no",
+
     inheoga: 0,
+    gicho: 0,
     tomok: 0,
-    inip: 0,
+    electroInip: 0,
+    sudoInip: 0,
     tax: 0,
+    bohum: 0,
+    etc: 0,
   });
 
   const handleText = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
@@ -42,15 +55,15 @@ export default function AdminClient() {
   const testFunction = async (e:ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
     const count = await getHouseLast({});
-    console.log(count.data?.id);
+    console.log(count.data?.idx);
     console.log(count.error);
-    const pid = count.data?count.data.id+1:1;
-    const {response, error} = await setS3Url(`houses/${pid}/${name}.${img.type.split("/")[1]}`, img);
+    const pid = count.data?count.data.idx+1:1;
+    const {response, error} = await setS3Url(`houses/${pid}/${e.target.name}.${img.type.split("/")[1]}`, img);
     if(!error) {
       setHouseData((oldValues) => (
         {
           ...oldValues,
-          [e.target.name]: `https://trussbucket.s3.${process.env.NEXT_PUBLIC_AWS_S3_REGION}.amazonaws.com/houses/${pid}/${name}.${img.type.split("/")[1]}`
+          [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${pid}/${e.target.name}.${img.type.split("/")[1]}`
         }
       ));
     }
@@ -104,26 +117,16 @@ export default function AdminClient() {
               </div>
             </div>
             
-
             {/* 특이사항 */}
-            <div className="col-12 d-flex">
+            {/* <div className="col-12 d-flex">
               <span className="col-2">특이사항</span>
               <div className="col-4 row">
                 <AdminCheckboxComponent id={"darak"} title={"다락"} name={"significant"} data={"darak"} onChange={handleText} className={"col-4"} />
                 <AdminCheckboxComponent id={"balcony"} title={"발코니"} name={"significant"} data={"balcony"} onChange={handleText} className={"col-4"} />
                 <AdminCheckboxComponent id={"oksang"} title={"옥상"} name={"significant"} data={"oksang"} onChange={handleText} className={"col-4"} />
               </div>
-            </div>
+            </div> */}
 
-            {/* 특이사항 */}
-            <div className="col-12 d-flex">
-              <span className="col-2">특이사항</span>
-              <div className="col-4 row">
-                <AdminCheckboxComponent id={"darak"} title={"다락"} name={"significant"} data={"darak"} onChange={handleText} className={"col-4"} />
-                <AdminCheckboxComponent id={"balcony"} title={"발코니"} name={"significant"} data={"balcony"} onChange={handleText} className={"col-4"} />
-                <AdminCheckboxComponent id={"oksang"} title={"옥상"} name={"significant"} data={"oksang"} onChange={handleText} className={"col-4"} />
-                </div>
-            </div>
           </div>
 
           <div
@@ -154,11 +157,32 @@ export default function AdminClient() {
               <AdminSwitchTextComponent data={houseData} name={"etc"} title={"기타"} onChange={handleText} />
             </div>
           </div>
+
+          <div
+            className="mt-4 py-4"
+            style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+            <h4 className="fw-bold mb-4">사진 첨부</h4>
+            
+            <input
+              id={"image"}
+              accept="image/*"
+              multiple
+              type="file" 
+              onChange={(e)=>{testFunction(e)}}
+            />
+            <img
+              src={houseData["image"]}
+              alt={"image"}
+              width={200}
+              height={100} />
+            
+          </div>
         </div>
       </div>
 
       <div className="d-flex justify-content-center">
         <button type="button"
+          name="image"
           style={{backgroundColor:"#6764F7"}}
           className={`my-5 px-4 py-2 btn btn-primary rounded-lg fw-bold fs-5`}
           onClick={async ()=>{ console.log(houseData); await postHouse(houseData)}}>

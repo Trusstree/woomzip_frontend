@@ -1,6 +1,6 @@
 "use client"
 
-import { truncatedText } from "@/lib/stringUtil";
+import { priceText } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
@@ -15,7 +15,7 @@ type DataProps = {
   idx: number,
   image: string,
   title: string,
-  price: string,
+  price: number,
   floorSpace: string
 }
 
@@ -24,20 +24,20 @@ export default function HouseCard(props: MainPagePostProps) {
   const { data, className, style } = props;
 
   return (
-    <div className="col-3">
+    <div className="col-md-4 col-lg-3">
       <div className="card d-flex flex-column align-items-center w-100">
         <Image
           className="rounded-top-2 w-100 m-0"
           onClick={()=>{router.push(`/house/${data.idx}`);}}
           src={`${data?.image?data.image:""}`}
           alt={`${data.title}`}
-          width={250}
-          height={250}
-          style={{objectFit:"cover", height:"300px"}}
+          width={200}
+          height={200}
+          style={{objectFit:"cover", height:"166px"}}
           placeholder={"blur"}
           blurDataURL={"/blur_image.png"} />
         <div
-          className="card-body w-100 pt-2 fs-6"
+          className="card-body w-100 pt-1 px-2 fs-6"
           style={{height:"250px", backgroundColor:"lightgray"}}>
           <div className="d-flex justify-content-left mb-2">
             {1 && <div
@@ -51,14 +51,20 @@ export default function HouseCard(props: MainPagePostProps) {
               모델하우스
             </div>}
           </div>
-          <h5 className="card-title fw-bold" style={{color:"#101648"}}>{truncatedText(data.title,12)}</h5>
+          <h4
+            className="card-title fw-bold mb-0 text-nowrap"
+            style={{color:"#101648", overflow:"hidden", textOverflow:"ellipsis"}}>
+            {data.title}
+          </h4>
           <div className="d-flex flex-column fw-normal">
-            <div className="d-flex justify-content-between text-nowrap">
+            <div className="d-flex justify-content-between">
+              <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>10%</div>
               <div>
-                <span className="fs-5 fw-bold" style={{color:"#BD4040"}}>10%</span>
-                <span className="text-muted text-decoration-line-through">9900만원</span>
+                
+                <div className="text-muted text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>100억9900만원</div>
+                <div className="fs-6 fw-bold text-end">{priceText(data.price)}원</div>
               </div>
-              <div className="fs-5 fw-bold">{data.price}만원</div>
+            
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">평수</div>

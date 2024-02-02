@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className={`container px-5`}>
+    <main className={``}>
       {/* 검색창
       <div className={`my-3`}>
         <SearchBox
@@ -18,13 +18,11 @@ export default function Home() {
       {/* 캐러셀 */}
       <div className={`my-3 d-flex`}>
         <Carousel
-          className="me-3"
-          width={900}
-          height={500}
+          className="w-100 me-2"
           skip={0}
           limit={4} />
         <Image
-          className="ms-3 rounded-4"
+          className="d-none d-md-block rounded-4"
           alt="main post"
           src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
           width={200}
@@ -49,9 +47,10 @@ export default function Home() {
       <PostMenu
         title={"1억 미만으로 지을 수 있는 주택들을 구경해보세요!"}
         routeUrl={"/house"}
-        routeText={"더보기"}>
+        routeText={"더보기"}
+        horizontalScroll={true} >
         <HouseList
-          numShowItems={4}
+          numShowItems={6}
           searchCondition={undefined} />
       </PostMenu>
 
@@ -70,8 +69,9 @@ export default function Home() {
       <PostMenu
         title={"건축이 처음이라면? 확인해야 할 정보!"}
         routeUrl={"/community"}
-        routeText={"더보기"}>
-        <PostList numShowItems={4} />
+        routeText={"더보기"}
+        horizontalScroll={true} >
+        <PostList numShowItems={6} />
       </PostMenu>
 
       {/* <PostMenu

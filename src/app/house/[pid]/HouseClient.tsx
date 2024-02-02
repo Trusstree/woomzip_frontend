@@ -327,7 +327,7 @@ export function HouseClient (props: HouseComponentProps) {
       <PostMenu
         title={`평점 ${getAvg(houseData).toFixed(1)}/5.0`}
         routeUrl={"/posts"}
-        >
+        horizontalScroll={true}>
         <div className="d-flex justify-content-center">
           {
           houseData.ratingPost?houseData.ratingPost.map((e, i)=>(
@@ -344,7 +344,8 @@ export function HouseClient (props: HouseComponentProps) {
       <PostMenu
         title={`제품 Q&A(${4})`}
         routeUrl={"/posts"}
-        routeText={"더보기"}>
+        routeText={"더보기"}
+        horizontalScroll={true}>
         <div className="d-flex justify-content-center">
           {
           houseData.ratingPost?houseData.ratingPost.map((e, i)=>(
@@ -360,9 +361,10 @@ export function HouseClient (props: HouseComponentProps) {
       {/* 추천정보 */}
       <PostMenu
         title={"1억 미만으로 지을 수 있는 북유럽 스타일 주택들을 구경해보세요!"}
-        routeUrl={"/posts"}
-        routeText={"더보기"}>
-        <HouseList numShowItems={4} searchCondition={{}} />
+        routeUrl={"/house"}
+        routeText={"더보기"}
+        horizontalScroll={true}>
+        <HouseList numShowItems={6} searchCondition={{}}  />
       </PostMenu>
     </>
   ):(

@@ -7,7 +7,7 @@ export default function Home() {
   const [numShowItems, numShowPages] = [24, 10];
 
   return (
-    <main className={`container px-5 my-2`}>
+    <main>
       {/* search bar */}
       {/* <div className={`my-2`}>
         <SearchBox

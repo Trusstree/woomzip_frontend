@@ -1,4 +1,3 @@
-import { truncatedText } from "@/lib/stringUtil";
 import Image from "next/image";
 import { CSSProperties } from "react";
 

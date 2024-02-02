@@ -23,6 +23,7 @@ export function HouseList(props: HousePostProps) {
 
   useEffect( () => {
     (async ()=>{
+      console.log()
       const params={
         skip: numShowItems*(page-1),
         limit: numShowItems,
@@ -39,30 +40,20 @@ export function HouseList(props: HousePostProps) {
     })();
   },[searchCondition, page])
   
-  return houseData ? 
+  return (
     <>
-      {houseData.map((e, i)=>{
-        return (
-        <HouseCard
-          key={i}
-          data={e} />
-        )
-      })}
+      {houseData ?
+        houseData.map((e, i)=>(
+          <HouseCard className="" key={i} data={e} />
+        ))
+      :
+        new Array(numShowItems).fill(0).map((e, i)=>(
+          <HouseCardPlaceholder key={i} />
+        ))}
       {numShowPages && <Pagination
         numItems={count}
         numShowItems={numShowItems}
         numShowPages={numShowPages}
         />}
-    </>
-    :
-    <>
-      {new Array(numShowItems).fill(0).map((e, i)=>{
-        return <HouseCardPlaceholder key={i} />
-       })}
-      {numShowPages && <Pagination
-        numItems={count}
-        numShowItems={numShowItems}
-        numShowPages={numShowPages}
-        />}
-    </>;
+    </>);
 }
