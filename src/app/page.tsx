@@ -45,7 +45,7 @@ export default function Home() {
       </PostMenu> */}
 
       <PostMenu
-        title={"1억 미만으로 지을 수 있는 주택들을 구경해보세요!"}
+        title={"다양한 집들을 구경해보세요!"}
         routeUrl={"/house"}
         routeText={"더보기"}
         horizontalScroll={true} >

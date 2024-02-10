@@ -31,8 +31,6 @@ export function HouseList(props: HousePostProps) {
         limit: numShowItems,
         ...searchCondition
       };
-      
-      console.log(searchCondition);
 
       const { count, countError } = await getHouseCount(searchCondition);
       if(countError) {console.log(countError); return;}

@@ -224,14 +224,14 @@ export function HouseClient (props: HouseComponentProps) {
               <span className="my-2 text-center">{priceText(houseData["gicho"])}원</span>
             </div>}
             {houseData["tomok"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
+            (<div className="me-1 mx-md-2 d-flex flex-column align-items-center">
               <div
                 className="text-white rounded-3 text-center p-1"
                 style={{backgroundColor:"#BD4040", width:"105px"}}>
                 토목공사
               </div>
               <span className="my-2 text-center">{priceText(houseData["tomok"])}원</span>
-            </div>}
+            </div>)}
             {houseData["electroInip"]>0 &&
             <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
               <div

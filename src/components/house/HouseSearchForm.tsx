@@ -24,7 +24,7 @@ export default function HouseSearchForm(props: HouseSearchFormProps){
         type='text'
         id={value}
         name={value}
-        className="col-8 px-3 me-3 rounded-3"
+        className="col-6 px-3 me-1 rounded-3"
         onChange={(e)=>handleData(e)}
         placeholder="제품명"
         value={searchCondition[value] || ''}
