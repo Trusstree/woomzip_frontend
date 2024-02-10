@@ -6,17 +6,9 @@ import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
 type MainPagePostProps = {
-  data: DataProps
+  data: any
   className?: string
   style?: CSSProperties
-}
-
-type DataProps = {
-  idx: number,
-  thumbnail: string,
-  title: string,
-  price: number,
-  floorSpace: string
 }
 
 export default function HouseCard(props: MainPagePostProps) {
@@ -58,13 +50,12 @@ export default function HouseCard(props: MainPagePostProps) {
           </h4>
           <div className="d-flex flex-column fw-normal">
             <div className="d-flex justify-content-between">
-              <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>10%</div>
-              <div>
-                
-                <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>100억9900만원</div>
-                <div className="fs-6 fw-bold text-end">{priceText(data.price)}원</div>
-              </div>
-            
+              {(data["discount"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data.discount}%</div>}
+                <div>
+                  {(data["discount"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{priceText(data["price"])}원</div>}
+                  <div className="fs-6 fw-bold text-end">{priceText(data.price*(100-data.discount)*0.01)}원</div>
+                </div>
+              
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">평수</div>

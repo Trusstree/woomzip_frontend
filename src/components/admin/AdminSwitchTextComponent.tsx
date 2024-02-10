@@ -27,7 +27,11 @@ export function AdminSwitchTextComponent(props: SwitchTextComponentProps) {
           <label
             className="btn form-check-label text-white w-100"
             style={{backgroundColor:check?"#101648":"gray"}}
-            onClick={()=>{setCheck(!check)}}
+            onClick={()=>{
+              setCheck(!check);
+              if(check) data[name]=0;
+              else data[name]++;
+            }}
             htmlFor={name}>
             {title}
           </label>

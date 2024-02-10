@@ -70,7 +70,7 @@ export default function PostClient(props: PostpageProps){
       </div> */}
 
       <div
-        className="my-5"
+        className="py-5 my-5"
         dangerouslySetInnerHTML={{
           __html: DOMPurify.sanitize(String(postData.text)),
         }}

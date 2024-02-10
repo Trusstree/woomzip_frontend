@@ -54,13 +54,11 @@ export default function Home() {
                 setSearchCondition={setSearchCondition}
                 setIsSubmit={setIsSubmit}>
                 <option value={-1}>선택 안 함</option>
-                <option value={20}>20평 이하</option>
-                <option value={30}>20평 이상 ~ 30평 이하</option>
-                <option value={40}>30평 이상 ~ 40평 이하</option>
-                <option value={50}>40평 이상 ~ 50평 이하</option>
-                <option value={60}>50평 이상 ~ 60평 이하</option>
-                <option value={70}>60평 이상 ~ 70평 이하</option>
-                <option value={10000}>70평 이상</option>
+                <option value={10}>10㎡ 이하</option>
+                <option value={20}>10㎡ 이상 ~ 20㎡ 이하</option>
+                <option value={30}>20㎡ 이상 ~ 30㎡ 이하</option>
+                <option value={40}>30㎡ 이상 ~ 40㎡ 이하</option>
+                <option value={10000}>40㎡ 이상</option>
               </HouseSelectForm>
 
               {/* gunchuckSpace */}
@@ -72,13 +70,11 @@ export default function Home() {
                 setSearchCondition={setSearchCondition}
                 setIsSubmit={setIsSubmit}>
                 <option value={-1}>선택 안 함</option>
-                <option value={20}>20평 이하</option>
-                <option value={30}>20평 이상 ~ 30평 이하</option>
-                <option value={40}>30평 이상 ~ 40평 이하</option>
-                <option value={50}>40평 이상 ~ 50평 이하</option>
-                <option value={60}>50평 이상 ~ 60평 이하</option>
-                <option value={70}>60평 이상 ~ 70평 이하</option>
-                <option value={10000}>70평 이상</option>
+                <option value={10}>10㎡ 이하</option>
+                <option value={20}>10㎡ 이상 ~ 20㎡ 이하</option>
+                <option value={30}>20㎡ 이상 ~ 30㎡ 이하</option>
+                <option value={40}>30㎡ 이상 ~ 40㎡ 이하</option>
+                <option value={10000}>40㎡ 이상</option>
               </HouseSelectForm>
             </div>
             <div className="row my-2 g-1">
@@ -94,9 +90,7 @@ export default function Home() {
                 <option value={1}>1개</option>
                 <option value={2}>2개</option>
                 <option value={3}>3개</option>
-                <option value={4}>4개</option>
-                <option value={5}>5개</option>
-                <option value={1000}>6개 이상</option>
+                <option value={1000}>4개 이상</option>
               </HouseSelectForm>
 
               {/* toiletNumber */}
@@ -123,12 +117,12 @@ export default function Home() {
                 setSearchCondition={setSearchCondition}
                 setIsSubmit={setIsSubmit}>
                 <option value={-1}>선택 안 함</option>
-                <option value={12}>12개월 이하</option>
-                <option value={24}>12개월 이상 ~ 24개월 이하</option>
-                <option value={36}>24개월 이상 ~ 36개월 이하</option>
-                <option value={48}>36개월 이상 ~ 48개월 이하</option>
-                <option value={60}>48개월 이상 ~ 60개월 이하</option>
-                <option value={10000}>60개월 이상</option>
+                <option value={1}>1개월 이하</option>
+                <option value={2}>1개월 이상 ~ 2개월 이하</option>
+                <option value={3}>2개월 이상 ~ 3개월 이하</option>
+                <option value={4}>3개월 이상 ~ 4개월 이하</option>
+                <option value={5}>4개월 이상 ~ 5개월 이하</option>
+                <option value={10000}>5개월 이상</option>
               </HouseSelectForm>
 
               {/* afterService */}
@@ -140,12 +134,12 @@ export default function Home() {
                 setSearchCondition={setSearchCondition}
                 setIsSubmit={setIsSubmit}>
                 <option value={-1}>선택 안 함</option>
-                <option value={12}>12개월 이하</option>
-                <option value={24}>12개월 이상 ~ 24개월 이하</option>
-                <option value={36}>24개월 이상 ~ 36개월 이하</option>
-                <option value={48}>36개월 이상 ~ 48개월 이하</option>
-                <option value={60}>48개월 이상 ~ 60개월 이하</option>
-                <option value={10000}>60개월 이상</option>
+                <option value={1}>1개월 이하</option>
+                <option value={2}>1개월 이상 ~ 2개월 이하</option>
+                <option value={3}>2개월 이상 ~ 3개월 이하</option>
+                <option value={4}>3개월 이상 ~ 4개월 이하</option>
+                <option value={5}>4개월 이상 ~ 5개월 이하</option>
+                <option value={10000}>5개월 이상</option>
               </HouseSelectForm>
             </div>
           </div>
