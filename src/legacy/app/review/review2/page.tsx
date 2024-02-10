@@ -6,7 +6,7 @@ import SubmitButton from "@/components/forms/SubmitButton";
 import TextBox from "@/components/forms/Textbox";
 import useForm from "@/hooks/useForm";
 import { isRequired } from "@/lib/validator";
-import { postPerson } from "@/api/personAPI";
+import { postPerson } from "@/apis/personAPI";
 
 type personalInfo = {
   name: string;

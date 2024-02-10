@@ -1,7 +1,7 @@
 import NaverProvider from "next-auth/providers/naver"
 import KakaoProvider from "next-auth/providers/kakao"
 import GoogleProvider from "next-auth/providers/google"
-import { getUser, postUser } from "@/api/userAPI";
+import { getUser, postUser } from "@/apis/userAPI";
 
 export const authOptions = {
   providers: [

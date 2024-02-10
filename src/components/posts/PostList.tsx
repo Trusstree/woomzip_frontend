@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import PostCard from "./PostCard";
-import { getPostCount, getPosts } from "@/api/postAPI";
+import { getPostCount, getPosts } from "@/apis/postAPI";
 import { useSearchParams } from "next/navigation";
 import Pagination from "../Pagination";
 import PostCardPlaceHolder from "./PostCardPlaceholder";

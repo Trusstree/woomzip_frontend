@@ -5,7 +5,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 //import ReactQuill from 'react-quill';
 import DOMPurify from "dompurify";
 import { isRequired } from '@/lib/validator';
-import { postPost } from '@/api/postAPI';
+import { postPost } from '@/apis/postAPI';
 import { confirmSuccess } from '@/lib/alertUtil';
 import SelectBox from '../forms/SelectBox';
 import { setS3Url } from '@/lib/s3Util';

@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { postOffice } from "@/api/officeAPI";
+import { postOffice } from "@/apis/officeAPI";
 import Radios from "@/components/forms/Radios";
 import SubmitButton from "@/components/forms/SubmitButton";
 import TextBox from "@/components/forms/Textbox";
