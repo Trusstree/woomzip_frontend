@@ -12,7 +12,7 @@ type FooterProps = {};
 export default function Footer(props: FooterProps) {
   const router = useRouter();
   const infoURL="https://diagnostic-lace-a24.notion.site/f9b2d562f52b4b5a8cad9299d37c6540";
-  const youtubeURL="https://www.youtube.com/@qazedc6690";
+  const youtubeURL="https://www.youtube.com/@buildintruss";
   const instagrmaURL="https://www.instagram.com/buildintruss/";
   const naverBlogURL="https://blog.naver.com/truss369";
   

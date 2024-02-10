@@ -1,4 +1,5 @@
 import { apiClient } from "@/configs/apiClient";
+import { HouseDataType } from "@/types/house";
 
 export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -33,7 +34,7 @@ export const getHouse = async (houseNum: number) => {
   return { data, error };
 };
 
-export const postHouse = async (house: any) => {
+export const postHouse = async (house: HouseDataType) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {

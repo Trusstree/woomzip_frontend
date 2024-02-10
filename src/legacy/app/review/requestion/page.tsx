@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import SubmitButton from "@/components/forms/SubmitButton";
 import TextBox from "@/components/forms/Textbox";
 import useForm from "@/hooks/useForm";
-import { isRequired } from "@/utils/validator";
+import { isRequired } from "@/lib/validator";
 import TextArea from "@/components/forms/TextArea";
 import { postRequestion } from "@/api/requestionAPI";
-import { alertSuccess } from "@/utils/alertUtil";
+import { alertSuccess } from "@/lib/alertUtil";
 
 type requestion = {
   name: string;

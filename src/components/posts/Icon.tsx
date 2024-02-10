@@ -21,10 +21,10 @@ export default function Icon(props: IconProps) {
   const { createQueryString } = useQuery();
 
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div className={`${className?className:""} d-flex flex-column align-items-center`}>
       <button type="button"
         style={{...style, color:"#101648"}}
-        className={`${className?className:""} px-4 py-2 btn rounded-lg fw-bold`}
+        className={`px-4 py-2 btn rounded-lg fw-bold`}
         onClick={()=>{router.push(createQueryString('category', param));}}>
         <Image
           src={src}

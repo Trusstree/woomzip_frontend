@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ["trussbucket.s3.ap-northeast-2.amazonaws.com", "*"],
+    domains: [
+      "trussbucket.s3.ap-northeast-2.amazonaws.com",
+      "trussbucketdev.s3.ap-northeast-2.amazonaws.com",
+      "*"
+    ],
   },
   rewrites: () =>[
     {

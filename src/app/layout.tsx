@@ -18,9 +18,9 @@ export const metadata = {
     siteName: 'Truss',
     images: [
       {
-        url: 'https://buildintruss.com/logo_truss.png',
-        width: 218,
-        height: 128,
+        url: 'https://buildintruss.com/logo/truss_icon.png',
+        width: 1600,
+        height: 1600,
         alt: "truss logo"
       },
     ],
@@ -44,7 +44,7 @@ export default function RootLayout({children, }: {children: React.ReactNode, }) 
         <AuthSession>
           <Analytics />
           <Header />
-          <main className={`container px-5`}>
+          <main className={`container-md`}>
           {children}
           </main>
           <Footer />

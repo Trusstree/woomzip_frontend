@@ -2,19 +2,21 @@
 
 import { getHouseCount, getHouses } from "@/api/HouseAPI";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Pagination from "../Pagination";
-import MainPagePlaceholder from "./MainPagePlaceholder";
-import MainPagePost from "./MainPagePost";
+import HouseCardPlaceholder from "./HouseCardPlaceholder";
+import HouseCard from "./HouseCard";
 
 type HousePostProps = {
   numShowItems: number
   numShowPages?: number
   searchCondition: {}
+  isSubmit?: boolean
+  setIsSubmit?: Dispatch<SetStateAction<{}>>
 }
 
 export function HouseList(props: HousePostProps) {
-  const { numShowItems, numShowPages, searchCondition } = props;
+  const { numShowItems, numShowPages, searchCondition, isSubmit, setIsSubmit } = props;
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
   const page = (rawPage>0)?rawPage:1;
@@ -23,11 +25,14 @@ export function HouseList(props: HousePostProps) {
 
   useEffect( () => {
     (async ()=>{
+      if(isSubmit!=undefined && !isSubmit) return;
       const params={
         skip: numShowItems*(page-1),
         limit: numShowItems,
         ...searchCondition
       };
+      
+      console.log(searchCondition);
 
       const { count, countError } = await getHouseCount(searchCondition);
       if(countError) {console.log(countError); return;}
@@ -36,33 +41,24 @@ export function HouseList(props: HousePostProps) {
       const { data, error } = await getHouses(params);
       if(error) {console.log(error); return;}
       setHouseData(data);
+      if(isSubmit!=undefined)setIsSubmit(false);
     })();
-  },[searchCondition, page])
+  },[isSubmit, page])
   
-  return houseData ? 
+  return (
     <>
-      {houseData.map((e, i)=>{
-        return (
-        <MainPagePost
-          key={i}
-          data={e} />
-        )
-      })}
+      {houseData ?
+        houseData.map((e, i)=>(
+          <HouseCard className="" key={i} data={e} />
+        ))
+      :
+        new Array(numShowItems).fill(0).map((e, i)=>(
+          <HouseCardPlaceholder key={i} />
+        ))}
       {numShowPages && <Pagination
         numItems={count}
         numShowItems={numShowItems}
         numShowPages={numShowPages}
         />}
-    </>
-    :
-    <>
-      {new Array(numShowItems).fill(0).map((e, i)=>{
-        return <MainPagePlaceholder key={i} />
-       })}
-      {numShowPages && <Pagination
-        numItems={count}
-        numShowItems={numShowItems}
-        numShowPages={numShowPages}
-        />}
-    </>;
+    </>);
 }

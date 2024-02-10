@@ -6,7 +6,7 @@ import Radios from "@/components/forms/Radios";
 import SubmitButton from "@/components/forms/SubmitButton";
 import TextBox from "@/components/forms/Textbox";
 import useForm from "@/hooks/useForm";
-import { isRequired } from "@/utils/validator";
+import { isRequired } from "@/lib/validator";
 import { satisfaction } from "@/types/form";
 import TextArea from "@/components/forms/TextArea";
 

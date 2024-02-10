@@ -66,5 +66,5 @@ export default function PostList(props: PostListProps) {
         numShowItems={numShowItems}
         numShowPages={numShowPages}
       />}
-  </>);
+    </>);
 }
