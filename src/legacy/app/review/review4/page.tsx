@@ -8,7 +8,7 @@ import useForm from "@/hooks/useForm";
 import { isRequired } from "@/lib/validator";
 import { satisfaction } from "@/types/form";
 import TextArea from "@/components/forms/TextArea";
-import { postOffice } from "@/api/officeAPI";
+import { postOffice } from "@/apis/officeAPI";
 import { alertSuccess } from "@/lib/alertUtil";
 
 type office = {

@@ -1,6 +1,6 @@
 "use client"
 
-import { getHouseCount, getHouses } from "@/api/HouseAPI";
+import { getHouseCount, getHouses } from "@/apis/HouseAPI";
 import { useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Pagination from "../Pagination";

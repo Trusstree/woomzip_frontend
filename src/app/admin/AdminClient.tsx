@@ -1,6 +1,6 @@
 "use client"
 
-import { getHouseLast, postHouse } from "@/api/HouseAPI";
+import { getHouseLast, postHouse } from "@/apis/HouseAPI";
 import { AdminRadioComponent } from "@/components/admin/AdminRadioComponent";
 import { AdminSwitchComponent } from "@/components/admin/AdminSwitchComponent";
 import { AdminSwitchTextComponent } from "@/components/admin/AdminSwitchTextComponent";

@@ -1,6 +1,6 @@
 "use client"
 
-import { getHouses } from "@/api/HouseAPI"
+import { getHouses } from "@/apis/HouseAPI"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"

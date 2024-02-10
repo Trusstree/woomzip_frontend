@@ -1,6 +1,6 @@
 "use client"
 
-import { getHouse } from "@/api/HouseAPI";
+import { getHouse } from "@/apis/HouseAPI";
 import { HouseList } from "@/components/house/HouseList";
 import PostMenu from "@/components/posts/PostMenu";
 import { useEffect, useState } from "react";

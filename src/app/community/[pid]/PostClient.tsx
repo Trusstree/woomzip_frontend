@@ -1,6 +1,6 @@
 "use client"
 
-import { getPost } from "@/api/postAPI";
+import { getPost } from "@/apis/postAPI";
 import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
 import PostMenu from "@/components/posts/PostMenu";
