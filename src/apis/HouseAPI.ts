@@ -5,7 +5,7 @@ export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/house`, {
+    const result = await apiClient.get(`/apis/house`, {
       params: params,
       headers: {}
     });
@@ -21,7 +21,7 @@ export const getHouse = async (houseNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/house/${houseNum}`, {
+    const result = await apiClient.get(`/apis/house/${houseNum}`, {
       params: {},
       headers: {}
     });
@@ -38,7 +38,7 @@ export const postHouse = async (house: HouseDataType) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/api/house`, house, { headers: {} });
+    const result = await apiClient.post(`/apis/house`, house, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;
@@ -51,7 +51,7 @@ export const getHouseLast = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/house/last`, {
+    const result = await apiClient.get(`/apis/house/last`, {
       params: params,
       headers: {}
     });
@@ -67,7 +67,7 @@ export const getHouseCount = async (params: any) => {
   let [count, countError] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/house/count`, {
+    const result = await apiClient.get(`/apis/house/count`, {
       params: params,
       headers: {}
     });

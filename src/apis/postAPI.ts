@@ -4,7 +4,7 @@ export const getPosts = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/post`, {
+    const result = await apiClient.get(`/apis/post`, {
       params: params,
       headers: {}
     });
@@ -20,7 +20,7 @@ export const getPost = async (postNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/post/${postNum}`, {
+    const result = await apiClient.get(`/apis/post/${postNum}`, {
       params: {},
       headers: {}
     });
@@ -36,7 +36,7 @@ export const getPostCount = async (params: any) => {
   let [count, countError] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/post/count`, {
+    const result = await apiClient.get(`/apis/post/count`, {
       params: params,
       headers: {}
     });
@@ -52,7 +52,7 @@ export const postPost = async (post: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/api/post`, post, { headers: {} });
+    const result = await apiClient.post(`/apis/post`, post, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;
