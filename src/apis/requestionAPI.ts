@@ -4,7 +4,7 @@ export const getRequestions = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/requestion`, {
+    const result = await apiClient.get(`/apis/requestion`, {
       params: {},
       headers: {}
     });
@@ -20,7 +20,7 @@ export const getRequestion = async (requestionNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/requestion/${requestionNum}`, {
+    const result = await apiClient.get(`/apis/requestion/${requestionNum}`, {
       params: {},
       headers: {}
     });
@@ -36,7 +36,7 @@ export const postRequestion = async (requestion: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/api/requestion/`, requestion, { headers: {} });
+    const result = await apiClient.post(`/apis/requestion/`, requestion, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;

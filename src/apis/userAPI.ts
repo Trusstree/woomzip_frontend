@@ -1,11 +1,11 @@
 import { apiClient } from "@/configs/apiClient";
 
-export const getOffices = async () => {
+export const getUser = async (id: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/office`, {
-      params: {},
+    const result = await apiClient.get(`/apis/user`, {
+      params: {id: id},
       headers: {}
     });
     data = result?.data;
@@ -16,14 +16,11 @@ export const getOffices = async () => {
   return { data, error };
 };
 
-export const getOffice = async (officeNum: number) => {
+export const postUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/api/office/${officeNum}`, {
-      params: {},
-      headers: {}
-    });
+    const result = await apiClient.post(`/apis/user/`, user, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;
@@ -32,11 +29,11 @@ export const getOffice = async (officeNum: number) => {
   return { data, error };
 };
 
-export const postOffice = async (office: any) => {
+export const updateUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/api/office/`, office, { headers: {} });
+    const result = await apiClient.put(`/apis/user/`, user, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;
