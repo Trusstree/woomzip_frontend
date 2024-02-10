@@ -2,7 +2,7 @@
 
 import { getHouseCount, getHouses } from "@/api/HouseAPI";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Pagination from "../Pagination";
 import HouseCardPlaceholder from "./HouseCardPlaceholder";
 import HouseCard from "./HouseCard";
@@ -11,10 +11,12 @@ type HousePostProps = {
   numShowItems: number
   numShowPages?: number
   searchCondition: {}
+  isSubmit?: boolean
+  setIsSubmit?: Dispatch<SetStateAction<{}>>
 }
 
 export function HouseList(props: HousePostProps) {
-  const { numShowItems, numShowPages, searchCondition } = props;
+  const { numShowItems, numShowPages, searchCondition, isSubmit, setIsSubmit } = props;
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
   const page = (rawPage>0)?rawPage:1;
@@ -23,12 +25,14 @@ export function HouseList(props: HousePostProps) {
 
   useEffect( () => {
     (async ()=>{
-      console.log()
+      if(isSubmit!=undefined && !isSubmit) return;
       const params={
         skip: numShowItems*(page-1),
         limit: numShowItems,
         ...searchCondition
       };
+      
+      console.log(searchCondition);
 
       const { count, countError } = await getHouseCount(searchCondition);
       if(countError) {console.log(countError); return;}
@@ -37,8 +41,9 @@ export function HouseList(props: HousePostProps) {
       const { data, error } = await getHouses(params);
       if(error) {console.log(error); return;}
       setHouseData(data);
+      if(isSubmit!=undefined)setIsSubmit(false);
     })();
-  },[searchCondition, page])
+  },[isSubmit, page])
   
   return (
     <>

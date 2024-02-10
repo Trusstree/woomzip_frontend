@@ -57,7 +57,7 @@ export default function Carousel(props: CarouselProps){
               >
               <Image
                 className="d-block w-100 rounded-4"
-                src={e.image}
+                src={e.thumbnail}
                 alt="truss_logo.png"
                 width={400}
                 height={500}

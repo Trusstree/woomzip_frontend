@@ -1,5 +1,5 @@
 import { apiClient } from '../configs/apiClient';
-import { getUserInfo } from '../utils/cookieUtil';
+import { getUserInfo } from '../lib/cookieUtil';
 
 export const signinUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;

@@ -9,6 +9,15 @@ export const alertSuccess = (title: string, text: string) => {
   });
 };
 
+// 실패 알림
+export const alertError = (title: string, text: string) => {
+  return Swal.fire({
+    icon: 'error',
+    title: title,
+    html: text,
+  });
+};
+
 // 성공 확인 질문
 export const confirmSuccess = async (title: string, text: string, confirmText: string, denyText: string, imgSrc?: string) => {
   return Swal.fire({

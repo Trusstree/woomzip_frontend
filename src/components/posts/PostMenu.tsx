@@ -22,7 +22,7 @@ export default function PostMenu(props: PostMenuProps) {
         </RouteButton>)
         :undefined}
       </div>
-      <div className={`w-100 row g-2 mb-2 ${horizontalScroll&&"flex-nowrap overflow-auto"}`}>
+      <div className={`w-100 row g-2 mb-2 ${horizontalScroll?"flex-nowrap overflow-auto":""}`}>
         {children}
       </div>
     </div>

@@ -1,5 +1,5 @@
 import PostMenu from "@/components/posts/PostMenu";
-import Carousel from "@/components/posts/Carousel";
+import Carousel from "@/components/house/Carousel";
 import { HouseList } from "@/components/house/HouseList";
 import PostList from "@/components/posts/PostList";
 import Image from "next/image";

@@ -1,17 +1,17 @@
 "use client"
 
 import { getHouseLast, postHouse } from "@/api/HouseAPI";
-import { AdminCheckboxComponent } from "@/components/admin/AdminCheckboxComponent";
 import { AdminRadioComponent } from "@/components/admin/AdminRadioComponent";
 import { AdminSwitchComponent } from "@/components/admin/AdminSwitchComponent";
 import { AdminSwitchTextComponent } from "@/components/admin/AdminSwitchTextComponent";
 import { AdminTextComponent } from "@/components/admin/AdminTextComponent";
+import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
+import { HouseDataType } from "@/types/house";
 import { ChangeEvent, ChangeEventHandler, useState } from "react";
 
 export default function AdminClient() {
   const [houseData, setHouseData] = useState({
-    image: "",
     gubun: "",
     company: "",
 
@@ -43,11 +43,14 @@ export default function AdminClient() {
     tax: 0,
     bohum: 0,
     etc: 0,
-  });
+
+    thumbnail:"",
+    detailImage:"",
+    itemImage:"",
+  } as HouseDataType);
 
   const handleText = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
     // if (e) e.preventDefault();
-
     setHouseData((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
     return;
   }
@@ -55,7 +58,7 @@ export default function AdminClient() {
   const testFunction = async (e:ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
     const count = await getHouseLast({});
-    console.log(count.data?.idx);
+    console.log(e.target.name);
     console.log(count.error);
     const pid = count.data?count.data.idx+1:1;
     const {response, error} = await setS3Url(`houses/${pid}/${e.target.name}.${img.type.split("/")[1]}`, img);
@@ -69,6 +72,62 @@ export default function AdminClient() {
     }
     else console.log(error);
   };
+
+  const submitFunction = async (houseData: HouseDataType) => {
+    if(typeof houseData["gubun"]!="string") {alertError("gubun","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof houseData["company"]!="string") {alertError("company","type을 다시 한 번 확인해주세요~"); return;}
+
+    if(typeof houseData["title"]!="string") {alertError("title","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["price"]=Number(houseData["price"]);
+    if(typeof houseData["price"]!="number") {alertError("price","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["discount"]=Number(houseData["discount"]);
+    if(typeof houseData["discount"]!="number") {alertError("discount","type을 다시 한 번 확인해주세요~"); return;}
+
+    houseData["floorSpace"]=Number(houseData["floorSpace"]);
+    if(typeof houseData["floorSpace"]!="number") {alertError("floorSpace","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["gunchuckSpace"]=Number(houseData["gunchuckSpace"]);
+    if(typeof houseData["gunchuckSpace"]!="number") {alertError("gunchuckSpace","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["roomNumber"]=Number(houseData["roomNumber"]);
+    if(typeof houseData["roomNumber"]!="number") {alertError("roomNumber","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["toiletNumber"]=Number(houseData["toiletNumber"]);
+    if(typeof houseData["toiletNumber"]!="number") {alertError("toiletNumber","type을 다시 한 번 확인해주세요~"); return;}
+
+    houseData["duration"]=Number(houseData["duration"]);
+    if(typeof houseData["duration"]!="number") {alertError("duration","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["afterService"]=Number(houseData["afterService"]);
+    if(typeof houseData["afterService"]!="number") {alertError("afterService","type을 다시 한 번 확인해주세요~"); return;}
+
+    if(typeof houseData["moduler"]!="string") {alertError("moduler","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof houseData["hasModel"]!="string") {alertError("hasModel","type을 다시 한 번 확인해주세요~"); return;}
+
+    if(typeof houseData["gagu"]!="string") {alertError("gagu","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof houseData["interior"]!="string") {alertError("interior","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof houseData["transportation"]!="string") {alertError("transportation","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof houseData["installation"]!="string") {alertError("installation","type을 다시 한 번 확인해주세요~"); return;}
+
+    houseData["inheoga"]=Number(houseData["inheoga"]);
+    if(typeof houseData["inheoga"]!="number") {alertError("inheoga","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["gicho"]=Number(houseData["gicho"]);
+    if(typeof houseData["gicho"]!="number") {alertError("gicho","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["tomok"]=Number(houseData["tomok"]);
+    if(typeof houseData["tomok"]!="number") {alertError("tomok","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["electroInip"]=Number(houseData["electroInip"]);
+    if(typeof houseData["electroInip"]!="number") {alertError("electroInip","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["sudoInip"]=Number(houseData["sudoInip"]);
+    if(typeof houseData["sudoInip"]!="number") {alertError("sudoInip","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["tax"]=Number(houseData["tax"]);
+    if(typeof houseData["tax"]!="number") {alertError("tax","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["bohum"]=Number(houseData["bohum"]);
+    if(typeof houseData["bohum"]!="number") {alertError("bohum","type을 다시 한 번 확인해주세요~"); return;}
+    houseData["etc"]=Number(houseData["etc"]);
+    if(typeof houseData["etc"]!="number") {alertError("etc","type을 다시 한 번 확인해주세요~"); return;}
+
+    if(typeof houseData["thumbnail"]!="string") {alertError("thumbnail","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof houseData["detailImage"]!="string") {alertError("detailImage","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof houseData["itemImage"]!="string") {alertError("itemImage","type을 다시 한 번 확인해주세요~"); return;}
+    await postHouse(houseData);
+    alertSuccess(houseData["title"],"제대로 들어갔어요~");
+  }
   
   return (
     <div>
@@ -159,24 +218,57 @@ export default function AdminClient() {
           </div>
 
           <div
-            className="mt-4 py-4"
+            className="mt-4 py-3"
             style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
-            <h4 className="fw-bold mb-4">사진 첨부</h4>
+            <h4 className="fw-bold mb-4">썸네일 사진</h4>
             
             <input
-              id={"image"}
+              id={"thumbnail"}
+              name={"thumbnail"}
               accept="image/*"
               multiple
-              type="file" 
-              onChange={(e)=>{testFunction(e)}}
-            />
+              type="file"
+              onChange={(e)=>{testFunction(e)}} />
             <img
-              src={houseData["image"]}
-              alt={"image"}
+              src={houseData["thumbnail"]}
+              alt={"thumbnail"}
               width={200}
               height={100} />
             
           </div>
+
+          <div className="py-3">
+            <h4 className="fw-bold mb-4">제품 사진</h4>
+            <input
+              id={"image"}
+              name={"itemImage"}
+              accept="image/*"
+              multiple
+              type="file"
+              onChange={(e)=>{console.log(e.target.name); testFunction(e)}} />
+            <img
+              src={houseData["itemImage"]}
+              alt={"itemImage"}
+              width={200}
+              height={100} />
+          </div>
+
+          <div className="py-3">
+            <h4 className="fw-bold mb-4">상세정보 사진</h4>
+            <input
+              id={"detailImage"}
+              name={"detailImage"}
+              accept="image/*"
+              multiple
+              type="file" 
+              onChange={(e)=>{testFunction(e)}} />
+            <img
+              src={houseData["detailImage"]}
+              alt={"detailImage"}
+              width={200}
+              height={100} />
+          </div>
+
         </div>
       </div>
 
@@ -185,7 +277,7 @@ export default function AdminClient() {
           name="image"
           style={{backgroundColor:"#6764F7"}}
           className={`my-5 px-4 py-2 btn btn-primary rounded-lg fw-bold fs-5`}
-          onClick={async ()=>{ console.log(houseData); await postHouse(houseData)}}>
+          onClick={async ()=>{ console.log(houseData); await submitFunction(houseData); }}>
           {"post house TEST"}
         </button>
       </div>
