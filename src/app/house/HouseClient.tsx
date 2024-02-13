@@ -54,26 +54,26 @@ export default function Home() {
                 setSearchCondition={setSearchCondition}
                 setIsSubmit={setIsSubmit}>
                 <option value={-1}>선택 안 함</option>
-                <option value={10}>10㎡ 이하</option>
-                <option value={20}>10㎡ 이상 ~ 20㎡ 이하</option>
-                <option value={30}>20㎡ 이상 ~ 30㎡ 이하</option>
-                <option value={40}>30㎡ 이상 ~ 40㎡ 이하</option>
-                <option value={10000}>40㎡ 이상</option>
+                <option value={10}>10평 이하</option>
+                <option value={20}>10평 이상 ~ 20평 이하</option>
+                <option value={30}>20평 이상 ~ 30평 이하</option>
+                <option value={10000}>30평 이상</option>
               </HouseSelectForm>
 
               {/* gunchuckSpace */}
               <HouseSelectForm
                 className="col-3"
-                title={"건축평수"}
+                title={"건축면적"}
                 value={"gunchuckSpace"}
                 searchCondition={searchCondition}
                 setSearchCondition={setSearchCondition}
                 setIsSubmit={setIsSubmit}>
                 <option value={-1}>선택 안 함</option>
-                <option value={10}>10㎡ 이하</option>
-                <option value={20}>10㎡ 이상 ~ 20㎡ 이하</option>
+                <option value={20}>20㎡ 이하</option>
                 <option value={30}>20㎡ 이상 ~ 30㎡ 이하</option>
                 <option value={40}>30㎡ 이상 ~ 40㎡ 이하</option>
+                <option value={50}>40㎡ 이상 ~ 50㎡ 이하</option>
+                <option value={60}>50㎡ 이상 ~ 60㎡ 이하</option>
                 <option value={10000}>40㎡ 이상</option>
               </HouseSelectForm>
             </div>
