@@ -51,7 +51,7 @@ export default function HouseCard(props: MainPagePostProps) {
           <div className="d-flex flex-column fw-normal">
             <div className="d-flex justify-content-between">
               {(data["discount"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data.discount}%</div>}
-                <div>
+                <div className="ms-auto">
                   {(data["discount"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{priceText(data["price"])}원</div>}
                   <div className="fs-6 fw-bold text-end">{priceText(data.price*(100-data.discount)*0.01)}원</div>
                 </div>

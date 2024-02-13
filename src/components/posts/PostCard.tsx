@@ -23,8 +23,8 @@ type DataProps = {
 
 const style={
   "일반":{backgroundColor:"#101648"},
-  "공지":{backgroundColor:"#FF7070"},
-  "질문":{backgroundColor:"#00B6B6"}
+  "공지":{backgroundColor:"#BD4040"},
+  "질문":{backgroundColor:"#136E11"}
 }
 
 export default function PostCard (props: PostCardProps) {

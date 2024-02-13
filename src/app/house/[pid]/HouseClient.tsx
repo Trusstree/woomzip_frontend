@@ -6,12 +6,17 @@ import PostMenu from "@/components/posts/PostMenu";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { priceText } from "@/lib/stringUtil";
+import { useRouter } from "next/navigation";
 
 type HouseComponentProps = {
   pid:number
 }
 
 export function HouseClient (props: HouseComponentProps) {
+  const router = useRouter();
+  const modelLink = "https://forms.gle/Qdq1HgPvcB76sRAW7";
+  const gyeonjeokLink = "https://forms.gle/WhzuLumaL6C6TFu69";
+
   const { pid } = props;
   const [houseData, setHouseData] = useState(undefined);
   
@@ -70,12 +75,12 @@ export function HouseClient (props: HouseComponentProps) {
               </div>
             </div> */}
             <div className="ms-auto">
-              {houseData["moduler"]=="no" &&
-              <div className="btn text-white p-1 mx-1" style={{backgroundColor:"#136E11"}}>
+              {houseData["moduler"]=="yes" &&
+              (<div className="badge text-white p-2 mx-1" style={{backgroundColor:"#136E11"}}>
                 모듈러
-              </div>}
+              </div>)}
               {houseData["hasModel"]=="yes" &&
-                <div className="btn text-white p-1 mx-1" style={{backgroundColor:"#136E11"}}>
+                <div className="badge text-white p-2 mx-1" style={{backgroundColor:"#136E11"}}>
                 모델하우스
               </div>}
             </div>
@@ -92,10 +97,10 @@ export function HouseClient (props: HouseComponentProps) {
             {(houseData["discount"]>0) && //houseData.discount
             <>
               <span className={"fs-3 mx-1"} style={{color:"#BD4040"}}>{houseData["discount"]}%</span>
-              <span className={"text-decoration-line-through mx-1"} style={{color:"gray", textDecoration:""}}>{priceText(houseData["price"])}</span>
+              <span className={"text-decoration-line-through mx-1"} style={{color:"gray", textDecoration:""}}>{priceText(houseData["price"])}원</span>
             </>
             }
-            <span className={"fs-4 mx-1"} style={{color:"#101648"}}>{priceText(houseData["price"]*(100-houseData["discount"])*0.01)}</span>
+            <span className={"fs-4 mx-1"} style={{color:"#101648"}}>{priceText(houseData["price"]*(100-houseData["discount"])*0.01)}원</span>
             <span style={{color:"#101648"}}>(부가세 포함)</span>
           </div>
 
@@ -128,13 +133,14 @@ export function HouseClient (props: HouseComponentProps) {
           </div>
 
           <div className={"1"}>
-            <select disabled className="form-select my-4" aria-label="Default select example">
-              <option value="선택옵션" selected>선택옵션 - 없음</option>
+            <select disabled defaultValue={"선택옵션"} className="form-select my-4" aria-label="Default select example">
+              <option value="선택옵션">선택옵션 - 없음</option>
             </select>
             <div className={"row g-3"}>
               <div className="col-6">
                 <div
                   className="w-100 h-100 btn text-white py-3 d-flex justify-content-center align-items-center"
+                  onClick={()=>{router.push(modelLink);}}
                   style={{backgroundColor:"#101648"}}>
                   <span
                     className="fs-5 fw-bold"
@@ -146,7 +152,8 @@ export function HouseClient (props: HouseComponentProps) {
               <div className="col-6">
                 <div
                   className="w-100 h-100 btn text-white py-3 d-flex justify-content-center align-items-center"
-                  style={{backgroundColor:"#101648"}}>
+                  style={{backgroundColor:"#101648"}}
+                  onClick={()=>{router.push(gyeonjeokLink);}}>
                   <span
                     className="fs-5 fw-bold"
                     style={{wordBreak:"keep-all"}}>
@@ -322,8 +329,7 @@ export function HouseClient (props: HouseComponentProps) {
         <div className="fs-4 fw-bold" style={{color:"#101648"}}>제품사진</div>
         <img
           alt="main post"
-          src={houseData.itemImage}
-        />
+          src={houseData.itemImage} />
       </div>
 
       {/* 상세정보 */}
@@ -331,8 +337,7 @@ export function HouseClient (props: HouseComponentProps) {
         <div className="fs-4 fw-bold" style={{color:"#101648"}}>상세정보</div>
         <img
           alt="main post"
-          src={houseData.detailImage}
-        />
+          src={houseData.detailImage} />
       </div>
 
       {/* 평점 */}
