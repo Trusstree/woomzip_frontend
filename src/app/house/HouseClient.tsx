@@ -74,7 +74,7 @@ export default function Home() {
                 <option value={40}>30㎡ 이상 ~ 40㎡ 이하</option>
                 <option value={50}>40㎡ 이상 ~ 50㎡ 이하</option>
                 <option value={60}>50㎡ 이상 ~ 60㎡ 이하</option>
-                <option value={10000}>40㎡ 이상</option>
+                <option value={10000}>60㎡ 이상</option>
               </HouseSelectForm>
             </div>
             <div className="row my-2 g-1">
