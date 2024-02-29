@@ -63,21 +63,17 @@ export default function Header(props: HeaderProps) {
             <RouteButton url={"/house"} className="fs-5">
               내집찾기
             </RouteButton> 
-            {/* <CollapsingButton collapsedId="collapsedBar" className="fs-5">
-              내집찾기
-            </CollapsingButton> */}
-            
+
           </div>
 
           <div className="d-flex align-items-center mx-5">
-            {/* <SigninButton/> */}
+            <SigninButton />
             {/* <RouteButton url={"/service"}>
               기업서비스
             </RouteButton> */}
           </div>
         </div>
       </div>
-      {/* {collapsedPage} */}
     </div>
   );
 }
