@@ -38,7 +38,7 @@ export const authOptions = {
         let db_user = await getUser(user.id);
 
         // 없으면 데이터베이스에 유저 추가
-        if (!db_user.data.length) {
+        if (!db_user?.data?.length) {
           // 혹시 회원가입 추가 정보 넣는 거면 페이지 넣기
           const post_user = await postUser({
             ...user,
