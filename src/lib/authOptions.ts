@@ -27,7 +27,6 @@ export const authOptions = {
 	},
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      
       // profile 객체에 이름이나 이메일 값이 있으면 해당 값을 user 객체에 저장
       if (profile) {
         user.id = profile.response?.id || user.id;
@@ -40,14 +39,24 @@ export const authOptions = {
 
         // 없으면 데이터베이스에 유저 추가
         if (!db_user.data.length) {
-          const post_user = await postUser(user);
-          console.log(post_user.data);
-          if(post_user.error){throw post_user.error}
+          // 혹시 회원가입 추가 정보 넣는 거면 페이지 넣기
+          const post_user = await postUser({
+            ...user,
+            provider:account.provider,
+            access_token:account.access_token,
+            refresh_token:account.refresh_token,
+          });
+          if(post_user.error){throw post_user.error;}
         }
 
         // 유저 정보에 데이터베이스 아이디, 역할 연결
-        user.id = db_user.data?.id;
-        user.role = db_user.data?.role;
+        user.idx = db_user.data[0]?.idx;
+        user.role = db_user.data[0]?.role;
+        user.profileImage = db_user.data[0]?.profileImage;
+        
+        console.log("asdf5");
+        console.log(user);
+        console.log(db_user.data);
 
         return true;
       } catch (error) {
@@ -59,17 +68,23 @@ export const authOptions = {
       if (account) {
         token.accessToken = account.access_token
       }
-      //console.log(token);
+      // console.log("asdf1");
+      // console.log(user);
+      // console.log("asdf2");
+      // console.log(profile);
+      // console.log("asdf3");
+      // console.log(account);
+      // console.log("asdf4");
+      // console.log(isNewUser);
       return token;
     },
     async session({ session, user, token }) {
-      //console.log(session);
+      session.accessToken=token.accessToken;
+      session.user.id=token.id;
       return session;
     },
     async redirect({ url, baseUrl }) {
-      // Allows relative callback URLs
       if (url.startsWith("/")) return `${baseUrl}${url}`
-      // Allows callback URLs on the same origin
       else if (new URL(url).origin === baseUrl) return url
       return baseUrl
     }
