@@ -44,7 +44,7 @@ export default function SocialSigninButton({ providers }: IProps) {
         <div key={provider.name} style={{width:330}}>
           <button
             className='btn btn-lg rounded-3 my-3 w-100 fw-bold fs-4'
-            onClick={() => {signIn(provider.id, {redirect:false, callbackUrl:"http://localhost:3000"});}}
+            onClick={() => {signIn(provider.id, {redirect:false, callbackUrl:process.env.NEXT_PUBLIC_CALLBACKURL});}}
             style={{backgroundColor:"#101648", color:"#ffffff"}}>
             <div className='d-flex justify-content-between'>
               <div className="btn m-0 p-0" style={{border:"none", outline:"none"}}>
