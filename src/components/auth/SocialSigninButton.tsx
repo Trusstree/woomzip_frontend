@@ -1,6 +1,6 @@
 "use client"
 
-import { ClientSafeProvider, signIn } from 'next-auth/react';
+import { ClientSafeProvider, getProviders, signIn } from 'next-auth/react';
 
 type IProps = {
   providers:Record<string, ClientSafeProvider>
@@ -38,7 +38,7 @@ const svgLogo={
 }
 
 export default function SocialSigninButton({ providers }: IProps) {
-  return (
+  return (providers &&
     <div>
       {Object.values(providers).map(provider => (
         <div key={provider.name} style={{width:330}}>

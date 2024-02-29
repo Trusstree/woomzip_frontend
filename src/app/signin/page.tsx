@@ -1,5 +1,6 @@
 import { getProviders } from 'next-auth/react'
 import SocialSigninButton from '@/components/auth/SocialSigninButton'
+import Client from './Client';
 
 export default async function SignInPage() {
   const providers = await getProviders();
@@ -11,9 +12,7 @@ export default async function SignInPage() {
         트러스에 오신 여러분을<br/>
         환영합니다!<br/>
       </div>
-      <div className={`d-flex flex-column align-items-center`}>
-        <SocialSigninButton providers={providers}/>
-      </div>
+      <Client />
   </main>
   )
 }
