@@ -78,3 +78,16 @@ export const getHouseCount = async (params: any) => {
 
   return { count, countError };
 }
+
+export const putHouse = async (house: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await apiClient.put(`/apis/house`, house, { headers: {} });
+    data = result?.data;
+  } catch (err) {
+    error = err;
+  }
+
+  return { data, error };
+}

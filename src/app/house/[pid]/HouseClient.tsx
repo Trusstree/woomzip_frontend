@@ -21,13 +21,13 @@ export function HouseClient (props: HouseComponentProps) {
   const [houseData, setHouseData] = useState(undefined);
   
   useEffect( () => {
-    const getHouseq = async () => {
+    (async () => {
       const { data, error } = await getHouse(pid);
       
       if(error) console.log(error);
       else setHouseData(data[0]);
     }
-    getHouseq();
+    )();
   },[]);
 
   const getAvg = (data: any) => {

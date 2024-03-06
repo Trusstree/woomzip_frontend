@@ -1,19 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react";
-import PostCard from "./PostCard";
 import { getPostCount, getPosts } from "@/apis/postAPI";
+import PostList from "@/components/posts/PostList";
+import PostMenu from "@/components/posts/PostMenu";
 import { useSearchParams } from "next/navigation";
-import Pagination from "../Pagination";
-import PostCardPlaceHolder from "./PostCardPlaceholder";
+import { useState, useEffect } from "react";
 
-type PostListProps = {
-	numShowItems: number
-	numShowPages?: number
-}
-
-export default function PostList(props: PostListProps) {
-	const { numShowItems, numShowPages } = props;
+export default function Community() {
+  const [numShowItems, numShowPages] = [12, 10];
 	const searchParams = useSearchParams();
   const page = (searchParams.has("page"))?Number(searchParams.get("page")):1;
   const category = searchParams.get("category");
@@ -37,21 +31,15 @@ export default function PostList(props: PostListProps) {
       setPostData(data);
     })();
   },[searchParams, page])
-
-	return (
-		<>
-			{postData?
-        postData.map((e: any, i:number)=>(
-          <PostCard data={e} key={i} className={``}/>
-        ))
-      :
-        new Array(numShowItems).fill(0).map((e: any, i:number)=>(
-          <PostCardPlaceHolder key={i}/>
-        ))}
-			{numShowPages && <Pagination
-        numItems={count}
-        numShowItems={numShowItems}
-        numShowPages={numShowPages}
-      />}
-    </>);
+  
+  return (
+    <>
+    <PostMenu
+        title={"다양한 건축고민을 나누어보세요!"}>
+        <PostList
+          numShowItems={numShowItems} 
+          numShowPages={numShowPages} />
+      </PostMenu>  
+    </>
+  );
 }

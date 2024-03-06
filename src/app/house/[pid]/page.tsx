@@ -1,6 +1,5 @@
 import { HouseClient } from "@/app/house/[pid]/HouseClient";
 
-
 type PageParams = {
   pid: number
 }

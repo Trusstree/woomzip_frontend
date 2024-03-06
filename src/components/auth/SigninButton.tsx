@@ -20,7 +20,7 @@ export default function SigninButton(){
         <button type="button"
           style={{color:"#101648"}}
           className={`px-4 py-2 btn rounded-lg fw-bold align-self-end`}
-          onClick={()=>{router.push("/mypage");}}
+          onClick={()=>{router.push(`/mypage/${session.user.id}`);}}
           > 마이페이지
         </button>
   )

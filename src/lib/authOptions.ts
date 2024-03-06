@@ -39,12 +39,22 @@ export const authOptions = {
 
         // 없으면 데이터베이스에 유저 추가
         if (!db_user?.data?.length) {
-          // 혹시 회원가입 추가 정보 넣는 거면 페이지 넣기
-          const post_user = await postUser({
-            ...user,
+          console.log("asdf6");
+          console.log({
+            id:user.id,
+            name:user.name,
             provider:account.provider,
             access_token:account.access_token,
-            refresh_token:account.refresh_token,
+            refresh_token:account.refresh_token?account.refresh_token:"",
+          });
+
+          // 혹시 회원가입 추가 정보 넣는 거면 페이지 넣기
+          const post_user = await postUser({
+            id:user.id,
+            name:user.name,
+            provider:account.provider,
+            access_token:account.access_token,
+            refresh_token:account.refresh_token?account.refresh_token:"",
           });
           if(post_user.error){throw post_user.error;}
         }
@@ -52,11 +62,6 @@ export const authOptions = {
         // 유저 정보에 데이터베이스 아이디, 역할 연결
         user.idx = db_user.data[0]?.idx;
         user.role = db_user.data[0]?.role;
-        user.profileImage = db_user.data[0]?.profileImage;
-        
-        console.log("asdf5");
-        console.log(user);
-        console.log(db_user.data);
 
         return true;
       } catch (error) {
@@ -66,21 +71,20 @@ export const authOptions = {
     },
     async jwt({ token, user, account, profile, isNewUser }) {
       if (account) {
+        console.log(account);
         token.accessToken = account.access_token
+        token.role = user.role;
+        token.id = user.id;
+        token.email = user.email;
       }
-      // console.log("asdf1");
-      // console.log(user);
-      // console.log("asdf2");
-      // console.log(profile);
-      // console.log("asdf3");
-      // console.log(account);
-      // console.log("asdf4");
-      // console.log(isNewUser);
       return token;
     },
     async session({ session, user, token }) {
+      console.log(token);
       session.accessToken=token.accessToken;
       session.user.id=token.id;
+      session.user.role=token.role;
+      session.user.email=token.email;
       return session;
     },
     async redirect({ url, baseUrl }) {
