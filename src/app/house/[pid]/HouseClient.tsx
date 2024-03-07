@@ -23,7 +23,7 @@ export function HouseClient (props: HouseComponentProps) {
   useEffect( () => {
     (async () => {
       const { data, error } = await getHouse(pid);
-      
+      console.log(data[0]);
       if(error) console.log(error);
       else setHouseData(data[0]);
     }
@@ -217,18 +217,18 @@ export function HouseClient (props: HouseComponentProps) {
               <div
                 className="text-white rounded-3 text-center p-1"
                 style={{backgroundColor:"#BD4040", width:"105px"}}>
-                인허가비용
+                인허가
               </div>
               <span className="my-2 text-center">{priceText(houseData["inheoga"])}원</span>
             </div>}
-            {houseData["gicho"]>0 &&
+            {houseData["survey"]>0 &&
             <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
               <div
                 className="text-white rounded-3 text-center p-1"
                 style={{backgroundColor:"#BD4040", width:"105px"}}>
-                기초공사
+                측량
               </div>
-              <span className="my-2 text-center">{priceText(houseData["gicho"])}원</span>
+              <span className="my-2 text-center">{priceText(houseData["survey"])}원</span>
             </div>}
             {houseData["tomok"]>0 &&
             (<div className="me-1 mx-md-2 d-flex flex-column align-items-center">
@@ -239,6 +239,15 @@ export function HouseClient (props: HouseComponentProps) {
               </div>
               <span className="my-2 text-center">{priceText(houseData["tomok"])}원</span>
             </div>)}
+            {houseData["gicho"]>0 &&
+            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
+              <div
+                className="text-white rounded-3 text-center p-1"
+                style={{backgroundColor:"#BD4040", width:"105px"}}>
+                기초공사
+              </div>
+              <span className="my-2 text-center">{priceText(houseData["gicho"])}원</span>
+            </div>}
             {houseData["electroInip"]>0 &&
             <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
               <div
@@ -256,6 +265,15 @@ export function HouseClient (props: HouseComponentProps) {
                 수도인입
               </div>
               <span className="my-2 text-center">{priceText(houseData["sudoInip"])}원</span>
+            </div>}
+            {houseData["dungbox"]>0 &&
+            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
+              <div
+                className="text-white rounded-3 text-center p-1"
+                style={{backgroundColor:"#BD4040", width:"105px"}}>
+                정화조
+              </div>
+              <span className="my-2 text-center">{priceText(houseData["dungbox"])}원</span>
             </div>}
             {houseData["bohum"]>0 &&
             <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
