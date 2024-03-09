@@ -100,14 +100,14 @@ export default function MypageClient(props: MypageClientProps) {
           {<div
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{backgroundColor:"#101648"}}
-            onClick={()=>{router.push(createQueryString("tab", "community"));}}>
+            onClick={()=>{router.push(`${pathname}?tab=community`);}}>
             <span
               className="fs-5 fw-bold"
               style={{wordBreak:"keep-all"}}>
               커뮤니티
             </span>
           </div>}
-          {(session.user.role=="user") &&
+          {(session.user.role=="company") &&
           <div
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{backgroundColor:"#101648"}}
@@ -130,7 +130,7 @@ export default function MypageClient(props: MypageClientProps) {
             <Profile/>}
           {(params.get("tab")=="community") && 
             <Community/>}
-          {(session.user.role=="user") && 
+          {(session.user.role=="company") && 
           (params.get("tab")=="house") && 
             <House/>}
           

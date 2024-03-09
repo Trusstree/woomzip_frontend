@@ -35,8 +35,6 @@
     "**/*.ts",
     "**/*.tsx",
     "types/**/*.ts",
-    "src/types/**/*.ts",
-    ".next/src/types/**/*.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [

@@ -8,9 +8,13 @@ import { AdminTextComponent } from "@/components/admin/AdminTextComponent";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
 import { HouseDataType } from "@/types/house";
+import { usePathname, useRouter } from "next/navigation";
 import { ChangeEvent, ChangeEventHandler, useState } from "react";
 
-export default function AdminClient() {
+export default function EditHouse() {
+  const router = useRouter();
+  const pathname = usePathname();
+  
   const [houseData, setHouseData] = useState({
     gubun: "",
     company: "",
@@ -276,7 +280,7 @@ export default function AdminClient() {
           name="image"
           style={{backgroundColor:"#6764F7"}}
           className={`my-5 px-4 py-2 btn btn-primary rounded-lg fw-bold fs-5`}
-          onClick={async ()=>{ console.log(houseData); await submitFunction(houseData); }}>
+          onClick={async ()=>{ await submitFunction(houseData); router.push(pathname.replace("/house",""));}}>
           {"post house TEST"}
         </button>
       </div>

@@ -19,7 +19,11 @@ export default function MyHouseCard(props: MainPagePostProps) {
     <div className="col-md-6 col-lg-4 col-xl-3">
       <div className="card d-flex flex-column align-items-center w-100">
         <div>
-          <button>편집</button>
+          <button
+            className="btn text-white"
+            style={{backgroundColor:"#101648"}}>
+            편집
+          </button>
           <Image
             className="rounded-top-2 w-100 m-0"
             onClick={()=>{router.push(`/house/${data.idx}`);}}
