@@ -57,10 +57,9 @@ export default function AdminClient() {
 
   const testFunction = async (e:ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
-    const count = await getHouseLast({});
-    console.log(e.target.name);
-    console.log(count.error);
-    const pid = count.data?count.data.idx+1:1;
+    const [data, houseError] = await getHouseLast({});
+    if(houseError)console.error(houseError);
+    const pid = data?data.idx+1:1;
     const {response, error} = await setS3Url(`houses/${pid}/${e.target.name}.${img.type.split("/")[1]}`, img);
     if(!error) {
       setHouseData((oldValues) => (

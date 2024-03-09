@@ -32,11 +32,11 @@ export function MyHouseList(props: HousePostProps) {
         ...searchCondition
       };
 
-      const { count, countError } = await getHouseCount(searchCondition);
+      const [ count, countError ] = await getHouseCount(searchCondition);
       if(countError) {console.log(countError); return;}
       setCount(count);
 
-      const { data, error } = await getHouses(params);
+      const [ data, error ] = await getHouses(params);
       if(error) {console.log(error); return;}
       setHouseData(data);
       if(isSubmit!=undefined)setIsSubmit(false);

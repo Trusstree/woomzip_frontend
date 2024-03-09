@@ -2,6 +2,8 @@ import NaverProvider from "next-auth/providers/naver"
 import KakaoProvider from "next-auth/providers/kakao"
 import GoogleProvider from "next-auth/providers/google"
 import { getUser, postUser } from "@/apis/userAPI";
+import { Session } from "next-auth";
+import { JWT } from "next-auth/jwt";
 
 export const authOptions = {
   providers: [
@@ -39,15 +41,6 @@ export const authOptions = {
 
         // 없으면 데이터베이스에 유저 추가
         if (!db_user?.data?.length) {
-          console.log("asdf6");
-          console.log({
-            id:user.id,
-            name:user.name,
-            provider:account.provider,
-            access_token:account.access_token,
-            refresh_token:account.refresh_token?account.refresh_token:"",
-          });
-
           // 혹시 회원가입 추가 정보 넣는 거면 페이지 넣기
           const post_user = await postUser({
             id:user.id,
@@ -71,7 +64,6 @@ export const authOptions = {
     },
     async jwt({ token, user, account, profile, isNewUser }) {
       if (account) {
-        console.log(account);
         token.accessToken = account.access_token
         token.role = user.role;
         token.id = user.id;
@@ -79,8 +71,7 @@ export const authOptions = {
       }
       return token;
     },
-    async session({ session, user, token }) {
-      console.log(token);
+    async session({ session, user, token }:{session:Session, user:any, token:any}) {
       session.accessToken=token.accessToken;
       session.user.id=token.id;
       session.user.role=token.role;
