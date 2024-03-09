@@ -28,7 +28,7 @@ export default function PostList(props: PostListProps) {
       };
       if(category) params["category"]=category;
 			
-      const { count, countError } = await getPostCount(params);
+      const { count, countError } = await getPostCount(category);
       if(countError) {console.log(countError); return;}
       setCount(count);
 

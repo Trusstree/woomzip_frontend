@@ -14,7 +14,7 @@ export const getHouses = async (params: any) => {
     error = err;
   }
 
-  return { data, error };
+  return [ data, error ];
 };
 
 export const getHouse = async (houseNum: number) => {
@@ -31,7 +31,7 @@ export const getHouse = async (houseNum: number) => {
     error = err;
   }
 
-  return { data, error };
+  return [ data, error ];
 };
 
 export const postHouse = async (house: HouseDataType) => {
@@ -44,7 +44,7 @@ export const postHouse = async (house: HouseDataType) => {
     error = err;
   }
 
-  return { data, error };
+  return [ data, error ];
 };
 
 export const getHouseLast = async (params: any) => {
@@ -60,7 +60,7 @@ export const getHouseLast = async (params: any) => {
     error = err;
   }
 
-  return { data, error };
+  return [ data, error ];
 }
 
 export const getHouseCount = async (params: any) => {
@@ -76,7 +76,7 @@ export const getHouseCount = async (params: any) => {
     countError = err;
   }
 
-  return { count, countError };
+  return [ count, countError ];
 }
 
 export const putHouse = async (house: any) => {
@@ -89,5 +89,5 @@ export const putHouse = async (house: any) => {
     error = err;
   }
 
-  return { data, error };
+  return [ data, error ];
 }

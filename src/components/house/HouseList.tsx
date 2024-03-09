@@ -20,7 +20,7 @@ export function HouseList(props: HousePostProps) {
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
   const page = (rawPage>0)?rawPage:1;
-  const [houseData, setHouseData] = useState(undefined as any);
+  const [houseData, setHouseData] = useState([] as Array<any>);
   const [count, setCount] = useState(0);
 
   useEffect( () => {
@@ -32,11 +32,11 @@ export function HouseList(props: HousePostProps) {
         ...searchCondition
       };
 
-      const { count, countError } = await getHouseCount(searchCondition);
+      const [ count, countError ] = await getHouseCount(searchCondition);
       if(countError) {console.log(countError); return;}
       setCount(count);
 
-      const { data, error } = await getHouses(params);
+      const [ data, error ] = await getHouses(params);
       if(error) {console.log(error); return;}
       setHouseData(data);
       if(isSubmit!=undefined)setIsSubmit(false);
