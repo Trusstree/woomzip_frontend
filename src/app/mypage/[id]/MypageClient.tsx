@@ -8,7 +8,6 @@ import Community from "./Community";
 import House from "./House";
 import Profile from "./Profile";
 import { getUser } from "@/apis/userAPI";
-import useQuery from "@/hooks/useQuery";
 
 type MypageClientProps = {
   id: string
@@ -17,7 +16,6 @@ type MypageClientProps = {
 export default function MypageClient(props: MypageClientProps) {
   const { id } = props;
 
-  const { createQueryString } = useQuery();
   const { data: session } = useSession();
   const [userData, setUserData] = useState(undefined);
   const router = useRouter();

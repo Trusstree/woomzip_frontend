@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { deleteHeart, getHeart, getHeartCount, postHeart } from "@/apis/HeartAPI";
 import { getSession } from "next-auth/react";
 import { alertSuccess } from "@/lib/alertUtil";
+import { getPrices } from "@/apis/priceAPI";
 
 type HouseComponentProps = {
   session: any
@@ -23,8 +24,10 @@ export function HouseClient (props: HouseComponentProps) {
 
   const { pid, session } = props;
   const [houseData, setHouseData] = useState(undefined);
+  const [priceList, setPriceList] = useState(undefined);
   const [heart, setHeart] = useState({heart:undefined, count:0});
   
+  // house
   useEffect( () => {
     (async () => {
       const [ data, error ] = await getHouse(pid);
@@ -34,6 +37,17 @@ export function HouseClient (props: HouseComponentProps) {
     )();
   },[]);
 
+  // price
+  useEffect( () => {
+    (async () => {
+      const [ data, error ] = await getPrices(pid);
+      if(error) console.log(error);
+      else setPriceList(data);
+    }
+    )();
+  },[]);
+
+  // heart
   useEffect( () => {
     (async () => {
       const [ heartCount, heartCountError ] = await getHeartCount(pid);
@@ -165,17 +179,19 @@ export function HouseClient (props: HouseComponentProps) {
             <div className="d-flex align-items-center">
               <span className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>판매자</span>
               <div
-                className="fw-bold btn ps-0"
+                className="fw-bold ps-0"
                 style={{color:"#101648", border:"none"}}
                 onClick={()=>{}}>
                 {houseData["company"]}
               </div>
             </div>
           </div>
-
-          <div className={"1"}>
-            <select disabled defaultValue={"선택옵션"} className="form-select my-4" aria-label="Default select example">
-              <option value="선택옵션">선택옵션 - 없음</option>
+          
+          <div className={""}>
+            <select disabled={priceList?.filter((e)=>(e.category=="optional")).length==0} defaultValue={"선택옵션"} className="form-select my-4" aria-label="Default select example">
+              {priceList && priceList.filter((e)=>(e.category=="optional"))?.map((e, i)=>(
+                <option key={i} value={e.price}>{e.name} - {e.price}원</option>
+              ))}
             </select>
             <div className={"row g-3"}>
               <div className="col-6">
@@ -212,38 +228,15 @@ export function HouseClient (props: HouseComponentProps) {
       <div className="my-2 py-2">
         <span className="fw-bold fs-5" style={{color:"#101648"}}>가격에 포함된 서비스</span>
         <div className="d-flex justify-content-left flex-wrap my-2">
-          {houseData["interior"]=="yes" && 
-          <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-            <div
-              className="text-white rounded-3 text-center p-1 mb-3"
-              style={{backgroundColor:"#136E11", width:"105px"}}>
-              인테리어
+          {priceList && priceList.filter((e)=>(e.category=="included"))?.map((e, i)=>(
+            <div key={i} className="me-1 mx-md-2 d-flex flex-column align-items-center">
+              <div
+                className="text-white rounded-3 text-center p-1 mb-3"
+                style={{backgroundColor:"#136E11", width:"105px"}}>
+                {e.name}
+              </div>
             </div>
-          </div>}
-          {houseData["gagu"]=="yes" &&
-          <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-            <div
-              className="text-white rounded-3 text-center p-1 mb-3"
-              style={{backgroundColor:"#136E11", width:"105px"}}>
-              가구
-            </div>
-          </div>}
-          {houseData["transportation"]=="yes" &&
-          <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-            <div
-              className="text-white rounded-3 text-center p-1 mb-3"
-              style={{backgroundColor:"#136E11", width:"105px"}}>
-              운송비
-            </div>
-          </div>}
-          {houseData["installation"]=="yes" &&
-          <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-            <div
-              className="text-white rounded-3 text-center p-1 mb-3"
-              style={{backgroundColor:"#136E11", width:"105px"}}>
-              설치비
-            </div>
-          </div>}
+          ))}
         </div>
       </div>
 
@@ -253,103 +246,25 @@ export function HouseClient (props: HouseComponentProps) {
         <span style={{color:"#101648"}}>(토지위치, 상태에 따라 차이 발생)</span>
         <div className="row">
           <div className="col-md-8 col-lg-9 d-flex justify-content-left flex-wrap my-2">
-            {houseData["inheoga"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                인허가
+            {priceList && priceList.filter((e)=>(e.category=="additional"))?.map((e, i)=>(
+              <div key={i} className="me-1 mx-md-2 d-flex flex-column align-items-center">
+                <div
+                  className="text-white rounded-3 text-center p-1"
+                  style={{backgroundColor:"#BD4040", width:"105px"}}>
+                  {e["name"]}
+                </div>
+                <span className="my-2 text-center">{priceText(e["price"])}원</span>
               </div>
-              <span className="my-2 text-center">{priceText(houseData["inheoga"])}원</span>
-            </div>}
-            {houseData["survey"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                측량
-              </div>
-              <span className="my-2 text-center">{priceText(houseData["survey"])}원</span>
-            </div>}
-            {houseData["tomok"]>0 &&
-            (<div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                토목공사
-              </div>
-              <span className="my-2 text-center">{priceText(houseData["tomok"])}원</span>
-            </div>)}
-            {houseData["gicho"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                기초공사
-              </div>
-              <span className="my-2 text-center">{priceText(houseData["gicho"])}원</span>
-            </div>}
-            {houseData["electroInip"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                전기인입
-              </div>
-              <span className="my-2 text-center">{priceText(houseData["electroInip"])}원</span>
-            </div>}
-            {houseData["sudoInip"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                수도인입
-              </div>
-              <span className="my-2 text-center">{priceText(houseData["sudoInip"])}원</span>
-            </div>}
-            {houseData["dungbox"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                정화조
-              </div>
-              <span className="my-2 text-center">{priceText(houseData["dungbox"])}원</span>
-            </div>}
-            {houseData["bohum"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                보험
-              </div>
-              <span className="my-2 text-center">{priceText(houseData["bohum"])}원</span>
-            </div>}
-            {houseData["tax"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                세금
-              </div>
-              <span className="my-2 text-center">{priceText(houseData["tax"])}원</span>
-            </div>}
-            {houseData["etc"]>0 &&
-            <div className="me-1 mx-md-2 d-flex flex-column align-items-center">
-              <div
-                className="text-white rounded-3 text-center p-1"
-                style={{backgroundColor:"#BD4040", width:"105px"}}>
-                기타
-              </div>
-              <span className="my-2 text-center">{priceText(houseData["etc"])}원</span>
-            </div>}
+            ))}
           </div>
           <div className="col-md-4 col-lg-3 align-self-center">
             <div className="d-flex flex-column align-items-center">
               <div><span className="fw-bold fs-5" style={{color:"#BD4040"}}>트러스 예상 가격</span></div>
-              <div><span className="fw-bold fs-5" style={{color:"#101648"}}>
-                {priceText(houseData["inheoga"]+houseData["gicho"]+houseData["tomok"]+houseData["electroInip"]+houseData["sudoInip"]+houseData["bohum"]+houseData["tax"]+houseData["etc"])}원
-              </span></div>
+              <div>
+                <span className="fw-bold fs-5" style={{color:"#101648"}}>
+                  {priceText(priceList?.filter((e)=>(e.category=="additional"))?.reduce((acc,cur)=>(acc+cur.price),0))}원
+                </span>
+              </div>
             </div>
           </div>
         </div>

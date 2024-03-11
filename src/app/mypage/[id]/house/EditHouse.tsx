@@ -1,6 +1,6 @@
 "use client"
 
-import { getHouseLast, postHouse } from "@/apis/HouseAPI";
+import { postHouse } from "@/apis/HouseAPI";
 import { AdminRadioComponent } from "@/components/admin/AdminRadioComponent";
 import { AdminSwitchComponent } from "@/components/admin/AdminSwitchComponent";
 import { AdminSwitchTextComponent } from "@/components/admin/AdminSwitchTextComponent";
@@ -61,19 +61,6 @@ export default function EditHouse() {
 
   const testFunction = async (e:ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
-    const [data, houseError] = await getHouseLast({});
-    if(houseError)console.error(houseError);
-    const pid = data?data.idx+1:1;
-    const {response, error} = await setS3Url(`houses/${pid}/${e.target.name}.${img.type.split("/")[1]}`, img);
-    if(!error) {
-      setHouseData((oldValues) => (
-        {
-          ...oldValues,
-          [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${pid}/${e.target.name}.${img.type.split("/")[1]}`
-        }
-      ));
-    }
-    else console.log(error);
   };
 
   const submitFunction = async (houseData: HouseDataType) => {

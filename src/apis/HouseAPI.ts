@@ -47,22 +47,6 @@ export const postHouse = async (house: HouseDataType) => {
   return [ data, error ];
 };
 
-export const getHouseLast = async (params: any) => {
-  let [data, error] = [undefined, undefined] as any;
-
-  try {
-    const result = await apiClient.get(`/apis/house/last`, {
-      params: params,
-      headers: {}
-    });
-    data = result?.data;
-  } catch (err) {
-    error = err;
-  }
-
-  return [ data, error ];
-}
-
 export const getHouseCount = async (params: any) => {
   let [count, countError] = [undefined, undefined] as any;
 
