@@ -6,6 +6,9 @@ import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
 import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import { getUser, putUser } from "@/apis/userAPI";
+import Image from "next/image";
+import moment from "moment";
+import ImageBox from "@/components/mypage/ImageBox";
 
 export default function Profile() {
   const { data: session } = useSession();
@@ -18,18 +21,21 @@ export default function Profile() {
     return;
   }
 
-  const testFunction = async (e:ChangeEvent<HTMLInputElement>) => {
+  const setProfile = async (e:ChangeEvent<HTMLInputElement>|any) => {
     const img = e.target.files[0];
-    const {response, error} = await setS3Url(`users/${session.user.id}/${e.target.name}.${img.type.split("/")[1]}`, img);
-    if(!error) {
+    if(img?.type?.split("/")[0]!="image") return;
+    const date=moment().format('YYYYMMDDHHmmss');
+
+    const [meta, s3Error] = await setS3Url(`users/${session.user.id}/profileImage${date}.${img.type.split("/")[1]}`, img);
+    if(!s3Error) {
       setUserData((oldValues) => (
         {
           ...oldValues,
-          [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/users/${session.user.id}/${e.target.name}.${img.type.split("/")[1]}`
+          [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/users/${session.user.id}/profileImage${date}.${img.type.split("/")[1]}`
         }
       ));
     }
-    else console.log(error);
+    else console.error(s3Error);
   };
 
   const submitFunction = async (userData: any) => {
@@ -66,30 +72,12 @@ export default function Profile() {
 
       <AdminTextComponent className={"col-12 mb-3"} title={"별명"} text={"name"} data={userData} onChange={handleText}/>
       <AdminTextComponent className={"col-12 mb-3"} title={"한줄 설명"} text={"description"} data={userData} onChange={handleText}/>
-      <div className="py-3 mb-3">
-        <label htmlFor={"profile"}>
-          프로필사진
-        </label>
-        <img
-          id={"profile"}
-          src={userData["profileImage"]}
-          alt={"profileImage"}
-          width={200}
-          height={100} />
-        <input
-          id={"profileImage"}
-          name={"profileImage"}
-          accept="image/*"
-          multiple
-          type="file"
-          onChange={(e)=>{testFunction(e)}} />
-      </div>
-
+      <ImageBox title={"프로필사진"} data={userData} id={"profile"} name={"profileImage"} onChange={setProfile} />
       <AdminTextComponent className={"col-12 mb-3"} title={"전화번호"} text={"telNumber"} data={userData} onChange={handleText}/>
       <AdminTextComponent className={"col-12 mb-3"} title={"이메일"} text={"email"} data={userData} onChange={handleText}/>
       <AdminTextComponent className={"col-12 mb-3"} title={"생년월일"} text={"birthday"} data={userData} onChange={handleText}/>
-      <AdminTextComponent className={"col-12 mb-3"} title={"위치"} text={"location"} data={userData} onChange={handleText}/>
-
+      <AdminTextComponent className={"col-12 mb-3"} title={"공장위치"} text={"location"} data={userData} onChange={handleText}/>
+      
       <div className="d-flex justify-content-end">
         <button
           type="button"

@@ -2,14 +2,13 @@
 
 import { postHouse } from "@/apis/HouseAPI";
 import { postPrice } from "@/apis/priceAPI";
+import { AdminImageComponent } from "@/components/admin/AdminImageComponent";
 import { AdminRadioComponent } from "@/components/admin/AdminRadioComponent";
 import { AdminTextComponent } from "@/components/admin/AdminTextComponent";
 import { PriceInputComponent } from "@/components/admin/PriceInputComponent";
 import { PriceTextComponent } from "@/components/admin/PriceTextComponent";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
-import { setS3Url } from "@/lib/s3Util";
 import { HouseDataType } from "@/types/house";
-import moment from "moment";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
@@ -22,8 +21,7 @@ export default function AddHouse() {
   const [houseData, setHouseData] = useState({
     title: "",
     company: "",
-    price: 0,
-    discount: 0,
+    explanation: "",
 
     floorSpace: 0,
     gunchuckSpace: 0,
@@ -36,9 +34,9 @@ export default function AddHouse() {
     moduler: "no",
     hasModel: "no",
 
-    thumbnail:"",
-    detailImage:"",
-    itemImage:"",
+    goljo: "",
+    
+
   } as HouseDataType);
 
   const [priceList, setPriceList] = useState([]);
@@ -62,22 +60,6 @@ export default function AddHouse() {
     setHouseData((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
     return;
   }
-
-  const setS3Image = async (e:ChangeEvent<HTMLInputElement>) => {
-    const img = e.target.files[0];
-    const title=e.target.name+moment().format('YYYYMMDDHHmmss');
-    console.log(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${session.user.id}/${title}`);
-    const {response, error} = await setS3Url(`houses/${session.user.id}/${title}`, img);
-    if(!error) {
-      setHouseData((oldValues) => (
-        {
-          ...oldValues,
-          [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${session.user.id}/${title}`
-        }
-      ));
-    }
-    else console.error(error);
-  };
 
   const submitFunction = async (houseData: HouseDataType) => {
     if(typeof houseData["company"]!="string") {alertError("company","type을 다시 한 번 확인해주세요~"); return;}
@@ -115,8 +97,6 @@ export default function AddHouse() {
       return;
     }
     
-    console.log(data);
-    
     priceList.forEach(async (e)=>{
       console.log({...e, house_id:data.idx});
       const [priceData, priceError] = await postPrice({...e, house_id:data.idx});
@@ -131,45 +111,78 @@ export default function AddHouse() {
   return (
     <div>
       <div className="d-flex justify-content-start flex-column mt-5">
-        <h2 className="fw-bold">데이터를 입력해주세요</h2>
+        <h1 className="fw-bold">데이터를 입력해주세요</h1>
         <div
-          className="py-4 mt-4"
+          className="py-4 my-4"
           style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
-          <h4 className="fw-bold mb-4">기본 데이터</h4>
-          <div className="row g-3">
+          <h3 className="fw-bold mb-4">기본 데이터</h3>
+          <div className="d-flex flex-column">
+            <AdminTextComponent className={"my-2"} title={"제품명 (최대 15자)"} text={"title"} data={houseData} onChange={handleText}/>
+            <AdminTextComponent className={"my-2"} title={"실제 사용 평수 (단위: 평)"} text={"floorSpace"} data={houseData} onChange={handleText}/>
+            <AdminTextComponent className={"my-2"} title={"건축면적"} text={"gunchuckSpace"} data={houseData} onChange={handleText}/>
 
-            <AdminTextComponent className={"col-12"} title={"제목"} text={"title"} data={houseData} onChange={handleText}/>
-            <AdminTextComponent className={"col-2"} title={"가격"} text={"price"} data={houseData} onChange={handleText} />
-            <AdminTextComponent className={"col-1"} title={"할인율"} text={"discount"} data={houseData} onChange={handleText} />
-            <div className="col-9" />
+            {/* roomNumber */}
+            <div className="my-2 d-flex flex-column">
+              <span className="fs-5">방 개수</span>
+              <div className="d-flex">
+                <AdminRadioComponent id={"roomNumber1"} name={"roomNumber"} title={"1개"} data={1} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"roomNumber2"} name={"roomNumber"} title={"2개"} data={2} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"roomNumber3"} name={"roomNumber"} title={"3개"} data={3} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"roomNumber4"} name={"roomNumber"} title={"4개"} data={4} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"roomNumber5"} name={"roomNumber"} title={"5개"} data={5} onChange={handleText} className={"mx-2"} />
+              </div>
+            </div>
 
-            <AdminTextComponent className={"col-2"} title={"실평수"} text={"floorSpace"} data={houseData} onChange={handleText}/>
-            <AdminTextComponent className={"col-2"} title={"건축면적"} text={"gunchuckSpace"} data={houseData} onChange={handleText}/>
-            <AdminTextComponent className={"col-2"} title={"방개수"} text={"roomNumber"} data={houseData} onChange={handleText}/>
-            <AdminTextComponent className={"col-2"} title={"화장실 수"} text={"toiletNumber"} data={houseData} onChange={handleText}/>
-            <div className="col-4" />
+            {/* toiletNumber */}
+            <div className="my-2 d-flex flex-column">
+              <span className="fs-5">화장실 개수</span>
+              <div className="d-flex">
+                <AdminRadioComponent id={"toiletNumber1"} name={"toiletNumber"} title={"1개"} data={1} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"toiletNumber2"} name={"toiletNumber"} title={"2개"} data={2} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"toiletNumber3"} name={"toiletNumber"} title={"3개"} data={3} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"toiletNumber4"} name={"toiletNumber"} title={"4개"} data={4} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"toiletNumber5"} name={"toiletNumber"} title={"5개"} data={5} onChange={handleText} className={"mx-2"} />
+              </div>
+            </div>
 
-            <AdminTextComponent className={"col-2"} title={"예상소요기간"} text={"duration"} data={houseData} onChange={handleText}/>
-            <AdminTextComponent className={"col-2"} title={"AS기간"} text={"afterService"} data={houseData} onChange={handleText}/>
-            <div className="col-8" />
+            {/* duration */}
+            <div className="my-2 d-flex flex-column">
+              <span className="fs-5">예상 소요 기간 (제작일 기준)</span>
+              <div className="d-flex">
+                <AdminRadioComponent id={"duration1"} name={"duration"} title={"1개월"} data={1} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"duration2"} name={"duration"} title={"2개월"} data={2} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"duration3"} name={"duration"} title={"3개월"} data={3} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"duration4"} name={"duration"} title={"4개월"} data={4} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"duration5"} name={"duration"} title={"5개월"} data={5} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"duration6"} name={"duration"} title={"6개월 이상"} data={6} onChange={handleText} className={"mx-2"} />
+              </div>
+            </div>
 
-
-            <div className="col-12 d-flex">
-              <span className="col-2">모듈러</span>
-              <div className="col-2 row">
-                <AdminRadioComponent id={"modulerYes"} name={"moduler"} title={"yes"} data={"yes"} onChange={handleText} className={"col-6"} />
-                <AdminRadioComponent id={"modulerNo"} name={"moduler"} title={"no"} data={"no"} onChange={handleText} className={"col-6"} />
+            {/* afterService */}
+            <div className="my-2 d-flex flex-column">
+              <span className="fs-5">AS 보증 기간</span>
+              <div className="d-flex">
+                <AdminRadioComponent id={"afterService1"} name={"afterService"} title={"1개월"} data={1} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"afterService2"} name={"afterService"} title={"2개월"} data={2} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"afterService3"} name={"afterService"} title={"3개월"} data={3} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"afterService4"} name={"afterService"} title={"4개월"} data={4} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"afterService5"} name={"afterService"} title={"5개월"} data={5} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"afterService6"} name={"afterService"} title={"6개월 이상"} data={6} onChange={handleText} className={"mx-2"} />
               </div>
             </div>
 
             {/* hasModel */}
-            <div className="col-12 d-flex">
-              <span className="col-2">모델하우스</span>
-              <div className="col-2 row">
-                <AdminRadioComponent id={"hasModelYes"} name={"hasModel"} title={"yes"} data={"yes"} onChange={handleText} className={"col-6"} />
-                <AdminRadioComponent id={"hasModelNo"} name={"hasModel"} title={"no"} data={"no"} onChange={handleText} className={"col-6"} />
+            <div className="my-2 d-flex flex-column">
+              <span className="fs-5">해당 제품 모델하우스 유/무</span>
+              <div className="d-flex">
+                <AdminRadioComponent id={"hasModelYes"} name={"hasModel"} title={"yes"} data={"yes"} onChange={handleText} className={"mx-2"} />
+                <AdminRadioComponent id={"hasModelNo"} name={"hasModel"} title={"no"} data={"no"} onChange={handleText} className={"mx-2"} />
               </div>
             </div>
+
+            <AdminTextComponent className={"my-2"} title={"기본 가격(부가세 포함)"} text={"price"} data={houseData} onChange={handleText} />
+            <AdminTextComponent className={"my-2"} title={"할인율 (없으면 0 입력)"} text={"discount"} data={houseData} onChange={handleText} />
+            <AdminTextComponent className={"my-2"} title={"제품 설명"} text={"explanation"} data={houseData} onChange={handleText}/>
             
             {/* 특이사항 */}
             {/* <div className="col-12 d-flex">
@@ -181,82 +194,38 @@ export default function AddHouse() {
               </div>
             </div> */}
           </div>
+        </div>
 
-          <div
-            className="mt-4 py-3"
-            style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
-            <h4 className="fw-bold mb-4">썸네일 사진</h4>
-            
-            <input
-              id={"thumbnail"}
-              name={"thumbnail"}
-              accept="image/*"
-              multiple
-              type="file"
-              onChange={(e)=>{setS3Image(e)}} />
-            <img
-              src={houseData["thumbnail"]}
-              alt={"thumbnail"}
-              width={200}
-              height={100} />
-            
+        <div
+          className="mt-4 py-4"
+          style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+          <h3 className="fw-bold mb-4">사진</h3>
+          <AdminImageComponent className={"py-3"} data={houseData} name={"thumbnail"} title={"썸네일 사진"} setHouseData={setHouseData} />
+          <AdminImageComponent className={"py-3"} data={houseData} name={"itemImage"} title={"제품 사진"} setHouseData={setHouseData} />
+          <AdminImageComponent className={"py-3"} data={houseData} name={"detailImage"} title={"상세 정보 사진"} setHouseData={setHouseData} />
+        </div>
+
+        <div
+          className="mt-4 py-4"
+          style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+          <h3 className="fw-bold mb-4">가격</h3>
+          
+          <div className={`mt-2 row`}>
+            <div className="fs-5 col-4">이름</div>
+            <div className="fs-5 col-2">카테고리</div>
+            <div className="fs-5 col-4">가격</div>
           </div>
-
-          <div className="py-3">
-            <h4 className="fw-bold mb-4">제품 사진</h4>
-            <input
-              id={"image"}
-              name={"itemImage"}
-              accept="image/*"
-              multiple
-              type="file"
-              onChange={(e)=>{setS3Image(e)}} />
-            <img
-              src={houseData["itemImage"]}
-              alt={"itemImage"}
-              width={200}
-              height={100} />
+          
+          <div className="row">
+            <PriceInputComponent setPriceList={setPriceList} className={""} />
           </div>
-
-          <div className="py-3">
-            <h4 className="fw-bold mb-4">상세정보 사진</h4>
-            <input
-              id={"detailImage"}
-              name={"detailImage"}
-              accept="image/*"
-              multiple
-              type="file" 
-              onChange={(e)=>{setS3Image(e)}} />
-            <img
-              src={houseData["detailImage"]}
-              alt={"detailImage"}
-              width={200}
-              height={100} />
+          
+          <div className="w-100 d-flex flex-column">
+            {priceList.length>0 && priceList.map((e, i)=>{
+              return <PriceTextComponent key={i} index={i} price={e} setPriceList={setPriceList} />
+            })}
           </div>
-
-          <div
-            className="mt-4 py-4"
-            style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
-            <h4 className="fw-bold mb-4">가격</h4>
-            
-            <div className={` mt-2 col-9 row`}>
-              <h5 className="col-4">이름</h5>
-              <div className="col-2">카테고리</div>
-              <div className="col-4">가격</div>
-            </div>
-            
-            <div className="row">
-              <PriceInputComponent setPriceList={setPriceList} className={"col-9"} />
-            </div>
-            
-            <div className="w-100 d-flex flex-column">
-              {priceList.length>0 && priceList.map((e, i)=>{
-                return <PriceTextComponent key={i} index={i} price={e} setPriceList={setPriceList} />
-              })}
-            </div>
-            
-          </div>
-
+          
         </div>
       </div>
 

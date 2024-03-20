@@ -39,5 +39,5 @@ export async function setS3Url(key: string, body: any) {
     error = err;
   }
 
-  return {response, error};
+  return [response, error];
 }

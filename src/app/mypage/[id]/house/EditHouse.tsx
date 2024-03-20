@@ -275,26 +275,3 @@ export default function EditHouse() {
     </div>
   )
 }
-
-
-
-
-
-{/* image */}
-{/* <div className="d-flex justify-content-center align-items-center">
-  <div>
-    <label htmlFor={"image"}>image</label>
-    <input
-      id={"image"}
-      accept="image/*"
-      multiple
-      type="file" 
-      onChange={(e)=>{testFunction(e, "image")}}
-    />
-  </div>
-  <Image
-    src={houseData["image"]}
-    alt={"image"}
-    width={200}
-    height={100} />
-</div> */}
