@@ -20,7 +20,7 @@ export const postUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/user/`, user, { headers: {} });
+    const result = await apiClient.post(`/apis/user`, user, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;
@@ -29,11 +29,24 @@ export const postUser = async (user: any) => {
   return { data, error };
 };
 
-export const updateUser = async (user: any) => {
+export const putUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.put(`/apis/user/`, user, { headers: {} });
+    const result = await apiClient.put(`/apis/user`, user, { headers: {} });
+    data = result?.data;
+  } catch (err) {
+    error = err;
+  }
+
+  return [ data, error ];
+};
+
+export const getUserLast = async (user: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await apiClient.get(`/apis/user/last`, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;

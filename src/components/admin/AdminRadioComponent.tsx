@@ -20,7 +20,7 @@ export function AdminRadioComponent(props: RadioComponentProps) {
         onChange={onChange}
         defaultChecked/>
       <label
-        className="form-check-label"
+        className="fs-5 form-check-label"
         htmlFor={id}>
         {title}
       </label>

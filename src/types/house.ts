@@ -1,10 +1,7 @@
 export type HouseDataType = {
-  gubun: string,
   company: string,
-
   title: string,
-  price:number,
-  discount:number,
+  explanation: string,
 
   floorSpace:number,
   gunchuckSpace:number,
@@ -17,21 +14,14 @@ export type HouseDataType = {
   moduler: string,
   hasModel: string,
 
-  gagu: string,
+  goljo: string,
+  exterior: string,
+  roof: string,
   interior: string,
-  transportation: string,
-  installation: string,
-
-  inheoga:number,
-  gicho:number,
-  tomok:number,
-  electroInip:number,
-  sudoInip:number,
-  tax:number,
-  bohum:number,
-  etc:number,
-
-  thumbnail: string,
-  detailImage: string,
-  itemImage: string,
+  window: string,
+  heating: string,
+  gagu: string,
+  toilet: string,
+  kitchen: string,
+  light: string
 }

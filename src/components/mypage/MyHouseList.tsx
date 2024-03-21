@@ -3,9 +3,9 @@
 import { getHouseCount, getHouses } from "@/apis/HouseAPI";
 import { useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import HouseCardPlaceholder from "../house/HouseCardPlaceholder";
 import Pagination from "../Pagination";
-import HouseCardPlaceholder from "./HouseCardPlaceholder";
-import HouseCard from "./HouseCard";
+import MyHouseCard from "./MyHouseCard";
 
 type HousePostProps = {
   numShowItems: number
@@ -15,12 +15,12 @@ type HousePostProps = {
   setIsSubmit?: Dispatch<SetStateAction<{}>>
 }
 
-export function HouseList(props: HousePostProps) {
+export function MyHouseList(props: HousePostProps) {
   const { numShowItems, numShowPages, searchCondition, isSubmit, setIsSubmit } = props;
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
   const page = (rawPage>0)?rawPage:1;
-  const [houseData, setHouseData] = useState([] as Array<any>);
+  const [houseData, setHouseData] = useState(undefined as any);
   const [count, setCount] = useState(0);
 
   useEffect( () => {
@@ -47,7 +47,7 @@ export function HouseList(props: HousePostProps) {
     <>
       {houseData ?
         houseData.map((e, i)=>(
-          <HouseCard className="" key={i} data={e} />
+          <MyHouseCard className="" key={i} data={e} />
         ))
       :
         new Array(numShowItems).fill(0).map((e, i)=>(

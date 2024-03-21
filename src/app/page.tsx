@@ -51,7 +51,7 @@ export default function Home() {
         horizontalScroll={true} >
         <HouseList
           numShowItems={6}
-          searchCondition={undefined} />
+          searchCondition={{}} />
       </PostMenu>
 
       {/* <PostMenu

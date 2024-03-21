@@ -20,7 +20,7 @@ export default function Carousel(props: CarouselProps){
 
   useEffect( () => {
     (async ()=>{
-      const { data, error } = await getHouses({
+      const [ data, error ] = await getHouses({
         skip: skip,
         limit: limit
       });

@@ -8,7 +8,6 @@ type SwitchTextComponentProps = {
   title: string
   onChange: any
   className?: string
-  
 }
 
 export function AdminSwitchTextComponent(props: SwitchTextComponentProps) {

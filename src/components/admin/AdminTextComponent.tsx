@@ -11,7 +11,8 @@ export function AdminTextComponent(props: AdminTextComponentProps) {
   return (
     <div className={`${className} d-flex flex-column`}>
       <label
-        htmlFor={text}>
+        htmlFor={text}
+        className="fs-5">
         {title}
       </label>
       <input

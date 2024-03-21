@@ -7,19 +7,6 @@ import { useSearchParams } from "next/navigation";
 import Pagination from "../Pagination";
 import PostCardPlaceHolder from "./PostCardPlaceholder";
 
-// type Post = {
-//   id: number
-//   category: string
-//   title: string
-//   text: string
-//   author: string
-//   profilePicture:string
-//   timestamp: number
-//   viewCount: number
-//   commentCount: number
-//   likeCount:number
-// }
-
 type PostListProps = {
 	numShowItems: number
 	numShowPages?: number
@@ -41,7 +28,7 @@ export default function PostList(props: PostListProps) {
       };
       if(category) params["category"]=category;
 			
-      const { count, countError } = await getPostCount(params);
+      const { count, countError } = await getPostCount(category);
       if(countError) {console.log(countError); return;}
       setCount(count);
 
