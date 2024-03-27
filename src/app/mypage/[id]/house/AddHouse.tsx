@@ -19,25 +19,87 @@ export default function AddHouse() {
   const pathname = usePathname();
 
   const [houseData, setHouseData] = useState({
-    title: "",
-    company: "",
-    explanation: "",
-
-    floorSpace: 0,
-    gunchuckSpace: 0,
-    roomNumber: 0,
-    toiletNumber: 0,
-
-    duration: 0,
-    afterService: 0,
-
-    moduler: "no",
-    hasModel: "no",
-
-    goljo: "",
-    
-
-  } as HouseDataType);
+    "seller_id":1,
+    "house_info":{
+      "house_name": "모듈러 하우스1",
+      "house_explanation": "정말 좋은 집이에요~~",
+      "floor":2,
+      "building_area": 20,
+      "total_floor_area": 45,
+      "room_count": 3,
+      "toilet_count": 1,
+      "estimate_duration": 4,
+      "warranty": "24개월",
+      "has_model": true,
+      "base_price": 10000000,
+      "discount_rate": 5,
+      "price_variation": "이렇고 저렇고 이렇고 저러니까 가격이 더 증가할거야.",
+      "specificity_info": {
+        "default": ["다락방", "배란다", "데크"],
+        "etc" : "기타 특이사항" // if etc is not null
+      }
+    },
+    "option_info": [
+      {
+          "option_type": "인덕션",
+          "option_product_name": "뜨끈한 인덕션",
+          "option_product_price": 40000
+      },
+      {
+          "option_type": "냉장고",
+          "option_product_name": "시원한 냉장고",
+          "option_product_price": 300000
+      }
+    ],
+    "specification_info": {
+      "framework": {
+        "default": ["철근콘크리트"],
+        "etc" : null // if etc is not null
+      },
+      "exterior_material" : {
+        "default": ["써모사이딩", "루버강판"],
+        "etc" : "다른 외장재"
+      },
+      "roofing_material" : {
+        "default" : ["리얼 징크"],
+        "etc" : "다른 지붕재"
+      },
+      "insulation_material" : {
+        "default" : ["스카이텍"],
+        "etc" :"다른 단열재"
+      },
+      "interior_material" : {
+        "default": ["합지도배","강화마루"],
+        "etc" : "다른 내장재"
+      },
+      "window" : {
+        "default" : ["미국식"],
+        "etc" :"다른 창호"
+      },
+      "heating" : {
+        "default" : ["전기탄소필름"],
+        "etc" :"다른 난방"
+      },
+      "furniture" : {
+        "default" : ["수납장"],
+        "etc" :"다른 가구"
+      },
+      "toilet" : {
+        "default" : ["온수기", "양변기", "세면대","샤워부스"],
+        "etc" :"다른 화장실 옵션"
+      },
+      "kitchen" : {
+        "default" : ["싱크대","인덕션","가스레인지"],
+        "etc" :"다른 주방 옵션"
+      },
+      "lighting" : {
+        "default" : ["LED"],
+        "etc" :"다른 조명"
+      },
+    "etc_info": "추가적으로 이런거 이런게 있어요.",
+    "specification_description": "제품 사양에 대한 설명입니다."
+  }
+  });
 
   const [priceList, setPriceList] = useState([]);
 
@@ -47,13 +109,6 @@ export default function AddHouse() {
     })();
   },[session]);
 
-  // useEffect(()=>{
-  //   (async ()=>{
-  //     //const [prevData, setPrevData]=await getHouse();
-  //     setHouseData((oldValues) => ({...oldValues, ["company"]: session?.user?.name}));
-  //   })();
-  // })
-
   const handleText = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
     // if (e) e.preventDefault();
 
@@ -61,7 +116,7 @@ export default function AddHouse() {
     return;
   }
 
-  const submitFunction = async (houseData: HouseDataType) => {
+  const submitFunction = async (houseData: any) => {
     if(typeof houseData["company"]!="string") {alertError("company","type을 다시 한 번 확인해주세요~"); return;}
 
     if(typeof houseData["title"]!="string") {alertError("title","type을 다시 한 번 확인해주세요~"); return;}
@@ -195,16 +250,8 @@ export default function AddHouse() {
             </div> */}
           </div>
         </div>
-
-        <div
-          className="mt-4 py-4"
-          style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
-          <h3 className="fw-bold mb-4">사진</h3>
-          <AdminImageComponent className={"py-3"} data={houseData} name={"thumbnail"} title={"썸네일 사진"} setHouseData={setHouseData} />
-          <AdminImageComponent className={"py-3"} data={houseData} name={"itemImage"} title={"제품 사진"} setHouseData={setHouseData} />
-          <AdminImageComponent className={"py-3"} data={houseData} name={"detailImage"} title={"상세 정보 사진"} setHouseData={setHouseData} />
-        </div>
-
+        
+        {/* 가격 */}
         <div
           className="mt-4 py-4"
           style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
@@ -225,18 +272,35 @@ export default function AddHouse() {
               return <PriceTextComponent key={i} index={i} price={e} setPriceList={setPriceList} />
             })}
           </div>
-          
         </div>
-      </div>
 
-      <div className="d-flex justify-content-center">
-        <button type="button"
-          name="submit"
-          style={{backgroundColor:"#101648"}}
-          className={`my-5 px-5 py-3 btn btn-lg rounded-lg text-white fw-bold fs-3`}
-          onClick={async ()=>{await submitFunction(houseData);}}>
-          {"등록하기"}
-        </button>
+        {/* 사진 */}
+        <div
+          className="mt-4 py-4"
+          style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+          <h3 className="fw-bold mb-4">사진</h3>
+          <AdminImageComponent className={"py-3"} data={houseData} name={"thumbnail"} title={"썸네일 사진"} setHouseData={setHouseData} />
+          <AdminImageComponent className={"py-3"} data={houseData} name={"itemImage"} title={"제품 사진"} setHouseData={setHouseData} />
+          <AdminImageComponent className={"py-3"} data={houseData} name={"detailImage"} title={"상세 정보 사진"} setHouseData={setHouseData} />
+        </div>
+      
+        {/* submit */}
+        <div className="mt-4 py-4 d-flex justify-content-center flex-column"
+          style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+          <div className="mt-2 fw-bold fs-5" style={{"color":"#101648"}}>
+            마지막으로 작성 정보를 다시 한 번 확인해주세요.<br/>
+            수정 필요가 있다면 검수 후, 수정 요청드릴 수 있습니다.<br/>
+            (수정은 우측 상단 '마이페이지'에서 가능합니다.)<br/>
+            추가로 표현하고 싶은데, 해당사항이 없다면 전화주세요!
+          </div>
+          <button type="button"
+            name="submit"
+            style={{backgroundColor:"#101648"}}
+            className={`my-5 px-5 py-3 btn btn-lg rounded-lg text-white fw-bold fs-3`}
+            onClick={async ()=>{await submitFunction(houseData);}}>
+            {"등록하기"}
+          </button>
+        </div>
       </div>
 
     </div>

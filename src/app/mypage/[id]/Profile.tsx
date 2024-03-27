@@ -64,7 +64,7 @@ export default function Profile() {
         <button
           type="button"
           style={{backgroundColor:"#101648"}}
-          onClick={()=>{signOut();}}
+          onClick={()=>{signOut({callbackUrl:process.env.NEXT_PUBLIC_CALLBACKURL});}}
           className={"my-3 px-3 rounded-2 fs-6 text-white "}>
           로그아웃
         </button>

@@ -5,7 +5,7 @@ export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/apis/house`, {
+    const result = await apiClient.get(`/apis/house/enroll`, {
       params: params,
       headers: {}
     });
@@ -67,7 +67,7 @@ export const putHouse = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.put(`/apis/house`, house, { headers: {} });
+    const result = await apiClient.put(`/apis/house/`, house, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;

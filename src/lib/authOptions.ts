@@ -3,7 +3,6 @@ import KakaoProvider from "next-auth/providers/kakao"
 import GoogleProvider from "next-auth/providers/google"
 import { getUser, postUser } from "@/apis/userAPI";
 import { Session } from "next-auth";
-import { JWT } from "next-auth/jwt";
 
 export const authOptions = {
   providers: [
@@ -21,11 +20,7 @@ export const authOptions = {
     })
   ],
   pages: {
-		signIn: '/api/auth/signin',
-		signOut: '/api/auth/signout',
-		error: '/api/auth/error', // Error code passed in query string as ?error=
-		verifyRequest: '/api/auth/verify-request', // (used for check email message)
-		newUser: '/api/auth/new-user' // New users will be directed here on first sign in
+		signIn: '/signin',
 	},
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
