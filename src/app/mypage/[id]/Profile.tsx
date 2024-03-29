@@ -1,7 +1,7 @@
 "use client"
 
 import { signOut, useSession } from "next-auth/react";
-import { AdminTextComponent } from "@/components/admin/AdminTextComponent";
+import { AdminTextComponent } from "@/components/admin/AdminTextBoxComponent";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
 import { ChangeEvent, ChangeEventHandler, useState } from "react";

@@ -1,5 +1,4 @@
-type CheckboxComponentProps = {
-  id: string
+type ComponentProps = {
   name: string
   data: string | number | readonly string[]
   title: string
@@ -7,21 +6,21 @@ type CheckboxComponentProps = {
   className?: string
 }
 
-export function AdminCheckboxComponent(props: CheckboxComponentProps) {
-  const {id, name, data, onChange, title, className} = props;
+export function RadioComponent(props: ComponentProps) {
+  const {name, data, onChange,title, className} = props;
   return (
     <div className={`${className} form-check`}>
       <input
         className="form-check-input"
-        type="checkbox"
+        type="radio"
         name={name}
-        id={id}
+        id={`${name}_${data}`}
         value={data}
         onChange={onChange}
         defaultChecked/>
       <label
-        className="form-check-label"
-        htmlFor={id}>
+        className="fs-5 form-check-label"
+        htmlFor={`${name}_${data}`}>
         {title}
       </label>
     </div>

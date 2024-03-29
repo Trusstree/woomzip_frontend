@@ -1,13 +1,14 @@
-type AdminTextComponentProps = {
+type TextComponentProps = {
   title: string
   text: string
+  placeholder: string
   data: any
   onChange: any
   className?: string
 }
 
-export function AdminTextComponent(props: AdminTextComponentProps) {
-  const { title, text, data, onChange,className } = props;
+export function TextAreaComponent(props: TextComponentProps) {
+  const { title, text, placeholder, data, onChange, className } = props;
   return (
     <div className={`${className} d-flex flex-column`}>
       <label
@@ -15,10 +16,12 @@ export function AdminTextComponent(props: AdminTextComponentProps) {
         className="fs-5">
         {title}
       </label>
-      <input
-        type='text'
+      <textarea
+        style={{resize:"none"}}
         id={text}
         name={text}
+        placeholder={placeholder}
+        rows={5}
         onChange={onChange}
         value={data[text]} />
     </div>

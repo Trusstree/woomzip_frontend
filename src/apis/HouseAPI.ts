@@ -34,7 +34,7 @@ export const getHouse = async (houseNum: number) => {
   return [ data, error ];
 };
 
-export const postHouse = async (house: HouseDataType) => {
+export const postHouse = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {

@@ -10,7 +10,7 @@ type SwitchTextComponentProps = {
   className?: string
 }
 
-export function AdminSwitchTextComponent(props: SwitchTextComponentProps) {
+export function SwitchTextComponent(props: SwitchTextComponentProps) {
   const {data, name, title, onChange, className} = props;
   const [check, setCheck] = useState(false);
   return (

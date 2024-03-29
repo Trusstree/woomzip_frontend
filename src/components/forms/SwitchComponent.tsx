@@ -1,4 +1,4 @@
-type AdminSwitchComponentProps = {
+type SwitchComponentProps = {
   data: any
   name: string
   title: string
@@ -6,7 +6,7 @@ type AdminSwitchComponentProps = {
   className?: string
 }
 
-export function AdminSwitchComponent(props: AdminSwitchComponentProps) {
+export function SwitchComponent(props: SwitchComponentProps) {
   const {data, name, title, onChange, className} = props;
   return (
     <div className={`${className} d-flex`}>

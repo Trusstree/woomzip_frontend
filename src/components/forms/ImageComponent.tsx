@@ -5,7 +5,7 @@ import moment from "moment";
 import { useSession } from "next-auth/react";
 import { ChangeEvent } from "react";
 
-type AdminImageComponentProps = {
+type ImageComponentProps = {
   data: any
   name: string
   title: string
@@ -13,7 +13,7 @@ type AdminImageComponentProps = {
   className?: string
 }
 
-export function AdminImageComponent(props: AdminImageComponentProps) {
+export function ImageComponent(props: ImageComponentProps) {
   const { data, name, title, setHouseData, className } = props;
   const { data: session } = useSession();
 

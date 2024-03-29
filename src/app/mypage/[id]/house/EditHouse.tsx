@@ -4,7 +4,7 @@ import { postHouse } from "@/apis/HouseAPI";
 import { AdminRadioComponent } from "@/components/admin/AdminRadioComponent";
 import { AdminSwitchComponent } from "@/components/admin/AdminSwitchComponent";
 import { AdminSwitchTextComponent } from "@/components/admin/AdminSwitchTextComponent";
-import { AdminTextComponent } from "@/components/admin/AdminTextComponent";
+import { AdminTextComponent } from "@/components/admin/AdminTextBoxComponent";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
 import { HouseDataType } from "@/types/house";
