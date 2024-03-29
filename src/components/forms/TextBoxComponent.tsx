@@ -12,7 +12,8 @@ export function TextBoxComponent(props: TextBoxComponentProps) {
     <div className={`${className} d-flex flex-column`}>
       <label
         htmlFor={text}
-        className="fs-5">
+        className="fs-5"
+        style={{color:"#101648"}}>
         {title}
       </label>
       <input
