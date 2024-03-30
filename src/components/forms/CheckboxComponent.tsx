@@ -7,7 +7,7 @@ type CheckboxComponentProps = {
   className?: string
 }
 
-export function AdminCheckboxComponent(props: CheckboxComponentProps) {
+export function CheckboxComponent(props: CheckboxComponentProps) {
   const {id, name, data, onChange, title, className} = props;
   return (
     <div className={`${className} form-check`}>

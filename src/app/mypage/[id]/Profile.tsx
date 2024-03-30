@@ -1,7 +1,7 @@
 "use client"
 
 import { signOut, useSession } from "next-auth/react";
-import { AdminTextComponent } from "@/components/admin/AdminTextComponent";
+import { TextBoxComponent } from "@/components/forms/TextBoxComponent";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
 import { ChangeEvent, ChangeEventHandler, useState } from "react";
@@ -64,19 +64,19 @@ export default function Profile() {
         <button
           type="button"
           style={{backgroundColor:"#101648"}}
-          onClick={()=>{signOut();}}
+          onClick={()=>{signOut({callbackUrl:process.env.NEXT_PUBLIC_CALLBACKURL});}}
           className={"my-3 px-3 rounded-2 fs-6 text-white "}>
           로그아웃
         </button>
       </div>
 
-      <AdminTextComponent className={"col-12 mb-3"} title={"별명"} text={"name"} data={userData} onChange={handleText}/>
-      <AdminTextComponent className={"col-12 mb-3"} title={"한줄 설명"} text={"description"} data={userData} onChange={handleText}/>
+      <TextBoxComponent className={"col-12 mb-3"} title={"별명"} text={"name"} data={userData} onChange={handleText}/>
+      <TextBoxComponent className={"col-12 mb-3"} title={"한줄 설명"} text={"description"} data={userData} onChange={handleText}/>
       <ImageBox title={"프로필사진"} data={userData} id={"profile"} name={"profileImage"} onChange={setProfile} />
-      <AdminTextComponent className={"col-12 mb-3"} title={"전화번호"} text={"telNumber"} data={userData} onChange={handleText}/>
-      <AdminTextComponent className={"col-12 mb-3"} title={"이메일"} text={"email"} data={userData} onChange={handleText}/>
-      <AdminTextComponent className={"col-12 mb-3"} title={"생년월일"} text={"birthday"} data={userData} onChange={handleText}/>
-      <AdminTextComponent className={"col-12 mb-3"} title={"공장위치"} text={"location"} data={userData} onChange={handleText}/>
+      <TextBoxComponent className={"col-12 mb-3"} title={"전화번호"} text={"telNumber"} data={userData} onChange={handleText}/>
+      <TextBoxComponent className={"col-12 mb-3"} title={"이메일"} text={"email"} data={userData} onChange={handleText}/>
+      <TextBoxComponent className={"col-12 mb-3"} title={"생년월일"} text={"birthday"} data={userData} onChange={handleText}/>
+      <TextBoxComponent className={"col-12 mb-3"} title={"공장위치"} text={"location"} data={userData} onChange={handleText}/>
       
       <div className="d-flex justify-content-end">
         <button

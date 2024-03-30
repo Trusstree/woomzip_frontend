@@ -131,7 +131,6 @@ export default function MypageClient(props: MypageClientProps) {
           {(session.user.role=="company") && 
           (params.get("tab")=="house") && 
             <House/>}
-          
         </div>
       </div>
     </>

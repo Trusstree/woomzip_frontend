@@ -2,19 +2,19 @@
 
 import { useCallback } from "react"
 
-type PriceTextComponentProps = {
-  index: number
+type PriceComponentProps = {
+  key: number
   price: any
   setPriceList: Function
   className?: string
 }
 
-export function PriceTextComponent(props: PriceTextComponentProps) {
-  const { index, price, setPriceList, className } = props;
+export function PriceComponent(props: PriceComponentProps) {
+  const { key, price, setPriceList, className } = props;
 
   const onClick = useCallback(()=>{
-    setPriceList((oldValues)=>(oldValues.filter((_,i)=>i!=index)));
-  },[price]);
+    setPriceList((oldValues)=>(oldValues.filter((_,i)=>i!=key)));
+  }, [price]);
 
   return (
     <div className={`${className} mt-2 col-9 row`}>

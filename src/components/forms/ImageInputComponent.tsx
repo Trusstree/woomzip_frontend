@@ -5,16 +5,14 @@ import moment from "moment";
 import { useSession } from "next-auth/react";
 import { ChangeEvent } from "react";
 
-type AdminImageComponentProps = {
+type ImageInputComponentProps = {
   data: any
   name: string
-  title: string
-  setHouseData: Function
   className?: string
 }
 
-export function AdminImageComponent(props: AdminImageComponentProps) {
-  const { data, name, title, setHouseData, className } = props;
+export function ImageInputComponent(props: ImageInputComponentProps) {
+  const { data, name, className } = props;
   const { data: session } = useSession();
 
   const setS3Image = async (e:ChangeEvent<HTMLInputElement>) => {
@@ -23,18 +21,18 @@ export function AdminImageComponent(props: AdminImageComponentProps) {
     console.log(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${session.user.id}/${title}`);
     const [response, error] = await setS3Url(`houses/${session.user.id}/${title}`, img);
     if(!error) {
-      setHouseData((oldValues) => (
-        {
-          ...oldValues,
-          [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${session.user.id}/${title}`
-        }
-      ));
+      // setHouseData((oldValues) => (
+      //   {
+      //     ...oldValues,
+      //     [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${session.user.id}/${title}`
+      //   }
+      // ));
     }
     else console.error(error);
   };
 
   return (
-    <div className={`${className && ""} my-3`}>
+    <div className={`${className && ""}`}>
       
       <label htmlFor={name}>
         <img
@@ -52,7 +50,7 @@ export function AdminImageComponent(props: AdminImageComponentProps) {
         type="file"
         onChange={setS3Image}
         style={{ display: 'none' }}/>
-      <h5 className="fw-bold mb-4">{title}</h5>
+      <h5 className="fw-bold">추가하기</h5>
     </div>
   );
 }
