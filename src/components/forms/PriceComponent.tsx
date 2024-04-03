@@ -5,15 +5,15 @@ import { useCallback } from "react"
 type PriceComponentProps = {
   key: number
   price: any
-  setPriceList: Function
+  setData: Function
   className?: string
 }
 
 export function PriceComponent(props: PriceComponentProps) {
-  const { key, price, setPriceList, className } = props;
+  const { key, price, setData, className } = props;
 
   const onClick = useCallback(()=>{
-    setPriceList((oldValues)=>(oldValues.filter((_,i)=>i!=key)));
+    setData((oldValues)=>(oldValues.filter((_,i)=>i!=key)));
   }, [price]);
 
   return (

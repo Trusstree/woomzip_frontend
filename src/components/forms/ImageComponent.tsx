@@ -1,24 +1,23 @@
 "use client"
 
 type ImageComponentProps = {
-  data: any
-  name: string
   title: string
+  data: string
   className?: string
 }
 
 export function ImageComponent(props: ImageComponentProps) {
-  const { data, name, title, className } = props;
+  const { title, data, className } = props;
 
   return (
-    <div className={`${className && ""} my-3`}>
+    <div className={`${className ?? ""}`}>
       <img
-        src={"/blur_image.png"}
-        alt={name}
-        width={200}
-        height={200}
+        src={data}
+        alt={title}
+        width={188}
+        height={188}
         style={{objectFit:"fill"}} />
-      <h5 className="fw-bold mb-4">{title}</h5>
+      <h5 className="fw-bold mt-1 mb-4">{title}</h5>
     </div>
   );
 }
