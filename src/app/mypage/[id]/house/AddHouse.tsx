@@ -296,8 +296,8 @@ export default function AddHouse() {
 
           <div className="row mb-4">
             <h5 className="col-12 fw-bold">대표사진 (1장)</h5>
-            {imageList.filter((e)=>(e.name=="representative_image")).map((e, i)=>(
-              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
+            {imageList.map((e, i)=>(
+              <ImageComponent key={i} className={"col-2 pb-3"} data={e.url} title={e.title} />
             ))}
             <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"representative_image"} />
           </div>

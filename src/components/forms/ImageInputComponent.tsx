@@ -23,6 +23,7 @@ export function ImageInputComponent(props: ImageInputComponentProps) {
     console.log(url);
     
     const [response, error] = await setS3Url(`houses/${session.user.id}/${title}`, img);
+    console.log(error);
     if(!error) {
       setData((oldValues) =>([...oldValues, {url:url, name:name}]));
     }
