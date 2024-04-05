@@ -1,6 +1,6 @@
 type TextComponentProps = {
   title: string
-  text: string
+  name: string
   placeholder: string
   data: any
   onChange: any
@@ -8,22 +8,22 @@ type TextComponentProps = {
 }
 
 export function TextAreaComponent(props: TextComponentProps) {
-  const { title, text, placeholder, data, onChange, className } = props;
+  const { title, name, placeholder, data, onChange, className } = props;
   return (
     <div className={`${className} d-flex flex-column`}>
       <label
-        htmlFor={text}
+        htmlFor={`${name}_${title}`}
         className="fs-5">
         {title}
       </label>
       <textarea
         style={{resize:"none"}}
-        id={text}
-        name={text}
+        id={`${name}_${title}`}
+        name={name}
         placeholder={placeholder}
-        rows={5}
+        rows={4}
         onChange={onChange}
-        value={data[text]} />
+        value={data[name]} />
     </div>
   )
 }

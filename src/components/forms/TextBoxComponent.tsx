@@ -1,27 +1,27 @@
 type TextBoxComponentProps = {
   title: string
-  text: string
+  name: string
   data: any
   onChange: any
   className?: string
 }
 
 export function TextBoxComponent(props: TextBoxComponentProps) {
-  const { title, text, data, onChange,className } = props;
+  const { title, name, data, onChange,className } = props;
   return (
     <div className={`${className} d-flex flex-column`}>
       <label
-        htmlFor={text}
+        htmlFor={`${name}_${title}`}
         className="fs-5"
         style={{color:"#101648"}}>
         {title}
       </label>
       <input
         type='text'
-        id={text}
-        name={text}
+        id={`${name}_${title}`}
+        name={name}
         onChange={onChange}
-        value={data[text]} />
+        value={data[name]} />
     </div>
   )
 }
