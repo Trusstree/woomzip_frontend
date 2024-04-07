@@ -27,13 +27,6 @@ export default function AddHouse() {
     return;
   }
 
-  const handleHouseSpecificity = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
-    if(e) e.preventDefault();
-    
-    setHouseInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
-    return;
-  }
-
   const handleSpecification = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
     if(e) e.preventDefault();
     setSpecificationInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
@@ -41,21 +34,15 @@ export default function AddHouse() {
   }
 
   const submitFunction = async () => {
-    const [data, error] = await postHouse({
+    const data={
       seller_id: 1,
       house_info: houseInfo,
       option_info: optionInfo,
       specification_info: specificationInfo,
       house_image: imageList
-    });
+    }
 
-    console.log({
-      seller_id: 1,
-      house_info: houseInfo,
-      option_info: optionInfo,
-      specification_info: specificationInfo,
-      house_image: imageList
-    });
+    const [response, error] = await postHouse(data);
 
     if(error){
       alertError("에러!", "뭐가 빠진 게 있나봐요 ㅠㅠ");

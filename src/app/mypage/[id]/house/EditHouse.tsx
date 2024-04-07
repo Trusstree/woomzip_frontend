@@ -2,8 +2,8 @@
 
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
-import { postHouse } from "@/apis/HouseAPI";
+import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
+import { getHouse, postHouse, putHouse } from "@/apis/HouseAPI";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { HouseInfoType, specificationInfoType, specificityInfoType } from "@/types/house";
 import { RadioComponent } from "@/components/forms/RadioComponent";
@@ -15,42 +15,49 @@ import { TextBoxComponent } from "@/components/forms/TextBoxComponent";
 import { PriceInputComponent } from "@/components/forms/PriceInputComponent";
 import { PriceComponent } from "@/components/forms/PriceComponent";
 
-export default function EditHouse() {
-  const { data: session } = useSession();
-  const router = useRouter();
-  const pathname = usePathname();
+type EditHouseProps = {
+  pid: number
+}
 
-  const [houseInfo, setHouseInfo] = useState({} as HouseInfoType)
-  const [optionInfo, setOptionInfo]=useState([] as Array<specificityInfoType>)
-  const [specificationInfo, setSpecificationInfo]=useState({} as specificationInfoType)
-  const [priceList, setPriceList] = useState([]);
+export default function EditHouse(props: EditHouseProps) {
+  const { pid } = props;
+  const [houseInfo, setHouseInfo] = useState({} as HouseInfoType);
+  const [optionInfo, setOptionInfo]=useState([] as Array<any>);
+  const [specificationInfo, setSpecificationInfo]=useState({} as specificationInfoType);
   const [imageList, setImageList] = useState([]);
 
-  const handleText = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
-    // if (e) e.preventDefault();
-
-    //func((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
+  const handleHouse = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
+    if(e) e.preventDefault();
+    setHouseInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
     return;
   }
 
-  const submitFunction = async () => {
-    const [data, error] = await postHouse({
-      seller_id: 1,
-      house_info: houseInfo,
-      option_info: optionInfo,
-      specification_info: specificationInfo,
-      price_info: priceList, // 가격 정보
-      image_info: imageList // 사진 정보
-    });
+  const handleSpecification = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
+    if(e) e.preventDefault();
+    setSpecificationInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
+    return;
+  }
 
-    console.log({
+  useEffect(()=>{
+    (async ()=>{
+      const [data, error] = await getHouse(pid);
+      setHouseInfo(data.house_info);
+      setOptionInfo(data.option_info);
+      setSpecificationInfo(data.specification_info);
+      setImageList(data.house_images);
+    })()
+  },[])
+
+  const submitFunction = async () => {
+    const data={
       seller_id: 1,
       house_info: houseInfo,
       option_info: optionInfo,
       specification_info: specificationInfo,
-      price_info: priceList, // 가격 정보
-      image_info: imageList // 사진 정보
-    });
+      house_image: imageList
+    }
+
+    const [response, error] = await putHouse(data);
 
     if(error){
       alertError("에러!", "뭐가 빠진 게 있나봐요 ㅠㅠ");
@@ -70,18 +77,19 @@ export default function EditHouse() {
           style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
           <h3 className="fw-bold mb-4" style={{color:"#101648"}}>제품 기본 정보를 입력해주세요.</h3>
           <div className="d-flex flex-column">
-            <TextBoxComponent className={"my-2"} title={"제품명 (최대 15자)"} text={"house_name"} data={houseInfo} onChange={handleText}/>
-            <TextBoxComponent className={"my-2"} title={"실제 사용 평수 (단위: 평)"} text={"floor"} data={houseInfo} onChange={handleText}/>
-            <TextBoxComponent className={"my-2"} title={"건축면적"} text={"gunchuckSpace"} data={houseInfo} onChange={handleText}/>
-            <TextBoxComponent className={"my-2"} title={"기본 가격(부가세 포함)"} text={"base_price"} data={houseInfo} onChange={handleText} />
-            <TextBoxComponent className={"my-2"} title={"할인율 (없으면 0 입력)"} text={"discount_rate"} data={houseInfo} onChange={handleText} />
-            <TextBoxComponent className={"my-2"} title={"price_variation"} text={"price_variation"} data={houseInfo} onChange={handleText} />
+            <TextBoxComponent className={"my-2"} title={"제품명 (최대 15자)"} name={"house_name"} data={houseInfo} onChange={handleHouse}/>
+            <TextBoxComponent className={"my-2"} title={"실제 사용 평수 (단위: 평)"} name={"floor"} data={houseInfo} onChange={handleHouse}/>
+            <TextBoxComponent className={"my-2"} title={"건축면적"} name={"gunchuckSpace"} data={houseInfo} onChange={handleHouse}/>
+            <div className="row">
+              <TextBoxComponent className={"col-8 my-2"} title={"기본 가격(부가세 포함)"} name={"base_price"} data={houseInfo} onChange={handleHouse} />
+              <TextBoxComponent className={"col-4 my-2"} title={"할인율 (없으면 0 입력)"} name={"discount_rate"} data={houseInfo} onChange={handleHouse} />
+            </div>
             
             {/* floor */}
             <RadioComponent
               title={"층수"}
               name={"floor"}
-              onChange={handleText}
+              onChange={handleHouse}
               data={[
                 {title:"1층", data:1},
                 {title:"2층", data:2},
@@ -93,7 +101,7 @@ export default function EditHouse() {
             <RadioComponent
               title={"방 개수"}
               name={"room_count"}
-              onChange={handleText}
+              onChange={handleHouse}
               data={[
                 {title:"1개", data:1},
                 {title:"2개", data:2},
@@ -107,7 +115,7 @@ export default function EditHouse() {
             <RadioComponent
              title={"화장실 개수"}
              name={"toilet_count"}
-             onChange={handleText}
+             onChange={handleHouse}
               data={[
                 {title:"1개", data:1},
                 {title:"2개", data:2},
@@ -120,7 +128,7 @@ export default function EditHouse() {
             <RadioComponent
               title={"예상 소요 기간 (제작일 기준)"}
               name={"estimate_duration"}
-              onChange={handleText}
+              onChange={handleHouse}
               data={[
                 {title:"1개월", data:1},
                 {title:"2개월", data:2},
@@ -135,7 +143,7 @@ export default function EditHouse() {
             <RadioComponent
               title={"AS 보증 기간"}
               name={"warranty"}
-              onChange={handleText}
+              onChange={handleHouse}
               data={[
                 {title:"1개월", data:1},
                 {title:"2개월", data:2},
@@ -150,7 +158,7 @@ export default function EditHouse() {
             <RadioComponent
               title={"해당 제품 모델하우스 유/무"}
               name={"has_model"}
-              onChange={handleText}
+              onChange={handleHouse}
               data={[
                 {title:"예", data:true},
                 {title:"아니오", data:false}
@@ -161,11 +169,11 @@ export default function EditHouse() {
             <SelectComponent
               title={"특이사항 (다중선택 가능)"}
               name={"specificity_info"}
-              onChange={handleText}
+              onChange={setHouseInfo}
               dataList={["다락방","발코니","배란다","옥상","데크",]}
             />
 
-            <TextAreaComponent className={"my-2"} title={"제품 설명"} text={"house_explanation"} data={houseInfo} onChange={handleText} placeholder={""}/>
+            <TextAreaComponent className={"my-2"} title={"제품 소개글 (최대 2,000자)"} name={"house_explanation"} data={houseInfo} onChange={handleHouse} placeholder={""}/>
           </div>
         </div>
 
@@ -176,20 +184,22 @@ export default function EditHouse() {
           <h3 className="fw-bold mb-4">제품 추가 가격 정보를 입력해주세요.</h3>
           
           <div className={`mt-2 row`}>
-            <div className="fs-5 col-4">이름</div>
-            <div className="fs-5 col-2">카테고리</div>
-            <div className="fs-5 col-4">가격</div>
+            <div className="fs-5 col-3">옵션 구분</div>
+            <div className="fs-5 col-4 ps-1">옵션 이름</div>
+            <div className="fs-5 col-3 ps-0">옵션 추가 가격</div>
           </div>
           
           <div className="row">
-            <PriceInputComponent setData={setPriceList} className={""} />
+            <PriceInputComponent setData={setOptionInfo} className={""} />
           </div>
           
           <div className="w-100 d-flex flex-column">
-            {priceList.length>0 && priceList.map((e, i)=>(
-              <PriceComponent key={i} price={e} setPriceList={setPriceList} />
+            {optionInfo.length>0 && optionInfo.map((e, i)=>(
+              <PriceComponent key={i} price={e} setData={setOptionInfo} />
             ))}
           </div>
+
+          <TextAreaComponent className={"mt-5 mb-2"} title={"기타 가격 변동사항 설명글 (최대 2,000자)"} name={"house_explanation"} data={houseInfo} onChange={handleHouse} placeholder={""}/>
         </div>
         
         {/* 기본 제품 제작 사양 */}
@@ -201,80 +211,82 @@ export default function EditHouse() {
           <SelectComponent
             title={"골조구조"}
             name={"framework"}
-            onChange={handleText}
+            onChange={setSpecificationInfo}
             dataList={["경량목","경량스틸","철근콘크리트"]}
           />
 
           <SelectComponent
             title={"외장재"}
             name={"exterior_material"}
-            onChange={handleText}
+            onChange={setSpecificationInfo}
             dataList={["써모사이딩","리얼징크","루버강판","우드루바"]}
           />
 
           <SelectComponent
             title={"지붕재"}
             name={"roofing_material"}
-            onChange={handleText}
+            onChange={setSpecificationInfo}
             dataList={["리얼징크","아스팔트슁글"]}
           />
 
           <SelectComponent
             title={"단열재"}
             name={"insulation_material"}
-            onChange={handleText}
+            onChange={setSpecificationInfo}
             dataList={["스카이텍", "기밀자재"]}
           />
 
           <SelectComponent
             title={"내장재"}
-            name={"exterior_material"}
-            onChange={handleText}
+            name={"interior_material"}
+            onChange={setSpecificationInfo}
             dataList={["합지도배","랩핑몰딩","강화마루"]}
           />
 
           <SelectComponent
             title={"창호"}
-            name={"exterior_material"}
-            onChange={handleText}
+            name={"window"}
+            onChange={setSpecificationInfo}
             dataList={["미국식","유럽식","KCC"]}
           />
           
           <SelectComponent
             title={"난방"}
-            name={"exterior_material"}
-            onChange={handleText}
+            name={"heating"}
+            onChange={setSpecificationInfo}
             dataList={["전기탄소필름","LPG"]}
           />
 
           <SelectComponent
             title={"가구"}
-            name={"exterior_material"}
-            onChange={handleText}
+            name={"furniture"}
+            onChange={setSpecificationInfo}
             dataList={["신발장","수납장","붙박이장"]}
           />
 
           <SelectComponent
             title={"화장실"}
-            name={"exterior_material"}
-            onChange={handleText}
+            name={"toilet"}
+            onChange={setSpecificationInfo}
             dataList={["온수기","양변기","세면대","샤워부스"]}
           />
 
           <SelectComponent
             title={"주방"}
-            name={"exterior_material"}
-            onChange={handleText}
+            name={"kitchen"}
+            onChange={setSpecificationInfo}
             dataList={["싱크대","인덕션","가스레인지"]}
           />
 
           <SelectComponent
             title={"조명"}
-            name={"exterior_material"}
-            onChange={handleText}
+            name={"lighting"}
+            onChange={setSpecificationInfo}
             dataList={["LED"]}
           />
 
+          <TextBoxComponent className={"my-2"} title={"기타"} name={"etc_info"} data={specificationInfo} onChange={handleSpecification}/>
+          <TextAreaComponent className={"my-2"} title={"제작 사양 관련 설명글 (최대 2,000자)"} name={"specification_description"} data={specificationInfo} onChange={handleSpecification} placeholder={""}/>
         </div>
 
         {/* 사진 */}
@@ -285,43 +297,42 @@ export default function EditHouse() {
 
           <div className="row mb-4">
             <h5 className="col-12 fw-bold">대표사진 (1장)</h5>
-            {/* .filter((e)=>(e.name=="thumbnail")) */}
-            {imageList.filter((e)=>(e.name=="thumbnail")).map((e, i)=>(
-              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
+            {imageList.map((e, i)=>(
+              <ImageComponent key={i} className={"col-2 pb-3"} data={e.url} title={e.title} />
             ))}
-            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"thumbnail"} />
+            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"representative_image"} />
           </div>
 
           <div className="row mb-4">
             <h5 className="fw-bold">제품 외부 사진 (여러장 추가 가능)</h5>
-            {imageList.filter((e)=>(e.name=="exterior")).map((e, i)=>(
+            {imageList.filter((e)=>(e.name=="external_images")).map((e, i)=>(
               <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
             ))}
-            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"exterior"} />
+            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"external_images"} />
           </div>
 
           <div className="row mb-4">
             <h5 className="fw-bold">제품 내부 사진 (여러장 추가 가능)</h5>
-            {imageList.filter((e)=>(e.name=="interior")).map((e, i)=>(
+            {imageList.filter((e)=>(e.name=="internal_images")).map((e, i)=>(
               <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
             ))}
-            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"interior"} />
+            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"internal_images"} />
           </div>
 
           <div className="row mb-4">
             <h5 className="fw-bold">설계도면 {`<평면도>`} 사진 (여러장 추가 가능)</h5>
-            {imageList.filter((e)=>(e.name=="floor_plan")).map((e, i)=>(
+            {imageList.filter((e)=>(e.name=="floor_plan_images")).map((e, i)=>(
               <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
             ))}
-            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"floor_plan"} />
+            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"floor_plan_images"} />
           </div>
 
           <div className="row mb-4">
             <h5 className="fw-bold">설계도면 {`<입면도>`} 사진 (여러장 추가 가능)</h5>
-            {imageList.filter((e)=>(e.name=="elevation")).map((e, i)=>(
+            {imageList.filter((e)=>(e.name=="elevation_plan_images")).map((e, i)=>(
               <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
             ))}
-            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"elevation"} />
+            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"elevation_plan_images"} />
           </div>
         </div>
       
