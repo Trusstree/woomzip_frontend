@@ -16,11 +16,13 @@ export const getUser = async (id: string) => {
   return { data, error };
 };
 
-export const postUser = async (user: any) => {
+export const postUser = async (user: any, token: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/user`, user, { headers: {} });
+    const result = await apiClient.post(`/apis/users/enroll`, user, { 
+      headers: { Authorization: `Bearer ${token}` }
+    });
     data = result?.data;
   } catch (err) {
     error = err;
@@ -33,7 +35,7 @@ export const putUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.put(`/apis/user`, user, { headers: {} });
+    const result = await apiClient.put(`/apis/users`, user, { headers: {} });
     data = result?.data;
   } catch (err) {
     error = err;

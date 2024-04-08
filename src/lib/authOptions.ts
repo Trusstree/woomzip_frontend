@@ -3,6 +3,8 @@ import KakaoProvider from "next-auth/providers/kakao"
 import GoogleProvider from "next-auth/providers/google"
 import { getUser, postUser } from "@/apis/userAPI";
 import { Session } from "next-auth";
+import { getAccessToken } from "@/apis/authAPI";
+import { getUserdataByToken } from "./security";
 
 export const authOptions = {
   providers: [
@@ -30,36 +32,25 @@ export const authOptions = {
         user.name = profile.response?.name || user.name;
       }
 
-      try {
+
         //데이터베이스에 유저가 있는지 확인
-        let db_user = await getUser(user.id);
+        let db_user = undefined;//await getUser(user.id);
 
-        // 없으면 데이터베이스에 유저 추가
-        if (!db_user?.data?.length) {
-          // 혹시 회원가입 추가 정보 넣는 거면 페이지 넣기
-          const post_user = await postUser({
-            id:user.id,
-            name:user.name,
-            provider:account.provider,
-            access_token:account.access_token,
-            refresh_token:account.refresh_token?account.refresh_token:"",
-          });
-          if(post_user.error){throw post_user.error;}
-        }
+        const [data, error] = await getAccessToken(account.access_token);
+        console.log(data);
 
+        
         // 유저 정보에 데이터베이스 아이디, 역할 연결
-        user.idx = db_user.data[0]?.idx;
-        user.role = db_user.data[0]?.role;
+        const parsedJWT=getUserdataByToken(data.data.access_token);
+        user.accessToken = data.data.access_token;
+        user.idx = parsedJWT.uid;
+        //user.role = "company";//db_user.data[0]?.role;
 
         return true;
-      } catch (error) {
-        console.log("로그인 도중 에러가 발생했습니다. " + error);
-        return false;
-      }
     },
     async jwt({ token, user, account, profile, isNewUser }) {
       if (account) {
-        token.accessToken = account.access_token
+        token.accessToken = user.access_token
         token.role = user.role;
         token.id = user.id;
         token.email = user.email;

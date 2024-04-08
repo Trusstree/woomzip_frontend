@@ -43,12 +43,13 @@ export default function AddHouse() {
     }
 
     const [response, error] = await postHouse(data);
-
+    
     if(error){
+      console.error(error);
       alertError("에러!", "뭐가 빠진 게 있나봐요 ㅠㅠ");
       return;
     }
-    
+    console.log(response);
     alertSuccess(houseInfo["house_name"],"제대로 들어갔어요~");
     //router.push(pathname.replace("/house",""));
   }
@@ -63,8 +64,8 @@ export default function AddHouse() {
           <h3 className="fw-bold mb-4" style={{color:"#101648"}}>제품 기본 정보를 입력해주세요.</h3>
           <div className="d-flex flex-column">
             <TextBoxComponent className={"my-2"} title={"제품명 (최대 15자)"} name={"house_name"} data={houseInfo} onChange={handleHouse}/>
-            <TextBoxComponent className={"my-2"} title={"실제 사용 평수 (단위: 평)"} name={"floor"} data={houseInfo} onChange={handleHouse}/>
-            <TextBoxComponent className={"my-2"} title={"건축면적"} name={"gunchuckSpace"} data={houseInfo} onChange={handleHouse}/>
+            <TextBoxComponent className={"my-2"} title={"실제 사용 평수 (단위: 평)"} name={"total_floor_area"} data={houseInfo} onChange={handleHouse}/>
+            <TextBoxComponent className={"my-2"} title={"건축면적"} name={"building_area"} data={houseInfo} onChange={handleHouse}/>
             <div className="row">
               <TextBoxComponent className={"col-8 my-2"} title={"기본 가격(부가세 포함)"} name={"base_price"} data={houseInfo} onChange={handleHouse} />
               <TextBoxComponent className={"col-4 my-2"} title={"할인율 (없으면 0 입력)"} name={"discount_rate"} data={houseInfo} onChange={handleHouse} />
@@ -184,7 +185,7 @@ export default function AddHouse() {
             ))}
           </div>
 
-          <TextAreaComponent className={"mt-5 mb-2"} title={"기타 가격 변동사항 설명글 (최대 2,000자)"} name={"house_explanation"} data={houseInfo} onChange={handleHouse} placeholder={""}/>
+          <TextAreaComponent className={"mt-5 mb-2"} title={"기타 가격 변동사항 설명글 (최대 2,000자)"} name={"price_variation"} data={houseInfo} onChange={handleHouse} placeholder={""}/>
         </div>
         
         {/* 기본 제품 제작 사양 */}

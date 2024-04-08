@@ -1,5 +1,4 @@
 import { apiClient } from "@/configs/apiClient";
-import { HouseDataType } from "@/types/house";
 
 export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -38,7 +37,9 @@ export const postHouse = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/house`, house, { headers: {} });
+    const result = await apiClient.post(`/apis/house/enroll`, house, {
+      headers: { Authorization: `Bearer AAAAOckNuId_a6W5piRqpv9vzlA97cCLs6K1LE_h1Q5r2of3XHKzONjQnWDgsvd8PiTq4_qsCGEMyQNqSVswxz5uxvA` }
+    });
     data = result?.data;
   } catch (err) {
     error = err;
