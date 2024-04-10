@@ -1,6 +1,6 @@
 "use client"
 
-import { getPostCount, getPosts } from "@/apis/postAPI";
+import { getPosts } from "@/apis/postAPI";
 import PostList from "@/components/posts/PostList";
 import PostMenu from "@/components/posts/PostMenu";
 import { useSearchParams } from "next/navigation";
@@ -17,14 +17,10 @@ export default function Community() {
   useEffect( () => {
     (async ()=>{
       const params={
-        skip: numShowItems*(page-1),
+        skip: numShowItems*(page-1)+1,
         limit: numShowItems,
       };
       if(category) params["category"]=category;
-			
-      const { count, countError } = await getPostCount(params);
-      if(countError) {console.log(countError); return;}
-      setCount(count);
 
       const { data, error } = await getPosts(params);
       if(error) {console.log(error); return;}

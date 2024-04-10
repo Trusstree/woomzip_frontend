@@ -1,6 +1,6 @@
 "use client"
 
-import { getHouseCount, getHouses } from "@/apis/HouseAPI";
+import { getHouses } from "@/apis/HouseAPI";
 import { useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Pagination from "../Pagination";
@@ -27,18 +27,17 @@ export function HouseList(props: HousePostProps) {
     (async ()=>{
       if(isSubmit!=undefined && !isSubmit) return;
       const params={
-        skip: numShowItems*(page-1),
+        skip: numShowItems*(page-1)+1,
         limit: numShowItems,
         ...searchCondition
       };
 
-      const [ count, countError ] = await getHouseCount(searchCondition);
-      if(countError) {console.log(countError); return;}
-      setCount(count);
-
       const [ data, error ] = await getHouses(params);
-      if(error) {console.log(error); return;}
-      setHouseData(data);
+      if(error) {console.error(error); return;}
+      setHouseData(data.data[0].houses);
+      console.log(data.data[0].houses);
+      setCount(data.data[0].total);
+
       if(isSubmit!=undefined)setIsSubmit(false);
     })();
   },[isSubmit, page])

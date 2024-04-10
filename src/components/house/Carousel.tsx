@@ -24,8 +24,9 @@ export default function Carousel(props: CarouselProps){
         skip: skip,
         limit: limit
       });
-      if(!error) setHouseData(data);
-      else console.log(error);
+
+      if(error) {console.error(error); return;}
+      setHouseData(data.data.houses);
     })();
   },[])
   
@@ -35,7 +36,8 @@ export default function Carousel(props: CarouselProps){
       className={`carousel slide ${className}`}
       data-bs-ride="carousel">
       <div className="carousel-indicators">
-        {houseData?.map((_, i)=>(
+        {houseData?
+          houseData.map((_, i)=>(
           <button
             key={i}
             type="button"
@@ -45,7 +47,8 @@ export default function Carousel(props: CarouselProps){
             aria-current={(i==0)?"true":"false"}
             aria-label={`Slide ${i+1}`}
           />
-        ))}
+        ))
+      :undefined}
       </div>
       <div className="carousel-inner">
         {houseData?

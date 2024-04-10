@@ -10,11 +10,11 @@ import Profile from "./Profile";
 import { getUser } from "@/apis/userAPI";
 
 type MypageClientProps = {
-  id: string
+  uid: string
 }
 
 export default function MypageClient(props: MypageClientProps) {
-  const { id } = props;
+  const { uid } = props;
 
   const { data: session } = useSession();
   const [userData, setUserData] = useState(undefined);
@@ -24,10 +24,10 @@ export default function MypageClient(props: MypageClientProps) {
 
   useEffect(()=>{
     (async () => {
-      const { data, error } = await getUser(id);
-      
+      const { data, error } = await getUser(uid, session.user.accessToken);
+
       if(error) console.log(error);
-      else setUserData(data[0]);
+      else setUserData(data.data[0].user_profile);
     })();
   },[]);
 
@@ -86,7 +86,7 @@ export default function MypageClient(props: MypageClientProps) {
             </div> */}
           </div>
 
-          {(id==session.user.id) && <div
+          {(Number(uid)==session.user.uid) && <div
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{backgroundColor:"#101648"}}
             onClick={()=>{router.push(`${pathname}?tab=profile`);}} >
@@ -127,10 +127,10 @@ export default function MypageClient(props: MypageClientProps) {
             </>
           }
           {(params.get("tab")=="profile") && 
-            <Profile/>}
+            <Profile user={userData}/>}
           {(params.get("tab")=="community") && 
             <Community/>}
-          {(session.user.role=="company") && 
+          {(session.user.role) && 
           (params.get("tab")=="house") && 
             <House/>}
         </div>

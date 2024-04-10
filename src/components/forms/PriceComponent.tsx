@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 
 type PriceComponentProps = {
   key: number
@@ -17,15 +17,15 @@ export function PriceComponent(props: PriceComponentProps) {
   }, [price]);
 
   return (
-    <div className={`${className} mt-2 col-9 row`}>
-      <div className="col-2">
-        {price.category}
+    <div className={`${className} mt-2 col-12 row`}>
+      <div className="col-3">
+        {price.option_type}
       </div>
       <div className="col-4">
-        {price.name}
+        {price.option_product_name}
       </div>
-      <div className="col-4">
-        {price.price}
+      <div className="col-3">
+        {price.option_product_price}
       </div>
       <div
         className={"col-2 btn d-flex flex-column justify-content-center align-self-center"}

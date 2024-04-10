@@ -1,12 +1,12 @@
 import { apiClient } from "@/configs/apiClient";
 
-export const getUser = async (id: string) => {
+export const getUser = async (uid: string|number, token: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/apis/user`, {
-      params: {id: id},
-      headers: {}
+    const result = await apiClient.get(`/apis/users/profile`, {
+      params: {uid: uid},
+      headers: { Authorization: `Bearer ${token}` }
     });
     data = result?.data;
   } catch (err) {

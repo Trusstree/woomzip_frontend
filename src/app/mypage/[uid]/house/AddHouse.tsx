@@ -14,16 +14,24 @@ import { TextAreaComponent } from "@/components/forms/TextAreaComponent";
 import { TextBoxComponent } from "@/components/forms/TextBoxComponent";
 import { PriceInputComponent } from "@/components/forms/PriceInputComponent";
 import { PriceComponent } from "@/components/forms/PriceComponent";
+import { SelectDeliveryComponent } from "@/components/forms/SelectDeliveryComponent";
+import { ImageThumbComponent } from "@/components/forms/ImageThumbComponent";
 
 export default function AddHouse() {
   const [houseInfo, setHouseInfo] = useState({} as HouseInfoType);
   const [optionInfo, setOptionInfo]=useState([] as Array<any>);
+  const [deliveryInfo, setDeliveryInfo]=useState([] as Array<any>);
   const [specificationInfo, setSpecificationInfo]=useState({} as specificationInfoType);
   const [imageList, setImageList] = useState([]);
+  const { data: session } = useSession();
 
   const handleHouse = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
-    if(e) e.preventDefault();
     setHouseInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
+    return;
+  }
+
+  const handleDelivery = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
+    setDeliveryInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
     return;
   }
 
@@ -35,20 +43,24 @@ export default function AddHouse() {
 
   const submitFunction = async () => {
     const data={
-      seller_id: 1,
+      seller_id: session.user.uid,
       house_info: houseInfo,
       option_info: optionInfo,
+      delivery_unavailable: deliveryInfo,
       specification_info: specificationInfo,
       house_image: imageList
     }
 
-    const [response, error] = await postHouse(data);
-    
+    //validate를 위한 부분
+    console.log(data);
+
+    const [response, error] = await postHouse(data, session.user.accessToken);
     if(error){
       console.error(error);
       alertError("에러!", "뭐가 빠진 게 있나봐요 ㅠㅠ");
       return;
     }
+
     console.log(response);
     alertSuccess(houseInfo["house_name"],"제대로 들어갔어요~");
     //router.push(pathname.replace("/house",""));
@@ -146,8 +158,8 @@ export default function AddHouse() {
               name={"has_model"}
               onChange={handleHouse}
               data={[
-                {title:"예", data:true},
-                {title:"아니오", data:false}
+                {title:"예", data:1},
+                {title:"아니오", data:0}
               ]}
             />
 
@@ -161,6 +173,20 @@ export default function AddHouse() {
 
             <TextAreaComponent className={"my-2"} title={"제품 소개글 (최대 2,000자)"} name={"house_explanation"} data={houseInfo} onChange={handleHouse} placeholder={""}/>
           </div>
+        </div>
+
+        {/* 배송 */}
+        <div
+          className="mt-4 py-4"
+          style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+          <h3 className="fw-bold mb-4">배송 정보를 입력해주세요.</h3>
+          
+          <SelectDeliveryComponent
+            title={"배송 불가능 지역"}
+            name={"delivery_unavailable"}
+            onChange={setDeliveryInfo}
+            dataList={["없음","제주도","전라남도","전라북도","경상남도","경상북도","충청남도","충청북도","경기남부","경기북부","강원도","서울"]}
+          />
         </div>
 
         {/* 가격 */}
@@ -283,40 +309,43 @@ export default function AddHouse() {
 
           <div className="row mb-4">
             <h5 className="col-12 fw-bold">대표사진 (1장)</h5>
-            {imageList.map((e, i)=>(
-              <ImageComponent key={i} className={"col-2 pb-3"} data={e.url} title={e.title} />
-            ))}
-            <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"representative_image"} />
+            {
+              imageList["representative_image"]?
+              <ImageComponent className={"col-2 pb-3"} data={imageList["representative_image"]} title={"representative_image"} />
+              :
+              <ImageThumbComponent className={"col-2"} data={imageList} setData={setImageList} />
+            }
+            
           </div>
 
           <div className="row mb-4">
             <h5 className="fw-bold">제품 외부 사진 (여러장 추가 가능)</h5>
-            {imageList.filter((e)=>(e.name=="external_images")).map((e, i)=>(
-              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
+            {imageList["external_images"]?.map((e, i)=>(
+              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList["external_images"][i]} title={e.title} />
             ))}
             <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"external_images"} />
           </div>
 
           <div className="row mb-4">
             <h5 className="fw-bold">제품 내부 사진 (여러장 추가 가능)</h5>
-            {imageList.filter((e)=>(e.name=="internal_images")).map((e, i)=>(
-              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
+            {imageList["internal_images"]?.map((e, i)=>(
+              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList["internal_images"][i]} title={e.title} />
             ))}
             <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"internal_images"} />
           </div>
 
           <div className="row mb-4">
             <h5 className="fw-bold">설계도면 {`<평면도>`} 사진 (여러장 추가 가능)</h5>
-            {imageList.filter((e)=>(e.name=="floor_plan_images")).map((e, i)=>(
-              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
+            {imageList["floor_plan_images"]?.map((e, i)=>(
+              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList["floor_plan_images"][i]} title={e.title} />
             ))}
             <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"floor_plan_images"} />
           </div>
 
           <div className="row mb-4">
             <h5 className="fw-bold">설계도면 {`<입면도>`} 사진 (여러장 추가 가능)</h5>
-            {imageList.filter((e)=>(e.name=="elevation_plan_images")).map((e, i)=>(
-              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList[i].url} title={e.title} />
+            {imageList["elevation_plan_images"]?.map((e, i)=>(
+              <ImageComponent key={i} className={"col-2 pb-3"} data={imageList["elevation_plan_images"][i]} title={e.title} />
             ))}
             <ImageInputComponent className={"col-2"} data={imageList} setData={setImageList} name={"elevation_plan_images"} />
           </div>

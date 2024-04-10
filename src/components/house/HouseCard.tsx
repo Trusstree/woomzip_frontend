@@ -20,9 +20,9 @@ export default function HouseCard(props: MainPagePostProps) {
       <div className="card d-flex flex-column align-items-center w-100">
         <Image
           className="rounded-top-2 w-100 m-0"
-          onClick={()=>{router.push(`/house/${data.idx}`);}}
-          src={`${data["thumbnail"]}`}
-          alt={`${data["title"]}`}
+          onClick={()=>{router.push(`/house/${data["house_id"]}`);}}
+          src={`${data["house_image_url"]}`}
+          alt={`${data["house_explanation"]}`}
           width={220}
           height={220} 
           style={{objectFit:"cover", height:"220px"}}
@@ -32,12 +32,7 @@ export default function HouseCard(props: MainPagePostProps) {
           className="card-body w-100 pt-1 px-2 fs-6"
           style={{height:"230px", backgroundColor:"lightgray"}}>
           <div className="d-flex justify-content-left mb-2" style={{height:"20px"}}>
-            {data["moduler"]=="yes" && <div
-              className="badge me-1 text-white rounded-3 text-center align-self-center"
-              style={{backgroundColor:"#101648"}}>
-              모듈러
-            </div>}
-            {data["hasModel"]=="yes" && <div
+            {data["has_model"] && <div
               className="badge me-1 text-white rounded-3 text-center align-self-center"
               style={{backgroundColor:"#136E11"}}>
               모델하우스
@@ -46,37 +41,37 @@ export default function HouseCard(props: MainPagePostProps) {
           <h4
             className="card-title fw-bold mb-0 text-nowrap"
             style={{color:"#101648", overflow:"hidden", textOverflow:"ellipsis"}}>
-            {data.title}
+            {data["house_name"]}
           </h4>
           <div className="d-flex flex-column fw-normal">
             <div className="d-flex justify-content-between">
-              {(data["discount"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data.discount}%</div>}
+              {(data["discount_rate"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data.discount}%</div>}
                 <div className="ms-auto">
-                  {(data["discount"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{priceText(data["price"])}원</div>}
-                  <div className="fs-6 fw-bold text-end">{priceText(data.price*(100-data.discount)*0.01)}원</div>
+                  {(data["discount_rate"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{priceText(data["price"])}원</div>}
+                  <div className="fs-6 fw-bold text-end">{priceText(data["final_price"])}원</div>
                 </div>
               
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">평수</div>
-              <div>{data["floorSpace"]}평</div>
+              <div>{data["total_floor_area"]}평</div>
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">방</div>
-              <div>{data["roomNumber"]}개</div>
+              <div>{data["room_count"]}개</div>
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">화장실</div>
-              <div>{data["toiletNumber"]}개</div>
+              <div>{data["toilet_count"]}개</div>
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">AS기간</div>
-              <div>{data["afterService"]}개월</div>
+              <div>{data["warranty"]}개월</div>
             </div>
-            <div className="d-flex justify-content-between">
+            {/* <div className="d-flex justify-content-between">
               <div className="fw-bold">판매자</div>
-              <div>{data["company"]}</div>
-            </div>
+              <div>{data[""]}</div>
+            </div> */}
           </div>
         </div>
       </div>

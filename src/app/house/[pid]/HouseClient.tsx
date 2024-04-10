@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import { deleteHeart, getHeart, getHeartCount, postHeart } from "@/apis/HeartAPI";
 import { getSession } from "next-auth/react";
 import { alertSuccess } from "@/lib/alertUtil";
-import { getPrices } from "@/apis/priceAPI";
+import { getPrice } from "@/apis/priceAPI";
 
 type HouseComponentProps = {
   session: any
@@ -31,36 +31,37 @@ export function HouseClient (props: HouseComponentProps) {
   useEffect( () => {
     (async () => {
       const [ data, error ] = await getHouse(pid);
-      if(error) console.log(error);
-      else setHouseData(data[0]);
+      if(error) {console.error(error); return;}
+      setHouseData(data.data[0]);
+      console.log(data.data[0]);
     }
     )();
   },[]);
 
   // price
-  useEffect( () => {
-    (async () => {
-      const [ data, error ] = await getPrices(pid);
-      if(error) console.log(error);
-      else setPriceList(data);
-    }
-    )();
-  },[]);
+  // useEffect( () => {
+  //   (async () => {
+  //     const [ data, error ] = await getPrice(pid);
+  //     if(error) console.log(error);
+  //     else setPriceList(data);
+  //   }
+  //   )();
+  // },[]);
 
-  // heart
-  useEffect( () => {
-    (async () => {
-      const [ heartCount, heartCountError ] = await getHeartCount(pid);
-      const heartParams = {house_id:pid};
-      if(session?.user) heartParams["user_id"]=session?.user?.id;
-      const [ myHeart, myHeartError ] = await getHeart(heartParams);
-      if(heartCountError) console.error(heartCountError);
-      if(myHeartError) console.log(myHeartError);
+  // // heart
+  // useEffect( () => {
+  //   (async () => {
+  //     const [ heartCount, heartCountError ] = await getHeartCount(pid);
+  //     const heartParams = {house_id:pid};
+  //     if(session?.user) heartParams["user_id"]=session?.user?.id;
+  //     const [ myHeart, myHeartError ] = await getHeart(heartParams);
+  //     if(heartCountError) console.error(heartCountError);
+  //     if(myHeartError) console.log(myHeartError);
 
-      setHeart({heart:myHeart[0], count:heartCount});
-    }
-    )();
-  },[]);
+  //     setHeart({heart:myHeart[0], count:heartCount});
+  //   }
+  //   )();
+  // },[]);
 
   // const getAvg = (data: any) => {
   //   if(!data || !data.ratingPost) return 0;
@@ -69,24 +70,24 @@ export function HouseClient (props: HouseComponentProps) {
   //   return (sum/data.ratingPost.length);
   // }
   
-  const ClickHeart = useCallback(async () => {
-    const session  = await getSession();
-    if(session?.user){
-      const heartParams={house_id:pid, user_id:session.user.id};
+  // const ClickHeart = useCallback(async () => {
+  //   const session  = await getSession();
+  //   if(session?.user){
+  //     const heartParams={house_id:pid, user_id:session.user.uid};
 
-      if(heart.heart) {
-        const [response, error] = await deleteHeart(heartParams);
-        if(error)console.log(error);
-        setHeart({heart:undefined, count:heart.count-1});
-      } else {
-        const[response, error] = await postHeart(heartParams);
-        if(error)console.log(error);
-        setHeart({heart:response, count:heart.count+1});
-      }
-    } else {
-      alertSuccess("로그인이 필요한 서비스입니다.","로그인해주세요!");
-    }
-  },[heart])
+  //     if(heart.heart) {
+  //       const [response, error] = await deleteHeart(heartParams);
+  //       if(error)console.log(error);
+  //       setHeart({heart:undefined, count:heart.count-1});
+  //     } else {
+  //       const[response, error] = await postHeart(heartParams);
+  //       if(error)console.log(error);
+  //       setHeart({heart:response, count:heart.count+1});
+  //     }
+  //   } else {
+  //     alertSuccess("로그인이 필요한 서비스입니다.","로그인해주세요!");
+  //   }
+  // },[heart])
 
   return houseData?(
     <>
@@ -97,7 +98,7 @@ export function HouseClient (props: HouseComponentProps) {
           <Image
             className="w-100 rounded-5 p-1"
             style={{objectFit:"cover"}}
-            src={houseData["thumbnail"]}
+            src={houseData["house_image_url"]}
             alt="main BoardComponent"
             width={400}
             height={450} />
@@ -115,8 +116,8 @@ export function HouseClient (props: HouseComponentProps) {
               {/* Heart Count */}
               <div className="mx-3 d-flex">
                 <button
-                  className="btn py-0 border-0"
-                  onClick={ClickHeart}>
+                  className="btn py-0 border-0">
+                  {/* onClick={ClickHeart}> */}
                   {heart.heart?
                   (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width={25}>
                     <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
@@ -130,11 +131,7 @@ export function HouseClient (props: HouseComponentProps) {
               </div>
             </div>
             <div className="ms-auto">
-              {houseData["moduler"]=="yes" &&
-              (<div className="badge text-white p-2 mx-1" style={{backgroundColor:"#136E11"}}>
-                모듈러
-              </div>)}
-              {houseData["hasModel"]=="yes" &&
+              {houseData["has_model"] &&
                 <div className="badge text-white p-2 mx-1" style={{backgroundColor:"#136E11"}}>
                 모델하우스
               </div>}
@@ -145,17 +142,17 @@ export function HouseClient (props: HouseComponentProps) {
         {/* information */}
         <div className={`col-md-6`}>
           <h3 className="d-flex flex-column fw-bold my-3">
-            {houseData["title"]}
+            {houseData["house_name"]}
           </h3>
 
           <div className="d-flex align-items-end my-4">
-            {(houseData["discount"]>0) && //houseData.discount
+            {/* {(houseData["discount_rate"]>0) && //houseData.discount
             <>
-              <span className={"fs-3 mx-1"} style={{color:"#BD4040"}}>{houseData["discount"]}%</span>
+              <span className={"fs-3 mx-1"} style={{color:"#BD4040"}}>{houseData["discount_rate"]}%</span>
               <span className={"text-decoration-line-through mx-1"} style={{color:"gray", textDecoration:""}}>{priceText(houseData["price"])}원</span>
             </>
-            }
-            <span className={"fs-4 mx-1"} style={{color:"#101648"}}>{priceText(houseData["price"]*(100-houseData["discount"])*0.01)}원</span>
+            } */}
+            <span className={"fs-4 mx-1"} style={{color:"#101648"}}>{priceText(houseData["final_price"])}원</span>
             <span style={{color:"#101648"}}>(부가세 포함)</span>
           </div>
 

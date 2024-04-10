@@ -10,7 +10,12 @@ import Image from "next/image";
 import moment from "moment";
 import ImageBox from "@/components/mypage/ImageBox";
 
-export default function Profile() {
+type ProfileProps = {
+  user: any
+}
+
+export default function Profile(props: ProfileProps) {
+  const { user } = props;
   const { data: session } = useSession();
 
   const [userData, setUserData] = useState({});
@@ -26,12 +31,12 @@ export default function Profile() {
     if(img?.type?.split("/")[0]!="image") return;
     const date=moment().format('YYYYMMDDHHmmss');
 
-    const [meta, s3Error] = await setS3Url(`users/${session.user.id}/profileImage${date}.${img.type.split("/")[1]}`, img);
+    const [meta, s3Error] = await setS3Url(`users/${session.user.uid}/profileImage${date}.${img.type.split("/")[1]}`, img);
     if(!s3Error) {
       setUserData((oldValues) => (
         {
           ...oldValues,
-          [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/users/${session.user.id}/profileImage${date}.${img.type.split("/")[1]}`
+          [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/users/${session.user.uid}/profileImage${date}.${img.type.split("/")[1]}`
         }
       ));
     }
@@ -39,7 +44,7 @@ export default function Profile() {
   };
 
   const submitFunction = async (userData: any) => {
-    const {data, error} = await getUser(session.user.id);
+    const {data, error} = await getUser(session.user.uid, session.user.accessToken);
     userData["idx"]=data[0].idx;
     if(userData["name"] && typeof userData["name"]!="string") {alertError("name","type을 다시 한 번 확인해주세요~"); return;}
     if(userData["description"] && typeof userData["description"]!="string") {alertError("description","type을 다시 한 번 확인해주세요~"); return;}

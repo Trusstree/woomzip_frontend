@@ -1,6 +1,6 @@
 "use client"
 
-import { getHouseCount, getHouses } from "@/apis/HouseAPI";
+import { getHouses } from "@/apis/HouseAPI";
 import { useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import HouseCardPlaceholder from "../house/HouseCardPlaceholder";
@@ -27,25 +27,22 @@ export function MyHouseList(props: HousePostProps) {
     (async ()=>{
       if(isSubmit!=undefined && !isSubmit) return;
       const params={
-        skip: numShowItems*(page-1),
+        skip: numShowItems*(page-1)+1,
         limit: numShowItems,
         ...searchCondition
       };
 
-      const [ count, countError ] = await getHouseCount(searchCondition);
-      if(countError) {console.log(countError); return;}
-      setCount(count);
-
       const [ data, error ] = await getHouses(params);
       if(error) {console.log(error); return;}
-      setHouseData(data);
+      setHouseData(data.data.houses);
+      setHouseData(data.data.total_count);
       if(isSubmit!=undefined)setIsSubmit(false);
     })();
   },[isSubmit, page])
   
   return (
     <>
-      {houseData ?
+      {houseData?
         houseData.map((e, i)=>(
           <MyHouseCard className="" key={i} data={e} />
         ))
