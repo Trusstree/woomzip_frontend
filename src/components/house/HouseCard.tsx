@@ -1,9 +1,9 @@
 "use client"
 
-import { priceText } from "@/lib/stringUtil";
+import { cardPriceText } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect } from "react";
 
 type MainPagePostProps = {
   data: any
@@ -47,14 +47,14 @@ export default function HouseCard(props: MainPagePostProps) {
             <div className="d-flex justify-content-between">
               {(data["discount_rate"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data.discount}%</div>}
                 <div className="ms-auto">
-                  {(data["discount_rate"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{priceText(data["price"])}원</div>}
-                  <div className="fs-6 fw-bold text-end">{priceText(data["final_price"])}원</div>
+                  {(data["discount_rate"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{cardPriceText(data["price"])}</div>}
+                  <div className="fs-6 fw-bold text-end">{cardPriceText(data["final_price"])}</div>
                 </div>
               
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">평수</div>
-              <div>{data["total_floor_area"]}평</div>
+              <div>{data["building_area"]}평</div>
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">방</div>
@@ -68,10 +68,10 @@ export default function HouseCard(props: MainPagePostProps) {
               <div className="fw-bold">AS기간</div>
               <div>{data["warranty"]}개월</div>
             </div>
-            {/* <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between">
               <div className="fw-bold">판매자</div>
-              <div>{data[""]}</div>
-            </div> */}
+              <div>{data["company_name"]}</div>
+            </div>
           </div>
         </div>
       </div>

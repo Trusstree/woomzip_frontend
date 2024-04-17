@@ -7,7 +7,6 @@ import DOMPurify from "dompurify";
 import { isRequired } from '@/lib/validator';
 import { postPost } from '@/apis/postAPI';
 import { confirmSuccess } from '@/lib/alertUtil';
-import SelectBox from '../forms/SelectBox';
 import { setS3Url } from '@/lib/s3Util';
 import Swal from 'sweetalert2';
 import dynamic from 'next/dynamic';
@@ -147,12 +146,11 @@ export default function Editor(props: EditorProps) {
             onChange={(e)=>{setDataTitle(e.target?.value || "");}}
             value={dataTitle}
           />
-          <SelectBox
+          {/* <SelectBox
             className={`col-2`}
             value={dataCategory}
             handleChange={setDataCategory}
-            array={["일반", "질문", "공지"]}
-          />
+            array={["일반", "질문", "공지"]}/> */}
         </div>
 
         <ReactQuill

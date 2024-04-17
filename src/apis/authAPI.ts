@@ -14,3 +14,18 @@ export const getAccessToken = async (accessToken: string) => {
 
   return [ data, error ];
 };
+
+export const refreshAccessToken = async (accessToken: string) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await apiClient.get(`/apis/users/test`, {
+      headers: { 'X-AUTH-TOKEN': accessToken } 
+    });
+    data = result?.data;
+  } catch (err) {
+    error = err;
+  }
+
+  return [ data, error ];
+};

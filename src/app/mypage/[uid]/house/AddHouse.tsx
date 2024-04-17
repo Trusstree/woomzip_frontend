@@ -143,12 +143,10 @@ export default function AddHouse() {
               name={"warranty"}
               onChange={handleHouse}
               data={[
-                {title:"1개월", data:1},
-                {title:"2개월", data:2},
-                {title:"3개월", data:3},
-                {title:"4개월", data:4},
-                {title:"5개월", data:5},
-                {title:"6개월 이상", data:6}
+                {title:"없음", data:0},
+                {title:"12개월", data:12},
+                {title:"24개월", data:24},
+                {title:"36개월", data:36}
               ]}
             />
 

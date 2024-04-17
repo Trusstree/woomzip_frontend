@@ -8,6 +8,8 @@ import Community from "./Community";
 import House from "./House";
 import Profile from "./Profile";
 import { getUser } from "@/apis/userAPI";
+import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
+import PostMenu from "@/components/posts/PostMenu";
 
 type MypageClientProps = {
   uid: string
@@ -24,7 +26,7 @@ export default function MypageClient(props: MypageClientProps) {
 
   useEffect(()=>{
     (async () => {
-      const { data, error } = await getUser(uid, session.user.accessToken);
+      const { data, error } = await getUser(uid, session?.user.accessToken);
 
       if(error) console.log(error);
       else setUserData(data.data[0].user_profile);
@@ -123,7 +125,13 @@ export default function MypageClient(props: MypageClientProps) {
           {
           (params.get("tab")==undefined) && 
             <>
-              프로필
+              <PostMenu
+                title={"프로필"}>
+                <MyLikeHouseList
+                  session={session}
+                  numShowItems={12}
+                  searchCondition={undefined} />
+              </PostMenu>
             </>
           }
           {(params.get("tab")=="profile") && 
