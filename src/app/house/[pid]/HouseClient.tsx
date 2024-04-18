@@ -36,11 +36,11 @@ export function HouseClient (props: HouseComponentProps) {
     (async () => {
       const [ data, error ] = await getHouse(pid);
       if(error) {console.error(error); return;}
-      setHouseData({...data.data[0]["house_info"][0], specificity_info: JSON.parse(data.data[0]["house_info"][0]["specificity_info"])});
+      
+      setHouseData({...data.data[0]["house_info"], specificity_info: JSON.parse(data.data[0]["house_info"]["specificity_info"])});
       setImageData(data.data[0]["house_image"]);
       setOptionData(data.data[0]["option_info"]);
-      setSpecificationData(parseSpecificationInfo(data.data[0]["house_info"][0]["specification_info"]));
-      console.log(data.data[0]);
+      setSpecificationData(parseSpecificationInfo(data.data[0]["house_info"]["specification_info"]));
     }
     )();
   },[]);
@@ -75,6 +75,7 @@ export function HouseClient (props: HouseComponentProps) {
     if(session?.user){
       const heartParams={house_id:pid, user_id:session.user.uid};
 
+      console.log("asdf");
       if(heart.heart) {
         const [response, error] = await deleteHeart({house_id:pid}, session.user.accessToken);
         if(error)console.log(error);

@@ -35,9 +35,9 @@ export function MyLikeHouseList(props: HousePostProps) {
 
       const [ data, error ] = await getLikeHouses(params, session.user.accessToken);
       if(error) {console.error(error); return;}
-      setHouseData(data.data[0].houses);
-      setCount(data.data[0].total);
-      console.log(data);
+      setHouseData(data.data[0]);
+      setCount(data.data[0]);
+      console.log(data.data);
       if(isSubmit!=undefined) setIsSubmit(false);
     })();
   },[isSubmit, page])

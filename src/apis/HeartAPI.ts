@@ -48,9 +48,7 @@ export const postHeart = async (heart: any, accessToken: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.post(`/apis/house/find-my-house/detail/like`, heart, {
-      headers:{Authorization: `Bearer ${accessToken}`}
-    });
+    const result = await signedApiClient.post(`/apis/house/find-my-house/detail/like`, heart);
     data = result?.data;
   } catch (err) {
     error = err;

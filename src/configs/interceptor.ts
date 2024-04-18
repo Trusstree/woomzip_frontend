@@ -1,6 +1,6 @@
-import { refreshAccessToken } from '@/apis/authAPI';
 import { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
-import { apiClient, imageApiClient } from './apiClient';
+import { signedApiClient } from './apiClient';
+import { getSession } from 'next-auth/react';
 
 // 백엔드 연동을 위해 액시오스를 사용함
 // 이때 액시오스는 인터셉터를 불러와서 백엔드 응답을 전처리 해주는데 그에 대한 코드
@@ -39,7 +39,11 @@ const interceptError = async (error: AxiosError) => {
 export const AxiosInterceptorSetup = (client: AxiosInstance) => {
   // 요청 전 실행
   client.interceptors.request.use(
-    (request: any) => {
+    async (request: any) => {
+      const session = await getSession();
+      if(session){
+        request.headers["Authorization"] = `Bearer ${session.user.accessToken}`;
+      }
       return request;
     },
     (error: AxiosError) => {
@@ -50,11 +54,13 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
 
   // 응답 전 실행
   client.interceptors.response.use(
-    (response: any) => {
+    async (response: any) => {
+      const session = await getSession();
+      console.log(session.user.accessToken);
       if(response.status==222) {
-        console.log(response.data.data[0].access_token);
-        
-
+        //console.log(response.data.data[0].access_token);
+        session.user.accessToken=response.data.data[0].access_token;
+        console.log(session.user.accessToken);
       }
       return response;
     },

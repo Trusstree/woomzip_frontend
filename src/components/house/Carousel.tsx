@@ -26,7 +26,7 @@ export default function Carousel(props: CarouselProps){
       });
       
       if(error) {console.error(error); return;}
-      setHouseData(data.data.houses || data.data[0].houses);
+      setHouseData(data.data[0].houses);
     })();
   },[])
   

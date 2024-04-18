@@ -34,8 +34,9 @@ export function HouseList(props: HousePostProps) {
 
       const [ data, error ] = await getHouses(params);
       if(error) {console.error(error); return;}
-      setHouseData(data.data.houses);
-      setCount(data.data.total_count);
+      
+      setHouseData(data.data[0].houses);
+      setCount(data.data[0].total_count);
       if(isSubmit!=undefined)setIsSubmit(false);
     })();
   },[isSubmit, page])
