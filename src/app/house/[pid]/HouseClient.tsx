@@ -374,11 +374,11 @@ export function HouseClient (props: HouseComponentProps) {
           </div>
           <div className="my-1 row">
             <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>실제 사용 평수</div>
-            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["building_area"]}평</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["building_area"].toFixed(1)}평</div>
           </div>
           <div className="my-1 row">
             <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>건축면적</div>
-            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["total_floor_area"]}㎡</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["total_floor_area"].toFixed(1)}㎡</div>
           </div>
           <div className="my-1 row">
             <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>방</div>
