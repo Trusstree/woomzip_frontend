@@ -40,10 +40,10 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
   // 요청 전 실행
   client.interceptors.request.use(
     async (request: any) => {
-      const session = await getSession();
-      if(session){
-        request.headers["Authorization"] = `Bearer ${session.user.accessToken}`;
-      }
+      // const session = await getSession();
+      // if(session){
+      //   request.headers["Authorization"] = `Bearer ${session.user.accessToken}`;
+      // }
       return request;
     },
     (error: AxiosError) => {
@@ -55,20 +55,37 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
   // 응답 전 실행
   client.interceptors.response.use(
     async (response: any) => {
-      const session = await getSession();
-      console.log(session.user.accessToken);
-      if(response.status==222) {
-        //console.log(response.data.data[0].access_token);
-        session.user.accessToken=response.data.data[0].access_token;
-        console.log(session.user.accessToken);
-      }
+      
+
       return response;
     },
-    (error: AxiosError) => {
-      if(error.response.data.status==401){
-        console.log(error);
-        //refreshAccessToken(session.user.accessToken);
+    async (error: AxiosError) => {
+      const status = error.response.data.status;
+      const errorConfig = error.response.config;
+
+      try {
+        if(status==401){
+          console.error(error);
+          //refreshAccessToken(session.user.accessToken);
+        }
+
+        if(status==422){
+          const session = await getSession();
+          
+          errorConfig.headers["Authorization"] = `Bearer ${error.response.data.data[0].access_token}`;
+          const res = await signedApiClient({
+            method: errorConfig.method,
+            url: errorConfig.url,
+            data: errorConfig.data,
+            headers: errorConfig.headers
+          })
+
+          return res;
+        }
+      } catch(referenceError){
+        Promise.reject(referenceError);
       }
+
       Promise.reject(error);
     }
   );

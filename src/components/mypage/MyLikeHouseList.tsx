@@ -34,10 +34,11 @@ export function MyLikeHouseList(props: HousePostProps) {
       };
 
       const [ data, error ] = await getLikeHouses(params, session.user.accessToken);
-      if(error) {console.error(error); return;}
-      setHouseData(data.data[0]);
-      setCount(data.data[0]);
       console.log(data.data);
+      if(error) {console.error(error); return;}
+      setHouseData(data.data[0]["house_info"]);
+      setCount(data.data[0]["like_count"]);
+      
       if(isSubmit!=undefined) setIsSubmit(false);
     })();
   },[isSubmit, page])

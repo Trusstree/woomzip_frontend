@@ -143,10 +143,10 @@ export default function AddHouse() {
               name={"warranty"}
               onChange={handleHouse}
               data={[
-                {title:"없음", data:0},
-                {title:"12개월", data:12},
-                {title:"24개월", data:24},
-                {title:"36개월", data:36}
+                {title:"없음", data:"없음"},
+                {title:"12개월", data:"12개월"},
+                {title:"24개월", data:"24개월"},
+                {title:"36개월", data:"36개월"}
               ]}
             />
 
@@ -154,6 +154,17 @@ export default function AddHouse() {
             <RadioComponent
               title={"해당 제품 모델하우스 유/무"}
               name={"has_model"}
+              onChange={handleHouse}
+              data={[
+                {title:"예", data:1},
+                {title:"아니오", data:0}
+              ]}
+            />
+
+            {/* 농막인지 확인 */}
+            <RadioComponent
+              title={"해당 제품이 농막인지 여부"}
+              name={"is_hut"}
               onChange={handleHouse}
               data={[
                 {title:"예", data:1},

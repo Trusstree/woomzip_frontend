@@ -15,13 +15,15 @@ export default function HouseCard(props: MainPagePostProps) {
   const router = useRouter();
   const { data, className, style } = props;
 
+  console.log(data)
+
   return (
     <div className="col-md-4 col-lg-3">
       <div className="card d-flex flex-column align-items-center w-100">
         <Image
           className="rounded-top-2 w-100 m-0"
           onClick={()=>{router.push(`/house/${data["house_id"]}`);}}
-          src={`${data["house_image_url"]}`}
+          src={data["house_image_url"] || "/blur_image.png"}
           alt={`${data["house_explanation"]}`}
           width={220}
           height={220} 
@@ -45,9 +47,9 @@ export default function HouseCard(props: MainPagePostProps) {
           </h4>
           <div className="d-flex flex-column fw-normal">
             <div className="d-flex justify-content-between">
-              {(data["discount_rate"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data.discount}%</div>}
+              {(data["discount_rate"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data["discount_rate"]}%</div>}
                 <div className="ms-auto">
-                  {(data["discount_rate"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{cardPriceText(data["price"])}</div>}
+                  {(data["discount_rate"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{cardPriceText(data["base_price"])}</div>}
                   <div className="fs-6 fw-bold text-end">{cardPriceText(data["final_price"])}</div>
                 </div>
               

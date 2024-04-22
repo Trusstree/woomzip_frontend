@@ -26,7 +26,7 @@ export default function MypageClient(props: MypageClientProps) {
 
   useEffect(()=>{
     (async () => {
-      const { data, error } = await getUser(uid, session?.user.accessToken);
+      const [ data, error ] = await getUser(uid, session?.user.accessToken);
 
       if(error) console.log(error);
       else setUserData(data.data[0].user_profile);

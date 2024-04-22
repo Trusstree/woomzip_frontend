@@ -44,20 +44,19 @@ export default function Profile(props: ProfileProps) {
   };
 
   const submitFunction = async (userData: any) => {
-    const {data, error} = await getUser(session.user.uid, session.user.accessToken);
-    userData["idx"]=data[0].idx;
-    if(userData["name"] && typeof userData["name"]!="string") {alertError("name","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["description"] && typeof userData["description"]!="string") {alertError("description","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["profileImage"] && typeof userData["profileImage"]!="string") {alertError("profileImage","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["telNumber"] && typeof userData["telNumber"]!="string") {alertError("telNumber","type을 다시 한 번 확인해주세요~"); return;}
+    if(userData["nickname"] && typeof userData["nickname"]!="string") {alertError("nickname","type을 다시 한 번 확인해주세요~"); return;}
+    if(userData["one_line_introduce"] && typeof userData["one_line_introduce"]!="string") {alertError("one_line_introduce","type을 다시 한 번 확인해주세요~"); return;}
+    if(userData["user_image_url"] && typeof userData["user_image_url"]!="string") {alertError("user_image_url","type을 다시 한 번 확인해주세요~"); return;}
+    if(userData["phone_number"] && typeof userData["phone_number"]!="string") {alertError("phone_number","type을 다시 한 번 확인해주세요~"); return;}
     if(userData["email"] && typeof userData["email"]!="string") {alertError("email","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["location"] && typeof userData["location"]!="string") {alertError("location","type을 다시 한 번 확인해주세요~"); return;}
+    if(userData["addr"] && typeof userData["addr"]!="string") {alertError("addr","type을 다시 한 번 확인해주세요~"); return;}
     if(userData["birthday"] && typeof userData["birthday"]!="string") {alertError("birthday","type을 다시 한 번 확인해주세요~"); return;}
     
     console.log(userData);
-    const [a, b] = await putUser(userData);
-    if(b)alertError("프로필 수정", "에러가 났어요 ㅠㅠ");
+    const [data, error] = await putUser(userData, session.user.accessToken);
+    if(error) alertError("프로필 수정", "에러가 났어요 ㅠㅠ");
     else alertSuccess("프로필 수정", "제대로 수정됐어요~!");
+    console.log(data);
   }
   
   return (

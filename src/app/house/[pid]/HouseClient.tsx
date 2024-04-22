@@ -28,7 +28,7 @@ export function HouseClient (props: HouseComponentProps) {
   const [imageData, setImageData] = useState(undefined);
   const [optionData, setOptionData] = useState(undefined);
   const [specificationData, setSpecificationData] = useState(undefined);
-  const [heart, setHeart] = useState({heart:undefined, count:0});
+  const [heart, setHeart] = useState(0);
   const [selectedOptionData, setSelectedOptionData] = useState([]);
 
   // house
@@ -75,15 +75,15 @@ export function HouseClient (props: HouseComponentProps) {
     if(session?.user){
       const heartParams={house_id:pid, user_id:session.user.uid};
 
-      console.log("asdf");
-      if(heart.heart) {
+      if(heart>0) {
         const [response, error] = await deleteHeart({house_id:pid}, session.user.accessToken);
         if(error)console.log(error);
-        setHeart({heart:undefined, count:heart.count-1});
+        setHeart(heart-1);
       } else {
         const[response, error] = await postHeart({house_id:pid}, session.user.accessToken);
         if(error)console.log(error);
-        setHeart({heart:response, count:heart.count+1});
+        console.log(response);
+        setHeart(heart+1);
       }
     } else {
       alertSuccess("로그인이 필요한 서비스입니다.","로그인해주세요!");
@@ -119,7 +119,7 @@ export function HouseClient (props: HouseComponentProps) {
                 <button
                   className="btn py-0 border-0"
                   onClick={ClickHeart} >
-                  {heart.heart?
+                  {heart?
                   (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width={25}>
                     <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                   </svg>)
@@ -128,7 +128,7 @@ export function HouseClient (props: HouseComponentProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                   </svg>)}
                 </button>
-                <div>{heart.count}</div>
+                <div>{heart}</div>
               </div>
             </div>
             <div className="ms-auto">
