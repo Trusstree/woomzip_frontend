@@ -59,7 +59,7 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
 
       return response;
     },
-    async (error: AxiosError) => {
+    async (error: any) => {
       const status = error.response.data.status;
       const errorConfig = error.response.config;
 

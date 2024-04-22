@@ -1,6 +1,5 @@
 "use client"
 
-import { postAccessToken } from "@/apis/authAPI";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -12,8 +11,6 @@ export default function Test() {
   // },[session])
 
   const testFunc=()=>{
-  postAccessToken(session.accessToken);
-    console.log(session.accessToken);
   }
   
   return session?.user?(

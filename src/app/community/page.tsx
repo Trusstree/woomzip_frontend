@@ -1,6 +1,5 @@
 import Icon from "@/components/posts/Icon";
 import PostMenu from "@/components/posts/PostMenu";
-import SearchBox from "@/components/forms/SearchBox";
 import PostList from "@/components/posts/PostList";
 
 export default function Home() {
