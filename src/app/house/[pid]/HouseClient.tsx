@@ -5,12 +5,13 @@ import { HouseList } from "@/components/house/HouseList";
 import PostMenu from "@/components/posts/PostMenu";
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import { priceText } from "@/lib/stringUtil";
+import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
 import { deleteHeart, getHeart, getHeartCount, postHeart } from "@/apis/HeartAPI";
 import { getSession } from "next-auth/react";
 import { alertSuccess } from "@/lib/alertUtil";
-import { getPrices } from "@/apis/priceAPI";
+import { getPrice } from "@/apis/priceAPI";
+import { parseSpecificationInfo } from "@/lib/parseUtil";
 
 type HouseComponentProps = {
   session: any
@@ -24,64 +25,65 @@ export function HouseClient (props: HouseComponentProps) {
 
   const { pid, session } = props;
   const [houseData, setHouseData] = useState(undefined);
-  const [priceList, setPriceList] = useState(undefined);
-  const [heart, setHeart] = useState({heart:undefined, count:0});
-  
+  const [imageData, setImageData] = useState(undefined);
+  const [optionData, setOptionData] = useState(undefined);
+  const [specificationData, setSpecificationData] = useState(undefined);
+  const [heart, setHeart] = useState(0);
+  const [selectedOptionData, setSelectedOptionData] = useState([]);
+
   // house
   useEffect( () => {
     (async () => {
       const [ data, error ] = await getHouse(pid);
-      if(error) console.log(error);
-      else setHouseData(data[0]);
+      if(error) {console.error(error); return;}
+      
+      setHouseData({...data.data[0]["house_info"], specificity_info: JSON.parse(data.data[0]["house_info"]["specificity_info"])});
+      setImageData(data.data[0]["house_image"]);
+      setOptionData(data.data[0]["option_info"]);
+      setSpecificationData(parseSpecificationInfo(data.data[0]["house_info"]["specification_info"]));
     }
     )();
   },[]);
 
-  // price
-  useEffect( () => {
-    (async () => {
-      const [ data, error ] = await getPrices(pid);
-      if(error) console.log(error);
-      else setPriceList(data);
-    }
-    )();
-  },[]);
+  // // price
+  // useEffect( () => {
+  //   (async () => {
+  //     const [ data, error ] = await getPrice(pid);
+  //     if(error) console.log(error);
+  //     else setPriceList(data);
+  //   }
+  //   )();
+  // },[]);
 
-  // heart
-  useEffect( () => {
-    (async () => {
-      const [ heartCount, heartCountError ] = await getHeartCount(pid);
-      const heartParams = {house_id:pid};
-      if(session?.user) heartParams["user_id"]=session?.user?.id;
-      const [ myHeart, myHeartError ] = await getHeart(heartParams);
-      if(heartCountError) console.error(heartCountError);
-      if(myHeartError) console.log(myHeartError);
+  // // heart
+  // useEffect( () => {
+  //   (async () => {
+  //     const [ heartCount, heartCountError ] = await getHeartCount(pid);
+  //     const heartParams = {house_id:pid};
+  //     if(session?.user) heartParams["user_id"]=session?.user?.id;
+  //     const [ myHeart, myHeartError ] = await getHeart(heartParams);
+  //     if(heartCountError) console.error(heartCountError);
+  //     if(myHeartError) console.log(myHeartError);
 
-      setHeart({heart:myHeart[0], count:heartCount});
-    }
-    )();
-  },[]);
-
-  // const getAvg = (data: any) => {
-  //   if(!data || !data.ratingPost) return 0;
-
-  //   const sum=data.ratingPost?.reduce((acc, e) => acc + e.rate, 0);
-  //   return (sum/data.ratingPost.length);
-  // }
+  //     setHeart({heart:myHeart[0], count:heartCount});
+  //   }
+  //   )();
+  // },[]);
   
   const ClickHeart = useCallback(async () => {
     const session  = await getSession();
     if(session?.user){
-      const heartParams={house_id:pid, user_id:session.user.id};
+      const heartParams={house_id:pid, user_id:session.user.uid};
 
-      if(heart.heart) {
-        const [response, error] = await deleteHeart(heartParams);
+      if(heart>0) {
+        const [response, error] = await deleteHeart({house_id:pid}, session.user.accessToken);
         if(error)console.log(error);
-        setHeart({heart:undefined, count:heart.count-1});
+        setHeart(heart-1);
       } else {
-        const[response, error] = await postHeart(heartParams);
+        const[response, error] = await postHeart({house_id:pid}, session.user.accessToken);
         if(error)console.log(error);
-        setHeart({heart:response, count:heart.count+1});
+        console.log(response);
+        setHeart(heart+1);
       }
     } else {
       alertSuccess("로그인이 필요한 서비스입니다.","로그인해주세요!");
@@ -97,7 +99,7 @@ export function HouseClient (props: HouseComponentProps) {
           <Image
             className="w-100 rounded-5 p-1"
             style={{objectFit:"cover"}}
-            src={houseData["thumbnail"]}
+            src={imageData["representative_images"][0]}
             alt="main BoardComponent"
             width={400}
             height={450} />
@@ -116,8 +118,8 @@ export function HouseClient (props: HouseComponentProps) {
               <div className="mx-3 d-flex">
                 <button
                   className="btn py-0 border-0"
-                  onClick={ClickHeart}>
-                  {heart.heart?
+                  onClick={ClickHeart} >
+                  {heart?
                   (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width={25}>
                     <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
                   </svg>)
@@ -126,15 +128,11 @@ export function HouseClient (props: HouseComponentProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                   </svg>)}
                 </button>
-                <div>{heart.count}</div>
+                <div>{heart}</div>
               </div>
             </div>
             <div className="ms-auto">
-              {houseData["moduler"]=="yes" &&
-              (<div className="badge text-white p-2 mx-1" style={{backgroundColor:"#136E11"}}>
-                모듈러
-              </div>)}
-              {houseData["hasModel"]=="yes" &&
+              {houseData["has_model"] &&
                 <div className="badge text-white p-2 mx-1" style={{backgroundColor:"#136E11"}}>
                 모델하우스
               </div>}
@@ -145,36 +143,36 @@ export function HouseClient (props: HouseComponentProps) {
         {/* information */}
         <div className={`col-md-6`}>
           <h3 className="d-flex flex-column fw-bold my-3">
-            {houseData["title"]}
+            {houseData["house_name"]}
           </h3>
 
           <div className="d-flex align-items-end my-4">
-            {(houseData["discount"]>0) && //houseData.discount
+            {(houseData["discount_rate"]>0) && //houseData.discount
             <>
-              <span className={"fs-3 mx-1"} style={{color:"#BD4040"}}>{houseData["discount"]}%</span>
-              <span className={"text-decoration-line-through mx-1"} style={{color:"gray", textDecoration:""}}>{priceText(houseData["price"])}원</span>
+              <span className={"fs-3 mx-1"} style={{color:"#BD4040"}}>{houseData["discount_rate"]}%</span>
+              <span className={"text-decoration-line-through mx-1"} style={{color:"gray", textDecoration:""}}>{houseData["price"]}</span>
             </>
             }
-            <span className={"fs-4 mx-1"} style={{color:"#101648"}}>{priceText(houseData["price"]*(100-houseData["discount"])*0.01)}원</span>
+            <span className={"fs-4 mx-1"} style={{color:"#101648"}}>{detailPriceText(houseData["final_price"])}</span>
             <span style={{color:"#101648"}}>(부가세 포함)</span>
           </div>
 
           <div className="d-flex flex-column">
             <div className="d-flex align-items-center">
               <div className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>평수</div>
-              <span style={{color:"#101648"}}>{houseData["floorSpace"]}평</span>
+              <span style={{color:"#101648"}}>{houseData["building_area"]}평</span>
             </div>
             <div className="d-flex align-items-center">
               <span className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>방</span>
-              <span style={{color:"#101648"}}>{houseData["roomNumber"]}개</span>
+              <span style={{color:"#101648"}}>{houseData["room_count"]}개</span>
             </div>
             <div className="d-flex align-items-center">
               <span className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>화장실</span>
-              <span style={{color:"#101648"}}>{houseData["toiletNumber"]}개</span>
+              <span style={{color:"#101648"}}>{houseData["toilet_count"]}개</span>
             </div>
             <div className="d-flex align-items-center">
               <span className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>AS기간</span>
-              <span style={{color:"#101648"}}>{houseData["afterService"]}개월</span>
+              <span style={{color:"#101648"}}>{houseData["warranty"]}개월</span>
             </div>
             <div className="d-flex align-items-center">
               <span className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>판매자</span>
@@ -182,17 +180,29 @@ export function HouseClient (props: HouseComponentProps) {
                 className="fw-bold ps-0"
                 style={{color:"#101648", border:"none"}}
                 onClick={()=>{}}>
-                {houseData["company"]}
+                {houseData["company_name"]}
               </div>
             </div>
           </div>
           
           <div className={""}>
-            <select disabled={priceList?.filter((e)=>(e.category=="optional")).length==0} defaultValue={"선택옵션"} className="form-select my-4" aria-label="Default select example">
-              {priceList && priceList.filter((e)=>(e.category=="optional"))?.map((e, i)=>(
-                <option key={i} value={e.price}>{e.name} - {e.price}원</option>
+            <select onChange={(ee)=>{if(Number(ee.target.value)>=0 && !selectedOptionData.includes(optionData[Number(ee.target.value)])) {setSelectedOptionData((oldValue)=>([...oldValue, optionData[ee.target.value]]));}}} disabled={optionData?.length==0} defaultValue={"선택옵션"} className="form-select my-4" aria-label="Default select example">
+              <option value={-1}>해당사항 없음</option>
+              {optionData && optionData.map((e, i)=>(
+                <option key={i} value={i}> {e["option_type"]} - {e["option_product_name"]} ({detailPriceText(e["option_product_price"])})</option>
               ))}
             </select>
+
+            {/* 선택된 옵션 */}
+            <div className="mb-5">
+              {selectedOptionData && selectedOptionData.map((e, i)=>(
+                <div key={i} className="d-flex align-items-center">
+                  <div className="btn me-3" onClick={()=>{setSelectedOptionData((oldValue)=>(oldValue.filter((_,j)=>(j!=i))))}}>X</div>
+                  <div>{e["option_type"]} - {e["option_product_name"]} ({detailPriceText(e["option_product_price"])})</div>
+                </div>
+              ))}
+            </div>
+
             <div className={"row g-3"}>
               <div className="col-6">
                 <div
@@ -225,10 +235,10 @@ export function HouseClient (props: HouseComponentProps) {
       </div>
 
       {/* 가격에 포함된 서비스 */}
-      <div className="my-2 py-2">
+      {/* <div className="my-2 py-2">
         <span className="fw-bold fs-5" style={{color:"#101648"}}>가격에 포함된 서비스</span>
         <div className="d-flex justify-content-left flex-wrap my-2">
-          {priceList && priceList.filter((e)=>(e.category=="included"))?.map((e, i)=>(
+          {optionData && optionData.filter((e)=>(e.category=="included"))?.map((e, i)=>(
             <div key={i} className="me-1 mx-md-2 d-flex flex-column align-items-center">
               <div
                 className="text-white rounded-3 text-center p-1 mb-3"
@@ -238,22 +248,22 @@ export function HouseClient (props: HouseComponentProps) {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* 추가로 발생가능한 비용 */}
-      <div className="my-2 py-2">
+      {/* <div className="my-2 py-2">
         <span className="fw-bold fs-5" style={{color:"#101648"}}>추가로 발생가능한 비용💡</span>
         <span style={{color:"#101648"}}>(토지위치, 상태에 따라 차이 발생)</span>
         <div className="row">
           <div className="col-md-8 col-lg-9 d-flex justify-content-left flex-wrap my-2">
-            {priceList && priceList.filter((e)=>(e.category=="additional"))?.map((e, i)=>(
+            {optionData && optionData.filter((e)=>(e.category=="additional"))?.map((e, i)=>(
               <div key={i} className="me-1 mx-md-2 d-flex flex-column align-items-center">
                 <div
                   className="text-white rounded-3 text-center p-1"
                   style={{backgroundColor:"#BD4040", width:"105px"}}>
                   {e["name"]}
                 </div>
-                <span className="my-2 text-center">{priceText(e["price"])}원</span>
+                <span className="my-2 text-center">{detailPriceText(e["price"])}</span>
               </div>
             ))}
           </div>
@@ -262,13 +272,13 @@ export function HouseClient (props: HouseComponentProps) {
               <div><span className="fw-bold fs-5" style={{color:"#BD4040"}}>트러스 예상 가격</span></div>
               <div>
                 <span className="fw-bold fs-5" style={{color:"#101648"}}>
-                  {priceText(priceList?.filter((e)=>(e.category=="additional"))?.reduce((acc,cur)=>(acc+cur.price),0))}원
+                  {detailPriceText(optionData?.filter((e)=>(e.category=="additional"))?.reduce((acc,cur)=>(acc+cur.price),0))}
                 </span>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* navigation */}
       {/* <div className="navbar my-4">
@@ -298,20 +308,231 @@ export function HouseClient (props: HouseComponentProps) {
         </div>
       </div> */}
 
-      {/* 상세설명 */}
-      <div className="d-flex flex-column justify-content-center">
-        <div className="fs-4 fw-bold" style={{color:"#101648"}}>제품사진</div>
-        <img
-          alt="main post"
-          src={houseData.itemImage} />
+      {/* 상세정보 */}
+      <div className="my-5 d-flex flex-column justify-content-center">
+        <h4 className="fw-bold mb-4" style={{color:"#101648"}}>제품사진</h4>
+        {/* 외부 사진 */}
+        <h5 className="fw-bold mb-4" style={{color:"#101648"}}>외부 사진</h5>
+        <div className="mb-4 d-flex flex-nowrap overflow-auto">
+          {imageData["external_images"] && imageData["external_images"].map((e, i)=>(
+            <img
+              key={i}
+              alt={`external_images_${i}`}
+              src={e}
+              height={500} />
+          ))}
+        </div>
+        {/* 내부 사진 */}
+        <h5 className="fw-bold mb-4" style={{color:"#101648"}}>내부 사진</h5>
+        <div className="mb-4 d-flex flex-nowrap overflow-auto">
+          {imageData["internal_images"] && imageData["internal_images"].map((e, i)=>(
+            <img
+              key={i}
+              alt={`internal_images_${i}`}
+              src={e}
+              height={500} />
+          ))}
+        </div>
       </div>
 
-      {/* 상세정보 */}
-      <div className="d-flex flex-column justify-content-center">
-        <div className="fs-4 fw-bold" style={{color:"#101648"}}>상세정보</div>
-        <img
-          alt="main post"
-          src={houseData.detailImage} />
+      {/* 설계구조 */}
+      <div className="my-5 d-flex flex-column justify-content-center">
+        <h4 className="fw-bold mb-4" style={{color:"#101648"}}>설계구조</h4>
+        {/* 평면도 */}
+        <h5 className="fw-bold mb-4" style={{color:"#101648"}}>평면도</h5>
+        <div className="mb-4 d-flex flex-nowrap overflow-auto">
+          {imageData["floor_plan_images"] && imageData["floor_plan_images"].map((e, i)=>(
+            <img
+              key={i}
+              alt={`floor_plan_images_${i}`}
+              src={e}
+              height={500} />
+          ))}
+        </div>
+        {/* 입면도 */}
+        <h5 className="fw-bold mb-4" style={{color:"#101648"}}>입면도</h5>
+        <div className="mb-4 d-flex flex-nowrap overflow-auto">
+          {imageData["elevation_plan_images"] && imageData["elevation_plan_images"].map((e, i)=>(
+            <img
+              key={i}
+              alt={`elevation_plan_images_${i}`}
+              src={e}
+              height={500} />
+          ))}
+        </div>
+      </div>
+
+      <div
+        className="py-4"
+        style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+        {/* 상세 정보 */}
+        <div className={"d-flex flex-column my-5"}>
+          <h3 className="fw-bold" style={{color:"#101648"}}>상세정보</h3>
+          <div className="my-1 row">
+            <div className="fw-bold fs-5 fs-5 col-5" style={{color:"#101648"}}>제품명</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["house_name"]}</div>
+          </div>
+          <div className="my-1 row">
+            <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>실제 사용 평수</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["building_area"]}평</div>
+          </div>
+          <div className="my-1 row">
+            <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>건축면적</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["total_floor_area"]}㎡</div>
+          </div>
+          <div className="my-1 row">
+            <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>방</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["room_count"]}개</div>
+          </div>
+          <div className="my-1 row">
+            <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>화장실</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["toilet_count"]}개</div>
+          </div>
+          <div className="my-1 row">
+            <div className="fw-bold fs-5 col-5">예상 소요기간(제작일 기준)</div>
+            <div className="col-7 fs-5">{houseData["estimate_duration"]}개월</div>
+          </div>
+          <div className="my-1 row">
+            <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>AS 보증기간</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["warranty"]}개월</div>
+          </div>
+          <div className="my-1 row">
+            <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>모델하우스</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["has_model"]?"있음":"없음"}</div>
+          </div>
+          <div className="my-1 row">
+            <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>특이사항</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{`${houseData["specificity_info"]["default"].join(", ")}${houseData["specificity_info"]["etc"]?`, ${houseData["specificity_info"]["etc"]}`:""}`}</div>
+          </div>
+          <div className="d-flex flex-column">
+            <div className="fw-bold fs-5" style={{color:"#101648"}}>제품 소개</div>
+            <div className="fs-5" style={{color:"#101648"}}>{houseData["house_explanation"]}</div>
+          </div>
+        
+        
+          {/* 제품 사양 */}
+          <div className="my-5">
+            <div className={"d-flex flex-column mt-4"}>
+              <h3 className="fw-bold" style={{color:"#101648"}}>가격 정보</h3>
+              
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>골조 구조</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["framework"]}</div>
+              </div>
+
+              {/* 외장재 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>외장재</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["exterior_material"]}</div>
+              </div>
+
+              {/* 지붕재 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>지붕재</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["insulation_material"]}</div>
+              </div>
+
+              {/* 단열재 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>단열재</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["roofing_material"]}</div>
+              </div>
+
+              {/* 내장재 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>내장재</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["interior_material"]}</div>
+              </div>
+
+              {/* 창호 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>창호</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["window"]}</div>
+              </div>
+
+              {/* 난방 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>난방</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["heating"]}</div>
+              </div>
+
+              {/* 가구 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>가구</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["furniture"]}</div>
+              </div>
+
+              {/* 화장실 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>화장실</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["toilet"]}</div>
+              </div>
+
+              {/* 내장 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>내장</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["interior_material"]}</div>
+              </div>
+
+              {/* 주방 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>주방</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["kitchen"]}</div>
+              </div>
+
+              {/* 조명 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>조명</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["lighting"]}</div>
+              </div>
+
+              {/* 기타 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>기타</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["etc"]}</div>
+              </div>
+
+              {/* 사양 설명 */}
+              <div className="my-1 d-flex flex-column">
+                <div className="fw-bold fs-5" style={{color:"#101648"}}>사양 설명</div>
+                <div className="fs-5" style={{color:"#101648"}}>{specificationData["specification_description"]}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* 가격 정보 */}
+          <div className="my-5">
+            <div className={"d-flex flex-column mt-4"}>
+              <h3 className="fw-bold" style={{color:"#101648"}}>가격 정보</h3>
+
+              {/* 기본 제품 */}
+              <div className="my-1 row">
+                <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>기본 제품</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{detailPriceText(houseData["final_price"])}</div>
+              </div>
+
+              <h4 className="mt-5 fw-bold" style={{color:"#101648"}}>(옵션)</h4>
+              {optionData && optionData.map((e, i)=>(
+                <div className="my-1 row" key={i}>
+                  <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>{e["option_product_name"]}</div>
+                  <div className="col-7 fs-5" style={{color:"#101648"}}>{detailPriceText(e["option_product_price"])}</div>
+                </div>
+              ))}
+
+              {/* 가격 변동 사항 */}
+              <div className="my-5 d-flex flex-column">
+                <div className="fw-bold fs-5" style={{color:"#101648"}}>기타 가격 변동 사항</div>
+                <div className="fs-5" style={{color:"#101648"}}>{houseData["price_variation"]}</div>
+              </div>
+            </div>
+          </div>
+  
+          {/* 판매자 정보
+          <div>
+            
+          </div> */}
+        </div>
+        
       </div>
 
       {/* 평점 */}

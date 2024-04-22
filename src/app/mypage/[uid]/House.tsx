@@ -10,13 +10,18 @@ export default function House() {
   const pathname = usePathname();
   
   return (
-    <div>
-      <button
-        className="mt-5 btn btn-lg text-white"
-        style={{backgroundColor:"#101648"}}
-        onClick={()=>{router.push(`${pathname}/house?method=add`);}}>
-        추가하기
-      </button>
+    <div className="mt-5">
+      <div>
+        <h5 className="fw-bold">
+          집을 추가하고 싶으시나요?
+        </h5>
+        <button
+          className="btn btn-lg fs-5 text-white"
+          style={{backgroundColor:"#101648"}}
+          onClick={()=>{router.push(`${pathname}/house?method=add`);}}>
+          집 추가하기
+        </button>  
+      </div>
       <PostMenu
         title={"내가 원하는 주택들을 검색하여 구경해보세요!"}>
         <MyHouseList

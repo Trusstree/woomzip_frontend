@@ -1,11 +1,10 @@
 import { apiClient } from "@/configs/apiClient";
-import { HouseDataType } from "@/types/house";
 
 export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/apis/house/enroll`, {
+    const result = await apiClient.get(`/apis/house/find-my-house`, {
       params: params,
       headers: {}
     });
@@ -21,8 +20,8 @@ export const getHouse = async (houseNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/apis/house/${houseNum}`, {
-      params: {},
+    const result = await apiClient.get(`/apis/house/find-my-house/detail`, {
+      params: { hid: houseNum },
       headers: {}
     });
     
@@ -34,11 +33,13 @@ export const getHouse = async (houseNum: number) => {
   return [ data, error ];
 };
 
-export const postHouse = async (house: any) => {
+export const postHouse = async (house: any, token:string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/house`, house, { headers: {} });
+    const result = await apiClient.post(`/apis/house/enroll`, house, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
     data = result?.data;
   } catch (err) {
     error = err;
@@ -46,22 +47,6 @@ export const postHouse = async (house: any) => {
 
   return [ data, error ];
 };
-
-export const getHouseCount = async (params: any) => {
-  let [count, countError] = [undefined, undefined] as any;
-
-  try {
-    const result = await apiClient.get(`/apis/house/count`, {
-      params: params,
-      headers: {}
-    });
-    count = result?.data;
-  } catch (err) {
-    countError = err;
-  }
-
-  return [ count, countError ];
-}
 
 export const putHouse = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;

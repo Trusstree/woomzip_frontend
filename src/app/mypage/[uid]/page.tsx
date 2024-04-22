@@ -1,13 +1,13 @@
 import MypageClient from "./MypageClient";
 
 type PageParams = {
-  id: string
+  uid: string
 }
 
 export default function Mypage( {params} : {params: PageParams} ) {
-  const { id } = params;
+  const { uid } = params;
   
   return (
-    <MypageClient id={id} />
+    <MypageClient uid={uid} />
   );
 }

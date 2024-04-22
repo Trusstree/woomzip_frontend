@@ -1,13 +1,14 @@
 "use client"
 
-import { getHouses } from "@/apis/HouseAPI";
 import { useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import HouseCardPlaceholder from "../house/HouseCardPlaceholder";
 import Pagination from "../Pagination";
-import MyHouseCard from "./MyHouseCard";
+import HouseCardPlaceholder from "../house/HouseCardPlaceholder";
+import HouseCard from "../house/HouseCard";
+import { getLikeHouses } from "@/apis/Mypage";
 
 type HousePostProps = {
+  session: any
   numShowItems: number
   numShowPages?: number
   searchCondition: {}
@@ -15,12 +16,12 @@ type HousePostProps = {
   setIsSubmit?: Dispatch<SetStateAction<{}>>
 }
 
-export function MyHouseList(props: HousePostProps) {
-  const { numShowItems, numShowPages, searchCondition, isSubmit, setIsSubmit } = props;
+export function MyLikeHouseList(props: HousePostProps) {
+  const { session, numShowItems, numShowPages, searchCondition, isSubmit, setIsSubmit } = props;
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
   const page = (rawPage>0)?rawPage:1;
-  const [houseData, setHouseData] = useState(undefined as any);
+  const [houseData, setHouseData] = useState([] as Array<any>);
   const [count, setCount] = useState(0);
 
   useEffect( () => {
@@ -32,21 +33,21 @@ export function MyHouseList(props: HousePostProps) {
         ...searchCondition
       };
 
-      const [ data, error ] = await getHouses(params);
-      if(error) {console.log(error); return;}
-
-      console.log(data.data || data.data[0]);
-      setHouseData(data.data.houses || data.data[0].houses);
-      setCount(data.data.total_count || data.data[0].total_count);
-      if(isSubmit!=undefined)setIsSubmit(false);
+      const [ data, error ] = await getLikeHouses(params, session.user.accessToken);
+      console.log(data.data);
+      if(error) {console.error(error); return;}
+      setHouseData(data.data[0]["house_info"]);
+      setCount(data.data[0]["like_count"]);
+      
+      if(isSubmit!=undefined) setIsSubmit(false);
     })();
   },[isSubmit, page])
   
   return (
     <>
-      {houseData?
+      {houseData ?
         houseData.map((e, i)=>(
-          <MyHouseCard className="" key={i} data={e} />
+          <HouseCard className="" key={i} data={e} />
         ))
       :
         new Array(numShowItems).fill(0).map((e, i)=>(

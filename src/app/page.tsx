@@ -19,7 +19,7 @@ export default function Home() {
       <div className={`my-3 d-flex`}>
         <Carousel
           className="w-100 me-2"
-          skip={0}
+          skip={1}
           limit={4} />
         <Image
           className="d-none d-md-block rounded-4"

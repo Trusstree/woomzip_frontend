@@ -1,9 +1,9 @@
-import { apiClient } from "@/configs/apiClient";
+import { signedApiClient } from "@/configs/apiClient";
 
 export const getHeart = async (params:any) => {
   let [count, countError] = [undefined, undefined] as any;
   try {
-    const result = await apiClient.get(`/apis/heart`, {
+    const result = await signedApiClient.get(`/apis/heart`, {
       params: params,
       headers: {}
     });
@@ -18,7 +18,7 @@ export const getHeartHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/apis/heart/houses`, {
+    const result = await signedApiClient.get(`/apis/heart/houses`, {
       params: params,
       headers: {}
     });
@@ -33,7 +33,7 @@ export const getHeartHouses = async (params: any) => {
 export const getHeartCount = async (house_id: number) => {
   let [count, countError] = [undefined, undefined] as any;
   try {
-    const result = await apiClient.get(`/apis/heart/count`, {
+    const result = await signedApiClient.get(`/apis/heart/count`, {
       params: {house_id: house_id},
       headers: {}
     });
@@ -44,11 +44,15 @@ export const getHeartCount = async (house_id: number) => {
   return [ count, countError ];
 }
 
-export const postHeart = async (heart: any) => {
+export const postHeart = async (heart: any, accessToken: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/heart`, heart, { headers: {} });
+    const result = await signedApiClient.post(`/apis/house/find-my-house/detail/like`, heart, {
+      headers:{
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
     data = result?.data;
   } catch (err) {
     error = err;
@@ -57,13 +61,12 @@ export const postHeart = async (heart: any) => {
   return [ data, error ];
 };
 
-export const deleteHeart = async (params: any) => {
+export const deleteHeart = async (heart: any, accessToken: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.delete(`/apis/heart`, {
-      params: params,
-      headers: {}
+    const result = await signedApiClient.post(`/apis/house/find-my-house/detail/unlike`, heart, {
+      headers: {Authorization: `Bearer ${accessToken}`}
     });
     data = result?.data;
   } catch (err) {

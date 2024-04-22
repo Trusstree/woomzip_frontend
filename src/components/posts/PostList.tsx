@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import PostCard from "./PostCard";
-import { getPostCount, getPosts } from "@/apis/postAPI";
+import { getPosts } from "@/apis/postAPI";
 import { useSearchParams } from "next/navigation";
 import Pagination from "../Pagination";
 import PostCardPlaceHolder from "./PostCardPlaceholder";
@@ -23,18 +23,15 @@ export default function PostList(props: PostListProps) {
   useEffect( () => {
     (async ()=>{
       const params={
-        skip: numShowItems*(page-1),
+        skip: numShowItems*(page-1)+1,
         limit: numShowItems,
       };
       if(category) params["category"]=category;
-			
-      const { count, countError } = await getPostCount(category);
-      if(countError) {console.log(countError); return;}
-      setCount(count);
 
       const { data, error } = await getPosts(params);
-      if(error) {console.log(error); return;}
-      setPostData(data);
+      if(error) {console.error(error); return;}
+      setPostData(data.data.posts);
+      setCount(data.data.total);
     })();
   },[searchParams, page])
 

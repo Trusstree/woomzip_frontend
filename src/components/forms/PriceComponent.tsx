@@ -1,31 +1,31 @@
 "use client"
 
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 
 type PriceComponentProps = {
   key: number
   price: any
-  setPriceList: Function
+  setData: Function
   className?: string
 }
 
 export function PriceComponent(props: PriceComponentProps) {
-  const { key, price, setPriceList, className } = props;
+  const { key, price, setData, className } = props;
 
   const onClick = useCallback(()=>{
-    setPriceList((oldValues)=>(oldValues.filter((_,i)=>i!=key)));
+    setData((oldValues)=>(oldValues.filter((_,i)=>i!=key)));
   }, [price]);
 
   return (
-    <div className={`${className} mt-2 col-9 row`}>
-      <div className="col-2">
-        {price.category}
+    <div className={`${className} mt-2 col-12 row`}>
+      <div className="col-3">
+        {price.option_type}
       </div>
       <div className="col-4">
-        {price.name}
+        {price.option_product_name}
       </div>
-      <div className="col-4">
-        {price.price}
+      <div className="col-3">
+        {price.option_product_price}
       </div>
       <div
         className={"col-2 btn d-flex flex-column justify-content-center align-self-center"}

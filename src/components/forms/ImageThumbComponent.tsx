@@ -7,13 +7,12 @@ import { ChangeEvent } from "react";
 
 type ImageInputComponentProps = {
   data: any
-  name: string
   setData: any
   className?: string
 }
 
-export function ImageInputComponent(props: ImageInputComponentProps) {
-  const { data, name, setData, className } = props;
+export function ImageThumbComponent(props: ImageInputComponentProps) {
+  const { data, setData, className } = props;
   const { data: session } = useSession();
 
   const setS3Image = async (e:ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +22,7 @@ export function ImageInputComponent(props: ImageInputComponentProps) {
     
     const [response, error] = await setS3Url(`houses/${session.user.uid}/${title}`, img);
     if(!error) {
-      setData((oldValues) =>({...oldValues, [name]: (oldValues?.[name])?[...oldValues[name], url]:[url]}));
+      setData((oldValues) =>({...oldValues, ["representative_image"]: url}));
     }
     else console.error(error);
   };
@@ -31,17 +30,17 @@ export function ImageInputComponent(props: ImageInputComponentProps) {
   return (
     <div className={`${className ?? ""}`}>
       
-      <label htmlFor={name}>
+      <label htmlFor={"representative_image"}>
         <img
-          src={"/blur_image.png"}
-          alt={name}
+          src={data["representative_image"] || "/blur_image.png"}
+          alt={"representative_image"}
           width={188}
           height={188}
           style={{objectFit:"fill"}} />
       </label>
       <input
-        id={`${name}`}
-        name={name}
+        id={`${"representative_image"}`}
+        name={"representative_image"}
         accept="image/*"
         multiple
         type="file"

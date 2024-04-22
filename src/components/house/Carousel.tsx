@@ -24,8 +24,9 @@ export default function Carousel(props: CarouselProps){
         skip: skip,
         limit: limit
       });
-      if(!error) setHouseData(data);
-      else console.log(error);
+      
+      if(error) {console.error(error); return;}
+      setHouseData(data.data[0].houses);
     })();
   },[])
   
@@ -35,7 +36,8 @@ export default function Carousel(props: CarouselProps){
       className={`carousel slide ${className}`}
       data-bs-ride="carousel">
       <div className="carousel-indicators">
-        {houseData?.map((_, i)=>(
+        {houseData?
+          houseData.map((_, i)=>(
           <button
             key={i}
             type="button"
@@ -45,7 +47,8 @@ export default function Carousel(props: CarouselProps){
             aria-current={(i==0)?"true":"false"}
             aria-label={`Slide ${i+1}`}
           />
-        ))}
+        ))
+      :undefined}
       </div>
       <div className="carousel-inner">
         {houseData?
@@ -57,17 +60,17 @@ export default function Carousel(props: CarouselProps){
               >
               <Image
                 className="d-block w-100 rounded-4"
-                src={e.thumbnail}
+                src={e["house_image_url"]}
                 alt="truss_logo.png"
                 width={400}
                 height={500}
-                onClick={()=>{router.push(`/house/${e.idx}`);}}
+                onClick={()=>{router.push(`/house/${e["house_id"]}`);}}
                 style={{objectFit:"cover"}}
                 placeholder={"blur"}
                 blurDataURL={"/placeholder.png"}/>
               <div className="carousel-caption d-none d-md-block text-start bg-secondary bg-opacity-50 rounded-5">
-                <h3 className="fw-bold mx-3 my-0 text-white">{e.title}</h3>
-                <span className="my-0 mx-3 ">#{e.price}만원 #{e.floorSpace}평 #방{e.roomNumber}개 #화장실{e.toiletNumber}개</span>
+                <h3 className="fw-bold mx-3 my-0 text-white">{e["house_name"]}</h3>
+                <span className="my-0 mx-3 ">#{e["final_price"]}만원 #{e["building_area"]}평 #방{e["room_count"]}개 #화장실{e["toilet_count"]}개</span>
               </div>
             </div>
           ))
