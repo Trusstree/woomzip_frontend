@@ -13,7 +13,7 @@ export default function SigninButton(){
   const { userContext, setUserContext } = useUser();
 
   useEffect(()=>{
-    setUserContext(userCookie.userData);
+    setUserContext(userCookie?.userData);
   },[]);
 
   return (
