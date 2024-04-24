@@ -2,7 +2,7 @@
 
 import { signinUser, signupUser, validateID } from "@/apis/userAPI";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
-import { setUserInfo } from "@/lib/cookieUtil";
+
 import { encrypt, getUserdataByToken } from "@/lib/security";
 import { isEmail, isID, isPassword, isRequired } from "@/lib/validator";
 import { useRouter } from "next/navigation";
