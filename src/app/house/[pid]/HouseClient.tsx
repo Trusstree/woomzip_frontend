@@ -12,9 +12,9 @@ import { getSession } from "next-auth/react";
 import { alertSuccess } from "@/lib/alertUtil";
 import { getPrice } from "@/apis/priceAPI";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
+import { getUserCookie } from "@/lib/cookieUtil";
 
 type HouseComponentProps = {
-  session: any
   pid:number
 }
 
@@ -23,7 +23,7 @@ export function HouseClient (props: HouseComponentProps) {
   const modelLink = "https://forms.gle/Qdq1HgPvcB76sRAW7";
   const gyeonjeokLink = "https://forms.gle/WhzuLumaL6C6TFu69";
 
-  const { pid, session } = props;
+  const { pid } = props;
   const [houseData, setHouseData] = useState(undefined);
   const [imageData, setImageData] = useState(undefined);
   const [optionData, setOptionData] = useState(undefined);
@@ -71,16 +71,16 @@ export function HouseClient (props: HouseComponentProps) {
   // },[]);
   
   const ClickHeart = useCallback(async () => {
-    const session  = await getSession();
-    if(session?.user){
-      const heartParams={house_id:pid, user_id:session.user.uid};
+    const userCookie = getUserCookie();
+    if(userCookie.userData){
+      const heartParams={house_id:pid, user_id:userCookie.userData.uid};
 
       if(heart>0) {
-        const [response, error] = await deleteHeart({house_id:pid}, session.user.accessToken);
+        const [response, error] = await deleteHeart({house_id:pid}, userCookie.userData.accessToken);
         if(error)console.log(error);
         setHeart(heart-1);
       } else {
-        const[response, error] = await postHeart({house_id:pid}, session.user.accessToken);
+        const[response, error] = await postHeart({house_id:pid}, userCookie.userData.accessToken);
         if(error)console.log(error);
         console.log(response);
         setHeart(heart+1);
@@ -160,7 +160,7 @@ export function HouseClient (props: HouseComponentProps) {
           <div className="d-flex flex-column">
             <div className="d-flex align-items-center">
               <div className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>평수</div>
-              <span style={{color:"#101648"}}>{houseData["building_area"]}평</span>
+              <span style={{color:"#101648"}}>{houseData["building_area"].toFixed(1)}평</span>
             </div>
             <div className="d-flex align-items-center">
               <span className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>방</span>
@@ -172,7 +172,7 @@ export function HouseClient (props: HouseComponentProps) {
             </div>
             <div className="d-flex align-items-center">
               <span className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>AS기간</span>
-              <span style={{color:"#101648"}}>{houseData["warranty"]}개월</span>
+              <span style={{color:"#101648"}}>{houseData["warranty"]}</span>
             </div>
             <div className="d-flex align-items-center">
               <span className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>판매자</span>
@@ -180,7 +180,7 @@ export function HouseClient (props: HouseComponentProps) {
                 className="fw-bold ps-0"
                 style={{color:"#101648", border:"none"}}
                 onClick={()=>{}}>
-                {houseData["company_name"]}
+                {houseData["seller_nickname"]}
               </div>
             </div>
           </div>
@@ -394,7 +394,7 @@ export function HouseClient (props: HouseComponentProps) {
           </div>
           <div className="my-1 row">
             <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>AS 보증기간</div>
-            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["warranty"]}개월</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["warranty"]}</div>
           </div>
           <div className="my-1 row">
             <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>모델하우스</div>

@@ -1,5 +1,7 @@
 "use client"
 
+import { useUser } from "@/app/ContextSession";
+import { getUserCookie } from "@/lib/cookieUtil";
 import { setS3Url } from "@/lib/s3Util";
 import moment from "moment";
 import { useSession } from "next-auth/react";
@@ -13,14 +15,15 @@ type ImageInputComponentProps = {
 
 export function ImageThumbComponent(props: ImageInputComponentProps) {
   const { data, setData, className } = props;
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
+  const userCookie = getUserCookie();
 
   const setS3Image = async (e:ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
     const title=e.target.name+moment().format('YYYYMMDDHHmmss');
-    const url=`${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${session.user.uid}/${title}`;
+    const url=`${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${userCookie.userData.uid}/${title}`;
     
-    const [response, error] = await setS3Url(`houses/${session.user.uid}/${title}`, img);
+    const [response, error] = await setS3Url(`houses/${userCookie.userData.uid}/${title}`, img);
     if(!error) {
       setData((oldValues) =>({...oldValues, ["representative_image"]: url}));
     }

@@ -1,6 +1,5 @@
 "use client"
 
-import { useSession } from "next-auth/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -10,6 +9,8 @@ import Profile from "./Profile";
 import { getUser } from "@/apis/userAPI";
 import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
 import PostMenu from "@/components/posts/PostMenu";
+import { getUserCookie } from "@/lib/cookieUtil";
+import { useUser } from "@/app/ContextSession";
 
 type MypageClientProps = {
   uid: string
@@ -18,22 +19,28 @@ type MypageClientProps = {
 export default function MypageClient(props: MypageClientProps) {
   const { uid } = props;
 
-  const { data: session } = useSession();
-  const [userData, setUserData] = useState(undefined);
+  // const { data: session } = useSession();
+  const { userContext, setUserContext } = useUser();
+  let userCookie = getUserCookie();
   const router = useRouter();
   const params = useSearchParams();
   const pathname = usePathname();
+  const [userData, setUserData] = useState(undefined);
 
   useEffect(()=>{
     (async () => {
-      const [ data, error ] = await getUser(uid, session?.user.accessToken);
-
-      if(error) console.log(error);
-      else setUserData(data.data[0].user_profile);
+      const [ data, error ] = await getUser(uid);
+      console.log(error);
+      console.log(data.data[0].user_profile);
+      
+      userCookie = getUserCookie();
+      setUserContext(userCookie.userData);
+      setUserData(data.data[0].user_profile);
+      console.log(data.data[0].user_profile);
     })();
   },[]);
 
-  return (session!=undefined) &&
+  return (userContext!=undefined) && userData ?
     <>
       <div className="mb-5 row">
         <div className="col-lg-3">
@@ -42,7 +49,7 @@ export default function MypageClient(props: MypageClientProps) {
             style={{backgroundColor:"lightgray"}}>
             <Image
               className={"m-0 align-self-center"}
-              src={`/blur_image.png`}
+              src={userData["user_img_url"] || `/blur_image.png`}
               alt={`profile`}
               width={180}
               height={180}
@@ -52,10 +59,13 @@ export default function MypageClient(props: MypageClientProps) {
 
             <div className="my-3 d-flex flex-column align-items-center">
               <div className="fs-5 fw-bold">
-                {session.user.name}
+                {userData["nickname"]}
               </div>
               <div>
-                {session.user.email}
+                {userData["email"]}
+              </div>
+              <div>
+                {userData["one_line_introduce"]}
               </div>
             </div>
 
@@ -88,7 +98,7 @@ export default function MypageClient(props: MypageClientProps) {
             </div> */}
           </div>
 
-          {(Number(uid)==session.user.uid) && <div
+          {(Number(uid)==userCookie.userData.uid) && <div
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{backgroundColor:"#101648"}}
             onClick={()=>{router.push(`${pathname}?tab=profile`);}} >
@@ -109,7 +119,7 @@ export default function MypageClient(props: MypageClientProps) {
               커뮤니티
             </span>
           </div>}
-          {(session.user.role=="company") &&
+          {(userData?.role=="1") &&
           <div
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{backgroundColor:"#101648"}}
@@ -126,22 +136,23 @@ export default function MypageClient(props: MypageClientProps) {
           (params.get("tab")==undefined) && 
             <>
               <PostMenu
-                title={"프로필"}>
+                title={"좋아요한 집을 보여드릴게요."}>
                 <MyLikeHouseList
-                  session={session}
                   numShowItems={12}
                   searchCondition={undefined} />
               </PostMenu>
             </>
           }
           {(params.get("tab")=="profile") && 
-            <Profile user={userData}/>}
+            <Profile />}
           {(params.get("tab")=="community") && 
             <Community/>}
-          {(session.user.role) && 
-          (params.get("tab")=="house") && 
+          {/* {(session.user.role) &&  */}
+          {(params.get("tab")=="house") && 
             <House/>}
         </div>
       </div>
     </>
+    :
+    <div>유저 정보가 없습니다.</div>
 }

@@ -5,6 +5,7 @@ import Header from '../app/Header';
 import Footer from '../app/Footer';
 import AuthSession from './AuthSession';
 import { Analytics } from '@/components/Analytics';
+import ContextSession from './ContextSession';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -41,14 +42,16 @@ export default function RootLayout({children, }: {children: React.ReactNode, }) 
       </head>
       
       <body className={inter.className}>
-        <AuthSession>
-          <Analytics />
-          <Header />
-          <main className={`container-md`}>
-          {children}
-          </main>
-          <Footer />
-        </AuthSession>
+        {/* <AuthSession> */}
+          <ContextSession>
+            <Analytics />
+            <Header />
+            <div className={`container-md`}>
+            {children}
+            </div>
+            <Footer />
+          </ContextSession>
+        {/* </AuthSession> */}
       </body>
     </html>
   )
