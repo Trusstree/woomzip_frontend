@@ -1,12 +1,11 @@
 import { apiClient, signedApiClient } from "@/configs/apiClient";
 
-export const getUser = async (uid: string|number, token: string) => {
+export const getUser = async (uid: string|number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/apis/users/profile`, {
+    const result = await signedApiClient.get(`/apis/users/profile`, {
       params: {uid: uid},
-      headers: { Authorization: `Bearer ${token}` }
     });
     data = result?.data;
   } catch (err) {
@@ -20,9 +19,7 @@ export const postUser = async (user: any, token: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/users/enroll`, user, { 
-      headers: { Authorization: `Bearer ${token}` }
-    });
+    const result = await apiClient.post(`/apis/users/enroll`, user);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -45,3 +42,62 @@ export const putUser = async (user: any, token: string) => {
 
   return [ data, error ];
 };
+
+
+export const signinUser = async (user: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await apiClient.post(`/apis/auth/sign-in`, user);
+    data = result?.data;
+  } catch (err) {
+    error = err;
+  }
+
+  return [ data, error ];
+};
+
+export const signupUser = async (user: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await apiClient.post(`/apis/auth/sign-up`, user);
+    data = result?.data;
+  } catch (err) {
+    error = err;
+  }
+
+  return [ data, error ];
+};
+
+export const validateID = async (user_id: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await apiClient.get(`/apis/auth/exist/id`, {
+      params: {id: user_id}
+    });
+    data = result?.data;
+  } catch (err) {
+    error = err;
+  }
+
+  return [ data, error ];
+};
+
+export const validateName = async (nickname: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await apiClient.get(`/apis/auth/exist/nickname`, {
+      params: {nickname: nickname}
+    });
+    data = result?.data;
+  } catch (err) {
+    error = err;
+  }
+
+  return [ data, error ];
+};
+
+

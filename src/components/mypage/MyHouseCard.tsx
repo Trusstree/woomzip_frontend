@@ -51,7 +51,7 @@ export default function MyHouseCard(props: MainPagePostProps) {
           </h4>
           <div className="d-flex flex-column fw-normal">
             <div className="d-flex justify-content-between">
-              {(data["discount_rate"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data.discount}%</div>}
+              {(data["discount_rate"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data["discount_rate"]}%</div>}
                 <div className="ms-auto">
                   {(data["discount_rate"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{cardPriceText(data["price"])}</div>}
                   <div className="fs-6 fw-bold text-end">{cardPriceText(data["final_price"])}</div>
@@ -60,7 +60,7 @@ export default function MyHouseCard(props: MainPagePostProps) {
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">평수</div>
-              <div>{data["building_area"]}평</div>
+              <div>{data["building_area"].toFixed(1)}평</div>
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">방</div>
@@ -72,7 +72,7 @@ export default function MyHouseCard(props: MainPagePostProps) {
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">AS기간</div>
-              <div>{data["warranty"]}개월</div>
+              <div>{data["warranty"]}</div>
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">판매자</div>

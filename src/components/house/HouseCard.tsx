@@ -56,7 +56,7 @@ export default function HouseCard(props: MainPagePostProps) {
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">평수</div>
-              <div>{data["building_area"]}평</div>
+              <div>{data["building_area"].toFixed(1)}평</div>
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">방</div>
@@ -68,7 +68,7 @@ export default function HouseCard(props: MainPagePostProps) {
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">AS기간</div>
-              <div>{data["warranty"]}개월</div>
+              <div>{data["warranty"]}</div>
             </div>
             <div className="d-flex justify-content-between">
               <div className="fw-bold">판매자</div>

@@ -19,9 +19,7 @@ export const refreshAccessToken = async (accessToken: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/apis/users/test`, {
-      headers: { 'X-AUTH-TOKEN': accessToken } 
-    });
+    const result = await apiClient.get(`/apis/users/test`);
     data = result?.data;
   } catch (err) {
     error = err;

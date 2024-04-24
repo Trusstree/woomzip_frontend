@@ -16,6 +16,8 @@ import { PriceInputComponent } from "@/components/forms/PriceInputComponent";
 import { PriceComponent } from "@/components/forms/PriceComponent";
 import { SelectDeliveryComponent } from "@/components/forms/SelectDeliveryComponent";
 import { ImageThumbComponent } from "@/components/forms/ImageThumbComponent";
+import { useUser } from "@/app/ContextSession";
+import { getUserCookie } from "@/lib/cookieUtil";
 
 export default function AddHouse() {
   const [houseInfo, setHouseInfo] = useState({} as HouseInfoType);
@@ -23,7 +25,9 @@ export default function AddHouse() {
   const [deliveryInfo, setDeliveryInfo]=useState([] as Array<any>);
   const [specificationInfo, setSpecificationInfo]=useState({} as specificationInfoType);
   const [imageList, setImageList] = useState([]);
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
+  // const { userContext, accessToken } = useUser();
+  const userCookie = getUserCookie();
 
   const handleHouse = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
     setHouseInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
@@ -43,7 +47,7 @@ export default function AddHouse() {
 
   const submitFunction = async () => {
     const data={
-      seller_id: session.user.uid,
+      seller_id: userCookie.userData.uid,
       house_info: houseInfo,
       option_info: optionInfo,
       delivery_unavailable: deliveryInfo,
@@ -54,7 +58,7 @@ export default function AddHouse() {
     //validate를 위한 부분
     console.log(data);
 
-    const [response, error] = await postHouse(data, session.user.accessToken);
+    const [response, error] = await postHouse(data, userCookie.accessToken);
     if(error){
       console.error(error);
       alertError("에러!", "뭐가 빠진 게 있나봐요 ㅠㅠ");

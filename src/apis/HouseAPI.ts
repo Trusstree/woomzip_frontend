@@ -1,4 +1,4 @@
-import { apiClient } from "@/configs/apiClient";
+import { apiClient, signedApiClient } from "@/configs/apiClient";
 
 export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -37,9 +37,7 @@ export const postHouse = async (house: any, token:string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/house/enroll`, house, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
+    const result = await signedApiClient.post(`/apis/house/enroll`, house);
     data = result?.data;
   } catch (err) {
     error = err;

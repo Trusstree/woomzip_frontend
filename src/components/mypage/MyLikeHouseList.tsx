@@ -6,9 +6,9 @@ import Pagination from "../Pagination";
 import HouseCardPlaceholder from "../house/HouseCardPlaceholder";
 import HouseCard from "../house/HouseCard";
 import { getLikeHouses } from "@/apis/Mypage";
+import { getUserCookie } from "@/lib/cookieUtil";
 
 type HousePostProps = {
-  session: any
   numShowItems: number
   numShowPages?: number
   searchCondition: {}
@@ -17,13 +17,14 @@ type HousePostProps = {
 }
 
 export function MyLikeHouseList(props: HousePostProps) {
-  const { session, numShowItems, numShowPages, searchCondition, isSubmit, setIsSubmit } = props;
+  const { numShowItems, numShowPages, searchCondition, isSubmit, setIsSubmit } = props;
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
   const page = (rawPage>0)?rawPage:1;
   const [houseData, setHouseData] = useState([] as Array<any>);
   const [count, setCount] = useState(0);
-
+  const userCookie = getUserCookie();
+  
   useEffect( () => {
     (async ()=>{
       if(isSubmit!=undefined && !isSubmit) return;
@@ -33,12 +34,10 @@ export function MyLikeHouseList(props: HousePostProps) {
         ...searchCondition
       };
 
-      const [ data, error ] = await getLikeHouses(params, session.user.accessToken);
-      console.log(data.data);
-      if(error) {console.error(error); return;}
+      const [ data, error ] = await getLikeHouses(params, userCookie.accessToken);
+      if(error) {console.log(error); return;}
       setHouseData(data.data[0]["house_info"]);
       setCount(data.data[0]["like_count"]);
-      
       if(isSubmit!=undefined) setIsSubmit(false);
     })();
   },[isSubmit, page])

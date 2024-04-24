@@ -7,11 +7,10 @@ type PageParams = {
 
 export default async function Home( {params} : {params: PageParams} ) {
   const { pid } = params;
-  const session  = await getSession();
   
   return (
     <main className={`container px-5`}>
-      <HouseClient session={session} pid={pid} />
+      <HouseClient pid={pid} />
     </main>
   );
 }
