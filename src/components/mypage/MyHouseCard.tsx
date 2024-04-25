@@ -13,7 +13,9 @@ type MainPagePostProps = {
 
 export default function MyHouseCard(props: MainPagePostProps) {
   const router = useRouter();
-  const { data, className, style } = props;
+  const { data } = props;
+
+  console.log(data)
 
   return (
 
@@ -27,7 +29,7 @@ export default function MyHouseCard(props: MainPagePostProps) {
         <Image
           className="rounded-top-2 w-100 m-0"
           onClick={()=>{router.push(`/house/${data["house_id"]}`);}}
-          src={`${data["house_image_url"]}`}
+          src={data["house_img_url"] || "/blur_image.png"}
           alt={`${data["house_explanation"]}`}
           width={220}
           height={220}
