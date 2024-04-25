@@ -32,9 +32,10 @@ export default function PostClient(props: PostpageProps){
   useEffect( () => {
     const getPostdata = async () => {
       const { data, error } = await getPost(pid);
+      console.log(data);
       
       if(error) console.log(error);
-      else setPostData(data);
+      else setPostData(data.data.post);
     }
     getPostdata();
   },[]);
@@ -46,7 +47,7 @@ export default function PostClient(props: PostpageProps){
           {postData.category}
         </h5>
         <h5 className="fw-normal d-flex justify-content-end">
-          {postData.updated_at.split("T")[0]}
+          {postData["created_at"].split("T")[0]}
         </h5>
       </div>
       
@@ -72,7 +73,7 @@ export default function PostClient(props: PostpageProps){
       <div
         className="py-5 my-5"
         dangerouslySetInnerHTML={{
-          __html: DOMPurify.sanitize(String(postData.text)),
+          __html: DOMPurify.sanitize(String(postData["content"])),
         }}
       />
       {/* 추천정보 */}

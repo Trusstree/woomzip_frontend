@@ -28,13 +28,11 @@ export const postUser = async (user: any, token: string) => {
   return { data, error };
 };
 
-export const putUser = async (user: any, token: string) => {
+export const putUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.post(`/apis/users/update`, user, { headers: {
-      Authorization:`Bearer ${token}`
-    } });
+    const result = await signedApiClient.post(`/apis/users/update`, user);
     data = result?.data;
   } catch (err) {
     error = err;

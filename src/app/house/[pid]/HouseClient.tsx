@@ -36,6 +36,8 @@ export function HouseClient (props: HouseComponentProps) {
     (async () => {
       const [ data, error ] = await getHouse(pid);
       if(error) {console.error(error); return;}
+
+      console.log(parseSpecificationInfo(data.data[0]["house_info"]["specification_info"]));
       
       setHouseData({...data.data[0]["house_info"], specificity_info: JSON.parse(data.data[0]["house_info"]["specificity_info"])});
       setImageData(data.data[0]["house_image"]);
@@ -160,7 +162,7 @@ export function HouseClient (props: HouseComponentProps) {
           <div className="d-flex flex-column">
             <div className="d-flex align-items-center">
               <div className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>평수</div>
-              <span style={{color:"#101648"}}>{houseData["building_area"].toFixed(1)}평</span>
+              <span style={{color:"#101648"}}>{houseData["total_floor_area"].toFixed(1)}평</span>
             </div>
             <div className="d-flex align-items-center">
               <span className={"fs-5 fw-bold"} style={{color:"#101648", width:100}}>방</span>
@@ -374,11 +376,11 @@ export function HouseClient (props: HouseComponentProps) {
           </div>
           <div className="my-1 row">
             <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>실제 사용 평수</div>
-            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["building_area"].toFixed(1)}평</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["total_floor_area"].toFixed(1)}평</div>
           </div>
           <div className="my-1 row">
             <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>건축면적</div>
-            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["total_floor_area"].toFixed(1)}㎡</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["building_area"].toFixed(1)}㎡</div>
           </div>
           <div className="my-1 row">
             <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>방</div>
@@ -489,9 +491,9 @@ export function HouseClient (props: HouseComponentProps) {
               {/* 기타 */}
               <div className="my-1 row">
                 <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>기타</div>
-                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["etc"]}</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["etc_info"]}</div>
               </div>
-
+              
               {/* 사양 설명 */}
               <div className="my-1 d-flex flex-column">
                 <div className="fw-bold fs-5" style={{color:"#101648"}}>사양 설명</div>

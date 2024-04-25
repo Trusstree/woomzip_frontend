@@ -52,7 +52,7 @@ export default function AddHouse() {
       option_info: optionInfo,
       delivery_unavailable: deliveryInfo,
       specification_info: specificationInfo,
-      house_image: imageList
+      house_img_url: imageList
     }
 
     //validate를 위한 부분

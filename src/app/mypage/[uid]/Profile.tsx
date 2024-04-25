@@ -26,8 +26,18 @@ export default function Profile(props: ProfileProps) {
     (async () => {
       const [ data, error ] = await getUser(getUserCookie().userData.uid);
       console.log(data.data[0].user_profile);
-
-      setUserData(data.data[0].user_profile);
+      const rawProfile=data.data[0].user_profile;
+      const parsedProfile={
+        nickname: rawProfile["nickname"],
+        one_line_introduce: rawProfile["one_line_introduce"],
+        user_img_url: rawProfile["user_img_url"],
+        phone_number: rawProfile["phone_number"],
+        email: rawProfile["email"],
+        addr: rawProfile["addr"],
+        gender: rawProfile["gender"],
+        birthday: rawProfile["birthday"]
+      }
+      setUserData(parsedProfile);
     })();
   },[]);
 
@@ -54,15 +64,28 @@ export default function Profile(props: ProfileProps) {
   };
 
   const submitFunction = async (userData: any) => {
-    if(userData["nickname"] && typeof userData["nickname"]!="string") {alertError("nickname","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["one_line_introduce"] && typeof userData["one_line_introduce"]!="string") {alertError("one_line_introduce","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["user_img_url"] && typeof userData["user_img_url"]!="string") {alertError("user_img_url","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["phone_number"] && typeof userData["phone_number"]!="string") {alertError("phone_number","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["email"] && typeof userData["email"]!="string") {alertError("email","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["addr"] && typeof userData["addr"]!="string") {alertError("addr","type을 다시 한 번 확인해주세요~"); return;}
-    if(userData["birthday"] && typeof userData["birthday"]!="string") {alertError("birthday","type을 다시 한 번 확인해주세요~"); return;}
     
-    const [data, error] = await putUser(userData, userContext.accessToken);
+
+    if(!userData["nickname"]){userData["nickname"]=" ";}
+    if(!userData["one_line_introduce"]){userData["one_line_introduce"]=" ";}
+    if(!userData["user_img_url"]){userData["user_img_url"]=" ";}
+    if(!userData["phone_number"]){userData["phone_number"]=" ";}
+    if(!userData["email"]){userData["email"]=" ";}
+    if(!userData["addr"]){userData["addr"]=" ";}
+    if(!userData["gender"]){userData["gender"]=" ";}
+    if(!userData["birthday"]){userData["birthday"]=" ";}
+
+    if(typeof userData["nickname"]!="string") {alertError("nickname","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof userData["one_line_introduce"]!="string") {alertError("one_line_introduce","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof userData["user_img_url"]!="string") {alertError("user_img_url","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof userData["phone_number"]!="string") {alertError("phone_number","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof userData["email"]!="string") {alertError("email","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof userData["addr"]!="string") {alertError("addr","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof userData["gender"]!="string") {alertError("gender","type을 다시 한 번 확인해주세요~"); return;}
+    if(typeof userData["birthday"]!="string") {alertError("birthday","type을 다시 한 번 확인해주세요~"); return;}
+    
+    console.log(userData);
+    const [data, error] = await putUser(userData);
     if(error) alertError("프로필 수정", "에러가 났어요 ㅠㅠ");
     else alertSuccess("프로필 수정", "제대로 수정됐어요~!");
   }
