@@ -121,14 +121,8 @@ export default function Editor(props: EditorProps) {
     if (result.isConfirmed) {
       const { data, error }= await postPost({
         "title": dataTitle,
-        "text": dataText,
+        "content": dataText,
         "category": dataCategory,
-        "thumbnail": "",
-        // "thumbnail": `https://trussbucket.s3.ap-northeast-2.amazonaws.com/${key}`,
-        "author": "",
-        "likeCount": 0,
-        "viewCount": 0,
-        "comments": ""
       })
       if(error){console.log(error); return;}
       router.push(`/community/${data.id}`);
@@ -139,18 +133,25 @@ export default function Editor(props: EditorProps) {
     <div>
       <form className='my-3'>
         <div className='d-flex'>
-          <input
-            type={'text'}
-            className={`col-10 py-2 px-4`}
-            placeholder={`제목`}
-            onChange={(e)=>{setDataTitle(e.target?.value || "");}}
-            value={dataTitle}
-          />
-          {/* <SelectBox
-            className={`col-2`}
-            value={dataCategory}
-            handleChange={setDataCategory}
-            array={["일반", "질문", "공지"]}/> */}
+          <div className='col-10'>
+            <input
+              type={'text'}
+              className={`w-100 py-2 px-4`}
+              placeholder={`제목`}
+              onChange={(e)=>{setDataTitle(e.target?.value || "");}}
+              value={dataTitle}
+            />
+          </div>
+          <div className='col-2'>
+            <select
+              onChange={(ee)=>{setDataCategory(ee.target.value);}}
+              className="form-select"
+              aria-label="Default select example">
+              {["일반", "질문", "공지"].map((e, i)=>(
+                <option key={i} value={e}>{e}</option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <ReactQuill

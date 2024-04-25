@@ -35,25 +35,25 @@ export default function PostCard (props: PostCardProps) {
       <div className="card rounded-3">
         <div className={`card-header pb-2`}style={{backgroundColor:style[data.category].backgroundColor, borderColor:style[data.category].backgroundColor}}>
           <div className="fw-bold d-flex justify-content-between mt-2 text-white">
-            <span>{data.category}</span>
-            <span>{data.updated_at.split("T")[0]}</span>
+            <span>{data["category"]}</span>
+            <span>{data["created_at"].split("T")[0]}</span>
           </div>
           
         </div>
         <div className="card-body fw-normal pt-3 pb-0 mb-0">
           <Link
             className="fs-4 fw-bold text-black text-truncate"
-            href={{ pathname: `/community/${data.idx}`,}}
+            href={{ pathname: `/community/${data["post_id"]}`,}}
             style={{textDecoration:"none", display: "block"}}
             >
             {data.title}
           </Link>
           <Link
             className="mt-3 text-black text-wrap"
-            href={{ pathname: `/community/${data.idx}`,}}
+            href={{ pathname: `/community/${data["post_id"]}`,}}
             style={{textDecoration:"none", display: "block", height:"100px", overflow:"hidden"}}
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(data.text),//String(truncatedText(, 15))),
+              __html: DOMPurify.sanitize(data["content"]),//String(truncatedText(, 15))),
             }}/>
 
         </div>
