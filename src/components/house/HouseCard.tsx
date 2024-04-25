@@ -32,12 +32,12 @@ export default function HouseCard(props: MainPagePostProps) {
           className="card-body w-100 pt-1 px-2 fs-6"
           style={{height:"230px", backgroundColor:"lightgray"}}>
           <div className="d-flex justify-content-left mb-2" style={{height:"20px"}}>
-            {data["has_model"] && <div
+            {data["has_model"]=="1" && <div
               className="badge me-1 text-white rounded-3 text-center align-self-center"
               style={{backgroundColor:"#136E11"}}>
               모델하우스
             </div>}
-            {data["is_hut"] && <div
+            {data["is_hut"]=="1" && <div
               className="badge me-1 text-white rounded-3 text-center align-self-center"
               style={{backgroundColor:"#136E11"}}>
               농막주택
