@@ -582,8 +582,8 @@ export function HouseClient (props: HouseComponentProps) {
       </PostMenu>
     </>
   ):(
-    <>
+    <div>
       로딩 중
-    </>
+    </div>
   )
 }

@@ -37,6 +37,11 @@ export default function HouseCard(props: MainPagePostProps) {
               style={{backgroundColor:"#136E11"}}>
               모델하우스
             </div>}
+            {data["is_hut"] && <div
+              className="badge me-1 text-white rounded-3 text-center align-self-center"
+              style={{backgroundColor:"#136E11"}}>
+              농막주택
+            </div>}
           </div>
           <h4
             className="card-title fw-bold mb-0 text-nowrap"
@@ -47,7 +52,7 @@ export default function HouseCard(props: MainPagePostProps) {
             <div className="d-flex justify-content-between">
               {(data["discount_rate"]>0) && <div className="fs-5 fw-bold" style={{color:"#BD4040"}}>{data["discount_rate"]}%</div>}
                 <div className="ms-auto">
-                  {(data["discount_rate"]>0) && <div className="text-muted text-right text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{cardPriceText(data["base_price"])}</div>}
+                  {(data["discount_rate"]>0) && <div className="text-muted text-end text-decoration-line-through m-0 p-0" style={{fontSize:"14px", height:"14px"}}>{cardPriceText(data["base_price"])}</div>}
                   <div className="fs-6 fw-bold text-end">{cardPriceText(data["final_price"])}</div>
                 </div>
               
