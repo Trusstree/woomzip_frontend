@@ -125,7 +125,7 @@ export default function Editor(props: EditorProps) {
         "category": dataCategory,
       })
       if(error){console.log(error); return;}
-      router.push(`/community/${data.id}`);
+      router.push(`/community`);
     }
   },[dataTitle, dataText]);
 

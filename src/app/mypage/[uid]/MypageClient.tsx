@@ -127,7 +127,7 @@ export default function MypageClient(props: MypageClientProps) {
             <span
               className="fs-5 fw-bold"
               style={{wordBreak:"keep-all"}}>
-              제품 정보 수정
+              내 제품 정보
             </span>
           </div>}
         </div>
