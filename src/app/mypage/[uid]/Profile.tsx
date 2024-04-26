@@ -1,6 +1,5 @@
 "use client"
 
-import { signOut, useSession } from "next-auth/react";
 import { TextBoxComponent } from "@/components/forms/TextBoxComponent";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
@@ -17,7 +16,6 @@ type ProfileProps = {
 }
 
 export default function Profile(props: ProfileProps) {
-  // const { data: session } = useSession();
   const { userContext, setUserContext, setAccessToken } = useUser();
   const router = useRouter();
   const [userData, setUserData] = useState({});
@@ -25,6 +23,7 @@ export default function Profile(props: ProfileProps) {
   useEffect(()=>{
     (async () => {
       const [ data, error ] = await getUser(getUserCookie().userData.uid);
+      if(error) console.error(error);
       console.log(data.data[0].user_profile);
       const rawProfile=data.data[0].user_profile;
       const parsedProfile={

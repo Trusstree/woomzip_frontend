@@ -73,7 +73,7 @@ export const validateID = async (user_id: any) => {
 
   try {
     const result = await apiClient.get(`/apis/auth/exist/id`, {
-      params: {id: user_id}
+      params: { id: user_id }
     });
     data = result?.data;
   } catch (err) {
@@ -88,7 +88,7 @@ export const validateName = async (nickname: any) => {
 
   try {
     const result = await apiClient.get(`/apis/auth/exist/nickname`, {
-      params: {nickname: nickname}
+      params: { nickname: nickname }
     });
     data = result?.data;
   } catch (err) {

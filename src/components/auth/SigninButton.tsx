@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 
 export default function SigninButton(){
-  // const { data: session } = useSession();
   const router = useRouter();
   const userCookie = getUserCookie();
   const { userContext, setUserContext } = useUser();

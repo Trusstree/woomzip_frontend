@@ -11,7 +11,6 @@ export default function Community() {
 	const searchParams = useSearchParams();
   const page = (searchParams.has("page"))?Number(searchParams.get("page")):1;
   const category = searchParams.get("category");
-  const [count, setCount] = useState(0);
 	const [postData, setPostData] = useState(undefined);
 
   useEffect( () => {

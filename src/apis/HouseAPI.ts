@@ -46,11 +46,11 @@ export const postHouse = async (house: any, token:string) => {
   return [ data, error ];
 };
 
-export const putHouse = async (house: any) => {
+export const updateHouse = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.put(`/apis/house/`, house, { headers: {} });
+    const result = await signedApiClient.post(`/apis/house/`, house);
     data = result?.data;
   } catch (err) {
     error = err;

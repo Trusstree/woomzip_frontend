@@ -1,7 +1,6 @@
 import { SignupForm } from '@/components/auth/SignupForm';
 
 export default async function SignInPage() {
-  //const providers = await getProviders();
   
   return (
     <main className={`container my-5 d-flex flex-column align-items-center`}>
@@ -11,9 +10,6 @@ export default async function SignInPage() {
       <div className='w-50'>
         <SignupForm />
       </div>
-      {/* <div className={`d-flex flex-column align-items-center`}>
-        <SocialSigninButton providers={providers}/>
-      </div> */}
   </main>
   )
 }

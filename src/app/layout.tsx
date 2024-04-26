@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script';
 import Header from '../app/Header';
 import Footer from '../app/Footer';
-import AuthSession from './AuthSession';
 import { Analytics } from '@/components/Analytics';
 import ContextSession from './ContextSession';
 
@@ -42,16 +41,14 @@ export default function RootLayout({children, }: {children: React.ReactNode, }) 
       </head>
       
       <body className={inter.className}>
-        {/* <AuthSession> */}
-          <ContextSession>
-            <Analytics />
-            <Header />
-            <div className={`container-md`}>
-            {children}
-            </div>
-            <Footer />
-          </ContextSession>
-        {/* </AuthSession> */}
+        <ContextSession>
+          <Analytics />
+          <Header />
+          <div className={`container-md`}>
+          {children}
+          </div>
+          <Footer />
+        </ContextSession>
       </body>
     </html>
   )

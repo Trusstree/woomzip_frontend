@@ -44,15 +44,11 @@ export const getHeartCount = async (house_id: number) => {
   return [ count, countError ];
 }
 
-export const postHeart = async (heart: any, accessToken: string) => {
+export const postHeart = async (heart: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.post(`/apis/house/find-my-house/detail/like`, heart, {
-      headers:{
-        Authorization: `Bearer ${accessToken}`
-      }
-    });
+    const result = await signedApiClient.post(`/apis/house/find-my-house/detail/like`, heart);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -61,13 +57,11 @@ export const postHeart = async (heart: any, accessToken: string) => {
   return [ data, error ];
 };
 
-export const deleteHeart = async (heart: any, accessToken: string) => {
+export const deleteHeart = async (heart: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.post(`/apis/house/find-my-house/detail/unlike`, heart, {
-      headers: {Authorization: `Bearer ${accessToken}`}
-    });
+    const result = await signedApiClient.post(`/apis/house/find-my-house/detail/unlike`, heart);
     data = result?.data;
   } catch (err) {
     error = err;

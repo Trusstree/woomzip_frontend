@@ -5,7 +5,6 @@ export const getPrice = async (house_id:number) => {
   try {
     const result = await apiClient.get(`/apis/price`, {
       params: {house_id: house_id},
-      headers: {}
     });
     count = result?.data;
   } catch (err) {
@@ -18,7 +17,7 @@ export const postPrice = async (Price: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/price`, Price, { headers: {} });
+    const result = await apiClient.post(`/apis/price`, Price);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -33,7 +32,6 @@ export const deletePrice = async (idx: number) => {
   try {
     const result = await apiClient.delete(`/apis/price`, {
       params: {idx: idx},
-      headers: {}
     });
     data = result?.data;
   } catch (err) {
@@ -49,7 +47,6 @@ export const putPrice = async (house_id:number) => {
   try {
     const result = await apiClient.put(`/apis/price`, { house_id: house_id } , {
         params: {},
-        headers: {}
       });
     data = result?.data;
   } catch (err) {

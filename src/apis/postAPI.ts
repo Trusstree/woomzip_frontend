@@ -6,7 +6,6 @@ export const getPosts = async (params: any) => {
   try {
     const result = await apiClient.get(`/apis/community`, {
       params: params,
-      headers: {}
     });
     data = result?.data;
   } catch (err) {
@@ -21,7 +20,7 @@ export const getPost = async (postNum: number) => {
 
   try {
     const result = await apiClient.get(`/apis/community/detail`, {
-      params: {pid:postNum}
+      params: { pid:postNum }
     });
     data = result?.data;
   } catch (err) {

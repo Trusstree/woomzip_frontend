@@ -7,10 +7,8 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
-import { deleteHeart, getHeart, getHeartCount, postHeart } from "@/apis/HeartAPI";
-import { getSession } from "next-auth/react";
+import { deleteHeart, postHeart } from "@/apis/HeartAPI";
 import { alertSuccess } from "@/lib/alertUtil";
-import { getPrice } from "@/apis/priceAPI";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import { getUserCookie } from "@/lib/cookieUtil";
 
@@ -78,11 +76,11 @@ export function HouseClient (props: HouseComponentProps) {
       const heartParams={house_id:pid, user_id:userCookie.userData.uid};
 
       if(heart>0) {
-        const [response, error] = await deleteHeart({house_id:pid}, userCookie.userData.accessToken);
+        const [response, error] = await deleteHeart({house_id:pid});
         if(error)console.log(error);
         setHeart(heart-1);
       } else {
-        const[response, error] = await postHeart({house_id:pid}, userCookie.userData.accessToken);
+        const[response, error] = await postHeart({house_id:pid});
         if(error)console.log(error);
         console.log(response);
         setHeart(heart+1);

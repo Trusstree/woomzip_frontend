@@ -20,7 +20,7 @@ export const postComment = async (comment: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/comment`, comment, { headers: {} });
+    const result = await apiClient.post(`/apis/comment`, comment);
     data = result?.data;
   } catch (err) {
     error = err;

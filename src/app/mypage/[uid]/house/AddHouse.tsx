@@ -1,7 +1,5 @@
 "use client"
 
-import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
 import { ChangeEvent, ChangeEventHandler, useState } from "react";
 import { postHouse } from "@/apis/HouseAPI";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
@@ -16,7 +14,6 @@ import { PriceInputComponent } from "@/components/forms/PriceInputComponent";
 import { PriceComponent } from "@/components/forms/PriceComponent";
 import { SelectDeliveryComponent } from "@/components/forms/SelectDeliveryComponent";
 import { ImageThumbComponent } from "@/components/forms/ImageThumbComponent";
-import { useUser } from "@/app/ContextSession";
 import { getUserCookie } from "@/lib/cookieUtil";
 
 export default function AddHouse() {
@@ -25,20 +22,13 @@ export default function AddHouse() {
   const [deliveryInfo, setDeliveryInfo]=useState([] as Array<any>);
   const [specificationInfo, setSpecificationInfo]=useState({} as specificationInfoType);
   const [imageList, setImageList] = useState([]);
-  // const { data: session } = useSession();
-  // const { userContext, accessToken } = useUser();
   const userCookie = getUserCookie();
 
   const handleHouse = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
     setHouseInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
     return;
   }
-
-  const handleDelivery = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
-    setDeliveryInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));
-    return;
-  }
-
+  
   const handleSpecification = (e:ChangeEvent<HTMLInputElement>):ChangeEventHandler<HTMLInputElement> => {
     if(e) e.preventDefault();
     setSpecificationInfo((oldValues) => ({...oldValues, [e.target.name]: e.target.value}));

@@ -34,7 +34,7 @@ export function MyLikeHouseList(props: HousePostProps) {
         ...searchCondition
       };
 
-      const [ data, error ] = await getLikeHouses(params, userCookie.accessToken);
+      const [ data, error ] = await getLikeHouses(params);
       if(error) {console.log(error); return;}
       setHouseData(data.data[0]["house_info"]);
       setCount(data.data[0]["like_count"]);

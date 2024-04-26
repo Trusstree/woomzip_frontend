@@ -1,12 +1,12 @@
 "use client"
 
 import { signinUser } from "@/apis/userAPI";
-import { UserContext, useUser } from "@/app/ContextSession";
+import { useUser } from "@/app/ContextSession";
 import { alertError } from "@/lib/alertUtil";
 import { setUserCookie } from "@/lib/cookieUtil";
 import { encrypt, getUserdataByToken } from "@/lib/security";
 import { useRouter } from "next/navigation";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 export function SigninForm () {
 	const router = useRouter();
@@ -22,7 +22,7 @@ export function SigninForm () {
 
 		const [ data, error ] = await signinUser(encryptedData);
     if (error) {
-      console.log(error);
+      console.error(error);
       alertError('로그인 에러', `로그인에 실패했어요.`);
       return;
     }
