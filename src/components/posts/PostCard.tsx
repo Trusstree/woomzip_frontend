@@ -53,7 +53,7 @@ export default function PostCard (props: PostCardProps) {
             href={{ pathname: `/community/${data["post_id"]}`,}}
             style={{textDecoration:"none", display: "block", height:"100px", overflow:"hidden"}}
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(data["content"]),//String(truncatedText(, 15))),
+              __html: DOMPurify.sanitize(data["content"]),
             }}/>
 
         </div>

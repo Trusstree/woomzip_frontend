@@ -3,7 +3,7 @@
 import { cardPriceText } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { CSSProperties, useEffect } from "react";
+import { CSSProperties } from "react";
 
 type MainPagePostProps = {
   data: any

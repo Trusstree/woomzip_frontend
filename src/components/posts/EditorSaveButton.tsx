@@ -1,7 +1,7 @@
 "use client"
 
 import { postPost } from "@/apis/postAPI"
-import { CSSProperties, useCallback, useEffect } from "react"
+import { CSSProperties, useCallback } from "react"
 
 type EditorSaveButtonProps = {
   postData: any

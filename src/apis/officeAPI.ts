@@ -6,7 +6,6 @@ export const getOffices = async () => {
   try {
     const result = await apiClient.get(`/apis/office`, {
       params: {},
-      headers: {}
     });
     data = result?.data;
   } catch (err) {
@@ -22,7 +21,6 @@ export const getOffice = async (officeNum: number) => {
   try {
     const result = await apiClient.get(`/apis/office/${officeNum}`, {
       params: {},
-      headers: {}
     });
     data = result?.data;
   } catch (err) {

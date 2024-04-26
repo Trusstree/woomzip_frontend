@@ -6,7 +6,6 @@ export const getRequestions = async () => {
   try {
     const result = await apiClient.get(`/apis/requestion`, {
       params: {},
-      headers: {}
     });
     data = result?.data;
   } catch (err) {
@@ -22,7 +21,6 @@ export const getRequestion = async (requestionNum: number) => {
   try {
     const result = await apiClient.get(`/apis/requestion/${requestionNum}`, {
       params: {},
-      headers: {}
     });
     data = result?.data;
   } catch (err) {
@@ -36,7 +34,7 @@ export const postRequestion = async (requestion: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/requestion/`, requestion, { headers: {} });
+    const result = await apiClient.post(`/apis/requestion/`, requestion);
     data = result?.data;
   } catch (err) {
     error = err;

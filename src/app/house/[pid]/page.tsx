@@ -1,5 +1,4 @@
 import { HouseClient } from "@/app/house/[pid]/HouseClient";
-import { getSession } from "next-auth/react";
 
 type PageParams = {
   pid: number

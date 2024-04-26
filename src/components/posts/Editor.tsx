@@ -1,14 +1,9 @@
 "use client"
 
 import 'react-quill/dist/quill.snow.css';
-import { useCallback, useMemo, useRef, useState } from 'react';
-//import ReactQuill from 'react-quill';
-import DOMPurify from "dompurify";
-import { isRequired } from '@/lib/validator';
+import { useCallback, useMemo, useState } from 'react';
 import { postPost } from '@/apis/postAPI';
 import { confirmSuccess } from '@/lib/alertUtil';
-import { setS3Url } from '@/lib/s3Util';
-import Swal from 'sweetalert2';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 
@@ -28,15 +23,6 @@ const formats = [
   'align',
   'image',
 ];
-
-// const validate = (values: any) => {
-//   const errors = {
-//     title: isRequired(values.title),
-//     text: isRequired(values.text),
-//   };
-
-//   return errors;
-// };
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
@@ -98,10 +84,6 @@ export default function Editor(props: EditorProps) {
       matchVisual: false,
     },
   }),[]);
-
-  const handleDataText = useCallback( async (e)=>{
-    
-  },[]);
 
   const handleSubmit = useCallback(async ()=>{
     // const { value: file } = await Swal.fire({

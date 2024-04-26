@@ -1,12 +1,11 @@
 import { signedApiClient } from "@/configs/apiClient";
 
-export const getLikeHouses = async (params: any, token: string) => {
+export const getLikeHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
     const result = await signedApiClient.get(`/apis/mypage/like-houses`, {
-      params: params,
-      headers: { Authorization: `Bearer ${token}` }
+      params: params
     });
     data = result?.data;
   } catch (err) {

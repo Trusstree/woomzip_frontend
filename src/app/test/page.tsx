@@ -1,16 +1,9 @@
 "use client"
 
 import { getUserCookie } from "@/lib/cookieUtil";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import { useEffect } from "react";
 
 export default function Test() {
   const userCookie = getUserCookie();
-	// const { data: session } = useSession();
-  // useEffect(()=>{
-  //   console.log(session); // 로그인 정보 확인용
-  // },[session])
 
   const testFunc=()=>{
   }

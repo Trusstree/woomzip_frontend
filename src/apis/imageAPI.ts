@@ -4,8 +4,7 @@ export const getImage = async (house_id:number) => {
   let [count, countError] = [undefined, undefined] as any;
   try {
     const result = await apiClient.get(`/apis/image`, {
-      params: {house_id: house_id},
-      headers: {}
+      params: {house_id: house_id}
     });
     count = result?.data;
   } catch (err) {
@@ -18,7 +17,7 @@ export const postImage = async (Image: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/image`, Image, { headers: {} });
+    const result = await apiClient.post(`/apis/image`, Image);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -33,7 +32,6 @@ export const deleteImage = async (url: number) => {
   try {
     const result = await apiClient.delete(`/apis/image`, {
       params: {url: url},
-      headers: {}
     });
     data = result?.data;
   } catch (err) {
@@ -49,7 +47,6 @@ export const putImage = async (house_id:number) => {
   try {
     const result = await apiClient.put(`/apis/image`, { house_id: house_id } , {
         params: {},
-        headers: {}
       });
     data = result?.data;
   } catch (err) {
