@@ -36,7 +36,6 @@ export function HouseList(props: HousePostProps) {
       if(error) {console.error(error); return;}
       
       setHouseData(data.data[0].houses);
-      console.log(data.data[0].houses);
       setCount(data.data[0].total_count);
       if(isSubmit!=undefined)setIsSubmit(false);
     })();

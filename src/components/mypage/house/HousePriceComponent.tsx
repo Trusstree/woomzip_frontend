@@ -28,8 +28,8 @@ export function HousePriceComponent(props: HousePriceComponentProps){
       </div>
       
       <div className="w-100 d-flex flex-column">
-        {optionInfo.length>0 && optionInfo.map((e, i)=>(
-          <PriceComponent key={i} price={e} setData={setOptionInfo} />
+        {optionInfo?.map((e, i)=>(
+          <PriceComponent key={i} index={i} price={e} setData={setOptionInfo} />
         ))}
       </div>
 

@@ -3,17 +3,17 @@
 import { useCallback, useEffect } from "react"
 
 type PriceComponentProps = {
-  key: number
+  index: number
   price: any
   setData: Function
   className?: string
 }
 
 export function PriceComponent(props: PriceComponentProps) {
-  const { key, price, setData, className } = props;
+  const { index, price, setData, className } = props;
 
   const onClick = useCallback(()=>{
-    setData((oldValues)=>(oldValues.filter((_,i)=>i!=key)));
+    setData((oldValues)=>(oldValues.filter((_,i)=>i!=index)));
   }, [price]);
 
   return (

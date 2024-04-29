@@ -9,9 +9,13 @@ import { HouseImageComponent } from "@/components/mypage/house/HouseImageCompone
 import { HouseDeliveryComponent } from "@/components/mypage/house/HouseDeliveryComponent";
 import { HouseInfoComponent } from "@/components/mypage/house/HouseInfoComponent";
 import { HousePriceComponent } from "@/components/mypage/house/HousePriceComponent";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function AddHouse() {
   const userCookie = getUserCookie();
+  const pathname = usePathname();
+  const router = useRouter();
+
 
   const [houseInfo, setHouseInfo] = useState({});
   const [optionInfo, setOptionInfo]=useState([] as Array<any>);
@@ -42,7 +46,6 @@ export default function AddHouse() {
 
     //validate를 위한 부분
     console.log(data);
-
     const [response, error] = await postHouse(data, userCookie.accessToken);
     if(error){
       console.error(error);
@@ -51,8 +54,9 @@ export default function AddHouse() {
     }
 
     console.log(response);
+    
     alertSuccess(houseInfo["house_name"],"제대로 들어갔어요~");
-    //router.push(pathname.replace("/house",""));
+    router.push(pathname.slice(0,pathname.length-6));
   },[houseInfo, optionInfo, deliveryInfo, specificationInfo, imageList]);
   
   return (
@@ -97,7 +101,7 @@ export default function AddHouse() {
             수정 필요가 있다면 검수 후, 수정 요청드릴 수 있습니다.<br/>
             (수정은 우측 상단 *마이페이지*에서 가능합니다.)<br/>
             추가로 표현하고 싶은데, 해당사항이 없다면 전화주세요!
-          </div>ㄸ
+          </div>
           <button
             type="button"
             name="submit"
