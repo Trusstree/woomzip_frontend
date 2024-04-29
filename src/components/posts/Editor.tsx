@@ -31,7 +31,6 @@ export default function Editor(props: EditorProps) {
   const [dataTitle, setDataTitle] = useState("");
   const [dataText, setDataText] = useState("");
   const [dataCategory, setDataCategory] = useState("일반");
-  const [dataThumbnail, setDataThumbnail] = useState("");
 
   // const callback = async (postData:any)=>{
   //   const { data, error } = await postPost({

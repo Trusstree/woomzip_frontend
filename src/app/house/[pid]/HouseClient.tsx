@@ -526,6 +526,12 @@ export function HouseClient (props: HouseComponentProps) {
               </div>
             </div>
           </div>
+
+          <div className="my-5">
+            <div className={"d-flex flex-column mt-4"}>
+              <h3 className="fw-bold" style={{color:"#101648"}}>가격 정보</h3>
+            </div>
+          </div>
   
           {/* 판매자 정보
           <div>

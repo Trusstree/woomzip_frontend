@@ -1,27 +1,39 @@
 "use client"
 
-import { signinUser, signupUser, validateID } from "@/apis/userAPI";
+import { signinUser, signupUser, validateID, validateName } from "@/apis/userAPI";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 
 import { encrypt, getUserdataByToken } from "@/lib/security";
-import { isEmail, isID, isPassword, isRequired } from "@/lib/validator";
+import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/validator";
 import { useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export function SignupForm() {
 	const router = useRouter();
-	const [id, setID]=useState(undefined);
-	const [pw, setPW]=useState(undefined);
-	const [repw, setRePW]=useState(undefined);
-	const [name, setName]=useState(undefined);
-	const [email, setEmail]=useState(undefined);
-	const [phoneNumber, setPhoneNumber]=useState(undefined);
-	const [gender, setGender]=useState(undefined);
-	const [birthday, setBirthday]=useState(undefined);
-	const [addr, setAddr]=useState(undefined);
+	const [id, setID]=useState("");
+	const [pw, setPW]=useState("");
+	const [repw, setRePW]=useState("");
+	const [name, setName]=useState("");
+	const [nickname, setNickname]=useState("");
+	const [email, setEmail]=useState("");
+	const [phoneNumber, setPhoneNumber]=useState("");
+	const [gender, setGender]=useState("");
+	const [birthday, setBirthday]=useState("1970-01-01");
+	const [addr, setAddr]=useState("");
+
+	const handlePhoneNumber = (e) => {
+    const regex = /^[0-9\b -]{0,13}$/;
+    if (regex.test(e.target.value)) setPhoneNumber(e.target.value);
+  };
+
+  useEffect(()=>{
+    if (phoneNumber.length === 10) setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+    if (phoneNumber.length === 11) setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+		if (phoneNumber.length === 13) setPhoneNumber(phoneNumber.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+		if (phoneNumber.length === 14) setPhoneNumber(phoneNumber.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+  },[phoneNumber]);
 
 	const submit = async ()=>{
-		
 		if(!isID(id)) { return alertError('ID', `ID를 8~16자 사이로 숫자와 함께 입력해주세요!`);}
 		const [vid, vidError] = await validateID(id);
 		if(vidError) { return alertError('ID', `ID가 중복되었어요!`);}
@@ -29,17 +41,18 @@ export function SignupForm() {
 		if(!isPassword(pw)) { return alertError('PW', `비밀번호를 8~16자 사이로 입력해주세요!`);}
 		if(!isEmail(email)) { return alertError('이메일', `이메일 형식에 맞게 입력해주세요!`);}
 		if(!isRequired(name)) { return alertError('이름', `이름을 입력해주세요!`);}
-		const [vname, vnameError] = await validateID(id);
+		const [vname, vnameError] = await validateName(id);
 		if(vnameError) { return alertError('이름', `이름이 중복되었어요!`);}
-		if(!isRequired(phoneNumber)) { return alertError('연락처', `연락처를 입력해주세요!`);}
+		if(!isRequired(nickname)) { return alertError('별명', `별명을 입력해주세요!`);}
+		if(!isPhoneNumber(phoneNumber)) { return alertError('연락처', `연락처를 형식에 맞게 입력해주세요!`);}
 		if(!isRequired(gender)) { return alertError('성별', `성별을 입력해주세요!`);}
-		if(!isRequired(birthday)) { return alertError('생년월일', `생년월일을 입력해주세요!`);}
 		if(!isRequired(addr)) { return alertError('주소', `주소를 입력해주세요!`);}
 
 		const encryptedData = {
 			login_id: id,
 			password: encrypt(pw),
-			nickname: name,
+			name: name,
+			nickname: nickname,
 			email: email,
 			phone_number: phoneNumber,
 			gender: gender,
@@ -52,12 +65,12 @@ export function SignupForm() {
 		const [ data, error ] = await signupUser(encryptedData);
     if (error) {
       console.log(error);
-      alertError('로그인 에러', `로그인에 실패했어요.`);
+      alertError('로그인 에러', error.message || `회원가입에 실패했어요.`);
       return;
     }
 
 		alertSuccess('회원가입 완료', '회원가입에 성공했습니다!');
-    router.push('/');
+    router.push('/signin');
     return;
 	}
 
@@ -77,6 +90,22 @@ export function SignupForm() {
 					onChange={(e)=>{setName(e.target.value);}}
 					name={"name"}
 					value={name}/>
+			</div>
+
+			<div className={`d-flex mb-3`}>
+				<label
+					htmlFor={`signin_name`}
+					className="fs-5 col-2"
+					style={{color:"#101648"}}>
+					{"별명"}
+				</label>
+				<input
+					className="w-100"
+					type='text'
+					id={`signin_name`}
+					onChange={(e)=>{setNickname(e.target.value);}}
+					name={"nickname"}
+					value={nickname}/>
 			</div>
 
 			<div className={`d-flex mb-3`}>
@@ -190,7 +219,7 @@ export function SignupForm() {
 					className="w-100"
 					type='text'
 					id={`signin_phoneNumber`}
-					onChange={(e)=>{setPhoneNumber(e.target.value);}}
+					onChange={handlePhoneNumber}
 					name={"phoneNumber"}
 					value={phoneNumber}/>
 			</div>
@@ -204,7 +233,7 @@ export function SignupForm() {
 				</label>
 				<input
 					className="w-100"
-					type='text'
+					type='date'
 					id={`signin_birthday`}
 					onChange={(e)=>{setBirthday(e.target.value);}}
 					name={"birthday"}

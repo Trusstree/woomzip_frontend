@@ -3,9 +3,9 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Community from "./Community";
-import House from "./House";
-import Profile from "./Profile";
+import Community from "../../../components/mypage/Community";
+import House from "../../../components/mypage/House";
+import Profile from "../../../components/mypage/Profile";
 import { getUser } from "@/apis/userAPI";
 import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
 import PostMenu from "@/components/posts/PostMenu";

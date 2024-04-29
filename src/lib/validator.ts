@@ -1,4 +1,4 @@
-export function isRequired(value: any, customMessage?: string) {
+export function isRequired(value: any, ) {
   if (value == null || value == undefined || (value?.length ?? 0) <= 0) {
     return false; // customMessage || '해당 항목을 반드시 입력해주세요.';
   }
@@ -6,7 +6,7 @@ export function isRequired(value: any, customMessage?: string) {
   return true;
 }
 
-export function isID(value: any, minLength = 8, maxLength = 16, customMessage?: string) {
+export function isID(value: any, minLength = 8, maxLength = 16, ) {
   if (!value?.length) return false;
 
   const pattern = new RegExp(`^[a-z][a-z0-9]{${minLength - 1},${maxLength - 1}}$`);
@@ -18,7 +18,7 @@ export function isID(value: any, minLength = 8, maxLength = 16, customMessage?: 
   return true;
 }
 
-export function isPassword(value: any, minLength = 8, maxLength = 16, customMessage?: string) {
+export function isPassword(value: any, minLength = 8, maxLength = 16, ) {
   if (!value?.length) return false;
 
   const pattern = new RegExp(`^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$~!@$!%*#^?&\\(\\)\-_=+]).{${minLength},${maxLength}}$`);
@@ -30,10 +30,22 @@ export function isPassword(value: any, minLength = 8, maxLength = 16, customMess
   return true;
 }
 
-export function isEmail(value: any, customMessage?: string) {
+export function isEmail(value: any, ) {
   if (!value?.length) return false;
 
   const pattern = new RegExp(`^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$`);
+
+  if (!pattern.test(value)) {
+    return false; // customMessage || `이메일을 올바르게 입력해 주세요.`;
+  }
+
+  return true;
+}
+
+export function isPhoneNumber(value: any) {
+  if (!value?.length) return false;
+
+  const pattern = new RegExp(`/^[0-9\b -]{0,13}$/`);
 
   if (!pattern.test(value)) {
     return false; // customMessage || `이메일을 올바르게 입력해 주세요.`;
