@@ -4,7 +4,6 @@ import { useUser } from "@/app/ContextSession";
 import { getUserCookie } from "@/lib/cookieUtil";
 import { setS3Url } from "@/lib/s3Util";
 import moment from "moment";
-import { useSession } from "next-auth/react";
 import { ChangeEvent } from "react";
 
 type ImageInputComponentProps = {
@@ -16,8 +15,6 @@ type ImageInputComponentProps = {
 
 export function ImageInputComponent(props: ImageInputComponentProps) {
   const { data, name, setData, className } = props;
-  // const { data: session } = useSession();
-  // const { userContext } = useUser();
   const userCookie = getUserCookie();
   
   const setS3Image = async (e:ChangeEvent<HTMLInputElement>) => {

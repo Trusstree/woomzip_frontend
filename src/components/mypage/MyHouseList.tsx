@@ -40,7 +40,7 @@ export function MyHouseList(props: HousePostProps) {
       setCount(data.data.total_count || data.data[0].total_count);
       if(isSubmit!=undefined)setIsSubmit(false);
     })();
-  },[isSubmit, page])
+  },[isSubmit, page]);
   
   return (
     <>

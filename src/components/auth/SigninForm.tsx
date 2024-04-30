@@ -5,6 +5,7 @@ import { useUser } from "@/app/ContextSession";
 import { alertError } from "@/lib/alertUtil";
 import { setUserCookie } from "@/lib/cookieUtil";
 import { encrypt, getUserdataByToken } from "@/lib/security";
+import { isID, isPassword, isRequired } from "@/lib/validator";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -15,6 +16,12 @@ export function SigninForm () {
 	const [pw, setPW]=useState(undefined);
 
 	const submit = async () => {
+		// 유효성 검사부터
+		if(!isRequired(id)) { alertError('로그인 에러', `아이디를 입력했는지 확인해주세요.`); return; }
+		if(!isRequired(pw)) { alertError('로그인 에러', `비밀번호를 입력했는지 확인해주세요.`); return; }
+		if(!isID(id)) { alertError('로그인 에러', `아이디가 8~16자인지 확인해주세요.`); return; }
+		if(!isPassword(pw)) { alertError('로그인 에러', `비밀번호가 8~16자인지 확인해주세요.`); return; }
+		
 		const encryptedData = {
 			login_id: id,
 			password: encrypt(pw)
@@ -23,11 +30,12 @@ export function SigninForm () {
 		const [ data, error ] = await signinUser(encryptedData);
     if (error) {
       console.error(error);
-      alertError('로그인 에러', `로그인에 실패했어요.`);
+      alertError('로그인 에러', error.response?.data?.message || `로그인에 실패했어요.`);
       return;
     }
 
     const userData = getUserdataByToken(data.data.access_token);
+		
     setUserCookie({
 			accessToken: data.data.access_token,
 			userData:userData

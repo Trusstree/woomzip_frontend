@@ -25,6 +25,7 @@ export function HouseClient (props: HouseComponentProps) {
   const [houseData, setHouseData] = useState(undefined);
   const [imageData, setImageData] = useState(undefined);
   const [optionData, setOptionData] = useState(undefined);
+  const [deliveryData, setDeliveryData] = useState(undefined);
   const [specificationData, setSpecificationData] = useState(undefined);
   const [heart, setHeart] = useState(0);
   const [selectedOptionData, setSelectedOptionData] = useState([]);
@@ -35,12 +36,20 @@ export function HouseClient (props: HouseComponentProps) {
       const [ data, error ] = await getHouse(pid);
       if(error) {console.error(error); return;}
 
-      console.log(parseSpecificationInfo(data.data[0]["house_info"]["specification_info"]));
+      const JSONSpecificityInfo=JSON.parse(data.data[0]["house_info"]["specificity_info"]);
+      const asdf=[];
+      if(JSONSpecificityInfo["default"]) asdf.push(JSONSpecificityInfo["default"]);
+      if(JSONSpecificityInfo["etc"]) asdf.push(JSONSpecificityInfo["etc"]);
       
-      setHouseData({...data.data[0]["house_info"], specificity_info: JSON.parse(data.data[0]["house_info"]["specificity_info"])});
+      setHouseData({
+        ...data.data[0]["house_info"],
+        specificity_info: asdf.join(", ")
+      });
       setImageData(data.data[0]["house_image"]);
       setOptionData(data.data[0]["option_info"]);
       setSpecificationData(parseSpecificationInfo(data.data[0]["house_info"]["specification_info"]));
+      setDeliveryData(JSON.parse(data.data[0]["house_info"]["delivery_unavailable"]).join(", "));
+      setHeart(data.data[0]["house_info"]["like_count"])
     }
     )();
   },[]);
@@ -132,9 +141,13 @@ export function HouseClient (props: HouseComponentProps) {
               </div>
             </div>
             <div className="ms-auto">
-              {houseData["has_model"] &&
+              {houseData["has_model"]=="1" &&
                 <div className="badge text-white p-2 mx-1" style={{backgroundColor:"#136E11"}}>
                 모델하우스
+              </div>}
+              {houseData["is_hut"]=="1" &&
+                <div className="badge text-white p-2 mx-1" style={{backgroundColor:"#136E11"}}>
+                농막주택
               </div>}
             </div>
           </div>
@@ -367,7 +380,7 @@ export function HouseClient (props: HouseComponentProps) {
         style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
         {/* 상세 정보 */}
         <div className={"d-flex flex-column my-5"}>
-          <h3 className="fw-bold" style={{color:"#101648"}}>상세정보</h3>
+          <h3 className="fw-bold" style={{color:"#101648"}}>상세 정보</h3>
           <div className="my-1 row">
             <div className="fw-bold fs-5 fs-5 col-5" style={{color:"#101648"}}>제품명</div>
             <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["house_name"]}</div>
@@ -402,7 +415,7 @@ export function HouseClient (props: HouseComponentProps) {
           </div>
           <div className="my-1 row">
             <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>특이사항</div>
-            <div className="col-7 fs-5" style={{color:"#101648"}}>{`${houseData["specificity_info"]["default"].join(", ")}${houseData["specificity_info"]["etc"]?`, ${houseData["specificity_info"]["etc"]}`:""}`}</div>
+            <div className="col-7 fs-5" style={{color:"#101648"}}>{houseData["specificity_info"]}</div>
           </div>
           <div className="d-flex flex-column">
             <div className="fw-bold fs-5" style={{color:"#101648"}}>제품 소개</div>
@@ -413,7 +426,7 @@ export function HouseClient (props: HouseComponentProps) {
           {/* 제품 사양 */}
           <div className="my-5">
             <div className={"d-flex flex-column mt-4"}>
-              <h3 className="fw-bold" style={{color:"#101648"}}>가격 정보</h3>
+              <h3 className="fw-bold" style={{color:"#101648"}}>제품 사양</h3>
               
               <div className="my-1 row">
                 <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>골조 구조</div>
@@ -524,6 +537,14 @@ export function HouseClient (props: HouseComponentProps) {
                 <div className="fw-bold fs-5" style={{color:"#101648"}}>기타 가격 변동 사항</div>
                 <div className="fs-5" style={{color:"#101648"}}>{houseData["price_variation"]}</div>
               </div>
+            </div>
+          </div>
+
+          {/* 배달 관련 정보 */}
+          <div className="mb-5">
+            <div className={"d-flex flex-column mt-4"}>
+              <h3 className="fw-bold" style={{color:"#101648"}}>배달 지역 정보</h3>
+              <div className="fs-5" style={{color:"#101648"}}>{deliveryData}</div>
             </div>
           </div>
   

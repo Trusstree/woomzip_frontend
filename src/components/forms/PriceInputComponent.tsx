@@ -2,6 +2,7 @@
 
 import { postPrice } from "@/apis/priceAPI"
 import { alertError } from "@/lib/alertUtil"
+import { isRequired } from "@/lib/validator"
 import { ChangeEvent, useCallback, useState } from "react"
 
 type PriceInputComponentProps = {
@@ -26,8 +27,10 @@ export function PriceInputComponent(props: PriceInputComponentProps) {
 
   const submitChange = useCallback(
     async () => {
-      if(!priceData["option_type"].length) {alertError("option_type","한 글자 이상 써야해요 ㅠㅠ"); return;}
-      
+      if(!isRequired(priceData["option_type"])) {alertError("option_type","한 글자 이상 써야해요 ㅠㅠ"); return;}
+      if(!isRequired(priceData["option_product_name"])) {alertError("option_product_name","한 글자 이상 써야해요 ㅠㅠ"); return;}
+      if(!isRequired(priceData["option_product_price"])) {alertError("option_product_price","한 글자 이상 써야해요 ㅠㅠ"); return;}
+
       setData((oldValues) =>([...oldValues, priceData]));
       setPriceData({
         option_type:"",

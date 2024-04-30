@@ -1,6 +1,5 @@
 import { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { signedApiClient } from './apiClient';
-import { getSession } from 'next-auth/react';
 import { getUserCookie, setUserCookie } from '@/lib/cookieUtil';
 import { useUser } from '@/app/ContextSession';
 
@@ -42,7 +41,6 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
   // 요청 전 실행
   client.interceptors.request.use(
     async (request: any) => {
-      //  const session = await getSession();
       const userCookie = getUserCookie();
       
       if(userCookie){
@@ -87,7 +85,7 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
             data: errorConfig.data,
             headers: errorConfig.headers
           });
-          
+          console.log(res);
           if(res.status>=400) throw res;
           else return res;
         }

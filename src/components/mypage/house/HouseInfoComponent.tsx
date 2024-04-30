@@ -1,0 +1,123 @@
+import { RadioComponent } from "@/components/forms/RadioComponent";
+import { SelectComponent } from "@/components/forms/SelectComponent";
+import { TextAreaComponent } from "@/components/forms/TextAreaComponent";
+import { TextBoxComponent } from "@/components/forms/TextBoxComponent";
+
+type HouseInfoComponent = {
+  handleHouse:any
+  setHouseInfo:Function
+  houseInfo:any
+}
+
+export function HouseInfoComponent(props: HouseInfoComponent){
+  const {handleHouse, setHouseInfo, houseInfo} = props;
+
+  return (<div
+    className="py-4 my-4"
+    style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+    <h3 className="fw-bold mb-4" style={{color:"#101648"}}>제품 기본 정보를 입력해주세요.</h3>
+    <div className="d-flex flex-column">
+      <TextBoxComponent className={"my-2"} title={"제품명 (최대 15자)"} name={"house_name"} data={houseInfo} onChange={handleHouse}/>
+      <TextBoxComponent className={"my-2"} title={"실제 사용 평수 (단위: 평)"} name={"total_floor_area"} data={houseInfo} onChange={handleHouse}/>
+      <TextBoxComponent className={"my-2"} title={"건축면적"} name={"building_area"} data={houseInfo} onChange={handleHouse}/>
+      <div className="row">
+        <TextBoxComponent className={"col-8 my-2"} title={"기본 가격(부가세 포함)"} name={"base_price"} data={houseInfo} onChange={handleHouse} />
+        <TextBoxComponent className={"col-4 my-2"} title={"할인율 (없으면 0 입력)"} name={"discount_rate"} data={houseInfo} onChange={handleHouse} />
+      </div>
+      
+      {/* floor */}
+      <RadioComponent
+        title={"층수"}
+        name={"floor"}
+        onChange={handleHouse}
+        data={[
+          {title:"1층", data:1},
+          {title:"2층", data:2},
+          {title:"3층 이상", data:3}
+        ]} />
+
+      {/* room_count */}
+      <RadioComponent
+        title={"방 개수"}
+        name={"room_count"}
+        onChange={handleHouse}
+        data={[
+          {title:"1개", data:1},
+          {title:"2개", data:2},
+          {title:"3개", data:3},
+          {title:"4개", data:4},
+          {title:"5개 이상", data:5}
+        ]} />
+
+      {/* toilet_count */}
+      <RadioComponent
+       title={"화장실 개수"}
+       name={"toilet_count"}
+       onChange={handleHouse}
+        data={[
+          {title:"1개", data:1},
+          {title:"2개", data:2},
+          {title:"3개", data:3},
+          {title:"4개 이상", data:4}
+        ]} />
+
+      {/* estimate_duration */}
+      <RadioComponent
+        title={"예상 소요 기간 (제작일 기준)"}
+        name={"estimate_duration"}
+        onChange={handleHouse}
+        data={[
+          {title:"1개월", data:1},
+          {title:"2개월", data:2},
+          {title:"3개월", data:3},
+          {title:"4개월", data:4},
+          {title:"5개월", data:5},
+          {title:"6개월 이상", data:6}
+        ]} />
+
+      {/* warranty */}
+      <RadioComponent
+        title={"AS 보증 기간"}
+        name={"warranty"}
+        onChange={handleHouse}
+        data={[
+          {title:"없음", data:"없음"},
+          {title:"12개월", data:"12개월"},
+          {title:"24개월", data:"24개월"},
+          {title:"36개월", data:"36개월"}
+        ]} />
+
+      {/* hasModel */}
+      <RadioComponent
+        title={"해당 제품 모델하우스 유/무"}
+        name={"has_model"}
+        onChange={handleHouse}
+        data={[
+          {title:"예", data:1},
+          {title:"아니오", data:0}
+        ]} />
+
+      {/* 농막인지 확인 */}
+      <RadioComponent
+        title={"농막으로 사용가능한지 여부"}
+        name={"is_hut"}
+        onChange={handleHouse}
+        data={[
+          {title:"예", data:1},
+          {title:"아니오", data:0}
+        ]} />
+
+      {/* 특이사항 */}
+      <SelectComponent
+        title={"특이사항 (다중선택 가능)"}
+        name={"specificity_info"}
+        onChange={setHouseInfo}
+        dataList={["다락방","발코니","배란다","옥상","데크",]} />
+
+      <TextAreaComponent className={"my-2"} title={"제품 소개글 (최대 2,000자)"} name={"house_explanation"} data={houseInfo} onChange={handleHouse} placeholder={""}/>
+    </div>
+  </div>
+
+  
+  );
+}
