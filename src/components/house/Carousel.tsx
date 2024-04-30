@@ -1,7 +1,7 @@
 "use client"
 
 import { getHouses } from "@/apis/HouseAPI"
-import { cardPriceText } from "@/lib/stringUtil"
+import { cardPriceText, detailPriceText } from "@/lib/stringUtil"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -71,7 +71,7 @@ export default function Carousel(props: CarouselProps){
                 blurDataURL={"/placeholder.png"}/>
               <div className="carousel-caption d-none d-md-block text-start bg-secondary bg-opacity-50 rounded-5">
                 <h3 className="fw-bold mx-3 my-0 text-white">{e["house_name"]}</h3>
-                <span className="my-0 mx-3 ">#{cardPriceText(e["final_price"])} #{e["building_area"].toFixed(1)}평 #방{e["room_count"]}개 #화장실{e["toilet_count"]}개</span>
+                <span className="my-0 mx-3 ">#{detailPriceText(e["final_price"])} #{e["total_floor_area"].toFixed(1)}평 #방 {e["room_count"]}개 #화장실 {e["toilet_count"]}개</span>
               </div>
             </div>
           ))

@@ -35,6 +35,13 @@ export default function AddHouse() {
   }
 
   const submitFunction = useCallback(async () => {
+    //validate를 위한 부분
+    if(!imageList["representative_image"]){alertError("이미지 에러!", "대표 이미지가 빠졌어요 ㅠㅠ"); return;}
+    if(!imageList["external_images"]){alertError("이미지 에러!", "제품 외부 사진이 빠졌어요 ㅠㅠ"); return;}
+    if(!imageList["internal_images"]){alertError("이미지 에러!", "제품 내부 사진이 빠졌어요 ㅠㅠ"); return;}
+    if(!imageList["floor_plan_images"]){alertError("이미지 에러!", "설계도면 <평면도> 사진이 빠졌어요 ㅠㅠ"); return;}
+    if(!imageList["elevation_plan_images"]){alertError("이미지 에러!", "설계도면 <입면도> 사진이 빠졌어요 ㅠㅠ"); return;}
+    
     const data={
       seller_id: userCookie.userData.uid,
       house_info: houseInfo,
@@ -44,8 +51,8 @@ export default function AddHouse() {
       house_img_url: imageList
     }
 
-    //validate를 위한 부분
     console.log(data);
+
     const [response, error] = await postHouse(data, userCookie.accessToken);
     if(error){
       console.error(error);

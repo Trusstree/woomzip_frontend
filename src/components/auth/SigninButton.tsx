@@ -2,7 +2,6 @@
 
 import { UserContext, useUser } from "@/app/ContextSession";
 import { getUserCookie } from "@/lib/cookieUtil";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 

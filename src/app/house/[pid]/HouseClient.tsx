@@ -49,6 +49,7 @@ export function HouseClient (props: HouseComponentProps) {
       setOptionData(data.data[0]["option_info"]);
       setSpecificationData(parseSpecificationInfo(data.data[0]["house_info"]["specification_info"]));
       setDeliveryData(JSON.parse(data.data[0]["house_info"]["delivery_unavailable"]).join(", "));
+      setHeart(data.data[0]["house_info"]["like_count"])
     }
     )();
   },[]);
