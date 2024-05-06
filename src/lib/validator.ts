@@ -45,7 +45,7 @@ export function isEmail(value: any, ) {
 export function isPhoneNumber(value: any) {
   if (!value?.length) return false;
 
-  const pattern = new RegExp(`/^[0-9\b -]{0,13}$/`);
+  const pattern = new RegExp(/^[0-9\b -]{0,13}$/);
 
   if (!pattern.test(value)) {
     return false; // customMessage || `이메일을 올바르게 입력해 주세요.`;

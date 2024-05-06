@@ -22,7 +22,7 @@ export function SignupForm() {
 	const [addr, setAddr]=useState("");
 
 	const handlePhoneNumber = (e) => {
-    const regex = /^[0-9\b -]{0,13}$/;
+    const regex = new RegExp(/^[0-9\b -]{0,13}$/);
     if (regex.test(e.target.value)) setPhoneNumber(e.target.value);
   };
 
