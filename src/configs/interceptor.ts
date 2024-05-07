@@ -1,7 +1,7 @@
 import { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import { signedApiClient } from "./apiClient";
 import { getUserCookie, setUserCookie } from "@/lib/cookieUtil";
-import { useUser } from "@/app/ContextSession";
+import { useUser } from "@/components/app/ContextSession";
 
 // // 백엔드 연동을 위해 액시오스를 사용함
 // // 이때 액시오스는 인터셉터를 불러와서 백엔드 응답을 전처리 해주는데 그에 대한 코드
@@ -51,7 +51,7 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
     (error: AxiosError) => {
       console.log(error);
       Promise.reject(error);
-    },
+    }
   );
 
   // 응답 전 실행
@@ -77,8 +77,7 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
             userData: userCookie.userData,
           });
 
-          errorConfig.headers["Authorization"] =
-            `Bearer ${error.response.data.data[0].access_token}`;
+          errorConfig.headers["Authorization"] = `Bearer ${error.response.data.data[0].access_token}`;
 
           const res = await signedApiClient({
             method: errorConfig.method,
@@ -95,6 +94,6 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
       }
 
       return Promise.reject(error);
-    },
+    }
   );
 };

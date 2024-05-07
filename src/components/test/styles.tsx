@@ -1,7 +1,8 @@
+"use client"
+
 import Calendar from "react-calendar";
 import styled from "styled-components";
 import "react-calendar/dist/Calendar.css";
-
 
 export const StyledCalendarWrapper = styled.div`
   width: 100%;

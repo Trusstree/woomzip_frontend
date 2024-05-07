@@ -1,6 +1,6 @@
 "use client"
 
-import { UserContext, useUser } from "@/app/ContextSession";
+import { UserContext, useUser } from "@/components/app/ContextSession";
 import { getUserCookie } from "@/lib/cookieUtil";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
