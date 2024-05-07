@@ -10,14 +10,14 @@ const LivingCardExample = [
     img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"}
     url={"/living/parvilion"} />,
   <LivingCard
-    company={undefined}
-    title={undefined}
-    addr={undefined}
-    img={undefined}
+    company={"탑디자인"}
+    title={"자연 속 작은 집"}
+    addr={"경기도 이천시"}
+    img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/topDesign1.png"}
     url={undefined} />
 ]
 
-export default function Test() {
+export default function Living() {
 
   return (
     <main>
@@ -28,7 +28,7 @@ export default function Test() {
       </div>
       {/*부모 컨테이너 무시하고, 양옆 최대로 확대하는 방법 찾아야함*/}
 
-      <div className="row" style={{width:"100%", minWidth:"400px", padding:"10px", margin:"50px 0 800px 0"}}>
+      <div className="row" style={{width:"100%", minWidth:"400px", padding:"10px", margin:"50px 0 400px 0"}}>
         {LivingCardExample}
       </div>
     </main>

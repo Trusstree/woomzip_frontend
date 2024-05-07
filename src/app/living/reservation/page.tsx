@@ -3,7 +3,9 @@ import React from 'react';
 import CalenderForm from '@/components/test/Calender'; // CalenderForm 컴포넌트 import 수정
 import { CheckboxComponent } from "@/components/forms/CheckboxComponent";
 
+
 export default function Reservation() {
+
     return (
         <main>
             <div style={{fontSize:"19px", margin:"50px 0 0 2px", color:"gray"}}>모두가하우징</div>
@@ -64,7 +66,9 @@ export default function Reservation() {
                         <div className="container" style={{width:"350px", margin:"0"}}>힐링리버의 체험 조건을 확인하였고, 동의합니다.</div>
                         <input className="container" style={{border:"none", width:"50px", padding:"0", margin:"0"}} type="checkbox"></input>
                     </div>
-                    <button style={{width:"400px", height:"50px", borderRadius:"10px", padding:"10px", backgroundColor:"#101648", color:"white", fontSize:"20px", fontWeight:"600", textAlign:"center"}}>예약 요청하기</button>
+                    <button 
+                        style={{width:"400px", height:"50px", borderRadius:"10px", padding:"10px", backgroundColor:"#101648", color:"white", fontSize:"20px", fontWeight:"600", textAlign:"center"}}
+                        >예약 요청하기</button>
                 </div>
             </div>
         </main>
