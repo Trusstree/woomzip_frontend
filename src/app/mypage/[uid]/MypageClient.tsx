@@ -10,7 +10,7 @@ import { getUser } from "@/apis/userAPI";
 import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
 import PostMenu from "@/components/posts/PostMenu";
 import { getUserCookie } from "@/lib/cookieUtil";
-import { useUser } from "@/app/ContextSession";
+import { useUser } from "@/components/app/ContextSession";
 
 type MypageClientProps = {
   uid: string

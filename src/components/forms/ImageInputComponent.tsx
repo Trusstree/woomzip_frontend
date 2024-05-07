@@ -1,6 +1,6 @@
 "use client"
 
-import { useUser } from "@/app/ContextSession";
+import { useUser } from "@/components/app/ContextSession";
 import { getUserCookie } from "@/lib/cookieUtil";
 import { setS3Url } from "@/lib/s3Util";
 import moment from "moment";

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyledCalendarWrapper, StyledCalendar, StyledDate, StyledToday, StyledDot } from "./styles";
 import moment from "moment";
 
@@ -10,8 +10,8 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 const CalenderForm = () => {
     const today = new Date();
     const [date, setDate] = useState<Value>(today);
-    const [activeStartDate, setActiveStartDate] = useState<Date | null>(new Date());
-    const attendDay = ["2023-12-03", "2023-12-13"]; // 출석한 날짜 예시
+    const [activeStartDate, setActiveStartDate] = useState<Date | null>(today);
+    const attendDay = ["2024-05-03", "2024-05-13"]; // 출석한 날짜 예시
 
     const handleDateChange = (newDate: Value) => {
         setDate(newDate);
@@ -23,9 +23,15 @@ const CalenderForm = () => {
         setDate(today);
     };
 
+    useEffect(()=>{
+        console.log(date);
+        console.log(activeStartDate);
+    }, [date, activeStartDate])
+
     return (
         <StyledCalendarWrapper>
             <StyledCalendar
+                locale='ko'
                 value={date}
                 onChange={handleDateChange}
                 formatDay={(locale, date) => moment(date).format("D")}

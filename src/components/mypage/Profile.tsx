@@ -10,7 +10,7 @@ import moment from "moment";
 import ImageBox from "@/components/mypage/ImageBox";
 import { getUserCookie, removeUserCookie } from "@/lib/cookieUtil";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/app/ContextSession";
+import { useUser } from "@/components/app/ContextSession";
 
 type ProfileProps = {
 }

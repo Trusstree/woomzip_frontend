@@ -1,7 +1,7 @@
 import { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { signedApiClient } from './apiClient';
 import { getUserCookie, setUserCookie } from '@/lib/cookieUtil';
-import { useUser } from '@/app/ContextSession';
+import { useUser } from '@/components/app/ContextSession';
 
 // // 백엔드 연동을 위해 액시오스를 사용함
 // // 이때 액시오스는 인터셉터를 불러와서 백엔드 응답을 전처리 해주는데 그에 대한 코드

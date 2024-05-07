@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from 'react';
 import CalenderForm from '@/components/test/Calender'; // CalenderForm 컴포넌트 import 수정
-import { CheckboxComponent } from "@/components/forms/CheckboxComponent";
 
 export default function Reservation() {
     return (
