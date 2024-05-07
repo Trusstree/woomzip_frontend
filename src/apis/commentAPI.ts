@@ -5,8 +5,8 @@ export const getComment = async (id: string) => {
 
   try {
     const result = await apiClient.get(`/apis/comment`, {
-      params: {id: id},
-      headers: {}
+      params: { id: id },
+      headers: {},
     });
     data = result?.data;
   } catch (err) {

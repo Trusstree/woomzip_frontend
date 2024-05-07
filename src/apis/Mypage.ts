@@ -5,12 +5,12 @@ export const getLikeHouses = async (params: any) => {
 
   try {
     const result = await signedApiClient.get(`/apis/mypage/like-houses`, {
-      params: params
+      params: params,
     });
     data = result?.data;
   } catch (err) {
     error = err;
   }
 
-  return [ data, error ];
+  return [data, error];
 };

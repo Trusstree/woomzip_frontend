@@ -6,14 +6,14 @@ export const getHouses = async (params: any) => {
   try {
     const result = await apiClient.get(`/apis/house/find-my-house`, {
       params: params,
-      headers: {}
+      headers: {},
     });
     data = result?.data;
   } catch (err) {
     error = err;
   }
 
-  return [ data, error ];
+  return [data, error];
 };
 
 export const getHouse = async (houseNum: number) => {
@@ -22,18 +22,18 @@ export const getHouse = async (houseNum: number) => {
   try {
     const result = await apiClient.get(`/apis/house/find-my-house/detail`, {
       params: { hid: houseNum },
-      headers: {}
+      headers: {},
     });
-    
+
     data = result?.data;
   } catch (err) {
     error = err;
   }
 
-  return [ data, error ];
+  return [data, error];
 };
 
-export const postHouse = async (house: any, token:string) => {
+export const postHouse = async (house: any, token: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
@@ -43,7 +43,7 @@ export const postHouse = async (house: any, token:string) => {
     error = err;
   }
 
-  return [ data, error ];
+  return [data, error];
 };
 
 export const updateHouse = async (house: any) => {
@@ -56,5 +56,5 @@ export const updateHouse = async (house: any) => {
     error = err;
   }
 
-  return [ data, error ];
-}
+  return [data, error];
+};

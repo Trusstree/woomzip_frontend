@@ -21,5 +21,6 @@ export function Analytics() {
         })(window,document,'script','dataLayer',"${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}");
 
 `}</Script>
-</>
-)}
+    </>
+  );
+}

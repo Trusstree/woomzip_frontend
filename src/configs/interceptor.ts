@@ -1,7 +1,7 @@
-import { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
-import { signedApiClient } from './apiClient';
-import { getUserCookie, setUserCookie } from '@/lib/cookieUtil';
-import { useUser } from '@/app/ContextSession';
+import { AxiosError, AxiosInstance, AxiosResponse } from "axios";
+import { signedApiClient } from "./apiClient";
+import { getUserCookie, setUserCookie } from "@/lib/cookieUtil";
+import { useUser } from "@/app/ContextSession";
 
 // // 백엔드 연동을 위해 액시오스를 사용함
 // // 이때 액시오스는 인터셉터를 불러와서 백엔드 응답을 전처리 해주는데 그에 대한 코드
@@ -42,8 +42,8 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
   client.interceptors.request.use(
     async (request: any) => {
       const userCookie = getUserCookie();
-      
-      if(userCookie){
+
+      if (userCookie) {
         request.headers["Authorization"] = `Bearer ${userCookie.accessToken}`;
       }
       return request;
@@ -51,7 +51,7 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
     (error: AxiosError) => {
       console.log(error);
       Promise.reject(error);
-    }
+    },
   );
 
   // 응답 전 실행
@@ -64,36 +64,37 @@ export const AxiosInterceptorSetup = (client: AxiosInstance) => {
       const errorConfig = error.response.config;
 
       try {
-        if(status==401){
+        if (status == 401) {
           console.log(error);
           //refreshAccessToken(session.user.accessToken);
         }
 
         // Access Token 재발급해서 다시 신호 보내주는 작업
-        if(status==402){
+        if (status == 402) {
           const userCookie = getUserCookie();
           setUserCookie({
             accessToken: error.response.data.data[0].access_token,
-            userData: userCookie.userData
+            userData: userCookie.userData,
           });
 
-          errorConfig.headers["Authorization"] = `Bearer ${error.response.data.data[0].access_token}`;
+          errorConfig.headers["Authorization"] =
+            `Bearer ${error.response.data.data[0].access_token}`;
 
           const res = await signedApiClient({
             method: errorConfig.method,
             url: errorConfig.url,
             data: errorConfig.data,
-            headers: errorConfig.headers
+            headers: errorConfig.headers,
           });
           console.log(res);
-          if(res.status>=400) throw res;
+          if (res.status >= 400) throw res;
           else return res;
         }
-      } catch(referenceError){
+      } catch (referenceError) {
         return Promise.reject(referenceError);
       }
 
       return Promise.reject(error);
-    }
+    },
   );
 };

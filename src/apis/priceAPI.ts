@@ -1,17 +1,17 @@
 import { apiClient } from "@/configs/apiClient";
 
-export const getPrice = async (house_id:number) => {
+export const getPrice = async (house_id: number) => {
   let [count, countError] = [undefined, undefined] as any;
   try {
     const result = await apiClient.get(`/apis/price`, {
-      params: {house_id: house_id},
+      params: { house_id: house_id },
     });
     count = result?.data;
   } catch (err) {
     countError = err;
   }
-  return [ count, countError ];
-}
+  return [count, countError];
+};
 
 export const postPrice = async (Price: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -23,7 +23,7 @@ export const postPrice = async (Price: any) => {
     error = err;
   }
 
-  return [ data, error ];
+  return [data, error];
 };
 
 export const deletePrice = async (idx: number) => {
@@ -31,27 +31,31 @@ export const deletePrice = async (idx: number) => {
 
   try {
     const result = await apiClient.delete(`/apis/price`, {
-      params: {idx: idx},
+      params: { idx: idx },
     });
     data = result?.data;
   } catch (err) {
     error = err;
   }
 
-  return [ data, error ];
-}
+  return [data, error];
+};
 
-export const putPrice = async (house_id:number) => {
+export const putPrice = async (house_id: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.put(`/apis/price`, { house_id: house_id } , {
+    const result = await apiClient.put(
+      `/apis/price`,
+      { house_id: house_id },
+      {
         params: {},
-      });
+      },
+    );
     data = result?.data;
   } catch (err) {
     error = err;
   }
 
-  return [ data, error ];
-}
+  return [data, error];
+};

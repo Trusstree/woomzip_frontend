@@ -5,14 +5,14 @@ export const getAccessToken = async (accessToken: string) => {
 
   try {
     const result = await apiClient.get(`/apis/auth/access`, {
-      headers: { 'X-AUTH-TOKEN': accessToken } 
+      headers: { "X-AUTH-TOKEN": accessToken },
     });
     data = result?.data;
   } catch (err) {
     error = err;
   }
 
-  return [ data, error ];
+  return [data, error];
 };
 
 export const refreshAccessToken = async (accessToken: string) => {
@@ -25,5 +25,5 @@ export const refreshAccessToken = async (accessToken: string) => {
     error = err;
   }
 
-  return [ data, error ];
+  return [data, error];
 };

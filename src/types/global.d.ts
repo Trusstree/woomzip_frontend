@@ -2,7 +2,7 @@ export {};
 
 declare global {
   interface Window {
-    naver:any;
-    Kakao:any;
+    naver: any;
+    Kakao: any;
   }
 }

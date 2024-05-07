@@ -7,13 +7,9 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className={``}>
-
       {/* 캐러셀 */}
       <div className={`my-3 d-flex`}>
-        <Carousel
-          className="w-100 me-2"
-          skip={1}
-          limit={4} />
+        <Carousel className="w-100 me-2" skip={1} limit={4} />
         <Image
           className="d-none d-md-block rounded-4"
           alt="main post"
@@ -28,17 +24,17 @@ export default function Home() {
         title={"다양한 집들을 구경해보세요!"}
         routeUrl={"/house"}
         routeText={"더보기"}
-        horizontalScroll={true} >
-        <HouseList
-          numShowItems={6}
-          searchCondition={{}} />
+        horizontalScroll={true}
+      >
+        <HouseList numShowItems={6} searchCondition={{}} />
       </PostMenu>
 
       <PostMenu
         title={"건축이 처음이라면? 확인해야 할 정보!"}
         routeUrl={"/community"}
         routeText={"더보기"}
-        horizontalScroll={true} >
+        horizontalScroll={true}
+      >
         <PostList numShowItems={6} />
       </PostMenu>
     </main>

@@ -34,7 +34,9 @@ export const postOffice = async (office: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/office/`, office, { headers: {} });
+    const result = await apiClient.post(`/apis/office/`, office, {
+      headers: {},
+    });
     data = result?.data;
   } catch (err) {
     error = err;
