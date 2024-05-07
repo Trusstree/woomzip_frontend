@@ -1,22 +1,22 @@
 import Image from "next/image";
-
+import React from 'react';
 
 export default function Test() {
 
   return (
     <main>
 
-      <div style={{backgroundColor:"#8C8C8C", width:"100%", height:"263px", color:"white", padding:"20px"}}>
+      <div style={{backgroundColor:"#8C8C8C", height:"263px", color:"white", padding:"20px",  width:"100%"}}>
         <div style={{marginTop:"50px", fontSize:"30px"}}>전원주택 살아보기</div>
         <div style={{fontSize:"14px"}}>전원생활이 꿈이라면? 살아보고 결정하세요!</div>
       </div>
       {/*부모 컨테이너 무시하고, 양옆 최대로 확대하는 방법 찾아야함*/}
 
-      <div className="row" style={{width:"100%", minWidth:"400px", padding:"10px", margin:"50px 0 100px 0"}}>
+      <div className="row" style={{width:"100%", minWidth:"400px", padding:"10px", margin:"50px 0 800px 0"}}>
         <div className="card" style={{border:"none", width:"50%", minWidth:"400px"}}>
           <Image
             className="card-img-top"
-            style={{borderRadius:"25px"}}
+            style={{borderRadius:"25px", objectFit:"cover"}}
            alt="main-img"
             src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
             width={100}
@@ -36,7 +36,7 @@ export default function Test() {
         <div className="card" style={{border:"none", width:"50%", minWidth:"400px"}}>
           <Image
            className="card-img-top"
-           style={{borderRadius:"25px"}}
+           style={{borderRadius:"25px", objectFit:"cover"}}
            alt="main-img"
            src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
            width={100}

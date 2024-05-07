@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 
-export default function Test() {
+export default function Parvilion() {
 
   return (
     <main>
@@ -14,7 +14,7 @@ export default function Test() {
             <div className="container" style={{margin:"0", padding:"5px", width:"50%"}}>
               <Image
               className="card-img-top"
-              style={{borderRadius:"27px 0 0 27px"}}
+              style={{borderRadius:"27px 0 0 27px", objectFit:"cover"}}
               alt="main-img"
               src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
               width={100}
@@ -25,7 +25,7 @@ export default function Test() {
               <div className="container" style={{margin:"0px", padding:"5px", width:"100%"}}>
                 <Image
                   className="card-img-top"
-                  style={{marginBottom:"5px"}}
+                  style={{marginBottom:"5px", objectFit:"cover"}}
                   alt="main-img"
                   src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
                   width={100}
@@ -34,7 +34,7 @@ export default function Test() {
                 
                 <Image
                   className="card-img-top"
-                  style={{marginTop:"5px"}}
+                  style={{marginTop:"5px", objectFit:"cover"}}
                   alt="main-img"
                   src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
                   width={100}
@@ -46,7 +46,7 @@ export default function Test() {
               <div className="container" style={{margin:"0px", padding:"5px", width:"100%"}}>
                 <Image
                   className="card-img-top"
-                  style={{marginBottom:"5px", borderRadius:"0 27px 0 0"}}
+                  style={{marginBottom:"5px", borderRadius:"0 27px 0 0", objectFit:"cover"}}
                   alt="main-img"
                   src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
                   width={100}
@@ -55,7 +55,7 @@ export default function Test() {
                 
                 <Image
                   className="card-img-top"
-                  style={{marginTop:"5px", borderRadius:"0 0 27px 0"}}
+                  style={{marginTop:"5px", borderRadius:"0 0 27px 0", objectFit:"cover"}}
                   alt="main-img"
                   src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
                   width={100}
@@ -72,7 +72,7 @@ export default function Test() {
                 지금까지 20명이 살아봤어요!
                 </div>
                 <div style={{color:"gray", fontSize:"14px"}}>후기(17)</div><span style={{float:"right", marginRight:"20px", color:"black", fontSize:"14px"}}>전체보기</span>
-                <div className="container" style={{/*backgroundColor:"aqua",*/ width:"100%", fontSize:"14px", color:"gray", overflow:"scroll"}}>
+                <div className="container" style={{/*backgroundColor:"aqua",*/ width:"100%", minWidth:"400px",fontSize:"14px", color:"gray", overflow:"scroll"}}>
                 <div className="container row" style={{/*backgroundColor:"black",*/ padding:"0", width:"3000px", height:"200px", float:"left"}}>
                     <div className="card" style={{/*backgroundColor:"white",*/ marginRight:"10px", width:"430px", minWidth:"350px", height:"100%", border:"1px solid lightGray", borderRadius:"15px", overflow:"hidden"}}>
                     <div style={{color:"gray", padding:"10px"}}>닉네임</div>
@@ -83,7 +83,7 @@ export default function Test() {
                         <div className="container" style={{/*backgroundColor:"pink",*/ float:"right", margin:"0", padding:"0" ,width:"100px", height:"100px"}}>
                         <Image
                         className="card-img-top"
-                        style={{borderRadius:"10px"}}
+                        style={{borderRadius:"10px", objectFit:"cover"}}
                         alt="main-img"
                         src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
                         width={100}
@@ -109,7 +109,7 @@ export default function Test() {
                         <div className="container" style={{/*backgroundColor:"pink",*/ float:"right", margin:"0", padding:"0" ,width:"100px", height:"100px"}}>
                         <Image
                         className="card-img-top"
-                        style={{borderRadius:"10px"}}
+                        style={{borderRadius:"10px", objectFit:"cover"}}
                         alt="main-img"
                         src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
                         width={100}
@@ -129,25 +129,41 @@ export default function Test() {
                 </div>
 
             <div style={{fontWeight:"600", lineHeight:"30px"}}>
-                <div style={{marginTop:"80px", fontSize:"25px"}}>
-                    힐링리버 소개
-                </div>
-                <div style={{fontSize:"18px", marginTop:"30px"}}>
-                힐링리버는 강원도 화천군에 위치한 모두가하우징의 체험형 홍보관입니다.전원주택의 삶을 꿈꾸시는 분들에게 전원생활과 모두가하우징의 건축능력을 체험하실 수 있도록 하기 위해 제공합니다.
-                </div>
-
-                <div style={{marginTop:"80px", fontSize:"25px"}}>
+                <div style={{marginTop:"80px", fontSize:"25px", color:"#101648"}}>
                     체험 조건
                 </div>
-                <div style={{fontSize:"18px", marginTop:"30px"}}>
-                1. 체험 후기 작성  2. SNS에 체험 작성(유튜브, 블로그, 카페 등)
+                <div style={{fontSize:"18px", marginTop:"30px", padding:"10px"}}>
+                ✅  체험 후기 작성<br/>✅  SNS에 체험 후기 작성(유튜브, 블로그, 카페 등)
                 </div>
 
-                <div style={{marginTop:"80px", fontSize:"25px"}}>
+                <div style={{marginTop:"80px", fontSize:"25px", color:"#101648"}}>
                     보증금 반환 조건
                 </div>
-                <div style={{fontSize:"18px", margin:"30px 0 200px 0"}}>
-                1. 체험 조건 이수  2. 청소 상태 원상복구  3. 가이드라인 준수
+                <div style={{fontSize:"18px", margin:"30px 0 60px 0", padding:"10px"}}>
+                ✅  체험 조건 이수<br/>✅  청소 상태 원상복구<br/>✅  가이드라인 준수
+                </div>
+                <div className="container" style={{width:"100%", backgroundColor:"lightGray", marginBottom:"200px", padding:"0"}}>
+                  <div style={{margin:"0", fontSize:"25px", color:"#101648", paddingTop:"50px"}}>
+                      힐링리버 소개
+                  </div>
+                  <div style={{fontSize:"18px", marginTop:"30px", padding:"10px"}}>
+                  힐링리버는 강원도 화천군에 위치한 모두가하우징의 체험형 홍보관입니다.<br/>전원주택의 삶을 꿈꾸시는 분들에게 전원생활과 모두가하우징의 주택을 체험하실 수 있도록 하기 위해 제공합니다.
+                  </div>
+                  <div style={{margin:"0", fontSize:"25px", color:"#101648", paddingTop:"50px"}}>
+                      편의시설
+                  </div>
+                  <div style={{fontSize:"18px", marginTop:"30px", padding:"10px"}}>
+                  ● TV<br/>● 침대<br/>● 침구<br/>● 싱크대<br/>● 하이라이트<br/>● 조리도구<br/>● 전자레인지
+                  </div>
+                  <div style={{margin:"0", fontSize:"25px", color:"#101648", paddingTop:"50px"}}>
+                      주의사항
+                  </div>
+                  <div style={{fontSize:"18px", marginTop:"30px", padding:"10px"}}>
+                  ● 2층과 주변 주택들에 주민들이 살고 있으니 늦은 밤에는 정숙해주세요.<br/>
+                  ● 전원생활 체험 주택입니다. 전문 숙소가 아니기에 불편함이 있을 수 있습니다.<br/>
+                  ● 지속적인 무료 서비스 제공을 위해, 퇴실 시 다음 사람을 위해 기존 상태와 동일하게 청소해주셔야 합니다.<br/>
+                  ● 화장지, 수건 등 필요한 세면도구는 지참해주시길 바랍니다.
+                  </div>
                 </div>
             </div>
                 
@@ -162,7 +178,7 @@ export default function Test() {
                     <div className="container" style={{width:"50%", textAlign:"right"}}>2개</div>
                 </div>
                 <div className="container row" style={{width:"100%",padding:"10px", margin:"45px 0 0 0"}}>
-                    <div className="container" style={{width:"50%", textAlign:"right"}}>최대 6명</div>
+                    <div className="container" style={{width:"50%", textAlign:"right"}}>최대 5명</div>
                     <div className="container" style={{width:"50%", textAlign:"right"}}>최대 3일</div>
                 </div>
                 <div className="container row" style={{width:"100%",padding:"10px", margin:"45px 0 0 0"}}>
