@@ -1,5 +1,21 @@
+import { LivingCard } from "@/components/living/LivingCard";
 import Image from "next/image";
 import React from 'react';
+
+const LivingCardExample = [
+  <LivingCard
+    company={"모두가하우징"}
+    title={"힐링리버"}
+    addr={"강원도 화천군"}
+    img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"}
+    url={"/living/parvilion"} />,
+  <LivingCard
+    company={undefined}
+    title={undefined}
+    addr={undefined}
+    img={undefined}
+    url={undefined} />
+]
 
 export default function Test() {
 
@@ -13,49 +29,8 @@ export default function Test() {
       {/*부모 컨테이너 무시하고, 양옆 최대로 확대하는 방법 찾아야함*/}
 
       <div className="row" style={{width:"100%", minWidth:"400px", padding:"10px", margin:"50px 0 800px 0"}}>
-        <div className="card" style={{border:"none", width:"50%", minWidth:"400px"}}>
-          <Image
-            className="card-img-top"
-            style={{borderRadius:"25px", objectFit:"cover"}}
-           alt="main-img"
-            src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
-            width={100}
-            height={270}
-            unoptimized={true}/>
-        
-          <div style={{color:"gray", padding:"20px"}}>
-           <div style={{fontSize:"15px", marginLeft:"2px"}}>모두가하우징</div>
-           <div style={{fontSize:"25px", color:"#101648"}}>힐링리버</div>
-           <div style={{fontSize:"15px", marginLeft:"10px", marginTop:"10px"}}>강원도 화천군</div>
-           <hr/>
-           <span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>지금까지 20명이 살아봤어요!</span>
-           <span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>또 살아보고 싶어요</span>
-           <span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>따뜻해요</span>
-         </div>
-        </div>
-        <div className="card" style={{border:"none", width:"50%", minWidth:"400px"}}>
-          <Image
-           className="card-img-top"
-           style={{borderRadius:"25px", objectFit:"cover"}}
-           alt="main-img"
-           src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
-           width={100}
-           height={270}
-           unoptimized={true}/>
-        
-          <div style={{color:"gray", padding:"20px"}}>
-            <div style={{fontSize:"15px", marginLeft:"2px"}}>모두가하우징</div>
-            <div style={{fontSize:"25px", color:"#101648"}}>힐링리버</div>
-            <div style={{fontSize:"15px", marginLeft:"10px", marginTop:"10px"}}>강원도 화천군</div>
-            <hr/>
-            <span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>지금까지 20명이 살아봤어요!</span>
-            <span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>또 살아보고 싶어요</span>
-            <span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>따뜻해요</span>
-         </div>
-       </div>
+        {LivingCardExample}
       </div>
-      
-
     </main>
   );
 }
