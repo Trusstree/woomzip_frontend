@@ -26,6 +26,7 @@ const CalenderForm = () => {
     return (
         <StyledCalendarWrapper>
             <StyledCalendar
+                locale='ko'
                 value={date}
                 onChange={handleDateChange}
                 formatDay={(locale, date) => moment(date).format("D")}

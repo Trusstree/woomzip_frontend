@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const badgeExample = [
-	<span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>지금까지 20명이 살아봤어요!</span>,
+	<span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>지금까지 5명이 살아봤어요!</span>,
 	<span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>또 살아보고 싶어요</span>,
 	<span className="badge" style={{padding:"10px", marginRight:"5px", backgroundColor:"lightgray", color:"gray"}}>따뜻해요</span>
 ]
