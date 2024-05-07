@@ -18,7 +18,7 @@ export default function Test() {
             className="card-img-top"
             style={{borderRadius:"25px", objectFit:"cover"}}
            alt="main-img"
-            src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
+            src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
             width={100}
             height={270}
             unoptimized={true}/>

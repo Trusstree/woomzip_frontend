@@ -13,7 +13,7 @@ export default function Reservation() {
                     className="card-img-top"
                     style={{borderRadius:"25px", objectFit:"cover"}}
                     alt="main-img"
-                    src="https://i.namu.wiki/i/SDZvJ572fNdIp69O48yr1r-IIUuz65ejN6m6DjWCtCUOoJnTjTrGxt71b47UOLPrJ24SfDb7QwtXg0WFcroB53syl6BNGa8QXNTBpF6v_PIG7fwtmhWmWfro3f8PzVrEPIEMX4Ci9pqd3ZzckSJfvLfnPnggUVXdmUByH_AxhG0.webp"
+                    src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
                     width={100}
                     height={500}
                     unoptimized={true}

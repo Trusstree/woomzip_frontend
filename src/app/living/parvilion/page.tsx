@@ -16,7 +16,7 @@ export default function Parvilion() {
               className="card-img-top"
               style={{borderRadius:"27px 0 0 27px", objectFit:"cover"}}
               alt="main-img"
-              src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
+              src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
               width={100}
               height={500}
               unoptimized={true}/>
@@ -27,7 +27,7 @@ export default function Parvilion() {
                   className="card-img-top"
                   style={{marginBottom:"5px", objectFit:"cover"}}
                   alt="main-img"
-                  src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
+                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"
                   width={100}
                   height={245}
                   unoptimized={true}/>
@@ -36,7 +36,7 @@ export default function Parvilion() {
                   className="card-img-top"
                   style={{marginTop:"5px", objectFit:"cover"}}
                   alt="main-img"
-                  src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
+                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg"
                   width={100}
                   height={245}
                   unoptimized={true}/>
@@ -48,7 +48,7 @@ export default function Parvilion() {
                   className="card-img-top"
                   style={{marginBottom:"5px", borderRadius:"0 27px 0 0", objectFit:"cover"}}
                   alt="main-img"
-                  src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
+                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver4.jpeg"
                   width={100}
                   height={245}
                   unoptimized={true}/>
@@ -57,7 +57,7 @@ export default function Parvilion() {
                   className="card-img-top"
                   style={{marginTop:"5px", borderRadius:"0 0 27px 0", objectFit:"cover"}}
                   alt="main-img"
-                  src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
+                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver5.jpeg"
                   width={100}
                   height={245}
                   unoptimized={true}/>
