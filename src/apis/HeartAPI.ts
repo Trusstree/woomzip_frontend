@@ -3,7 +3,7 @@ import { signedApiClient } from "@/configs/apiClient";
 export const getHeart = async (params: any) => {
   let [count, countError] = [undefined, undefined] as any;
   try {
-    const result = await signedApiClient.get(`/apis/heart`, {
+    const result = await signedApiClient.get(`/heart`, {
       params: params,
       headers: {},
     });
@@ -18,7 +18,7 @@ export const getHeartHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.get(`/apis/heart/houses`, {
+    const result = await signedApiClient.get(`/heart/houses`, {
       params: params,
       headers: {},
     });
@@ -33,7 +33,7 @@ export const getHeartHouses = async (params: any) => {
 export const getHeartCount = async (house_id: number) => {
   let [count, countError] = [undefined, undefined] as any;
   try {
-    const result = await signedApiClient.get(`/apis/heart/count`, {
+    const result = await signedApiClient.get(`/heart/count`, {
       params: { house_id: house_id },
       headers: {},
     });
@@ -48,10 +48,7 @@ export const postHeart = async (heart: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.post(
-      `/apis/house/find-my-house/detail/like`,
-      heart,
-    );
+    const result = await signedApiClient.post(`/house/find-my-house/detail/like`, heart);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -64,10 +61,7 @@ export const deleteHeart = async (heart: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.post(
-      `/apis/house/find-my-house/detail/unlike`,
-      heart,
-    );
+    const result = await signedApiClient.post(`/house/find-my-house/detail/unlike`, heart);
     data = result?.data;
   } catch (err) {
     error = err;
