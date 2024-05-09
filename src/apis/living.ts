@@ -1,11 +1,11 @@
 import { apiClient, signedApiClient } from "@/configs/apiClient";
 
-export const getLivings = async (params: any) => {
+export const getLivings = async (params?: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
     const result = await apiClient.get(`/pavilion/living`, {
-      params: params,
+      params: params || {},
       headers: {},
     });
     data = result?.data;
