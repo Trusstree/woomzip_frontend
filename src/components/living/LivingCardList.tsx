@@ -10,14 +10,13 @@ const LivingCardExample = [
     title: "힐링리버",
     addr: "강원도 화천군",
     img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg",
-    living_id: 1,
+    url: `/living/1`,
   },
   {
     company: "탑디자인",
     title: "자연 속 작은 집",
     addr: "경기도 이천시",
     img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/topDesign1.png",
-    living_id: 2,
   },
 ];
 
@@ -41,7 +40,7 @@ export function LivingCardList() {
           title={e["title"]}
           addr={e["addr"]}
           img={e["img"]}
-          url={`/living/${e["living_id"]}`}
+          url={e["url"]}
         />
       ))}
     </div>

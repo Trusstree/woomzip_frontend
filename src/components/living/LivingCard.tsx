@@ -32,7 +32,7 @@ export function LivingCard({ company, title, addr, img, url }) {
 
   function handleClick() {
     // e.target.value
-    router.push(url);
+    if (url) router.push(url);
   }
 
   return (
