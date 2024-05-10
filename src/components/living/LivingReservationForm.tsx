@@ -1,32 +1,69 @@
 "use client";
 
 import CalenderForm from "@/components/test/CalenderForm"; // CalenderForm 컴포넌트 import 수정
-import { alertSuccess } from "@/lib/alertUtil";
-import moment from "moment";
-import { useState } from "react";
+import { alertError, alertSuccess } from "@/lib/alertUtil";
+import { toStringByFormatting } from "@/lib/stringUtil";
+import { useEffect, useState } from "react";
+import { getReservationUnavailable, postReservation } from "@/apis/living";
 
 export function LivingReservationForm() {
-  const [date, setDate] = useState(new Date());
+  const [checkinDate, setCheckinDate] = useState(new Date());
+  const [checkoutDate, setCheckoutDate] = useState(new Date());
+  const [isCheckin, setIsCheckin] = useState(true);
   const [people, setPeople] = useState(0);
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [propose, setPropose] = useState("");
+  const [check, setCheck] = useState(false);
+  const [unavailableDay, setUnavailableDay] = useState([]);
 
   const submit = async () => {
-    console.log({
-      date: date,
+    if (!check) {
+      alertError("동의가 필요해요!", "동의를 하지 않으시면 예약을 할 수가 없어요!");
+      return;
+    }
+    const body = {
+      checkindate: toStringByFormatting(checkinDate),
+      checkoutdate: toStringByFormatting(checkoutDate),
       people: people,
       name: name,
       phoneNumber: phoneNumber,
       propose: propose.replaceAll("\n", "<br/>"),
-    });
+    };
+
+    const [data, error] = await postReservation(body);
+    if (error) {
+      console.error(error);
+      return;
+    }
+    console.log(data);
     alertSuccess("버튼 클릭", "그냥... 아직 기능은 구현 안 됐지만 일단 뭐라도 있는 게 나아보여서요.");
   };
+
+  useEffect(() => {
+    (async () => {
+      const [data, error] = await getReservationUnavailable(1);
+      if (error) {
+        console.error(error);
+        return;
+      }
+      console.log(data?.data["unavailableDay"]);
+      setUnavailableDay(data?.data["unavailableDay"].map((e) => new Date(e)));
+    })();
+  }, []);
 
   return (
     <div className="container row" style={{ width: "100%", marginBottom: "350px" }}>
       <div className="container" style={{ width: "400px", margin: "0 0 20px 0" }}>
-        <CalenderForm date={date} setDate={setDate} /> {/* CalenderForm 컴포넌트를 JSX에서 올바르게*/}
+        <CalenderForm
+          checkinDate={checkinDate}
+          setCheckinDate={setCheckinDate}
+          checkoutDate={checkoutDate}
+          setCheckoutDate={setCheckoutDate}
+          unavailableDay={unavailableDay}
+          isCheckin={isCheckin}
+        />{" "}
+        {/* CalenderForm 컴포넌트를 JSX에서 올바르게*/}
       </div>
       <div
         className="container"
@@ -38,10 +75,23 @@ export function LivingReservationForm() {
               날짜
             </div>
             <div
-              className="container"
-              style={{ border: "none", width: "75%", height: "30px", padding: "0", margin: "0" }}
+              className={isCheckin ? "text-black" : ""}
+              style={{ border: "none", width: "15%", height: "30px", padding: "0", margin: "0" }}
+              onClick={() => {
+                setIsCheckin(true);
+              }}
             >
-              {date.toISOString()}
+              {toStringByFormatting(checkinDate)}
+            </div>
+            <span style={{ border: "none", width: "5%", height: "30px", padding: "0", margin: "0" }}>-</span>
+            <div
+              className={!isCheckin ? "text-black" : ""}
+              style={{ border: "none", width: "15%", height: "30px", padding: "0", margin: "0" }}
+              onClick={() => {
+                setIsCheckin(false);
+              }}
+            >
+              {toStringByFormatting(checkoutDate)}
             </div>
           </div>
           <hr />
@@ -128,13 +178,16 @@ export function LivingReservationForm() {
           <hr />
         </div>
         <div className="container row" style={{ width: "500px", margin: "20px 0" }}>
-          <div className="container" style={{ width: "350px", margin: "0" }}>
+          <div className="container" style={{ width: "200px", margin: "0", wordBreak: "keep-all" }}>
             힐링리버의 체험 조건을 확인하였고, 동의합니다.
           </div>
           <input
             className="container"
             style={{ border: "none", width: "50px", padding: "0", margin: "0" }}
             type="checkbox"
+            onClick={(e) => {
+              setCheck(e.target.checked);
+            }}
           ></input>
         </div>
         <button

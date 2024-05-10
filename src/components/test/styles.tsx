@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Calendar from "react-calendar";
 import styled from "styled-components";
@@ -111,6 +111,16 @@ export const StyledCalendarWrapper = styled.div`
   .react-calendar__tile--active {
     background-color: ${(props) => props.theme.yellow_2};
     border-radius: 0.3rem;
+  }
+
+  /* 사이에 있는 거 */
+  .react-calendar__tile--active {
+    background: ${(props) => props.theme.br_2};
+    color: white;
+  }
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background: ${(props) => props.theme.br_2};
   }
 `;
 

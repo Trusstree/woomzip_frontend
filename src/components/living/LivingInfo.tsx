@@ -59,7 +59,7 @@ export function LivingInfo() {
       </div>
       <div className="d-flex justify-content-between">
         <div style={{ color: "gray", fontSize: "14px" }}>후기(17)</div>
-        <RouteButtonLight url={"/living/review"} text={"전체보기"} />
+        <RouteButtonLight url={"/living/1/review"} text={"전체보기"} />
       </div>
       <div
         className="container"

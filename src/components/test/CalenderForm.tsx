@@ -1,41 +1,56 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { StyledCalendarWrapper, StyledCalendar, StyledDate, StyledToday, StyledDot } from "./styles";
 import moment from "moment";
 
-type ValuePiece = Date | null;
-type Value = ValuePiece | [ValuePiece, ValuePiece];
-
-const CalenderForm = ({ date, setDate }) => {
+const CalenderForm = ({ checkinDate, setCheckinDate, checkoutDate, setCheckoutDate, unavailableDay, isCheckin }) => {
   const today = new Date();
-  const [activeStartDate, setActiveStartDate] = useState<Date | null>(today);
+  const [activeStartDate, setActiveStartDate] = useState<Date>(today);
   const attendDay = ["2024-05-03", "2024-05-13"]; // 출석한 날짜 예시
 
-  const handleDateChange = (newDate: Value) => {
-    console.log(newDate);
-    const offset = date.getTimezoneOffset() * 60000;
-    const dateOffset = new Date(date.getTime() - offset);
-    console.log(dateOffset);
-    setDate(newDate);
+  const handleDateChange = (newDate: Date) => {
+    if (isCheckin) setCheckinDate(newDate < checkoutDate ? newDate : checkoutDate);
+    else setCheckoutDate(newDate > checkinDate ? newDate : checkinDate);
   };
 
   const handleTodayClick = () => {
-    const today = new Date();
-    setActiveStartDate(today);
-    setDate(today);
+    setActiveStartDate(new Date());
   };
 
   useEffect(() => {
-    console.log(date);
-    console.log(activeStartDate);
-  }, [date, activeStartDate]);
+    // console.log(date);
+    // console.log(activeStartDate);
+  }, [checkinDate, checkoutDate, activeStartDate]);
+
+  const tileContent = ({ date, view }) => {
+    let html = [];
+    if (view === "month" && date.getMonth() === today.getMonth() && date.getDate() === today.getDate()) {
+      html.push(<StyledToday key={"today"}>오늘</StyledToday>);
+    }
+    if (attendDay.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
+      html.push(<StyledDot key={moment(date).format("YYYY-MM-DD")} />);
+    }
+    return <>{html}</>;
+  };
+
+  const tileDisabled = useCallback(({ date, view }) => {
+    return (
+      view === "month" && // Block day tiles only
+      unavailableDay.some(
+        (disabledDate) =>
+          date.getFullYear() === disabledDate.getFullYear() &&
+          date.getMonth() === disabledDate.getMonth() &&
+          date.getDate() === disabledDate.getDate()
+      )
+    );
+  }, []);
 
   return (
     <StyledCalendarWrapper>
       <StyledCalendar
         locale="ko"
-        value={date}
+        value={[checkinDate, checkoutDate]}
         onChange={handleDateChange}
         formatDay={(locale, date) => moment(date).format("D")}
         formatYear={(locale, date) => moment(date).format("YYYY")}
@@ -45,18 +60,12 @@ const CalenderForm = ({ date, setDate }) => {
         next2Label={null}
         prev2Label={null}
         minDetail="year"
+        minDate={moment().toDate()}
+        maxDate={new Date("2050-12-31")}
         activeStartDate={activeStartDate === null ? undefined : activeStartDate}
         onActiveStartDateChange={({ activeStartDate }) => setActiveStartDate(activeStartDate)}
-        tileContent={({ date, view }) => {
-          let html = [];
-          if (view === "month" && date.getMonth() === today.getMonth() && date.getDate() === today.getDate()) {
-            html.push(<StyledToday key={"today"}>오늘</StyledToday>);
-          }
-          if (attendDay.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-            html.push(<StyledDot key={moment(date).format("YYYY-MM-DD")} />);
-          }
-          return <>{html}</>;
-        }}
+        tileContent={tileContent}
+        tileDisabled={tileDisabled}
       />
       <StyledDate onClick={handleTodayClick}>오늘</StyledDate>
     </StyledCalendarWrapper>
