@@ -1,6 +1,6 @@
 "use client";
 
-import CalenderForm from "@/components/test/CalenderForm"; // CalenderForm 컴포넌트 import 수정
+import CalenderForm from "@/components/living/CalenderForm"; // CalenderForm 컴포넌트 import 수정
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import { useEffect, useState } from "react";

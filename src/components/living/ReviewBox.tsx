@@ -6,37 +6,42 @@ import { useRouter } from "next/navigation";
 const badgeExample = [
   <span
     className="badge"
+    key={1}
     style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
   >
     가족끼리 좋아요
   </span>,
   <span
     className="badge"
+    key={2}
     style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
   >
     또 살아보고 싶어요
   </span>,
   <span
     className="badge"
+    key={3}
     style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
   >
     따뜻해요
   </span>,
   <span
     className="badge"
+    key={4}
     style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
   >
     자연이 좋아요
   </span>,
   <span
     className="badge"
+    key={5}
     style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
   >
     집갈래요 피곤해요
   </span>,
 ];
 
-export function ReviewBox({ name, comment, img, url }) {
+export function ReviewBox({ name, date, comment, img, url }) {
   const router = useRouter();
 
   function handleClick() {
@@ -58,6 +63,7 @@ export function ReviewBox({ name, comment, img, url }) {
       }}
     >
       <div style={{ color: "gray", padding: "10px" }}>{name}</div>
+      <div style={{ color: "gray", padding: "10px" }}>{date}</div>
       <div className="container row" style={{ margin: "0", padding: "0" }}>
         <div className="container" style={{ width: "60%", marginLeft: "0", fontWeight: "500" }}>
           {comment}
