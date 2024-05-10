@@ -45,7 +45,7 @@ export default function ReviewClient() {
       <div style={{ margin: "40px 0 30px 0" }}>
         <span style={{ fontSize: "25px", margin: "0", color: "#101648" }}>후기 </span>
         <span style={{ fontSize: "25px", marginLeft: "15px", color: "gray" }}>({count})</span>
-        <RouteButtonLight url={undefined} text={"후기쓰기"} />
+        <RouteButtonLight url={"/living/1/review/write"} text={"후기쓰기"} />
       </div>
       <div>
         {review.map((e, i) => (
