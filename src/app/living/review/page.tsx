@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from 'react';
 import { ReviewBox } from "@/components/living/ReviewBox";
 import { RouteButtonLight } from "@/components/living/RouteButtonLight";
@@ -28,7 +27,7 @@ export default function Review() {
             <div style={{margin:"40px 0 30px 0"}}>
                 <span style={{fontSize:"25px", margin:"0", color:"#101648"}}>후기 </span>
                 <span style={{fontSize:"25px", marginLeft:"15px", color:"gray"}}>(17)</span>
-                <RouteButtonLight url={undefined} text={"후기쓰기"}/>
+                <RouteButtonLight url={"/living/review/write"} text={"후기쓰기"}/>
             </div>
             { ReviewBoxExample }
 
