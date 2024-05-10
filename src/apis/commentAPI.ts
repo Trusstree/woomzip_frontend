@@ -4,7 +4,7 @@ export const getComment = async (id: string) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/apis/comment`, {
+    const result = await apiClient.get(`/comment`, {
       params: { id: id },
       headers: {},
     });
@@ -20,7 +20,7 @@ export const postComment = async (comment: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/apis/comment`, comment);
+    const result = await apiClient.post(`/comment`, comment);
     data = result?.data;
   } catch (err) {
     error = err;
