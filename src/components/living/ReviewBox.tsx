@@ -1,52 +1,14 @@
 "use client";
 
+import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const badgeExample = [
-  <span
-    className="badge"
-    key={1}
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    가족끼리 좋아요
-  </span>,
-  <span
-    className="badge"
-    key={2}
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    또 살아보고 싶어요
-  </span>,
-  <span
-    className="badge"
-    key={3}
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    따뜻해요
-  </span>,
-  <span
-    className="badge"
-    key={4}
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    자연이 좋아요
-  </span>,
-  <span
-    className="badge"
-    key={5}
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    집갈래요 피곤해요
-  </span>,
-];
-
-export function ReviewBox({ name, date, comment, img, url }) {
+export function ReviewBox({ id, nickname, date, rating, tag, comment, images }) {
   const router = useRouter();
-
   function handleClick() {
     // e.target.value
-    router.push(url);
+    router.push(`/living/${id}`);
   }
 
   return (
@@ -62,8 +24,9 @@ export function ReviewBox({ name, date, comment, img, url }) {
         overflow: "hidden",
       }}
     >
-      <div style={{ color: "gray", padding: "10px" }}>{name}</div>
-      <div style={{ color: "gray", padding: "10px" }}>{date}</div>
+      <div style={{ color: "gray", padding: "10px" }}>{nickname}</div>
+      <div style={{ color: "gray", padding: "10px" }}>{rating}</div>
+      <div style={{ color: "gray", padding: "10px" }}>{toStringByFormatting(new Date(date))}</div>
       <div className="container row" style={{ margin: "0", padding: "0" }}>
         <div className="container" style={{ width: "60%", marginLeft: "0", fontWeight: "500" }}>
           {comment}
@@ -73,7 +36,7 @@ export function ReviewBox({ name, date, comment, img, url }) {
             className="card-img-top"
             style={{ borderRadius: "10px", objectFit: "cover" }}
             alt="main-img"
-            src={img}
+            src={images}
             width={100}
             height={200}
             unoptimized={true}
@@ -81,18 +44,11 @@ export function ReviewBox({ name, date, comment, img, url }) {
         </div>
       </div>
       <div className="container" style={{ width: "100%", float: "left" }}>
-        {badgeExample.map((badge, index) => (
+        {tag.map((badge, index) => (
           <span
-            key={index}
             className="badge"
-            style={{
-              width: "auto",
-              padding: "0 5px",
-              margin: "5px",
-              backgroundColor: "lightgray",
-              color: "gray",
-              fontSize: "15px",
-            }}
+            key={index}
+            style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
           >
             {badge}
           </span>

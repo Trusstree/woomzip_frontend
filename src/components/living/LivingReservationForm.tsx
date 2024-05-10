@@ -5,8 +5,10 @@ import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import { useEffect, useState } from "react";
 import { getReservationUnavailable, postReservation } from "@/apis/living";
+import { useRouter } from "next/navigation";
 
 export function LivingReservationForm() {
+  const router = useRouter();
   const [checkinDate, setCheckinDate] = useState(new Date());
   const [checkoutDate, setCheckoutDate] = useState(new Date());
   const [isCheckin, setIsCheckin] = useState(true);
@@ -38,6 +40,7 @@ export function LivingReservationForm() {
     }
     console.log(data);
     alertSuccess("버튼 클릭", "그냥... 아직 기능은 구현 안 됐지만 일단 뭐라도 있는 게 나아보여서요.");
+    router.push("/living");
   };
 
   useEffect(() => {
