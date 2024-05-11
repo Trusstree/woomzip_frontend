@@ -25,12 +25,12 @@ export function LivingReservationForm() {
       return;
     }
     const body = {
-      checkindate: toStringByFormatting(checkinDate),
-      checkoutdate: toStringByFormatting(checkoutDate),
+      check_in: toStringByFormatting(checkinDate),
+      check_out: toStringByFormatting(checkoutDate),
       people: people,
-      name: name,
-      phoneNumber: phoneNumber,
-      propose: propose.replaceAll("\n", "<br/>"),
+      // name: name,
+      contact: phoneNumber,
+      purpose: propose.replaceAll("\n", "<br/>"),
     };
 
     const [data, error] = await postReservation(body);
@@ -50,7 +50,7 @@ export function LivingReservationForm() {
         console.error(error);
         return;
       }
-      console.log(data?.data["unavailableDay"]);
+      console.log(data?.data["unavailableDay"].map((e) => new Date(e)));
       setUnavailableDay(data?.data["unavailableDay"].map((e) => new Date(e)));
     })();
   }, []);

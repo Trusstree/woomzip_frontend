@@ -5,22 +5,8 @@ import { ReviewBox } from "@/components/living/ReviewBox";
 import { RouteButtonLight } from "@/components/living/RouteButtonLight";
 import { getLivingReviews } from "@/apis/living";
 
-const ReviewBoxExample = [
-  {
-    pavilion_review_id: 13,
-    fk_pavilion_id: 1,
-    nickname: "JuseunL",
-    pavilion_review_text: "여덟번째 리뷰",
-    tag: ["자연 친화적", "난방이 잘돼요"],
-    rating: 8,
-    created_at: "2024-05-08T16:17:43.000Z",
-    updated_at: null,
-    pavilion_review_images: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/test_house/healingRiver1.jpeg`,
-  },
-];
-
 export default function ReviewClient() {
-  const [review, setReview] = useState(ReviewBoxExample);
+  const [review, setReview] = useState([]);
   const [count, setCount] = useState(17);
 
   useEffect(() => {
@@ -30,9 +16,9 @@ export default function ReviewClient() {
         console.error(error);
         return;
       }
-      console.log(data);
-      setReview(data.data["pavilion_review"]);
-      setCount(data.data["pavilion_review_cnt"]);
+      console.log(data.data[0]["pavilion_review"]);
+      setReview(data.data[0]["pavilion_review"]);
+      setCount(data.data[0]["pavilion_review_cnt"]);
     })();
   }, []);
 
@@ -50,10 +36,10 @@ export default function ReviewClient() {
             id={e["fk_pavilion_id"]}
             nickname={e["nickname"]}
             date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
-            rating={e["rating"]}
-            tag={e["tag"]}
+            helpful={e["helpful"]}
+            tag={JSON.parse(e["tag"])}
             comment={e["pavilion_review_text"]}
-            images={e["pavilion_review_images"]}
+            images={JSON.parse(e["pavilion_review_images"])}
           />
         ))}
       </div>

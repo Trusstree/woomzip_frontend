@@ -1,15 +1,16 @@
 "use client";
 
+import { badgeStyles } from "@/lib/badgeStyles";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export function ReviewBox({ id, nickname, date, rating, tag, comment, images }) {
+export function ReviewBox({ id, nickname, date, helpful, tag, comment, images }) {
   const router = useRouter();
-  function handleClick() {
-    // e.target.value
-    router.push(`/living/${id}`);
-  }
+  // function handleClick() {
+  //   // e.target.value
+  //   router.push(`/living/${id}`);
+  // }
 
   return (
     <div
@@ -25,30 +26,47 @@ export function ReviewBox({ id, nickname, date, rating, tag, comment, images }) 
       }}
     >
       <div style={{ color: "gray", padding: "10px" }}>{nickname}</div>
-      <div style={{ color: "gray", padding: "10px" }}>{rating}</div>
       <div style={{ color: "gray", padding: "10px" }}>{toStringByFormatting(new Date(date))}</div>
       <div className="container row" style={{ margin: "0", padding: "0" }}>
         <div className="container" style={{ width: "60%", marginLeft: "0", fontWeight: "500" }}>
           {comment}
         </div>
         <div className="container" style={{ marginRight: "2%", padding: "0", width: "30%" }}>
+          {/* {images.map((src, i) => (
+            <Image
+              key={i}
+              className="card-img-top"
+              style={{ borderRadius: "10px", objectFit: "cover" }}
+              alt="main-img"
+              src={src}
+              width={100}
+              height={200}
+              unoptimized={true}
+            />
+          ))} */}
           <Image
             className="card-img-top"
             style={{ borderRadius: "10px", objectFit: "cover" }}
             alt="main-img"
-            src={images}
+            src={images[0]}
             width={100}
             height={200}
             unoptimized={true}
           />
         </div>
       </div>
-      <div className="container" style={{ width: "100%", float: "left" }}>
+      <div className="container mb-2" style={{ width: "100%", float: "left" }}>
         {tag.map((badge, index) => (
           <span
             className="badge"
             key={index}
-            style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
+            style={{
+              width: "auto",
+              padding: "10px",
+              marginRight: "5px",
+              backgroundColor: badgeStyles(badge),
+              color: "white",
+            }}
           >
             {badge}
           </span>
