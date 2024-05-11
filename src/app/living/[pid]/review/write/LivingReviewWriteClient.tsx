@@ -3,9 +3,12 @@
 import { postPavilionReview } from "@/apis/living";
 import { LivingReviewImageInputComponent } from "@/components/living/LivingReviewImageInput";
 import { LivingReviewToggle } from "@/components/living/LivingReviewToggle";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function LivingReviewWriteClient() {
+  const router = useRouter();
+
   const [comment, setComment] = useState("");
   const [images, setImages] = useState([]);
   const [tags, setTags] = useState([]);
@@ -42,6 +45,7 @@ export function LivingReviewWriteClient() {
     }
     console.log(data);
 
+    router.push("/living/1");
     return;
   };
 

@@ -39,7 +39,7 @@ export function LivingReservationForm() {
       return;
     }
     console.log(data);
-    alertSuccess("버튼 클릭", "그냥... 아직 기능은 구현 안 됐지만 일단 뭐라도 있는 게 나아보여서요.");
+    alertSuccess("예약이 완료되었어요!", `${checkinDate} ~ ${checkoutDate}`);
     router.push("/living");
   };
 
