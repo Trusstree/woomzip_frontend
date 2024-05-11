@@ -34,17 +34,20 @@ const CalenderForm = ({ checkinDate, setCheckinDate, checkoutDate, setCheckoutDa
     return <>{html}</>;
   };
 
-  const tileDisabled = useCallback(({ date, view }) => {
-    return (
-      view === "month" && // Block day tiles only
-      unavailableDay.some(
-        (disabledDate) =>
-          date.getFullYear() === disabledDate.getFullYear() &&
-          date.getMonth() === disabledDate.getMonth() &&
-          date.getDate() === disabledDate.getDate()
-      )
-    );
-  }, []);
+  const tileDisabled = useCallback(
+    ({ date, view }) => {
+      return (
+        view === "month" && // Block day tiles only
+        unavailableDay.some(
+          (disabledDate) =>
+            date.getFullYear() === disabledDate.getFullYear() &&
+            date.getMonth() === disabledDate.getMonth() &&
+            date.getDate() === disabledDate.getDate()
+        )
+      );
+    },
+    [unavailableDay]
+  );
 
   return (
     <StyledCalendarWrapper>

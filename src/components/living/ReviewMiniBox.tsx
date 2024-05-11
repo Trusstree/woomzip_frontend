@@ -1,53 +1,17 @@
 "use client";
 
+import { badgeStyles } from "@/lib/badgeStyles";
+import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const badgeExample = [
-  <span
-    key={1}
-    className="badge"
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    가족끼리 좋아요
-  </span>,
-  <span
-    key={2}
-    className="badge"
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    또 살아보고 싶어요
-  </span>,
-  <span
-    key={3}
-    className="badge"
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    따뜻해요
-  </span>,
-  <span
-    key={4}
-    className="badge"
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    자연이 좋아요
-  </span>,
-  <span
-    key={5}
-    className="badge"
-    style={{ width: "auto", padding: "10px", marginRight: "5px", backgroundColor: "lightgray", color: "gray" }}
-  >
-    집갈래요 피곤해요
-  </span>,
-];
-
-export function ReviewMiniBox({ name, comment, img, url }) {
+export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, images }) {
   const router = useRouter();
-
-  function handleClick() {
-    // e.target.value
-    router.push(url);
-  }
+  // function handleClick() {
+  //   // e.target.value
+  //   router.push(url);
+  // }
+  console.log(tag);
 
   return (
     <div
@@ -62,31 +26,54 @@ export function ReviewMiniBox({ name, comment, img, url }) {
         overflow: "hidden",
       }}
     >
-      <div style={{ color: "gray", padding: "10px" }}>{name}</div>
-      <div className="container row" style={{ margin: "0", padding: "0" }}>
-        <div
-          className="container"
-          style={{ width: "65%", height: "110px", marginLeft: "0", fontWeight: "500", overflow: "hidden" }}
-        >
-          {comment}
+      <div
+        className="container row"
+        style={{ float: "right", margin: "0", padding: "0", width: "100%", height: "150px" }}
+      >
+        <div className="col-9" style={{ height: "150px" }}>
+          <div className="pt-2" style={{ color: "gray" }}>
+            {toStringByFormatting(new Date(date))}
+          </div>
+          <div className="pb-1" style={{ color: "gray" }}>
+            {nickname}
+          </div>
+
+          <div className="container" style={{ margin: "0", padding: "0" }}>
+            <div
+              className="container p-0"
+              style={{ width: "65%", marginLeft: "0", fontWeight: "500", overflow: "hidden" }}
+            >
+              {comment}
+            </div>
+          </div>
         </div>
-        <div
-          className="container"
-          style={{ float: "right", margin: "0", padding: "0", width: "100px", height: "100px" }}
-        >
+        <div className="col-3 m-0 p-0 d-flex flex-column align-items-center">
           <Image
-            className="card-img-top"
-            style={{ borderRadius: "10px", objectFit: "cover" }}
+            className="card-img-top mt-2"
+            style={{ width: 110, borderRadius: "10px", objectFit: "cover" }}
             alt="main-img"
-            src={img}
-            width={100}
-            height={100}
+            src={images[0]}
+            width={110}
+            height={110}
             unoptimized={true}
           />
         </div>
       </div>
-      <div className="container" style={{ width: "500px" }}>
-        {badgeExample}
+      <div className="container">
+        {tag.map((badge, index) => (
+          <span
+            className="badge"
+            key={index}
+            style={{
+              padding: "5px",
+              marginRight: "2px",
+              backgroundColor: badgeStyles(badge),
+              color: "white",
+            }}
+          >
+            {badge}
+          </span>
+        ))}
       </div>
     </div>
   );
