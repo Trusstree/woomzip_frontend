@@ -189,7 +189,7 @@ export function LivingReservationForm() {
             style={{ border: "none", width: "50px", padding: "0", margin: "0" }}
             type="checkbox"
             onClick={(e) => {
-              setCheck(e.target.checked);
+              setCheck((e.target as any).checked);
             }}
           ></input>
         </div>
