@@ -39,7 +39,10 @@ export function LivingReservationForm() {
       return;
     }
     console.log(data);
-    alertSuccess("예약이 완료되었어요!", `${checkinDate} ~ ${checkoutDate}`);
+    alertSuccess(
+      "예약이 완료되었어요!",
+      `${toStringByFormatting(checkinDate)} ~ ${toStringByFormatting(checkoutDate)}`
+    );
     router.push("/living");
   };
 
