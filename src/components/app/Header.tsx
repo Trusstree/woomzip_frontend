@@ -19,12 +19,7 @@ export default function Header(props: HeaderProps) {
     >
       <div className="d-flex justify-content-between w-100">
         <RouteButton url={"/"} className="ms-md-4 px-4 py-2">
-          <Image
-            src={"/logo/logo_truss.png"}
-            alt={"Truss Logo"}
-            width={70}
-            height={50}
-          />
+          <Image src={"/logo/logo_truss.png"} alt={"Truss Logo"} width={70} height={50} />
         </RouteButton>
 
         <div className="d-flex d-md-none">
@@ -48,12 +43,7 @@ export default function Header(props: HeaderProps) {
               <h5 className="offcanvas-title" id="offcanvasExampleLabel">
                 메뉴
               </h5>
-              <button
-                type="button"
-                className="btn-close text-reset"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              />
+              <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" />
             </div>
             <div className="offcanvas-body d-flex flex-column">
               <div data-bs-dismiss="offcanvas" aria-label="Close">
@@ -65,10 +55,7 @@ export default function Header(props: HeaderProps) {
                 </RouteButton>
               </div>
               <div data-bs-dismiss="offcanvas" aria-label="Close">
-                <RouteButton
-                  url={"/community"}
-                  className="align-self-start fs-5"
-                >
+                <RouteButton url={"/community"} className="align-self-start fs-5">
                   커뮤니티
                 </RouteButton>
               </div>
@@ -80,6 +67,11 @@ export default function Header(props: HeaderProps) {
               <div data-bs-dismiss="offcanvas" aria-label="Close">
                 <RouteButton url={"/house"} className="fs-5">
                   찾아보기
+                </RouteButton>
+              </div>
+              <div data-bs-dismiss="offcanvas" aria-label="Close">
+                <RouteButton url={"/planning"} className="fs-5">
+                  계획하기
                 </RouteButton>
               </div>
             </div>
@@ -102,6 +94,10 @@ export default function Header(props: HeaderProps) {
 
             <RouteButton url={"/house"} className="fs-5">
               찾아보기
+            </RouteButton>
+
+            <RouteButton url={"/planning"} className="fs-5">
+              계획하기
             </RouteButton>
           </div>
 
