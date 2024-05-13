@@ -101,23 +101,19 @@ export function LivingReviewWriteClient() {
           className="container"
           style={{
             width: "100%",
-            minHeight: "200px",
             padding: "0",
             margin: "0",
             resize: "none",
-            overflow: "hidden",
+            overflowY: "auto",
             borderRadius: "10px",
             borderColor: "lightGray",
           }}
+          rows={8}
           placeholder={"최대한 구체적으로 적어주세요!"}
           value={comment}
           onChange={(e) => {
-            // 스크롤 늘어나는 거 싫어 ㅠㅠ
-            if (e.target.scrollHeight === e.target.clientHeight) {
-              setComment(e.target.value);
-            }
+            setComment(e.target.value);
           }}
-          rows={8}
         ></textarea>
       </div>
 
