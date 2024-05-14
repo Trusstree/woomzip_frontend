@@ -1,9 +1,15 @@
 import { badgeStyles } from "@/lib/badgeStyles";
 import Image from "next/image";
 
-export function ReviewModal({ date, comment, tag, images }) {
+export function ReviewModal({ id, date, comment, tag, images }) {
   return (
-    <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div
+      className="modal fade"
+      id={`living_modal_${id}`}
+      tabIndex={-1}
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
       <div className="modal-dialog">
         <div className="modal-content" style={{ width: 500 }}>
           <div className="modal-header">

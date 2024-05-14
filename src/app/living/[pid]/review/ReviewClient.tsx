@@ -32,7 +32,7 @@ export default function ReviewClient() {
       <div>
         {review.map((e, i) => (
           <ReviewBox
-            key={e["pavilion_review_id"]}
+            key={i}
             id={e["fk_pavilion_id"]}
             nickname={e["nickname"]}
             date={e["updated_at"] ? e["updated_at"] : e["created_at"]}

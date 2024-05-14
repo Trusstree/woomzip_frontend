@@ -27,9 +27,9 @@ export function ReviewBox({ id, nickname, date, helpful, tag, comment, images })
         overflow: "hidden",
       }}
       data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
+      data-bs-target={`living_modal_${id}`}
     >
-      <ReviewModal date={toStringByFormatting(new Date(date))} comment={comment} tag={tag} images={images} />
+      <ReviewModal id={id} date={toStringByFormatting(new Date(date))} comment={comment} tag={tag} images={images} />
       <div style={{ color: "gray", padding: "10px" }}>{nickname}</div>
       <div style={{ color: "gray", padding: "10px" }}>{toStringByFormatting(new Date(date))}</div>
       <div className="container row" style={{ margin: "0", padding: "0" }}>
