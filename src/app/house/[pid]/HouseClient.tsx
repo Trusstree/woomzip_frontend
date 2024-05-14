@@ -442,13 +442,13 @@ export function HouseClient (props: HouseComponentProps) {
               {/* 지붕재 */}
               <div className="my-1 row">
                 <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>지붕재</div>
-                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["insulation_material"]}</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["roofing_material"]}</div>
               </div>
 
               {/* 단열재 */}
               <div className="my-1 row">
                 <div className="fw-bold fs-5 col-5" style={{color:"#101648"}}>단열재</div>
-                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["roofing_material"]}</div>
+                <div className="col-7 fs-5" style={{color:"#101648"}}>{specificationData["insulation_material"]}</div>
               </div>
 
               {/* 내장재 */}

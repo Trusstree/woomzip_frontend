@@ -41,7 +41,7 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
           <div className="container" style={{ margin: "0", padding: "0" }}>
             <div
               className="container p-0"
-              style={{ width: "65%", marginLeft: "0", fontWeight: "500", overflow: "hidden" }}
+              style={{ width: "65%", marginLeft: "0", fontWeight: "500", overflow: "hidden", display: "block", height:"80px", }}
             >
               {comment}
             </div>
