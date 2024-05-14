@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import SelectBox from "@/components/planning/SelectBox";
 import StateDropdown from "@/components/planning/StateDropdown";
+import AreaDropdown from "@/components/planning/AreaDropdown";
 import PriceBox from "@/components/planning/priceBox";
 import {RouteButton} from "@/components/living/RouteButton";
 
@@ -47,7 +48,7 @@ export default function Planning() {
           <hr/>
           <div style={{ fontSize: "25px", fontWeight:"500", color: "#101648" }}>토지 면적을 알려주세요.</div>
           <div style={{ fontSize: "19px", marginBottom: "30px", color: "gray" }}>아직 구매 전이라면 원하시는 면적을 알려주세요.</div>
-          <StateDropdown />
+          <AreaDropdown />
           
         </div>
 
