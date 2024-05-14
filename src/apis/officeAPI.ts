@@ -1,4 +1,4 @@
-import { apiClient } from "@/configs/apiClient";
+import { apiClient } from "@/configs/publicApi";
 
 export const getOffices = async () => {
   let [data, error] = [undefined, undefined] as any;

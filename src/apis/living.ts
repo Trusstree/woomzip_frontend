@@ -1,4 +1,4 @@
-import { apiClient, signedApiClient } from "@/configs/apiClient";
+import { apiClient, signedApiClient } from "@/configs/publicApi";
 
 export const getLivings = async (params?: any) => {
   let [data, error] = [undefined, undefined] as any;

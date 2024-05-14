@@ -1,4 +1,4 @@
-import { apiClient } from "@/configs/apiClient";
+import { apiClient } from "@/configs/publicApi";
 
 export const getComment = async (id: string) => {
   let [data, error] = [undefined, undefined] as any;
