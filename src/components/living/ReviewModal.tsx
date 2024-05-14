@@ -6,14 +6,16 @@ export function ReviewModal({ id, date, comment, tag, images }) {
     <div
       className="modal fade"
       id={`living_modal_${id}`}
-      tabIndex={-1}
-      aria-labelledby="exampleModalLabel"
+      aria-labelledby={`living_modal_${id}_Label`}
       aria-hidden="true"
+      // data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabIndex={-1}
     >
       <div className="modal-dialog">
         <div className="modal-content" style={{ width: 500 }}>
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">
+            <h5 className="modal-title" id={`living_modal_${id}_Label`}>
               {date}
             </h5>
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

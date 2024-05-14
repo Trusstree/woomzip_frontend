@@ -34,6 +34,7 @@ export default function ReviewClient() {
           <ReviewBox
             key={i}
             id={e["fk_pavilion_id"]}
+            index={i}
             nickname={e["nickname"]}
             date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
             helpful={e["helpful"]}
