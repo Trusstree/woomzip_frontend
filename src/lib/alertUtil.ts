@@ -24,7 +24,7 @@ export const confirmSuccess = async (
   text: string,
   confirmText: string,
   denyText: string,
-  imgSrc?: string,
+  imgSrc?: string
 ) => {
   return Swal.fire({
     icon: "success",
@@ -46,7 +46,8 @@ export const alertImage = (title: string, src: string) => {
   return Swal.fire({
     title: title,
     imageUrl: src,
-    imageWidth: 400,
+    imageWidth: 200,
+    imageHeight: 200,
     imageAlt: title,
   });
 };

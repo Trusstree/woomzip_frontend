@@ -1,8 +1,10 @@
 export const cardPriceText = (price: number | string) => {
-  const _price = Math.round(Number(price)); // 만 자리 반올림
-  const eok = _price >= 100000000 ? Math.floor(_price / 100000000).toString() + "억" : "";
-  const man = _price >= 10000 ? Math.floor(_price / 10000) + "만" : "";
+  let _price = Math.round(Number(price)); // 만 자리 반올림
   const il = _price % 10000 > 0 ? _price % 10000 : "";
+  _price = Math.round(_price / 10000);
+  const man = _price % 10000 > 0 ? (_price % 10000) + "만" : "";
+  _price = Math.round(_price / 10000);
+  const eok = _price % 10000 > 0 ? (_price % 10000) + "억" : "";
   return eok + man + il + "원";
 };
 

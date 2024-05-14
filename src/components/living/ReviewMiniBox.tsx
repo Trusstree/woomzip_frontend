@@ -38,13 +38,20 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
             {nickname}
           </div>
 
-          <div className="container" style={{ margin: "0", padding: "0" }}>
-            <div
-              className="container p-0"
-              style={{ width: "65%", marginLeft: "0", fontWeight: "500", overflow: "hidden", display: "block", height:"80px", }}
-            >
-              {comment}
-            </div>
+          <div
+            className="container p-0"
+            style={{
+              marginLeft: "0",
+              fontWeight: "500",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              display: "-webkit-box",
+              whiteSpace: "pre-wrap",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 4,
+            }}
+          >
+            {comment}
           </div>
         </div>
         <div className="col-3 m-0 p-0 d-flex flex-column align-items-center">

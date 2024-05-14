@@ -2,6 +2,7 @@
 
 import { postPavilionReview } from "@/apis/living";
 import { LivingReviewImageInputComponent } from "@/components/living/LivingReviewImageInput";
+import { LivingReviewRadio } from "@/components/living/LivingReviewRadio";
 import { LivingReviewToggle } from "@/components/living/LivingReviewToggle";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -58,17 +59,17 @@ export function LivingReviewWriteClient() {
         {/* 태그 제한 5개 구현 안딤 */}
         <div>
           <div style={{ width: "100%" }}>
-            <LivingReviewToggle name={"집이 예뻐요"} handleBadge={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"깔끔해요"} handleBadge={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"주변 자연이 좋아요"} handleBadge={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"힐링하기 좋아요"} handleBadge={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"조용해요"} handleBadge={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"가족과 다녀오기 좋아요"} handleBadge={handleBadge} theme={"warning"} />
-            <LivingReviewToggle name={"아이와 다녀오기 좋아요"} handleBadge={handleBadge} theme={"warning"} />
-            <LivingReviewToggle name={"친구와 다녀오기 좋아요"} handleBadge={handleBadge} theme={"warning"} />
-            <LivingReviewToggle name={"또 오고 싶어요"} handleBadge={handleBadge} theme={"primary"} />
-            <LivingReviewToggle name={"전원생활 경험하기 좋아요"} handleBadge={handleBadge} theme={"primary"} />
-            <LivingReviewToggle name={"전원생활을 하고 싶어졌어요"} handleBadge={handleBadge} theme={"primary"} />
+            <LivingReviewToggle name={"집이 예뻐요"} onClick={handleBadge} theme={"success"} />
+            <LivingReviewToggle name={"깔끔해요"} onClick={handleBadge} theme={"success"} />
+            <LivingReviewToggle name={"주변 자연이 좋아요"} onClick={handleBadge} theme={"success"} />
+            <LivingReviewToggle name={"힐링하기 좋아요"} onClick={handleBadge} theme={"success"} />
+            <LivingReviewToggle name={"조용해요"} onClick={handleBadge} theme={"success"} />
+            <LivingReviewToggle name={"가족과 다녀오기 좋아요"} onClick={handleBadge} theme={"warning"} />
+            <LivingReviewToggle name={"아이와 다녀오기 좋아요"} onClick={handleBadge} theme={"warning"} />
+            <LivingReviewToggle name={"친구와 다녀오기 좋아요"} onClick={handleBadge} theme={"warning"} />
+            <LivingReviewToggle name={"또 오고 싶어요"} onClick={handleBadge} theme={"primary"} />
+            <LivingReviewToggle name={"전원생활 경험하기 좋아요"} onClick={handleBadge} theme={"primary"} />
+            <LivingReviewToggle name={"전원생활을 하고 싶어졌어요"} onClick={handleBadge} theme={"primary"} />
           </div>
         </div>
       </div>
@@ -111,6 +112,17 @@ export function LivingReviewWriteClient() {
           rows={8}
           placeholder={"최대한 구체적으로 적어주세요!"}
           value={comment}
+          onKeyDown={(event) => {
+            if (event.key === "Tab") {
+              event.preventDefault();
+              setComment(comment + "\t");
+            }
+
+            if (event.key === "Enter") {
+              event.preventDefault();
+              setComment(comment + "\n");
+            }
+          }}
           onChange={(e) => {
             setComment(e.target.value);
           }}
@@ -121,26 +133,24 @@ export function LivingReviewWriteClient() {
         <div style={{ color: "#101648", fontSize: "21px", fontWeight: "500" }}>
           본 체험이 전원생활 선택에 있어서 조금이라도 도움이 되었나요?
         </div>
-        <button
-          type="button"
-          className={`btn btn-outline-success`}
+        <LivingReviewRadio
+          name={"helpful"}
+          title={"네, 도움이 되었습니다."}
           onClick={() => {
             setHelpful(true);
           }}
-          style={{ padding: "5px", margin: "5px" }}
-        >
-          네, 도움이 되었습니다.
-        </button>
-        <button
-          type="button"
-          className={`btn btn-outline-danger`}
+          value={helpful}
+          theme={"success"}
+        />
+        <LivingReviewRadio
+          name={"helpful"}
+          title={"아뇨, 도움이 되지 않았습니다."}
+          value={helpful}
           onClick={() => {
             setHelpful(false);
           }}
-          style={{ padding: "5px", margin: "5px" }}
-        >
-          아뇨, 도움이 되지 않았습니다.
-        </button>
+          theme={"danger"}
+        />
       </div>
 
       <div

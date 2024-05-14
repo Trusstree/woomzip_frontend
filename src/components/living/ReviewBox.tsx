@@ -1,9 +1,11 @@
 "use client";
 
+import { alertImage } from "@/lib/alertUtil";
 import { badgeStyles } from "@/lib/badgeStyles";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { ReviewModal } from "./ReviewModal";
 
 export function ReviewBox({ id, nickname, date, helpful, tag, comment, images }) {
   const router = useRouter();
@@ -24,11 +26,28 @@ export function ReviewBox({ id, nickname, date, helpful, tag, comment, images })
         borderRadius: "15px",
         overflow: "hidden",
       }}
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
     >
+      <ReviewModal date={toStringByFormatting(new Date(date))} comment={comment} tag={tag} images={images} />
       <div style={{ color: "gray", padding: "10px" }}>{nickname}</div>
       <div style={{ color: "gray", padding: "10px" }}>{toStringByFormatting(new Date(date))}</div>
       <div className="container row" style={{ margin: "0", padding: "0" }}>
-        <div className="container" style={{ width: "60%", marginLeft: "0", fontWeight: "500" }}>
+        <div
+          className="container"
+          style={{
+            width: "60%",
+            height: "200px",
+            overflow: "hidden",
+            marginLeft: "0",
+            fontWeight: "500",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            whiteSpace: "pre-wrap",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 8,
+          }}
+        >
           {comment}
         </div>
         <div className="container" style={{ marginRight: "2%", padding: "0", width: "30%" }}>
