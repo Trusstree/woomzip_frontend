@@ -1,10 +1,13 @@
 export const cardPriceText = (price: number | string) => {
-  let _price = Math.floor(Number(price)); // 만 자리 반올림
+  let _price = Number(price);
+  if (isNaN(_price)) return "NaN원"; // 애초에 숫자가 아니면 에러처리
+  _price = Math.floor(_price); // 소수점은 제거
+
   const il = _price % 10000 > 0 ? _price % 10000 : "";
   _price = Math.floor(_price / 10000);
   const man = _price % 10000 > 0 ? (_price % 10000) + "만" : "";
   _price = Math.floor(_price / 10000);
-  const eok = _price % 10000 > 0 ? (_price % 10000) + "억" : "";
+  const eok = _price % 10000 > 0 ? (_price % 10000) + "억" : ""; // 집은 억 단위까지
   return eok + man + il + "원";
 };
 
