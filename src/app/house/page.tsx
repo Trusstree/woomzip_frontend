@@ -1,7 +1,10 @@
+import { Suspense } from "react";
 import HouseClient from "./HouseClient";
 
 export default function Home() {
   return (
-    <HouseClient />
+    <Suspense>
+      <HouseClient />
+    </Suspense>
   );
 }

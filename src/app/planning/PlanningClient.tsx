@@ -5,13 +5,9 @@ import SelectBox from "@/components/planning/SelectBox";
 import SelectMiniBox from "@/components/planning/SelectMiniBox";
 import SelectCityBox from "@/components/planning/SelectCityBox";
 import PriceBox from "@/components/planning/PriceBox";
-import { RouteButton } from "@/components/living/RouteButton";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getHouse } from "@/apis/HouseAPI";
-import Image from "next/image";
-import { detailPriceText } from "@/lib/stringUtil";
 import HouseCard from "@/components/house/HouseCard";
-import useQuery from "@/hooks/useQuery";
 import { alertError } from "@/lib/alertUtil";
 
 export default function PlanningClient() {

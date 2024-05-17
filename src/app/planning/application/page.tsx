@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import PlanningApplicationClient from "./PlanningApplicationClient";
 
 export default function Application() {
@@ -9,7 +9,9 @@ export default function Application() {
         <br />
         준비되셨나요?
       </div>
-      <PlanningApplicationClient />
+      <Suspense>
+        <PlanningApplicationClient />
+      </Suspense>
     </main>
   );
 }

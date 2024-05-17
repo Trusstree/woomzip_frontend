@@ -3,6 +3,7 @@ import Carousel from "@/components/house/Carousel";
 import { HouseList } from "@/components/house/HouseList";
 import PostList from "@/components/posts/PostList";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -20,13 +21,10 @@ export default function Home() {
         />
       </div>
 
-      <PostMenu
-        title={"다양한 집들을 구경해보세요!"}
-        routeUrl={"/house"}
-        routeText={"더보기"}
-        horizontalScroll={true}
-      >
-        <HouseList numShowItems={6} searchCondition={{}} />
+      <PostMenu title={"다양한 집들을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
+        <Suspense>
+          <HouseList numShowItems={6} searchCondition={{}} />
+        </Suspense>
       </PostMenu>
 
       <PostMenu
@@ -35,7 +33,9 @@ export default function Home() {
         routeText={"더보기"}
         horizontalScroll={true}
       >
-        <PostList numShowItems={6} />
+        <Suspense>
+          <PostList numShowItems={6} />
+        </Suspense>
       </PostMenu>
     </main>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import PlanningClient from "./PlanningClient";
 
 export default function Planning() {
@@ -10,7 +10,9 @@ export default function Planning() {
         트러스가 알려드릴게요
       </div>
 
-      <PlanningClient />
+      <Suspense>
+        <PlanningClient />
+      </Suspense>
     </main>
   );
 }
