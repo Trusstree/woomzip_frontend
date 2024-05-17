@@ -13,6 +13,18 @@ export default function Home() {
 
   return (
     <>
+      <div className="row" style={{display:"flex", justifyContent:"space-between", margin:"120px 0"}}>
+        <div style={{ width:"500px", fontSize: "38px", fontWeight:"600"}}>우리 가족에게 딱 맞는 집,<br/>트러스에서 찾아보세요</div>
+        <div style={{width:"600px"}}>
+          <div className="fs-5 fw-bold" style={{margin:"30px 0 10px 0"}}>조건에 맞는 집을 찾아드려요</div>
+          <button
+          style={{width:"150px", height:"50px", backgroundColor:"#314FC0", color:"white", border:"none", borderRadius:"40px"}}>
+            조건 검색하기
+          </button>
+        </div>
+      </div>
+      
+      {/*
       <div className="mt-5">
         <h5 className={`fw-bold`}>
           집을 지을 때 필요한 조건을 검색해보세요!
@@ -20,7 +32,7 @@ export default function Home() {
         <div className={`mb-3`}>
           <div className="d-flex flex-column px-0">
             <div className="my-2">
-              {/* search */}
+             
               <HouseSearchForm
                 value={"keyword"} 
                 searchCondition={searchCondition}
@@ -29,7 +41,7 @@ export default function Home() {
             </div>
 
             <div className="row my-2 g-1">
-              {/* price */}
+            
               <HouseSelectForm
                 className="col-3"
                 title={"가격"}
@@ -45,7 +57,7 @@ export default function Home() {
                 <option value={100000000}>2억원 이상</option>
               </HouseSelectForm>
 
-              {/* floorSpace */}
+            
               <HouseSelectForm
                 className="col-3"
                 title={"실평수"}
@@ -60,7 +72,7 @@ export default function Home() {
                 <option value={10000}>30평 이상</option>
               </HouseSelectForm>
 
-              {/* gunchuckSpace */}
+              
               <HouseSelectForm
                 className="col-3"
                 title={"건축면적"}
@@ -77,8 +89,9 @@ export default function Home() {
                 <option value={10000}>60㎡ 이상</option>
               </HouseSelectForm>
             </div>
+
             <div className="row my-2 g-1">
-              {/* roomNumber */}
+              
               <HouseSelectForm
                 className="col-3"
                 title={"방"}
@@ -93,7 +106,7 @@ export default function Home() {
                 <option value={1000}>4개 이상</option>
               </HouseSelectForm>
 
-              {/* toiletNumber */}
+              
               <HouseSelectForm
                 className="col-3"
                 title={"화장실"}
@@ -108,7 +121,7 @@ export default function Home() {
                 <option value={1000}>4개 이상</option>
               </HouseSelectForm>
 
-              {/* duration */}
+              
               <HouseSelectForm
                 className="col-3"
                 title={"소요기간"}
@@ -125,7 +138,7 @@ export default function Home() {
                 <option value={10000}>5개월 이상</option>
               </HouseSelectForm>
 
-              {/* afterService */}
+              
               <HouseSelectForm
                 className="col-3"
                 title={"as기간"}
@@ -145,6 +158,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+  */}
 
       <PostMenu
         title={"내가 원하는 주택들을 검색하여 구경해보세요!"}>

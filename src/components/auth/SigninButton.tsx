@@ -17,14 +17,14 @@ export default function SigninButton(){
   return (
     (userContext==undefined)?
       <button type="button"
-        style={{color:"#101648"}}
+        style={{fontSize:"14px"}}
         className={`px-4 py-2 btn rounded-lg fw-bold align-self-end`}
         onClick={()=>{router.push("/signin");}}
         > 로그인/회원가입
       </button>
       :
       <button type="button"
-        style={{color:"#101648"}}
+        style={{fontSize:"14px"}}
         className={`px-4 py-2 btn rounded-lg fw-bold align-self-end`}
         onClick={()=>{router.push(`/mypage/${userContext.uid}`);}}
         > 마이페이지

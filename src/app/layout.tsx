@@ -14,7 +14,7 @@ export const metadata = {
   metadataBase: new URL("https://buildintruss.com"),
   openGraph: {
     title: "Truss",
-    description: "건설사, 시공사 순위 리뷰 후기 확인은 트러스!",
+    description: "전원생활의 시작을 함께, 트러스",
     url: "https://buildintruss.com",
     siteName: "Truss",
     images: [

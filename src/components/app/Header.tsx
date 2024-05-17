@@ -10,16 +10,14 @@ export default function Header(props: HeaderProps) {
     <div
       className={`navbar navbar-expand-md`}
       style={{
-        color: "#101648",
         borderBottomStyle: "solid",
-        borderBottomColor: "#101648",
         borderBottomWidth: "2px",
         backgroundColor: "white",
       }}
     >
       <div className="d-flex justify-content-between w-100">
         <RouteButton url={"/"} className="ms-md-4 px-4 py-2">
-          <Image src={"/logo/logo_truss.png"} alt={"Truss Logo"} width={70} height={50} />
+          <Image src={"/logo/logo_truss.png"} alt={"Truss Logo"} width={60} height={40} />
         </RouteButton>
 
         <div className="d-flex d-md-none">
@@ -80,23 +78,23 @@ export default function Header(props: HeaderProps) {
 
         <div className="d-none d-md-flex w-100">
           <div className="d-flex align-items-center me-auto">
-            <RouteButton url={"/"} className="fs-5">
+            <RouteButton url={"/"} className="fs-6">
               홈
             </RouteButton>
 
-            <RouteButton url={"/community"} className="fs-5">
+            <RouteButton url={"/community"} className="fs-6">
               커뮤니티
             </RouteButton>
 
-            <RouteButton url={"/living"} className="fs-5">
+            <RouteButton url={"/living"} className="fs-6">
               살아보기
             </RouteButton>
 
-            <RouteButton url={"/house"} className="fs-5">
+            <RouteButton url={"/house"} className="fs-6">
               찾아보기
             </RouteButton>
 
-            <RouteButton url={"/planning"} className="fs-5">
+            <RouteButton url={"/planning"} className="fs-6">
               계획하기
             </RouteButton>
           </div>
