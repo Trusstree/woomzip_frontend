@@ -15,7 +15,7 @@ export default function PostMenu(props: PostMenuProps) {
   return (
     <div className="mt-5 mb-4 fw-bold fs-5">
       <div className="d-flex justify-content-between mt-2 mb-1 fs-5">
-        <div style={{color:"#101648"}}>{title}</div>
+        <div>{title}</div>
         {(routeText&&routeUrl)?(
         <RouteButton url={routeUrl}>
           {routeText}
