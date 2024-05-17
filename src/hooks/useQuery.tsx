@@ -3,7 +3,18 @@ import { useCallback } from "react";
 
 export default function useQuery() {
   const searchParams = useSearchParams();
-  const pathname = usePathname();
+
+  const createQuery = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams);
+      if (value) {
+        params.set(name, value);
+      } else {
+        params.delete(name);
+      }
+    },
+    [searchParams]
+  );
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -14,10 +25,10 @@ export default function useQuery() {
         params.delete(name);
       }
 
-      return `${pathname}?${params.toString()}`;
+      return params.toString();
     },
-    [searchParams],
+    [searchParams]
   );
 
-  return { createQueryString };
+  return { createQuery, createQueryString };
 }

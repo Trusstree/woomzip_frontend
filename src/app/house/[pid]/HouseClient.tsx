@@ -11,6 +11,7 @@ import { deleteHeart, postHeart } from "@/apis/HeartAPI";
 import { alertSuccess } from "@/lib/alertUtil";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import { getUserCookie } from "@/lib/cookieUtil";
+import useQuery from "@/hooks/useQuery";
 
 type HouseComponentProps = {
   pid: number;
@@ -18,8 +19,7 @@ type HouseComponentProps = {
 
 export function HouseClient(props: HouseComponentProps) {
   const router = useRouter();
-  const modelLink = "https://forms.gle/Qdq1HgPvcB76sRAW7";
-  const gyeonjeokLink = "https://forms.gle/WhzuLumaL6C6TFu69";
+  const { createQueryString } = useQuery();
 
   const { pid } = props;
   const [houseData, setHouseData] = useState(undefined);
@@ -29,6 +29,9 @@ export function HouseClient(props: HouseComponentProps) {
   const [specificationData, setSpecificationData] = useState(undefined);
   const [heart, setHeart] = useState(0);
   const [selectedOptionData, setSelectedOptionData] = useState([]);
+
+  const modelLink = "https://forms.gle/Qdq1HgPvcB76sRAW7";
+  const gyeonjeokLink = `${"/planning"}?${createQueryString("house_id", pid.toString())}`; //"https://forms.gle/WhzuLumaL6C6TFu69";
 
   // house
   useEffect(() => {
