@@ -29,9 +29,13 @@ export default function PriceBox({ system, slope, road, city, area, house }) {
 
   return (
     <div className="container" style={{ borderColor: "white", width: "100%", position: "sticky", bottom: "0" }}>
+      <div className="d-flex justify-content-between" style={{ lineHeight: "35px", marginBottom:"10px"}}>
+        <div style={{ fontSize: "20px", fontWeight: "600" }}>당신의 예상 견적은,</div>
+        <div style={{fontSize:"14px"}}>(만원)</div>
+      </div>
       <div className="d-flex justify-content-between" style={{ lineHeight: "35px" }}>
-        <div style={{ fontSize: "17px", fontWeight: "500" }}>주택가격</div>
-        <div>{price[0]}</div>
+        <div style={{ fontSize: "16px", fontWeight: "500" }}>주택가격</div>
+        <div style={{fontSize:"14px"}}>{price[0]}만원</div>
       </div>
       <PriceLine title={"배송비"} minPrice={delivery[0]} maxPrice={delivery[1]} />
       <PriceLine title={"측량비"} minPrice={measure[0]} maxPrice={measure[1]} />
@@ -39,15 +43,15 @@ export default function PriceBox({ system, slope, road, city, area, house }) {
       <PriceLine title={"토목공사비"} minPrice={grounding[0]} maxPrice={grounding[1]} />
       <PriceLine title={"기초공사비"} minPrice={foundation[0]} maxPrice={foundation[1]} />
       <div className="d-flex justify-content-between" style={{ lineHeight: "35px" }}>
-        <div style={{ fontSize: "17px", fontWeight: "500" }}>전기, 상하수도 인입비</div>
-        <div>토지에 따라 변동</div>
+        <div style={{ fontSize: "16px", fontWeight: "500" }}>전기, 상하수도 인입비</div>
+        <div style={{fontSize:"14px"}}>토지에 따라 변동</div>
       </div>
       <PriceLine title={"보험비"} minPrice={insurance[0]} maxPrice={insurance[1]} />
       <PriceLine title={"세금"} minPrice={tax[0]} maxPrice={tax[1]} />
       <hr />
       <div className="d-flex justify-content-between" style={{ lineHeight: "35px", margin: "0 0 20px 0" }}>
-        <div style={{ fontSize: "17px", fontWeight: "500" }}>총</div>
-        <div>
+        <div style={{ fontSize: "20px", fontWeight: "500" }}>총</div>
+        <div style={{ fontSize:"20px", fontWeight:"500px"}}>
           {total[0]}만원
           <br />~{total[1]}만원
         </div>

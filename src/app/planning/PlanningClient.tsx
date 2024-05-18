@@ -103,7 +103,7 @@ export default function PlanningClient() {
             {houseData ? (
               <HouseCard className="w-100" data={houseData} />
             ) : (
-              <button style={{ width: "25%", height: "300px", borderRadius: "10px" }}>선택된 집이 없어요..</button>
+              <button style={{ width: "280px", height: "300px", borderRadius: "10px", backgroundColor:"white", borderColor:"#314FC0", borderStyle:"soild" }}>선택된 집이 없어요.<br/>찾아보기 탭에서 집을 선택해주세요.</button>
             )}
           </div>
         </div>
