@@ -1,4 +1,8 @@
-import { privateApiServer } from "@/configs/publicApi";
+"use server";
+
+import { privateApiServer } from "@/configs/privateApiServer";
+import { publicApi } from "@/configs/publicApi";
+import { cookies } from "next/headers";
 
 export const getUser = async (uid: string | number) => {
   let [data, error] = [undefined, undefined] as any;
@@ -7,6 +11,21 @@ export const getUser = async (uid: string | number) => {
     const result = await privateApiServer.get(`/users/profile`, {
       params: { uid: uid },
     });
+    data = result?.data;
+  } catch (err) {
+    error = err;
+  }
+
+  return [data, error];
+};
+
+export const signinUser = async (user: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await publicApi.post(`/auth/sign-in`, user);
+    const cookieStorage = cookies();
+    cookieStorage.set("accessToken", result?.data.data.access_token);
     data = result?.data;
   } catch (err) {
     error = err;

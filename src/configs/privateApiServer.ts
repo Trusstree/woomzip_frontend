@@ -7,5 +7,6 @@ export const privateApiServer = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASEURL,
   timeout: 5000,
 });
+
 privateApiServer.interceptors.request.use(onPrivateServerRequest, onRequestError);
 privateApiServer.interceptors.response.use(onResponse, onPrivateServerResponseError);

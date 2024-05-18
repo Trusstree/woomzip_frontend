@@ -74,6 +74,11 @@ export default function Header(props: HeaderProps) {
                   계획하기
                 </RouteButton>
               </div>
+              <div data-bs-dismiss="offcanvas" aria-label="Close">
+                <RouteButton url={"/test"} className="fs-5">
+                  테스트용
+                </RouteButton>
+              </div>
             </div>
           </div>
         </div>
@@ -98,6 +103,10 @@ export default function Header(props: HeaderProps) {
 
             <RouteButton url={"/planning"} className="fs-5">
               계획하기
+            </RouteButton>
+
+            <RouteButton url={"/test"} className="fs-5">
+              테스트용
             </RouteButton>
           </div>
 
