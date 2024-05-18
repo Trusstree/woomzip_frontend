@@ -1,5 +1,8 @@
+import House from "@/components/mypage/House";
+
 export const algorithm = (data: any) => {
   console.log(data);
+
 
   let systemConstant = 1;
   if (data["system"] == "농막") {

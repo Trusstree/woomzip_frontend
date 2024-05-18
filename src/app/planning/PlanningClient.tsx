@@ -213,7 +213,7 @@ export default function PlanningClient() {
       </div>
 
       <div style={{ width: "25%", minWidth: "350px" }}>
-        <PriceBox system={system} slope={slope} road={road} />
+        <PriceBox system={system} slope={slope} road={road} city={city} area={area} house={houseData}/>
         <div
           className="button"
           style={{

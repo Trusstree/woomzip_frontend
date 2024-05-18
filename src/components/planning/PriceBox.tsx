@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import PriceLine from "./PriceLine";
 import { algorithm } from "@/lib/algorithm";
 
-export default function PriceBox({ system, slope, road, city, area }) {
+export default function PriceBox({ system, slope, road, city, area, house }) {
   const [delivery, setDelivery] = useState([0, 0]);
   const [permit, setPermit] = useState([0, 0]);
   const [measure, setMeasure] = useState([0, 0]);
@@ -14,7 +14,7 @@ export default function PriceBox({ system, slope, road, city, area }) {
   const [total, setTotal] = useState([0, 0]);
 
   useEffect(() => {
-    const res = algorithm({ system: system, slope: slope, road: road, city: city, area: area });
+    const res = algorithm({ system: system, slope: slope, road: road, city: city, area: area, house: house });
     setDelivery(res["delivery"]);
     setMeasure(res["measure"]);
     setPermit(res["permit"]);
@@ -23,7 +23,7 @@ export default function PriceBox({ system, slope, road, city, area }) {
     setInsurance(res["insurance"]);
     setTax(res["tax"]);
     setTotal(res["total"]);
-  }, [system, slope, road, city, area]);
+  }, [system, slope, road, city, area, house]);
 
   return (
     <div className="container" style={{ borderColor: "white", width: "100%", position: "sticky", bottom: "0" }}>
