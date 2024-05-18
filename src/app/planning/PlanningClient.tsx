@@ -31,31 +31,31 @@ export default function PlanningClient() {
     params.set("house_id", house_id.toString());
 
     if (system.length == 0) {
-      alertError("system", "system 이 선택되지 않았어요!");
+      alertError("system", "농막인지 주택인지 선택해주세요!");
       return;
     }
     params.set("system", system);
 
     if (city.length == 0) {
-      alertError("city", "city 이 선택되지 않았어요!");
+      alertError("city", "위치를 선택해주세요!");
       return;
     }
     params.set("city", city);
 
     if (area == 0) {
-      alertError("area", "area 이 선택되지 않았어요!");
+      alertError("area", "면적을 선택해주세요!");
       return;
     }
     params.set("area", area.toString());
 
     if (slope.length == 0) {
-      alertError("slope", "slope 이 선택되지 않았어요!");
+      alertError("slope", "토지 기울기를 선택해주세요!");
       return;
     }
     params.set("slope", slope);
 
     if (road.length == 0) {
-      alertError("road", "road 이 선택되지 않았어요!");
+      alertError("road", "도로 상태를 선택해주세요!");
       return;
     }
     params.set("road", road);
@@ -78,6 +78,7 @@ export default function PlanningClient() {
         house_img_url: data.data[0]["house_image"]["representative_images"][0],
         house_name: data.data[0]["house_info"]["house_name"],
         total_floor_area: data.data[0]["house_info"]["total_floor_area"],
+        building_area: data.data[0]["house_info"]["building_area"],
         room_count: data.data[0]["house_info"]["room_count"],
         toilet_count: data.data[0]["house_info"]["toilet_count"],
         estimate_duration: data.data[0]["house_info"]["estimate_duration"],
@@ -145,12 +146,12 @@ export default function PlanningClient() {
         <div style={{ marginBottom: "150px" }}>
           <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}>토지 면적을 알려주세요.</div>
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>아직 구매 전이라면 원하시는 면적을 알려주세요.</div>
-          <SelectMiniBox title={"50평 이하"} text={"~165㎡"} value={165} data={area} setData={setArea} />
-          <SelectMiniBox title={"75평 이하"} text={"~248㎡"} value={248} data={area} setData={setArea} />
-          <SelectMiniBox title={"100평 이하"} text={"~330㎡"} value={330} data={area} setData={setArea} />
-          <SelectMiniBox title={"125평 이하"} text={"~413㎡"} value={413} data={area} setData={setArea} />
-          <SelectMiniBox title={"150평 이하"} text={"~496㎡"} value={496} data={area} setData={setArea} />
-          <SelectMiniBox title={"150평 초과"} text={"496㎡~"} value={500} data={area} setData={setArea} />
+          <SelectMiniBox title={"50평 이하"} text={"~165㎡"} value={50} data={area} setData={setArea} />
+          <SelectMiniBox title={"75평 이하"} text={"~248㎡"} value={75} data={area} setData={setArea} />
+          <SelectMiniBox title={"100평 이하"} text={"~330㎡"} value={100} data={area} setData={setArea} />
+          <SelectMiniBox title={"125평 이하"} text={"~413㎡"} value={125} data={area} setData={setArea} />
+          <SelectMiniBox title={"150평 이하"} text={"~496㎡"} value={150} data={area} setData={setArea} />
+          <SelectMiniBox title={"150평 초과"} text={"496㎡~"} value={151} data={area} setData={setArea} />
         </div>
 
         <div style={{ marginBottom: "150px" }}>
@@ -162,7 +163,7 @@ export default function PlanningClient() {
             value={"평평함"}
             data={slope}
             setData={setSlope}
-            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"}
+            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope1.png"}
           />
           <SelectBox
             title={"조금 경사짐"}
@@ -170,7 +171,7 @@ export default function PlanningClient() {
             value={"조금경사짐"}
             data={slope}
             setData={setSlope}
-            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"}
+            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope2.png"}
           />
           <SelectBox
             title={"많이 경사짐"}
@@ -178,7 +179,7 @@ export default function PlanningClient() {
             value={"많이경사짐"}
             data={slope}
             setData={setSlope}
-            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg"}
+            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope3.png"}
           />
         </div>
 
@@ -188,26 +189,26 @@ export default function PlanningClient() {
           <SelectBox
             title={"넓음"}
             text={"기본 배송비가 소요됩니다."}
-            value={"평평함"}
+            value={"넓음"}
             data={road}
             setData={setRoad}
-            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"}
+            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/raod1.png"}
           />
           <SelectBox
             title={"조금 좁음"}
             text={"추가 트럭 및 인력이 필요합니다."}
-            value={"조금 경사짐"}
+            value={"조금 좁음"}
             data={road}
             setData={setRoad}
-            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"}
+            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/road2.png"}
           />
           <SelectBox
             title={"많이 좁음"}
             text={"현장건축이 필요할 수 있습니다."}
-            value={"많이 경사짐"}
+            value={"많이 좁음"}
             data={road}
             setData={setRoad}
-            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg"}
+            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/road3.png"}
           />
         </div>
       </div>

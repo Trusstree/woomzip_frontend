@@ -12,6 +12,7 @@ export default function PriceBox({ system, slope, road, city, area, house }) {
   const [insurance, setInsurance] = useState([0, 0]);
   const [tax, setTax] = useState([0, 0]);
   const [total, setTotal] = useState([0, 0]);
+  const [price, setPrice] = useState([0]);
 
   useEffect(() => {
     const res = algorithm({ system: system, slope: slope, road: road, city: city, area: area, house: house });
@@ -23,13 +24,14 @@ export default function PriceBox({ system, slope, road, city, area, house }) {
     setInsurance(res["insurance"]);
     setTax(res["tax"]);
     setTotal(res["total"]);
+    setPrice(res["price"]);
   }, [system, slope, road, city, area, house]);
 
   return (
     <div className="container" style={{ borderColor: "white", width: "100%", position: "sticky", bottom: "0" }}>
       <div className="d-flex justify-content-between" style={{ lineHeight: "35px" }}>
         <div style={{ fontSize: "17px", fontWeight: "500" }}>주택가격</div>
-        <div>price</div>
+        <div>{price[0]}</div>
       </div>
       <PriceLine title={"배송비"} minPrice={delivery[0]} maxPrice={delivery[1]} />
       <PriceLine title={"측량비"} minPrice={measure[0]} maxPrice={measure[1]} />
