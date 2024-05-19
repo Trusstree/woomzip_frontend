@@ -1,35 +1,31 @@
-import House from "@/components/mypage/House";
-import build from "next/dist/build";
-import { cardPriceText } from "./stringUtil";
-
 export const algorithm = (data: any) => {
   console.log(data);
 
   let systemConstant = 1;
-  if (data["system"] == "농막") {
+  if (data["houseType"] == "hut") {
     systemConstant = 0;
-  } else if (data["system"] == "주택") {
+  } else if (data["houseType"] == "house") {
     systemConstant = 1;
   }
 
   let cityConstant = 1;
-  if (data["city"] == "경기도") {
+  if (data["addr"] == "경기도") {
     cityConstant = 1;
-  } else if (data["city"] == "강원도") {
+  } else if (data["addr"] == "강원도") {
     cityConstant = 1;
-  } else if (data["city"] == "충청북도") {
+  } else if (data["addr"] == "충청북도") {
     cityConstant = 1;
-  } else if (data["city"] == "충청남도") {
+  } else if (data["addr"] == "충청남도") {
     cityConstant = 1;
-  } else if (data["city"] == "경상북도") {
+  } else if (data["addr"] == "경상북도") {
     cityConstant = 1;
-  } else if (data["city"] == "경상남도") {
+  } else if (data["addr"] == "경상남도") {
     cityConstant = 1;
-  } else if (data["city"] == "전라북도") {
+  } else if (data["addr"] == "전라북도") {
     cityConstant = 1;
-  } else if (data["city"] == "전라남도") {
+  } else if (data["addr"] == "전라남도") {
     cityConstant = 1;
-  } else if (data["city"] == "제주도") {
+  } else if (data["addr"] == "제주도") {
     cityConstant = 2;
   }
 
@@ -49,20 +45,20 @@ export const algorithm = (data: any) => {
   }
 
   let slopeConstant = 1;
-  if (data["slope"] == "평평함") {
+  if (data["landCondition"] == "Flat") {
     slopeConstant = 0;
-  } else if (data["slope"] == "조금경사짐") {
+  } else if (data["landCondition"] == "SlightlySloped") {
     slopeConstant = 1;
-  } else if (data["slope"] == "많이경사짐") {
+  } else if (data["landCondition"] == "SteeplySloped") {
     slopeConstant = 1.5;
   }
 
   let roadConstant = 1;
-  if (data["road"] == "넓음") {
+  if (data["roadCondition"] == "Wide") {
     roadConstant = 1;
-  } else if (data["road"] == "조금 좁음") {
+  } else if (data["roadCondition"] == "Narrow") {
     roadConstant = 1.5;
-  } else if (data["road"] == "많이 좁음") {
+  } else if (data["roadCondition"] == "VeryNarrow") {
     roadConstant = 2;
   }
 
