@@ -41,24 +41,19 @@ export function LivingInfo() {
         <div style={{ color: "gray", fontSize: "14px" }}>후기({count})</div>
         <RouteButtonLight url={"/living/1/review"} text={"전체보기"} />
       </div>
-      <div
-        className="container"
-        style={{ width: "100%", minWidth: "400px", fontSize: "14px", color: "gray", overflow: "scroll" }}
-      >
-        <div className="container row" style={{ padding: "0", width: "3000px", height: "200px", float: "left" }}>
-          {review.map((e, i) => (
-            <ReviewMiniBox
-              key={e["pavilion_review_id"]}
-              id={e["fk_pavilion_id"]}
-              nickname={e["nickname"]}
-              date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
-              helpful={e["helpful"]}
-              tag={JSON.parse(e["tag"])}
-              comment={e["pavilion_review_text"]}
-              images={JSON.parse(e["pavilion_review_images"])}
-            />
-          ))}
-        </div>
+      <div className="row flex-nowrap overflow-auto g-2">
+        {review.map((e, i) => (
+          <ReviewMiniBox
+            key={e["pavilion_review_id"]}
+            id={e["fk_pavilion_id"]}
+            nickname={e["nickname"]}
+            date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
+            helpful={e["helpful"]}
+            tag={JSON.parse(e["tag"])}
+            comment={e["pavilion_review_text"]}
+            images={JSON.parse(e["pavilion_review_images"])}
+          />
+        ))}
       </div>
     </div>
   );

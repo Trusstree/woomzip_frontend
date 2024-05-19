@@ -11,11 +11,11 @@ import HouseCard from "@/components/house/HouseCard";
 import { alertError } from "@/lib/alertUtil";
 
 export default function PlanningClient() {
-  const [system, setSystem] = useState("");
-  const [slope, setSlope] = useState("");
-  const [road, setRoad] = useState("");
-  const [area, setArea] = useState(0);
-  const [city, setCity] = useState("");
+  const [houseType, setHouseType] = useState("");
+  const [landCondition, setLandCondition] = useState("");
+  const [roadCondition, setRoadCondition] = useState("");
+  const [area, setArea] = useState("");
+  const [addr, setAddr] = useState("");
   const [houseData, setHouseData] = useState(undefined);
 
   const searchParams = useSearchParams();
@@ -30,38 +30,38 @@ export default function PlanningClient() {
     }
     params.set("house_id", house_id.toString());
 
-    if (system.length == 0) {
-      alertError("system", "농막인지 주택인지 선택해주세요!");
+    if (houseType.length == 0) {
+      alertError("houseType", "농막인지 주택인지 선택해주세요!");
       return;
     }
-    params.set("system", system);
+    params.set("house_type", houseType);
 
-    if (city.length == 0) {
-      alertError("city", "위치를 선택해주세요!");
+    if (addr.length == 0) {
+      alertError("addr", "위치를 선택해주세요!");
       return;
     }
-    params.set("city", city);
+    params.set("addr", addr);
 
-    if (area == 0) {
+    if (area.length == 0) {
       alertError("area", "면적을 선택해주세요!");
       return;
     }
     params.set("area", area.toString());
 
-    if (slope.length == 0) {
-      alertError("slope", "토지 기울기를 선택해주세요!");
+    if (landCondition.length == 0) {
+      alertError("landCondition", "토지 기울기를 선택해주세요!");
       return;
     }
-    params.set("slope", slope);
+    params.set("land_condition", landCondition);
 
-    if (road.length == 0) {
-      alertError("road", "도로 상태를 선택해주세요!");
+    if (roadCondition.length == 0) {
+      alertError("roadCondition", "도로 상태를 선택해주세요!");
       return;
     }
-    params.set("road", road);
+    params.set("road_condition", roadCondition);
 
     router.push(`/planning/application?${params.toString()}`);
-  }, [system, slope, road, area, city]);
+  }, [houseType, landCondition, roadCondition, area, addr]);
 
   useEffect(() => {
     (async () => {
@@ -103,7 +103,20 @@ export default function PlanningClient() {
             {houseData ? (
               <HouseCard className="w-100" data={houseData} />
             ) : (
-              <button style={{ width: "280px", height: "300px", borderRadius: "10px", backgroundColor:"white", borderColor:"#314FC0", borderStyle:"soild" }}>선택된 집이 없어요.<br/>찾아보기 탭에서 집을 선택해주세요.</button>
+              <button
+                style={{
+                  width: "280px",
+                  height: "300px",
+                  borderRadius: "10px",
+                  backgroundColor: "white",
+                  borderColor: "#314FC0",
+                  borderStyle: "soild",
+                }}
+              >
+                선택된 집이 없어요.
+                <br />
+                찾아보기 탭에서 집을 선택해주세요.
+              </button>
             )}
           </div>
         </div>
@@ -114,17 +127,17 @@ export default function PlanningClient() {
           <SelectBox
             title={"농막"}
             text={"건축 인허가가 필요 없습니다."}
-            value={"농막"}
-            data={system}
-            setData={setSystem}
+            value={"hut"}
+            data={houseType}
+            setData={setHouseType}
             img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"}
           />
           <SelectBox
             title={"주택"}
             text={"건축 인허가가 필요합니다."}
-            value={"주택"}
-            data={system}
-            setData={setSystem}
+            value={"house"}
+            data={houseType}
+            setData={setHouseType}
             img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"}
           />
         </div>
@@ -132,26 +145,26 @@ export default function PlanningClient() {
         <div style={{ marginBottom: "150px" }}>
           <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}>어디에 지으실 건가요?</div>
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>아직 구매 전이라면 원하시는 위치를 알려주세요.</div>
-          <SelectCityBox title={"경기도"} value={"경기도"} data={city} setData={setCity} />
-          <SelectCityBox title={"강원도"} value={"강원도"} data={city} setData={setCity} />
-          <SelectCityBox title={"충청북도"} value={"충청북도"} data={city} setData={setCity} />
-          <SelectCityBox title={"충청남도"} value={"충청남도"} data={city} setData={setCity} />
-          <SelectCityBox title={"경상북도"} value={"경상북도"} data={city} setData={setCity} />
-          <SelectCityBox title={"경상남도"} value={"경상남도"} data={city} setData={setCity} />
-          <SelectCityBox title={"전라북도"} value={"전라북도"} data={city} setData={setCity} />
-          <SelectCityBox title={"전라남도"} value={"전라남도"} data={city} setData={setCity} />
-          <SelectCityBox title={"제주도"} value={"제주도"} data={city} setData={setCity} />
+          <SelectCityBox title={"경기도"} value={"경기도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"강원도"} value={"강원도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"충청북도"} value={"충청북도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"충청남도"} value={"충청남도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"경상북도"} value={"경상북도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"경상남도"} value={"경상남도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"전라북도"} value={"전라북도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"전라남도"} value={"전라남도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"제주도"} value={"제주도"} data={addr} setData={setAddr} />
         </div>
 
         <div style={{ marginBottom: "150px" }}>
           <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}>토지 면적을 알려주세요.</div>
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>아직 구매 전이라면 원하시는 면적을 알려주세요.</div>
-          <SelectMiniBox title={"50평 이하"} text={"~165㎡"} value={50} data={area} setData={setArea} />
-          <SelectMiniBox title={"75평 이하"} text={"~248㎡"} value={75} data={area} setData={setArea} />
-          <SelectMiniBox title={"100평 이하"} text={"~330㎡"} value={100} data={area} setData={setArea} />
-          <SelectMiniBox title={"125평 이하"} text={"~413㎡"} value={125} data={area} setData={setArea} />
-          <SelectMiniBox title={"150평 이하"} text={"~496㎡"} value={150} data={area} setData={setArea} />
-          <SelectMiniBox title={"150평 초과"} text={"496㎡~"} value={151} data={area} setData={setArea} />
+          <SelectMiniBox title={"50평 이하"} text={"~165㎡"} value={"50"} data={area} setData={setArea} />
+          <SelectMiniBox title={"75평 이하"} text={"~248㎡"} value={"75"} data={area} setData={setArea} />
+          <SelectMiniBox title={"100평 이하"} text={"~330㎡"} value={"100"} data={area} setData={setArea} />
+          <SelectMiniBox title={"125평 이하"} text={"~413㎡"} value={"125"} data={area} setData={setArea} />
+          <SelectMiniBox title={"150평 이하"} text={"~496㎡"} value={"150"} data={area} setData={setArea} />
+          <SelectMiniBox title={"150평 초과"} text={"496㎡~"} value={"151"} data={area} setData={setArea} />
         </div>
 
         <div style={{ marginBottom: "150px" }}>
@@ -160,25 +173,25 @@ export default function PlanningClient() {
           <SelectBox
             title={"평평함"}
             text={"토목공사가 필요 없습니다."}
-            value={"평평함"}
-            data={slope}
-            setData={setSlope}
+            value={"Flat"}
+            data={landCondition}
+            setData={setLandCondition}
             img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope1.png"}
           />
           <SelectBox
             title={"조금 경사짐"}
             text={"토목공사가 필요합니다."}
-            value={"조금경사짐"}
-            data={slope}
-            setData={setSlope}
+            value={"SlightlySloped"}
+            data={landCondition}
+            setData={setLandCondition}
             img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope2.png"}
           />
           <SelectBox
             title={"많이 경사짐"}
             text={"비용이 더 많이 소요됩니다."}
-            value={"많이경사짐"}
-            data={slope}
-            setData={setSlope}
+            value={"SteeplySloped"}
+            data={landCondition}
+            setData={setLandCondition}
             img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope3.png"}
           />
         </div>
@@ -189,49 +202,58 @@ export default function PlanningClient() {
           <SelectBox
             title={"넓음"}
             text={"기본 배송비가 소요됩니다."}
-            value={"넓음"}
-            data={road}
-            setData={setRoad}
+            value={"Wide"}
+            data={roadCondition}
+            setData={setRoadCondition}
             img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/raod1.png"}
           />
           <SelectBox
             title={"조금 좁음"}
             text={"추가 트럭 및 인력이 필요합니다."}
-            value={"조금 좁음"}
-            data={road}
-            setData={setRoad}
+            value={"Narrow"}
+            data={roadCondition}
+            setData={setRoadCondition}
             img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/road2.png"}
           />
           <SelectBox
             title={"많이 좁음"}
             text={"현장건축이 필요할 수 있습니다."}
-            value={"많이 좁음"}
-            data={road}
-            setData={setRoad}
+            value={"VeryNarrow"}
+            data={roadCondition}
+            setData={setRoadCondition}
             img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/road3.png"}
           />
         </div>
       </div>
 
       <div style={{ width: "25%", minWidth: "350px" }}>
-        <PriceBox system={system} slope={slope} road={road} city={city} area={area} house={houseData}/>
-        <div
-          className="button"
-          style={{
-            width: "100%",
-            height: "50px",
-            borderRadius: "10px",
-            padding: "10px",
-            marginBottom: "10px",
-            backgroundColor: "#101648",
-            color: "white",
-            fontSize: "20px",
-            fontWeight: "600",
-            textAlign: "center",
-          }}
-          onClick={submit}
-        >
-          이 견적으로 프로젝트 시작하기
+        <div className="py-5 sticky-top">
+          <PriceBox
+            houseType={houseType}
+            landCondition={landCondition}
+            roadCondition={roadCondition}
+            addr={addr}
+            area={area}
+            house={houseData}
+          />
+          <div
+            className="button"
+            style={{
+              width: "100%",
+              height: "50px",
+              borderRadius: "10px",
+              padding: "10px",
+              marginBottom: "10px",
+              backgroundColor: "#101648",
+              color: "white",
+              fontSize: "20px",
+              fontWeight: "600",
+              textAlign: "center",
+            }}
+            onClick={submit}
+          >
+            이 견적으로 프로젝트 시작하기
+          </div>
         </div>
       </div>
     </div>
