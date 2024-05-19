@@ -6,8 +6,6 @@ import Footer from "../components/app/Footer";
 import { Analytics } from "@/components/Analytics";
 import ContextSession from "../components/app/ContextSession";
 import StyledComponentsRegistry from "@/components/app/StyledComponentsRegistry";
-import { cookies } from "next/headers";
-import LocalStorage from "@/configs/localstorage";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

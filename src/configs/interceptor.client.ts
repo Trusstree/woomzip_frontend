@@ -12,7 +12,6 @@ export const onPrivateClientRequest = async (request: any) => {
 export const onPrivateClientResponseError = async (error: any) => {
   const status = error.response.data.status;
   const errorConfig = error.response.config;
-
   try {
     if (status == 401) {
       console.log(error);
@@ -23,14 +22,12 @@ export const onPrivateClientResponseError = async (error: any) => {
     if (status == 402) {
       setAccessTokenClient(error.response.data.data[0].access_token);
       errorConfig.headers["Authorization"] = `Bearer ${error.response.data.data[0].access_token}`;
-
       const res = await privateApiClient({
         method: errorConfig.method,
         url: errorConfig.url,
         data: errorConfig.data,
         headers: errorConfig.headers,
       });
-      console.log(res);
       if (res.status >= 400) throw res;
       else return res;
     }

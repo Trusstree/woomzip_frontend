@@ -11,16 +11,17 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/components/app/ContextSession";
 import { removeAccessTokenClient } from "@/configs/cookie.client";
 
-type ProfileProps = {};
+type ProfileProps = { uid: number };
 
 export default function Profile(props: ProfileProps) {
+  const { uid } = props;
   const { userContext, setUserContext } = useUser();
   const router = useRouter();
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
     (async () => {
-      const [data, error] = await getUser(userContext.uid);
+      const [data, error] = await getUser(uid);
       if (error) console.error(error);
       console.log(data.data[0].user_profile);
       const rawProfile = data.data[0].user_profile;

@@ -1,40 +1,22 @@
-import { useUser } from "@/components/app/ContextSession";
-import { getAccessTokenServer } from "@/configs/cookie.server";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { getUserdataByToken } from "@/lib/parseUtil";
+import { cookies } from "next/headers";
+import Link from "next/link";
 
 export default function SigninButton() {
-  const router = useRouter();
-  const userCookie = getAccessTokenServer();
-  const { userContext, setUserContext } = useUser();
-
-  // useEffect(() => {
-  //   setUserContext(userCookie?.userData);
-  // }, []);
-
-  return userCookie == undefined ? (
-    <button
-      type="button"
-      style={{ color: "#101648" }}
-      className={`px-4 py-2 btn rounded-lg fw-bold align-self-end`}
-      onClick={() => {
-        router.push("/signin");
-      }}
-    >
-      {" "}
+  const cookieStorage = cookies();
+  const userAccessToken = cookieStorage.get("accessToken")?.value;
+  const userInfo = getUserdataByToken(userAccessToken);
+  return userInfo == undefined ? (
+    <Link className={"btn px-4 py-2 btn rounded-lg fw-bold align-self-end"} style={{ color: "#101648" }} href="/signin">
       로그인/회원가입
-    </button>
+    </Link>
   ) : (
-    <button
-      type="button"
+    <Link
+      className={"btn px-4 py-2 btn rounded-lg fw-bold align-self-end"}
       style={{ color: "#101648" }}
-      className={`px-4 py-2 btn rounded-lg fw-bold align-self-end`}
-      onClick={() => {
-        router.push(`/mypage/${1 /*userContext?.uid*/}`);
-      }}
+      href={`/mypage/${userInfo.uid}`}
     >
-      {" "}
       마이페이지
-    </button>
+    </Link>
   );
 }

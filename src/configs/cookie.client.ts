@@ -30,8 +30,9 @@ const removeCookieClient = (name: string, option?: CookieSetOptions) => {
 
 const accessTokenOption: CookieSetOptions = {
   //expires?: Date;
-  domain: ".buildintruss.com",
-  maxAge: 6000,
+  //domain: ".buildintruss.com",
+  //maxAge: 6000,
+  path: "/",
   secure: false,
   httpOnly: false,
   sameSite: false,
