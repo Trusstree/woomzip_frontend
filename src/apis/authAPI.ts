@@ -1,12 +1,11 @@
+import { privateApiServer } from "@/configs/privateApiServer";
 import { publicApi } from "@/configs/publicApi";
 
-export const getAccessToken = async (accessToken: string) => {
+export const getAccessToken = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await publicApi.get(`/auth/access`, {
-      headers: { "X-AUTH-TOKEN": accessToken },
-    });
+    const result = await publicApi.get(`/auth/access`);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -15,11 +14,12 @@ export const getAccessToken = async (accessToken: string) => {
   return [data, error];
 };
 
-export const refreshAccessToken = async (accessToken: string) => {
+export const refreshAccessToken = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await publicApi.get(`/users/test`);
+    const result = await privateApiServer.get(`/users/test`);
+    console.log(result);
     data = result?.data;
   } catch (err) {
     error = err;

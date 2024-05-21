@@ -13,8 +13,8 @@ import { useState } from "react";
 export function SigninForm() {
   const router = useRouter();
   const { setUserContext } = useUser();
-  const [id, setID] = useState(undefined);
-  const [pw, setPW] = useState(undefined);
+  const [id, setID] = useState("");
+  const [pw, setPW] = useState("");
 
   const submit = async () => {
     // 유효성 검사부터

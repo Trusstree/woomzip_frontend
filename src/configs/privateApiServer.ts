@@ -1,5 +1,3 @@
-"use server";
-
 import axios from "axios";
 import { onRequestError, onResponse } from "./interceptor";
 import { onPrivateServerRequest, onPrivateServerResponseError } from "./interceptor.server";

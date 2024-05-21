@@ -21,6 +21,7 @@ export default function Profile(props: ProfileProps) {
 
   useEffect(() => {
     (async () => {
+      console.log(userContext);
       const [data, error] = await getUser(uid);
       if (error) console.error(error);
       console.log(data.data[0].user_profile);

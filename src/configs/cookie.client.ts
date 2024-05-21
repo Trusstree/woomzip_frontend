@@ -28,14 +28,13 @@ const removeCookieClient = (name: string, option?: CookieSetOptions) => {
   return cookies.remove(name, { ...option });
 };
 
-const accessTokenOption: CookieSetOptions = {
+export const accessTokenOption: CookieSetOptions = {
   //expires?: Date;
   //domain: ".buildintruss.com",
-  //maxAge: 6000,
   path: "/",
-  secure: false,
-  httpOnly: false,
-  sameSite: false,
+  secure: true,
+  httpOnly: true,
+  sameSite: "lax",
 };
 
 export const getAccessTokenClient = () => getCookieClient("accessToken");

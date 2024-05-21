@@ -1,11 +1,11 @@
-import "server-only";
-
+"use server";
+import TestClient from "@/components/test/TestClient";
 import React from "react";
-import { cookies } from "next/headers";
 
-export default async function Test() {
-  const cookieStore = cookies();
-  const data = cookieStore.get("accessToken");
-
-  return <main>{data ? "원피스는 실존한다!" : "아니 이게 왜 없어!"}</main>;
+export default async function Page() {
+  return (
+    <main>
+      <TestClient />
+    </main>
+  );
 }

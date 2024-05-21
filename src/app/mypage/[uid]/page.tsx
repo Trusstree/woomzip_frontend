@@ -6,14 +6,20 @@ import House from "../../../components/mypage/House";
 import Profile from "../../../components/mypage/Profile";
 import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
 import PostMenu from "@/components/posts/PostMenu";
-import { getUser } from "@/apis/userAPI.server";
 import Link from "next/link";
+import { getUser } from "@/apis/userAPI.server";
 
-export default async function page({ params, searchParams }) {
+async function create(uid) {
+  "use server";
+  const userData: any = await getUser(uid);
+  return userData;
+}
+
+export default async function Page({ params, searchParams }) {
   const { uid } = params;
   const { tab } = searchParams;
-  const userData: any = await getUser(uid);
-  console.log(userData);
+
+  const userData: any = (await create(uid))[0].data[0]["user_profile"];
 
   return (
     <div className="mb-5 row">
@@ -68,7 +74,7 @@ export default async function page({ params, searchParams }) {
             </div> */}
         </div>
 
-        {Number(uid) == userData.uid && (
+        {Number(uid) == userData["user_profile_id"] && (
           <Link
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{ backgroundColor: "#101648" }}
