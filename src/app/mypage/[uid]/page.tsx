@@ -11,15 +11,19 @@ import { getUser } from "@/apis/userAPI.server";
 
 async function create(uid) {
   "use server";
-  const userData: any = await getUser(uid);
-  return userData;
+  const [data, error] = await getUser(uid);
+  if (error) {
+    console.log(error);
+    return;
+  }
+  return data?.data[0]?.user_profile;
 }
 
 export default async function Page({ params, searchParams }) {
   const { uid } = params;
   const { tab } = searchParams;
 
-  const userData: any = (await create(uid))[0].data[0]["user_profile"];
+  const userData: any = await create(uid);
 
   return (
     <div className="mb-5 row">

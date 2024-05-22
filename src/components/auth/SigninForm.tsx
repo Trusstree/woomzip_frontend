@@ -1,6 +1,7 @@
 "use client";
 
 import { signinUser } from "@/apis/userAPI.server";
+import { encryptPW } from "@/app/signin/action";
 import { useUser } from "@/components/app/ContextSession";
 import { setAccessTokenClient } from "@/configs/cookie.client";
 import { alertError } from "@/lib/alertUtil";
@@ -37,7 +38,7 @@ export function SigninForm() {
 
     const encryptedData = {
       login_id: id,
-      password: encrypt(pw),
+      password: await encryptPW(pw),
     };
 
     const [data, error] = await signinUser(encryptedData);
@@ -92,15 +93,6 @@ export function SigninForm() {
 
       <div className="w-100 btn btn-lg text-white" style={{ backgroundColor: "#101648" }} onClick={submit}>
         로그인
-      </div>
-
-      <div
-        className="w-100 btn"
-        onClick={() => {
-          router.push("/signup");
-        }}
-      >
-        회원이 아니세요? 회원가입
       </div>
     </div>
   );

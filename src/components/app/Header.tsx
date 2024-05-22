@@ -47,7 +47,7 @@ export default function Header(props: HeaderProps) {
             </div>
             <div className="offcanvas-body d-flex flex-column">
               <div data-bs-dismiss="offcanvas" aria-label="Close">
-                {/* <SigninButton /> */}
+                <SigninButton />
               </div>
               <div data-bs-dismiss="offcanvas" aria-label="Close">
                 <RouteButton url={"/"} className="fs-5">

@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
-import { setAccessTokenClient } from "./cookie.client";
-import { privateApiClient } from "./privateApiClient";
+import { privateApiServer } from "./privateApiServer";
 
 export const onPrivateServerRequest = async (request: any) => {
   const cookieStorage = cookies();
@@ -23,9 +22,13 @@ export const onPrivateServerResponseError = async (error: any) => {
 
     // Access Token 재발급해서 다시 신호 보내주는 작업
     if (status == 402) {
+      console.log("혹시라도 이 노랠 듣게 된다면");
       const prevRequest = errorConfig;
+      const cookieStorage = cookies();
+      cookieStorage.set("accessToken", error.response.data.data[0].access_token);
+      console.log(cookieStorage.get("accessToken"));
       prevRequest.headers["Authorization"] = `Bearer ${error.response.data.data[0].access_token}`;
-      return privateApiClient(errorConfig);
+      return privateApiServer(errorConfig);
     }
   } catch (referenceError) {
     console.log(referenceError);
