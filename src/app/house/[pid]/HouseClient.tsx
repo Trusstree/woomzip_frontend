@@ -10,8 +10,6 @@ import { useRouter } from "next/navigation";
 import { deleteHeart, postHeart } from "@/apis/HeartAPI";
 import { alertSuccess } from "@/lib/alertUtil";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
-import { getUserCookie } from "@/lib/cookieUtil";
-import useQuery from "@/hooks/useQuery";
 
 type HouseComponentProps = {
   pid: number;
@@ -507,7 +505,7 @@ export function HouseClient(props: HouseComponentProps) {
             <div className="fw-bold fs-5" style={{ color: "#101648" }}>
               제품 소개
             </div>
-            <div className="fs-5" style={{ color: "#101648", whiteSpace: "pre-wrap" }}>
+            <div className="fs-5" style={{ color: "#101648" }}>
               {houseData["house_explanation"]}
             </div>
           </div>
@@ -544,7 +542,7 @@ export function HouseClient(props: HouseComponentProps) {
                   지붕재
                 </div>
                 <div className="col-7 fs-5" style={{ color: "#101648" }}>
-                  {specificationData["roofing_material"]}
+                  {specificationData["insulation_material"]}
                 </div>
               </div>
 
@@ -554,7 +552,7 @@ export function HouseClient(props: HouseComponentProps) {
                   단열재
                 </div>
                 <div className="col-7 fs-5" style={{ color: "#101648" }}>
-                  {specificationData["insulation_material"]}
+                  {specificationData["roofing_material"]}
                 </div>
               </div>
 
@@ -653,7 +651,7 @@ export function HouseClient(props: HouseComponentProps) {
                 <div className="fw-bold fs-5" style={{ color: "#101648" }}>
                   사양 설명
                 </div>
-                <div className="fs-5" style={{ color: "#101648", whiteSpace: "pre-wrap" }}>
+                <div className="fs-5" style={{ color: "#101648" }}>
                   {specificationData["specification_description"]}
                 </div>
               </div>
@@ -697,7 +695,7 @@ export function HouseClient(props: HouseComponentProps) {
                 <div className="fw-bold fs-5" style={{ color: "#101648" }}>
                   기타 가격 변동 사항
                 </div>
-                <div className="fs-5" style={{ color: "#101648", whiteSpace: "pre-wrap" }}>
+                <div className="fs-5" style={{ color: "#101648" }}>
                   {houseData["price_variation"]}
                 </div>
               </div>

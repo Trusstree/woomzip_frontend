@@ -5,9 +5,11 @@ import { useDaumPostcodePopup } from "react-daum-postcode";
 export function AddressInputForm({
   className,
   addr,
+  name,
   setAddr,
 }: {
   className?: string;
+  name: string;
   addr: string;
   setAddr: Function;
 }) {
@@ -27,7 +29,6 @@ export function AddressInputForm({
       fullAddress += extraAddress !== "" ? ` (${extraAddress})` : "";
     }
 
-    console.log(fullAddress); // e.g. '서울 성동구 왕십리로2길 20 (성수동1가)'
     setAddr(fullAddress);
   };
 
@@ -36,9 +37,9 @@ export function AddressInputForm({
   };
 
   return (
-    <div className="d-flex">
-      <input style={{ textOverflow: "ellipsis" }} disabled value={addr} />
-      <button className={`btn btn-outline-primary ${className}`} type="button" onClick={handleClick}>
+    <div className={`d-flex w-100 ${className && ""}`}>
+      <input className={"col-9"} style={{ textOverflow: "ellipsis" }} disabled name={name} value={addr} />
+      <button className={`col-3 btn btn-outline-primary`} type="button" onClick={handleClick}>
         Open
       </button>
     </div>

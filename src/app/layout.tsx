@@ -6,7 +6,6 @@ import Footer from "../components/app/Footer";
 import { Analytics } from "@/components/Analytics";
 import ContextSession from "../components/app/ContextSession";
 import StyledComponentsRegistry from "@/components/app/StyledComponentsRegistry";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

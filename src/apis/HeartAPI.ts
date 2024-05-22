@@ -1,4 +1,4 @@
-import { signedApiClient } from "@/configs/apiClient";
+import { signedApiClient } from "@/configs/publicApi";
 
 export const getHeart = async (params: any) => {
   let [count, countError] = [undefined, undefined] as any;

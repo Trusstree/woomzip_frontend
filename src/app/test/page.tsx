@@ -1,7 +1,9 @@
-import React from "react";
-import TestClient from "./TestClient";
+"use server";
 
-export default function Test() {
+import TestClient from "@/components/test/TestClient";
+import React from "react";
+
+export default async function Page() {
   return (
     <main>
       <TestClient />

@@ -1,10 +1,11 @@
-import { apiClient, signedApiClient } from "@/configs/apiClient";
+import { privateApiClient } from "@/configs/privateApiClient";
+import { publicApi } from "@/configs/publicApi";
 
 export const getPosts = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/community`, {
+    const result = await publicApi.get(`/community`, {
       params: params,
     });
     data = result?.data;
@@ -19,7 +20,7 @@ export const getPost = async (postNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/community/detail`, {
+    const result = await publicApi.get(`/community/detail`, {
       params: { pid: postNum },
     });
     data = result?.data;
@@ -34,7 +35,7 @@ export const postPost = async (post: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.post(`/community/post/create`, post);
+    const result = await privateApiClient.post(`/community/post/create`, post);
     data = result?.data;
   } catch (err) {
     error = err;

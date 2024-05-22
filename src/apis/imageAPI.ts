@@ -1,4 +1,4 @@
-import { apiClient } from "@/configs/apiClient";
+import { apiClient } from "@/configs/publicApi";
 
 export const getImage = async (house_id: number) => {
   let [count, countError] = [undefined, undefined] as any;
