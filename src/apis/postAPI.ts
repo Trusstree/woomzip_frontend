@@ -1,4 +1,6 @@
-import { privateApiClient } from "@/configs/privateApiClient";
+"use server"
+
+import { privateApiServer } from "@/configs/privateApiServer";
 import { publicApi } from "@/configs/publicApi";
 
 export const getPosts = async (params: any) => {
@@ -32,10 +34,11 @@ export const getPost = async (postNum: number) => {
 };
 
 export const postPost = async (post: any) => {
+  
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApiClient.post(`/community/post/create`, post);
+    const result = await privateApiServer.post(`/community/post/create`, post);
     data = result?.data;
   } catch (err) {
     error = err;

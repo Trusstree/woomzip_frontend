@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function SigninForm() {
+  console.log("hello");
   const router = useRouter();
   const { setUserContext } = useUser();
   const [id, setID] = useState("");
@@ -42,8 +43,9 @@ export function SigninForm() {
     };
 
     const [data, error] = await signinUser(encryptedData);
+
     if (error) {
-      console.error(error);
+      console.log("error");
       alertError("로그인 에러", error.response?.data?.message || `로그인에 실패했어요.`);
       return;
     }
