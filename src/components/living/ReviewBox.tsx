@@ -80,10 +80,11 @@ export function ReviewBox({ id, index, nickname, date, helpful, tag, comment, im
               key={index}
               style={{
                 width: "auto",
-                padding: "10px",
+                padding: "11px",
                 marginRight: "5px",
                 backgroundColor: badgeStyles(badge),
                 color: "white",
+                fontWeight:"400"
               }}
             >
               {badge}

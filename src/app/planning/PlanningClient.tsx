@@ -130,7 +130,7 @@ export default function PlanningClient() {
             value={"hut"}
             data={houseType}
             setData={setHouseType}
-            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"}
+            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"}
           />
           <SelectBox
             title={"주택"}
@@ -138,7 +138,7 @@ export default function PlanningClient() {
             value={"house"}
             data={houseType}
             setData={setHouseType}
-            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"}
+            img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home2.png"}
           />
         </div>
 

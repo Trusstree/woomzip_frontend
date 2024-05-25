@@ -1,6 +1,6 @@
 "use client"
 
-import { SearchModal } from "../living/SearchModal";
+import { SearchModal } from "./SearchModal";
 
 export default function FillteringMoreButton({ title, data, setData }) {
 	return(
@@ -17,7 +17,9 @@ export default function FillteringMoreButton({ title, data, setData }) {
 			borderColor:"gray"}}
 			data-bs-toggle="modal"
       data-bs-target={`#search_modal`}>
-				<div style={{fontSize:"15px", fontWeight:"600"}}>{title}</div>
+				<div style={{fontSize:"15px", fontWeight:"600"}}>
+				{title}
+				</div>
 		</button>
 		<SearchModal data={data} setData={setData} />
 		</>

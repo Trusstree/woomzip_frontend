@@ -72,10 +72,11 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
             className="badge"
             key={index}
             style={{
-              padding: "5px",
+              padding: "6px",
               marginRight: "2px",
               backgroundColor: badgeStyles(badge),
               color: "white",
+              fontWeight:"400"
             }}
           >
             {badge}

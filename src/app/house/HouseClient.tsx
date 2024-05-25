@@ -3,11 +3,13 @@
 import PostMenu from "@/components/posts/PostMenu";
 import { HouseList } from "@/components/house/HouseList";
 import { useState } from "react";
+import SearchBox from "@/components/house/SearchBox";
 import FillteringButton from "@/components/house/FillteringButton";
 import FillteringMoreButton from "@/components/house/FillteringMoreButton";
 import ResetButton from "@/components/house/ResetButton";
 
 export default function Home() {
+
   const [searchCondition, setSearchCondition]=useState({});
   const [isSubmit, setIsSubmit] = useState(true);
   const [numShowItems, numShowPages] = [24, 10];
@@ -18,36 +20,43 @@ export default function Home() {
 
   return (
     <>
-      <div className="row" style={{display:"flex", justifyContent:"space-between", margin:"120px 0"}}>
-        <div style={{ width:"500px", fontSize: "38px", fontWeight:"600"}}>우리 가족을 위한 집,<br/>트러스에서 찾아보세요</div>
-        <div style={{width:"600px"}}>
-          <div className="fs-5 fw-bold" style={{margin:"30px 0 10px 0"}}>조건에 맞는 집을 찾아드려요</div>
-          <button
-          style={{width:"150px", height:"50px", backgroundColor:"#314FC0", color:"white", border:"none", borderRadius:"40px"}}
-          onClick={submit}>
-            조건 검색하기
-          </button>
+      
+      <div style={{ width:"500px", fontSize: "38px", fontWeight:"600", margin:"120px 0"}}>우리 가족을 위한 집,<br/>트러스에서 찾아보세요</div>
+        {/*<div className="row" style={{display:"flex", justifyContent:"space-between", margin:"120px 0"}}>
+          <div style={{width:"600px"}}>
+            <div className="fs-5 fw-bold" style={{margin:"30px 0 10px 0"}}>조건에 맞는 집을 찾아드려요</div>
+              <button
+              style={{width:"150px", height:"50px", backgroundColor:"#314FC0", color:"white", border:"none", borderRadius:"40px"}}
+              onClick={submit}>
+                조건 검색하기
+              </button>
+            </div>
+          </div>*/}
+      <div className="row" style={{ display: "flex", justifyContent: "space-between"}}>
+        <div className="row" style={{width:"1100px"}}>
+          <div style={{width:"380px"}}>
+            <div style={{margin:"0 10px", fontWeight:"600"}}>검색바</div>
+            <SearchBox value={1} name={"search"} data={searchCondition} setData={setSearchCondition}/>
+          </div>
+          <div style={{width:"300px"}}>
+            <div style={{margin:"0 10px", fontWeight:"600"}}>방</div>
+            <FillteringButton title={"1개"} value={1} name={"room"} data={searchCondition} setData={setSearchCondition}/>
+            <FillteringButton title={"2개"} value={2} name={"room"} data={searchCondition} setData={setSearchCondition}/>
+            <FillteringButton title={"3개"} value={3} name={"room"} data={searchCondition} setData={setSearchCondition}/>
+          </div>
+          <div style={{width:"210px"}}>
+            <div style={{margin:"0 10px", fontWeight:"600"}}>화장실</div>
+            <FillteringButton title={"1개"} value={1} name={"toilet"} data={searchCondition} setData={setSearchCondition}/>
+            <FillteringButton title={"2개"} value={2} name={"toilet"} data={searchCondition} setData={setSearchCondition}/>
+          </div>
+          <div style={{width:"100px"}}>
+              <div style={{margin:"0 10px", fontWeight:"600"}}>상세검색 </div>
+              <FillteringMoreButton title={"필터링"} data={searchCondition} setData={setSearchCondition}/>
+          </div>
         </div>
-      </div>
-      <div className="row">
-        <div style={{width:"130px"}}>
-          <div style={{margin:"0 10px", fontWeight:"600"}}>조건 초기화 </div>
-          <ResetButton title={"초기화"} value={1} setData={setSearchCondition}/>
-        </div>
-        <div style={{width:"310px"}}>
-        <div style={{margin:"0 10px", fontWeight:"600"}}>방</div>
-        <FillteringButton title={"1개"} value={1} name={"room"} data={searchCondition} setData={setSearchCondition}/>
-        <FillteringButton title={"2개"} value={2} name={"room"} data={searchCondition} setData={setSearchCondition}/>
-        <FillteringButton title={"3개"} value={3} name={"room"} data={searchCondition} setData={setSearchCondition}/>
-        </div>
-        <div style={{width:"230px"}}>
-        <div style={{margin:"0 10px", fontWeight:"600"}}>화장실</div>
-        <FillteringButton title={"1개"} value={1} name={"toilet"} data={searchCondition} setData={setSearchCondition}/>
-        <FillteringButton title={"2개"} value={2} name={"toilet"} data={searchCondition} setData={setSearchCondition}/>
-        </div>
-        <div style={{width:"135px"}}>
-          <div style={{margin:"0 10px", fontWeight:"600"}}>상세검색 </div>
-          <FillteringMoreButton title={"더보기"} data={searchCondition} setData={setSearchCondition}/>
+        <div style={{width:"100px"}}>
+          <div style={{margin:"0 10px", fontWeight:"600"}}>초기화 </div>
+          <ResetButton img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/refresh.png"} value={1} setData={setSearchCondition}/>
         </div>
       </div>
       

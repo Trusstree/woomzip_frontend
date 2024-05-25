@@ -60,10 +60,11 @@ export function ReviewModal({ id, date, comment, tag, images }) {
                 key={index}
                 style={{
                   width: "auto",
-                  padding: "10px",
+                  padding: "11px",
                   marginRight: "5px",
                   backgroundColor: badgeStyles(badge),
                   color: "white",
+                  fontWeight:"400px"
                 }}
               >
                 {badge}
