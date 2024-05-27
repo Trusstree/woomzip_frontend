@@ -8,16 +8,16 @@ export default function FillteringMoreButton({ title, data, setData }) {
 		<button
 			style={{
 			width:"80px",
-			height:"50px",
+			height:"40px",
 			borderRadius:"10px",
 			borderStyle:"solid",
-			margin:"5px",
+			margin:"3px",
 			backgroundColor:"white",
 			borderWidth:"2px",
 			borderColor:"gray"}}
 			data-bs-toggle="modal"
       data-bs-target={`#search_modal`}>
-				<div style={{fontSize:"15px", fontWeight:"600"}}>
+				<div style={{fontSize:"13px", fontWeight:"600"}}>
 				{title}
 				</div>
 		</button>

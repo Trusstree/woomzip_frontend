@@ -7,10 +7,10 @@ export default function ResetButton({ img, value, setData }) {
         <button
 				style={{
 				width:"50px",
-				height:"50px",
+				height:"40px",
 				borderRadius:"10px",
 				borderStyle:"solid",
-				margin:"5px",
+				margin:"3px",
 				backgroundColor:"white",
 				borderWidth:"2px",
 				borderColor:"gray"}}

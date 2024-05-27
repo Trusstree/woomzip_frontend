@@ -3,14 +3,18 @@
 import { useState } from "react";
 import FillteringButton from "./FillteringButton";
 import ResetButton from "./ResetButton";
+import RangeFillter from "./RangeFillter";
 
 export function SearchModal({ data, setData }) {
   const [price, setPrice]=useState("");
   const [area, setArea]=useState("");
+  const [floor, setFloor]=useState("");
+  const [significant,setSignificant]=useState("");
   const [structure, setStrucure]=useState("");
   const [time,setTime]=useState("");
   const [guaranty,setGuaranty]=useState("");
-  const [significant,setSignificant]=useState("");
+  const [model,setModel]=useState("");
+  
 
   return (
     <div
@@ -32,37 +36,16 @@ export function SearchModal({ data, setData }) {
           <div className="modal-body">
           <div style={{width:"450px", margin:"20px 0"}}>
             <div style={{margin:"0 10px", fontWeight:"600"}}>가격</div>
-            <FillteringButton title={"~4천만원"} value={1} name={"price"} data={price} setData={setPrice}/>
-            <FillteringButton title={"~7천만원"} value={2} name={"price"} data={price} setData={setPrice}/>
-            <FillteringButton title={"~1억원"} value={3} name={"price"} data={price} setData={setPrice}/>
-            <FillteringButton title={"~1.5억원"} value={4} name={"price"} data={price} setData={setPrice}/>
-            <FillteringButton title={"1.5억원~"} value={5} name={"price"} data={price} setData={setPrice}/>
+            <RangeFillter/>
           </div>
           <div style={{width:"450px", margin:"20px 0"}}>
             <div style={{margin:"0 10px", fontWeight:"600"}}>사용 평수</div>
-            <FillteringButton title={"~10평"} value={1} name={"area"} data={area} setData={setArea}/>
-            <FillteringButton title={"~15평"} value={2} name={"area"} data={area} setData={setArea}/>
-            <FillteringButton title={"~20평"} value={3} name={"area"} data={area} setData={setArea}/>
-            <FillteringButton title={"~25평"} value={4} name={"area"} data={area} setData={setArea}/>
-            <FillteringButton title={"25평~"} value={5} name={"area"} data={area} setData={setArea}/>
+            <RangeFillter/>
           </div>
           <div style={{width:"450px", margin:"20px 0"}}>
-            <div style={{margin:"0 10px", fontWeight:"600"}}>골조 구조</div>
-            <FillteringButton title={"경량목"} value={1} name={"structure"} data={structure} setData={setStrucure}/>
-            <FillteringButton title={"경량스틸"} value={2} name={"structure"} data={structure} setData={setStrucure}/>
-            <FillteringButton title={"기타"} value={3} name={"structure"} data={structure} setData={setStrucure}/>
-          </div>
-          <div style={{width:"450px", margin:"20px 0"}}>
-            <div style={{margin:"0 10px", fontWeight:"600"}}>제작 소요기간</div>
-            <FillteringButton title={"~2개월"} value={1} name={"time"} data={time} setData={setTime}/>
-            <FillteringButton title={"4개월"} value={2} name={"time"} data={time} setData={setTime}/>
-            <FillteringButton title={"6개월~"} value={3} name={"time"} data={time} setData={setTime}/>
-          </div>
-          <div style={{width:"450px", margin:"20px 0"}}>
-            <div style={{margin:"0 10px", fontWeight:"600"}}>AS 보증기간</div>
-            <FillteringButton title={"~12개월"} value={1} name={"guaranty"} data={guaranty} setData={setGuaranty}/>
-            <FillteringButton title={"24개월"} value={2} name={"guaranty"} data={guaranty} setData={setGuaranty}/>
-            <FillteringButton title={"36개월~"} value={3} name={"guaranty"} data={guaranty} setData={setGuaranty}/>
+            <div style={{margin:"0 10px", fontWeight:"600"}}>층수</div>
+            <FillteringButton title={"1층"} value={1} name={"floor"} data={floor} setData={setFloor}/>
+            <FillteringButton title={"2층"} value={2} name={"floor"} data={floor} setData={setFloor}/>
           </div>
           <div style={{width:"450px", margin:"20px 0"}}>
             <div style={{margin:"0 10px", fontWeight:"600"}}>특이사항</div>
@@ -72,12 +55,29 @@ export function SearchModal({ data, setData }) {
             <FillteringButton title={"베란다"} value={4} name={"significant"} data={significant} setData={setSignificant}/>
             <FillteringButton title={"옥상"} value={5} name={"significant"} data={significant} setData={setSignificant}/>
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between"}}>
-            <div style={{width:"200px", margin:"20px 0"}}>
+          <div style={{width:"450px", margin:"20px 0"}}>
+            <div style={{margin:"0 10px", fontWeight:"600"}}>골조 구조</div>
+            <FillteringButton title={"경량목"} value={1} name={"structure"} data={structure} setData={setStrucure}/>
+            <FillteringButton title={"경량스틸"} value={2} name={"structure"} data={structure} setData={setStrucure}/>
+            <FillteringButton title={"기타"} value={3} name={"structure"} data={structure} setData={setStrucure}/>
+          </div>
+          <div style={{width:"450px", margin:"20px 0"}}>
+            <div style={{margin:"0 10px", fontWeight:"600"}}>제작 소요기간</div>
+            <FillteringButton title={"3개월 이하"} value={1} name={"time"} data={time} setData={setTime}/>
+            <FillteringButton title={"6개월 이하"} value={2} name={"time"} data={time} setData={setTime}/>
+            <FillteringButton title={"12개월 이하"} value={3} name={"time"} data={time} setData={setTime}/>
+          </div>
+          <div style={{width:"450px", margin:"20px 0"}}>
+            <div style={{margin:"0 10px", fontWeight:"600"}}>AS 보증기간</div>
+            <FillteringButton title={"1년 이상"} value={1} name={"guaranty"} data={guaranty} setData={setGuaranty}/>
+            <FillteringButton title={"2년 이상"} value={2} name={"guaranty"} data={guaranty} setData={setGuaranty}/>
+          </div>
+          <div style={{ display: "flex", justifyContent: "space-between", margin:"20px 0"}}>
+            <div style={{width:"200px"}}>
               <div style={{margin:"0 10px", fontWeight:"600"}}>모델하우스</div>
-              <FillteringButton title={"있음"} value={1} name={"significant"} data={significant} setData={setSignificant}/>
+              <FillteringButton title={"있음"} value={1} name={"model"} data={model} setData={setModel}/>
             </div>
-            <div style={{width:"80px", margin:"20px 0"}}>
+            <div style={{width:"80px"}}>
               <div style={{margin:"0 10px", fontWeight:"600"}}>초기화</div>
               <ResetButton img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/refresh.png"} value={1} setData={setData}/>
             </div>

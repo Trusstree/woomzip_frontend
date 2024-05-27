@@ -38,18 +38,18 @@ export default function Home() {
             <div style={{margin:"0 10px", fontWeight:"600"}}>검색바</div>
             <SearchBox value={1} name={"search"} data={searchCondition} setData={setSearchCondition}/>
           </div>
-          <div style={{width:"300px"}}>
+          <div style={{width:"290px"}}>
             <div style={{margin:"0 10px", fontWeight:"600"}}>방</div>
             <FillteringButton title={"1개"} value={1} name={"room"} data={searchCondition} setData={setSearchCondition}/>
             <FillteringButton title={"2개"} value={2} name={"room"} data={searchCondition} setData={setSearchCondition}/>
             <FillteringButton title={"3개"} value={3} name={"room"} data={searchCondition} setData={setSearchCondition}/>
           </div>
-          <div style={{width:"210px"}}>
+          <div style={{width:"200px"}}>
             <div style={{margin:"0 10px", fontWeight:"600"}}>화장실</div>
             <FillteringButton title={"1개"} value={1} name={"toilet"} data={searchCondition} setData={setSearchCondition}/>
             <FillteringButton title={"2개"} value={2} name={"toilet"} data={searchCondition} setData={setSearchCondition}/>
           </div>
-          <div style={{width:"100px"}}>
+          <div style={{width:"120px"}}>
               <div style={{margin:"0 10px", fontWeight:"600"}}>상세검색 </div>
               <FillteringMoreButton title={"필터링"} data={searchCondition} setData={setSearchCondition}/>
           </div>
