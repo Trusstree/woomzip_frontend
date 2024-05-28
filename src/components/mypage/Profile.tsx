@@ -10,6 +10,7 @@ import ImageBox from "@/components/mypage/ImageBox";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/components/app/ContextSession";
 import { removeAccessTokenClient } from "@/configs/cookie.client";
+import { signout } from "@/actions/auth/signout";
 
 type ProfileProps = { uid: number };
 
@@ -21,22 +22,7 @@ export default function Profile(props: ProfileProps) {
 
   useEffect(() => {
     (async () => {
-      console.log(userContext);
-      const [data, error] = await getUser(uid);
-      if (error) console.error(error);
-      console.log(data.data[0].user_profile);
-      const rawProfile = data.data[0].user_profile;
-      const parsedProfile = {
-        nickname: rawProfile["nickname"],
-        one_line_introduce: rawProfile["one_line_introduce"],
-        user_img_url: rawProfile["user_img_url"],
-        phone_number: rawProfile["phone_number"],
-        email: rawProfile["email"],
-        addr: rawProfile["addr"],
-        gender: rawProfile["gender"],
-        birthday: rawProfile["birthday"],
-      };
-      setUserData(parsedProfile);
+      setUserData(userContext);
     })();
   }, []);
 
@@ -136,8 +122,7 @@ export default function Profile(props: ProfileProps) {
           type="button"
           style={{ backgroundColor: "#101648" }}
           onClick={() => {
-            removeAccessTokenClient();
-            setUserContext(undefined);
+            signout();
             router.push("/");
           }}
           className={"my-3 px-3 rounded-2 fs-6 text-white "}

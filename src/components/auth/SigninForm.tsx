@@ -1,18 +1,15 @@
 "use client";
 
-import { signinUser } from "@/apis/userAPI.server";
-import { encryptPW } from "@/app/signin/action";
+import { getUser, signinUser } from "@/apis/userAPI.server";
+import { encryptPW } from "@/actions/auth/encryptPW";
 import { useUser } from "@/components/app/ContextSession";
-import { setAccessTokenClient } from "@/configs/cookie.client";
 import { alertError } from "@/lib/alertUtil";
 import { getUserdataByToken } from "@/lib/parseUtil";
-import { encrypt } from "@/lib/security";
 import { isID, isPassword, isRequired } from "@/lib/validator";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function SigninForm() {
-  console.log("hello");
   const router = useRouter();
   const { setUserContext } = useUser();
   const [id, setID] = useState("");
@@ -52,8 +49,14 @@ export function SigninForm() {
 
     const userData = getUserdataByToken(data.data.access_token);
 
-    setUserContext(userData);
-    setAccessTokenClient(data.data.access_token);
+    const [userDat, userError] = await getUser(userData.uid);
+    if (userError) {
+      console.log("userError");
+      alertError("로그인 에러", error.response?.data?.message || `로그인에 실패했어요.`);
+      return;
+    }
+
+    setUserContext(userDat.data[0].user_profile);
 
     router.push("/");
     return;

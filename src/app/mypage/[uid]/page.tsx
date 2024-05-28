@@ -34,7 +34,7 @@ export default async function Page({ params, searchParams }) {
         >
           <Image
             className={"m-0 align-self-center"}
-            src={userData["user_img_url"] || `/blur_image.png`}
+            src={userData?.user_img_url || `/blur_image.png`}
             alt={`profile`}
             width={180}
             height={180}
@@ -44,9 +44,9 @@ export default async function Page({ params, searchParams }) {
           />
 
           <div className="my-3 d-flex flex-column align-items-center">
-            <div className="fs-5 fw-bold">{userData["nickname"]}</div>
-            <div>{userData["email"]}</div>
-            <div>{userData["one_line_introduce"]}</div>
+            <div className="fs-5 fw-bold">{userData?.nickname}</div>
+            <div>{userData?.email}</div>
+            <div>{userData?.one_line_introduce}</div>
           </div>
 
           {/* <div className="d-flex justify-content-between">
@@ -78,7 +78,7 @@ export default async function Page({ params, searchParams }) {
             </div> */}
         </div>
 
-        {Number(uid) == userData["user_profile_id"] && (
+        {Number(uid) == userData?.user_profile_id && (
           <Link
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{ backgroundColor: "#101648" }}

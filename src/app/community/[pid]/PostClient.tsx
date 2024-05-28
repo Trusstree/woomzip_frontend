@@ -1,56 +1,56 @@
-"use client"
+"use client";
 
 import { getPost } from "@/apis/postAPI";
 import { useEffect, useState } from "react";
 import DOMPurify from "dompurify";
 import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
+import Comments from "@/components/posts/Comments";
 
 type PostpageProps = {
-  pid:number
-}
+  pid: number;
+};
 
 type PostData = {
-  id: number
-  author: string
-  category: string
-  comments: string
-  created_at: string
-  likeCount: number
-  pictures: string
-  text: string
-  thumbnail: string
-  title: string
-  updated_at: string
-  viewCount: number
-}
+  id: number;
+  author: string;
+  category: string;
+  comments: string;
+  created_at: string;
+  likeCount: number;
+  pictures: string;
+  text: string;
+  thumbnail: string;
+  title: string;
+  updated_at: string;
+  viewCount: number;
+};
 
-export default function PostClient(props: PostpageProps){
+export default function PostClient(props: PostpageProps) {
   const { pid } = props;
-  const [postData, setPostData]=useState(undefined as PostData|undefined);
-  
-  useEffect( () => {
+  const [postData, setPostData] = useState(undefined as PostData | undefined);
+  const [comments, setComments] = useState([]);
+  useEffect(() => {
     const getPostdata = async () => {
       const { data, error } = await getPost(pid);
       console.log(data);
-      
-      if(error) console.log(error);
-      else setPostData(data.data.post);
-    }
-    getPostdata();
-  },[]);
 
-  return (postData?
+      if (error) console.log(error);
+      else {
+        setPostData(data.data.post);
+        setComments(data.data.comments);
+      }
+    };
+    getPostdata();
+  }, []);
+
+  return postData ? (
     <div className="container">
       <div className="mt-5 mb-0 d-flex justify-content-between">
-        <h5>
-          {postData.category}
-        </h5>
-        <h5 className="fw-normal d-flex justify-content-end">
-          {postData["created_at"].split("T")[0]}
-        </h5>
+        <h5>{postData.category}</h5>
+        <h5 className="fw-normal d-flex justify-content-end">{postData["created_at"].split("T")[0]}</h5>
       </div>
-      
+
       <h1>{postData.title}</h1>
 
       {/* <div className="fw-normal d-flex justify-content-end">
@@ -76,16 +76,13 @@ export default function PostClient(props: PostpageProps){
           __html: DOMPurify.sanitize(String(postData["content"])),
         }}
       />
+      <Comments pid={pid} comments={comments} />
       {/* 추천정보 */}
-      <PostMenu
-        title={"더 많은 글을 구경해보세요!"}
-        routeUrl={"/house"}
-        routeText={"더보기"}
-        horizontalScroll={true}>
+      <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
         <PostList numShowItems={6} />
       </PostMenu>
     </div>
-    :
+  ) : (
     <div>Loading</div>
-  )
+  );
 }
