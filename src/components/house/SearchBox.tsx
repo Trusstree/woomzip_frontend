@@ -13,8 +13,8 @@ export default function SearchBox({ name, data, setData }) {
         borderWidth: "2px",
         borderColor: "gray",
       }}
-      onClick={() => {
-        setData((oldValue) => ({ ...oldValue, [name]: "" }));
+      onChange={(e) => {
+        setData((oldValue) => ({ ...oldValue, [name]: e.target.value }));
       }}
       placeholder={"제품/업체명으로 검색"}
     ></input>

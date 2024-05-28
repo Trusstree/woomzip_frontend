@@ -1,20 +1,33 @@
-"use client"
+"use client";
 
-
-export default function FillteringButton({ title, value, name, data, setData }) {
-    return(
-        <button
-				style={{
-				width:"80px",
-				height:"40px",
-				borderRadius:"10px",
-				borderStyle:"solid",
-				margin:"3px",
-				backgroundColor:data[name]==value?"#F5F7FF":"white",
-				borderWidth:"2px",
-				borderColor:data[name]==value?"#314FC0":"gray"}}
-				onClick={()=>{setData((oldValue)=>({...oldValue, [name]:value}));}}>
-            <div style={{fontSize:"13px", fontWeight:"600"}}>{title}</div>
-        </button>
-        );
+export default function FillteringButton({ title, type, value, name, data, setData }) {
+  return (
+    <button
+      style={{
+        width: "80px",
+        height: "40px",
+        borderRadius: "10px",
+        borderStyle: "solid",
+        margin: "3px",
+        backgroundColor: data[name] == value || (type == "select" && data[name]?.includes(value)) ? "#F5F7FF" : "white",
+        borderWidth: "2px",
+        borderColor: data[name] == value || (type == "select" && data[name]?.includes(value)) ? "#314FC0" : "gray",
+      }}
+      onClick={() => {
+        if (type == "select") {
+          let newValue = data[name];
+          if (!newValue) newValue = [value];
+          else if (newValue.includes(value)) {
+            const ind = newValue.indexOf(value);
+            newValue = newValue.filter((_, i) => i != ind);
+          } else {
+            newValue = [...newValue, value];
+          }
+          setData((oldValue) => ({ ...oldValue, [name]: newValue }));
+        } else setData((oldValue) => ({ ...oldValue, [name]: value }));
+      }}
+    >
+      <div style={{ fontSize: "13px", fontWeight: "600" }}>{title}</div>
+    </button>
+  );
 }

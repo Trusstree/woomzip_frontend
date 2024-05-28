@@ -5,15 +5,53 @@ import { HouseList } from "@/components/house/HouseList";
 import { useState } from "react";
 import SearchBox from "@/components/house/SearchBox";
 import FillteringButton from "@/components/house/FillteringButton";
-import FillteringMoreButton from "@/components/house/FillteringMoreButton";
 import ResetButton from "@/components/house/ResetButton";
+import { SearchModal } from "@/components/house/SearchModal";
+import useQuery from "@/hooks/useQuery";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   const [searchCondition, setSearchCondition] = useState({});
-  const [isSubmit, setIsSubmit] = useState(true);
+  const [submittedCondition, setSubmittedCondition] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
   const [numShowItems, numShowPages] = [24, 10];
 
-  const submit = () => {};
+  const arraySort = (arr: Array<number | string>) => {
+    if (!arr?.length) return arr;
+    if (arr.length == 0) return "";
+    if (typeof arr[0] == "string") return arr.sort().join(",");
+    return arr.sort((a: number, b: number) => a - b).join("");
+  };
+
+  const submit = () => {
+    const sCondition = {
+      q: searchCondition["q"],
+      price_min: searchCondition["price"]?.[0],
+      price_max: searchCondition["price"]?.[1],
+      floor_area_min: searchCondition["floor_area"]?.[0],
+      floor_area_max: searchCondition["floor_area"]?.[1],
+      room_count: arraySort(searchCondition["room_count"]),
+      toilet_count: arraySort(searchCondition["toilet_count"]),
+      floor_count: arraySort(searchCondition["floor_count"]),
+      warranty: searchCondition["warranty"],
+      estimate_duration: searchCondition["estimate_duration"],
+      frame: arraySort(searchCondition["frame"]),
+      specificity: arraySort(searchCondition["specificity"]),
+      model: searchCondition["model"] == 1 ? 1 : undefined,
+    };
+
+    for (const key in sCondition) {
+      if (!sCondition.hasOwnProperty(key)) {
+        delete sCondition[key];
+      } else if (!sCondition[key] || sCondition[key].length == 0) {
+        delete sCondition[key];
+      }
+    }
+
+    setSubmittedCondition(sCondition);
+    setIsSubmit(true);
+  };
 
   return (
     <>
@@ -36,28 +74,31 @@ export default function Home() {
         <div className="row" style={{ width: "1100px" }}>
           <div style={{ width: "380px" }}>
             <div style={{ margin: "0 10px", fontWeight: "600" }}>검색바</div>
-            <SearchBox name={"search"} data={searchCondition} setData={setSearchCondition} />
+            <SearchBox name={"q"} data={searchCondition} setData={setSearchCondition} />
           </div>
           <div style={{ width: "290px" }}>
             <div style={{ margin: "0 10px", fontWeight: "600" }}>방</div>
             <FillteringButton
               title={"1개"}
               value={1}
-              name={"room"}
+              name={"room_count"}
+              type={"select"}
               data={searchCondition}
               setData={setSearchCondition}
             />
             <FillteringButton
               title={"2개"}
               value={2}
-              name={"room"}
+              name={"room_count"}
+              type={"select"}
               data={searchCondition}
               setData={setSearchCondition}
             />
             <FillteringButton
               title={"3개"}
               value={3}
-              name={"room"}
+              name={"room_count"}
+              type={"select"}
               data={searchCondition}
               setData={setSearchCondition}
             />
@@ -67,21 +108,58 @@ export default function Home() {
             <FillteringButton
               title={"1개"}
               value={1}
-              name={"toilet"}
+              name={"toilet_count"}
+              type={"select"}
               data={searchCondition}
               setData={setSearchCondition}
             />
             <FillteringButton
               title={"2개"}
               value={2}
-              name={"toilet"}
+              name={"toilet_count"}
+              type={"select"}
               data={searchCondition}
               setData={setSearchCondition}
             />
           </div>
           <div style={{ width: "120px" }}>
             <div style={{ margin: "0 10px", fontWeight: "600" }}>상세검색 </div>
-            <FillteringMoreButton title={"필터링"} data={searchCondition} setData={setSearchCondition} />
+            <button
+              style={{
+                width: "80px",
+                height: "40px",
+                borderRadius: "10px",
+                borderStyle: "solid",
+                margin: "3px",
+                backgroundColor: "white",
+                borderWidth: "2px",
+                borderColor: "gray",
+              }}
+              data-bs-toggle="modal"
+              data-bs-target={`#search_modal`}
+            >
+              <div style={{ fontSize: "13px", fontWeight: "600" }}>필터링</div>
+            </button>
+            <SearchModal data={searchCondition} setData={setSearchCondition} />
+          </div>
+          <div style={{ width: "120px" }}>
+            <div style={{ margin: "0 10px", fontWeight: "600" }}>상세검색 </div>
+            <button
+              type={"submit"}
+              style={{
+                width: "80px",
+                height: "40px",
+                borderRadius: "10px",
+                borderStyle: "solid",
+                margin: "3px",
+                backgroundColor: "lightgray",
+                borderWidth: "2px",
+                borderColor: "gray",
+              }}
+              onClick={submit}
+            >
+              검색
+            </button>
           </div>
         </div>
         <div style={{ width: "100px" }}>
@@ -234,7 +312,7 @@ export default function Home() {
         <HouseList
           numShowItems={numShowItems}
           numShowPages={numShowPages}
-          searchCondition={searchCondition}
+          searchCondition={submittedCondition}
           isSubmit={isSubmit}
           setIsSubmit={setIsSubmit}
         />

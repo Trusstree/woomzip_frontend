@@ -1,12 +1,12 @@
 import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 export default function useQuery() {
   const searchParams = useSearchParams();
+  const [params, setParams] = useState(new URLSearchParams(searchParams));
 
   const createQuery = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams);
+    (name: string, value?: string) => {
       if (value) {
         params.set(name, value);
       } else {
@@ -17,8 +17,7 @@ export default function useQuery() {
   );
 
   const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams);
+    (name: string, value?: string) => {
       if (value) {
         params.set(name, value);
       } else {
@@ -30,5 +29,9 @@ export default function useQuery() {
     [searchParams]
   );
 
-  return { createQuery, createQueryString };
+  const getParams = () => {
+    return params;
+  };
+
+  return { createQuery, createQueryString, getParams };
 }
