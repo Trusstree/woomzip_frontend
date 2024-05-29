@@ -1,6 +1,6 @@
 "use client";
 
-import { getUser, signinUser } from "@/apis/userAPI.server";
+import { signinUser } from "@/apis/userAPI";
 import { encryptPW } from "@/actions/auth/encryptPW";
 import { useUser } from "@/components/app/ContextSession";
 import { alertError } from "@/lib/alertUtil";
@@ -48,16 +48,9 @@ export function SigninForm() {
     }
 
     const userData = getUserdataByToken(data.data.access_token);
+    console.log(userData);
 
-    const [userDat, userError] = await getUser(userData.uid);
-    if (userError) {
-      console.log("userError");
-      alertError("로그인 에러", error.response?.data?.message || `로그인에 실패했어요.`);
-      return;
-    }
-
-    setUserContext(userDat.data[0].user_profile);
-
+    setUserContext(userData.uid);
     router.push("/");
     return;
   };

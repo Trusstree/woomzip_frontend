@@ -1,9 +1,9 @@
-import { apiClient } from "@/configs/publicApi";
+import { publicApi } from "@/configs/axiosClient";
 
 export const getImage = async (house_id: number) => {
   let [count, countError] = [undefined, undefined] as any;
   try {
-    const result = await apiClient.get(`/image`, {
+    const result = await publicApi.get(`/image`, {
       params: { house_id: house_id },
     });
     count = result?.data;
@@ -17,7 +17,7 @@ export const postImage = async (Image: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/image`, Image);
+    const result = await publicApi.post(`/image`, Image);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -30,7 +30,7 @@ export const deleteImage = async (url: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.delete(`/image`, {
+    const result = await publicApi.delete(`/image`, {
       params: { url: url },
     });
     data = result?.data;
@@ -45,7 +45,7 @@ export const putImage = async (house_id: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.put(
+    const result = await publicApi.put(
       `/image`,
       { house_id: house_id },
       {

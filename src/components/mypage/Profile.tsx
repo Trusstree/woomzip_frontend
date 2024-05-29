@@ -4,114 +4,129 @@ import { TextBoxComponent } from "@/components/forms/TextBoxComponent";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
-import { getUser, putUser } from "@/apis/userAPI";
+import { putUser } from "@/apis/userAPI";
 import moment from "moment";
 import ImageBox from "@/components/mypage/ImageBox";
 import { useRouter } from "next/navigation";
-import { useUser } from "@/components/app/ContextSession";
-import { removeAccessTokenClient } from "@/configs/cookie.client";
 import { signout } from "@/actions/auth/signout";
 
-type ProfileProps = { uid: number };
+type ProfileProps = {
+  userData: any;
+};
 
 export default function Profile(props: ProfileProps) {
-  const { uid } = props;
-  const { userContext, setUserContext } = useUser();
+  const { userData } = props;
   const router = useRouter();
-  const [userData, setUserData] = useState({});
+  const [profileData, setProfileData] = useState({
+    name: userData.name || "",
+    nickname: userData.nickname || "",
+    one_line_introduce: userData.one_line_introduce || "",
+    user_img_url: userData.user_img_url || "/blur_image.png",
+    phone_number: userData.phone_number || "",
+    email: userData.email || "",
+    gender: userData.gender || "",
+    birthday: userData.birthday || "",
+    addr: userData.addr || "",
+  });
 
   useEffect(() => {
-    (async () => {
-      setUserData(userContext);
-    })();
+    (async () => {})();
   }, []);
 
   const handleText = (e: ChangeEvent<HTMLInputElement>): ChangeEventHandler<HTMLInputElement> => {
     // if (e) e.preventDefault();
-    setUserData((oldValues) => ({ ...oldValues, [e.target.name]: e.target.value }));
+    setProfileData((oldValues) => ({ ...oldValues, [e.target.name]: e.target.value }));
     return;
   };
 
   const setProfile = async (e: ChangeEvent<HTMLInputElement> | any) => {
     const img = e.target.files[0];
     if (img?.type?.split("/")[0] != "image") return;
-    const date = moment().format("YYYYMMDDHHmmss");
-    const [meta, s3Error] = await setS3Url(
-      `users/${userContext.uid}/profileImage${date}.${img.type.split("/")[1]}`,
-      img
-    );
-    if (!s3Error) {
-      setUserData((oldValues) => ({
-        ...oldValues,
-        [e.target.name]:
-          `${process.env.NEXT_PUBLIC_AWS_S3_URL}/users/${userContext.uid}/profileImage${date}.${img.type.split("/")[1]}`,
-      }));
-    } else console.error(s3Error);
+    const url = `/users/${userData.user_profile_id}/profileImage.${img.type.split("/")[1]}`;
+    const [meta, s3Error] = await setS3Url(url, img);
+    console.log(meta);
+
+    if (s3Error) {
+      console.error(s3Error);
+      return;
+    }
+
+    setProfileData((oldValues) => ({
+      ...oldValues,
+      [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}${url}`,
+    }));
   };
 
-  const submitFunction = async (userData: any) => {
-    if (!userData["nickname"]) {
-      userData["nickname"] = " ";
+  const submit = async () => {
+    if (!profileData["nickname"]) {
+      profileData["nickname"] = " ";
     }
-    if (!userData["one_line_introduce"]) {
-      userData["one_line_introduce"] = " ";
+    if (!profileData["one_line_introduce"]) {
+      profileData["one_line_introduce"] = " ";
     }
-    if (!userData["user_img_url"]) {
-      userData["user_img_url"] = " ";
+    if (!profileData["user_img_url"]) {
+      profileData["user_img_url"] = "/blur_image.png";
     }
-    if (!userData["phone_number"]) {
-      userData["phone_number"] = " ";
+    if (!profileData["phone_number"]) {
+      profileData["phone_number"] = " ";
     }
-    if (!userData["email"]) {
-      userData["email"] = " ";
+    if (!profileData["email"]) {
+      profileData["email"] = " ";
     }
-    if (!userData["addr"]) {
-      userData["addr"] = " ";
+    if (!profileData["addr"]) {
+      profileData["addr"] = " ";
     }
-    if (!userData["gender"]) {
-      userData["gender"] = " ";
+    if (!profileData["gender"]) {
+      profileData["gender"] = " ";
     }
-    if (!userData["birthday"]) {
-      userData["birthday"] = " ";
+    if (!profileData["birthday"]) {
+      profileData["birthday"] = " ";
     }
 
-    if (typeof userData["nickname"] != "string") {
+    if (typeof profileData["nickname"] != "string") {
       alertError("nickname", "type을 다시 한 번 확인해주세요~");
       return;
     }
-    if (typeof userData["one_line_introduce"] != "string") {
+    if (typeof profileData["one_line_introduce"] != "string") {
       alertError("one_line_introduce", "type을 다시 한 번 확인해주세요~");
       return;
     }
-    if (typeof userData["user_img_url"] != "string") {
+    if (typeof profileData["user_img_url"] != "string") {
       alertError("user_img_url", "type을 다시 한 번 확인해주세요~");
       return;
     }
-    if (typeof userData["phone_number"] != "string") {
+    if (typeof profileData["phone_number"] != "string") {
       alertError("phone_number", "type을 다시 한 번 확인해주세요~");
       return;
     }
-    if (typeof userData["email"] != "string") {
+    if (typeof profileData["email"] != "string") {
       alertError("email", "type을 다시 한 번 확인해주세요~");
       return;
     }
-    if (typeof userData["addr"] != "string") {
+    if (typeof profileData["addr"] != "string") {
       alertError("addr", "type을 다시 한 번 확인해주세요~");
       return;
     }
-    if (typeof userData["gender"] != "string") {
+    if (typeof profileData["gender"] != "string") {
       alertError("gender", "type을 다시 한 번 확인해주세요~");
       return;
     }
-    if (typeof userData["birthday"] != "string") {
+    if (typeof profileData["birthday"] != "string") {
       alertError("birthday", "type을 다시 한 번 확인해주세요~");
       return;
     }
 
-    console.log(userData);
-    const [data, error] = await putUser(userData);
-    if (error) alertError("프로필 수정", "에러가 났어요 ㅠㅠ");
-    else alertSuccess("프로필 수정", "제대로 수정됐어요~!");
+    console.log(profileData);
+    const [data, error] = await putUser(profileData);
+
+    if (error) {
+      console.log("asdfqmnqqpqwoed하나둘하나둘4");
+      alertError("프로필 수정", "에러가 났어요 ㅠㅠ");
+      return;
+    }
+
+    alertSuccess("프로필 수정", "제대로 수정됐어요~!");
+    router.push(`/mypage/${userData.user_profile_id}`);
   };
 
   return (
@@ -130,60 +145,69 @@ export default function Profile(props: ProfileProps) {
           로그아웃
         </button>
       </div>
-
+      <TextBoxComponent
+        className={"col-12 mb-3"}
+        title={"이름"}
+        name={"name"}
+        data={profileData}
+        onChange={handleText}
+      />
       <TextBoxComponent
         className={"col-12 mb-3"}
         title={"별명"}
         name={"nickname"}
-        data={userData}
+        data={profileData}
         onChange={handleText}
       />
       <TextBoxComponent
         className={"col-12 mb-3"}
         title={"한줄 설명"}
         name={"one_line_introduce"}
-        data={userData}
+        data={profileData}
         onChange={handleText}
       />
-      <ImageBox title={"프로필사진"} data={userData} id={"user_img_url"} name={"user_img_url"} onChange={setProfile} />
+      <ImageBox
+        title={"프로필사진"}
+        data={profileData}
+        id={"user_img_url"}
+        name={"user_img_url"}
+        onChange={setProfile}
+      />
       <TextBoxComponent
         className={"col-12 mb-3"}
         title={"전화번호"}
         name={"phone_number"}
-        data={userData}
+        data={profileData}
         onChange={handleText}
       />
       <TextBoxComponent
         className={"col-12 mb-3"}
         title={"이메일"}
         name={"email"}
-        data={userData}
+        data={profileData}
         onChange={handleText}
       />
       <TextBoxComponent
         className={"col-12 mb-3"}
         title={"생년월일"}
         name={"birthday"}
-        data={userData}
+        data={profileData}
         onChange={handleText}
       />
       <TextBoxComponent
         className={"col-12 mb-3"}
         title={"공장위치"}
         name={"addr"}
-        data={userData}
+        data={profileData}
         onChange={handleText}
       />
 
       <div className="d-flex justify-content-end">
         <button
-          type="button"
-          name="image"
+          type="submit"
           style={{ backgroundColor: "#101648" }}
           className={`my-5 px-4 py-2 btn text-white rounded-lg fw-bold fs-5`}
-          onClick={async () => {
-            await submitFunction(userData);
-          }}
+          onClick={submit}
         >
           {"회원정보 변경"}
         </button>

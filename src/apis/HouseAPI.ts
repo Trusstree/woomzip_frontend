@@ -1,5 +1,6 @@
-import { privateApiClient } from "@/configs/privateApiClient";
-import { publicApi } from "@/configs/publicApi";
+"use server";
+
+import { privateApi, publicApi } from "@/configs/axiosClient";
 
 export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -34,11 +35,11 @@ export const getHouse = async (houseNum: number) => {
   return [data, error];
 };
 
-export const postHouse = async (house: any, token: string) => {
+export const postHouse = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApiClient.post(`/house/enroll`, house);
+    const result = await privateApi.post(`/house/enroll`, house);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -51,7 +52,7 @@ export const updateHouse = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApiClient.post(`/house/`, house);
+    const result = await privateApi.post(`/house/`, house);
     data = result?.data;
   } catch (err) {
     error = err;

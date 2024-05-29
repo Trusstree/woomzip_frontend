@@ -1,10 +1,10 @@
-import { apiClient } from "@/configs/publicApi";
+import { publicApi } from "@/configs/axiosClient";
 
 export const getRequestions = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/requestion`, {
+    const result = await publicApi.get(`/requestion`, {
       params: {},
     });
     data = result?.data;
@@ -19,7 +19,7 @@ export const getRequestion = async (requestionNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/requestion/${requestionNum}`, {
+    const result = await publicApi.get(`/requestion/${requestionNum}`, {
       params: {},
     });
     data = result?.data;
@@ -34,7 +34,7 @@ export const postRequestion = async (requestion: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/requestion/`, requestion);
+    const result = await publicApi.post(`/requestion/`, requestion);
     data = result?.data;
   } catch (err) {
     error = err;

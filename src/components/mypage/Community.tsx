@@ -6,7 +6,7 @@ import PostMenu from "@/components/posts/PostMenu";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function Community() {
+export default function Community({ userData }) {
   const [numShowItems, numShowPages] = [12, 10];
   const searchParams = useSearchParams();
   const page = searchParams.has("page") ? Number(searchParams.get("page")) : 1;
@@ -32,7 +32,7 @@ export default function Community() {
 
   return (
     <>
-      <PostMenu title={"다양한 건축고민을 나누어보세요!"}>
+      <PostMenu title={"내가 쓴 글을 확인해보세요!"}>
         <PostList numShowItems={numShowItems} numShowPages={numShowPages} />
       </PostMenu>
     </>

@@ -2,22 +2,20 @@ import Image from "next/image";
 import { ChangeEventHandler } from "react";
 
 type ImageBoxProps = {
-  title: string
-  data: any
-  id: string
-  name: string
-  onChange: ChangeEventHandler<HTMLInputElement>
-  className?: string
-}
+  title: string;
+  data: any;
+  id: string;
+  name: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  className?: string;
+};
 
 export default function ImageBox(props: ImageBoxProps) {
-  const {title, id, data, name, onChange, className} = props;
+  const { title, id, data, name, onChange, className } = props;
 
   return (
     <div className={`${className && ""} py-3 mb-3 d-flex flex-column`}>
-      <label>
-        {title}
-      </label>
+      <label>{title}</label>
       <div>
         <label htmlFor={id}>
           <Image
@@ -26,19 +24,21 @@ export default function ImageBox(props: ImageBoxProps) {
             alt={name}
             width={180}
             height={180}
-            style={{objectFit:"cover", borderRadius: "90px", width:"180px", height:"180px"}}
+            style={{ objectFit: "cover", borderRadius: "90px", width: "180px", height: "180px" }}
             placeholder={"blur"}
-            blurDataURL={"/blur_image.png"} />
+            blurDataURL={"/blur_image.png"}
+          />
         </label>
       </div>
       <input
         id={id}
         name={name}
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         accept="image/*"
         multiple
         type="file"
-        onChange={onChange} />
+        onChange={onChange}
+      />
     </div>
   );
 }

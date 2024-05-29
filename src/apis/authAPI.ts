@@ -1,5 +1,6 @@
-import { privateApiServer } from "@/configs/privateApiServer";
-import { publicApi } from "@/configs/publicApi";
+"use server";
+
+import { privateApi, publicApi } from "@/configs/axiosClient";
 
 export const getAccessToken = async () => {
   let [data, error] = [undefined, undefined] as any;
@@ -18,7 +19,7 @@ export const refreshAccessToken = async () => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApiServer.get(`/users/test`);
+    const result = await privateApi.get(`/users/test`);
     console.log(result);
     data = result?.data;
   } catch (err) {

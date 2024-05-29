@@ -1,5 +1,3 @@
-"use server";
-
 import Image from "next/image";
 import Community from "../../../components/mypage/Community";
 import House from "../../../components/mypage/House";
@@ -7,9 +5,11 @@ import Profile from "../../../components/mypage/Profile";
 import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
 import PostMenu from "@/components/posts/PostMenu";
 import Link from "next/link";
-import { getUser } from "@/apis/userAPI.server";
+import { getUser } from "@/apis/userAPI";
+import { cookies } from "next/headers";
+import { getUserdataByToken } from "@/lib/parseUtil";
 
-async function create(uid) {
+async function create(uid: string | number) {
   "use server";
   const [data, error] = await getUser(uid);
   if (error) {
@@ -24,6 +24,10 @@ export default async function Page({ params, searchParams }) {
   const { tab } = searchParams;
 
   const userData: any = await create(uid);
+  const cookieStorge = cookies();
+  const accessToken = cookieStorge.get("accessToken").value;
+  const signedUID = accessToken && getUserdataByToken(accessToken)?.uid;
+  console.log(userData);
 
   return (
     <div className="mb-5 row">
@@ -78,7 +82,7 @@ export default async function Page({ params, searchParams }) {
             </div> */}
         </div>
 
-        {Number(uid) == userData?.user_profile_id && (
+        {Number(uid) == signedUID && (
           <Link
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{ backgroundColor: "#101648" }}
@@ -121,9 +125,9 @@ export default async function Page({ params, searchParams }) {
             </PostMenu>
           </>
         )}
-        {tab == "profile" && <Profile uid={uid} />}
-        {tab == "community" && <Community />}
-        {tab == "house" && <House />}
+        {tab == "profile" && <Profile userData={userData} />}
+        {tab == "community" && <Community userData={userData} />}
+        {tab == "house" && <House userData={userData} />}
       </div>
     </div>
   );

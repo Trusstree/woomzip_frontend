@@ -1,6 +1,6 @@
 "use client";
 
-import { signupUser, validateID, validateName } from "@/apis/userAPI.server";
+import { signupUser, validateID, validateName } from "@/apis/userAPI";
 import { encryptPW } from "@/app/signup/action";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 

@@ -11,7 +11,7 @@ import { deleteHeart, postHeart } from "@/apis/HeartAPI";
 import { alertSuccess } from "@/lib/alertUtil";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import useQuery from "@/hooks/useQuery";
-import { UserContext, useUser } from "@/components/app/ContextSession";
+import { useUser } from "@/components/app/ContextSession";
 
 type HouseComponentProps = {
   pid: number;
@@ -20,6 +20,7 @@ type HouseComponentProps = {
 export function HouseClient(props: HouseComponentProps) {
   const router = useRouter();
   const { createQueryString } = useQuery();
+  const { userContext } = useUser();
 
   const { pid } = props;
   const [houseData, setHouseData] = useState(undefined);
@@ -85,7 +86,6 @@ export function HouseClient(props: HouseComponentProps) {
   // },[]);
 
   const ClickHeart = useCallback(async () => {
-    const { userContext } = useUser();
     if (userContext) {
       const heartParams = { house_id: pid, user_id: userContext.uid };
 

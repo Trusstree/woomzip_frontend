@@ -1,7 +1,6 @@
-"use server"
+"use server";
 
-import { privateApiServer } from "@/configs/privateApiServer";
-import { publicApi } from "@/configs/publicApi";
+import { privateApi, publicApi } from "@/configs/axiosClient";
 
 export const getPosts = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -34,11 +33,10 @@ export const getPost = async (postNum: number) => {
 };
 
 export const postPost = async (post: any) => {
-  
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApiServer.post(`/community/post/create`, post);
+    const result = await privateApi.post(`/community/post/create`, post);
     data = result?.data;
   } catch (err) {
     error = err;

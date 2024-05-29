@@ -1,10 +1,12 @@
-import { apiClient, signedApiClient } from "@/configs/publicApi";
+"use server";
+
+import { privateApi, publicApi } from "@/configs/axiosClient";
 
 export const getLivings = async (params?: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/pavilion/living`, {
+    const result = await publicApi.get(`/pavilion/living`, {
       params: params || {},
       headers: {},
     });
@@ -20,7 +22,7 @@ export const getLiving = async (livingNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/pavilion/living/${livingNum}`, {
+    const result = await publicApi.get(`/pavilion/living/${livingNum}`, {
       params: {},
       headers: {},
     });
@@ -37,7 +39,7 @@ export const getLivingReviews = async (livingNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/pavilion/living/review/${livingNum}`, {
+    const result = await publicApi.get(`/pavilion/living/review/${livingNum}`, {
       params: {},
       headers: {},
     });
@@ -54,7 +56,7 @@ export const postPavilionReview = async (body: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.post(`/review/pavilion/create`, body);
+    const result = await privateApi.post(`/review/pavilion/create`, body);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -67,7 +69,7 @@ export const postReservation = async (body: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.post(`/pavilion/reservation/apply/1`, body);
+    const result = await privateApi.post(`/pavilion/reservation/apply/1`, body);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -80,7 +82,7 @@ export const getReservation = async (reservationNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await signedApiClient.get(`/pavilion/reservation/${reservationNum}`, {
+    const result = await privateApi.get(`/pavilion/reservation/${reservationNum}`, {
       params: {},
       headers: {},
     });
@@ -97,7 +99,7 @@ export const getReservationUnavailable = async (reservationNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.get(`/pavilion/reservation/unavailable/${reservationNum}`, {
+    const result = await publicApi.get(`/pavilion/reservation/unavailable/${reservationNum}`, {
       params: {},
       headers: {},
     });
