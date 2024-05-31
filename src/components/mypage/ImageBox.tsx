@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, useEffect, useState } from "react";
 
 type ImageBoxProps = {
   title: string;
@@ -13,20 +15,31 @@ type ImageBoxProps = {
 export default function ImageBox(props: ImageBoxProps) {
   const { title, id, data, name, onChange, className } = props;
 
+  const [src, setSrc] = useState(data[name] || "/blur_image.png");
+
+  useEffect(() => {
+    setSrc("rendering");
+  }, [data]);
+
+  useEffect(() => {
+    if (src != "rendering") return;
+    setSrc(data[name] || "/blur_image.png");
+  }, [src]);
+
   return (
     <div className={`${className && ""} py-3 mb-3 d-flex flex-column`}>
       <label>{title}</label>
       <div>
         <label htmlFor={id}>
-          <Image
+          <img
             className={"mx-0 my-4 align-self-left"}
-            src={data[name] || "/blur_image.png"}
+            src={src}
             alt={name}
             width={180}
             height={180}
             style={{ objectFit: "cover", borderRadius: "90px", width: "180px", height: "180px" }}
             placeholder={"blur"}
-            blurDataURL={"/blur_image.png"}
+            // blurDataURL={"/blur_image.png"}
           />
         </label>
       </div>

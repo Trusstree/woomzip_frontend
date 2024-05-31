@@ -41,7 +41,8 @@ export default function Profile(props: ProfileProps) {
   const setProfile = async (e: ChangeEvent<HTMLInputElement> | any) => {
     const img = e.target.files[0];
     if (img?.type?.split("/")[0] != "image") return;
-    const url = `/users/${userData?.user_profile_id}/profileImage.${img.type.split("/")[1]}`;
+
+    const url = `users/${userData?.user_profile_id}/profileImage.${img.type.split("/")[1]}`;
     const [meta, s3Error] = await setS3Url(url, img);
     console.log(meta);
 
@@ -52,7 +53,7 @@ export default function Profile(props: ProfileProps) {
 
     setProfileData((oldValues) => ({
       ...oldValues,
-      [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}${url}`,
+      [e.target.name]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`,
     }));
   };
 
@@ -119,7 +120,6 @@ export default function Profile(props: ProfileProps) {
     const [data, error] = await putUser(profileData);
 
     if (error) {
-      console.log("asdfqmnqqpqwoed하나둘하나둘4");
       alertError("프로필 수정", "에러가 났어요 ㅠㅠ");
       return;
     }

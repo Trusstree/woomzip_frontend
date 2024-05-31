@@ -8,6 +8,7 @@ import Link from "next/link";
 import { getUser } from "@/apis/userAPI";
 import { cookies } from "next/headers";
 import { getUserdataByToken } from "@/lib/parseUtil";
+import ProfileImageBox from "@/components/mypage/ProfileImageBox";
 
 async function create(uid: string | number) {
   "use server";
@@ -37,17 +38,7 @@ export default async function Page({ params, searchParams }) {
           className="rounded-2 mt-5 mb-3 p-4 d-flex justify-content-between flex-column"
           style={{ backgroundColor: "lightgray" }}
         >
-          <Image
-            className={"m-0 align-self-center"}
-            src={userData?.user_img_url || `/blur_image.png`}
-            alt={`profile`}
-            width={180}
-            height={180}
-            style={{ objectFit: "cover", borderRadius: "90px", width: "180px", height: "180px" }}
-            placeholder={"blur"}
-            blurDataURL={"/blur_image.png"}
-          />
-
+          <ProfileImageBox data={userData} name={"user_img_url"} />
           <div className="my-3 d-flex flex-column align-items-center">
             <div className="fs-5 fw-bold">{userData?.nickname}</div>
             <div>{userData?.email}</div>
