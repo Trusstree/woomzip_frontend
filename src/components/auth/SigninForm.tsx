@@ -1,7 +1,7 @@
 "use client";
 
 import { signinUser } from "@/apis/userAPI";
-import { encryptPW } from "@/actions/auth/encryptPW";
+import { encryptPW } from "@/actions/auth/cryptPW";
 import { useUser } from "@/components/app/ContextSession";
 import { alertError } from "@/lib/alertUtil";
 import { getUserdataByToken } from "@/lib/parseUtil";

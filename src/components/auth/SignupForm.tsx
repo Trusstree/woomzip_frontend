@@ -1,10 +1,8 @@
 "use client";
 
+import { encryptPW } from "@/actions/auth/cryptPW";
 import { signupUser, validateID, validateName } from "@/apis/userAPI";
-import { encryptPW } from "@/app/signup/action";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
-
-import { encrypt } from "@/lib/security";
 import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/validator";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
