@@ -29,7 +29,7 @@ export default function PostList(props: PostListProps) {
       if (category) params["category"] = category;
 
       const { data, error } = await getPosts(params);
-      console.log(data);
+
       if (error) {
         console.error(error);
         return;

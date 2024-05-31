@@ -10,6 +10,8 @@ import { useRouter } from "next/navigation";
 import { deleteHeart, postHeart } from "@/apis/HeartAPI";
 import { alertSuccess } from "@/lib/alertUtil";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
+import useQuery from "@/hooks/useQuery";
+import { useUser } from "@/components/app/ContextSession";
 
 type HouseComponentProps = {
   pid: number;
@@ -18,6 +20,7 @@ type HouseComponentProps = {
 export function HouseClient(props: HouseComponentProps) {
   const router = useRouter();
   const { createQueryString } = useQuery();
+  const { userContext } = useUser();
 
   const { pid } = props;
   const [houseData, setHouseData] = useState(undefined);
@@ -83,9 +86,8 @@ export function HouseClient(props: HouseComponentProps) {
   // },[]);
 
   const ClickHeart = useCallback(async () => {
-    const userCookie = getUserCookie();
-    if (userCookie.userData) {
-      const heartParams = { house_id: pid, user_id: userCookie.userData.uid };
+    if (userContext) {
+      const heartParams = { house_id: pid, user_id: userContext.uid };
 
       if (heart > 0) {
         const [response, error] = await deleteHeart({ house_id: pid });

@@ -1,18 +1,15 @@
 "use client";
 
-import { signinUser } from "@/apis/userAPI.server";
-import { encryptPW } from "@/app/signin/action";
+import { signinUser } from "@/apis/userAPI";
+import { encryptPW } from "@/actions/auth/encryptPW";
 import { useUser } from "@/components/app/ContextSession";
-import { setAccessTokenClient } from "@/configs/cookie.client";
 import { alertError } from "@/lib/alertUtil";
 import { getUserdataByToken } from "@/lib/parseUtil";
-import { encrypt } from "@/lib/security";
 import { isID, isPassword, isRequired } from "@/lib/validator";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function SigninForm() {
-  console.log("hello");
   const router = useRouter();
   const { setUserContext } = useUser();
   const [id, setID] = useState("");
@@ -51,10 +48,9 @@ export function SigninForm() {
     }
 
     const userData = getUserdataByToken(data.data.access_token);
+    console.log(userData);
 
-    setUserContext(userData);
-    setAccessTokenClient(data.data.access_token);
-
+    setUserContext(userData.uid);
     router.push("/");
     return;
   };

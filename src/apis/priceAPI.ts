@@ -1,9 +1,9 @@
-import { apiClient } from "@/configs/publicApi";
+import { publicApi } from "@/configs/axiosClient";
 
 export const getPrice = async (house_id: number) => {
   let [count, countError] = [undefined, undefined] as any;
   try {
-    const result = await apiClient.get(`/price`, {
+    const result = await publicApi.get(`/price`, {
       params: { house_id: house_id },
     });
     count = result?.data;
@@ -17,7 +17,7 @@ export const postPrice = async (Price: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.post(`/price`, Price);
+    const result = await publicApi.post(`/price`, Price);
     data = result?.data;
   } catch (err) {
     error = err;
@@ -30,7 +30,7 @@ export const deletePrice = async (idx: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.delete(`/price`, {
+    const result = await publicApi.delete(`/price`, {
       params: { idx: idx },
     });
     data = result?.data;
@@ -45,7 +45,7 @@ export const putPrice = async (house_id: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await apiClient.put(
+    const result = await publicApi.put(
       `/price`,
       { house_id: house_id },
       {

@@ -1,17 +1,6 @@
-import {
-  S3Client,
-  PutObjectCommand,
-  GetObjectCommand,
-} from "@aws-sdk/client-s3";
+import { s3 } from "@/configs/S3Client";
+import { PutObjectCommand, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-
-const s3 = new S3Client({
-  credentials: {
-    accessKeyId: process.env.NEXT_PUBLIC_AWS_S3_ACCESS_KEY,
-    secretAccessKey: process.env.NEXT_PUBLIC_AWS_S3_SECRET_KEY,
-  },
-  region: process.env.NEXT_PUBLIC_AWS_S3_REGION,
-});
 
 export async function getS3Url(key: string) {
   let [response, error] = [undefined, undefined] as any[];
@@ -31,6 +20,7 @@ export async function getS3Url(key: string) {
 
 export async function setS3Url(key: string, body: any) {
   let [response, error] = [undefined, undefined] as any[];
+  console.log(key);
   const command = new PutObjectCommand({
     Bucket: process.env.NEXT_PUBLIC_AWS_S3_BUCKETNAME,
     Key: key,

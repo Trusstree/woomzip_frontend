@@ -12,7 +12,7 @@ const contextDefaultValues: UserContextValues = {
   setUserContext: () => {},
 };
 
-export const UserContext = createContext(contextDefaultValues);
+const UserContext = createContext(contextDefaultValues);
 export const useUser = () => useContext(UserContext);
 
 export default function ContextSession({ children }) {

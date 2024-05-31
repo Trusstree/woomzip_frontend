@@ -1,13 +1,15 @@
 "use client";
 
-import { getUser } from "@/apis/userAPI.server";
+import { getUser } from "@/apis/userAPI";
 import { AddressInputForm } from "@/components/test/AddressInputForm";
 import React, { useState } from "react";
+import { useUser } from "../app/ContextSession";
 
 export default function TestClient() {
   const [addr, setAddr] = useState("");
+  const { userContext } = useUser();
   const handleClick = async () => {
-    const [data, error] = await getUser(1);
+    console.log(userContext);
   };
 
   return (

@@ -1,12 +1,9 @@
-"use client";
-
-import { useUser } from "@/components/app/ContextSession";
-import { getUserCookie } from "@/lib/cookieUtil";
 import { setS3Url } from "@/lib/s3Util";
 import moment from "moment";
 import { ChangeEvent } from "react";
 
 type ImageInputComponentProps = {
+  uid: string | number;
   data: any;
   name: string;
   setData: any;
@@ -14,17 +11,22 @@ type ImageInputComponentProps = {
 };
 
 export function ImageInputComponent(props: ImageInputComponentProps) {
-  const { data, name, setData, className } = props;
-  const userCookie = getUserCookie();
+  const { uid, data, name, setData, className } = props;
 
   const setS3Image = async (e: ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
+    if (img?.type?.split("/")[0] != "image") return;
     const title = e.target.name + moment().format("YYYYMMDDHHmmss");
-    const url = `${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${userCookie.userData.uid}/${title}`;
-
-    const [response, error] = await setS3Url(`houses/${userCookie.userData.uid}/${title}`, img);
+    const url = `houses/${uid}/${title}.${img.type.split("/")[1]}`;
+    console.log(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`);
+    const [response, error] = await setS3Url(url, img);
     if (!error) {
-      setData((oldValues) => ({ ...oldValues, [name]: oldValues?.[name] ? [...oldValues[name], url] : [url] }));
+      setData((oldValues) => ({
+        ...oldValues,
+        [name]: oldValues?.[name]
+          ? [...oldValues[name], `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`]
+          : [`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`],
+      }));
     } else console.error(error);
   };
 

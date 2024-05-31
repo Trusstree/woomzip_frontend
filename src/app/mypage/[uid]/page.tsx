@@ -1,5 +1,3 @@
-"use server";
-
 import Image from "next/image";
 import Community from "../../../components/mypage/Community";
 import House from "../../../components/mypage/House";
@@ -7,13 +5,17 @@ import Profile from "../../../components/mypage/Profile";
 import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
 import PostMenu from "@/components/posts/PostMenu";
 import Link from "next/link";
-import { getUser } from "@/apis/userAPI.server";
+import { getUser } from "@/apis/userAPI";
+import { cookies } from "next/headers";
+import { getUserdataByToken } from "@/lib/parseUtil";
 
-async function create(uid) {
+async function create(uid: string | number) {
   "use server";
+
   const [data, error] = await getUser(uid);
   if (error) {
     console.log(error);
+    console.log("user error");
     return;
   }
   return data?.data[0]?.user_profile;
@@ -24,6 +26,9 @@ export default async function Page({ params, searchParams }) {
   const { tab } = searchParams;
 
   const userData: any = await create(uid);
+  const cookieStorge = cookies();
+  const accessToken = cookieStorge.get("accessToken").value;
+  const signedUID = accessToken && getUserdataByToken(accessToken)?.uid;
 
   return (
     <div className="mb-5 row">
@@ -34,7 +39,7 @@ export default async function Page({ params, searchParams }) {
         >
           <Image
             className={"m-0 align-self-center"}
-            src={userData["user_img_url"] || `/blur_image.png`}
+            src={userData?.user_img_url || `/blur_image.png`}
             alt={`profile`}
             width={180}
             height={180}
@@ -44,9 +49,9 @@ export default async function Page({ params, searchParams }) {
           />
 
           <div className="my-3 d-flex flex-column align-items-center">
-            <div className="fs-5 fw-bold">{userData["nickname"]}</div>
-            <div>{userData["email"]}</div>
-            <div>{userData["one_line_introduce"]}</div>
+            <div className="fs-5 fw-bold">{userData?.nickname}</div>
+            <div>{userData?.email}</div>
+            <div>{userData?.one_line_introduce}</div>
           </div>
 
           {/* <div className="d-flex justify-content-between">
@@ -78,7 +83,7 @@ export default async function Page({ params, searchParams }) {
             </div> */}
         </div>
 
-        {Number(uid) == userData["user_profile_id"] && (
+        {Number(uid) == signedUID && (
           <Link
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{ backgroundColor: "#101648" }}
@@ -121,9 +126,9 @@ export default async function Page({ params, searchParams }) {
             </PostMenu>
           </>
         )}
-        {tab == "profile" && <Profile uid={uid} />}
-        {tab == "community" && <Community />}
-        {tab == "house" && <House />}
+        {tab == "profile" && <Profile userData={userData} />}
+        {tab == "community" && <Community userData={userData} />}
+        {tab == "house" && <House userData={userData} />}
       </div>
     </div>
   );

@@ -1,9 +1,9 @@
 "use client";
 
-import { getUserCookie } from "@/lib/cookieUtil";
 import { setS3Url } from "@/lib/s3Util";
 import moment from "moment";
 import { ChangeEvent } from "react";
+import { useUser } from "../app/ContextSession";
 
 type LivingReviewImageInputComponentProps = {
   name: string;
@@ -13,14 +13,15 @@ type LivingReviewImageInputComponentProps = {
 
 export function LivingReviewImageInputComponent(props: LivingReviewImageInputComponentProps) {
   const { name, setData, className } = props;
-  const userCookie = getUserCookie();
+  const { userContext } = useUser();
+  const uid = userContext?.uid;
 
   const setS3Image = async (e: ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
     const title = e.target.name + moment().format("YYYYMMDDHHmmss");
-    const url = `${process.env.NEXT_PUBLIC_AWS_S3_URL}/test_house/pavilion/1/${userCookie.userData.uid}/${title}`;
+    const url = `${process.env.NEXT_PUBLIC_AWS_S3_URL}/test_house/pavilion/1/${uid}/${title}`;
 
-    const [response, error] = await setS3Url(`test_house/pavilion/1/${userCookie.userData.uid}/${title}`, img);
+    const [response, error] = await setS3Url(`test_house/pavilion/1/${uid}/${title}`, img);
     if (!error) {
       setData((oldValues) => [...oldValues, url]);
     } else console.error(error);

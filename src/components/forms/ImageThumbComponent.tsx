@@ -1,43 +1,45 @@
-"use client"
-
-import { useUser } from "@/components/app/ContextSession";
-import { getUserCookie } from "@/lib/cookieUtil";
 import { setS3Url } from "@/lib/s3Util";
 import moment from "moment";
 import { ChangeEvent } from "react";
 
 type ImageInputComponentProps = {
-  data: any
-  setData: any
-  className?: string
-}
+  uid: string | number;
+  data: any;
+  setData: any;
+  className?: string;
+};
 
 export function ImageThumbComponent(props: ImageInputComponentProps) {
-  const { data, setData, className } = props;
-  const userCookie = getUserCookie();
+  const { uid, data, setData, className } = props;
 
-  const setS3Image = async (e:ChangeEvent<HTMLInputElement>) => {
+  const setS3Image = async (e: ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
-    const title=e.target.name+moment().format('YYYYMMDDHHmmss');
-    const url=`${process.env.NEXT_PUBLIC_AWS_S3_URL}/houses/${userCookie.userData.uid}/${title}`;
-    
-    const [response, error] = await setS3Url(`houses/${userCookie.userData.uid}/${title}`, img);
-    if(!error) {
-      setData((oldValues) =>({...oldValues, ["representative_image"]: url}));
+    if (img?.type?.split("/")[0] != "image") return;
+    const title = e.target.name + moment().format("YYYYMMDDHHmmss");
+    const url = `houses/${uid}/${title}.${img.type.split("/")[1]}`;
+    console.log(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`);
+    const [response, error] = await setS3Url(url, img);
+    console.log([response, error]);
+    if (!error) {
+      setData((oldValues) => ({
+        ...oldValues,
+        ["representative_image"]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`,
+      }));
+    } else {
+      console.error(error);
     }
-    else console.error(error);
   };
 
   return (
     <div className={`${className ?? ""}`}>
-      
       <label htmlFor={"representative_image"}>
         <img
           src={data["representative_image"] || "/blur_image.png"}
           alt={"representative_image"}
           width={188}
           height={188}
-          style={{objectFit:"fill"}} />
+          style={{ objectFit: "fill" }}
+        />
       </label>
       <input
         id={`${"representative_image"}`}
@@ -46,7 +48,8 @@ export function ImageThumbComponent(props: ImageInputComponentProps) {
         multiple
         type="file"
         onChange={setS3Image}
-        style={{ display: 'none' }}/>
+        style={{ display: "none" }}
+      />
       <h5 className="fw-bold mt-2">추가하기</h5>
     </div>
   );
