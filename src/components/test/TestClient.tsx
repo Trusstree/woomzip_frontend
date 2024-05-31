@@ -1,15 +1,25 @@
 "use client";
 
-import { getUser } from "@/apis/userAPI";
+import { encryptPW } from "@/actions/auth/cryptPW";
 import { AddressInputForm } from "@/components/test/AddressInputForm";
 import React, { useState } from "react";
 import { useUser } from "../app/ContextSession";
 
 export default function TestClient() {
-  const [addr, setAddr] = useState("");
   const { userContext } = useUser();
-  const handleClick = async () => {
+  const [addr, setAddr] = useState("");
+  const [pw, setPW] = useState("");
+  const [encryptedPW, setEncryptedPW] = useState("");
+
+  const handleClick = () => {
     console.log(userContext);
+  };
+
+  const handlePW = async (e) => {
+    console.log(e.target.value);
+    setPW(e.target.value);
+    const _en = await encryptPW(e.target.value);
+    setEncryptedPW(_en);
   };
 
   return (
@@ -18,6 +28,9 @@ export default function TestClient() {
         ㅎㅇ
       </div>
       <AddressInputForm addr={addr} name={"addr"} setAddr={setAddr} />
+      <input onChange={handlePW}></input>
+      <div>ori: {pw}</div>
+      <div style={{ wordBreak: "break-all" }}>en: {encryptedPW}</div>
     </>
   );
 }

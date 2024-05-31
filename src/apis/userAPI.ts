@@ -38,10 +38,8 @@ export const putUser = async (user: any) => {
     const result = await privateApi.post(`/users/update`, user);
     data = result?.data;
   } catch (err) {
-    console.log("asdfqmnqqpqwoed하나둘하나둘1");
     error = err;
   }
-  console.log("asdfqmnqqpqwoed하나둘하나둘8");
   return [data, error];
 };
 

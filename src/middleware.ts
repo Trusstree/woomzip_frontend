@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest, response: NextResponse) {
   }
 
   //로그인해야하는 페이지
-  const signinRequiredPage = ["/test", "/mypage"];
+  const signinRequiredPage = ["/mypage"];
   for (const page of signinRequiredPage) {
     if (request.nextUrl.pathname.startsWith(page)) {
       const accessToken = request.cookies.get("accessToken")?.value;
