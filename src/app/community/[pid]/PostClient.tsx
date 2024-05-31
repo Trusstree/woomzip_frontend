@@ -29,20 +29,22 @@ type PostData = {
 export default function PostClient(props: PostpageProps) {
   const { pid } = props;
   const [postData, setPostData] = useState(undefined as PostData | undefined);
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(["render"]);
   useEffect(() => {
-    const getPostdata = async () => {
-      const { data, error } = await getPost(pid);
-      console.log(data);
+    (async () => {
+      if (comments[0] != "render") return;
 
-      if (error) console.log(error);
-      else {
-        setPostData(data.data.post);
-        setComments(data.data.comments);
+      const { data, error } = await getPost(pid);
+
+      if (error) {
+        console.log(error);
+        return;
       }
-    };
-    getPostdata();
-  }, []);
+
+      if (!postData) setPostData(data.data.post);
+      setComments(data.data.comments);
+    })();
+  }, [comments]);
 
   return postData ? (
     <div className="container">
@@ -76,7 +78,7 @@ export default function PostClient(props: PostpageProps) {
           __html: DOMPurify.sanitize(String(postData["content"])),
         }}
       />
-      <Comments pid={pid} comments={comments} />
+      <Comments pid={pid} comments={comments} setComments={setComments} />
       {/* 추천정보 */}
       <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
         <PostList numShowItems={6} />
