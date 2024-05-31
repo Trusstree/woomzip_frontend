@@ -61,7 +61,7 @@ export const signinUser = async (user: { login_id: string; password: string }) =
     });
     data = result?.data;
   } catch (err) {
-    console.log("error");
+    console.log(err);
     error = err;
   }
 

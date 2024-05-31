@@ -1,13 +1,21 @@
 "use client";
 
+import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
 import { postComment } from "@/apis/commentAPI";
 import { elapsedTimeText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Comments({ pid, comments, setComments }) {
   const router = useRouter();
   const [comment, setComment] = useState("");
+  const [at, setAT] = useState(undefined);
+  console.log("qwer1");
+  useEffect(() => {
+    (async () => {
+      setAT(await getUserAccessToken());
+    })();
+  }, []);
 
   const handleComment = (e) => {
     setComment(e.target.value);
@@ -36,12 +44,13 @@ export default function Comments({ pid, comments, setComments }) {
           <textarea
             rows={3}
             className="col-10"
-            placeholder={`댓글을 입력해 주세요.`}
+            placeholder={at ? `댓글을 입력해 주세요.` : `로그인이 필요합니다.`}
             value={comment}
             onChange={handleComment}
             style={{ resize: "none" }}
+            disabled={at == undefined}
           ></textarea>
-          <button className="col-2" onClick={submit}>
+          <button className="col-2" onClick={submit} disabled={at == undefined}>
             제출
           </button>
         </div>
