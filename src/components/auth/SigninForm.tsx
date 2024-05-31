@@ -42,7 +42,7 @@ export function SigninForm() {
     const [data, error] = await signinUser(encryptedData);
 
     if (error) {
-      console.log("error");
+      console.log(error);
       alertError("로그인 에러", error.response?.data?.message || `로그인에 실패했어요.`);
       return;
     }
