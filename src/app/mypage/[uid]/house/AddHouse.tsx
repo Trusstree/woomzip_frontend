@@ -9,13 +9,10 @@ import { HouseDeliveryComponent } from "@/components/mypage/house/HouseDeliveryC
 import { HouseInfoComponent } from "@/components/mypage/house/HouseInfoComponent";
 import { HousePriceComponent } from "@/components/mypage/house/HousePriceComponent";
 import { usePathname, useRouter } from "next/navigation";
-import { useUser } from "@/components/app/ContextSession";
 
-export default function AddHouse() {
+export default function AddHouse({ uid }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { userContext } = useUser();
-  console.log(userContext);
 
   const [houseInfo, setHouseInfo] = useState({});
   const [optionInfo, setOptionInfo] = useState([] as Array<any>);
@@ -58,7 +55,7 @@ export default function AddHouse() {
     }
 
     const data = {
-      seller_id: userContext.uid,
+      seller_id: uid,
       house_info: houseInfo,
       option_info: optionInfo,
       delivery_unavailable: deliveryInfo,
@@ -109,7 +106,7 @@ export default function AddHouse() {
         />
 
         {/* 사진 */}
-        <HouseImageComponent uid={userContext.uid} imageList={imageList} setImageList={setImageList} />
+        <HouseImageComponent uid={uid} imageList={imageList} setImageList={setImageList} />
 
         {/* submit */}
         <div

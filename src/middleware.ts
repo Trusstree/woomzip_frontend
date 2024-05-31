@@ -29,7 +29,7 @@ export async function middleware(request: NextRequest, response: NextResponse) {
       // 액세스토큰이 유효한지 확인하기 위해 백엔드에 신호를 보냄
       // 백엔드에서는 아무 신호나 보내도 체크를 해줘서, 그냥 유저 정보 아무거나 받아오는 중
       // middleware에서는 axios를 사용할 수 없어서 fetch를 사용
-      const data = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/users/profile`, {
+      const data = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/users/test`, {
         method: "GET",
         headers: { Authorization: `Bearer ${accessToken}` },
       });

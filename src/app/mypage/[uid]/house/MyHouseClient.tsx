@@ -1,18 +1,19 @@
-"use client"
+"use client";
 
 import RouteButton from "@/components/RouteButton";
 import { useSearchParams } from "next/navigation";
 import AddHouse from "./AddHouse";
 
-export default function MyHouse() {
+export default function MyHouse({ uid }) {
   const params = useSearchParams();
-  
+
   return (
     <main className={`container`}>
-      {(params.get("method")=="add") && <AddHouse />}
-      {(params.get("method")=="edit") && <AddHouse />}
-      {(!params.get("method") || ((params.get("method")!="add") && (params.get("method")!="edit"))) &&
-        <RouteButton url="/">홈으로 가기</RouteButton>}
+      {params.get("method") == "add" && <AddHouse uid={uid} />}
+      {params.get("method") == "edit" && <AddHouse uid={uid} />}
+      {(!params.get("method") || (params.get("method") != "add" && params.get("method") != "edit")) && (
+        <RouteButton url="/">홈으로 가기</RouteButton>
+      )}
     </main>
-  )
+  );
 }

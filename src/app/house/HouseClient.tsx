@@ -14,7 +14,7 @@ export default function Home() {
   const router = useRouter();
   const [searchCondition, setSearchCondition] = useState({});
   const [submittedCondition, setSubmittedCondition] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(true);
   const [numShowItems, numShowPages] = [24, 10];
 
   const arraySort = (arr: Array<number | string>) => {

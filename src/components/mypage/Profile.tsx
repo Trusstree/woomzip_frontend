@@ -5,7 +5,6 @@ import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 import { putUser } from "@/apis/userAPI";
-import moment from "moment";
 import ImageBox from "@/components/mypage/ImageBox";
 import { useRouter } from "next/navigation";
 import { signout } from "@/actions/auth/signout";
@@ -18,20 +17,20 @@ export default function Profile(props: ProfileProps) {
   const { userData } = props;
   const router = useRouter();
   const [profileData, setProfileData] = useState({
-    name: userData.name || "",
-    nickname: userData.nickname || "",
-    one_line_introduce: userData.one_line_introduce || "",
-    user_img_url: userData.user_img_url || "/blur_image.png",
-    phone_number: userData.phone_number || "",
-    email: userData.email || "",
-    gender: userData.gender || "",
-    birthday: userData.birthday || "",
-    addr: userData.addr || "",
+    name: userData?.name || "",
+    nickname: userData?.nickname || "",
+    one_line_introduce: userData?.one_line_introduce || "",
+    user_img_url: userData?.user_img_url || "/blur_image.png",
+    phone_number: userData?.phone_number || "",
+    email: userData?.email || "",
+    gender: userData?.gender || "",
+    birthday: userData?.birthday || "",
+    addr: userData?.addr || "",
   });
 
-  useEffect(() => {
-    (async () => {})();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {})();
+  // }, []);
 
   const handleText = (e: ChangeEvent<HTMLInputElement>): ChangeEventHandler<HTMLInputElement> => {
     // if (e) e.preventDefault();
@@ -42,7 +41,7 @@ export default function Profile(props: ProfileProps) {
   const setProfile = async (e: ChangeEvent<HTMLInputElement> | any) => {
     const img = e.target.files[0];
     if (img?.type?.split("/")[0] != "image") return;
-    const url = `/users/${userData.user_profile_id}/profileImage.${img.type.split("/")[1]}`;
+    const url = `/users/${userData?.user_profile_id}/profileImage.${img.type.split("/")[1]}`;
     const [meta, s3Error] = await setS3Url(url, img);
     console.log(meta);
 

@@ -11,9 +11,11 @@ import { getUserdataByToken } from "@/lib/parseUtil";
 
 async function create(uid: string | number) {
   "use server";
+
   const [data, error] = await getUser(uid);
   if (error) {
     console.log(error);
+    console.log("user error");
     return;
   }
   return data?.data[0]?.user_profile;
@@ -27,7 +29,6 @@ export default async function Page({ params, searchParams }) {
   const cookieStorge = cookies();
   const accessToken = cookieStorge.get("accessToken").value;
   const signedUID = accessToken && getUserdataByToken(accessToken)?.uid;
-  console.log(userData);
 
   return (
     <div className="mb-5 row">

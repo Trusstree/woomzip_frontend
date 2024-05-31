@@ -6,8 +6,8 @@ import MultiRangeSlider from "../forms/MultiRangeSlider";
 import { cardPriceText } from "@/lib/stringUtil";
 
 export function SearchModal({ data, setData }) {
-  const [minPrice, maxPrice, stepPrice] = [0, 1000000000, 10000000];
-  const [minArea, maxArea, stepArea] = [0, 500, 1];
+  const [minPrice, maxPrice, stepPrice] = [0, 300000000, 10000000];
+  const [minArea, maxArea, stepArea] = [0, 30, 1];
 
   return (
     <div

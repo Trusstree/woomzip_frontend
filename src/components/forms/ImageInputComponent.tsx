@@ -15,14 +15,17 @@ export function ImageInputComponent(props: ImageInputComponentProps) {
 
   const setS3Image = async (e: ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
+    if (img?.type?.split("/")[0] != "image") return;
     const title = e.target.name + moment().format("YYYYMMDDHHmmss");
-    const url = `/houses/${uid}/${title}`;
-
+    const url = `houses/${uid}/${title}.${img.type.split("/")[1]}`;
+    console.log(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`);
     const [response, error] = await setS3Url(url, img);
     if (!error) {
       setData((oldValues) => ({
         ...oldValues,
-        [name]: oldValues?.[name] ? [...oldValues[name], url] : [`${process.env.NEXT_PUBLIC_AWS_S3_URL}${url}`],
+        [name]: oldValues?.[name]
+          ? [...oldValues[name], `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`]
+          : [`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`],
       }));
     } else console.error(error);
   };

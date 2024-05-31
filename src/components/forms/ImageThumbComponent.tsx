@@ -14,16 +14,20 @@ export function ImageThumbComponent(props: ImageInputComponentProps) {
 
   const setS3Image = async (e: ChangeEvent<HTMLInputElement>) => {
     const img = e.target.files[0];
+    if (img?.type?.split("/")[0] != "image") return;
     const title = e.target.name + moment().format("YYYYMMDDHHmmss");
-    const url = `/houses/${uid}/${title}`;
-    console.log(url);
+    const url = `houses/${uid}/${title}.${img.type.split("/")[1]}`;
+    console.log(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`);
     const [response, error] = await setS3Url(url, img);
+    console.log([response, error]);
     if (!error) {
       setData((oldValues) => ({
         ...oldValues,
-        ["representative_image"]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}${url}`,
+        ["representative_image"]: `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`,
       }));
-    } else console.error(error);
+    } else {
+      console.error(error);
+    }
   };
 
   return (

@@ -27,7 +27,7 @@ export function HouseList(props: HousePostProps) {
     (async () => {
       if (isSubmit != undefined && !isSubmit) return;
       const params = {
-        skip: numShowItems * (page - 1) + 1,
+        skip: searchCondition ? 1 : numShowItems * (page - 1) + 1,
         limit: numShowItems,
         ...searchCondition,
       };
