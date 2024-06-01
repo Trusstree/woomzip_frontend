@@ -51,6 +51,7 @@ export default function Pagination(props: PagenationProps) {
         <button
           type="button"
           className={`btn page-link link-dark ${selected ? "fw-bold" : ""}`}
+          style={{border:"none"}}
           onClick={() => {
             handlePage(number);
           }}
@@ -77,9 +78,10 @@ export default function Pagination(props: PagenationProps) {
           <button
             type="button"
             className="btn page-link link-dark"
+            style={{border:"none"}}
             onClick={prevPage}
           >
-            Prev
+            {"<"}
           </button>
         </li>
         {paginationManage(page)}
@@ -87,9 +89,10 @@ export default function Pagination(props: PagenationProps) {
           <button
             type="button"
             className="btn page-link link-dark"
+            style={{border:"none"}}
             onClick={nextPage}
           >
-            Next
+            {">"}
           </button>
         </li>
       </ul>

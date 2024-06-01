@@ -55,7 +55,7 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ width: "500px", fontSize: "38px", fontWeight: "600", margin: "120px 0" }}>
+      <div style={{ width: "500px", fontSize: "38px", fontWeight: "600", margin: "120px 0 80px 0" }}>
         우리 가족을 위한 집,
         <br />
         트러스에서 찾아보세요
@@ -122,7 +122,7 @@ export default function Home() {
               setData={setSearchCondition}
             />
           </div>
-          <div style={{ width: "120px" }}>
+          <div style={{ width: "100px" }}>
             <div style={{ margin: "0 10px", fontWeight: "600" }}>상세검색 </div>
             <button
               style={{
@@ -142,8 +142,8 @@ export default function Home() {
             </button>
             <SearchModal data={searchCondition} setData={setSearchCondition} />
           </div>
-          <div style={{ width: "120px" }}>
-            <div style={{ margin: "0 10px", fontWeight: "600" }}>상세검색 </div>
+          <div style={{ width: "100px" }}>
+            <div style={{ margin: "0 10px", fontWeight: "600" }}>검색하기 </div>
             <button
               type={"submit"}
               style={{
@@ -308,7 +308,7 @@ export default function Home() {
       </div>
   */}
 
-      <PostMenu title={"검색 결과입니다."}>
+      <PostMenu title={""}>
         <HouseList
           numShowItems={numShowItems}
           numShowPages={numShowPages}

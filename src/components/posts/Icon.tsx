@@ -1,37 +1,41 @@
 "use client";
 
 import useQuery from "@/hooks/useQuery";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 
 type IconProps = {
-  src: string;
-  title: string;
-  width: number;
-  height: number;
+  title?:string;
   param?: string;
   className?: string;
   style?: CSSProperties;
+  type?: string;
+  name?: string;
+  data?: {};
+  setData?: {};
+  value?: string;
 };
 
 export default function Icon(props: IconProps) {
   const router = useRouter();
-  const { className, title, width, height, param, src, style } = props;
+  const { title, className, param, style, type, value, name, data, setData } = props;
   const { createQueryString } = useQuery();
   const pathname = usePathname();
 
   return (
-    <div className={`${className ? className : ""}`} style={{ width: "70px" }}>
+    <div className={`${className ? className : ""}`} style={{ width: "90px" }}>
       <button
         type="button"
-        style={{ ...style, color: "#101648" }}
-        className={`btn rounded-lg fw-bold`}
+        style={{ ...style,
+            fontWeight:"400",
+            fontSize:"17px",
+        }}
+        className={`btn rounded-lg`}
         onClick={() => {
           router.push(`${pathname}?${createQueryString("category", param)}`);
         }}
       >
-        <Image src={src} alt={`${title}`} width={width} height={height} />
+      {title}
       </button>
     </div>
   );
