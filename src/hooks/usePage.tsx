@@ -1,7 +1,6 @@
-import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
-export default function useQuery() {
+export default function usePage() {
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
   const page = rawPage > 0 ? rawPage : 1;

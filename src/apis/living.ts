@@ -95,6 +95,23 @@ export const getReservation = async (params: "pending" | "confirmed" | "rejected
   return [data, error];
 };
 
+export const getReservationConfirm = async (pid: number, params: 1 | 0) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await privateApi.get(`/pavilion/reservation/confirm/${pid}/${params}`, {
+      params: {},
+      headers: {},
+    });
+
+    data = result?.data;
+  } catch (err) {
+    error = err;
+  }
+
+  return [data, error];
+};
+
 export const getReservationUnavailable = async (reservationNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 

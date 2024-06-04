@@ -2,42 +2,118 @@
 
 import { getReservation } from "@/apis/living";
 import { ReservationConfirm } from "@/components/living/ReservationConfirm";
-import { RouteButton } from "@/components/living/RouteButton";
+import useQuery from "@/hooks/useQuery";
 import { toStringByFormatting } from "@/lib/stringUtil";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+const title = {
+  pending: "신청내역",
+  confirmed: "수락내역",
+  rejected: "거절내역",
+};
+
 export function AdminLivingClient() {
+  const router = useRouter();
   const [reservation, setReservation] = useState([]);
+  const [params, setParams] = useState("pending" as "pending" | "confirmed" | "rejected");
+  const { createQuery, getParams } = useQuery();
+
+  const handleClick = (params: "pending" | "confirmed" | "rejected") => {
+    createQuery("method", params);
+    setParams(params);
+    router.push(`/admin/living/1?${getParams().toString()}`);
+  };
 
   useEffect(() => {
     (async () => {
-      const [data, error] = await getReservation("pending");
+      const [data, error] = await getReservation(params);
       console.log(data.data);
       if (error) {
         console.error(error);
         return;
       }
       setReservation(data.data);
+      console.log(data);
     })();
-  }, []);
+  }, [params]);
 
   return (
     <div>
+      <h1>{title[params]}</h1>
       <div className="row">
         <div style={{ width: "200px" }}>
-          <RouteButton url={"/living/reservation/confirm"} text={"신청내역"} />
+          <div
+            className="button"
+            style={{
+              width: "100%",
+              height: "50px",
+              borderRadius: "10px",
+              padding: "10px",
+              marginBottom: "10px",
+              backgroundColor: "#101648",
+              color: "white",
+              fontSize: "20px",
+              fontWeight: "600",
+              textAlign: "center",
+            }}
+            onClick={() => {
+              handleClick("pending");
+            }}
+          >
+            신청내역
+          </div>
         </div>
         <div style={{ width: "200px" }}>
-          <RouteButton url={"/living/reservation/confirm/accept"} text={"수락내역"} />
+          <div
+            className="button"
+            style={{
+              width: "100%",
+              height: "50px",
+              borderRadius: "10px",
+              padding: "10px",
+              marginBottom: "10px",
+              backgroundColor: "#101648",
+              color: "white",
+              fontSize: "20px",
+              fontWeight: "600",
+              textAlign: "center",
+            }}
+            onClick={() => {
+              handleClick("confirmed");
+            }}
+          >
+            수락내역
+          </div>
         </div>
         <div style={{ width: "200px" }}>
-          <RouteButton url={"/living/reservation/confirm/reject"} text={"거절내역"} />
+          <div
+            className="button"
+            style={{
+              width: "100%",
+              height: "50px",
+              borderRadius: "10px",
+              padding: "10px",
+              marginBottom: "10px",
+              backgroundColor: "#101648",
+              color: "white",
+              fontSize: "20px",
+              fontWeight: "600",
+              textAlign: "center",
+            }}
+            onClick={() => {
+              handleClick("rejected");
+            }}
+          >
+            거절내역
+          </div>
         </div>
       </div>
       <div>
         {reservation.map((e, i) => (
           <ReservationConfirm
             key={i}
+            rid={e["pavilion_reservation_id"]}
             requestDate={toStringByFormatting(new Date(e["created_at"]))}
             where={"힐링리버"}
             nickname={e["nickname"]}
@@ -46,6 +122,7 @@ export function AdminLivingClient() {
             people={e["people"]}
             phoneNumber={e["contact"]}
             purpose={e["purpose"]}
+            status={params}
           />
         ))}
       </div>
