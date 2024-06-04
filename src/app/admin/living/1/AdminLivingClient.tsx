@@ -11,13 +11,13 @@ export function AdminLivingClient() {
 
   useEffect(() => {
     (async () => {
-      const [data, error] = await getReservation(1);
-      console.log(data);
+      const [data, error] = await getReservation("pending");
+      console.log(data.data);
       if (error) {
         console.error(error);
         return;
       }
-      setReservation(data.data[0]);
+      setReservation(data.data);
     })();
   }, []);
 
@@ -38,11 +38,11 @@ export function AdminLivingClient() {
         {reservation.map((e, i) => (
           <ReservationConfirm
             key={i}
-            requestDate={e["created_at"]}
+            requestDate={toStringByFormatting(new Date(e["created_at"]))}
             where={"힐링리버"}
             nickname={e["nickname"]}
-            checkinDate={e["check_in"] && toStringByFormatting(e["check_in"])}
-            checkoutDate={e["check_out"] && toStringByFormatting(e["check_out"])}
+            checkinDate={e["check_in"] && toStringByFormatting(new Date(e["check_in"]))}
+            checkoutDate={e["check_out"] && toStringByFormatting(new Date(e["check_out"]))}
             people={e["people"]}
             phoneNumber={e["contact"]}
             purpose={e["purpose"]}

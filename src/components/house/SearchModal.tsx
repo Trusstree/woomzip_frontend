@@ -1,11 +1,10 @@
 "use client";
 
 import FillteringButton from "./FillteringButton";
-import ResetButton from "./ResetButton";
 import MultiRangeSlider from "../forms/MultiRangeSlider";
 import { cardPriceText } from "@/lib/stringUtil";
 
-export function SearchModal({ data, setData }) {
+export function SearchModal({ data, setData, setIsSubmit }) {
   const [minPrice, maxPrice, stepPrice] = [0, 300000000, 10000000];
   const [minArea, maxArea, stepArea] = [0, 30, 1];
 
@@ -32,14 +31,28 @@ export function SearchModal({ data, setData }) {
               <div className="ms-3" style={{ visibility: data?.["price"] ? "visible" : "hidden" }}>
                 {cardPriceText(data?.["price"]?.[0])} ~ {cardPriceText(data?.["price"]?.[1])}
               </div>
-              <MultiRangeSlider name={"price"} min={minPrice} max={maxPrice} step={stepPrice} setData={setData} />
+              <MultiRangeSlider
+                name={"price"}
+                min={minPrice}
+                max={maxPrice}
+                step={stepPrice}
+                setData={setData}
+                setIsSubmit={setIsSubmit}
+              />
             </div>
             <div style={{ width: "450px", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>사용 평수</div>
               <div className="ms-3" style={{ visibility: data?.["floor_area"] ? "visible" : "hidden" }}>
                 {data?.["floor_area"]?.[0]}평 ~ {data?.["floor_area"]?.[1]}평
               </div>
-              <MultiRangeSlider name={"floor_area"} min={minArea} max={maxArea} step={stepArea} setData={setData} />
+              <MultiRangeSlider
+                name={"floor_area"}
+                min={minArea}
+                max={maxArea}
+                step={stepArea}
+                setData={setData}
+                setIsSubmit={setIsSubmit}
+              />
             </div>
             <div style={{ width: "450px", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>층수</div>
@@ -50,6 +63,7 @@ export function SearchModal({ data, setData }) {
                 type={"select"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"2층"}
@@ -58,6 +72,7 @@ export function SearchModal({ data, setData }) {
                 type={"select"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
             </div>
             <div style={{ width: "450px", margin: "20px 0" }}>
@@ -69,6 +84,7 @@ export function SearchModal({ data, setData }) {
                 type={"select"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"다락방"}
@@ -77,6 +93,7 @@ export function SearchModal({ data, setData }) {
                 type={"select"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"발코니"}
@@ -85,6 +102,7 @@ export function SearchModal({ data, setData }) {
                 type={"select"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"베란다"}
@@ -93,6 +111,7 @@ export function SearchModal({ data, setData }) {
                 type={"select"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"옥상"}
@@ -101,6 +120,7 @@ export function SearchModal({ data, setData }) {
                 type={"select"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
             </div>
             <div style={{ width: "450px", margin: "20px 0" }}>
@@ -112,6 +132,7 @@ export function SearchModal({ data, setData }) {
                 type={"select"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"경량스틸"}
@@ -120,6 +141,7 @@ export function SearchModal({ data, setData }) {
                 type={"select"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"기타"}
@@ -128,6 +150,7 @@ export function SearchModal({ data, setData }) {
                 name={"frame"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
             </div>
             <div style={{ width: "450px", margin: "20px 0" }}>
@@ -139,6 +162,7 @@ export function SearchModal({ data, setData }) {
                 type={"radio"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"6개월 이하"}
@@ -147,6 +171,7 @@ export function SearchModal({ data, setData }) {
                 type={"radio"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"12개월 이하"}
@@ -155,6 +180,7 @@ export function SearchModal({ data, setData }) {
                 type={"radio"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
             </div>
             <div style={{ width: "450px", margin: "20px 0" }}>
@@ -166,6 +192,7 @@ export function SearchModal({ data, setData }) {
                 type={"radio"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
               <FillteringButton
                 title={"2년 이상"}
@@ -174,6 +201,7 @@ export function SearchModal({ data, setData }) {
                 type={"radio"}
                 data={data}
                 setData={setData}
+                setIsSubmit={setIsSubmit}
               />
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", margin: "20px 0" }}>
@@ -186,14 +214,7 @@ export function SearchModal({ data, setData }) {
                   type={"radio"}
                   data={data}
                   setData={setData}
-                />
-              </div>
-              <div style={{ width: "80px" }}>
-                <div style={{ margin: "0 10px", fontWeight: "600" }}>초기화</div>
-                <ResetButton
-                  img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/refresh.png"}
-                  value={1}
-                  setData={setData}
+                  setIsSubmit={setIsSubmit}
                 />
               </div>
             </div>

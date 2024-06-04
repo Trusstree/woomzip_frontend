@@ -1,6 +1,7 @@
 // middleware.ts
 import { NextRequest, NextResponse } from "next/server";
 import { accessTokenOption } from "./configs/cookie";
+import { alertError } from "./lib/alertUtil";
 
 export async function middleware(request: NextRequest, response: NextResponse) {
   //로그인하면 안 되는 페이지
@@ -16,13 +17,14 @@ export async function middleware(request: NextRequest, response: NextResponse) {
   }
 
   //로그인해야하는 페이지
-  const signinRequiredPage = ["/mypage"];
+  const signinRequiredPage = ["/mypage", "/living/1/reservation"];
   for (const page of signinRequiredPage) {
     if (request.nextUrl.pathname.startsWith(page)) {
       const accessToken = request.cookies.get("accessToken")?.value;
 
       // 액세스토큰이 없으면 로그인부터 하고 와야함
       if (!accessToken) {
+        alertError("asdf", "asdf");
         return NextResponse.redirect(`${process.env.NEXT_PUBLIC_CALLBACKURL}signin`);
       }
 

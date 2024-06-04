@@ -78,11 +78,11 @@ export const postReservation = async (body: any) => {
   return [data, error];
 };
 
-export const getReservation = async (reservationNum: number) => {
+export const getReservation = async (params: "pending" | "confirmed" | "rejected") => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/pavilion/reservation/${reservationNum}`, {
+    const result = await privateApi.get(`/pavilion/reservation/check-apply/${params}`, {
       params: {},
       headers: {},
     });

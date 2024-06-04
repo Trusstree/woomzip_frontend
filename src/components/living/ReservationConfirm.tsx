@@ -26,7 +26,7 @@ export function ReservationConfirm({
       <div>신청일자 : {requestDate}</div>
       <div style={{ marginBottom: "20px" }}>신청장소 : {where}</div>
       <div>
-        날짜 : {checkinDate}~{checkoutDate}
+        날짜 : {checkinDate} ~ {checkoutDate}
       </div>
       <div>인원 : {people}</div>
       <div>이름 : {nickname}</div>
