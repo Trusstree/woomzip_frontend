@@ -119,7 +119,7 @@ export default async function Page({ params, searchParams }) {
         )}
         {tab == "profile" && <Profile userData={userData} />}
         {tab == "community" && <Community userData={userData} />}
-        {tab == "house" && <House userData={userData} />}
+        {tab == "house" && <House userData={userData} isYou={Number(uid) == signedUID} />}
       </div>
     </div>
   );

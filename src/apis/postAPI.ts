@@ -29,7 +29,7 @@ export const getPost = async (postNum: number) => {
     error = err;
   }
 
-  return { data, error };
+  return [data, error];
 };
 
 export const postPost = async (post: any) => {

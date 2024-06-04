@@ -118,7 +118,7 @@ export default function PostCard(props: PostCardProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <div className="ps-1" style={{ width: "34px" }}>
-                    {data.viewCount}
+                    {data?.["viewCount"]}
                   </div>
                 </div>
                 <div className="d-flex" style={{ width: "60px", padding: "0" }}>
@@ -137,7 +137,7 @@ export default function PostCard(props: PostCardProps) {
                     />
                   </svg>
                   <div className="ps-1" style={{ width: "34px" }}>
-                    {data.commentCount}
+                    {data?.["commentCount"]}
                   </div>
                 </div>
                 <div className="d-flex" style={{ width: "60px", padding: "0" }}>
@@ -156,7 +156,7 @@ export default function PostCard(props: PostCardProps) {
                     />
                   </svg>
                   <div className="ps-1" style={{ width: "34px" }}>
-                    {data.likeCount}
+                    {data?.["likeCount"]}
                   </div>
                 </div>
               </div>

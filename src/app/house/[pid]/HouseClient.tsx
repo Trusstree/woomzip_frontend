@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
-import { deleteHeart, postHeart } from "@/apis/HeartAPI";
+import { getHousesHeartRemove, getHousesHeart } from "@/apis/HeartAPI";
 import { alertSuccess } from "@/lib/alertUtil";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import useQuery from "@/hooks/useQuery";
@@ -90,11 +90,11 @@ export function HouseClient(props: HouseComponentProps) {
       const heartParams = { house_id: pid, user_id: userContext.uid };
 
       if (heart > 0) {
-        const [response, error] = await deleteHeart({ house_id: pid });
+        const [response, error] = await getHousesHeartRemove({ house_id: pid });
         if (error) console.log(error);
         setHeart(heart - 1);
       } else {
-        const [response, error] = await postHeart({ house_id: pid });
+        const [response, error] = await getHousesHeart({ house_id: pid });
         if (error) console.log(error);
         console.log(response);
         setHeart(heart + 1);
