@@ -12,7 +12,7 @@ export const getUser = async (uid: string | number) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -25,7 +25,7 @@ export const postUser = async (user: any, token: string) => {
     const result = await publicApi.post(`/users/enroll`, user);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return { data, error };
@@ -38,7 +38,7 @@ export const putUser = async (user: any) => {
     const result = await privateApi.post(`/users/update`, user);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
   return [data, error];
 };
@@ -60,7 +60,7 @@ export const signinUser = async (user: { login_id: string; password: string }) =
     data = result?.data;
   } catch (err) {
     console.log(err);
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -73,7 +73,7 @@ export const signupUser = async (user: any) => {
     const result = await publicApi.post(`/auth/sign-up`, user);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -88,7 +88,7 @@ export const validateID = async (user_id: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -103,7 +103,7 @@ export const validateName = async (nickname: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];

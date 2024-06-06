@@ -1,16 +1,16 @@
 import { publicApi } from "@/configs/axiosClient";
 
 export const getImage = async (house_id: number) => {
-  let [count, countError] = [undefined, undefined] as any;
+  let [data, error] = [undefined, undefined] as any;
   try {
     const result = await publicApi.get(`/image`, {
       params: { house_id: house_id },
     });
-    count = result?.data;
+    data = result?.data;
   } catch (err) {
-    countError = err;
+    error = err.response?.data;
   }
-  return [count, countError];
+  return [data, error];
 };
 
 export const postImage = async (Image: any) => {
@@ -20,7 +20,7 @@ export const postImage = async (Image: any) => {
     const result = await publicApi.post(`/image`, Image);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -35,7 +35,7 @@ export const deleteImage = async (url: number) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -54,7 +54,7 @@ export const putImage = async (house_id: number) => {
     );
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];

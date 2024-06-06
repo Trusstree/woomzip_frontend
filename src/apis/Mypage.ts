@@ -11,7 +11,7 @@ export const getLikeHouses = async (params: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];

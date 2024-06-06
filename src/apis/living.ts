@@ -12,7 +12,7 @@ export const getLivings = async (params?: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -29,7 +29,7 @@ export const getLiving = async (livingNum: number) => {
 
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -46,7 +46,7 @@ export const getLivingReviews = async (livingNum: number) => {
 
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -59,7 +59,7 @@ export const postPavilionReview = async (body: any) => {
     const result = await privateApi.post(`/review/pavilion/create`, body);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -72,7 +72,7 @@ export const postReservation = async (body: any) => {
     const result = await privateApi.post(`/pavilion/reservation/apply/1`, body);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -89,7 +89,7 @@ export const getReservation = async (params: "pending" | "confirmed" | "rejected
 
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -106,7 +106,7 @@ export const getReservationConfirm = async (pid: number, params: 1 | 0) => {
 
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -123,7 +123,7 @@ export const getReservationUnavailable = async (reservationNum: number) => {
 
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];

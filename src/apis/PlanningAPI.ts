@@ -12,7 +12,7 @@ export const getHouses = async (params: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -25,7 +25,7 @@ export const postPlanning = async (house: any) => {
     const result = await privateApi.post(`/planning/apply`, house);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];

@@ -12,7 +12,7 @@ export const getHouses = async (params: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -29,7 +29,7 @@ export const getHouse = async (houseNum: number) => {
 
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -42,7 +42,7 @@ export const postHouse = async (house: any) => {
     const result = await privateApi.post(`/house/enroll`, house);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -55,7 +55,7 @@ export const updateHouse = async (house: any) => {
     const result = await privateApi.post(`/house/`, house);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
