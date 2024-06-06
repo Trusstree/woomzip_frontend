@@ -57,6 +57,5 @@ export const onPrivateResponseError = async (error: any) => {
     console.log(referenceError);
     return Promise.reject(referenceError);
   }
-
   return Promise.reject(error);
 };

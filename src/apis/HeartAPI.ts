@@ -12,7 +12,7 @@ export const getHousesHeartUser = async (hid: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -42,55 +42,48 @@ export const getHousesHeartRemove = async (params: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
 };
 
 export const getPostHeartUser = async (pid: any) => {
-  let [data, error] = [undefined, undefined] as any;
+  let [data, error] = [undefined, undefined] as any[];
 
   try {
-    const result = await privateApi.get(`/community/comment/like`, {
+    const result = await privateApi.get(`/community/detail/like/${pid}`, {
       params: { pid: pid },
       headers: {},
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
 };
 
-export const getPostHeart = async (pid: any) => {
+export const postPostHeart = async (pid: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/house/find-my-house/detail/like`, {
-      params: { pid: pid },
-      headers: {},
-    });
+    const result = await privateApi.post(`/community/post/like`, { post_id: pid });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
-
   return [data, error];
 };
 
-export const getPostHeartRemove = async (pid: any) => {
+export const postPostHeartRemove = async (pid: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/house/find-my-house/detail/unlike`, {
-      params: { pid: pid },
-      headers: {},
-    });
+    const result = await privateApi.post(`/community/post/unlike`, { post_id: pid });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -106,7 +99,7 @@ export const getCommentHeartUser = async (cid: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -122,7 +115,7 @@ export const getCommentHeart = async (cid: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -138,7 +131,7 @@ export const getCommentHeartRemove = async (cid: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];

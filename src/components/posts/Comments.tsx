@@ -11,7 +11,7 @@ export default function Comments({ pid, comments, setComments }) {
   const router = useRouter();
   const [comment, setComment] = useState("");
   const [at, setAT] = useState(undefined);
-  console.log("qwer1");
+
   useEffect(() => {
     (async () => {
       setAT(await getUserAccessToken());

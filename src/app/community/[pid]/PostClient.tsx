@@ -8,7 +8,9 @@ import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
 import Comments from "@/components/posts/Comments";
 import { cardCountText, elapsedTimeText } from "@/lib/stringUtil";
-import { getPostHeart, getPostHeartRemove, getPostHeartUser } from "@/apis/HeartAPI";
+import { postPostHeart, postPostHeartRemove, getPostHeartUser } from "@/apis/HeartAPI";
+import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
+import Thumb from "@/components/Thumb";
 
 type PostpageProps = {
   pid: number;
@@ -40,14 +42,14 @@ export default function PostClient(props: PostpageProps) {
   const { pid } = props;
   const [postData, setPostData] = useState(undefined as PostData | undefined);
   const [comments, setComments] = useState(["render"]);
-  const [heart, setHeart] = useState(false);
+  const [isPostlike, setIsPostlike] = useState(0);
+  const [isCommentLike, setIsCommentLike] = useState([]);
 
   useEffect(() => {
     (async () => {
       if (comments[0] != "render") return;
 
       const [data, error] = await getPost(pid);
-
       if (error) {
         console.log(error);
         return;
@@ -56,28 +58,39 @@ export default function PostClient(props: PostpageProps) {
       if (!postData) setPostData(data.data.post);
       setComments(data.data.comments);
 
-      // const [heartData, heartError] = await getPostHeartUser(pid);
-      // if(heartError) {console.error(heartError); return;}
-      // console.log(heartData);
-      // setHeart(heartData.data[0]);
+      // 로그인 확인하기
+      const at = await getUserAccessToken();
+      if (!at) return;
+
+      const [heartData, heartError] = await getPostHeartUser(pid);
+
+      if (heartError) {
+        console.error(heartError);
+        return;
+      }
+      if (heartData.data[0]["isPostLike"]) {
+        setPostData({ ...data.data.post, ["post_like_count"]: data.data.post["post_like_count"] - 1 });
+      }
+      setIsPostlike(heartData.data[0]["isPostLike"]);
+      setIsCommentLike(heartData.data[0]["isCommentLike"]);
     })();
   }, [comments]);
 
   const handleLike = async () => {
-    if (!heart) {
-      const [data, error] = await getPostHeart(pid);
+    if (!isPostlike) {
+      const [data, error] = await postPostHeart(pid);
       if (error) {
         console.error(error);
         return;
       }
-      setHeart(true);
+      setIsPostlike(1);
     } else {
-      const [data, error] = await getPostHeartRemove(pid);
+      const [data, error] = await postPostHeartRemove(pid);
       if (error) {
         console.error(error);
         return;
       }
-      setHeart(false);
+      setIsPostlike(0);
     }
   };
 
@@ -151,7 +164,7 @@ export default function PostClient(props: PostpageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <div className="ps-1" style={{ width: "34px" }}>
-                  {postData.viewCount ? postData.viewCount : 0}
+                  {cardCountText(postData["post_view_count"])}
                 </div>
               </div>
               <div className="d-flex" style={{ width: "60px", padding: "0" }}>
@@ -175,23 +188,10 @@ export default function PostClient(props: PostpageProps) {
               </div>
               <div className="d-flex" style={{ width: "60px", padding: "0" }}>
                 <div onClick={handleLike}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="gray"
-                    width={25}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z"
-                    />
-                  </svg>
+                  <Thumb like={isPostlike} />
                 </div>
                 <div className="ps-1" style={{ width: "34px" }}>
-                  {postData.likeCount}
+                  {cardCountText(postData["post_like_count"] + isPostlike)}
                 </div>
               </div>
             </div>

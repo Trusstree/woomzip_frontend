@@ -14,7 +14,7 @@ export const getPosts = async (params: any) => {
     error = err;
   }
 
-  return { data, error };
+  return [data, error];
 };
 
 export const getPost = async (postNum: number) => {

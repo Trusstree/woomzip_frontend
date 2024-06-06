@@ -3,6 +3,7 @@
 import DOMPurify from "dompurify";
 import Link from "next/link";
 import Image from "next/image";
+import { cardCountText } from "@/lib/stringUtil";
 
 type PostCardProps = {
   data: DataProps;
@@ -118,7 +119,7 @@ export default function PostCard(props: PostCardProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <div className="ps-1" style={{ width: "34px" }}>
-                    {data?.["viewCount"]}
+                    {cardCountText(data?.["post_view_count"])}
                   </div>
                 </div>
                 <div className="d-flex" style={{ width: "60px", padding: "0" }}>
@@ -137,7 +138,7 @@ export default function PostCard(props: PostCardProps) {
                     />
                   </svg>
                   <div className="ps-1" style={{ width: "34px" }}>
-                    {data?.["commentCount"]}
+                    {cardCountText(data?.["post_comment_count"])}
                   </div>
                 </div>
                 <div className="d-flex" style={{ width: "60px", padding: "0" }}>
@@ -156,7 +157,7 @@ export default function PostCard(props: PostCardProps) {
                     />
                   </svg>
                   <div className="ps-1" style={{ width: "34px" }}>
-                    {data?.["likeCount"]}
+                    {cardCountText(data?.["post_like_count"])}
                   </div>
                 </div>
               </div>
