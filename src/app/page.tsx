@@ -11,8 +11,7 @@ async function loadData() {
 
   const [rawHouseData, houseError] = await getHouses({ skip: 1, limit: 6 });
   if (houseError) {
-    console.log(houseError);
-    console.log("House Error");
+    console.error(houseError);
     return;
   }
   const [houseData, houseCount] = [rawHouseData.data[0].houses, rawHouseData.data[0].total_count];

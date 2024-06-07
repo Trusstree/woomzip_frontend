@@ -138,7 +138,7 @@ export default function PostCard(props: PostCardProps) {
                     />
                   </svg>
                   <div className="ps-1" style={{ width: "34px" }}>
-                    {cardCountText(data?.["post_comment_count"])}
+                    {cardCountText(data?.["comment_count"])}
                   </div>
                 </div>
                 <div className="d-flex" style={{ width: "60px", padding: "0" }}>

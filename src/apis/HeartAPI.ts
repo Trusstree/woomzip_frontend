@@ -105,14 +105,11 @@ export const getCommentHeartUser = async (cid: any) => {
   return [data, error];
 };
 
-export const getCommentHeart = async (cid: any) => {
+export const postCommentHeart = async (cid: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/community/comment/like`, {
-      params: { cid: cid },
-      headers: {},
-    });
+    const result = await privateApi.post(`/community/comment/like`, { comment_id: cid });
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
@@ -121,14 +118,11 @@ export const getCommentHeart = async (cid: any) => {
   return [data, error];
 };
 
-export const getCommentHeartRemove = async (cid: any) => {
+export const postCommentHeartRemove = async (cid: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/community/comment/unlike`, {
-      params: { cid: cid },
-      headers: {},
-    });
+    const result = await privateApi.post(`/community/comment/unlike`, { comment_id: cid });
     data = result?.data;
   } catch (err) {
     error = err.response?.data;

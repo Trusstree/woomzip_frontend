@@ -1,7 +1,6 @@
 "use client";
 
 import { getHouse } from "@/apis/HouseAPI";
-import { HouseList } from "@/components/house/HouseList";
 import PostMenu from "@/components/posts/PostMenu";
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
@@ -759,14 +758,14 @@ export function HouseClient(props: HouseComponentProps) {
       </PostMenu> */}
 
       {/* 추천정보 */}
-      <PostMenu
+      {/* <PostMenu
         title={"더 많은 주택들을 구경해보세요!"}
         routeUrl={"/house"}
         routeText={"더보기"}
         horizontalScroll={true}
       >
-        <HouseList numShowItems={6} searchCondition={{}} />
-      </PostMenu>
+        <HousewList numShowItems={6} houseData={[]} count={0} />
+      </PostMenu> */}
     </>
   ) : (
     <div>로딩 중</div>

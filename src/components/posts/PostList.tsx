@@ -34,7 +34,7 @@ export default function PostList(props: PostListProps) {
         console.error(error);
         return;
       }
-      console.log(data);
+
       setPostData(data.data[0].posts);
       setCount(data.data[0].total);
     })();

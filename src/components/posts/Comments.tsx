@@ -2,12 +2,11 @@
 
 import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
 import { postComment } from "@/apis/commentAPI";
-import { elapsedTimeText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import Comment from "./Comment";
 
-export default function Comments({ pid, comments, setComments }) {
+export default function Comments({ pid, comments, setComments, isCommentLike }) {
   const router = useRouter();
   const [comment, setComment] = useState("");
   const [at, setAT] = useState(undefined);
@@ -15,6 +14,7 @@ export default function Comments({ pid, comments, setComments }) {
   useEffect(() => {
     (async () => {
       setAT(await getUserAccessToken());
+      console.log(isCommentLike);
     })();
   }, []);
 
@@ -62,31 +62,7 @@ export default function Comments({ pid, comments, setComments }) {
         </div>
         <div className="my-3">
           {comments.map((e, i) => (
-            <div key={i} className="py-3 px-4" style={{ background: "#FAFBFC" }}>
-              <div className="d-flex justify-content-between" style={{ marginBottom: "15px" }}>
-                <div className="row" style={{ width: "400px" }}>
-                  <div style={{ width: "50px", height: "40px" }}>
-                    <Image
-                      src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"}
-                      alt={"pic"}
-                      width={40}
-                      height={40}
-                      style={{
-                        objectFit: "cover",
-                        borderRadius: "50px",
-                        overflow: "hidden",
-                        width: "35px",
-                        height: "35px",
-                      }}
-                    />
-                  </div>
-                  <div style={{ width: "200px", marginTop: "5px", fontWeight: "600" }}>{e["nickname"]}</div>
-                </div>
-                <div>{elapsedTimeText(e["updated_at"] || e["created_at"])}</div>
-              </div>
-              <div style={{ width: "95%", marginLeft: "5%" }}>{e["content"]}</div>
-              <hr style={{ border: "1px solid gray" }} />
-            </div>
+            <Comment key={i} data={e} isCommentLike={isCommentLike} />
           ))}
         </div>
       </div>
