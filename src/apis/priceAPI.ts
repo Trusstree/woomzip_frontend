@@ -1,16 +1,16 @@
 import { publicApi } from "@/configs/axiosClient";
 
 export const getPrice = async (house_id: number) => {
-  let [count, countError] = [undefined, undefined] as any;
+  let [data, error] = [undefined, undefined] as any;
   try {
     const result = await publicApi.get(`/price`, {
       params: { house_id: house_id },
     });
-    count = result?.data;
+    data = result?.data;
   } catch (err) {
-    countError = err;
+    error = err.response?.data;
   }
-  return [count, countError];
+  return [data, error];
 };
 
 export const postPrice = async (Price: any) => {
@@ -20,7 +20,7 @@ export const postPrice = async (Price: any) => {
     const result = await publicApi.post(`/price`, Price);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -35,7 +35,7 @@ export const deletePrice = async (idx: number) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -54,7 +54,7 @@ export const putPrice = async (house_id: number) => {
     );
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];

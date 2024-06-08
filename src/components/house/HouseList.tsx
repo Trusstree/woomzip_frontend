@@ -1,48 +1,17 @@
 "use client";
 
-import { getHouses } from "@/apis/HouseAPI";
-import { useSearchParams } from "next/navigation";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Pagination from "../Pagination";
 import HouseCardPlaceholder from "./HouseCardPlaceholder";
 import HouseCard from "./HouseCard";
 
 type HousePostProps = {
+  houseData: any[];
+  count: number;
   numShowItems: number;
   numShowPages?: number;
-  searchCondition: {};
-  isSubmit?: boolean;
-  setIsSubmit?: Dispatch<SetStateAction<{}>>;
 };
 
-export function HouseList(props: HousePostProps) {
-  const { numShowItems, numShowPages, searchCondition, isSubmit, setIsSubmit } = props;
-  const searchParams = useSearchParams();
-  const rawPage = Number(searchParams.get("page"));
-  const page = rawPage > 0 ? rawPage : 1;
-  const [houseData, setHouseData] = useState([] as Array<any>);
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    (async () => {
-      if (isSubmit != undefined && !isSubmit) return;
-      const params = {
-        skip: searchCondition ? 1 : numShowItems * (page - 1) + 1,
-        limit: numShowItems,
-        ...searchCondition,
-      };
-      const [data, error] = await getHouses(params);
-      if (error) {
-        console.error(error);
-        return;
-      }
-
-      setHouseData(data.data[0].houses);
-      setCount(data.data[0].total_count);
-      if (isSubmit != undefined) setIsSubmit(false);
-    })();
-  }, [isSubmit, page]);
-
+export function HouseList({ houseData, count, numShowItems, numShowPages }: HousePostProps) {
   return (
     <>
       {houseData

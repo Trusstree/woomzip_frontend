@@ -47,6 +47,8 @@ export function AdminLivingClient({ house_id }) {
             people={e["people"]}
             phoneNumber={e["contact"]}
             purpose={e["purpose"]}
+            rid={1}
+            status={"pending"}
           />
         ))}
       </div>

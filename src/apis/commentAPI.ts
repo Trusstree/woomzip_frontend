@@ -9,7 +9,7 @@ export const postComment = async (comment: any) => {
     const result = await privateApi.post(`/community/comment/create`, comment);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];

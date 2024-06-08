@@ -97,7 +97,7 @@ export default async function Page({ params, searchParams }) {
             </span>
           </Link>
         }
-        {userData?.role == "1" && (
+        {!isNaN(Number(userData?.["role"])) && Number(userData?.["role"]) > 0 && (
           <Link
             className="btn text-white my-3 py-3 d-flex justify-content-center align-items-center"
             style={{ backgroundColor: "#101648" }}
@@ -119,7 +119,7 @@ export default async function Page({ params, searchParams }) {
         )}
         {tab == "profile" && <Profile userData={userData} />}
         {tab == "community" && <Community userData={userData} />}
-        {tab == "house" && <House userData={userData} />}
+        {tab == "house" && <House userData={userData} isYou={Number(uid) == signedUID} />}
       </div>
     </div>
   );

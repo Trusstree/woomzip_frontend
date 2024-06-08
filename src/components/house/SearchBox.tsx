@@ -1,6 +1,6 @@
 "use client";
 
-export default function SearchBox({ name, data, setData }) {
+export default function SearchBox({ name, setData, setIsSubmit }) {
   return (
     <input
       style={{
@@ -15,6 +15,7 @@ export default function SearchBox({ name, data, setData }) {
       }}
       onChange={(e) => {
         setData((oldValue) => ({ ...oldValue, [name]: e.target.value }));
+        setIsSubmit(true);
       }}
       placeholder={"제품/업체명으로 검색"}
     ></input>

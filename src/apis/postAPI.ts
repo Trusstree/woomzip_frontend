@@ -11,10 +11,10 @@ export const getPosts = async (params: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
-  return { data, error };
+  return [data, error];
 };
 
 export const getPost = async (postNum: number) => {
@@ -26,10 +26,10 @@ export const getPost = async (postNum: number) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
-  return { data, error };
+  return [data, error];
 };
 
 export const postPost = async (post: any) => {
@@ -39,7 +39,7 @@ export const postPost = async (post: any) => {
     const result = await privateApi.post(`/community/post/create`, post);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return { data, error };

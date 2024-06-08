@@ -1,6 +1,8 @@
 // middleware.ts
 import { NextRequest, NextResponse } from "next/server";
 import { accessTokenOption } from "./configs/cookie";
+import { alertError } from "./lib/alertUtil";
+import { getUserdataByToken } from "./lib/parseUtil";
 
 export async function middleware(request: NextRequest, response: NextResponse) {
   //로그인하면 안 되는 페이지
@@ -16,7 +18,7 @@ export async function middleware(request: NextRequest, response: NextResponse) {
   }
 
   //로그인해야하는 페이지
-  const signinRequiredPage = ["/mypage"];
+  const signinRequiredPage = ["/mypage", "/living/1/reservation", "/admin"];
   for (const page of signinRequiredPage) {
     if (request.nextUrl.pathname.startsWith(page)) {
       const accessToken = request.cookies.get("accessToken")?.value;
@@ -24,6 +26,13 @@ export async function middleware(request: NextRequest, response: NextResponse) {
       // 액세스토큰이 없으면 로그인부터 하고 와야함
       if (!accessToken) {
         return NextResponse.redirect(`${process.env.NEXT_PUBLIC_CALLBACKURL}signin`);
+      }
+
+      // 어드민 페이지
+      const AdminPage = ["/admin"];
+      const userData = getUserdataByToken(accessToken);
+      if (AdminPage.includes(page) && !isNaN(Number(userData?.["role"])) && Number(userData["role"]) > 2) {
+        return NextResponse.redirect(`${process.env.NEXT_PUBLIC_CALLBACKURL}`);
       }
 
       // 액세스토큰이 유효한지 확인하기 위해 백엔드에 신호를 보냄

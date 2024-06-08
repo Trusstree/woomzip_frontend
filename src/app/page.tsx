@@ -4,13 +4,28 @@ import { HouseList } from "@/components/house/HouseList";
 import PostList from "@/components/posts/PostList";
 import Image from "next/image";
 import { Suspense } from "react";
+import { getHouses } from "@/apis/HouseAPI";
 
-export default function Home() {
+async function loadData() {
+  "use server";
+
+  const [rawHouseData, houseError] = await getHouses({ skip: 1, limit: 6 });
+  if (houseError) {
+    console.error(houseError);
+    return;
+  }
+  const [houseData, houseCount] = [rawHouseData.data[0].houses, rawHouseData.data[0].total_count];
+  return { houseData, houseCount };
+}
+
+export default async function Home() {
+  const { houseData, houseCount } = await loadData();
+
   return (
     <main className={``}>
       {/* 캐러셀 */}
       <div className={`my-3 d-flex`}>
-        <Carousel className="w-100 me-2" skip={1} limit={4} />
+        <Carousel className="w-100 me-2" houseData={houseData} />
         <Image
           className="d-none d-md-block rounded-4"
           alt="main post"
@@ -23,7 +38,7 @@ export default function Home() {
 
       <PostMenu title={"다양한 집들을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
         <Suspense>
-          <HouseList numShowItems={6} searchCondition={{}} />
+          <HouseList numShowItems={6} houseData={houseData} count={houseCount} />
         </Suspense>
       </PostMenu>
 

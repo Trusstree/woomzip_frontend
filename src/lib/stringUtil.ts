@@ -46,7 +46,7 @@ export function toStringByFormatting(source, delimiter = "-") {
 
 export const cardCountText = (count: number | string) => {
   const _count = Number(count);
-  if (isNaN(_count)) return "NaN"; // 애초에 숫자가 아니면 에러처리
+  if (isNaN(_count)) return "0"; // 애초에 숫자가 아니면 0 처리
   const si = [
     { value: 1, symbol: "" },
     { value: 1e3, symbol: "k" },

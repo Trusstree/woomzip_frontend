@@ -9,7 +9,7 @@ export const getAccessToken = async () => {
     const result = await publicApi.get(`/auth/access`);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];
@@ -23,7 +23,7 @@ export const refreshAccessToken = async () => {
     console.log(result);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return [data, error];

@@ -28,12 +28,13 @@ export default function PostList(props: PostListProps) {
       };
       if (category) params["category"] = category;
 
-      const { data, error } = await getPosts(params);
+      const [data, error] = await getPosts(params);
 
       if (error) {
         console.error(error);
         return;
       }
+
       setPostData(data.data[0].posts);
       setCount(data.data[0].total);
     })();

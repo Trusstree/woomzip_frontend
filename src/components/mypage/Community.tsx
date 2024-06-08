@@ -21,7 +21,7 @@ export default function Community({ userData }) {
       };
       if (category) params["category"] = category;
 
-      const { data, error } = await getPosts(params);
+      const [data, error] = await getPosts(params);
       if (error) {
         console.log(error);
         return;

@@ -1,13 +1,12 @@
 "use client";
 
 import { getHouse } from "@/apis/HouseAPI";
-import { HouseList } from "@/components/house/HouseList";
 import PostMenu from "@/components/posts/PostMenu";
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
-import { deleteHeart, postHeart } from "@/apis/HeartAPI";
+import { getHousesHeartRemove, getHousesHeart } from "@/apis/HeartAPI";
 import { alertSuccess } from "@/lib/alertUtil";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import useQuery from "@/hooks/useQuery";
@@ -90,11 +89,11 @@ export function HouseClient(props: HouseComponentProps) {
       const heartParams = { house_id: pid, user_id: userContext.uid };
 
       if (heart > 0) {
-        const [response, error] = await deleteHeart({ house_id: pid });
+        const [response, error] = await getHousesHeartRemove({ house_id: pid });
         if (error) console.log(error);
         setHeart(heart - 1);
       } else {
-        const [response, error] = await postHeart({ house_id: pid });
+        const [response, error] = await getHousesHeart({ house_id: pid });
         if (error) console.log(error);
         console.log(response);
         setHeart(heart + 1);
@@ -759,14 +758,14 @@ export function HouseClient(props: HouseComponentProps) {
       </PostMenu> */}
 
       {/* 추천정보 */}
-      <PostMenu
+      {/* <PostMenu
         title={"더 많은 주택들을 구경해보세요!"}
         routeUrl={"/house"}
         routeText={"더보기"}
         horizontalScroll={true}
       >
-        <HouseList numShowItems={6} searchCondition={{}} />
-      </PostMenu>
+        <HousewList numShowItems={6} houseData={[]} count={0} />
+      </PostMenu> */}
     </>
   ) : (
     <div>로딩 중</div>

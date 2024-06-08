@@ -9,7 +9,7 @@ export const getOffices = async () => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return { data, error };
@@ -24,7 +24,7 @@ export const getOffice = async (officeNum: number) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return { data, error };
@@ -39,7 +39,7 @@ export const postOffice = async (office: any) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return { data, error };

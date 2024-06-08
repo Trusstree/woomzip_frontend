@@ -9,7 +9,7 @@ export const getRequestions = async () => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return { data, error };
@@ -24,7 +24,7 @@ export const getRequestion = async (requestionNum: number) => {
     });
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return { data, error };
@@ -37,7 +37,7 @@ export const postRequestion = async (requestion: any) => {
     const result = await publicApi.post(`/requestion/`, requestion);
     data = result?.data;
   } catch (err) {
-    error = err;
+    error = err.response?.data;
   }
 
   return { data, error };

@@ -1,14 +1,10 @@
-"use client";
-
 import Icon from "@/components/posts/Icon";
-import { useState } from "react";
 import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
 import { Suspense } from "react";
 
-export default function Home() {
+export default function Community() {
   const [numShowItems, numShowPages] = [24, 10];
-  const [postCondition, setPostCondition] = useState({});
 
   return (
     <main>
@@ -17,44 +13,16 @@ export default function Home() {
         <br />
         비슷한 사람들과 나눠보세요
       </div>
-        {/* search bar */}
-        {/* <div className={`my-2`}>
-          <SearchBox
-            className="text-black"
-            placeholder={"찾고 싶은 내용을 검색해보세요!"}
-          />
-        </div> */}
       <div style={{ width: "600px" }}>
-        <Suspense>
-          <PostMenu title={""}>
-            <div className="row">
-              <Icon 
-                style={{ margin: "0 2px" }}
-                title="전체"
-                name="전체"
-                value="1"
-                data={postCondition}
-                setData={setPostCondition} />
-              <Icon
-                style={{ margin: "0 2px"}}
-                title="일반"
-                param={`일반`}
-              />
-              <Icon
-                style={{ margin: "0 2px" }}
-                title="질문"
-                param={`질문`}
-              />
-              <Icon
-                style={{ margin: "0 2px" }}
-                title="공지"
-                param={`공지`}
-              />
-            </div>
-          </PostMenu>
-        </Suspense>
+        <PostMenu title={""}>
+          <div className="row">
+            <Icon style={{ margin: "0 2px" }} title="전체" param={""} pathname={"/community"} />
+            <Icon style={{ margin: "0 2px" }} title="일반" param={`일반`} pathname={"/community"} />
+            <Icon style={{ margin: "0 2px" }} title="질문" param={`질문`} pathname={"/community"} />
+            <Icon style={{ margin: "0 2px" }} title="공지" param={`공지`} pathname={"/community"} />
+          </div>
+        </PostMenu>
       </div>
-      
 
       <PostMenu title={""} routeUrl={"/community/write"} routeText={"글쓰기"}>
         <Suspense>

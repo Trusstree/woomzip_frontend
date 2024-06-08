@@ -1,6 +1,6 @@
 "use client";
 
-export default function FillteringButton({ title, type, value, name, data, setData }) {
+export default function FillteringButton({ title, type, value, name, data, setData, setIsSubmit }) {
   return (
     <button
       style={{
@@ -25,6 +25,7 @@ export default function FillteringButton({ title, type, value, name, data, setDa
           }
           setData((oldValue) => ({ ...oldValue, [name]: newValue }));
         } else setData((oldValue) => ({ ...oldValue, [name]: value }));
+        setIsSubmit(true);
       }}
     >
       <div style={{ fontSize: "13px", fontWeight: "600" }}>{title}</div>
