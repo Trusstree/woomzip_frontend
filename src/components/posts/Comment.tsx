@@ -1,14 +1,20 @@
 "use client";
 
-import { elapsedTimeText } from "@/lib/stringUtil";
+import { cardCountText, elapsedTimeText } from "@/lib/stringUtil";
 import Image from "next/image";
 import { postCommentHeart, postCommentHeartRemove } from "@/apis/HeartAPI";
 import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Comment({ data, isCommentLike }) {
-  const [isLike, setIsLike] = useState(isCommentLike?.includes(data["comment_id"]));
+  const [isLike, setIsLike] = useState(1);
+  const [likeCount, setLikeCount] = useState(data["comment_like_count"])
 
+  useEffect(()=>{
+    setIsLike(isCommentLike.includes(data["comment_id"]));
+    setLikeCount((cnt)=>(cnt-isCommentLike.includes(data["comment_id"])))
+  },[isCommentLike]);
+  
   const handleLike = async () => {
     // 로그인 확인하기
     const at = await getUserAccessToken();
@@ -37,7 +43,7 @@ export default function Comment({ data, isCommentLike }) {
         <div className="row" style={{ width: "400px" }}>
           <div style={{ width: "50px", height: "40px" }}>
             <Image
-              src={data["user_img_url"]}
+              src={data["user_img_url"] || "/blur_image.png"}
               alt={"user_img_url"}
               width={40}
               height={40}
@@ -82,7 +88,7 @@ export default function Comment({ data, isCommentLike }) {
               </svg>
             )}
           </div>
-          <div className="ms-1">{data["comment_like_count"]}</div>
+          <div className="ms-1">{cardCountText(likeCount+isLike)}</div>
         </div>
       </div>
       <div style={{ width: "95%", marginLeft: "5%" }}>
