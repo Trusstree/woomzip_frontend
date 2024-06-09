@@ -1,4 +1,4 @@
-import { SigninForm } from "@/components/auth/SigninForm";
+import { SigninForm } from "@/app/signin/_components/SigninForm";
 import Link from "next/link";
 
 export default async function SignInPage() {

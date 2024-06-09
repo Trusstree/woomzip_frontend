@@ -1,4 +1,4 @@
-import MyHouseClient from "./MyHouseClient";
+import MyHouseClient from "./_components/MyHouseClient";
 
 export default function MyHouse({ params, searchParams }) {
   const uid = params.uid;

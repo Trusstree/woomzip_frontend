@@ -1,5 +1,5 @@
-import { AdminConfirmCard } from "@/components/admin/AdminConfirmCard";
-import { RouteButton } from "@/components/living/RouteButton";
+import { AdminConfirmCard } from "@/app/admin/living/_components/AdminConfirmCard";
+import { RouteButton } from "@/app/living/[pid]/_components/RouteButton";
 
 const livingData = {
   company: "모두가하우징",

@@ -1,5 +1,5 @@
 import React from "react";
-import { LivingReviewWriteClient } from "./LivingReviewWriteClient";
+import { LivingReviewWriteClient } from "./_components/LivingReviewWriteClient";
 
 export default function Write() {
   return (

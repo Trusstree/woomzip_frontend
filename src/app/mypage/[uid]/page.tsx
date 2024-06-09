@@ -1,14 +1,13 @@
-import Image from "next/image";
-import Community from "../../../components/mypage/Community";
-import House from "../../../components/mypage/House";
-import Profile from "../../../components/mypage/Profile";
-import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
+import Community from "./_components/Community";
+import House from "./_components/House";
+import Profile from "./_components/Profile";
+import { MyLikeHouseList } from "@/app/mypage/[uid]/_components/MyLikeHouseList";
 import PostMenu from "@/components/posts/PostMenu";
 import Link from "next/link";
 import { getUser } from "@/apis/userAPI";
 import { cookies } from "next/headers";
 import { getUserdataByToken } from "@/lib/parseUtil";
-import ProfileImageBox from "@/components/mypage/ProfileImageBox";
+import ProfileImageBox from "@/app/mypage/[uid]/_components/ProfileImageBox";
 
 async function create(uid: string | number) {
   "use server";

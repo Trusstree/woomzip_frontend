@@ -1,4 +1,4 @@
-import Icon from "@/components/posts/Icon";
+import Icon from "@/app/community/_components/Icon";
 import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
 import { Suspense } from "react";

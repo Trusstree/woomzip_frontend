@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import HouseClient from "./HouseClient";
+import HouseClient from "./_components/HouseClient";
 
 export default function Home() {
   return (

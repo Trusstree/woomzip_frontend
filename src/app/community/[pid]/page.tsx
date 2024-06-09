@@ -1,10 +1,10 @@
-import PostClient from "@/app/community/[pid]/PostClient";
+import PostClient from "@/app/community/[pid]/_components/PostClient";
 
 type PageParams = {
-  pid: number
-}
+  pid: number;
+};
 
-export default function page( {params} : {params: PageParams} ) {
+export default function page({ params }: { params: PageParams }) {
   const { pid } = params;
 
   return (
