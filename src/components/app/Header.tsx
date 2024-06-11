@@ -15,9 +15,9 @@ export default function Header(props: HeaderProps) {
         backgroundColor: "white",
       }}
     >
-      <div className="d-flex justify-content-between w-100">
-        <RouteButton url={"/"} className="ms-md-4 px-4 py-2">
-          <Image src={"/logo/logo_truss.png"} alt={"Truss Logo"} width={60} height={40} />
+      <div className="d-flex justify-content-between w-100" style={{height:"35px", margin:"10px 5% 0 5%"}}>
+        <RouteButton url={"/"} className="ms-md-3 px-4 py-2 mb-o">
+          <Image src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/woomzipLogo.png"} alt={"Truss Logo"} width={100} height={26} />
         </RouteButton>
 
         <div className="d-flex d-md-none">
@@ -78,23 +78,23 @@ export default function Header(props: HeaderProps) {
 
         <div className="d-none d-md-flex w-100">
           <div className="d-flex align-items-center me-auto">
-            <RouteButton url={"/"} className="fs-6">
+            <RouteButton url={"/"} style={{fontSize:"15px", marginBottom:"0px"}}>
               홈
             </RouteButton>
 
-            <RouteButton url={"/community"} className="fs-6">
+            <RouteButton url={"/community"} style={{fontSize:"15px"}}>
               커뮤니티
             </RouteButton>
 
-            <RouteButton url={"/living"} className="fs-6">
+            <RouteButton url={"/living"} style={{fontSize:"15px"}}>
               살아보기
             </RouteButton>
 
-            <RouteButton url={"/house"} className="fs-6">
+            <RouteButton url={"/house"} style={{fontSize:"15px"}}>
               찾아보기
             </RouteButton>
 
-            <RouteButton url={"/planning"} className="fs-6">
+            <RouteButton url={"/planning"} style={{fontSize:"15px"}}>
               계획하기
             </RouteButton>
           </div>

@@ -7,13 +7,16 @@ export default function SigninButton() {
   const userAccessToken = cookieStorage.get("accessToken")?.value;
   const userInfo = getUserdataByToken(userAccessToken);
   return userInfo == undefined ? (
-    <Link className={"btn px-4 py-2 btn rounded-lg fw-bold align-self-end"} style={{ color: "#101648" }} href="/signin">
+    <Link 
+      className={"btn px-4 py-2 btn rounded-lg fw-bold align-self-end"}
+      style={{fontSize:"14px"}}
+      href="/signin">
       로그인/회원가입
     </Link>
   ) : (
     <Link
       className={"btn px-4 py-2 btn rounded-lg fw-bold align-self-end"}
-      style={{ color: "#101648" }}
+      style={{fontSize:"14px"}}
       href={`/mypage/${userInfo.uid}`}
     >
       마이페이지

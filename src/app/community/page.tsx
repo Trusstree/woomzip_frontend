@@ -8,10 +8,8 @@ export default function Community() {
 
   return (
     <main>
-      <div style={{ width: "500px", fontSize: "38px", fontWeight: "600", margin: "120px 0 80px 0" }}>
-        전원생활 고민들,
-        <br />
-        비슷한 사람들과 나눠보세요
+      <div style={{ width: "500px", fontSize: "33px", fontWeight: "600", margin: "70px 0" }}>
+        <span style={{color:"#314FC0"}}>움집</span>에서 당신의 이야기를 들려주세요
       </div>
       <div style={{ width: "600px" }}>
         <PostMenu title={""}>

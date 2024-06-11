@@ -74,10 +74,8 @@ export default function Home() {
 
   return (
     <>
-      <div style={{ width: "500px", fontSize: "38px", fontWeight: "600", margin: "120px 0 80px 0" }}>
-        우리 가족을 위한 집,
-        <br />
-        트러스에서 찾아보세요
+      <div style={{ width: "600px", fontSize: "33px", fontWeight: "600", margin: "70px 0" }}>
+       <span style={{color:"#314FC0"}}>움집</span>에서 가장 쉽고 빠르게 우리 집 찾기 
       </div>
       {/*<div className="row" style={{display:"flex", justifyContent:"space-between", margin:"120px 0"}}>
           <div style={{width:"600px"}}>

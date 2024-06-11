@@ -4,10 +4,8 @@ import React from "react";
 export default function Living() {
   return (
     <main>
-      <div style={{ fontSize: "38px", margin: "120px 0 80px 0", fontWeight: "600" }}>
-        전원생활 잘 할 수 있을까?
-        <br />
-        무료로 살아보며 알아보세요
+      <div style={{ width: "500px", fontSize: "33px", fontWeight: "600", margin: "70px 0" }}>
+      <span style={{color:"#314FC0"}}>무료로</span> 새로운 삶을 경험해보세요
       </div>
       <LivingCardList />
     </main>
