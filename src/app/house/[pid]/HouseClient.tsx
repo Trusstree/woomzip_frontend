@@ -106,8 +106,8 @@ export function HouseClient(props: HouseComponentProps) {
 
   return houseData ? (
     <>
-      <div className="d-flex justify-content-between">
-        <div style={{width:"60%", marginTop:"20px"}}>
+      <div className="row">
+        <div style={{width:"60%", marginTop:"20px", minWidth:"400px"}}>
           <div className="row">
             <Image
               style={{ objectFit: "cover", width:"88%", marginLeft:"0px" }}
@@ -362,7 +362,10 @@ export function HouseClient(props: HouseComponentProps) {
               <span style={{color:"#314FC0", fontWeight:"600"}}>움집만의 내 집짓기 길잡이, AI 타잔</span>과 내 예상 배송비용을 꼭 확인해보세요!
               <br/>
               <br/>
-              <span className="btn" style={{backgroundColor:"#314FC0", color:"white"}}>AI 타잔과 내 배송비 확인해보기</span>
+              <span
+                className="btn"
+                onClick={() => {router.push(gyeonjeokLink);}}
+                style={{backgroundColor:"#314FC0", color:"white"}}>AI 타잔과 내 배송비 확인해보기</span>
             </div>
 
             <div className="row">
@@ -393,7 +396,10 @@ export function HouseClient(props: HouseComponentProps) {
               <span style={{color:"#314FC0", fontWeight:"600"}}>움집만의 내 집짓기 길잡이, AI 타잔</span>과 내 예상 총 건축비용을 알아보세요!
               <br/>
               <br/>
-              <span className="btn" style={{backgroundColor:"#314FC0", color:"white"}}>AI 타잔과 내 총 비용 확인해보기</span>
+              <span
+                className="btn"
+                onClick={() => {router.push(gyeonjeokLink);}}
+                style={{backgroundColor:"#314FC0", color:"white"}}>AI 타잔과 내 총 비용 확인해보기</span>
             </div>
 
             <div className="row">
@@ -497,7 +503,7 @@ export function HouseClient(props: HouseComponentProps) {
             
         
 
-        <div className="container" style={{width:"40%", marginTop:"20px"}}>
+        <div className="container" style={{width:"40%", marginTop:"20px", minWidth:"400px"}}>
           <div className="sticky-top">
             <div
             className="card"

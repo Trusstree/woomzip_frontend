@@ -26,17 +26,14 @@ export function LivingInfo() {
   return (
     <div>
       <div
-        className="badge"
         style={{
-          padding: "10px",
-          margin: "30px 0",
-          backgroundColor: "lightGray",
-          color: "gray",
-          fontSize: "16px",
+          margin: "10px 0",
+          fontSize: "17px",
         }}
       >
         지금까지 {count}명이 살아봤어요!
       </div>
+      <hr/>
       <div className="d-flex justify-content-between">
         <div style={{ color: "gray", fontSize: "14px" }}>후기({count})</div>
         <RouteButtonLight url={"/living/1/review"} text={"전체보기"} />

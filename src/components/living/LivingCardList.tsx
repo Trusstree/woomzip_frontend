@@ -32,7 +32,7 @@ export function LivingCardList() {
   }, []);
 
   return (
-    <div className="row" style={{ width: "100%", minWidth: "400px", padding: "10px", margin: "50px 0 400px 0" }}>
+    <div className="row" style={{ width: "100%", minWidth: "400px", padding: "10px", margin: "0 0 400px 0" }}>
       {livingData?.map((e, i) => (
         <LivingCard key={i} company={e["company"]} title={e["title"]} addr={e["addr"]} img={e["img"]} url={e["url"]} />
       ))}

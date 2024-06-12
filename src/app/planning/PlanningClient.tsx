@@ -97,7 +97,7 @@ export default function PlanningClient() {
     <div className="row">
       <div style={{ width: "70%", minWidth: "375px" }}>
         <div style={{ marginBottom: "150px" }}>
-          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}>선택하신 집이 맞나요?</div>
+          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}><span style={{color:"#314FC0"}}>선택하신 집</span>이 맞나요?</div>
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>찾아보기 탭에서 마음에 드는 주택을 찾아보세요.</div>
           <div style={{ width: "1200px", height: "300px", borderRadius: "10px" }}>
             {houseData ? (
@@ -122,7 +122,7 @@ export default function PlanningClient() {
         </div>
 
         <div style={{ marginBottom: "150px" }}>
-          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}>어떻게 사실 건가요?</div>
+          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}><span style={{color:"#314FC0"}}>어떻게</span> 사실 건가요?</div>
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>방식을 선택해주세요.</div>
           <SelectBox
             title={"농막"}
@@ -143,7 +143,7 @@ export default function PlanningClient() {
         </div>
 
         <div style={{ marginBottom: "150px" }}>
-          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}>어디에 지으실 건가요?</div>
+          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}><span style={{color:"#314FC0"}}>어디에</span> 지으실 건가요?</div>
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>아직 구매 전이라면 원하시는 위치를 알려주세요.</div>
           <SelectCityBox title={"경기도"} value={"경기도"} data={addr} setData={setAddr} />
           <SelectCityBox title={"강원도"} value={"강원도"} data={addr} setData={setAddr} />
@@ -157,7 +157,7 @@ export default function PlanningClient() {
         </div>
 
         <div style={{ marginBottom: "150px" }}>
-          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}>토지 면적을 알려주세요.</div>
+          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}><span style={{color:"#314FC0"}}>토지 면적</span>을 알려주세요.</div>
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>아직 구매 전이라면 원하시는 면적을 알려주세요.</div>
           <SelectMiniBox title={"50평 이하"} text={"~165㎡"} value={"50"} data={area} setData={setArea} />
           <SelectMiniBox title={"75평 이하"} text={"~248㎡"} value={"75"} data={area} setData={setArea} />
@@ -168,7 +168,7 @@ export default function PlanningClient() {
         </div>
 
         <div style={{ marginBottom: "150px" }}>
-          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}>토지 경사도 상태는 어떤가요?</div>
+          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}><span style={{color:"#314FC0"}}>토지 경사도</span> 상태는 어떤가요?</div>
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>대략적인 느낌을 알려주세요.</div>
           <SelectBox
             title={"평평함"}
@@ -197,7 +197,7 @@ export default function PlanningClient() {
         </div>
 
         <div style={{ marginBottom: "150px" }}>
-          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}>토지 진입로 상태는 어떤가요?</div>
+          <div style={{ fontSize: "25px", marginBottom: "20px", fontWeight: "600" }}><span style={{color:"#314FC0"}}>토지 진입로</span> 상태는 어떤가요?</div>
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>대략적인 느낌을 알려주세요.</div>
           <SelectBox
             title={"넓음"}
@@ -239,12 +239,12 @@ export default function PlanningClient() {
           <div
             className="button"
             style={{
-              width: "100%",
+              width: "95%",
               height: "50px",
               borderRadius: "10px",
               padding: "10px",
-              marginBottom: "10px",
-              backgroundColor: "#101648",
+              margin: "5% 0 0 10px",
+              backgroundColor: "#314FC0",
               color: "white",
               fontSize: "20px",
               fontWeight: "600",
@@ -252,7 +252,7 @@ export default function PlanningClient() {
             }}
             onClick={submit}
           >
-            이 견적으로 프로젝트 시작하기
+            AI 타잔과 다음 단계로 가보기
           </div>
         </div>
       </div>

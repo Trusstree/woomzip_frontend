@@ -39,7 +39,7 @@ export function LivingCard({ company, title, addr, img, url }) {
     <div className="card" style={{ border: "none", width: "50%", minWidth: "400px" }} onClick={handleClick}>
       <Image
         className="card-img-top"
-        style={{ borderRadius: "25px", objectFit: "cover" }}
+        style={{ borderRadius: "10px", objectFit: "cover" }}
         alt="main-img"
         src={img}
         width={100}

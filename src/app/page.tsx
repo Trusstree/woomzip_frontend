@@ -5,6 +5,7 @@ import PostList from "@/components/posts/PostList";
 import Image from "next/image";
 import { Suspense } from "react";
 import { getHouses } from "@/apis/HouseAPI";
+import { LivingCardList } from "@/components/living/LivingCardList";
 
 async function loadData() {
   "use server";
@@ -24,34 +25,47 @@ export default async function Home() {
   return (
     <main className={``}>
       {/* 캐러셀 */}
-      <div className={`my-3 d-flex`}>
-        <Carousel className="w-100 me-2" houseData={houseData} />
-        <Image
-          className="d-none d-md-block rounded-4"
-          alt="main post"
-          src="https://trussbucket.s3.ap-northeast-2.amazonaws.com/ads/main+%E1%84%80%E1%85%AA%E1%86%BC%E1%84%80%E1%85%A9.png"
-          width={200}
-          height={500}
-          unoptimized={true}
-        />
+      <div className={`d-flex`} style={{marginTop:"15px"}}>
+        <Carousel className="w-100" houseData={houseData} />
       </div>
 
-      <PostMenu title={"다양한 집들을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
-        <Suspense>
-          <HouseList numShowItems={6} houseData={houseData} count={houseCount} />
-        </Suspense>
-      </PostMenu>
+      <div className="container align-content-center" style={{width:"100%", height:"500px"}}>
+        <PostMenu
+          title={"다른 사람들의 이야기를 들어보세요"}
+          routeUrl={"/community"}
+          routeText={"더보기"}
+          horizontalScroll={true}
+        >
+          <Suspense>
+            <PostList numShowItems={2} />
+          </Suspense>
+        </PostMenu>
+      </div>
 
-      <PostMenu
-        title={"건축이 처음이라면? 확인해야 할 정보!"}
-        routeUrl={"/community"}
-        routeText={"더보기"}
-        horizontalScroll={true}
-      >
-        <Suspense>
-          <PostList numShowItems={6} />
-        </Suspense>
-      </PostMenu>
+      <div className="container align-content-center" style={{width:"100%", height:"600px"}}>
+        <PostMenu
+          title={"먼저 무료로 살아보세요"}
+          routeUrl={"/living"}
+          routeText={"더보기"}
+          horizontalScroll={true}
+        >
+          <Suspense>
+            <LivingCardList />
+          </Suspense>
+        </PostMenu>
+      </div>
+
+      <div className="container align-content-center" style={{width:"100%", height:"700px"}}>
+        <PostMenu
+          title={"당신을 위한 집들을 준비해두었어요"}
+          routeUrl={"/house"}
+          routeText={"더보기"}
+          horizontalScroll={true}>
+          <Suspense>
+            <HouseList numShowItems={6} houseData={houseData} count={houseCount} />
+          </Suspense>
+        </PostMenu>
+      </div>
     </main>
   );
 }

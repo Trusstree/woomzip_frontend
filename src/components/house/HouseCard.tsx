@@ -17,12 +17,14 @@ export default function HouseCard(props: MainPagePostProps) {
 
   return (
     <div className="col-md-4 col-lg-3">
-      <div className="card d-flex flex-column align-items-left w-100" style={{ border: "none" }}>
+      <div
+          className="card d-flex flex-column align-items-left w-100"
+          onClick={() => {router.push(`/house/${data["house_id"]}`);
+          }}
+          style={{ border: "none" }}>
         <Image
           className="rounded-top-3 m-0"
-          onClick={() => {
-            router.push(`/house/${data["house_id"]}`);
-          }}
+          
           src={data["house_img_url"] || "/blur_image.png"}
           alt={`${data["house_explanation"]}`}
           width={220}
@@ -31,7 +33,7 @@ export default function HouseCard(props: MainPagePostProps) {
           placeholder={"blur"}
           blurDataURL={"/blur_image.png"}
         />
-        <div className="card-body w-100 pt-1 px-2 fs-6" style={{ height: "210px", border: "none" }}>
+        <div className="card-body w-100 pt-1 px-2 fs-6" style={{ height: "160px", border: "none" }}>
           <div className="d-flex flex-column fw-normal" style={{ width: "88%" }}>
             <div style={{ fontSize: "12px", fontWeight: "semiBold", color: "gray", margin: "3px 0" }}>
               {data["company_name"]}

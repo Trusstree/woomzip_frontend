@@ -44,7 +44,7 @@ export default function Carousel(props: CarouselProps) {
                 src={e["house_img_url"] || "/blur_image.png"}
                 alt="truss_logo.png"
                 width={400}
-                height={500}
+                height={600}
                 onClick={() => {
                   router.push(`/house/${e["house_id"]}`);
                 }}
