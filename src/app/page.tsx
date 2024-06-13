@@ -41,7 +41,6 @@ export default function Home() {
       {isClient && (
         <>
           <BrowserView>
-            캐러셀
             <div className={`d-flex`} style={{ marginTop: "15px" }}>
               <Carousel className="w-100" houseData={houseData} />
             </div>
