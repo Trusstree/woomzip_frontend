@@ -13,7 +13,7 @@ export default function PostMenu(props: PostMenuProps) {
   const { title, children, routeUrl, routeText, horizontalScroll } = props;
 
   return (
-    <div className="mt-5 mb-4">
+    <div className="">
       <div className="d-flex justify-content-between mt-2 mb-1">
         <h5 style={{fontWeight:"600"}}>{title}</h5>
         {(routeText&&routeUrl)?(
@@ -22,7 +22,7 @@ export default function PostMenu(props: PostMenuProps) {
         </RouteButton>)
         :undefined}
       </div>
-      <div className={`w-100 row g-2 mb-2 ${horizontalScroll?"flex-nowrap overflow-auto":""}`}>
+      <div className={`w-100 row ${horizontalScroll?"flex-nowrap overflow-auto":""}`}>
         {children}
       </div>
     </div>
