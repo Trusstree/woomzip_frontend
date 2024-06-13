@@ -23,38 +23,44 @@ export default function FillteringButton({ title, type, value, name, data, setDa
 
   return (
     <>
-      <BrowserView className="btn">
-        <div
-          style={{
-            width: "80px",
-            height: "40px",
-            borderRadius: "10px",
-            borderStyle: "solid",
-            margin: "3px",
-            backgroundColor: data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#F5F7FF" : "white",
-            borderWidth: "2px",
-            borderColor: data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#314FC0" : "gray",
-          }}
-          onClick={handleClick}
-        >
+      <BrowserView
+        className="btn"
+        style={{
+          width: "80px",
+          height: "40px",
+          borderRadius: "10px",
+          borderStyle: "solid",
+          margin: "3px",
+          backgroundColor:
+            data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#F5F7FF" : "white",
+          borderWidth: "2px",
+          borderColor: data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#314FC0" : "gray",
+        }}
+      >
+        <div onClick={handleClick}>
           <div style={{ fontSize: "13px", fontWeight: "600" }}>{title}</div>
         </div>
       </BrowserView>
 
-      <MobileView className="btn" style={{
-            width: "40px", // 모바일에서 가로폭을 다르게 설정
-            height: "35px",
-            padding:"0",
-            margin:"2px",
-            borderRadius: "10px",
-            borderStyle: "solid",
-            textAlign:"center",
-            backgroundColor: data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#F5F7FF" : "white",
-            borderWidth: "2px",
-            borderColor: data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#314FC0" : "gray",
-          }}>
-        
-          <div onClick={handleClick} style={{ fontSize: "15px", fontWeight: "400", color:"gray", marginTop:"4px"}}>{title}</div>
+      <MobileView
+        className="btn"
+        style={{
+          width: "40px", // 모바일에서 가로폭을 다르게 설정
+          height: "35px",
+          padding: "0",
+          margin: "2px",
+          borderRadius: "10px",
+          borderStyle: "solid",
+          textAlign: "center",
+          backgroundColor:
+            data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#F5F7FF" : "white",
+          borderWidth: "2px",
+          borderColor: data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#314FC0" : "gray",
+        }}
+      >
+        <div onClick={handleClick} style={{ fontSize: "15px", fontWeight: "400", color: "gray", marginTop: "4px" }}>
+          {title}
+        </div>
       </MobileView>
     </>
   );
