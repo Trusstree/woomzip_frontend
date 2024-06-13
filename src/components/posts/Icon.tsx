@@ -12,11 +12,11 @@ type IconProps = {
 export default function Icon(props: IconProps) {
   const { title, className, param, style, pathname } = props;
   return (
-    <div className={className && ""} style={{ ...style, width: "90px" }}>
+    <div className={className && ""} style={{ ...style, width: "auto" }}>
       <Link
         type="button"
         style={{ fontWeight: "400", fontSize: "17px" }}
-        className={`btn rounded-lg`}
+        className={`btn`}
         href={`${pathname}${param ? `?category=${param}` : ``}`}
       >
         {title}
