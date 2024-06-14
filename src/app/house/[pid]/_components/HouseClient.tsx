@@ -52,6 +52,7 @@ export function HouseClient(props: HouseComponentProps) {
         ...data.data[0]["house_info"],
         specificity_info: asdf.join(", "),
       });
+
       setImageData(data.data[0]["house_image"]);
       setOptionData(data.data[0]["option_info"]);
       setSpecificationData(parseSpecificationInfo(data.data[0]["house_info"]["specification_info"]));
@@ -61,21 +62,15 @@ export function HouseClient(props: HouseComponentProps) {
   }, []);
 
   const ClickHeart = useCallback(async () => {
-    if (userContext) {
-      const heartParams = { house_id: pid, user_id: userContext.uid };
-
-      if (heart > 0) {
-        const [response, error] = await getHousesHeartRemove({ house_id: pid });
-        if (error) console.log(error);
-        setHeart(heart - 1);
-      } else {
-        const [response, error] = await getHousesHeart({ house_id: pid });
-        if (error) console.log(error);
-        console.log(response);
-        setHeart(heart + 1);
-      }
+    if (heart > 0) {
+      const [response, error] = await getHousesHeartRemove({ house_id: pid });
+      if (error) console.log(error);
+      setHeart(heart - 1);
     } else {
-      alertSuccess("로그인이 필요한 서비스입니다.", "로그인해주세요!");
+      const [response, error] = await getHousesHeart({ house_id: pid });
+      if (error) console.log(error);
+      console.log(response);
+      setHeart(heart + 1);
     }
   }, [heart]);
 
