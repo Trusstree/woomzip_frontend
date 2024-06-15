@@ -4,12 +4,14 @@ import { encryptPW } from "@/actions/auth/cryptPW";
 import { AddressInputForm } from "@/components/test/AddressInputForm";
 import React, { useState } from "react";
 import { useUser } from "../app/ContextSession";
+import { Star } from "./Star";
 
 export default function TestClient() {
   const { userContext } = useUser();
   const [addr, setAddr] = useState("");
   const [pw, setPW] = useState("");
   const [encryptedPW, setEncryptedPW] = useState("");
+  const [clicked, setClicked]=useState([false,false,false,false,false]);
 
   const handleClick = () => {
     console.log(userContext);
@@ -22,6 +24,14 @@ export default function TestClient() {
     setEncryptedPW(_en);
   };
 
+  const handleStarClick = (index: number): void => {
+    let clickStates: boolean[] = [...clicked];
+    for (let i = 0; i < 5; i++) {
+      clickStates[i] = i <= index ? true : false;
+    }
+    setClicked(clickStates);
+  };
+
   return (
     <>
       <div className="btn btn-lg btn-outline-primary" onClick={handleClick}>
@@ -31,6 +41,7 @@ export default function TestClient() {
       <input onChange={handlePW}></input>
       <div>ori: {pw}</div>
       <div style={{ wordBreak: "break-all" }}>en: {encryptedPW}</div>
+      <Star clicked={clicked} onStarClick={handleStarClick} />
     </>
   );
 }

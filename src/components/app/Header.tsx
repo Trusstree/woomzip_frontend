@@ -37,9 +37,9 @@ export default function Header(props: HeaderProps) {
               <RouteButton url="/house" style={{ fontSize: "15px" }}>
                 찾아보기
               </RouteButton>
-              <RouteButton url="/planning" style={{ fontSize: "15px" }}>
+              {/* <RouteButton url="/planning" style={{ fontSize: "15px" }}>
                 계획하기
-              </RouteButton>
+              </RouteButton> */}
             </div>
             <div className="d-flex align-items-center mx-5">
               <SigninButton />
