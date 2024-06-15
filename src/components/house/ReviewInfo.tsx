@@ -37,7 +37,7 @@ export function ReviewInfo() {
       >
       </div>
       <div className="d-flex justify-content-between">
-        <div style={{ color: "gray", fontSize: "14px" }}>후기({count})</div>
+        <h5>판매자 후기({count})  4.5/5.0 ⭐️⭐️⭐️⭐️⭐️</h5>
         <RouteButtonLight url={"/living/1/review"} text={"전체보기"} />
       </div>
       <div className="row flex-nowrap overflow-auto g-2">
