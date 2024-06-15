@@ -2,7 +2,7 @@
 
 import { LivingCardList } from "@/components/living/LivingCardList";
 import React from "react";
-import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
+import { isBrowser, isMobile } from "react-device-detect";
 
 export default function Living() {
   return (

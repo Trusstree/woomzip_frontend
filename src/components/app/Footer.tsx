@@ -28,7 +28,7 @@ export default function Footer(props: FooterProps) {
               </div>
               <div style={{ width: "250px" }}>
                 <div style={{ fontWeight: "600", marginBottom: "10px" }}>문의</div>
-                <div style={{ fontSize: "14px" }}>전화 : 010-7742-2286</div>
+                <div style={{ fontSize: "14px" }}>전화 : 0507-1369-6158</div>
                 <div style={{ fontSize: "14px" }}>이메일 : truss369@naver.com</div>
               </div>
             </div>
