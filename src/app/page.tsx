@@ -40,8 +40,8 @@ export default function Home() {
       {isClient && (
         <>
           <BrowserView>
-            <div className={`d-flex`} style={{ marginTop: "15px" }}>
-              <Carousel className="w-100" houseData={houseData} />
+            <div className={`d-flex`}>
+              <Carousel className="w-100" />
             </div>
 
             <div className="container align-content-center" style={{ width: "100%", height: "500px" }}>
@@ -52,7 +52,7 @@ export default function Home() {
                 horizontalScroll={true}
               >
                 <Suspense>
-                  <PostList numShowItems={2} />
+                  <PostList numShowItems={4} />
                 </Suspense>
               </PostMenu>
             </div>
@@ -85,7 +85,7 @@ export default function Home() {
           </BrowserView>
 
           <MobileView style={{ width: "101vw", marginLeft: "-4vw", overflow: "hidden" }}>
-            <Carousel className="w-100" houseData={houseData} />
+            <Carousel className="w-100" />
             <div style={{ width: "102vw", marginTop: "20vw" }}>
               <div style={{ paddingLeft: "4vw", fontSize: "18px", fontWeight: "600" }}>전원생활 이야기들</div>
 

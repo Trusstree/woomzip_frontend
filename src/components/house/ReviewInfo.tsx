@@ -47,9 +47,9 @@ export function ReviewInfo() {
             nickname={e["nickname"]}
             date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
             helpful={e["helpful"]}
-            tag={JSON.parse(e["tag"])}
+            tag={e["tag"]}
             comment={e["pavilion_review_text"]}
-            images={JSON.parse(e["pavilion_review_images"])}
+            images={e["pavilion_review_images"]}
           />
         ))}
       </div>

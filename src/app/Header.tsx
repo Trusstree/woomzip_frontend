@@ -12,14 +12,12 @@ type HeaderProps = {};
 export default function Header(props: HeaderProps) {
   return (
     <>
-      <BrowserView className={`navbar navbar-expand-md`}
+      <BrowserView className={`navbar navbar-expand-md justify-content-center sticky-top`}
       style={{
-        borderBottomStyle: "solid",
-        borderBottomWidth: "2px",
-        backgroundColor: "white",
+        backgroundColor: "white"
       }}>
-        <div className="d-flex justify-content-between w-100" style={{ height: "35px" }}>
-          <RouteButton url="/" className="ms-md-3 px-4 py-2 mb-0">
+        <div className="d-flex justify-content-between w-100" style={{ height: "40px", width:"90%", maxWidth:"1300px"}}>
+          <RouteButton url="/" className="" style={{marginLeft:"0", paddingLeft:"0"}}>
             <Image src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/woomzipLogo.png"} alt={"Truss Logo"} width={100} height={26} />
           </RouteButton>
 
@@ -41,7 +39,7 @@ export default function Header(props: HeaderProps) {
                 계획하기
               </RouteButton> */}
             </div>
-            <div className="d-flex align-items-center mx-5">
+            <div style={{textAlign:"right", marginRight:"0", padding:"0"}}>
               <SigninButton />
             </div>
 

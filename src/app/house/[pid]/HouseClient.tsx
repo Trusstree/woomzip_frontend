@@ -192,7 +192,7 @@ export function HouseClient(props: HouseComponentProps) {
 
             {/*상품 네비게이션 */}
             <div
-              className="d-flex justify-content-between sticky-top"
+              className="d-flex justify-content-between"
               style={{ margin: "45px 0", backgroundColor: "white", borderBottom: "1px solid black" }}
             >
               <div className="btn" onClick={onMoveBoxA}>

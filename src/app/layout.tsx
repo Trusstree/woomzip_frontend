@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ContextSession>
             <Analytics />
             <Header />
-            <div className={`container-md`}>{children}</div>
+            {children}
             <Footer />
           </ContextSession>
         </StyledComponentsRegistry>

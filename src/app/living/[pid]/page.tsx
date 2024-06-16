@@ -4,10 +4,10 @@ import { LivingInfo } from "@/app/living/[pid]/_components/LivingInfo";
 
 export default function Parvilion() {
   return (
-    <main>
+    <main style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
       {/*}여기는 살아보기 상세페이지입니다.*/}
 
-      <div className="container" style={{ marginTop: "15px", marginLeft: "0", padding: "0", width: "100%" }}>
+      <div className="container">
         <div className="row">
           <div className="container" style={{ margin: "0", padding: "5px", width: "93%", height: "540px" }}>
             <Image
