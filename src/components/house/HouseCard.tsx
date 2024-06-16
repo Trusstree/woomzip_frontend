@@ -5,6 +5,18 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+
+// import required modules
+import { Pagination } from 'swiper/modules';
+
 
 type MainPagePostProps = {
   data: any;
@@ -16,46 +28,79 @@ export default function HouseCard(props: MainPagePostProps) {
   const router = useRouter();
   const { data } = props;
 
+  const navigateToDetailPage = () => {
+    router.push(`/house/${data.house_id}`);
+  };
+
   return (
     <>
       <BrowserView className="col-md-4 col-lg-3">
-        <div
-          className="card d-flex flex-column align-items-left w-100"
-          onClick={() => {
-            router.push(`/house/${data["house_id"]}`);
-          }}
-          style={{ border: "none" }}
-        >
-          <Image
-            className="rounded-top-3 m-0"
-            src={data["house_img_url"] || "/blur_image.png"}
-            alt={`${data["house_explanation"]}`}
-            width={220}
-            height={220}
-            style={{ objectFit: "cover", width: "88%", height: "250px", borderRadius: "10px 10px 0 0" }}
-            placeholder={"blur"}
-            blurDataURL={"/blur_image.png"}
-          />
-          <div className="card-body w-100 pt-1 px-2 fs-6" style={{ height: "160px", border: "none" }}>
-            <div className="d-flex flex-column fw-normal" style={{ width: "88%" }}>
-              <div style={{ fontSize: "12px", fontWeight: "semiBold", color: "gray", margin: "3px 0" }}>
-                {data["company_name"]}
+        <div className="card" style={{ width: "100%", border: "none"}} onClick={navigateToDetailPage}>
+          <Swiper
+            pagination={{ dynamicBullets: true }}
+            modules={[Pagination]}
+            className="mySwiper"
+            style={{ width: "100%", height: "275px" }}
+          >
+            {[...Array(6)].map((_, index) => (
+              <SwiperSlide>
+                <div style={{ position: "relative", width: "100%", height: "100%" }}>
+                  <img
+                    style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "10px" }}
+                    src={data.house_img_url || "/blur_image.png"}
+                    alt={data.house_explanation}
+                  />
+                  <div
+                    className="d-flex justify-content-left mb-2"
+                    style={{ position: "absolute", top: "10px", left: "10px", zIndex: "10" }}
+                  >
+                    {data.has_model === "1" && (
+                      <div
+                        className="badge me-1 text-white rounded-3 text-center align-self-center"
+                        style={{ backgroundColor: "#136E11", fontWeight: "500" }}
+                      >
+                        모델하우스
+                      </div>
+                    )}
+                    {data.is_hut === "1" && (
+                      <div
+                        className="badge me-1 text-white rounded-3 text-center align-self-center"
+                        style={{ backgroundColor: "#3284e8" }}
+                      >
+                        농막주택
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <div className="card-body w-100" style={{ height: "160px", border: "none", padding:"5px" }}>
+            <div className="d-flex flex-column" style={{ width: "100%" }}>
+              <div className="d-flex justify-content-between">
+                <div style={{ fontSize: "16px", color: "gray", marginTop: "3px", width:"auto"}}>
+                  {data["company_name"]}
+                </div>
+                <div style={{fontSize:"16px", width:"auto"}}>
+                  ★4.8
+                </div>
               </div>
 
-              <h5
-                className="card-title fw-semiBold mb-1 text-nowrap"
-                style={{ overflow: "hidden", textOverflow: "ellipsis", margin: "3px 0", fontSize: "15px" }}
+              <div
+                className="card-title text-nowrap"
+                style={{ overflow: "hidden", textOverflow: "ellipsis", marginTop: "3px", fontSize: "16px", fontWeight:"600"}}
               >
                 {data["house_name"]}
-              </h5>
+              </div>
 
-              <div className="row d-flex justify-content-between">
+              <div className="row d-flex justify-content-between" style={{marginTop:"-6px"}}>
                 <div style={{ width: "auto" }}>
-                  <div style={{ fontSize: "16px", fontWeight: "bold" }}>{cardPriceText(data["final_price"])}</div>
+                  <div style={{ fontSize: "16px", fontWeight: "600" }}>{cardPriceText(data["final_price"])}</div>
                 </div>
                 <div style={{ width: "auto" }}>
                   {data["discount_rate"] > 0 && (
-                    <div style={{ color: "#314FC0", fontSize: "16px", fontWeight: "bold" }}>
+                    <div style={{ color: "#314FC0", fontSize: "16px", fontWeight: "600" }}>
                       {data["discount_rate"]}%
                     </div>
                   )}
@@ -85,7 +130,7 @@ export default function HouseCard(props: MainPagePostProps) {
                       />
                     </defs>
                   </svg>
-                  <div style={{ textAlign: "center", width: "auto", fontSize: "12px", marginTop: "3px" }}>
+                  <div style={{ textAlign: "center", width: "auto", fontSize: "15px", marginTop: "5px" }}>
                     {data["total_floor_area"]?.toFixed(1) || "NaN"}평
                   </div>
                 </div>
@@ -111,7 +156,7 @@ export default function HouseCard(props: MainPagePostProps) {
                       />
                     </defs>
                   </svg>
-                  <div style={{ textAlign: "center", width: "auto", fontSize: "12px", marginTop: "3px" }}>
+                  <div style={{ textAlign: "center", width: "auto", fontSize: "15px", marginTop: "5px" }}>
                     {data["room_count"]}개
                   </div>
                 </div>
@@ -138,10 +183,13 @@ export default function HouseCard(props: MainPagePostProps) {
                     </defs>
                   </svg>
 
-                  <div style={{ textAlign: "center", width: "auto", fontSize: "12px", marginTop: "3px" }}>
+                  <div style={{ textAlign: "center", width: "auto", fontSize: "15px", marginTop: "5px" }}>
                     {data["toilet_count"]}개
                   </div>
                 </div>
+          </div>
+        </div>
+          
                 {/*view count 들어가야함 */}
                 {/* <div className="d-flex justify-content-start" style={{ width: "33%", marginRight: "5px" }}>
                   <Image
@@ -170,32 +218,11 @@ export default function HouseCard(props: MainPagePostProps) {
                     {cardCountText(data["like_count"])}
                   </div>
                 </div> */}
-              </div>
 
               {/*<div className="d-flex justify-content-between">
                 <div className="fw-bold">AS기간</div>
                 <div>{data["warranty"]}</div>
               </div>*/}
-            </div>
-
-            <div className="d-flex justify-content-left mb-2" style={{ height: "20px" }}>
-              {data["has_model"] == "1" && (
-                <div
-                  className="badge me-1 text-white rounded-3 text-center align-self-center"
-                  style={{ backgroundColor: "#136E11", fontWeight: "500" }}
-                >
-                  모델하우스
-                </div>
-              )}
-              {data["is_hut"] == "1" && (
-                <div
-                  className="badge me-1 text-white rounded-3 text-center align-self-center"
-                  style={{ backgroundColor: "#3284e8" }}
-                >
-                  농막주택
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </BrowserView>

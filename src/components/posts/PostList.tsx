@@ -43,7 +43,7 @@ export default function PostList(props: PostListProps) {
   return (
     <>
       {postData
-        ? postData.map((e: any, i: number) => <PostCard data={e} key={i} className={``} />)
+        ? postData.map((e: any, i: number) => <PostCard data={e} key={i} className={`col-md-4 col-lg-3`} />)
         : new Array(numShowItems).fill(0).map((e: any, i: number) => <PostCardPlaceHolder key={i} />)}
       {numShowPages && <Pagination numItems={count} numShowItems={numShowItems} numShowPages={numShowPages} />}
     </>

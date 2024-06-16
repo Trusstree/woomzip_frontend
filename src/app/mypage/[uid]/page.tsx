@@ -35,7 +35,7 @@ export default async function Page({ params, searchParams }) {
 
   return (
     <main>
-      <div className="row">
+      <div className="row" style={{width:"90%", maxWidth:"1300px", margin:"0 auto"}}>
         <div style={{width:"60%", marginTop:"20px", minWidth:"400px"}}>
           <div className="row">
             <Image

@@ -87,7 +87,7 @@ export default function PostClient(props: PostpageProps) {
   return postData ? (
     <div>
       <BrowserView>
-        <div style={{ backgroundColor: "#FAFBFC", borderRadius: "17px", padding: "30px", marginTop: "80px" }}>
+        <div style={{ backgroundColor: "#FAFBFC", borderRadius: "17px", padding: "30px", marginTop: "80px"}}>
           <div
             style={{
               backgroundColor: style[postData.category].backgroundColor,
@@ -123,13 +123,14 @@ export default function PostClient(props: PostpageProps) {
 
           <div
             className="py-5 my-5"
-            style={{ minHeight: "500px" }}
+            style={{ minHeight: "300px" }}
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(postData.content),
             }}
           />
-          <div className={`card-footer rounded-bottom-3 fw-normal px-2`} style={{ backgroundColor: "white", borderColor: "white" }}>
-            <div className="d-flex justify-content-between" style={{ backgroundColor: "#FAFBFC" }}>
+        </div>
+        <div className={`card-footer rounded-bottom-3 fw-normal px-2`} style={{ backgroundColor: "white", borderColor: "white", marginTop:"20px"}}>
+            <div className="d-flex justify-content-between">
               <Count
                 pid={pid}
                 viewCount={postData.viewCount}
@@ -140,15 +141,17 @@ export default function PostClient(props: PostpageProps) {
               />
             </div>
           </div>
-          <div style={{ backgroundColor: "#FAFBFC", borderRadius: "17px", padding: "30px", margin: "50px 0 100px 0" }}>
-            <Comments pid={pid} comments={comments} setComments={setComments} isCommentLike={isCommentLike} />
-          </div>
 
-          {/* 추천정보 */}
-          <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
-            <PostList numShowItems={6} />
-          </PostMenu>
+
+        <div style={{ backgroundColor: "#FAFBFC", borderRadius: "17px", padding: "30px", margin: "50px 0 100px 0" }}>
+          <Comments pid={pid} comments={comments} setComments={setComments} isCommentLike={isCommentLike} />
         </div>
+
+        {/* 추천정보 */}
+        <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
+          <PostList numShowItems={4} />
+        </PostMenu>
+      
       </BrowserView>
 
       <MobileView style={{width:"130%", marginLeft:"-10vw", overflow:"hidden"}}>
