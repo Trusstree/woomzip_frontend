@@ -4,10 +4,9 @@ import PlanningClient from "./_components/PlanningClient";
 export default function Planning() {
   return (
     <main>
-      <div style={{ fontSize: "38px", margin: "120px 0 80px 0", fontWeight: "600" }}>
-        당신의 예상 건축비용,
-        <br />
-        트러스가 알려드릴게요
+      <div style={{ width: "500px", fontSize: "33px", fontWeight: "600", margin: "70px 0 150px 0" }}>
+      당신의 <span style={{color:"#314FC0"}}>AI</span> 가이드
+      <span style={{color:"#314FC0"}}> 타잔</span>이 함께합니다
       </div>
 
       <Suspense>

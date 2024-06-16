@@ -3,7 +3,7 @@
 import { encryptPW } from "@/actions/auth/cryptPW";
 import { AddressInputForm } from "@/components/test/AddressInputForm";
 import React, { useState } from "react";
-import { useUser } from "../../app/ContextSession";
+import { useUser } from "../app/ContextSession";
 
 export default function TestClient() {
   const { userContext } = useUser();

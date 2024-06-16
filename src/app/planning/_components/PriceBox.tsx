@@ -37,10 +37,12 @@ export default function PriceBox({ houseType, landCondition, roadCondition, addr
 
   return (
     <div className="container" style={{ borderColor: "white", width: "100%", position: "sticky", bottom: "0" }}>
+      <div style={{fontSize:"20px", fontWeight:"600", marginBottom:"15px"}}>안녕하세요!<br/>저는 당신을 도와줄 <span style={{color: "#314FC0"}}>타잔</span>입니다</div>
       <div className="d-flex justify-content-between" style={{ lineHeight: "35px", marginBottom: "10px" }}>
-        <div style={{ fontSize: "20px", fontWeight: "600" }}>당신의 예상 견적은,</div>
-        <div style={{ fontSize: "14px" }}>(만원)</div>
+        <div style={{ fontSize: "20px", fontWeight: "600" }}>당신의 총 공사비용은,<br/><span style={{color:"#314FC0"}}>{simplePriceText(total[0])}~{simplePriceText(total[1])}</span><br/>으로 예상 됩니다</div>
       </div>
+      <hr />
+      
       <div className="d-flex justify-content-between" style={{ lineHeight: "35px" }}>
         <div style={{ fontSize: "16px", fontWeight: "500" }}>주택가격</div>
         <div style={{ fontSize: "14px" }}>{simplePriceText(price[0])}</div>
@@ -56,14 +58,6 @@ export default function PriceBox({ houseType, landCondition, roadCondition, addr
       </div>
       <PriceLine title={"보험비"} minPrice={insurance[0]} maxPrice={insurance[1]} />
       <PriceLine title={"세금"} minPrice={tax[0]} maxPrice={tax[1]} />
-      <hr />
-      <div className="d-flex justify-content-between" style={{ lineHeight: "35px", margin: "0 0 20px 0" }}>
-        <div style={{ fontSize: "20px", fontWeight: "500" }}>총</div>
-        <div style={{ fontSize: "20px", fontWeight: "500px" }}>
-          {simplePriceText(total[0])}
-          <br />~{simplePriceText(total[1])}
-        </div>
-      </div>
     </div>
   );
 }

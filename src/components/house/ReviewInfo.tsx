@@ -1,12 +1,12 @@
 "use client";
 
 import { getLivingReviews } from "@/apis/living";
-import { ReviewMiniBox } from "@/app/living/[pid]/_components/ReviewMiniBox";
+import { ReviewMiniBox } from "@/components/living/ReviewMiniBox";
 import { RouteButtonLight } from "@/components/living/RouteButtonLight";
 import { useState, useEffect } from "react";
-import { ReviewBox } from "../review/_components/ReviewBox";
+import { ReviewBox } from "./ReviewBox";
 
-export function LivingInfo() {
+export function ReviewInfo() {
   const [count, setCount] = useState(5);
   const [review, setReview] = useState([]);
 
@@ -26,16 +26,18 @@ export function LivingInfo() {
   return (
     <div>
       <div
+        className="badge"
         style={{
-          margin: "10px 0",
-          fontSize: "17px",
+          padding: "10px",
+          margin: "30px 0",
+          backgroundColor: "lightGray",
+          color: "gray",
+          fontSize: "16px",
         }}
       >
-        지금까지 {count}명이 살아봤어요!
       </div>
-      <hr/>
       <div className="d-flex justify-content-between">
-        <div style={{ color: "gray", fontSize: "14px" }}>후기({count})</div>
+        <h5>판매자 후기({count})  4.5/5.0 ⭐️⭐️⭐️⭐️⭐️</h5>
         <RouteButtonLight url={"/living/1/review"} text={"전체보기"} />
       </div>
       <div className="row flex-nowrap overflow-auto g-2">

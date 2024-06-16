@@ -21,12 +21,13 @@ export function RouteButton(props: RouteButtonProps) {
     <div
       className={`btn${className ? ` ${className}` : ""}`}
       style={{
-        width: "100%",
+        width: "90%",
         height: "50px",
         borderRadius: "10px",
         padding: "10px",
         marginBottom: "10px",
-        backgroundColor: "#101648",
+        marginLeft:"5%",
+        backgroundColor: "#314FC0",
         color: "white",
         fontSize: "20px",
         fontWeight: "600",

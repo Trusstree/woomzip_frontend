@@ -13,9 +13,9 @@ export const metadata = {
   metadataBase: new URL("https://buildintruss.com"),
   openGraph: {
     title: "Truss",
-    description: "전원생활의 시작을 함께, 트러스",
+    description: "전원생활의 시작을 함께, 움집",
     url: "https://buildintruss.com",
-    siteName: "Truss",
+    siteName: "woomzip",
     images: [
       {
         url: "https://buildintruss.com/logo/truss_icon.png",

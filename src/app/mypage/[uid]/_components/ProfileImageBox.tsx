@@ -27,9 +27,9 @@ export default function ProfileImageBox(props: ImageBoxProps) {
       className={"m-0 align-self-center"}
       src={src}
       alt={`profile`}
-      width={180}
-      height={180}
-      style={{ objectFit: "cover", borderRadius: "90px", width: "180px", height: "180px" }}
+      width={100}
+      height={70}
+      style={{ objectFit: "cover", borderRadius: "90px", width: "70px", height: "70px" }}
       placeholder={"profile"}
       //blurDataURL={"/blur_image.png"}
     />

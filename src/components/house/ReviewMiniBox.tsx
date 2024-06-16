@@ -30,7 +30,10 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
         className="container row"
         style={{ float: "right", margin: "0", padding: "0", width: "100%", height: "150px" }}
       >
-        <div className="col-8" style={{ height: "150px" }}>
+        <div className="col-9" style={{ height: "150px" }}>
+          <div className="pt-2" style={{ color: "gray" }}>
+            {toStringByFormatting(new Date(date))}
+          </div>
           <div className="pb-1" style={{ color: "gray" }}>
             {nickname}
           </div>
@@ -53,7 +56,7 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
         </div>
         <div className="col-3 m-0 p-0 d-flex flex-column align-items-center">
           <Image
-            className="card-img-top mt-3"
+            className="card-img-top mt-2"
             style={{ width: 110, borderRadius: "10px", objectFit: "cover" }}
             alt="main-img"
             src={images[0]}
