@@ -7,6 +7,10 @@ import { useRouter } from "next/navigation";
 import usePage from "@/hooks/usePage";
 import { getHouses } from "@/apis/HouseAPI";
 import { isBrowser, isMobile } from "react-device-detect";
+import { SearchModal } from "./_components/SearchModal";
+import SearchBox from "./_components/SearchBox";
+import FillteringButton from "./_components/FillteringButton";
+import ResetButton from "./_components/ResetButton";
 
 export default function Home() {
   const router = useRouter();
