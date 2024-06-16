@@ -4,7 +4,7 @@ import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
 import { cardCountText } from "@/lib/stringUtil";
 import { useCallback, useEffect, useState } from "react";
 
-export default function heartComponent({ pid, likeCount, isLiked, postHeart, postHeartRemove }) {
+export default function HeartComponent({ pid, likeCount, isLiked, postHeart, postHeartRemove }) {
   const [isLike, setIsLike] = useState(isLiked ? isLiked : 0);
 
   const handleLike = useCallback(async () => {

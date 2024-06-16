@@ -1,5 +1,5 @@
 import { getHouses } from "@/apis/HouseAPI";
-import { HouseClient } from "@/app/house/[pid]/_components/HouseClient";
+import { HouseClient } from "./HouseClient";
 
 type PageParams = {
   pid: number;

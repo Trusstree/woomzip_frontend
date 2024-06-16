@@ -1,27 +1,11 @@
-<<<<<<< HEAD
-import Community from "./_components/Community";
-import House from "./_components/House";
-import Profile from "./_components/Profile";
-import { MyLikeHouseList } from "@/app/mypage/[uid]/_components/MyLikeHouseList";
-import PostMenu from "@/components/posts/PostMenu";
-=======
-import Image from "next/image";
-import Community from "../../../components/mypage/Community";
-import House from "../../../components/mypage/House";
-import Profile from "../../../components/mypage/Profile";
-import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
->>>>>>> origin/mindul_newnew
-import Link from "next/link";
 import { getUser } from "@/apis/userAPI";
-import { cookies } from "next/headers";
-import { getUserdataByToken } from "@/lib/parseUtil";
-<<<<<<< HEAD
-import ProfileImageBox from "@/app/mypage/[uid]/_components/ProfileImageBox";
-=======
-import ProfileImageBox from "@/components/mypage/ProfileImageBox";
 import { ReviewInfo } from "@/components/house/ReviewInfo";
-
->>>>>>> origin/mindul_newnew
+import { getUserdataByToken } from "@/lib/parseUtil";
+import { cookies } from "next/headers";
+import Image from "next/image";
+import Link from "next/link";
+import House from "./_components/House";
+import ProfileImageBox from "./_components/ProfileImageBox";
 
 async function create(uid: string | number) {
   "use server";
@@ -44,143 +28,174 @@ export default async function Page({ params, searchParams }) {
   const accessToken = cookieStorge.get("accessToken").value;
   const signedUID = accessToken && getUserdataByToken(accessToken)?.uid;
 
-
   return (
     <main>
       <div className="row">
-        <div style={{width:"60%", marginTop:"20px", minWidth:"400px"}}>
+        <div style={{ width: "60%", marginTop: "20px", minWidth: "400px" }}>
           <div className="row">
             <Image
-              style={{ objectFit: "cover", width:"88%", marginLeft:"0px" }}
+              style={{ objectFit: "cover", width: "88%", marginLeft: "0px" }}
               src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"}
               alt="main BoardComponent"
               width={500}
               height={530}
             />
 
-            <div className="container" style={{width:"12%"}}>
-              <div style={{width:"80px", height:"80px", marginBottom:"10px", overflow:"hidden"}}>
-                {<img key={0} alt={`external_images_0`} src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"} width={80} height={80} style={{objectFit:"cover"}}/>}
+            <div className="container" style={{ width: "12%" }}>
+              <div style={{ width: "80px", height: "80px", marginBottom: "10px", overflow: "hidden" }}>
+                {
+                  <img
+                    key={0}
+                    alt={`external_images_0`}
+                    src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"}
+                    width={80}
+                    height={80}
+                    style={{ objectFit: "cover" }}
+                  />
+                }
               </div>
-              <div style={{width:"80px", height:"80px", marginBottom:"10px", overflow:"hidden"}}>
-                {<img key={1} alt={`external_images_1`} src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg"} width={80} height={80} style={{objectFit:"cover"}}/>}
+              <div style={{ width: "80px", height: "80px", marginBottom: "10px", overflow: "hidden" }}>
+                {
+                  <img
+                    key={1}
+                    alt={`external_images_1`}
+                    src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg"}
+                    width={80}
+                    height={80}
+                    style={{ objectFit: "cover" }}
+                  />
+                }
               </div>
-              <div style={{width:"80px", height:"80px", marginBottom:"10px", overflow:"hidden"}}>
-                {<img key={0} alt={`internal_images_0`} src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver4.jpeg"} width={80} height={80} style={{objectFit:"cover"}}/>}
+              <div style={{ width: "80px", height: "80px", marginBottom: "10px", overflow: "hidden" }}>
+                {
+                  <img
+                    key={0}
+                    alt={`internal_images_0`}
+                    src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver4.jpeg"}
+                    width={80}
+                    height={80}
+                    style={{ objectFit: "cover" }}
+                  />
+                }
               </div>
-              <div style={{width:"80px", height:"80px", marginBottom:"10px", overflow:"hidden"}}>
-                {<img key={1} alt={`internal_images_1`} src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver5.jpeg"} width={80} height={80} style={{objectFit:"cover"}}/>}
+              <div style={{ width: "80px", height: "80px", marginBottom: "10px", overflow: "hidden" }}>
+                {
+                  <img
+                    key={1}
+                    alt={`internal_images_1`}
+                    src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver5.jpeg"}
+                    width={80}
+                    height={80}
+                    style={{ objectFit: "cover" }}
+                  />
+                }
               </div>
-              <div style={{width:"80px", height:"80px", marginBottom:"10px", overflow:"hidden"}}>
-                {<img key={1} alt={`internal_images_2`} src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver6.jpeg"} width={80} height={80} style={{objectFit:"cover"}}/>}
+              <div style={{ width: "80px", height: "80px", marginBottom: "10px", overflow: "hidden" }}>
+                {
+                  <img
+                    key={1}
+                    alt={`internal_images_2`}
+                    src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver6.jpeg"}
+                    width={80}
+                    height={80}
+                    style={{ objectFit: "cover" }}
+                  />
+                }
               </div>
-              <div style={{width:"80px", height:"80px", marginBottom:"10px", overflow:"hidden"}}>
-                {<img key={0} alt={`floor_plan_images_0`} src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver7.jpeg"} width={80} height={80} style={{objectFit:"cover"}}/>}
+              <div style={{ width: "80px", height: "80px", marginBottom: "10px", overflow: "hidden" }}>
+                {
+                  <img
+                    key={0}
+                    alt={`floor_plan_images_0`}
+                    src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver7.jpeg"}
+                    width={80}
+                    height={80}
+                    style={{ objectFit: "cover" }}
+                  />
+                }
               </div>
             </div>
           </div>
         </div>
 
-
-            
-        
-
-        <div className="container" style={{width:"40%", marginTop:"20px", minWidth:"400px"}}>
-          <div
-          className="card"
-          style={{width:"90%", marginLeft:"10%", border:"none"}}>
-            <div className="row" style={{width:"100%"}}>
-              <div style={{width:"90px"}}>
+        <div className="container" style={{ width: "40%", marginTop: "20px", minWidth: "400px" }}>
+          <div className="card" style={{ width: "90%", marginLeft: "10%", border: "none" }}>
+            <div className="row" style={{ width: "100%" }}>
+              <div style={{ width: "90px" }}>
                 <ProfileImageBox data={userData} name={"user_img_url"} />
               </div>
-              <div style={{fontSize:"24px", fontWeight:"600", margin:"15px 0", width:"auto"}}>
+              <div style={{ fontSize: "24px", fontWeight: "600", margin: "15px 0", width: "auto" }}>
                 {userData?.nickname}
               </div>
             </div>
-            <div style={{width:"100%", margin:"20px 0", fontSize:"16px"}}>
-            {userData?.one_line_introduce} 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요
+            <div style={{ width: "100%", margin: "20px 0", fontSize: "16px" }}>
+              {userData?.one_line_introduce} 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는
+              이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요
+              소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런
+              걸 잘해요 소개글 우리는 이런 걸 잘해요 소개글 우리는 이런 걸 잘해요
             </div>
             <div className="row">
-              <div className="col-3" style={{fontWeight:"600"}}>
+              <div className="col-3" style={{ fontWeight: "600" }}>
                 대표자명
               </div>
-              <div className="col-9">
-                {userData?.name}
-              </div>
+              <div className="col-9">{userData?.name}</div>
             </div>
             <div className="row">
-              <div className="col-3" style={{fontWeight:"600"}}>
+              <div className="col-3" style={{ fontWeight: "600" }}>
                 주소
               </div>
-              <div className="col-9">
-                {userData?.addr}
-              </div>
+              <div className="col-9">{userData?.addr}</div>
             </div>
             <div className="row">
-              <div className="col-3" style={{fontWeight:"600"}}>
+              <div className="col-3" style={{ fontWeight: "600" }}>
                 전화번호
               </div>
-              <div className="col-9">
-                0507-1369-6158
-              </div>
+              <div className="col-9">0507-1369-6158</div>
             </div>
             <div className="row">
-              <div className="col-3" style={{fontWeight:"600"}}>
+              <div className="col-3" style={{ fontWeight: "600" }}>
                 홈페이지
               </div>
-              <div className="col-9">
-                www.woomzip.com
-              </div>
+              <div className="col-9">www.woomzip.com</div>
             </div>
             <div className="row">
-              <div className="col-3" style={{fontWeight:"600"}}>
+              <div className="col-3" style={{ fontWeight: "600" }}>
                 유튜브
               </div>
-              <div className="col-9">
-                @buildintruss
-              </div>
+              <div className="col-9">@buildintruss</div>
             </div>
-            <div style={{textAlign:"right"}}>
+            <div style={{ textAlign: "right" }}>
               {Number(uid) == signedUID && (
-              <Link
-                style={{}}
-                href={`${uid}?tab=profile`}
-              >
-                <span className="" style={{ wordBreak: "keep-all" }}>
-                  프로필 수정
-                </span>
-              </Link>
+                <Link style={{}} href={`${uid}?tab=profile`}>
+                  <span className="" style={{ wordBreak: "keep-all" }}>
+                    프로필 수정
+                  </span>
+                </Link>
               )}
             </div>
           </div>
         </div>
 
-          <div style={{marginTop:"30px"}}>
-            <ReviewInfo />
-          </div>
-
-          <div className="d-flex justify-content-between" style={{marginTop:"100px"}}>
-            <h5>
-              판매자 연관 칼럼
-            </h5>
-            <div className="btn" style={{fontSize:"14px"}}>
-              칼럼 작성하기
-            </div>
-          </div>
-
-          <div className="d-flex justify-content-between" style={{marginTop:"100px"}}>
-            <h5>
-              판매자 체험 숙소
-            </h5>
-            <div className="btn" style={{fontSize:"14px"}}>
-              더보기
-            </div>
-          </div>
-          
-          <House userData={userData} isYou={userData}/>
+        <div style={{ marginTop: "30px" }}>
+          <ReviewInfo />
         </div>
-      
-    
+
+        <div className="d-flex justify-content-between" style={{ marginTop: "100px" }}>
+          <h5>판매자 연관 칼럼</h5>
+          <div className="btn" style={{ fontSize: "14px" }}>
+            칼럼 작성하기
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-between" style={{ marginTop: "100px" }}>
+          <h5>판매자 체험 숙소</h5>
+          <div className="btn" style={{ fontSize: "14px" }}>
+            더보기
+          </div>
+        </div>
+
+        <House userData={userData} isYou={userData} />
+      </div>
     </main>
     // <div className="mb-5 row">
     //   <div className="col-lg-3">

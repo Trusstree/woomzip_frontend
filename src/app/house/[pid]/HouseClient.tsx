@@ -53,7 +53,6 @@ export function HouseClient(props: HouseComponentProps) {
         ...data.data[0]["house_info"],
         specificity_info: asdf.join(", "),
       });
-
       setImageData(data.data[0]["house_image"]);
       setOptionData(data.data[0]["option_info"]);
       setSpecificationData(parseSpecificationInfo(data.data[0]["house_info"]["specification_info"]));
@@ -63,15 +62,21 @@ export function HouseClient(props: HouseComponentProps) {
   }, []);
 
   const ClickHeart = useCallback(async () => {
-    if (heart > 0) {
-      const [response, error] = await getHousesHeartRemove({ house_id: pid });
-      if (error) console.log(error);
-      setHeart(heart - 1);
+    if (userContext) {
+      const heartParams = { house_id: pid, user_id: userContext.uid };
+
+      if (heart > 0) {
+        const [response, error] = await getHousesHeartRemove({ house_id: pid });
+        if (error) console.log(error);
+        setHeart(heart - 1);
+      } else {
+        const [response, error] = await getHousesHeart({ house_id: pid });
+        if (error) console.log(error);
+        console.log(response);
+        setHeart(heart + 1);
+      }
     } else {
-      const [response, error] = await getHousesHeart({ house_id: pid });
-      if (error) console.log(error);
-      console.log(response);
-      setHeart(heart + 1);
+      alertSuccess("로그인이 필요한 서비스입니다.", "로그인해주세요!");
     }
   }, [heart]);
 
@@ -1376,6 +1381,125 @@ export function HouseClient(props: HouseComponentProps) {
             </div>
           </div>
         </MobileView>
+
+        {/* 가격에 포함된 서비스 */}
+        {/* <div className="my-2 py-2">
+        <span className="fw-bold fs-5" style={{color:"#101648"}}>가격에 포함된 서비스</span>
+        <div className="d-flex justify-content-left flex-wrap my-2">
+          {optionData && optionData.filter((e)=>(e.category=="included"))?.map((e, i)=>(
+            <div key={i} className="me-1 mx-md-2 d-flex flex-column align-items-center">
+              <div
+                className="text-white rounded-3 text-center p-1 mb-3"
+                style={{backgroundColor:"#136E11", width:"105px"}}>
+                {e.name}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div> */}
+
+        {/* 추가로 발생가능한 비용 */}
+        {/* <div className="my-2 py-2">
+        <span className="fw-bold fs-5" style={{color:"#101648"}}>추가로 발생가능한 비용💡</span>
+        <span style={{color:"#101648"}}>(토지위치, 상태에 따라 차이 발생)</span>
+        <div className="row">
+          <div className="col-md-8 col-lg-9 d-flex justify-content-left flex-wrap my-2">
+            {optionData && optionData.filter((e)=>(e.category=="additional"))?.map((e, i)=>(
+              <div key={i} className="me-1 mx-md-2 d-flex flex-column align-items-center">
+                <div
+                  className="text-white rounded-3 text-center p-1"
+                  style={{backgroundColor:"#BD4040", width:"105px"}}>
+                  {e["name"]}
+                </div>
+                <span className="my-2 text-center">{detailPriceText(e["price"])}</span>
+              </div>
+            ))}
+          </div>
+          <div className="col-md-4 col-lg-3 align-self-center">
+            <div className="d-flex flex-column align-items-center">
+              <div><span className="fw-bold fs-5" style={{color:"#BD4040"}}>트러스 예상 가격</span></div>
+              <div>
+                <span className="fw-bold fs-5" style={{color:"#101648"}}>
+                  {detailPriceText(optionData?.filter((e)=>(e.category=="additional"))?.reduce((acc,cur)=>(acc+cur.price),0))}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+        {/* navigation */}
+        {/* <div className="navbar my-4">
+        <div className="container-fluid px-0 d-flex justify-content-around">
+          <ul className="nav w-100 d-flex justify-content-around">
+            <li className="nav-item col-3">
+              <div className="w-100 h-100 py-3 btn border-secondary rounded-0" style={{color:"#101648"}}>
+                <span className="fs-5">제품사진</span>
+              </div>
+            </li>
+            <li className="nav-item col-3">
+              <div className="w-100 h-100 py-3 btn border-secondary rounded-0" style={{color:"#101648"}}>
+                  <span className="fs-5">상세정보</span>
+                </div>
+              </li>
+            <li className="nav-item col-3">
+              <div className="w-100 h-100 py-3 btn border-secondary rounded-0" style={{color:"#101648"}}>
+                <span className="fs-5">리뷰, 방문후기(1)</span>
+              </div>
+            </li>
+            <li className="nav-item col-3">
+              <div className="w-100 h-100 py-3 btn border-secondary rounded-0" style={{color:"#101648"}}>
+                <span className="fs-5">Q&A(11)</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div> */}
+
+        {/* 평점 */}
+        {/* <PostMenu
+        title={`평점 ${getAvg(houseData).toFixed(1)}/5.0`}
+        routeUrl={"/posts"}
+        horizontalScroll={true}>
+        <div className="d-flex justify-content-center">
+          {
+          houseData.ratingPost?houseData.ratingPost.map((e, i)=>(
+            <MainPagePost data={e} key={i}/>
+          )):
+          <div style={{height:250}}>
+            평점이 없습니다. 가장 먼저 리뷰를 남겨보세요!
+          </div>
+          }
+        </div>
+      </PostMenu> */}
+
+        {/* Q&A */}
+        {/* <PostMenu
+        title={`제품 Q&A(${4})`}
+        routeUrl={"/posts"}
+        routeText={"더보기"}
+        horizontalScroll={true}>
+        <div className="d-flex justify-content-center">
+          {
+          houseData.ratingPost?houseData.ratingPost.map((e, i)=>(
+            <MainPagePost data={e} key={i}/>
+          )):
+          <div style={{height:250}}>
+            Q&A가 없습니다. 궁금한 것이 있다면 질문하세요!
+          </div>
+          }
+        </div>
+      </PostMenu> */}
+
+        {/* 추천정보 */}
+        {/* <PostMenu
+        title={"더 많은 주택들을 구경해보세요!"}
+        routeUrl={"/house"}
+        routeText={"더보기"}
+        horizontalScroll={true}
+      >
+        <HousewList numShowItems={6} houseData={[]} count={0} />
+      </PostMenu> */}
       </main>
     </>
   ) : (

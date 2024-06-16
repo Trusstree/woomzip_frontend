@@ -7,7 +7,7 @@ export default function Parvilion() {
     <main>
       {/*}여기는 살아보기 상세페이지입니다.*/}
 
-      <div className="container" style={{ marginTop:"15px", marginLeft: "0", padding: "0", width: "100%" }}>
+      <div className="container" style={{ marginTop: "15px", marginLeft: "0", padding: "0", width: "100%" }}>
         <div className="row">
           <div className="container" style={{ margin: "0", padding: "5px", width: "93%", height: "540px" }}>
             <Image
@@ -20,11 +20,11 @@ export default function Parvilion() {
               unoptimized={true}
             />
           </div>
-          <div className="col" style={{ margin: "0px", padding: "0", width: "7%", minWidth:"80px"}}>
+          <div className="col" style={{ margin: "0px", padding: "0", width: "7%", minWidth: "80px" }}>
             <div style={{ margin: "0px", padding: "5px", width: "100%" }}>
               <Image
                 className="card-img-top"
-                style={{ marginBottom: "10px", objectFit: "cover", width:"80px"}}
+                style={{ marginBottom: "10px", objectFit: "cover", width: "80px" }}
                 alt="main-img"
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"
                 width={80}
@@ -33,7 +33,7 @@ export default function Parvilion() {
               />
               <Image
                 className="card-img-top"
-                style={{ marginBottom: "10px", objectFit: "cover", width:"80px"}}
+                style={{ marginBottom: "10px", objectFit: "cover", width: "80px" }}
                 alt="main-img"
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg"
                 width={80}
@@ -42,7 +42,7 @@ export default function Parvilion() {
               />
               <Image
                 className="card-img-top"
-                style={{ marginBottom: "10px", objectFit: "cover", width:"80px"}}
+                style={{ marginBottom: "10px", objectFit: "cover", width: "80px" }}
                 alt="main-img"
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver4.jpeg"
                 width={80}
@@ -51,7 +51,7 @@ export default function Parvilion() {
               />
               <Image
                 className="card-img-top"
-                style={{ marginBottom: "10px", objectFit: "cover", width:"80px"}}
+                style={{ marginBottom: "10px", objectFit: "cover", width: "80px" }}
                 alt="main-img"
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver5.jpeg"
                 width={80}
@@ -60,7 +60,7 @@ export default function Parvilion() {
               />
               <Image
                 className="card-img-top"
-                style={{ marginBottom: "10px", objectFit: "cover", width:"80px"}}
+                style={{ marginBottom: "10px", objectFit: "cover", width: "80px" }}
                 alt="main-img"
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver6.jpeg"
                 width={80}
@@ -69,7 +69,7 @@ export default function Parvilion() {
               />
               <Image
                 className="card-img-top"
-                style={{ marginBottom: "10px", objectFit: "cover", width:"80px"}}
+                style={{ marginBottom: "10px", objectFit: "cover", width: "80px" }}
                 alt="main-img"
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver7.jpeg"
                 width={80}
@@ -78,29 +78,23 @@ export default function Parvilion() {
               />
             </div>
           </div>
-          
         </div>
       </div>
 
       <div className="container row" style={{ width: "100%" }}>
         <div className="container" style={{ width: "65%", minWidth: "400px", padding: "0", margin: "0" }}>
-        <div style={{ fontSize: "19px", margin: "5px 0 0 2px", color: "gray" }}>모두가하우징</div>
-        <div style={{ fontSize: "32px", marginBottom: "15px", fontWeight: "500" }}>힐링리버</div>
+          <div style={{ fontSize: "19px", margin: "5px 0 0 2px", color: "gray" }}>모두가하우징</div>
+          <div style={{ fontSize: "32px", marginBottom: "15px", fontWeight: "500" }}>힐링리버</div>
           <LivingInfo />
 
-<<<<<<< HEAD
           <div style={{ fontWeight: "600", lineHeight: "30px", marginBottom: "100px" }}>
-            <div style={{ marginTop: "80px", fontSize: "25px" }}>체험 조건</div>
-=======
-          <div style={{ fontWeight: "600", lineHeight: "30px", marginBottom:"100px"}}>
             <h5 style={{ marginTop: "80px" }}>체험 조건</h5>
->>>>>>> origin/mindul_newnew
             <div style={{ fontSize: "16px", fontWeight: "400", marginTop: "30px", padding: "10px" }}>
               ✅ 체험 후기 작성
               <br />✅ SNS에 체험 후기 작성(유튜브, 블로그, 카페 등)
             </div>
 
-            <h5 style={{ marginTop: "80px"}}>보증금 반환 조건</h5>
+            <h5 style={{ marginTop: "80px" }}>보증금 반환 조건</h5>
             <div style={{ fontSize: "16px", fontWeight: "400", margin: "30px 0 60px 0", padding: "10px" }}>
               ✅ 체험 조건 이수
               <br />✅ 청소 상태 원상복구
@@ -255,14 +249,9 @@ export default function Parvilion() {
                   <div style={{ width: "80px", marginTop: "12px" }}>최대 3일</div>
                 </div>
               </div>
-<<<<<<< HEAD
-              <div className="container row" style={{ width: "100%", padding: "10px", margin: "10px 0 0 0" }}>
+              <hr style={{ margin: "0px", padding: "0px" }} />
+              <div className="container row" style={{ width: "100%", margin: "10px 0 0 0", padding: "10px" }}>
                 <div className="d-flex justify-content-start px-1" style={{ width: "100%" }}>
-=======
-              <hr style={{margin:"0px", padding:"0px"}}/>
-              <div className="container row" style={{ width: "100%", margin: "10px 0 0 0", padding:"10px"}}>
-                <div className="d-flex justify-content-start px-1" style={{ width: "100%"}}>
->>>>>>> origin/mindul_newnew
                   <svg
                     width="50"
                     height="50"

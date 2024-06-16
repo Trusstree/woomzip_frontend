@@ -1,9 +1,9 @@
 "use client";
 
 import { encryptPW } from "@/actions/auth/cryptPW";
-import { AddressInputForm } from "@/components/test/AddressInputForm";
+import { useUser } from "@/app/ContextSession";
 import React, { useState } from "react";
-import { useUser } from "../app/ContextSession";
+import { AddressInputForm } from "./AddressInputForm";
 
 export default function TestClient() {
   const { userContext } = useUser();

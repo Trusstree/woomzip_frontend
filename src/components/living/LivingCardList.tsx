@@ -1,9 +1,8 @@
 "use client";
 
-import { getLivings } from "@/apis/living";
-import { LivingCard } from "@/components/living/LivingCard";
 import { useEffect, useState } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
+import { LivingCard } from "./LivingCard";
 
 const LivingCardExample = [
   {
@@ -35,17 +34,31 @@ export function LivingCardList() {
   return (
     <>
       <BrowserView>
-        <div className="row" style={{ width: "100%", padding: "10px"}}>
+        <div className="row" style={{ width: "100%", padding: "10px" }}>
           {livingData?.map((e, i) => (
-            <LivingCard key={i} company={e["company"]} title={e["title"]} addr={e["addr"]} img={e["img"]} url={e["url"]} />
+            <LivingCard
+              key={i}
+              company={e["company"]}
+              title={e["title"]}
+              addr={e["addr"]}
+              img={e["img"]}
+              url={e["url"]}
+            />
           ))}
         </div>
       </BrowserView>
 
       <MobileView>
-        <div className="row" style={{ width: "100%",  padding: "5px", margin: "0 0 100px 0" }}>
+        <div className="row" style={{ width: "100%", padding: "5px", margin: "0 0 100px 0" }}>
           {livingData?.map((e, i) => (
-            <LivingCard key={i} company={e["company"]} title={e["title"]} addr={e["addr"]} img={e["img"]} url={e["url"]} />
+            <LivingCard
+              key={i}
+              company={e["company"]}
+              title={e["title"]}
+              addr={e["addr"]}
+              img={e["img"]}
+              url={e["url"]}
+            />
           ))}
         </div>
       </MobileView>
