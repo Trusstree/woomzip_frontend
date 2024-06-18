@@ -5,11 +5,10 @@ import PostMenu from "@/components/posts/PostMenu";
 import Carousel from "@/components/house/Carousel";
 import { HouseList } from "@/components/house/HouseList";
 import PostList from "@/components/posts/PostList";
-import Image from "next/image";
 import { Suspense } from "react";
 import { getHouses } from "@/apis/HouseAPI";
-import { LivingCardList } from "@/components/living/LivingCardList";
 import { BrowserView, MobileView } from "react-device-detect";
+import { LivingCardList } from "@/components/living/LivingCardList";
 
 async function loadData() {
   const [rawHouseData, houseError] = await getHouses({ skip: 1, limit: 6 });
@@ -28,7 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     setIsClient(true);
-    loadData().then(data => {
+    loadData().then((data) => {
       if (data) {
         setHouseData(data.houseData);
         setHouseCount(data.houseCount);
@@ -42,7 +41,7 @@ export default function Home() {
         <>
           <BrowserView>
             <div className={`d-flex`}>
-              <Carousel className="w-100"  />
+              <Carousel className="w-100" />
             </div>
 
             <div className="container align-content-center" style={{ width: "100%", height: "500px" }}>
@@ -76,7 +75,8 @@ export default function Home() {
                 title={"당신을 위한 집들을 준비해두었어요"}
                 routeUrl={"/house"}
                 routeText={"더보기"}
-                horizontalScroll={true}>
+                horizontalScroll={true}
+              >
                 <Suspense>
                   <HouseList numShowItems={6} houseData={houseData} count={houseCount} />
                 </Suspense>
@@ -84,13 +84,11 @@ export default function Home() {
             </div>
           </BrowserView>
 
-          <MobileView style={{width:"101vw", marginLeft:"-4vw", overflow:"hidden"}}>
+          <MobileView style={{ width: "101vw", marginLeft: "-4vw", overflow: "hidden" }}>
             <Carousel className="w-100" />
-            <div style={{width:"102vw", marginTop:"20vw"}}>
-              <div style={{paddingLeft:"4vw", fontSize:"18px", fontWeight:"600"}}>
-               전원생활 이야기들
-              </div>
-      
+            <div style={{ width: "102vw", marginTop: "20vw" }}>
+              <div style={{ paddingLeft: "4vw", fontSize: "18px", fontWeight: "600" }}>전원생활 이야기들</div>
+
               <PostList numShowItems={5} />
             </div>
 
@@ -103,10 +101,8 @@ export default function Home() {
               </div>
             </div>
 
-            <div style={{width:"102vw", marginTop:"30vw"}}>
-              <div style={{paddingLeft:"4vw", fontSize:"18px", fontWeight:"600"}}>
-               당신을 위한 집
-              </div>
+            <div style={{ width: "102vw", marginTop: "30vw" }}>
+              <div style={{ paddingLeft: "4vw", fontSize: "18px", fontWeight: "600" }}>당신을 위한 집</div>
               <HouseList numShowItems={6} houseData={houseData} count={houseCount} />
             </div>
           </MobileView>

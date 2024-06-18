@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { LivingReservationForm } from "@/components/living/LivingReservationForm";
+import { LivingReservationForm } from "@/app/living/[pid]/reservation/_components/LivingReservationForm";
 
 export default function Reservation() {
   return (

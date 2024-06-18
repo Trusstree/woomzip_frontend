@@ -1,13 +1,4 @@
-import Image from "next/image";
-import Community from "../../../components/mypage/Community";
-import House from "../../../components/mypage/House";
-import Profile from "../../../components/mypage/Profile";
-import { MyLikeHouseList } from "@/components/mypage/MyLikeHouseList";
-import Link from "next/link";
 import { getUser } from "@/apis/userAPI";
-import { cookies } from "next/headers";
-import { getUserdataByToken } from "@/lib/parseUtil";
-import ProfileImageBox from "@/components/mypage/ProfileImageBox";
 import { ReviewInfo } from "@/components/house/ReviewInfo";
 import PostList from "@/components/posts/PostList";
 import PostMenu from "@/components/posts/PostMenu";
@@ -35,7 +26,6 @@ export default async function Page({ params, searchParams }) {
   const cookieStorge = cookies();
   const accessToken = cookieStorge.get("accessToken").value;
   const signedUID = accessToken && getUserdataByToken(accessToken)?.uid;
-
 
   return (
     <main>

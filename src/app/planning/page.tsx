@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import PlanningClient from "./PlanningClient";
+import PlanningClient from "./_components/PlanningClient";
 
 export default function Planning() {
   return (

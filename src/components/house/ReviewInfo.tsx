@@ -1,10 +1,10 @@
 "use client";
 
 import { getLivingReviews } from "@/apis/living";
-import { ReviewMiniBox } from "@/components/living/ReviewMiniBox";
 import { RouteButtonLight } from "@/components/living/RouteButtonLight";
 import { useState, useEffect } from "react";
 import { ReviewBox } from "./ReviewBox";
+import { ReviewMiniBox } from "./ReviewMiniBox";
 
 export function ReviewInfo() {
   const [count, setCount] = useState(5);
@@ -34,8 +34,7 @@ export function ReviewInfo() {
           color: "gray",
           fontSize: "16px",
         }}
-      >
-      </div>
+      ></div>
       <div className="d-flex justify-content-between">
         <h5>판매자 후기({count})  ★4.5</h5>
         <RouteButtonLight url={"/living/1/review"} text={"더보기"} />

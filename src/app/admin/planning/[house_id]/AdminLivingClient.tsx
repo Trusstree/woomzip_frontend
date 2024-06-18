@@ -2,8 +2,8 @@
 
 import { getHouse } from "@/apis/HouseAPI";
 import { getReservation } from "@/apis/living";
-import { ReservationConfirm } from "@/components/living/ReservationConfirm";
-import { RouteButton } from "@/components/living/RouteButton";
+import { ReservationConfirm } from "@/app/admin/living/1/_components/ReservationConfirm";
+import { RouteButton } from "@/app/living/[pid]/_components/RouteButton";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import { useEffect, useState } from "react";
 

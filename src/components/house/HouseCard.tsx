@@ -5,18 +5,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-
-// import required modules
-import { Pagination } from 'swiper/modules';
-
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 type MainPagePostProps = {
   data: any;
@@ -35,15 +28,15 @@ export default function HouseCard(props: MainPagePostProps) {
   return (
     <>
       <BrowserView className="col-md-4 col-lg-3">
-        <div className="card" style={{ width: "100%", border: "none"}} onClick={navigateToDetailPage}>
+        <div className="card" style={{ width: "100%", border: "none" }} onClick={navigateToDetailPage}>
           <Swiper
             pagination={{ dynamicBullets: true }}
             modules={[Pagination]}
             className="mySwiper"
             style={{ width: "100%", height: "275px" }}
           >
-            {[...Array(6)].map((_, index) => (
-              <SwiperSlide>
+            {[...Array(6)].map((_, i) => (
+              <SwiperSlide key={i}>
                 <div style={{ position: "relative", width: "100%", height: "100%" }}>
                   <img
                     style={{ objectFit: "cover", width: "100%", height: "100%", borderRadius: "10px" }}
@@ -76,25 +69,29 @@ export default function HouseCard(props: MainPagePostProps) {
             ))}
           </Swiper>
 
-          <div className="card-body w-100" style={{ height: "160px", border: "none", padding:"5px" }}>
+          <div className="card-body w-100" style={{ height: "160px", border: "none", padding: "5px" }}>
             <div className="d-flex flex-column" style={{ width: "100%" }}>
               <div className="d-flex justify-content-between">
-                <div style={{ fontSize: "16px", color: "gray", marginTop: "3px", width:"auto"}}>
+                <div style={{ fontSize: "16px", color: "gray", marginTop: "3px", width: "auto" }}>
                   {data["company_name"]}
                 </div>
-                <div style={{fontSize:"16px", width:"auto"}}>
-                  ★4.8
-                </div>
+                <div style={{ fontSize: "16px", width: "auto" }}>★4.8</div>
               </div>
 
               <div
                 className="card-title text-nowrap"
-                style={{ overflow: "hidden", textOverflow: "ellipsis", marginTop: "3px", fontSize: "16px", fontWeight:"600"}}
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  marginTop: "3px",
+                  fontSize: "16px",
+                  fontWeight: "600",
+                }}
               >
                 {data["house_name"]}
               </div>
 
-              <div className="row d-flex justify-content-between" style={{marginTop:"-6px"}}>
+              <div className="row d-flex justify-content-between" style={{ marginTop: "-6px" }}>
                 <div style={{ width: "auto" }}>
                   <div style={{ fontSize: "16px", fontWeight: "600" }}>{cardPriceText(data["final_price"])}</div>
                 </div>
@@ -187,11 +184,11 @@ export default function HouseCard(props: MainPagePostProps) {
                     {data["toilet_count"]}개
                   </div>
                 </div>
-          </div>
-        </div>
-          
-                {/*view count 들어가야함 */}
-                {/* <div className="d-flex justify-content-start" style={{ width: "33%", marginRight: "5px" }}>
+              </div>
+            </div>
+
+            {/*view count 들어가야함 */}
+            {/* <div className="d-flex justify-content-start" style={{ width: "33%", marginRight: "5px" }}>
                   <Image
                     src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/refresh.png"}
                     width={18}
@@ -204,8 +201,8 @@ export default function HouseCard(props: MainPagePostProps) {
                     {cardCountText(data["view_count"])}
                   </div>
                 </div> */}
-                {/*like count 들어가야함 */}
-                {/* <div className="d-flex justify-content-between" style={{ width: "29%", marginRight: "5px" }}>
+            {/*like count 들어가야함 */}
+            {/* <div className="d-flex justify-content-between" style={{ width: "29%", marginRight: "5px" }}>
                   <Image
                     src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/refresh.png"}
                     width={18}
@@ -219,7 +216,7 @@ export default function HouseCard(props: MainPagePostProps) {
                   </div>
                 </div> */}
 
-              {/*<div className="d-flex justify-content-between">
+            {/*<div className="d-flex justify-content-between">
                 <div className="fw-bold">AS기간</div>
                 <div>{data["warranty"]}</div>
               </div>*/}
