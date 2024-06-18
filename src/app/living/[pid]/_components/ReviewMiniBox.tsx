@@ -5,30 +5,47 @@ import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, images }) {
+export function ReviewMiniBox({
+  id,
+  nickname,
+  date,
+  helpful,
+  tag,
+  comment,
+  images,
+}) {
   const router = useRouter();
   // function handleClick() {
   //   // e.target.value
   //   router.push(url);
   // }
-  console.log(tag);
+  const handleClick = () => {
+    router.push("/living/1/review");
+  };
 
   return (
     <div
       className="card"
       style={{
-        marginRight: "10px",
-        width: "430px",
+        margin: "7px",
+        width: "380px",
         minWidth: "350px",
         height: "100%",
-        border: "1px solid lightGray",
-        borderRadius: "15px",
+        border: "none",
+        borderRadius: "10px",
         overflow: "hidden",
+        boxShadow: "2px 2px 10px rgba(0, 0, 0, 0.2)",
       }}
+      onClick={handleClick}
     >
       <div
-        className="container row"
-        style={{ float: "right", margin: "0", padding: "0", width: "100%", height: "150px" }}
+        className="container row g-1"
+        style={{
+          margin: "0",
+          padding: "10px",
+          width: "100%",
+          height: "150px",
+        }}
       >
         <div className="col-8" style={{ height: "150px" }}>
           <div className="pb-1" style={{ color: "gray" }}>
@@ -39,6 +56,7 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
             className="container p-0"
             style={{
               marginLeft: "0",
+              fontSize: "15px",
               fontWeight: "500",
               overflow: "hidden",
               textOverflow: "ellipsis",
@@ -51,7 +69,7 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
             {comment}
           </div>
         </div>
-        <div className="col-3 m-0 p-0 d-flex flex-column align-items-center">
+        <div className="col-4 m-0 p-0 d-flex flex-column align-items-center">
           <Image
             className="card-img-top mt-3"
             style={{ width: 110, borderRadius: "10px", objectFit: "cover" }}
@@ -63,17 +81,20 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
           />
         </div>
       </div>
-      <div className="container">
+      <div
+        className="container"
+        style={{ width: "1000px", marginBottom: "15px" }}
+      >
         {tag.map((badge, index) => (
           <span
             className="badge"
             key={index}
             style={{
               padding: "6px",
-              marginRight: "2px",
+              marginRight: "4px",
               backgroundColor: badgeStyles(badge),
               color: "white",
-              fontWeight:"400"
+              fontWeight: "400",
             }}
           >
             {badge}

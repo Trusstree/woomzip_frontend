@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ReviewBox } from "@/app/living/[pid]/review/_components/ReviewBox";
-import { RouteButtonLight } from "@/components/living/RouteButtonLight";
+import { ReviewBox } from "@/app/mypage/[uid]/review/_components/ReviewBox";
 import { getLivingReviews } from "@/apis/living";
 import { useRouter } from "next/navigation";
 
@@ -16,7 +15,7 @@ export default function ReviewClient() {
   //   router.push(url);
   // }
   const handleClick = () => {
-    router.push("/living/1/review/write");
+    router.push("/mypage/[uid]/review/write");
   };
 
   useEffect(() => {
@@ -35,7 +34,7 @@ export default function ReviewClient() {
     <>
       <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
         <div style={{ fontSize: "28px", fontWeight: "500" }}>
-          <span>살아보기 후기</span>
+          <span>판매자 후기</span>
         </div>
         <div className="row">
           <div className="col-4" style={{ minWidth: "350px" }}>
@@ -57,7 +56,7 @@ export default function ReviewClient() {
                 }}
               >
                 <div style={{ fontSize: "20px", margin: "10px 0" }}>
-                  힐링리버<span>({count})</span>
+                  <span>판매자 이름({count})</span>
                 </div>
                 <div style={{ fontSize: "20px", margin: "10px 0" }}>★ 0.0</div>
                 <div style={{ fontSize: "20px", margin: "10px 0" }}>

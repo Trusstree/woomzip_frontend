@@ -5,10 +5,16 @@ import { ReviewMiniBox } from "@/app/living/[pid]/_components/ReviewMiniBox";
 import { RouteButtonLight } from "@/components/living/RouteButtonLight";
 import { useState, useEffect } from "react";
 import { ReviewBox } from "../review/_components/ReviewBox";
+import { useRouter } from "next/navigation";
 
 export function LivingInfo() {
   const [count, setCount] = useState(5);
   const [review, setReview] = useState([]);
+
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/living/1/review");
+  };
 
   useEffect(() => {
     (async () => {
@@ -24,21 +30,29 @@ export function LivingInfo() {
   }, []);
 
   return (
-    <div>
+    <div style={{ marginTop: "20px", width: "100%" }}>
       <div
         style={{
           margin: "10px 0",
           fontSize: "17px",
         }}
       >
-        지금까지 {count}명이 살아봤어요!
+        지금까지 {count}팀이 살아봤어요!
       </div>
-      <hr/>
-      <div className="d-flex justify-content-between">
-        <div style={{ color: "gray", fontSize: "14px" }}>후기({count})</div>
-        <RouteButtonLight url={"/living/1/review"} text={"전체보기"} />
+      <hr />
+      <div
+        className="d-flex justify-content-between"
+        style={{ margin: "30px 0 10px 0" }}
+      >
+        <h5>후기({count}) ★ 0.0</h5>
+        <div style={{ color: "gray", fontSize: "15px" }} onClick={handleClick}>
+          전체보기
+        </div>
       </div>
-      <div className="row flex-nowrap overflow-auto g-2">
+      <div
+        className="row flex-nowrap overflow-auto g-2"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
         {review.map((e, i) => (
           <ReviewMiniBox
             key={e["pavilion_review_id"]}

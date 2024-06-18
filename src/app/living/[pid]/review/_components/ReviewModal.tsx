@@ -1,75 +1,56 @@
 import { badgeStyles } from "@/lib/badgeStyles";
 import Image from "next/image";
 
-export function ReviewModal({ id, date, comment, tag, images }) {
+export function ReviewModal({ id, date, comment, tag, images, nickname }) {
   return (
     <div
       className="modal fade"
       id={`living_modal_${id}`}
       aria-labelledby={`living_modal_${id}_Label`}
       aria-hidden="true"
-      // data-bs-backdrop="static"
       data-bs-keyboard="false"
       tabIndex={-1}
     >
-      <div className="modal-dialog">
-        <div className="modal-content" style={{ width: 500 }}>
+      <div className="modal-dialog modal-fullscreen">
+        <div
+          className="modal-content"
+          style={{ width: "100%", height: "100%" }}
+        >
           <div className="modal-header">
             <h5 className="modal-title" id={`living_modal_${id}_Label`}>
-              {date}
+              전체사진({images.length})
             </h5>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div className="modal-body">
-            <div className="row flex-nowrap overflow-auto">
+            <div className="row">
               {images.map((e, i) => (
                 <Image
                   key={i}
                   className="card-img-top"
-                  style={{ borderRadius: "10px", objectFit: "cover", width: 300, height: 300 }}
+                  style={{
+                    objectFit: "contain",
+                    width: "50%",
+                    margin: "10px",
+                  }}
                   alt="main-img"
                   src={e}
                   width={400}
-                  height={400}
+                  height={600}
                   unoptimized={true}
                 />
               ))}
             </div>
-            <div
-              className="container my-4"
-              style={{
-                width: "100%",
-                height: "200px",
-                overflow: "hidden",
-                marginLeft: "0",
-                fontWeight: "500",
-                textOverflow: "ellipsis",
-                display: "-webkit-box",
-                whiteSpace: "pre-wrap",
-                WebkitBoxOrient: "vertical",
-                WebkitLineClamp: 8,
-              }}
-            >
-              {comment}
-            </div>
           </div>
           <div className="modal-footer">
-            {tag.map((badge, index) => (
-              <span
-                className="badge"
-                key={index}
-                style={{
-                  width: "auto",
-                  padding: "11px",
-                  marginRight: "5px",
-                  backgroundColor: badgeStyles(badge),
-                  color: "white",
-                  fontWeight:"400px"
-                }}
-              >
-                {badge}
-              </span>
-            ))}
+            <div style={{ width: "auto" }}>
+              {nickname} |<span style={{ width: "auto" }}> {date}</span>
+            </div>
           </div>
         </div>
       </div>

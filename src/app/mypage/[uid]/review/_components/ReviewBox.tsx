@@ -4,17 +4,17 @@ import { badgeStyles } from "@/lib/badgeStyles";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ReviewModal } from "./ReviewModal";
+import { ReviewModal } from "@/components/house/ReviewModal";
 
 export function ReviewBox({
   id,
   index,
-  nickname,
   date,
   helpful,
   tag,
   comment,
   images,
+  nickname,
 }) {
   const router = useRouter();
   // function handleClick() {
@@ -40,7 +40,7 @@ export function ReviewBox({
             {nickname} |<span> {toStringByFormatting(new Date(date))}</span>
           </div>
           <div style={{ color: "gray", padding: "10px" }}>
-            {"판매자 이름 > 살아보기 후기"}
+            {"판매자 이름 > 제품구매 후기"}
           </div>
         </div>
         <div style={{ padding: "10px" }}>★ 0.0</div>

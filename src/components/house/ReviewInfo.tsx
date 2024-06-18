@@ -3,12 +3,18 @@
 import { getLivingReviews } from "@/apis/living";
 import { RouteButtonLight } from "@/components/living/RouteButtonLight";
 import { useState, useEffect } from "react";
-import { ReviewBox } from "./ReviewBox";
+import { ReviewBox } from "../../app/mypage/[uid]/review/_components/ReviewBox";
 import { ReviewMiniBox } from "./ReviewMiniBox";
+import { useRouter } from "next/navigation";
 
 export function ReviewInfo() {
   const [count, setCount] = useState(5);
   const [review, setReview] = useState([]);
+
+  const router = useRouter();
+  const handleClick = () => {
+    router.push("/mypage/1/review");
+  };
 
   useEffect(() => {
     (async () => {
@@ -24,22 +30,20 @@ export function ReviewInfo() {
   }, []);
 
   return (
-    <div>
+    <div style={{ marginTop: "20px", width: "100%" }}>
       <div
-        className="badge"
-        style={{
-          padding: "10px",
-          margin: "30px 0",
-          backgroundColor: "lightGray",
-          color: "gray",
-          fontSize: "16px",
-        }}
-      ></div>
-      <div className="d-flex justify-content-between">
-        <h5>판매자 후기({count})  ★4.5</h5>
-        <RouteButtonLight url={"/living/1/review"} text={"더보기"} />
+        className="d-flex justify-content-between"
+        style={{ margin: "30px 0 10px 0" }}
+      >
+        <h5>후기({count}) ★ 0.0</h5>
+        <div style={{ color: "gray", fontSize: "15px" }} onClick={handleClick}>
+          전체보기
+        </div>
       </div>
-      <div className="row flex-nowrap overflow-auto g-2">
+      <div
+        className="row flex-nowrap overflow-auto g-2"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
         {review.map((e, i) => (
           <ReviewMiniBox
             key={e["pavilion_review_id"]}
@@ -47,9 +51,9 @@ export function ReviewInfo() {
             nickname={e["nickname"]}
             date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
             helpful={e["helpful"]}
-            tag={e["tag"]}
+            tag={JSON.parse(e["tag"])}
             comment={e["pavilion_review_text"]}
-            images={e["pavilion_review_images"]}
+            images={JSON.parse(e["pavilion_review_images"])}
           />
         ))}
       </div>
