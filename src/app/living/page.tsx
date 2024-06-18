@@ -1,4 +1,6 @@
+import CategoryButton from "@/components/CategoryButton";
 import { LivingCardList } from "@/components/living/LivingCardList";
+import SearchComponent from "@/components/SearchComponent";
 import React from "react";
 import { isBrowser, isMobile } from "react-device-detect";
 
@@ -15,61 +17,41 @@ export default function Living() {
             style={{ width: "100%", marginLeft: "0", overflow: "hidden", padding: "0", position: "relative" }}
           >
             <div className="row" style={{ width: "auto%", marginLeft: "0", height: "80px" }}>
-              <div className="btn" style={{ width: "auto" }}>
-                <div style={{ width: "65px", height: "37px" }}>
-                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
-                </div>
-                <div style={{ fontSize: "15px" }}>전체</div>
-              </div>
-              <div className="btn" style={{ width: "auto" }}>
-                <div style={{ width: "65px", height: "37px" }}>
-                  <img
-                    src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/pavilion.png"}
-                    width={30}
-                  ></img>
-                </div>
-                <div style={{ fontSize: "15px" }}>숙소</div>
-              </div>
-              <div className="btn" style={{ width: "auto" }}>
-                <div style={{ width: "65px", height: "37px" }}>
-                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/tour.png"} width={30}></img>
-                </div>
-                <div style={{ fontSize: "15px" }}>투어</div>
-              </div>
-              <div style={{width:"auto", position: "absolute", top: 0, right:0, borderLeft:"2px solid gray", backgroundColor:"white"}}>
-                <input
-                  style={{width:"300px", marginLeft:"20px", height:"40px"}}
-                  placeholder={" 찾고 싶은 내용을 검색해보세요"}/>
-                <div className="btn"
-                style={{width:"auto", backgroundColor:"white", borderRadius:"0"}}
-                data-bs-toggle="modal"
-                data-bs-target={`#search_modal`}>
-                  <div style={{width:"70px", height:"37px"}}>
-                    <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/search.png"} width={30}></img>
-                  </div>
-                  <div style={{fontSize:"15px"}} >
-                    검색
-                  </div>
-                </div>
-              </div>      
-          </div>
-            <div style={{margin:"50px 0"}}>
+              <CategoryButton
+                title={"전체"}
+                imgSrc={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"}
+              />
+              <CategoryButton
+                title={"숙소"}
+                imgSrc={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/pavilion.png"}
+                category={"숙소"}
+              />
+              <CategoryButton
+                title={"투어"}
+                imgSrc={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/tour.png"}
+                category={"투어"}
+              />
+              <SearchComponent />
+            </div>
+            <div style={{ margin: "50px 0" }}>
               <LivingCardList numShowItems={4} />
             </div>
           </div>
         </div>
-        )}
+      )}
 
-        {isMobile &&
-          <div  style={{width:"101vw", marginLeft:"-4vw", overflow:"hidden"}}>
-            <div style={{ width: "100%", fontSize: "20px", fontWeight: "600", margin: "30px 0 20px 0", paddingLeft:"4vw" }}>
-            <span style={{color:"#314FC0"}}>무료로</span> 새로운 삶을 경험해보세요
-            </div>
-            <div style={{width:"97%"}}>
-              <LivingCardList numShowItems={4} />
-            </div>
+      {isMobile && (
+        <div style={{ width: "101vw", marginLeft: "-4vw", overflow: "hidden" }}>
+          <div
+            style={{ width: "100%", fontSize: "20px", fontWeight: "600", margin: "30px 0 20px 0", paddingLeft: "4vw" }}
+          >
+            <span style={{ color: "#314FC0" }}>무료로</span> 새로운 삶을 경험해보세요
           </div>
-        }
+          <div style={{ width: "97%" }}>
+            <LivingCardList numShowItems={4} />
+          </div>
+        </div>
+      )}
     </main>
   );
 }
