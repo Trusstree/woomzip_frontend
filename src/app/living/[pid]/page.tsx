@@ -17,18 +17,18 @@ export default function Parvilion() {
           </div>
           <div className="col-3">
             <div style={{ height: "50%", overflow: "hidden" }}>
-              <img src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg" style={{ width: "100%", height: "196px", objectFit: "cover" }} />
+              <img src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg" style={{ width: "100%", height: "196px", objectFit: "cover" }} />
             </div>
             <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
-              <img src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg" style={{ width: "100%", height: "196px", objectFit: "cover" }} />
+              <img src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg" style={{ width: "100%", height: "196px", objectFit: "cover" }} />
             </div>
           </div>
           <div className="col-3">
             <div style={{ height: "50%", overflow: "hidden", borderRadius: "0 10px 0 0" }}>
-              <img src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg" style={{ width: "100%", height: "196px", objectFit: "cover" }} />
+              <img src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver4.jpeg" style={{ width: "100%", height: "196px", objectFit: "cover" }} />
             </div>
             <div style={{ height: "50%", marginTop: "4px", overflow: "hidden", borderRadius: "0 0 10px 0" }}>
-              <img src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg" style={{ width: "100%", height: "196px", objectFit: "cover" }} />
+              <img src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver5.jpeg" style={{ width: "100%", height: "196px", objectFit: "cover" }} />
             </div>
           </div>
           <div className="btn" style={{ position: "absolute", right: "25px", bottom: "15px", backgroundColor: "white", opacity: "0.7", width: "150px" }}>

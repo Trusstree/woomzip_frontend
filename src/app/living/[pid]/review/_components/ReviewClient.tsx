@@ -23,25 +23,31 @@ export default function ReviewClient() {
 
   return (
     <>
-      <div style={{ margin: "40px 0 30px 0" }}>
-        <span style={{ fontSize: "25px", margin: "0", color: "#101648" }}>후기 </span>
-        <span style={{ fontSize: "25px", marginLeft: "15px", color: "gray" }}>({count})</span>
-        <RouteButtonLight url={"/living/1/review/write"} text={"후기쓰기"} />
-      </div>
-      <div>
-        {review.map((e, i) => (
-          <ReviewBox
-            key={i}
-            id={e["fk_pavilion_id"]}
-            index={i}
-            nickname={e["nickname"]}
-            date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
-            helpful={e["helpful"]}
-            tag={JSON.parse(e["tag"])}
-            comment={e["pavilion_review_text"]}
-            images={JSON.parse(e["pavilion_review_images"])}
-          />
-        ))}
+      <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
+        <div style={{ margin: "40px 0 30px 0" }}>
+          <span style={{ fontSize: "25px", margin: "0", color: "#101648" }}>
+            후기{" "}
+          </span>
+          <span style={{ fontSize: "25px", marginLeft: "15px", color: "gray" }}>
+            ({count})
+          </span>
+          <RouteButtonLight url={"/living/1/review/write"} text={"후기쓰기"} />
+        </div>
+        <div>
+          {review.map((e, i) => (
+            <ReviewBox
+              key={i}
+              id={e["fk_pavilion_id"]}
+              index={i}
+              nickname={e["nickname"]}
+              date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
+              helpful={e["helpful"]}
+              tag={JSON.parse(e["tag"])}
+              comment={e["pavilion_review_text"]}
+              images={JSON.parse(e["pavilion_review_images"])}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

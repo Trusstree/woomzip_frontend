@@ -41,10 +41,10 @@ export function LivingCardList(props: LivingListProps) {
 
   return (
     <>
-      <BrowserView>
+      
         <div className="row">
           {livingData?.map((e, i) => (
-            <div className="col-md-4 col-lg-3" key={i}>
+            <BrowserView className="col-md-4 col-lg-3" key={i}>
               <LivingCard
                 company={e["company"]}
                 title={e["title"]}
@@ -53,15 +53,14 @@ export function LivingCardList(props: LivingListProps) {
                 url={e["url"]}
                 context={e["context"]}
               />
-            </div>
+            </BrowserView>
           ))}
         </div>
-      </BrowserView>
 
-      <MobileView>
-        <div className="row" style={{ width: "100%", padding: "5px", margin: "0 0 100px 0" }}>
+      
+        {/* <div className="row" style={{ width: "100%", padding: "5px", margin: "0 0 100px 0" }}> */}
           {livingData?.map((e, i) => (
-            <div className="col-12" key={i}>
+            <MobileView className="col-12" key={i}>
               <LivingCard
                 company={e["company"]}
                 title={e["title"]}
@@ -70,10 +69,10 @@ export function LivingCardList(props: LivingListProps) {
                 url={e["url"]}
                 context={e["context"]}
               />
-            </div>
+            </MobileView>
           ))}
-        </div>
-      </MobileView>
+        {/* </div> */}
+      
     </>
   );
 }

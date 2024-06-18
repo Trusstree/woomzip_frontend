@@ -4,15 +4,26 @@ import { badgeStyles } from "@/lib/badgeStyles";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, images }) {
+export function ReviewMiniBox({
+  id,
+  nickname,
+  date,
+  helpful,
+  tag,
+  comment,
+  images,
+}) {
   const router = useRouter();
   // function handleClick() {
   //   // e.target.value
   //   router.push(url);
   // }
-  console.log(tag);
 
+  useEffect(() => {
+    console.log("asd");
+  }, []);
   return (
     <div
       className="card"
@@ -28,7 +39,13 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
     >
       <div
         className="container row"
-        style={{ float: "right", margin: "0", padding: "0", width: "100%", height: "150px" }}
+        style={{
+          float: "right",
+          margin: "0",
+          padding: "0",
+          width: "100%",
+          height: "150px",
+        }}
       >
         <div className="col-9" style={{ height: "150px" }}>
           <div className="pt-2" style={{ color: "gray" }}>
@@ -59,7 +76,7 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
             className="card-img-top mt-2"
             style={{ width: 110, borderRadius: "10px", objectFit: "cover" }}
             alt="main-img"
-            src={images[0]}
+            src={JSON.parse(images)[0]}
             width={110}
             height={110}
             unoptimized={true}
@@ -67,21 +84,22 @@ export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, image
         </div>
       </div>
       <div className="container">
-        {tag.map((badge, index) => (
-          <span
-            className="badge"
-            key={index}
-            style={{
-              padding: "6px",
-              marginRight: "2px",
-              backgroundColor: badgeStyles(badge),
-              color: "white",
-              fontWeight:"400"
-            }}
-          >
-            {badge}
-          </span>
-        ))}
+        {tag &&
+          JSON.parse(tag).map((badge, index) => (
+            <span
+              className="badge"
+              key={index}
+              style={{
+                padding: "6px",
+                marginRight: "2px",
+                backgroundColor: badgeStyles(badge),
+                color: "white",
+                fontWeight: "400",
+              }}
+            >
+              {badge}
+            </span>
+          ))}
       </div>
     </div>
   );

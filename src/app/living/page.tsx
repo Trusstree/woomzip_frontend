@@ -57,7 +57,8 @@ export default function Living() {
               <LivingCardList numShowItems={4} />
             </div>
           </div>
-        }
+        </div>
+        )}
 
         {isMobile &&
           <div  style={{width:"101vw", marginLeft:"-4vw", overflow:"hidden"}}>

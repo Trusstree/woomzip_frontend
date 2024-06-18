@@ -4,6 +4,11 @@ import PostList from "@/components/posts/PostList";
 import PostMenu from "@/components/posts/PostMenu";
 import { Suspense } from "react";
 import { LivingCardList } from "@/components/living/LivingCardList";
+import { getUserdataByToken } from "@/lib/parseUtil";
+import { cookies } from "next/headers";
+import Link from "next/link";
+import House from "./_components/House";
+import ProfileImageBox from "./_components/ProfileImageBox";
 
 
 async function create(uid: string | number) {
