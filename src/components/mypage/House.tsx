@@ -19,7 +19,7 @@ export default function House({ userData, isYou }) {
         {isYou && (
           <div
             className="btn"
-            style={{ fontSize:"14px"}}
+            style={{ fontSize:"14px", color:"blue"}}
             onClick={() => {
             router.push(`${pathname}/house?method=add`);
             }}

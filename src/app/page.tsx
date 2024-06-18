@@ -66,7 +66,7 @@ export default function Home() {
                 horizontalScroll={true}
               >
                 <Suspense>
-                  <LivingCardList />
+                  <LivingCardList numShowItems={4} />
                 </Suspense>
               </PostMenu>
             </div>
@@ -99,7 +99,7 @@ export default function Home() {
                무료 촌캉스
               </div>
               <div className="row" style={{width:"100%"}}>
-                <LivingCardList />
+                <LivingCardList numShowItems={4}/>
               </div>
             </div>
 

@@ -20,7 +20,7 @@ export default function MyHouseCard(props: MainPagePostProps) {
 
   return (
       <>
-      <BrowserView className="col-md-4 col-lg-3">
+      <BrowserView className="col-md-6 col-lg-4">
         <div
             className="card d-flex flex-column align-items-left w-100"
             onClick={() => {router.push(`/house/${data["house_id"]}`);
@@ -33,7 +33,7 @@ export default function MyHouseCard(props: MainPagePostProps) {
             alt={`${data["house_explanation"]}`}
             width={220}
             height={220}
-            style={{ objectFit: "cover", width: "88%", height: "250px", borderRadius: "10px 10px 0 0" }}
+            style={{ objectFit: "cover", width: "100%", height: "250px", borderRadius: "10px 10px 0 0" }}
             placeholder={"blur"}
             blurDataURL={"/blur_image.png"}
           />

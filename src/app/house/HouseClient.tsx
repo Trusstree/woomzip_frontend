@@ -90,101 +90,126 @@ export default function Home() {
                   </button>
                 </div>
               </div>*/}
-          <div className="container" style={{width:"100%", marginLeft:"0", overflow:"hidden", padding:"0", position:"relative"}}>
+          <div className="container" style={{width:"100%", marginLeft:"0", marginBottom:"40px", overflow:"hidden", padding:"0", position:"relative"}}>
             <div className="row" style={{width:"auto%", marginLeft:"0", height:"80px"}}>
               <div className="btn" style={{width:"auto"}}>
-                <div style={{width:"70px", height:"37px"}}>
-                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={29}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
                 </div>
                 <div style={{fontSize:"15px"}}>
                   전체
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
-                <div style={{fontSize:"15px"}}>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>                <div style={{fontSize:"15px"}}>
                   주택
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   세컨하우스
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   농막
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   부모님과
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   아이들과
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   가성비
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   고급스러운
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   특이한
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   미국식
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   유럽식
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   모던한
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   아늑한
                 </div>
               </div>
               <div className="btn" style={{width:"auto"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"} width={70}></img>
+                <div style={{width:"65px", height:"37px"}}>
+                  <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} width={30}></img>
+                </div>
                 <div style={{fontSize:"15px"}}>
                   탁 트여있는
                 </div>
               </div>
             </div>
             <div className="btn"
-              style={{width:"100px", position: "absolute", top: 0, right:0, backgroundColor:"white", borderLeft:"2px solid gray", borderRadius:"0"}}
+              style={{width:"auto", position: "absolute", top: 0, right:0, backgroundColor:"white", borderLeft:"2px solid gray", borderRadius:"0"}}
               data-bs-toggle="modal"
               data-bs-target={`#search_modal`}>
               <div style={{width:"70px", height:"37px"}}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"} width={29}></img>
+                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"} width={30}></img>
               </div>
               <div style={{fontSize:"15px"}} >
                 필터

@@ -23,8 +23,14 @@ const LivingCardExample = [
   },
 ];
 
-export function LivingCardList() {
+type LivingListProps = { 
+  numShowItems: number;
+  numShowPages?: number;
+};
+
+export function LivingCardList(props: LivingListProps) {
   const [livingData, setLivingData] = useState(LivingCardExample);
+  const { numShowItems, numShowPages } = props;
 
   useEffect(() => {
     (async () => {

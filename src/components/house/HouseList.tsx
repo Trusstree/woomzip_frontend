@@ -4,7 +4,7 @@ import Pagination from "../Pagination";
 import HouseCardPlaceholder from "./HouseCardPlaceholder";
 import HouseCard from "./HouseCard";
 
-type HousePostProps = {
+type HousePostProps = { 
   houseData: any[];
   count: number;
   numShowItems: number;

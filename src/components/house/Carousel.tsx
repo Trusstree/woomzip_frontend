@@ -11,14 +11,14 @@ type CarouselProps = {
 
 const CarouselList = [
   {
-    title: "전원생활의 시작을 함께, 움집",
+    title: "움집 서비스 알아보기",
     img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/222.jpg",
-    url: `/living/1`,
+    url: `/service`,
   },
   {
-    title: "자연 속 작은 집",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/111.jpg",
-    url: `/living/1`,
+    title: "움집 속 AI 타잔 알아보기",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/444.png",
+    url: `/service`,
   },
 ];
 
@@ -69,8 +69,8 @@ export default function Carousel(props: CarouselProps) {
                 src={e.img}
                 alt={"홈"}
               />
-              <div className="carousel-caption" style={{ fontSize: "50px", fontWeight: "600" }}>
-                <div style={{ marginBottom: "200px", color: "white" }}>
+              <div className="carousel-caption">
+                <div style={{color: "white", fontSize:"40px", marginBottom:"10px", fontWeight: "600"}}>
                   {e.title}
                 </div>
               </div>

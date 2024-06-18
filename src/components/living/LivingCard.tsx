@@ -43,7 +43,7 @@ export function LivingCard({ company, title, addr, img, url, context }) {
     if (url) router.push(url);
   }
 
-  return (
+  return ( 
     <>
       <div className="card" style={{ border: "none", width: "100%", marginBottom: "15px" }}>
         <Swiper

@@ -37,8 +37,8 @@ export function ReviewInfo() {
       >
       </div>
       <div className="d-flex justify-content-between">
-        <h5>판매자 후기({count})  4.5/5.0 ⭐️⭐️⭐️⭐️⭐️</h5>
-        <RouteButtonLight url={"/living/1/review"} text={"전체보기"} />
+        <h5>판매자 후기({count})  ★4.5</h5>
+        <RouteButtonLight url={"/living/1/review"} text={"더보기"} />
       </div>
       <div className="row flex-nowrap overflow-auto g-2">
         {review.map((e, i) => (
