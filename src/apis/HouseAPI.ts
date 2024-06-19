@@ -60,3 +60,33 @@ export const updateHouse = async (house: any) => {
 
   return [data, error];
 };
+
+export const postHouseReview = async (body: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await privateApi.post(`/review/house/create`, body);
+    data = result?.data;
+  } catch (err) {
+    error = err.response?.data;
+  }
+
+  return [data, error];
+};
+
+export const getHouseReviews = async (houseNum: number) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await publicApi.get(`/house/review/${houseNum}`, {
+      params: {},
+      headers: {},
+    });
+
+    data = result?.data;
+  } catch (err) {
+    error = err.response?.data;
+  }
+
+  return [data, error];
+};

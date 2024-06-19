@@ -10,7 +10,7 @@ export function ReviewBox({
   id,
   index,
   date,
-  helpful,
+  rating,
   tag,
   comment,
   images,
@@ -35,13 +35,8 @@ export function ReviewBox({
           boxShadow: "3px 3px 13px rgba(0, 0, 0, 0.2)",
         }}
       >
-        <div className="d-flex justify-content-between">
-          <div style={{ color: "gray", padding: "10px" }}>
-            {nickname} |<span> {toStringByFormatting(new Date(date))}</span>
-          </div>
-          <div style={{ color: "gray", padding: "10px" }}>
-            {"판매자 이름 > 제품구매 후기"}
-          </div>
+        <div style={{ color: "gray", padding: "10px" }}>
+          {nickname} |<span> {toStringByFormatting(new Date(date))}</span>
         </div>
         <div style={{ padding: "10px" }}>★ 0.0</div>
         <div className="container row" style={{ margin: "0", padding: "0" }}>

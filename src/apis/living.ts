@@ -78,14 +78,19 @@ export const postReservation = async (body: any) => {
   return [data, error];
 };
 
-export const getReservation = async (params: "pending" | "confirmed" | "rejected") => {
+export const getReservation = async (
+  params: "pending" | "confirmed" | "rejected"
+) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/pavilion/reservation/check-apply/${params}`, {
-      params: {},
-      headers: {},
-    });
+    const result = await privateApi.get(
+      `/pavilion/reservation/check-apply/${params}`,
+      {
+        params: {},
+        headers: {},
+      }
+    );
 
     data = result?.data;
   } catch (err) {
@@ -99,10 +104,13 @@ export const getReservationConfirm = async (pid: number, params: 1 | 0) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/pavilion/reservation/confirm/${pid}/${params}`, {
-      params: {},
-      headers: {},
-    });
+    const result = await privateApi.get(
+      `/pavilion/reservation/confirm/${pid}/${params}`,
+      {
+        params: {},
+        headers: {},
+      }
+    );
 
     data = result?.data;
   } catch (err) {
@@ -116,10 +124,13 @@ export const getReservationUnavailable = async (reservationNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await publicApi.get(`/pavilion/reservation/unavailable/${reservationNum}`, {
-      params: {},
-      headers: {},
-    });
+    const result = await publicApi.get(
+      `/pavilion/reservation/unavailable/${reservationNum}`,
+      {
+        params: {},
+        headers: {},
+      }
+    );
 
     data = result?.data;
   } catch (err) {

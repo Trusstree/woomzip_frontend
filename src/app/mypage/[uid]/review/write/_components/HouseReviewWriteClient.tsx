@@ -1,8 +1,9 @@
 "use client";
 
-import { postPavilionReview } from "@/apis/living";
+import { postHouseReview } from "@/apis/HouseAPI";
 import { HouseReviewImageInputComponent } from "./HouseReviewImageInput";
 import { HouseReviewToggle } from "./HouseReviewToggle";
+import { Rating } from "./Rating";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -13,8 +14,9 @@ export function HouseReviewWriteClient() {
   const [images, setImages] = useState([]);
   const [tags, setTags] = useState([]);
   const [helpful, setHelpful] = useState(true);
+  const [rating, setRating] = useState(0); // 별점 상태 추가
 
-  const handleBadge = (e: any) => {
+  const handleBadge = (e) => {
     setTags((oldValues) => {
       const arr = oldValues;
       if (!arr.includes(e.target.value) && arr.length < 5) {
@@ -22,7 +24,7 @@ export function HouseReviewWriteClient() {
         arr.push(e.target.value);
       } else {
         e.target.checked = false;
-        return arr.filter((elem) => elem != e.target.value);
+        return arr.filter((elem) => elem !== e.target.value);
       }
       return arr;
     });
@@ -30,15 +32,20 @@ export function HouseReviewWriteClient() {
 
   const submit = async () => {
     const body = {
-      pavilion_id: 1,
+      house_id: 1,
       review: comment,
       tag: tags,
+      rating: rating, // 별점 추가
       review_img: images,
-      helpful: helpful,
     };
-    console.log(body);
 
-    const [data, error] = await postPavilionReview(body);
+    // 입력된 값을 콘솔에 출력
+    console.log("Comment:", comment);
+    console.log("Images:", images);
+    console.log("Tags:", tags);
+    console.log("Rating:", rating);
+
+    const [data, error] = await postHouseReview(body);
     if (error) {
       console.error(error);
       return;
@@ -55,7 +62,6 @@ export function HouseReviewWriteClient() {
         <div style={{ fontSize: "21px", fontWeight: "500" }}>
           키워드를 선택해주세요. (최대 5개 선택가능)
         </div>
-        {/* 태그 제한 5개 구현 안딤 */}
         <div>
           <div style={{ width: "100%" }}>
             <HouseReviewToggle
@@ -120,7 +126,6 @@ export function HouseReviewWriteClient() {
         <div style={{ fontSize: "21px", fontWeight: "500" }}>
           사진을 첨부해주세요.
         </div>
-        {/* 여기는 사진을 여러장 첨부할 수 있어야함. 일단 틀만 만들어 놓음 */}
         <div className="row">
           {images.map((e, i) => (
             <img
@@ -148,7 +153,6 @@ export function HouseReviewWriteClient() {
         <div style={{ fontSize: "21px", fontWeight: "500" }}>
           후기를 남겨주세요.
         </div>
-        {/* 텍스트 첨부 */}
         <textarea
           className="container"
           style={{
@@ -184,6 +188,7 @@ export function HouseReviewWriteClient() {
         <div style={{ fontSize: "21px", fontWeight: "500" }}>
           만족도를 별점으로 알려주세요
         </div>
+        <Rating rating={rating} setRating={setRating} />
       </div>
 
       <div

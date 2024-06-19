@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { ReviewBox } from "@/app/mypage/[uid]/review/_components/ReviewBox";
-import { getLivingReviews } from "@/apis/living";
+import { getHouseReviews } from "@/apis/HouseAPI";
 import { useRouter } from "next/navigation";
 
 export default function ReviewClient() {
@@ -10,23 +10,28 @@ export default function ReviewClient() {
   const [count, setCount] = useState(17);
 
   const router = useRouter();
-  // function handleClick() {
-  //   // e.target.value
-  //   router.push(url);
-  // }
+
   const handleClick = () => {
     router.push("/mypage/[uid]/review/write");
   };
 
   useEffect(() => {
     (async () => {
-      const [data, error] = await getLivingReviews(1);
+      const [data, error] = await getHouseReviews(0);
       if (error) {
-        console.error(error);
+        console.error("Error fetching house reviews:", error);
         return;
       }
-      setReview(data.data[0]["pavilion_review"]);
-      setCount(data.data[0]["pavilion_review_cnt"]);
+
+      // 콘솔에 응답 출력
+      console.log("API Response:", data);
+
+      if (data && data.data && data.data[0]) {
+        setReview(data.data[0]["house_review"]);
+        setCount(data.data[0]["house_review_cnt"]);
+      } else {
+        console.error("Unexpected API response format:", data);
+      }
     })();
   }, []);
 
@@ -84,11 +89,11 @@ export default function ReviewClient() {
             {review.map((e, i) => (
               <ReviewBox
                 key={i}
-                id={e["fk_pavilion_id"]}
+                id={e["fk_house_id"]}
                 index={i}
                 nickname={e["nickname"]}
                 date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
-                helpful={e["helpful"]}
+                rating={e["house_review_rating"]}
                 tag={JSON.parse(e["tag"])}
                 comment={e["pavilion_review_text"]}
                 images={JSON.parse(e["pavilion_review_images"])}
