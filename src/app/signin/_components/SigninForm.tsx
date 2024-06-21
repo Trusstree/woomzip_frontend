@@ -1,10 +1,10 @@
 "use client";
 
 import { signinUser } from "@/apis/userAPI";
-import { encryptPW } from "@/actions/auth/cryptPW";
 import { useUser } from "@/app/ContextSession";
 import { alertError } from "@/lib/alertUtil";
 import { getUserdataByToken } from "@/lib/parseUtil";
+import { encryptPW } from "@/lib/authUtil";
 import { isID, isPassword, isRequired } from "@/lib/validator";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -36,7 +36,7 @@ export function SigninForm() {
 
     const encryptedData = {
       login_id: id,
-      password: await encryptPW(pw),
+      password: encryptPW(pw),
     };
 
     const [data, error] = await signinUser(encryptedData);

@@ -1,7 +1,7 @@
 "use client";
 
-import { encryptPW } from "@/actions/auth/cryptPW";
 import { useUser } from "@/app/ContextSession";
+import { encryptPW } from "@/lib/authUtil";
 import React, { useState } from "react";
 import { AddressInputForm } from "./AddressInputForm";
 
@@ -18,7 +18,7 @@ export default function TestClient() {
   const handlePW = async (e) => {
     console.log(e.target.value);
     setPW(e.target.value);
-    const _en = await encryptPW(e.target.value);
+    const _en = encryptPW(e.target.value);
     setEncryptedPW(_en);
   };
 

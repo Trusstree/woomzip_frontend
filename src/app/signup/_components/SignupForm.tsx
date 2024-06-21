@@ -1,6 +1,6 @@
 "use client";
 
-import { encryptPW } from "@/actions/auth/cryptPW";
+import { encryptPW } from "@/lib/cryptPW";
 import { signupUser, validateID, validateName } from "@/apis/userAPI";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/validator";
