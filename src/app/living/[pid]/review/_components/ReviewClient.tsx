@@ -7,7 +7,8 @@ import { useRouter } from "next/navigation";
 
 export default function ReviewClient() {
   const [review, setReview] = useState([]);
-  const [count, setCount] = useState(17);
+  const [count, setCount] = useState(0);
+  const [rating, setRating] = useState(0);
 
   const router = useRouter();
   // function handleClick() {
@@ -25,8 +26,10 @@ export default function ReviewClient() {
         console.error(error);
         return;
       }
+      console.log(data);
       setReview(data.data[0]["pavilion_review"]);
       setCount(data.data[0]["pavilion_review_cnt"]);
+      setRating(data.data[0]["pavilion_review_rating"]);
     })();
   }, []);
 
@@ -58,7 +61,7 @@ export default function ReviewClient() {
                 <div style={{ fontSize: "20px", margin: "10px 0" }}>
                   힐링리버<span>({count})</span>
                 </div>
-                <div style={{ fontSize: "20px", margin: "10px 0" }}>★ 0.0</div>
+                <div style={{ fontSize: "20px", margin: "10px 0" }}>★ {rating.toFixed(1)}</div>
                 <div style={{ fontSize: "20px", margin: "10px 0" }}>가장 많이 받은 키워드</div>
                 <div
                   className="btn"
@@ -83,7 +86,7 @@ export default function ReviewClient() {
                 index={i}
                 nickname={e["nickname"]}
                 date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
-                helpful={e["helpful"]}
+                rating={e["rating"]}
                 tag={JSON.parse(e["tag"])}
                 comment={e["pavilion_review_text"]}
                 images={JSON.parse(e["pavilion_review_images"])}
