@@ -1,5 +1,8 @@
 "use client";
 
+import useQuery from "@/hooks/useQuery";
+import { usePathname, useRouter } from "next/navigation";
+
 export default function CategoryButton({
   title,
   imgSrc,
@@ -9,9 +12,16 @@ export default function CategoryButton({
   imgSrc: string;
   category?: string;
 }) {
-  // href={`${"/community"}${"" ? `?category=${category}` : ``}`}
+  const router = useRouter();
+  const pathname = usePathname();
+  const { createQuery, getParamsString } = useQuery();
+  const handleClick = () => {
+    createQuery("category", category);
+    router.push(`${pathname}?${getParamsString()}`);
+  };
+
   return (
-    <div className="btn" style={{ width: "auto" }}>
+    <div className="btn" style={{ width: "auto" }} onClick={handleClick}>
       <div style={{ width: "65px", height: "37px" }}>
         <img src={imgSrc} width={30}></img>
       </div>

@@ -32,6 +32,9 @@ export default function useQuery() {
   const getParams = () => {
     return params;
   };
+  const getParamsString = () => {
+    return params.toString();
+  };
 
-  return { createQuery, createQueryString, getParams };
+  return { createQuery, createQueryString, getParams, getParamsString };
 }

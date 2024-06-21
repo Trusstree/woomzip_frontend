@@ -162,7 +162,7 @@ export default function Home() {
               <CategoryButton
                 title={"탁 트여있는"}
                 imgSrc={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"}
-                category={"탁 트여있는"}
+                category={"탁트여있는"}
               />
             </div>
             <div

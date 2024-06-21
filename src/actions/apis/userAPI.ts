@@ -18,6 +18,21 @@ export const getUser = async (uid: string | number) => {
   return [data, error];
 };
 
+export const getCompanyUser = async (uid: string | number) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await privateApi.get(`/mypage/company/${uid}`, {
+      params: {},
+    });
+    data = result?.data;
+  } catch (err) {
+    error = err.response?.data;
+  }
+
+  return [data, error];
+};
+
 export const postUser = async (user: any, token: string) => {
   let [data, error] = [undefined, undefined] as any;
 
