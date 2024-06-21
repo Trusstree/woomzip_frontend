@@ -1,6 +1,6 @@
 "use client";
 
-import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
+import { getUserAccessToken } from "@/actions/auth/authAction";
 import { postComment } from "@/apis/commentAPI";
 import { useEffect, useState } from "react";
 

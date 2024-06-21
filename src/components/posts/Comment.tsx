@@ -3,7 +3,7 @@
 import { cardCountText, elapsedTimeText } from "@/lib/stringUtil";
 import Image from "next/image";
 import { postCommentHeart, postCommentHeartRemove } from "@/apis/HeartAPI";
-import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
+import { getUserAccessToken } from "@/actions/auth/authAction";
 import { useEffect, useState } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
 
@@ -105,7 +105,7 @@ export default function Comment({ data, isCommentLike }) {
       </BrowserView>
 
       <MobileView>
-        <div style={{marginTop:"10px"}}>
+        <div style={{ marginTop: "10px" }}>
           <div className="d-flex justify-content-between" style={{ marginBottom: "15px" }}>
             <div className="row" style={{ width: "400px" }}>
               <div style={{ width: "40px", height: "30px" }}>
@@ -123,7 +123,9 @@ export default function Comment({ data, isCommentLike }) {
                   }}
                 />
               </div>
-              <div style={{ width: "auto", marginTop: "3px", fontWeight: "600", fontSize:"15px" }}>{data["nickname"]}</div>
+              <div style={{ width: "auto", marginTop: "3px", fontWeight: "600", fontSize: "15px" }}>
+                {data["nickname"]}
+              </div>
             </div>
             <div className="d-flex" style={{ width: "60px", padding: "0" }}>
               <div onClick={handleLike}>
@@ -155,10 +157,12 @@ export default function Comment({ data, isCommentLike }) {
                   </svg>
                 )}
               </div>
-              <div className="ms-1" style={{color:"gray"}}>{cardCountText(likeCount + isLike)}</div>
+              <div className="ms-1" style={{ color: "gray" }}>
+                {cardCountText(likeCount + isLike)}
+              </div>
             </div>
           </div>
-          <div style={{ width: "100%"}}>
+          <div style={{ width: "100%" }}>
             <div className="mb-2">{data["content"]}</div>
             <div>
               <div>{elapsedTimeText(data["updated_at"] || data["created_at"])}</div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
+import { getUserAccessToken } from "@/actions/auth/authAction";
 import { postComment } from "@/apis/commentAPI";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -68,8 +68,8 @@ export default function Comments({ pid, comments, setComments, isCommentLike }) 
           </div>
         </div>
       </BrowserView>
-      
-      <MobileView style={{width:"100%"}}>
+
+      <MobileView style={{ width: "100%" }}>
         <div style={{ fontSize: "18px", fontWeight: "600" }}>댓글</div>
         <div className="my-3 d-flex flex-column">
           <div className="d-flex">
@@ -86,7 +86,13 @@ export default function Comments({ pid, comments, setComments, isCommentLike }) 
               className="col-2"
               onClick={submit}
               disabled={at === undefined}
-              style={{ backgroundColor: "white", border: "none", color: "#314FC0", fontSize: "16px", fontWeight: "600" }}
+              style={{
+                backgroundColor: "white",
+                border: "none",
+                color: "#314FC0",
+                fontSize: "16px",
+                fontWeight: "600",
+              }}
             >
               등록
             </button>

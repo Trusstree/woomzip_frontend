@@ -1,4 +1,4 @@
-import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
+import { getUserAccessToken } from "@/actions/auth/authAction";
 import { getPostHeartUser } from "@/apis/HeartAPI";
 import { getPost } from "@/apis/postAPI";
 import Count from "@/components/posts/Count";

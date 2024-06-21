@@ -9,7 +9,7 @@ import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
 import Comments from "@/components/posts/Comments";
 import { getPostHeartUser } from "@/apis/HeartAPI";
-import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
+import { getUserAccessToken } from "@/actions/auth/authAction";
 import Count from "@/components/posts/Count";
 
 type PostpageProps = {
