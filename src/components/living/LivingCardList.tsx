@@ -1,8 +1,8 @@
 "use client";
 
+import { LivingCard } from "@/components/living/LivingCard";
 import { useEffect, useState } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
-import { LivingCard } from "./LivingCard";
 
 const LivingCardExample = [
   {
@@ -22,7 +22,7 @@ const LivingCardExample = [
   },
 ];
 
-type LivingListProps = { 
+type LivingListProps = {
   numShowItems: number;
   numShowPages?: number;
 };
@@ -41,38 +41,35 @@ export function LivingCardList(props: LivingListProps) {
 
   return (
     <>
-      
-        <div className="row">
-          {livingData?.map((e, i) => (
-            <BrowserView className="col-md-4 col-lg-3" key={i}>
-              <LivingCard
-                company={e["company"]}
-                title={e["title"]}
-                addr={e["addr"]}
-                img={e["img"]}
-                url={e["url"]}
-                context={e["context"]}
-              />
-            </BrowserView>
-          ))}
-        </div>
+      <div className="row">
+        {livingData?.map((e, i) => (
+          <BrowserView className="col-md-4 col-lg-3" key={i}>
+            <LivingCard
+              company={e["company"]}
+              title={e["title"]}
+              addr={e["addr"]}
+              img={e["img"]}
+              url={e["url"]}
+              context={e["context"]}
+            />
+          </BrowserView>
+        ))}
+      </div>
 
-      
-        {/* <div className="row" style={{ width: "100%", padding: "5px", margin: "0 0 100px 0" }}> */}
-          {livingData?.map((e, i) => (
-            <MobileView className="col-12" key={i}>
-              <LivingCard
-                company={e["company"]}
-                title={e["title"]}
-                addr={e["addr"]}
-                img={e["img"]}
-                url={e["url"]}
-                context={e["context"]}
-              />
-            </MobileView>
-          ))}
-        {/* </div> */}
-      
+      {/* <div className="row" style={{ width: "100%", padding: "5px", margin: "0 0 100px 0" }}> */}
+      {livingData?.map((e, i) => (
+        <MobileView className="col-12" key={i}>
+          <LivingCard
+            company={e["company"]}
+            title={e["title"]}
+            addr={e["addr"]}
+            img={e["img"]}
+            url={e["url"]}
+            context={e["context"]}
+          />
+        </MobileView>
+      ))}
+      {/* </div> */}
     </>
   );
 }

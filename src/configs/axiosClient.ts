@@ -1,6 +1,12 @@
+import {
+  onPrivateRequest,
+  onPrivateResponseError,
+  onPublicRequest,
+  onPublicResponseError,
+  onRequestError,
+  onResponse,
+} from "@/configs/interceptor";
 import axios from "axios";
-import { onPublicRequest, onPublicResponseError, onRequestError, onResponse } from "./interceptor";
-import { onPrivateRequest, onPrivateResponseError } from "./interceptor";
 
 // 인증이 필요없는 인스턴스
 export const publicApi = axios.create({

@@ -1,11 +1,10 @@
 "use client";
 
-import { cardCountText, cardPriceText } from "@/lib/stringUtil";
+import { cardPriceText } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CSSProperties } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
-import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { ChangeEventHandler, useEffect, useState } from "react";
 
 type ImageBoxProps = {

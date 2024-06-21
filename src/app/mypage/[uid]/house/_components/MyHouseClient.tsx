@@ -1,8 +1,8 @@
 "use client";
 
+import AddHouse from "@/app/mypage/[uid]/house/_components/AddHouse";
 import RouteButton from "@/components/RouteButton";
 import { useSearchParams } from "next/navigation";
-import AddHouse from "./AddHouse";
 
 export default function MyHouse({ uid }) {
   const params = useSearchParams();

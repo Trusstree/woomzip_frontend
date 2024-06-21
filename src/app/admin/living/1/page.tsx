@@ -1,5 +1,5 @@
+import { AdminLivingClient } from "@/app/admin/living/1/_components/AdminLivingClient";
 import React from "react";
-import { AdminLivingClient } from "./_components/AdminLivingClient";
 
 export default function confirm() {
   return (

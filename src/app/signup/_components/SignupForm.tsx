@@ -1,8 +1,8 @@
 "use client";
 
-import { encryptPW } from "@/lib/cryptPW";
-import { signupUser, validateID, validateName } from "@/apis/userAPI";
+import { signupUser, validateID, validateName } from "@/actions/apis/userAPI";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
+import { encryptPW } from "@/lib/authUtil";
 import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/validator";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -73,7 +73,7 @@ export function SignupForm() {
 
     const encryptedData = {
       login_id: id,
-      password: await encryptPW(pw),
+      password: encryptPW(pw),
       name: name,
       nickname: nickname,
       email: email,

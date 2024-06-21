@@ -1,4 +1,3 @@
-import { badgeStyles } from "@/lib/badgeStyles";
 import Image from "next/image";
 
 export function ReviewModal({ id, date, comment, tag, images, nickname }) {
@@ -12,20 +11,12 @@ export function ReviewModal({ id, date, comment, tag, images, nickname }) {
       tabIndex={-1}
     >
       <div className="modal-dialog modal-fullscreen">
-        <div
-          className="modal-content"
-          style={{ width: "100%", height: "100%" }}
-        >
+        <div className="modal-content" style={{ width: "100%", height: "100%" }}>
           <div className="modal-header">
             <h5 className="modal-title" id={`living_modal_${id}_Label`}>
               전체사진({images.length})
             </h5>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div className="modal-body">
             <div className="row">

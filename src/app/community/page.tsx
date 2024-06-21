@@ -3,8 +3,8 @@ import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
 import { Suspense } from "react";
 import { isMobile, isBrowser } from "react-device-detect";
-import CategoryButton from "../../components/CategoryButton";
 import SearchComponent from "@/components/SearchComponent";
+import CategoryButton from "@/components/CategoryButton";
 
 export default function Community() {
   const [numShowItems, numShowPages] = [24, 10];

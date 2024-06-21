@@ -1,11 +1,11 @@
 "use client";
 
-import { cardCountText, elapsedTimeText } from "@/lib/stringUtil";
-import Image from "next/image";
-import { postCommentHeart, postCommentHeartRemove } from "@/apis/HeartAPI";
+import { elapsedTimeText } from "@/lib/stringUtil";
+import { postCommentHeart, postCommentHeartRemove } from "@/actions/apis/HeartAPI";
 import { getUserAccessToken } from "@/actions/auth/authAction";
-import { useEffect, useState } from "react";
 import HeartComponent from "@/components/posts/HeartComponent";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Comment({ data, isCommentLike }) {
   const [isLike, setIsLike] = useState(0);

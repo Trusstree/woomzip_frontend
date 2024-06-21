@@ -1,9 +1,9 @@
 "use client";
 
+import { useUser } from "@/app/ContextSession";
 import { setS3Url } from "@/lib/s3Util";
 import moment from "moment";
 import { ChangeEvent } from "react";
-import { useUser } from "../../../../../ContextSession";
 
 type HouseReviewImageInputComponentProps = {
   name: string;
@@ -11,9 +11,7 @@ type HouseReviewImageInputComponentProps = {
   className?: string;
 };
 
-export function HouseReviewImageInputComponent(
-  props: HouseReviewImageInputComponentProps
-) {
+export function HouseReviewImageInputComponent(props: HouseReviewImageInputComponentProps) {
   const { name, setData, className } = props;
   const { userContext } = useUser();
   const uid = userContext?.uid;
@@ -23,10 +21,7 @@ export function HouseReviewImageInputComponent(
     const title = e.target.name + moment().format("YYYYMMDDHHmmss");
     const url = `${process.env.NEXT_PUBLIC_AWS_S3_URL}/test_house/pavilion/1/${uid}/${title}`;
 
-    const [response, error] = await setS3Url(
-      `test_house/pavilion/1/${uid}/${title}`,
-      img
-    );
+    const [response, error] = await setS3Url(`test_house/pavilion/1/${uid}/${title}`, img);
     if (!error) {
       setData((oldValues) => [...oldValues, url]);
     } else console.error(error);
@@ -35,13 +30,7 @@ export function HouseReviewImageInputComponent(
   return (
     <div className={className ? className : ""}>
       <label htmlFor={name}>
-        <img
-          src={"/blur_image.png"}
-          alt={name}
-          width={188}
-          height={188}
-          style={{ objectFit: "fill" }}
-        />
+        <img src={"/blur_image.png"} alt={name} width={188} height={188} style={{ objectFit: "fill" }} />
       </label>
       <input
         id={`${name}`}

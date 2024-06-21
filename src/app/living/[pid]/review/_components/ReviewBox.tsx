@@ -1,21 +1,12 @@
 "use client";
 
+import { ReviewModal } from "@/components/house/ReviewModal";
 import { badgeStyles } from "@/lib/badgeStyles";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ReviewModal } from "./ReviewModal";
 
-export function ReviewBox({
-  id,
-  index,
-  nickname,
-  date,
-  helpful,
-  tag,
-  comment,
-  images,
-}) {
+export function ReviewBox({ id, index, nickname, date, helpful, tag, comment, images }) {
   const router = useRouter();
   // function handleClick() {
   //   // e.target.value
@@ -39,9 +30,7 @@ export function ReviewBox({
           <div style={{ color: "gray", padding: "10px" }}>
             {nickname} |<span> {toStringByFormatting(new Date(date))}</span>
           </div>
-          <div style={{ color: "gray", padding: "10px" }}>
-            {"판매자 이름 > 살아보기 후기"}
-          </div>
+          <div style={{ color: "gray", padding: "10px" }}>{"판매자 이름 > 살아보기 후기"}</div>
         </div>
         <div style={{ padding: "10px" }}>★ 0.0</div>
         <div className="container row" style={{ margin: "0", padding: "0" }}>
@@ -100,10 +89,7 @@ export function ReviewBox({
             </div>
           </div>
         </div>
-        <div
-          className="containr"
-          style={{ width: "100%", float: "left", marginTop: "20px" }}
-        >
+        <div className="containr" style={{ width: "100%", float: "left", marginTop: "20px" }}>
           {tag.map((badge, index) => (
             <span
               className="badge"

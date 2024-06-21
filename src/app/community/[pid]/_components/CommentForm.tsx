@@ -1,7 +1,7 @@
 "use client";
 
 import { getUserAccessToken } from "@/actions/auth/authAction";
-import { postComment } from "@/apis/commentAPI";
+import { postComment } from "@/actions/apis/commentAPI";
 import { useEffect, useState } from "react";
 
 export default function CommentForm({ pid, isCommentLike }) {

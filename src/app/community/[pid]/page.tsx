@@ -1,12 +1,12 @@
 import { getUserAccessToken } from "@/actions/auth/authAction";
-import { getPostHeartUser } from "@/apis/HeartAPI";
-import { getPost } from "@/apis/postAPI";
+import { getPostHeartUser } from "@/actions/apis/HeartAPI";
+import { getPost } from "@/actions/apis/postAPI";
 import Count from "@/components/posts/Count";
 import PostList from "@/components/posts/PostList";
 import PostMenu from "@/components/posts/PostMenu";
+import CommentForm from "@/app/community/[pid]/_components/CommentForm";
+import Comment from "@/app/community/[pid]/_components/Comment";
 import DOMPurify from "isomorphic-dompurify";
-import CommentForm from "./_components/CommentForm";
-import Comment from "./_components/Comment";
 
 type PageParams = {
   pid: number;

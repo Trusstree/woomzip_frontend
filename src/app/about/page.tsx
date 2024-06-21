@@ -87,7 +87,7 @@ export default function About() {
         </div>
       </div>
 
-      <LivingCardList />
+      <LivingCardList numShowItems={4} />
     </main>
   );
 }

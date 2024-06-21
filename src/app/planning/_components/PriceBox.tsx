@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import PriceLine from "../../../components/planning/PriceLine";
 import { algorithm } from "@/lib/algorithm";
 import { simplePriceText } from "@/lib/stringUtil";
+import PriceLine from "@/components/planning/PriceLine";
 
 export default function PriceBox({ houseType, landCondition, roadCondition, addr, area, house }) {
   const [delivery, setDelivery] = useState([0, 0]);
@@ -37,12 +37,24 @@ export default function PriceBox({ houseType, landCondition, roadCondition, addr
 
   return (
     <div className="container" style={{ borderColor: "white", width: "100%", position: "sticky", bottom: "0" }}>
-      <div style={{fontSize:"20px", fontWeight:"600", marginBottom:"15px"}}>안녕하세요!<br/>저는 당신을 도와줄 <span style={{color: "#314FC0"}}>타잔</span>입니다</div>
+      <div style={{ fontSize: "20px", fontWeight: "600", marginBottom: "15px" }}>
+        안녕하세요!
+        <br />
+        저는 당신을 도와줄 <span style={{ color: "#314FC0" }}>타잔</span>입니다
+      </div>
       <div className="d-flex justify-content-between" style={{ lineHeight: "35px", marginBottom: "10px" }}>
-        <div style={{ fontSize: "20px", fontWeight: "600" }}>당신의 총 공사비용은,<br/><span style={{color:"#314FC0"}}>{simplePriceText(total[0])}~{simplePriceText(total[1])}</span><br/>으로 예상 됩니다</div>
+        <div style={{ fontSize: "20px", fontWeight: "600" }}>
+          당신의 총 공사비용은,
+          <br />
+          <span style={{ color: "#314FC0" }}>
+            {simplePriceText(total[0])}~{simplePriceText(total[1])}
+          </span>
+          <br />
+          으로 예상 됩니다
+        </div>
       </div>
       <hr />
-      
+
       <div className="d-flex justify-content-between" style={{ lineHeight: "35px" }}>
         <div style={{ fontSize: "16px", fontWeight: "500" }}>주택가격</div>
         <div style={{ fontSize: "14px" }}>{simplePriceText(price[0])}</div>

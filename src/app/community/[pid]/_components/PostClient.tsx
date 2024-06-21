@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { BrowserView, MobileView } from "react-device-detect";
-import { getPost } from "@/apis/postAPI";
+import { getPost } from "@/actions/apis/postAPI";
 import DOMPurify from "dompurify";
 import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
 import Comments from "@/components/posts/Comments";
-import { getPostHeartUser } from "@/apis/HeartAPI";
+import { getPostHeartUser } from "@/actions/apis/HeartAPI";
 import { getUserAccessToken } from "@/actions/auth/authAction";
 import Count from "@/components/posts/Count";
 

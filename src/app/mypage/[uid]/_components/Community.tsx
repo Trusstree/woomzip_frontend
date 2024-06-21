@@ -1,6 +1,6 @@
 "use client";
 
-import { getPosts } from "@/apis/postAPI";
+import { getPosts } from "@/actions/apis/postAPI";
 import PostList from "@/components/posts/PostList";
 import PostMenu from "@/components/posts/PostMenu";
 import { useSearchParams } from "next/navigation";

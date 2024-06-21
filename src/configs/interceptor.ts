@@ -1,7 +1,6 @@
+import { privateApi } from "@/configs/axiosClient";
 import { AxiosError } from "axios";
 import { cookies } from "next/headers";
-import { privateApi } from "./axiosClient";
-
 //public client 함수
 
 export const onPublicRequest = async (request: any) => {

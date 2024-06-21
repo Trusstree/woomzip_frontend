@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import PostCard from "./PostCard";
-import { getPosts } from "@/apis/postAPI";
+import { getPosts } from "@/actions/apis/postAPI";
 import { useSearchParams } from "next/navigation";
-import Pagination from "../Pagination";
-import PostCardPlaceHolder from "./PostCardPlaceholder";
+import PostCard from "@/components/posts/PostCard";
+import PostCardPlaceHolder from "@/components/posts/PostCardPlaceholder";
+import Pagination from "@/components/Pagination";
 
 type PostListProps = {
   numShowItems: number;

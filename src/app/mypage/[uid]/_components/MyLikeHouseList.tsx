@@ -5,7 +5,6 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Pagination from "../../../../components/Pagination";
 import HouseCardPlaceholder from "../../../../components/house/HouseCardPlaceholder";
 import HouseCard from "../../../../components/house/HouseCard";
-import { getLikeHouses } from "@/apis/Mypage";
 
 type HousePostProps = {
   numShowItems: number;

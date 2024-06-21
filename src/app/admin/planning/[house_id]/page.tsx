@@ -1,5 +1,5 @@
+import { AdminLivingClient } from "@/app/admin/planning/[house_id]/AdminLivingClient";
 import React from "react";
-import { AdminLivingClient } from "./AdminLivingClient";
 
 export default function confirm({ params }) {
   const { house_id } = params;

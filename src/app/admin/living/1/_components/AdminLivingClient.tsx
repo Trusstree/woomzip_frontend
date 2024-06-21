@@ -1,6 +1,6 @@
 "use client";
 
-import { getReservation } from "@/apis/living";
+import { getReservation } from "@/actions/apis/living";
 import { ReservationConfirm } from "@/app/admin/living/1/_components/ReservationConfirm";
 import useQuery from "@/hooks/useQuery";
 import { toStringByFormatting } from "@/lib/stringUtil";

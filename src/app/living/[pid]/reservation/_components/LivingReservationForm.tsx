@@ -1,10 +1,10 @@
 "use client";
 
-import CalenderForm from "@/app/living/[pid]/reservation/_components/CalenderForm"; // CalenderForm 컴포넌트 import 수정
+import CalenderForm from "@/app/living/[pid]/reservation/_components/CalenderForm";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import { useEffect, useState } from "react";
-import { getReservationUnavailable, postReservation } from "@/apis/living";
+import { getReservationUnavailable, postReservation } from "@/actions/apis/living";
 import { useRouter } from "next/navigation";
 
 export function LivingReservationForm() {

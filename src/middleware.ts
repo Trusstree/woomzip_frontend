@@ -1,8 +1,7 @@
 // middleware.ts
+import { accessTokenOption } from "@/configs/cookie";
+import { getUserdataByToken } from "@/lib/parseUtil";
 import { NextRequest, NextResponse } from "next/server";
-import { accessTokenOption } from "./configs/cookie";
-import { alertError } from "./lib/alertUtil";
-import { getUserdataByToken } from "./lib/parseUtil";
 
 export async function middleware(request: NextRequest, response: NextResponse) {
   //로그인하면 안 되는 페이지

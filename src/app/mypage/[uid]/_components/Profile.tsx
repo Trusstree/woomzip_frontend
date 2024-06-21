@@ -4,10 +4,10 @@ import { TextBoxComponent } from "@/components/forms/TextBoxComponent";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { setS3Url } from "@/lib/s3Util";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
-import { putUser } from "@/apis/userAPI";
+import { putUser } from "@/actions/apis/userAPI";
 import ImageBox from "@/app/mypage/[uid]/_components/ImageBox";
 import { useRouter } from "next/navigation";
-import { signout } from "@/actions/auth/signout";
+import { signout } from "@/actions/auth/authAction";
 
 type ProfileProps = {
   userData: any;

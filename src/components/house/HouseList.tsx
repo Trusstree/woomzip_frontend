@@ -1,10 +1,10 @@
 "use client";
 
-import Pagination from "../Pagination";
-import HouseCardPlaceholder from "./HouseCardPlaceholder";
-import HouseCard from "./HouseCard";
+import HouseCard from "@/components/house/HouseCard";
+import HouseCardPlaceholder from "@/components/house/HouseCardPlaceholder";
+import Pagination from "@/components/Pagination";
 
-type HousePostProps = { 
+type HousePostProps = {
   houseData: any[];
   count: number;
   numShowItems: number;

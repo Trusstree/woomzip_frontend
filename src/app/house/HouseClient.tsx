@@ -4,14 +4,14 @@ import PostMenu from "@/components/posts/PostMenu";
 import { HouseList } from "@/components/house/HouseList";
 import { useEffect, useState } from "react";
 import usePage from "@/hooks/usePage";
-import { getHouses } from "@/apis/HouseAPI";
+import { getHouses } from "@/actions/apis/HouseAPI";
 import { isBrowser, isMobile } from "react-device-detect";
-import { SearchModal } from "./_components/SearchModal";
-import SearchBox from "./_components/SearchBox";
-import FillteringButton from "./_components/FillteringButton";
-import ResetButton from "./_components/ResetButton";
 import CategoryButton from "@/components/CategoryButton";
 import { arraySort } from "@/lib/functionUtil";
+import { SearchModal } from "@/app/house/_components/SearchModal";
+import SearchBox from "@/app/house/_components/SearchBox";
+import FillteringButton from "@/app/house/_components/FillteringButton";
+import ResetButton from "@/app/house/_components/ResetButton";
 
 export default function Home() {
   const { page } = usePage();

@@ -1,13 +1,13 @@
+import RouteButton from "@/components/RouteButton";
 import { Children } from "@/types/props";
-import RouteButton from "../RouteButton";
 
 type PostMenuProps = {
-  title: string
-  children: Children
-  routeUrl?: string
-  routeText?: string
-  horizontalScroll?: boolean
-}
+  title: string;
+  children: Children;
+  routeUrl?: string;
+  routeText?: string;
+  horizontalScroll?: boolean;
+};
 
 export default function PostMenu(props: PostMenuProps) {
   const { title, children, routeUrl, routeText, horizontalScroll } = props;
@@ -15,16 +15,10 @@ export default function PostMenu(props: PostMenuProps) {
   return (
     <div className="">
       <div className="d-flex justify-content-between mt-2 mb-1">
-        <h5 style={{fontWeight:"600"}}>{title}</h5>
-        {(routeText&&routeUrl)?(
-        <RouteButton url={routeUrl}>
-          {routeText}
-        </RouteButton>)
-        :undefined}
+        <h5 style={{ fontWeight: "600" }}>{title}</h5>
+        {routeText && routeUrl ? <RouteButton url={routeUrl}>{routeText}</RouteButton> : undefined}
       </div>
-      <div className={`w-100 row ${horizontalScroll?"flex-nowrap overflow-auto":""}`}>
-        {children}
-      </div>
+      <div className={`w-100 row ${horizontalScroll ? "flex-nowrap overflow-auto" : ""}`}>{children}</div>
     </div>
   );
 }

@@ -1,11 +1,11 @@
 "use client";
 
 import { getUserAccessToken } from "@/actions/auth/authAction";
-import { postComment } from "@/apis/commentAPI";
+import { postComment } from "@/actions/apis/commentAPI";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Comment from "./Comment";
 import { BrowserView, MobileView } from "react-device-detect";
+import Comment from "@/components/posts/Comment";
 
 export default function Comments({ pid, comments, setComments, isCommentLike }) {
   const router = useRouter();

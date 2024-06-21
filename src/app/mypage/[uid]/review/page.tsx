@@ -1,5 +1,5 @@
+import ReviewClient from "@/app/mypage/[uid]/review/_components/ReviewClient";
 import React from "react";
-import ReviewClient from "./_components/ReviewClient";
 
 export default function Review() {
   return (

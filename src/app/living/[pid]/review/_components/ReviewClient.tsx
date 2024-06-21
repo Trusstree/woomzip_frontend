@@ -2,8 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { ReviewBox } from "@/app/living/[pid]/review/_components/ReviewBox";
-import { RouteButtonLight } from "@/components/living/RouteButtonLight";
-import { getLivingReviews } from "@/apis/living";
+import { getLivingReviews } from "@/actions/apis/living";
 import { useRouter } from "next/navigation";
 
 export default function ReviewClient() {
@@ -60,9 +59,7 @@ export default function ReviewClient() {
                   힐링리버<span>({count})</span>
                 </div>
                 <div style={{ fontSize: "20px", margin: "10px 0" }}>★ 0.0</div>
-                <div style={{ fontSize: "20px", margin: "10px 0" }}>
-                  가장 많이 받은 키워드
-                </div>
+                <div style={{ fontSize: "20px", margin: "10px 0" }}>가장 많이 받은 키워드</div>
                 <div
                   className="btn"
                   onClick={handleClick}
@@ -78,10 +75,7 @@ export default function ReviewClient() {
               </div>
             </div>
           </div>
-          <div
-            className="col-8"
-            style={{ marginTop: "40px", minWidth: "350px" }}
-          >
+          <div className="col-8" style={{ marginTop: "40px", minWidth: "350px" }}>
             {review.map((e, i) => (
               <ReviewBox
                 key={i}

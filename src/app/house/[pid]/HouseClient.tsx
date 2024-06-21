@@ -1,11 +1,10 @@
 "use client";
 
-import { getHouse } from "@/apis/HouseAPI";
+import { getHouse } from "@/actions/apis/HouseAPI";
 import { useEffect, useState } from "react";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
-import useQuery from "@/hooks/useQuery";
-import HouseExpl from "./_components/HouseExpl";
-import HouseRemocon from "./_components/HouseRemocon";
+import HouseExpl from "@/app/house/[pid]/_components/HouseExpl";
+import HouseRemocon from "@/app/house/[pid]/_components/HouseRemocon";
 
 type HouseComponentProps = {
   pid: number;

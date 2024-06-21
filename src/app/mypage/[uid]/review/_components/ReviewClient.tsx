@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { ReviewBox } from "@/app/mypage/[uid]/review/_components/ReviewBox";
-import { getHouseReviews } from "@/apis/HouseAPI";
+import { getHouseReviews } from "@/actions/apis/HouseAPI";
 import { useRouter } from "next/navigation";
 
 export default function ReviewClient() {
@@ -64,9 +64,7 @@ export default function ReviewClient() {
                   <span>판매자 이름({count})</span>
                 </div>
                 <div style={{ fontSize: "20px", margin: "10px 0" }}>★ 0.0</div>
-                <div style={{ fontSize: "20px", margin: "10px 0" }}>
-                  가장 많이 받은 키워드
-                </div>
+                <div style={{ fontSize: "20px", margin: "10px 0" }}>가장 많이 받은 키워드</div>
                 <div
                   className="btn"
                   onClick={handleClick}
@@ -82,10 +80,7 @@ export default function ReviewClient() {
               </div>
             </div>
           </div>
-          <div
-            className="col-8"
-            style={{ marginTop: "40px", minWidth: "350px" }}
-          >
+          <div className="col-8" style={{ marginTop: "40px", minWidth: "350px" }}>
             {review.map((e, i) => (
               <ReviewBox
                 key={i}
