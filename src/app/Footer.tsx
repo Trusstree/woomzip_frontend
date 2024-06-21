@@ -7,9 +7,9 @@ import RouteButton from "@/components/RouteButton";
 type FooterProps = {};
 
 export default function Footer(props: FooterProps) {
-  const infoURL = "./about";
-  const serviceURL = "./about/service";
-  const termsURL = "./about/terms";
+  const infoURL = "/about";
+  const serviceURL = "/about/service";
+  const termsURL = "/about/terms";
   const youtubeURL = "https://www.youtube.com/@buildintruss";
   const instagrmaURL = "https://www.instagram.com/buildintruss/";
   const naverBlogURL = "https://blog.naver.com/truss369";
