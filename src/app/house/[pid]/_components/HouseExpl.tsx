@@ -1,11 +1,11 @@
 "use client";
 
+import RowText from "@/app/house/[pid]/_components/RowText";
 import { ReviewInfo } from "@/components/house/ReviewInfo";
 import useQuery from "@/hooks/useQuery";
 import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
-import RowText from "./RowText";
 
 export default function HouseExpl({ pid, deliveryData, houseData, specificationData, optionData }) {
   const { createQueryString } = useQuery();

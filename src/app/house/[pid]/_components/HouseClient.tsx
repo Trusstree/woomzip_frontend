@@ -1,29 +1,20 @@
 "use client";
 
-import { getHouse } from "@/apis/HouseAPI";
-import { useCallback, useEffect, useState } from "react";
-import Image from "next/image";
+import { getHouse } from "@/actions/apis/HouseAPI";
 import { detailPriceText } from "@/lib/stringUtil";
-import { useRouter } from "next/navigation";
-import { getHousesHeartRemove, getHousesHeart } from "@/apis/HeartAPI";
-import { alertSuccess } from "@/lib/alertUtil";
+import { getHousesHeartRemove, getHousesHeart } from "@/actions/apis/HeartAPI";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import useQuery from "@/hooks/useQuery";
-import { useRef } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
-import { useUser } from "@/app/ContextSession";
 import { ReviewInfo } from "@/components/house/ReviewInfo";
+import { useCallback, useEffect, useState, useRef } from "react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-type HouseComponentProps = {
-  pid: number;
-};
-
-export function HouseClient(props: HouseComponentProps) {
+export function HouseClient({ pid }: { pid: number }) {
   const router = useRouter();
   const { createQueryString } = useQuery();
-  const { userContext } = useUser();
 
-  const { pid } = props;
   const [houseData, setHouseData] = useState(undefined);
   const [imageData, setImageData] = useState(undefined);
   const [optionData, setOptionData] = useState(undefined);

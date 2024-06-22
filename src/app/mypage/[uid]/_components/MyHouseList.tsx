@@ -1,10 +1,10 @@
 "use client";
 
-import { getHouses } from "@/apis/HouseAPI";
+import { getHouses } from "@/actions/apis/HouseAPI";
+import HouseCardPlaceholder from "@/components/house/HouseCardPlaceholder";
+import Pagination from "@/components/Pagination";
 import { useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import HouseCardPlaceholder from "../../../../components/house/HouseCardPlaceholder";
-import Pagination from "../../../../components/Pagination";
 import MyHouseCard from "./MyHouseCard";
 
 type HousePostProps = {

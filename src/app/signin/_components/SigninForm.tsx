@@ -1,6 +1,6 @@
 "use client";
 
-import { signinUser } from "@/apis/userAPI";
+import { signinUser } from "@/actions/apis/userAPI";
 import { useUser } from "@/app/ContextSession";
 import { alertError } from "@/lib/alertUtil";
 import { getUserdataByToken } from "@/lib/parseUtil";

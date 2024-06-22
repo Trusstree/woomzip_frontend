@@ -6,7 +6,7 @@ import Carousel from "@/components/house/Carousel";
 import { HouseList } from "@/components/house/HouseList";
 import PostList from "@/components/posts/PostList";
 import { Suspense } from "react";
-import { getHouses } from "@/apis/HouseAPI";
+import { getHouses } from "@/actions/apis/HouseAPI";
 import { BrowserView, MobileView } from "react-device-detect";
 import { LivingCardList } from "@/components/living/LivingCardList";
 
@@ -92,12 +92,10 @@ export default function Home() {
               <PostList numShowItems={5} />
             </div>
 
-            <div style={{width:"102vw", marginTop:"30vw", height:"160vw"}}>
-              <div style={{paddingLeft:"4vw", fontSize:"18px", fontWeight:"600"}}>
-               무료 촌캉스
-              </div>
-              <div className="row" style={{width:"100%"}}>
-                <LivingCardList numShowItems={4}/>
+            <div style={{ width: "102vw", marginTop: "30vw", height: "160vw" }}>
+              <div style={{ paddingLeft: "4vw", fontSize: "18px", fontWeight: "600" }}>무료 촌캉스</div>
+              <div className="row" style={{ width: "100%" }}>
+                <LivingCardList numShowItems={4} />
               </div>
             </div>
 

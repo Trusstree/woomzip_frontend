@@ -1,6 +1,6 @@
 "use client";
 
-import { getReservationConfirm } from "@/apis/living";
+import { getReservationConfirm } from "@/actions/apis/living";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 
 export function ReservationConfirm({

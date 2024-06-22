@@ -1,4 +1,4 @@
-import { getHouses } from "@/apis/HouseAPI";
+import { getHouses } from "@/actions/apis/HouseAPI";
 import { HouseClient } from "./HouseClient";
 
 type PageParams = {

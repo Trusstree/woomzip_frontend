@@ -1,6 +1,6 @@
 "use client";
 
-import { getUserAccessToken } from "@/actions/auth/getUserAccessToken";
+import { getUserAccessToken } from "@/actions/auth/authAction";
 import { cardCountText } from "@/lib/stringUtil";
 import { useCallback, useEffect, useState } from "react";
 

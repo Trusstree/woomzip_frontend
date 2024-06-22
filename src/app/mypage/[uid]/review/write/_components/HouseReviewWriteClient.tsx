@@ -1,9 +1,9 @@
 "use client";
 
-import { postHouseReview } from "@/apis/HouseAPI";
-import { HouseReviewImageInputComponent } from "./HouseReviewImageInput";
-import { HouseReviewToggle } from "./HouseReviewToggle";
-import { Rating } from "./Rating";
+import { postHouseReview } from "@/actions/apis/HouseAPI";
+import { HouseReviewImageInputComponent } from "@/app/mypage/[uid]/review/write/_components/HouseReviewImageInput";
+import { HouseReviewToggle } from "@/app/mypage/[uid]/review/write/_components/HouseReviewToggle";
+import { Rating } from "@/app/mypage/[uid]/review/write/_components/Rating";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -59,73 +59,25 @@ export function HouseReviewWriteClient() {
   return (
     <>
       <div style={{ margin: "60px 0 30px 0" }}>
-        <div style={{ fontSize: "21px", fontWeight: "500" }}>
-          키워드를 선택해주세요. (최대 5개 선택가능)
-        </div>
+        <div style={{ fontSize: "21px", fontWeight: "500" }}>키워드를 선택해주세요. (최대 5개 선택가능)</div>
         <div>
           <div style={{ width: "100%" }}>
-            <HouseReviewToggle
-              name={"친절해요"}
-              onClick={handleBadge}
-              theme={"success"}
-            />
-            <HouseReviewToggle
-              name={"믿을만 해요"}
-              onClick={handleBadge}
-              theme={"success"}
-            />
-            <HouseReviewToggle
-              name={"처음 비용 그대로에요"}
-              onClick={handleBadge}
-              theme={"success"}
-            />
-            <HouseReviewToggle
-              name={"소통이 잘 돼요"}
-              onClick={handleBadge}
-              theme={"success"}
-            />
-            <HouseReviewToggle
-              name={"유쾌해요"}
-              onClick={handleBadge}
-              theme={"success"}
-            />
-            <HouseReviewToggle
-              name={"마음에 들어요"}
-              onClick={handleBadge}
-              theme={"warning"}
-            />
-            <HouseReviewToggle
-              name={"집이 예뻐요"}
-              onClick={handleBadge}
-              theme={"warning"}
-            />
-            <HouseReviewToggle
-              name={"완성도가 높아요"}
-              onClick={handleBadge}
-              theme={"warning"}
-            />
-            <HouseReviewToggle
-              name={"오래 살 수 있을 것 같아요"}
-              onClick={handleBadge}
-              theme={"warning"}
-            />
-            <HouseReviewToggle
-              name={"단열이 잘 돼요"}
-              onClick={handleBadge}
-              theme={"warning"}
-            />
-            <HouseReviewToggle
-              name={"추천해요"}
-              onClick={handleBadge}
-              theme={"primary"}
-            />
+            <HouseReviewToggle name={"친절해요"} onClick={handleBadge} theme={"success"} />
+            <HouseReviewToggle name={"믿을만 해요"} onClick={handleBadge} theme={"success"} />
+            <HouseReviewToggle name={"처음 비용 그대로에요"} onClick={handleBadge} theme={"success"} />
+            <HouseReviewToggle name={"소통이 잘 돼요"} onClick={handleBadge} theme={"success"} />
+            <HouseReviewToggle name={"유쾌해요"} onClick={handleBadge} theme={"success"} />
+            <HouseReviewToggle name={"마음에 들어요"} onClick={handleBadge} theme={"warning"} />
+            <HouseReviewToggle name={"집이 예뻐요"} onClick={handleBadge} theme={"warning"} />
+            <HouseReviewToggle name={"완성도가 높아요"} onClick={handleBadge} theme={"warning"} />
+            <HouseReviewToggle name={"오래 살 수 있을 것 같아요"} onClick={handleBadge} theme={"warning"} />
+            <HouseReviewToggle name={"단열이 잘 돼요"} onClick={handleBadge} theme={"warning"} />
+            <HouseReviewToggle name={"추천해요"} onClick={handleBadge} theme={"primary"} />
           </div>
         </div>
       </div>
       <div style={{ margin: "30px 0" }}>
-        <div style={{ fontSize: "21px", fontWeight: "500" }}>
-          사진을 첨부해주세요.
-        </div>
+        <div style={{ fontSize: "21px", fontWeight: "500" }}>사진을 첨부해주세요.</div>
         <div className="row">
           {images.map((e, i) => (
             <img
@@ -140,19 +92,13 @@ export function HouseReviewWriteClient() {
               }}
             />
           ))}
-          <HouseReviewImageInputComponent
-            className="col-2"
-            name={"image"}
-            setData={setImages}
-          />
+          <HouseReviewImageInputComponent className="col-2" name={"image"} setData={setImages} />
         </div>
         클릭해서 이미지 추가
       </div>
 
       <div style={{ margin: "30px 0" }}>
-        <div style={{ fontSize: "21px", fontWeight: "500" }}>
-          후기를 남겨주세요.
-        </div>
+        <div style={{ fontSize: "21px", fontWeight: "500" }}>후기를 남겨주세요.</div>
         <textarea
           className="container"
           style={{
@@ -185,9 +131,7 @@ export function HouseReviewWriteClient() {
       </div>
 
       <div style={{ margin: "30px 0" }}>
-        <div style={{ fontSize: "21px", fontWeight: "500" }}>
-          만족도를 별점으로 알려주세요
-        </div>
+        <div style={{ fontSize: "21px", fontWeight: "500" }}>만족도를 별점으로 알려주세요</div>
         <Rating rating={rating} setRating={setRating} />
       </div>
 

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import SelectBoxApp from "@/app/planning/application/_components/SelectBoxApp";
 import { useSearchParams } from "next/navigation";
 import { alertError } from "@/lib/alertUtil";
-import { postPlanning } from "@/apis/PlanningAPI";
+import { postPlanning } from "@/actions/apis/PlanningAPI";
 
 export default function PlanningApplicationClient() {
   const [planningData, setPlanningData] = useState({});

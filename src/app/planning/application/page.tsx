@@ -1,5 +1,5 @@
+import PlanningApplicationClient from "@/app/planning/application/_components/PlanningApplicationClient";
 import React, { Suspense } from "react";
-import PlanningApplicationClient from "./_components/PlanningApplicationClient";
 
 export default function Application() {
   return (

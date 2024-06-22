@@ -1,7 +1,13 @@
 "use client";
 
 import React, { useCallback, useEffect, useState } from "react";
-import { StyledCalendarWrapper, StyledCalendar, StyledDate, StyledToday, StyledDot } from "./styles";
+import {
+  StyledCalendarWrapper,
+  StyledCalendar,
+  StyledDate,
+  StyledToday,
+  StyledDot,
+} from "@/app/living/[pid]/reservation/_styles/styles";
 import moment from "moment";
 
 const CalenderForm = ({ checkinDate, setCheckinDate, checkoutDate, setCheckoutDate, unavailableDay, isCheckin }) => {

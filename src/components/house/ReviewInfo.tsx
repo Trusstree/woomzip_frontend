@@ -1,9 +1,7 @@
 "use client";
 
-import { getLivingReviews } from "@/apis/living";
-import { RouteButtonLight } from "@/components/living/RouteButtonLight";
+import { getLivingReviews } from "@/actions/apis/living";
 import { useState, useEffect } from "react";
-import { ReviewBox } from "../../app/mypage/[uid]/review/_components/ReviewBox";
 import { ReviewMiniBox } from "./ReviewMiniBox";
 import { useRouter } from "next/navigation";
 
@@ -31,19 +29,13 @@ export function ReviewInfo() {
 
   return (
     <div style={{ marginTop: "20px", width: "100%" }}>
-      <div
-        className="d-flex justify-content-between"
-        style={{ margin: "30px 0 10px 0" }}
-      >
+      <div className="d-flex justify-content-between" style={{ margin: "30px 0 10px 0" }}>
         <h5>후기({count}) ★ 0.0</h5>
         <div style={{ color: "gray", fontSize: "15px" }} onClick={handleClick}>
           전체보기
         </div>
       </div>
-      <div
-        className="row flex-nowrap overflow-auto g-2"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-      >
+      <div className="row flex-nowrap overflow-auto g-2" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
         {review.map((e, i) => (
           <ReviewMiniBox
             key={e["pavilion_review_id"]}

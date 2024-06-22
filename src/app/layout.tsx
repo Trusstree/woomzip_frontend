@@ -1,11 +1,11 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Script from "next/script";
-import Header from "./Header";
-import Footer from "./Footer";
 import { Analytics } from "@/components/Analytics";
-import ContextSession from "./ContextSession";
 import StyledComponentsRegistry from "@/components/app/StyledComponentsRegistry";
+import ContextSession from "@/app/ContextSession";
+import Header from "@/app/Header";
+import Footer from "@/app/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

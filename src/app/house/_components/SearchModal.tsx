@@ -1,7 +1,7 @@
 "use client";
 
-import FillteringButton from "./FillteringButton";
-import MultiRangeSlider from "./MultiRangeSlider";
+import FillteringButton from "@/app/house/_components/FillteringButton";
+import MultiRangeSlider from "@/app/house/_components/MultiRangeSlider";
 import { cardPriceText } from "@/lib/stringUtil";
 
 export function SearchModal({ data, setData, setIsSubmit }) {

@@ -1,9 +1,10 @@
 "use client";
 
-import { postPavilionReview } from "@/apis/living";
+import { postPavilionReview } from "@/actions/apis/living";
 import { LivingReviewImageInputComponent } from "@/app/living/[pid]/review/write/_components/LivingReviewImageInput";
 import { LivingReviewRadio } from "@/app/living/[pid]/review/write/_components/LivingReviewRadio";
 import { LivingReviewToggle } from "@/app/living/[pid]/review/write/_components/LivingReviewToggle";
+import { Star } from "@/components/review/Star";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -13,7 +14,7 @@ export function LivingReviewWriteClient() {
   const [comment, setComment] = useState("");
   const [images, setImages] = useState([]);
   const [tags, setTags] = useState([]);
-  const [helpful, setHelpful] = useState(true);
+  const [rating, setRating] = useState(5);
 
   const handleBadge = (e: any) => {
     setTags((oldValues) => {
@@ -29,13 +30,17 @@ export function LivingReviewWriteClient() {
     });
   };
 
+  const handleRating = (e: any) => {
+    setRating(e);
+  };
+
   const submit = async () => {
     const body = {
       pavilion_id: 1,
       review: comment,
       tag: tags,
       review_img: images,
-      helpful: helpful,
+      rating: rating,
     };
     console.log(body);
 
@@ -129,30 +134,7 @@ export function LivingReviewWriteClient() {
         ></textarea>
       </div>
 
-      <div style={{ marginTop: "40px" }}>
-        <div style={{ color: "#101648", fontSize: "21px", fontWeight: "500" }}>
-          본 체험이 전원생활 선택에 있어서 조금이라도 도움이 되었나요?
-        </div>
-        <LivingReviewRadio
-          name={"helpful"}
-          title={"네, 도움이 되었습니다."}
-          onClick={() => {
-            setHelpful(true);
-          }}
-          value={helpful}
-          theme={"success"}
-        />
-        <LivingReviewRadio
-          name={"helpful"}
-          title={"아뇨, 도움이 되지 않았습니다."}
-          value={helpful}
-          onClick={() => {
-            setHelpful(false);
-          }}
-          theme={"danger"}
-        />
-      </div>
-
+      <Star star={rating} onStarClick={handleRating} />
       <div
         className="btn"
         style={{

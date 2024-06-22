@@ -1,8 +1,7 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
-
-import styles from "./MultiRangeSlider.module.css";
+import styles from "@/app/house/_styles/MultiRangeSlider.module.css";
 
 type MultiRangeSliderProps = {
   name: string;

@@ -2,14 +2,14 @@
 
 import PostMenu from "@/components/posts/PostMenu";
 import { HouseList } from "@/components/house/HouseList";
-import { useEffect, useState } from "react";
 import SearchBox from "@/app/house/_components/SearchBox";
 import FillteringButton from "@/app/house/_components/FillteringButton";
 import ResetButton from "@/app/house/_components/ResetButton";
 import { SearchModal } from "@/app/house/_components/SearchModal";
-import { useRouter } from "next/navigation";
 import usePage from "@/hooks/usePage";
-import { getHouses } from "@/apis/HouseAPI";
+import { getHouses } from "@/actions/apis/HouseAPI";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter();

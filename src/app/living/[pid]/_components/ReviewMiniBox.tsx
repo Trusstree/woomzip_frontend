@@ -1,19 +1,10 @@
 "use client";
 
 import { badgeStyles } from "@/lib/badgeStyles";
-import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export function ReviewMiniBox({
-  id,
-  nickname,
-  date,
-  helpful,
-  tag,
-  comment,
-  images,
-}) {
+export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, images }) {
   const router = useRouter();
   // function handleClick() {
   //   // e.target.value
@@ -81,10 +72,7 @@ export function ReviewMiniBox({
           />
         </div>
       </div>
-      <div
-        className="container"
-        style={{ width: "1000px", marginBottom: "15px" }}
-      >
+      <div className="container" style={{ width: "1000px", marginBottom: "15px" }}>
         {tag.map((badge, index) => (
           <span
             className="badge"

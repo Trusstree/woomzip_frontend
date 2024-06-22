@@ -1,5 +1,5 @@
+import HouseClient from "@/app/house/HouseClient";
 import { Suspense } from "react";
-import HouseClient from "./HouseClient";
 
 export default function Home() {
   return (
