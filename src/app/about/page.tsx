@@ -194,7 +194,7 @@ export default function About() {
                       Front-End(sub)
                     </span>
                   </div>
-                  <div>"항상 진실된 사람이 되겠습니다."</div>
+                  <div>{'"항상 진실된 사람이 되겠습니다."'}</div>
                   <div>zxcomkt@gmail.com</div>
                 </div>
               </div>
@@ -235,7 +235,7 @@ export default function About() {
                       DataBase(sub)
                     </span>
                   </div>
-                  <div>"항상 진실된 사람이 되겠습니다."</div>
+                  <div>{'"항상 진실된 사람이 되겠습니다."'}</div>
                   <div>zxcomkt@gmail.com</div>
                 </div>
               </div>
@@ -278,7 +278,7 @@ export default function About() {
                       Infra
                     </span>
                   </div>
-                  <div>"항상 진실된 사람이 되겠습니다."</div>
+                  <div>{'"항상 진실된 사람이 되겠습니다."'}</div>
                   <div>zxcomkt@gmail.com</div>
                 </div>
               </div>
@@ -319,7 +319,7 @@ export default function About() {
                       DataBase
                     </span>
                   </div>
-                  <div>"항상 진실된 사람이 되겠습니다."</div>
+                  <div>{'"항상 진실된 사람이 되겠습니다."'}</div>
                   <div>zxcomkt@gmail.com</div>
                 </div>
               </div>

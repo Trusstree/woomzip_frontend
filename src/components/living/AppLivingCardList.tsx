@@ -1,6 +1,6 @@
 "use client";
 
-import { LivingCard } from "@/components/living/LivingCard";
+import { AppLivingCard } from "./AppLivingCard";
 import { useEffect, useState } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
 
@@ -27,7 +27,7 @@ type LivingListProps = {
   numShowPages?: number;
 };
 
-export function LivingCardList(props: LivingListProps) {
+export function AppLivingCardList(props: LivingListProps) {
   const [livingData, setLivingData] = useState(LivingCardExample);
   const { numShowItems, numShowPages } = props;
 
@@ -41,9 +41,16 @@ export function LivingCardList(props: LivingListProps) {
 
   return (
     <>
-      {livingData?.map((e, i) => (
-        <BrowserView className="col-md-4 col-lg-3" key={i}>
-          <LivingCard
+      <div
+        className="row flex-nowrap overflow-auto"
+        style={{
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        {livingData?.map((e, i) => (
+          <AppLivingCard
+            key={i}
             company={e["company"]}
             title={e["title"]}
             addr={e["addr"]}
@@ -51,8 +58,8 @@ export function LivingCardList(props: LivingListProps) {
             url={e["url"]}
             context={e["context"]}
           />
-        </BrowserView>
-      ))}
+        ))}
+      </div>
     </>
   );
 }
