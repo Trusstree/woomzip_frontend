@@ -7,7 +7,7 @@ import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/vali
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export function SignupForm() {
+export function SignupFormCompany() {
   const router = useRouter();
   const [id, setID] = useState("");
   const [pw, setPW] = useState("");
@@ -18,10 +18,19 @@ export function SignupForm() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [gender, setGender] = useState("");
   const [birthday, setBirthday] = useState("1970-01-01");
+  const [thumbnail, setThumbnail] = useState("");
+  const [addr, setAddr] = useState("");
+  const [prUrl, setPrUrl] = useState("");
+  const [youtubeUrl, setYoutubeUrl] = useState("");
 
   const handlePhoneNumber = (e) => {
     const regex = new RegExp(/^[0-9\b -]{0,13}$/);
     if (regex.test(e.target.value)) setPhoneNumber(e.target.value);
+  };
+
+  const handleThumbnail = (e) => {
+    const regex = new RegExp(/^[0-9\b -]{0,13}$/);
+    if (regex.test(e.target.value)) setThumbnail(e.target.value);
   };
 
   useEffect(() => {
@@ -66,6 +75,15 @@ export function SignupForm() {
     if (!isRequired(gender)) {
       return alertError("성별", `성별을 입력해주세요!`);
     }
+    if (!isRequired(addr)) {
+      return alertError("주소", `주소를 입력해주세요!`);
+    }
+    if (!isRequired(prUrl)) {
+      return alertError("홈페이지 주소", `홈페이지 주소를 입력해주세요!`);
+    }
+    if (!isRequired(youtubeUrl)) {
+      return alertError("홍보채널", `홍보채널을 입력해주세요!`);
+    }
 
     const encryptedData = {
       login_id: id,
@@ -76,6 +94,10 @@ export function SignupForm() {
       phone_number: phoneNumber,
       gender: gender,
       birthday: birthday,
+      addr: addr,
+      pr_url: prUrl,
+      youtubeUrl: youtubeUrl,
+      
     };
 
     const [data, error] = await signupUser(encryptedData);
@@ -237,7 +259,7 @@ export function SignupForm() {
         />
       </div>
 
-      <div className={`d-flex mb-5`}>
+      <div className={`d-flex mb-3`}>
         <label htmlFor={`signin_birthday`} className="fs-5 col-2" style={{ color: "#101648" }}>
           {"생년월일"}
         </label>
@@ -252,6 +274,70 @@ export function SignupForm() {
           value={birthday}
         />
       </div>
+
+      <div className={`d-flex mb-3`}>
+        <label htmlFor={`signin_thumbnail`} className="fs-5 col-2" style={{ color: "#101648" }}>
+          {"사진"}
+        </label>
+        <input
+          className="w-100"
+          type="file"
+          id={`signin_thumbnail`}
+          onChange={handleThumbnail}
+          name={"thumbnail"}
+          value={thumbnail}
+        />
+      </div>
+
+      <div className={`d-flex mb-3`}>
+        <label htmlFor={`signin_addr`} className="fs-5 col-2" style={{ color: "#101648" }}>
+          {"위치"}
+        </label>
+        <input
+          className="w-100"
+          type="text"
+          id={`signin_addr`}
+          onChange={(e) => {
+            setAddr(e.target.value);
+          }}
+          name={"addr"}
+          value={addr}
+        />
+      </div>
+
+      <div className={`d-flex mb-3`}>
+        <label htmlFor={`signin_prUrl`} className="fs-5 col-2" style={{ color: "#101648" }}>
+          {"홈페이지"}
+        </label>
+        <input
+          className="w-100"
+          type="text"
+          id={`signin_prUrl`}
+          onChange={(e) => {
+            setPrUrl(e.target.value);
+          }}
+          name={"prUrl"}
+          value={prUrl}
+        />
+      </div>
+
+      <div className={`d-flex mb-5`}>
+        <label htmlFor={`signin_youtubeUrl`} className="fs-5 col-2" style={{ color: "#101648" }}>
+          {"홍보채널"}
+        </label>
+        <input
+          className="w-100"
+          type="text"
+          id={`signin_youtubeUrl`}
+          onChange={(e) => {
+            setYoutubeUrl(e.target.value);
+          }}
+          name={"youtubeUrl"}
+          value={youtubeUrl}
+        />
+      </div>
+
+      
 
       <div className="w-100 btn btn-lg text-white" style={{ backgroundColor: "#101648" }} onClick={submit}>
         회원가입
