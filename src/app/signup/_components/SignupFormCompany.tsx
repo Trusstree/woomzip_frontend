@@ -1,11 +1,31 @@
 "use client";
 
 import { signupUser, validateID, validateName } from "@/actions/apis/userAPI";
+import SignupGenderRadio from "@/app/signup/_components/SignupRadio";
+import SignupTextBox from "@/app/signup/_components/SignupTextBox";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { encryptPW } from "@/lib/authUtil";
+import { setS3Url } from "@/lib/s3Util";
 import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/validator";
+import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+
+async function handleImages(thumbnail, name) {
+  const thumbnailArr = [];
+
+  for (const ee of thumbnail) {
+    const title = "thumbnail" + moment().format("YYYYMMDDHHmmss");
+    const url = `users/${name}/${title}.${ee.type.split("/")[1]}`;
+    const [response, error] = await setS3Url(url, ee);
+    if (error) {
+      console.error(error);
+      return;
+    }
+    thumbnailArr.push(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`);
+  }
+  return thumbnailArr;
+}
 
 export function SignupFormCompany() {
   const router = useRouter();
@@ -13,24 +33,21 @@ export function SignupFormCompany() {
   const [pw, setPW] = useState("");
   const [repw, setRePW] = useState("");
   const [name, setName] = useState("");
+  const [userImg, setUserImg] = useState(undefined as any);
+  const [introduce, setIntroduce] = useState("");
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [gender, setGender] = useState("");
   const [birthday, setBirthday] = useState("1970-01-01");
-  const [thumbnail, setThumbnail] = useState("");
+  const [thumbnail, setThumbnail] = useState([] as Array<File>);
   const [addr, setAddr] = useState("");
   const [prUrl, setPrUrl] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
 
   const handlePhoneNumber = (e) => {
     const regex = new RegExp(/^[0-9\b -]{0,13}$/);
-    if (regex.test(e.target.value)) setPhoneNumber(e.target.value);
-  };
-
-  const handleThumbnail = (e) => {
-    const regex = new RegExp(/^[0-9\b -]{0,13}$/);
-    if (regex.test(e.target.value)) setThumbnail(e.target.value);
+    if (regex.test(e)) setPhoneNumber(e);
   };
 
   useEffect(() => {
@@ -78,6 +95,7 @@ export function SignupFormCompany() {
     if (!isRequired(addr)) {
       return alertError("주소", `주소를 입력해주세요!`);
     }
+
     if (!isRequired(prUrl)) {
       return alertError("홈페이지 주소", `홈페이지 주소를 입력해주세요!`);
     }
@@ -85,19 +103,26 @@ export function SignupFormCompany() {
       return alertError("홍보채널", `홍보채널을 입력해주세요!`);
     }
 
+    const thumbnailArr = await handleImages(thumbnail, name);
+    if (thumbnailArr.length == 0) {
+      return alertError("홍보사진", `홍보용 사진을 입력해주세요!`);
+    }
+
     const encryptedData = {
       login_id: id,
       password: encryptPW(pw),
       name: name,
       nickname: nickname,
-      email: email,
+      user_img_url: userImg,
+      one_line_introduce: introduce,
       phone_number: phoneNumber,
+      email: email,
       gender: gender,
       birthday: birthday,
       addr: addr,
-      pr_url: prUrl,
-      youtubeUrl: youtubeUrl,
-      
+      company_url: prUrl,
+      pr_rl: youtubeUrl,
+      company_images: thumbnailArr,
     };
 
     const [data, error] = await signupUser(encryptedData);
@@ -107,172 +132,42 @@ export function SignupFormCompany() {
       return;
     }
 
-    alertSuccess("회원가입 완료", "회원가입에 성공했습니다!");
-    router.push("/signin");
+    alertSuccess("회원가입 신청완료", "기업 회원 가입을 요청했습니다. 확인 후에 알려드릴게요!");
+    router.push("/");
     return;
+  };
+
+  const handleThumbnail = (e) => {
+    const files = Array.from(e.target.files) as Array<File>;
+    const imgs = files.filter((ee) => ee?.type?.split("/")[0] == "image");
+
+    setThumbnail((oldValues) => [...oldValues, ...imgs]);
+  };
+
+  const handleUserImg = (e) => {
+    const img = e.target.files[0];
+    if (img.type?.split("/")[0] == "image") return;
+    setUserImg(img);
   };
 
   return (
     <div className="my-5">
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_name`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"이름"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_name`}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          name={"name"}
-          value={name}
-        />
-      </div>
+      <SignupTextBox title={"이름"} name={"name"} data={name} setData={setName} />
+      <SignupTextBox title={"별명"} name={"nickname"} data={nickname} setData={setNickname} />
+      <SignupTextBox title={"ID"} name={"id"} data={id} setData={setID} />
+      <SignupTextBox title={"PW"} name={"pw"} data={pw} setData={setPW} type={"password"} />
+      <SignupTextBox title={"PW 확인"} name={"repw"} data={repw} setData={setRePW} type={"password"} />
+      <SignupTextBox title={"이메일"} name={"email"} data={email} setData={setEmail} />
+      <SignupTextBox title={"한줄설명"} name={"introduce"} data={introduce} setData={setIntroduce} />
+      <SignupGenderRadio data={gender} setData={setGender} />
+      <SignupTextBox title={"연락처"} name={"phoneNumber"} data={phoneNumber} setData={handlePhoneNumber} />
+      <SignupTextBox title={"생년월일"} name={"birthday"} data={birthday} setData={setBirthday} type={"date"} />
 
       <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_nickname`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"별명"}
+        <label htmlFor={`signin_userImg`} className="fs-5 col-2" style={{ color: "#101648" }}>
+          {"섬네일"}
         </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_nickname`}
-          onChange={(e) => {
-            setNickname(e.target.value);
-          }}
-          name={"nickname"}
-          value={nickname}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_ID`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"ID"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_ID`}
-          onChange={(e) => {
-            setID(e.target.value);
-          }}
-          name={"id"}
-          value={id}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_PW`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"PW"}
-        </label>
-        <input
-          className="w-100"
-          type="password"
-          id={`signin_PW`}
-          onChange={(e) => {
-            setPW(e.target.value);
-          }}
-          name={"pw"}
-          value={pw}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_rePW`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"PW 확인"}
-        </label>
-        <input
-          className="w-100"
-          type="password"
-          id={`signin_rePW`}
-          onChange={(e) => {
-            setRePW(e.target.value);
-          }}
-          name={"repw"}
-          value={repw}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_email`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"이메일"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_email`}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          name={"email"}
-          value={email}
-        />
-      </div>
-
-      <div className="d-flex mb-3">
-        <div className="fs-5 col-2">성별</div>
-        <div className={`form-check mx-2`}>
-          <input
-            className="form-check-input"
-            type="radio"
-            name={"gender"}
-            id={`gender_man`}
-            value={gender}
-            onChange={() => {
-              setGender("M");
-            }}
-          />
-          <label className="fs-5 form-check-label" htmlFor={`gender_man`}>
-            {"남성"}
-          </label>
-        </div>
-
-        <div className={`form-check mx-2`}>
-          <input
-            className="form-check-input"
-            type="radio"
-            name={"gender"}
-            id={`gender_woman`}
-            value={gender}
-            onChange={() => {
-              setGender("W");
-            }}
-          />
-          <label className="fs-5 form-check-label" htmlFor={`gender_woman`}>
-            {"여성"}
-          </label>
-        </div>
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_phoneNumber`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"연락처"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_phoneNumber`}
-          onChange={handlePhoneNumber}
-          name={"phoneNumber"}
-          value={phoneNumber}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_birthday`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"생년월일"}
-        </label>
-        <input
-          className="w-100"
-          type="date"
-          id={`signin_birthday`}
-          onChange={(e) => {
-            setBirthday(e.target.value);
-          }}
-          name={"birthday"}
-          value={birthday}
-        />
+        <input className="w-100" type="file" id={`signin_userImg`} onChange={handleUserImg} name={"userImg"} />
       </div>
 
       <div className={`d-flex mb-3`}>
@@ -285,59 +180,13 @@ export function SignupFormCompany() {
           id={`signin_thumbnail`}
           onChange={handleThumbnail}
           name={"thumbnail"}
-          value={thumbnail}
+          multiple
         />
       </div>
 
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_addr`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"위치"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_addr`}
-          onChange={(e) => {
-            setAddr(e.target.value);
-          }}
-          name={"addr"}
-          value={addr}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_prUrl`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"홈페이지"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_prUrl`}
-          onChange={(e) => {
-            setPrUrl(e.target.value);
-          }}
-          name={"prUrl"}
-          value={prUrl}
-        />
-      </div>
-
-      <div className={`d-flex mb-5`}>
-        <label htmlFor={`signin_youtubeUrl`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"홍보채널"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_youtubeUrl`}
-          onChange={(e) => {
-            setYoutubeUrl(e.target.value);
-          }}
-          name={"youtubeUrl"}
-          value={youtubeUrl}
-        />
-      </div>
-
-      
+      <SignupTextBox title={"위치"} name={"addr"} data={addr} setData={setAddr} />
+      <SignupTextBox title={"홈페이지"} name={"prUrl"} data={prUrl} setData={setPrUrl} />
+      <SignupTextBox title={"홍보채널"} name={"youtubeUrl"} data={youtubeUrl} setData={setYoutubeUrl} />
 
       <div className="w-100 btn btn-lg text-white" style={{ backgroundColor: "#101648" }} onClick={submit}>
         회원가입

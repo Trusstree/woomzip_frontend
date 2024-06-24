@@ -1,6 +1,8 @@
 "use client";
 
 import { signupUser, validateID, validateName } from "@/actions/apis/userAPI";
+import SignupGenderRadio from "@/app/signup/_components/SignupRadio";
+import SignupTextBox from "@/app/signup/_components/SignupTextBox";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { encryptPW } from "@/lib/authUtil";
 import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/validator";
@@ -92,166 +94,15 @@ export function SignupForm() {
 
   return (
     <div className="my-5">
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_name`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"이름"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_name`}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-          name={"name"}
-          value={name}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_nickname`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"별명"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_nickname`}
-          onChange={(e) => {
-            setNickname(e.target.value);
-          }}
-          name={"nickname"}
-          value={nickname}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_ID`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"ID"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_ID`}
-          onChange={(e) => {
-            setID(e.target.value);
-          }}
-          name={"id"}
-          value={id}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_PW`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"PW"}
-        </label>
-        <input
-          className="w-100"
-          type="password"
-          id={`signin_PW`}
-          onChange={(e) => {
-            setPW(e.target.value);
-          }}
-          name={"pw"}
-          value={pw}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_rePW`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"PW 확인"}
-        </label>
-        <input
-          className="w-100"
-          type="password"
-          id={`signin_rePW`}
-          onChange={(e) => {
-            setRePW(e.target.value);
-          }}
-          name={"repw"}
-          value={repw}
-        />
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_email`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"이메일"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_email`}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          name={"email"}
-          value={email}
-        />
-      </div>
-
-      <div className="d-flex mb-3">
-        <div className="fs-5 col-2">성별</div>
-        <div className={`form-check mx-2`}>
-          <input
-            className="form-check-input"
-            type="radio"
-            name={"gender"}
-            id={`gender_man`}
-            value={gender}
-            onChange={() => {
-              setGender("M");
-            }}
-          />
-          <label className="fs-5 form-check-label" htmlFor={`gender_man`}>
-            {"남성"}
-          </label>
-        </div>
-
-        <div className={`form-check mx-2`}>
-          <input
-            className="form-check-input"
-            type="radio"
-            name={"gender"}
-            id={`gender_woman`}
-            value={gender}
-            onChange={() => {
-              setGender("W");
-            }}
-          />
-          <label className="fs-5 form-check-label" htmlFor={`gender_woman`}>
-            {"여성"}
-          </label>
-        </div>
-      </div>
-
-      <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_phoneNumber`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"연락처"}
-        </label>
-        <input
-          className="w-100"
-          type="text"
-          id={`signin_phoneNumber`}
-          onChange={handlePhoneNumber}
-          name={"phoneNumber"}
-          value={phoneNumber}
-        />
-      </div>
-
-      <div className={`d-flex mb-5`}>
-        <label htmlFor={`signin_birthday`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"생년월일"}
-        </label>
-        <input
-          className="w-100"
-          type="date"
-          id={`signin_birthday`}
-          onChange={(e) => {
-            setBirthday(e.target.value);
-          }}
-          name={"birthday"}
-          value={birthday}
-        />
-      </div>
+      <SignupTextBox title={"이름"} name={"name"} data={name} setData={setName} />
+      <SignupTextBox title={"별명"} name={"nickname"} data={nickname} setData={setNickname} />
+      <SignupTextBox title={"ID"} name={"id"} data={id} setData={setID} />
+      <SignupTextBox title={"PW"} name={"pw"} data={pw} setData={setPW} type={"password"} />
+      <SignupTextBox title={"PW 확인"} name={"repw"} data={repw} setData={setRePW} type={"password"} />
+      <SignupTextBox title={"이메일"} name={"email"} data={email} setData={setEmail} />
+      <SignupGenderRadio data={gender} setData={setGender} />
+      <SignupTextBox title={"연락처"} name={"phoneNumber"} data={phoneNumber} setData={handlePhoneNumber} />
+      <SignupTextBox title={"생년월일"} name={"birthday"} data={birthday} setData={setBirthday} type={"date"} />
 
       <div className="w-100 btn btn-lg text-white" style={{ backgroundColor: "#101648" }} onClick={submit}>
         회원가입
