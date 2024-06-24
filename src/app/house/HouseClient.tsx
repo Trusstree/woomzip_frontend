@@ -77,7 +77,8 @@ export default function Home() {
               padding: "0",
             }}
           >
-            <span style={{ color: "#314FC0" }}>움집</span>에서 가장 쉽고 빠르게 우리 집 찾기
+            <span style={{ color: "#314FC0" }}>움집</span>에서 가장 쉽고 빠른 집
+            찾기
           </div>
 
           <div
@@ -107,14 +108,28 @@ export default function Home() {
               data-bs-target={`#search_modal`}
             >
               <div style={{ width: "70px", height: "37px" }}>
-                <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"} width={30}></img>
+                <img
+                  src={
+                    "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"
+                  }
+                  width={30}
+                ></img>
               </div>
               <div style={{ fontSize: "15px" }}>필터</div>
             </div>
           </div>
-          <SearchModal data={searchCondition} setData={setSearchCondition} setIsSubmit={setIsSubmit} />
+          <SearchModal
+            data={searchCondition}
+            setData={setSearchCondition}
+            setIsSubmit={setIsSubmit}
+          />
           <PostMenu title={""}>
-            <HouseList numShowItems={numShowItems} numShowPages={numShowPages} houseData={houseData} count={count} />
+            <HouseList
+              numShowItems={numShowItems}
+              numShowPages={numShowPages}
+              houseData={houseData}
+              count={count}
+            />
           </PostMenu>
         </div>
       )}
