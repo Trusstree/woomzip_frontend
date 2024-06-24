@@ -23,7 +23,7 @@ export function SignupForm() {
 
   const handlePhoneNumber = (e) => {
     const regex = new RegExp(/^[0-9\b -]{0,13}$/);
-    if (regex.test(e.target.value)) setPhoneNumber(e.target.value);
+    if (regex.test(e)) setPhoneNumber(e);
   };
 
   useEffect(() => {
