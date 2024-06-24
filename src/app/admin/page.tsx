@@ -9,6 +9,7 @@ export default function Home() {
       <div className="d-flex mb-5">
         <RouteButton className="m-5" url={"/admin/living"} text={"살아보기"}></RouteButton>
         <RouteButton className="m-5" url={"/admin/planning"} text={"계획하기"}></RouteButton>
+        <RouteButton className="m-5" url={"/admin/company"} text={"기업가입"}></RouteButton>
       </div>
     </div>
   );

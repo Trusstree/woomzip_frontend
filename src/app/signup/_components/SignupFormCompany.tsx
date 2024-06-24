@@ -1,6 +1,6 @@
 "use client";
 
-import { signupUser, validateID, validateName } from "@/actions/apis/userAPI";
+import { signupCompany, validateID, validateName } from "@/actions/apis/userAPI";
 import SignupGenderRadio from "@/app/signup/_components/SignupRadio";
 import SignupTextBox from "@/app/signup/_components/SignupTextBox";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
@@ -11,13 +11,20 @@ import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-async function handleImages(thumbnail, name) {
-  const thumbnailArr = [];
+async function S3Thumbnail(thumbnail, name) {
+  const title = "thumbnail" + moment().format(`YYYYMMDDHHmmss`);
+  console.log(thumbnail);
+  const url = `users/${name}/${title}.${thumbnail.type.split("/")[1]}`;
+  const [response, error] = await setS3Url(url, thumbnail);
+  return `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`;
+}
 
-  for (const ee of thumbnail) {
-    const title = "thumbnail" + moment().format("YYYYMMDDHHmmss");
-    const url = `users/${name}/${title}.${ee.type.split("/")[1]}`;
-    const [response, error] = await setS3Url(url, ee);
+async function S3CompanyImages(images, name) {
+  const thumbnailArr = [];
+  for (let i = 0; i < images.length; i++) {
+    const title = "images" + moment().format(`YYYYMMDDHHmmss`) + `${i}`;
+    const url = `users/${name}/${title}.${images[i].type.split("/")[1]}`;
+    const [response, error] = await setS3Url(url, thumbnailArr[i]);
     if (error) {
       console.error(error);
       return;
@@ -33,14 +40,14 @@ export function SignupFormCompany() {
   const [pw, setPW] = useState("");
   const [repw, setRePW] = useState("");
   const [name, setName] = useState("");
-  const [userImg, setUserImg] = useState(undefined as any);
+  const [thumbnail, setThumbnail] = useState(undefined as any);
   const [introduce, setIntroduce] = useState("");
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [gender, setGender] = useState("");
   const [birthday, setBirthday] = useState("1970-01-01");
-  const [thumbnail, setThumbnail] = useState([] as Array<File>);
+  const [companyImages, setCompanyImages] = useState([] as Array<File>);
   const [addr, setAddr] = useState("");
   const [prUrl, setPrUrl] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
@@ -103,8 +110,12 @@ export function SignupFormCompany() {
       return alertError("홍보채널", `홍보채널을 입력해주세요!`);
     }
 
-    const thumbnailArr = await handleImages(thumbnail, name);
-    if (thumbnailArr.length == 0) {
+    const thumbnailUrl = await S3Thumbnail(thumbnail, name);
+    if (thumbnailUrl.length == 0) {
+      return alertError("홍보사진", `홍보용 사진을 입력해주세요!`);
+    }
+    const imagesArr = await S3CompanyImages(companyImages, name);
+    if (imagesArr.length == 0) {
       return alertError("홍보사진", `홍보용 사진을 입력해주세요!`);
     }
 
@@ -113,7 +124,7 @@ export function SignupFormCompany() {
       password: encryptPW(pw),
       name: name,
       nickname: nickname,
-      user_img_url: userImg,
+      user_img_url: thumbnailUrl,
       one_line_introduce: introduce,
       phone_number: phoneNumber,
       email: email,
@@ -122,10 +133,10 @@ export function SignupFormCompany() {
       addr: addr,
       company_url: prUrl,
       pr_rl: youtubeUrl,
-      company_images: thumbnailArr,
+      company_images: imagesArr,
     };
 
-    const [data, error] = await signupUser(encryptedData);
+    const [data, error] = await signupCompany(encryptedData);
     if (error) {
       console.log(error);
       alertError("로그인 에러", error.message || `회원가입에 실패했어요.`);
@@ -137,17 +148,18 @@ export function SignupFormCompany() {
     return;
   };
 
-  const handleThumbnail = (e) => {
+  const handleCompanyImages = (e) => {
     const files = Array.from(e.target.files) as Array<File>;
     const imgs = files.filter((ee) => ee?.type?.split("/")[0] == "image");
 
-    setThumbnail((oldValues) => [...oldValues, ...imgs]);
+    setCompanyImages((oldValues) => [...oldValues, ...imgs]);
   };
 
-  const handleUserImg = (e) => {
+  const handleThumbnail = (e) => {
     const img = e.target.files[0];
-    if (img.type?.split("/")[0] == "image") return;
-    setUserImg(img);
+    if (img.type?.split("/")[0] != "image") return;
+    console.log(img);
+    setThumbnail(img);
   };
 
   return (
@@ -164,22 +176,22 @@ export function SignupFormCompany() {
       <SignupTextBox title={"생년월일"} name={"birthday"} data={birthday} setData={setBirthday} type={"date"} />
 
       <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_userImg`} className="fs-5 col-2" style={{ color: "#101648" }}>
+        <label htmlFor={`signin_thumbnail`} className="fs-5 col-2" style={{ color: "#101648" }}>
           {"섬네일"}
         </label>
-        <input className="w-100" type="file" id={`signin_userImg`} onChange={handleUserImg} name={"userImg"} />
+        <input className="w-100" type="file" id={`signin_thumbnail`} onChange={handleThumbnail} name={"thumbnail"} />
       </div>
 
       <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_thumbnail`} className="fs-5 col-2" style={{ color: "#101648" }}>
+        <label htmlFor={`signin_companyImages`} className="fs-5 col-2" style={{ color: "#101648" }}>
           {"사진"}
         </label>
         <input
           className="w-100"
           type="file"
-          id={`signin_thumbnail`}
-          onChange={handleThumbnail}
-          name={"thumbnail"}
+          id={`signin_companyImages`}
+          onChange={handleCompanyImages}
+          name={"companyImages"}
           multiple
         />
       </div>
