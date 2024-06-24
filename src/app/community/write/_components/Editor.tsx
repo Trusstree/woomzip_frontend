@@ -4,8 +4,12 @@ import "react-quill/dist/quill.snow.css";
 import { postPost } from "@/actions/apis/postAPI";
 import { confirmSuccess } from "@/lib/alertUtil";
 import { useCallback, useMemo, useState } from "react";
+import { useRef, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import { s3 } from "@/configs/S3Client";
+import { setS3Url } from "@/lib/s3Util";
+import moment from "moment";
 
 type EditorProps = {};
 
@@ -30,8 +34,40 @@ export default function Editor(props: EditorProps) {
   //   if(error)console.log(error);
   // };
 
-  // const quillRef = useRef(null);
+  const quillRef = useRef(null);
 
+  const imageHandler = () => {
+    const input = document.createElement("input");
+    input.setAttribute("type", "file");
+    input.setAttribute("accept", "image/*");
+    input.click();
+  
+    input.onchange = async (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      const file = target.files?.[0];
+      if (file && file.type.split("/")[0] === "image") {
+        try {
+          const title = `community_${moment().format("YYYYMMDDHHmmss")}`;
+          const url = `test_community/${title}.${file.type.split("/")[1]}`;
+          const [response, error] = await setS3Url(url, file);
+          
+          if (!error) {
+            const imageUrl = `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`;
+            const editor = quillRef.current?.getEditor();
+            if (editor) {
+              const range = editor.getSelection();
+              editor.insertEmbed(range?.index || 0, "image", imageUrl);
+            }
+          } else {
+            console.error("Error uploading image:", error);
+          }
+        } catch (error) {
+          console.error("Failed to upload image: ", error);
+        }
+      }
+    };
+  };
+  
   // const imageHandler = async () => {
   //   if(!document) return;
   //   const input = document.createElement("input");
@@ -60,7 +96,7 @@ export default function Editor(props: EditorProps) {
           [{ header: [1, 2, 3, 4, 5, false] }],
           ["bold", "italic", "underline", "strike"],
           [{ list: "ordered" }, { list: "bullet" }, { align: [] }],
-          // ['image'],
+          ['image'],
           ["clean"],
         ],
         // handlers: {
