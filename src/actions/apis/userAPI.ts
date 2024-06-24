@@ -94,6 +94,19 @@ export const signupUser = async (user: any) => {
   return [data, error];
 };
 
+export const signupCompany = async (user: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await publicApi.post(`/auth/company/request`, user);
+    data = result?.data;
+  } catch (err) {
+    error = err.response?.data;
+  }
+
+  return [data, error];
+};
+
 export const validateID = async (user_id: any) => {
   let [data, error] = [undefined, undefined] as any;
 

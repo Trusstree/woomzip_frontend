@@ -83,6 +83,7 @@ export default function Carousel(props: CarouselProps) {
                     fontSize: "40px",
                     marginBottom: "10px",
                     fontWeight: "600",
+                    wordBreak: "keep-all",
                   }}
                 >
                   {e.title}

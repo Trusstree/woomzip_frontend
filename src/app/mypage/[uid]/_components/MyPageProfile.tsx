@@ -1,5 +1,6 @@
 import { getUser } from "@/actions/apis/userAPI";
 import ProfileImageBox from "@/app/mypage/[uid]/_components/ProfileImageBox";
+import SignoutButton from "@/app/mypage/[uid]/_components/SignoutButton";
 import { getUserdataByToken } from "@/lib/parseUtil";
 import { cookies } from "next/headers";
 import Link from "next/link";
@@ -55,11 +56,12 @@ export default function MyPageProfile({ uid, userData }) {
         </div>
         <div style={{ textAlign: "right" }}>
           {Number(uid) == signedUID && (
-            <Link style={{}} href={`${uid}?tab=profile`}>
-              <span className="" style={{ wordBreak: "keep-all" }}>
-                프로필 수정
-              </span>
-            </Link>
+            // <Link style={{}} href={`${uid}?tab=profile`}>
+            //   <span className="" style={{ wordBreak: "keep-all" }}>
+            //     프로필 수정
+            //   </span>
+            // </Link>
+            <SignoutButton />
           )}
         </div>
       </div>
