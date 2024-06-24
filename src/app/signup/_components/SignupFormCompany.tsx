@@ -132,7 +132,7 @@ export function SignupFormCompany() {
       birthday: birthday,
       addr: addr,
       company_url: prUrl,
-      pr_rl: youtubeUrl,
+      pr_url: youtubeUrl,
       company_images: imagesArr,
     };
 
