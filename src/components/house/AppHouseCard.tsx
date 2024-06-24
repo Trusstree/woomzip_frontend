@@ -41,7 +41,7 @@ export default function AppHouseCard(props: MainPagePostProps) {
           pagination={{ dynamicBullets: true }}
           modules={[Pagination]}
           className="mySwiper"
-          style={{ width: "100%", height: "275px" }}
+          style={{ width: "100%", height: "280px" }}
         >
           {[...Array(6)].map((_, i) => (
             <SwiperSlide key={i}>

@@ -62,7 +62,7 @@ export default function Home() {
       <div
         style={{
           width: "100%",
-          padding: "100px 0",
+          padding: "50px 0",
         }}
       >
         <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
@@ -82,7 +82,7 @@ export default function Home() {
       <div
         style={{
           width: "100%",
-          padding: "100px 0",
+          padding: "50px 0",
           backgroundColor: "#FAFBFC",
         }}
       >
@@ -93,31 +93,35 @@ export default function Home() {
             routeText={"더보기"}
             horizontalScroll={true}
           >
-            <Suspense>
+            <div style={{ width: "100%", overflow: "hidden" }}>
               <AppLivingCardList numShowItems={4} />
-            </Suspense>
+            </div>
           </PostMenu>
         </div>
       </div>
 
       <div
-        className="container align-content-center"
-        style={{ width: "100%", height: "700px" }}
+        style={{
+          width: "100%",
+          padding: "50px 0",
+        }}
       >
-        <PostMenu
-          title={"당신을 위한 집들을 준비해두었어요"}
-          routeUrl={"/house"}
-          routeText={"더보기"}
-          horizontalScroll={true}
-        >
-          <Suspense>
-            <AppHouseList
-              numShowItems={6}
-              houseData={houseData}
-              count={houseCount}
-            />
-          </Suspense>
-        </PostMenu>
+        <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
+          <PostMenu
+            title={"당신을 위한 집들을 준비해두었어요"}
+            routeUrl={"/house"}
+            routeText={"더보기"}
+            horizontalScroll={true}
+          >
+            <div style={{ width: "100%", overflow: "hidden" }}>
+              <AppHouseList
+                numShowItems={6}
+                houseData={houseData}
+                count={houseCount}
+              />
+            </div>
+          </PostMenu>
+        </div>
       </div>
     </>
   );

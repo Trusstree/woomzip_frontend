@@ -16,9 +16,16 @@ export default function PostMenu(props: PostMenuProps) {
     <div className="">
       <div className="d-flex justify-content-between mt-2 mb-1">
         <h5 style={{ fontWeight: "600" }}>{title}</h5>
-        {routeText && routeUrl ? <RouteButton url={routeUrl}>{routeText}</RouteButton> : undefined}
+        {routeText && routeUrl ? (
+          <RouteButton url={routeUrl}>{routeText}</RouteButton>
+        ) : undefined}
       </div>
-      <div className={`w-100 row ${horizontalScroll ? "flex-nowrap overflow-auto" : ""}`}>{children}</div>
+      <div
+        className={`w-100 row ${horizontalScroll ? "flex-nowrap overflow-auto" : ""}`}
+        style={{ margin: "0", padding: "0" }}
+      >
+        {children}
+      </div>
     </div>
   );
 }

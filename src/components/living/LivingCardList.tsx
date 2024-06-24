@@ -2,7 +2,6 @@
 
 import { LivingCard } from "@/components/living/LivingCard";
 import { useEffect, useState } from "react";
-import { BrowserView, MobileView } from "react-device-detect";
 
 const LivingCardExample = [
   {
@@ -42,7 +41,7 @@ export function LivingCardList(props: LivingListProps) {
   return (
     <>
       {livingData?.map((e, i) => (
-        <BrowserView className="col-md-4 col-lg-3" key={i}>
+        <div className="col-md-4 col-lg-3" key={i}>
           <LivingCard
             company={e["company"]}
             title={e["title"]}
@@ -51,7 +50,7 @@ export function LivingCardList(props: LivingListProps) {
             url={e["url"]}
             context={e["context"]}
           />
-        </BrowserView>
+        </div>
       ))}
     </>
   );
