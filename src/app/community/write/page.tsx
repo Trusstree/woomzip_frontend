@@ -1,4 +1,5 @@
-import Editor from "@/app/community/write/_components/Editor";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("@/app/community/write/_components/Editor"), { ssr: false });
 
 export default function Write() {
   return (

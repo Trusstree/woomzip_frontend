@@ -4,35 +4,25 @@ import "react-quill/dist/quill.snow.css";
 import { postPost } from "@/actions/apis/postAPI";
 import { confirmSuccess } from "@/lib/alertUtil";
 import { useCallback, useMemo, useState } from "react";
-import { useRef, ChangeEvent } from "react";
+import { useRef } from "react";
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
-import { s3 } from "@/configs/S3Client";
 import { setS3Url } from "@/lib/s3Util";
 import moment from "moment";
+import DOMPurify from "isomorphic-dompurify";
+import ReactQuill, { Quill } from "react-quill";
+//import ImageResize from "quill-image-resize-module";
+
+//Quill.register("modules/ImageResize", ImageResize);
 
 type EditorProps = {};
 
 const formats = ["header", "font", "size", "bold", "italic", "underline", "strike", "list", "bullet", "align", "image"];
-
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function Editor(props: EditorProps) {
   const router = useRouter();
   const [dataTitle, setDataTitle] = useState("");
   const [dataText, setDataText] = useState("");
   const [dataCategory, setDataCategory] = useState("일반");
-
-  // const callback = async (postData:any)=>{
-  //   const { data, error } = await postPost({
-  //     ...postData,
-  //     viewCount:0,
-  //     likeCount:0,
-  //     comments:""
-  //   });
-  //   console.log(data);
-  //   if(error)console.log(error);
-  // };
 
   const quillRef = useRef(null);
 
@@ -41,16 +31,17 @@ export default function Editor(props: EditorProps) {
     input.setAttribute("type", "file");
     input.setAttribute("accept", "image/*");
     input.click();
-  
-    input.onchange = async (e: Event) => {
-      const target = e.target as HTMLInputElement;
-      const file = target.files?.[0];
-      if (file && file.type.split("/")[0] === "image") {
+
+    input.onchange = async (e: any) => {
+      const file = Array.from(e.target.files) as Array<any>;
+      if (!file) return;
+      for (let i = 0; i < file.length; i++) {
+        if (file[i].type.split("/")[0] != "image") continue;
         try {
-          const title = `community_${moment().format("YYYYMMDDHHmmss")}`;
-          const url = `test_community/${title}.${file.type.split("/")[1]}`;
-          const [response, error] = await setS3Url(url, file);
-          
+          const title = `posts${moment().format("YYYYMMDDHHmmss")}${i}`;
+          const url = `community/${title}.${file[i].type.split("/")[1]}`;
+          const [response, error] = await setS3Url(url, file[i]);
+
           if (!error) {
             const imageUrl = `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`;
             const editor = quillRef.current?.getEditor();
@@ -67,27 +58,6 @@ export default function Editor(props: EditorProps) {
       }
     };
   };
-  
-  // const imageHandler = async () => {
-  //   if(!document) return;
-  //   const input = document.createElement("input");
-  //   input.setAttribute("type", "file");
-  //   input.setAttribute("accept", "image/*");
-  //   input.click();
-
-  //   input.addEventListener("change", async () => {
-  //     //이미지를 담아 전송할 file을 만든다
-  //     const file = input.files?.[0];
-  //     console.log(file);
-
-  //     const key = "key";
-  //     await setS3Url(key , file);
-  //     const editor = quillRef.current.getEditor();
-  //     const range = editor.getSelection();
-  //     // 가져온 위치에 이미지를 삽입한다
-  //     editor.insertEmbed(range.index, "image", `https://trussbucket.s3.ap-northeast-2.amazonaws.com/${key}`);
-  //   });
-  // };
 
   const modules = useMemo(
     () => ({
@@ -96,34 +66,25 @@ export default function Editor(props: EditorProps) {
           [{ header: [1, 2, 3, 4, 5, false] }],
           ["bold", "italic", "underline", "strike"],
           [{ list: "ordered" }, { list: "bullet" }, { align: [] }],
-          ['image'],
+          ["image"],
           ["clean"],
         ],
-        // handlers: {
-        //   image: imageHandler,
-        // },
+        handlers: {
+          image: imageHandler,
+        },
       },
       clipboard: {
         matchVisual: false,
       },
+      // ImageResize: {
+      //   parchment: Quill.import("parchment"),
+      //   modules: ["Resize", "DisplaySize"],
+      // },
     }),
     []
   );
 
   const handleSubmit = useCallback(async () => {
-    // const { value: file } = await Swal.fire({
-    //   title: "Select image",
-    //   input: "file",
-    //   inputAttributes: {
-    //     "accept": "image/*",
-    //     "aria-label": "Upload your profile picture"
-    //   }
-    // });
-    // console.log(file);
-
-    // const key = "thumbnail";
-    // await setS3Url(key , file);
-
     const result = await confirmSuccess("포스팅 확인", "현재 입력하신 정보가 모두 맞습니까?", "맞습니다!", "아닙니다.");
     if (result.isConfirmed) {
       const { data, error } = await postPost({
@@ -172,6 +133,7 @@ export default function Editor(props: EditorProps) {
         </div>
 
         <ReactQuill
+          ref={quillRef}
           className="mb-5"
           style={{ height: "25vw" }}
           value={dataText}
@@ -195,7 +157,7 @@ export default function Editor(props: EditorProps) {
         </div>
       </form>
 
-      {/* {dataText && (
+      {dataText && (
         <div
           style={{
             width: "60vw",
@@ -205,7 +167,7 @@ export default function Editor(props: EditorProps) {
             __html: DOMPurify.sanitize(String(dataText)),
           }}
         />
-      )} */}
+      )}
     </div>
   );
 }

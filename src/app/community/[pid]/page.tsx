@@ -18,11 +18,6 @@ const style = {
   질문: { backgroundColor: "#E2FFCC", cololr: "#8AC031" },
 };
 
-async function purifyDOM(str: string) {
-  "use server";
-  return DOMPurify.sanitize(str);
-}
-
 async function loadData(pid) {
   "use server";
   let [postData, comments, isPostLike, isCommentLike] = [undefined, undefined, undefined, undefined];
@@ -55,21 +50,53 @@ async function loadData(pid) {
 }
 
 export default async function page({ params }: { params: PageParams }) {
-  
   const { pid } = params;
   const { postData, comments, isPostLike, isCommentLike } = await loadData(pid);
-  const purifiedDOM = await purifyDOM(String(postData["content"]));
-
 
   return (
-    <div style={{ backgroundColor: '#F8F8FA' }}>
-      <div className={`container px-3`} style={{display: 'flex', justifyContent: 'flex-end', paddingTop: "80px"}}>
-        <button style={{padding: "3px 10px", marginRight: '12px' , borderRadius: "4px", border: "1px solid #EDF0F4", backgroundColor: "#EDF0F4", color: "#ADB3BF", fontWeight: 600 }}>이전글</button>
-        <button style={{padding: "3px 10px", marginRight: '12px' , borderRadius: "4px", border: "1px solid #EDF0F4", backgroundColor: "#EDF0F4", color: "#ADB3BF", fontWeight: 600 }}>다음글</button>
-        <button style={{padding: "3px 10px", borderRadius: "4px", border: "1px solid #EDF0F4", backgroundColor: "#EDF0F4", color: "#ADB3BF", fontWeight: 600 }}>목록</button>
+    <div style={{ backgroundColor: "#F8F8FA" }}>
+      <div className={`container px-3`} style={{ display: "flex", justifyContent: "flex-end", paddingTop: "80px" }}>
+        <button
+          style={{
+            padding: "3px 10px",
+            marginRight: "12px",
+            borderRadius: "4px",
+            border: "1px solid #EDF0F4",
+            backgroundColor: "#EDF0F4",
+            color: "#ADB3BF",
+            fontWeight: 600,
+          }}
+        >
+          이전글
+        </button>
+        <button
+          style={{
+            padding: "3px 10px",
+            marginRight: "12px",
+            borderRadius: "4px",
+            border: "1px solid #EDF0F4",
+            backgroundColor: "#EDF0F4",
+            color: "#ADB3BF",
+            fontWeight: 600,
+          }}
+        >
+          다음글
+        </button>
+        <button
+          style={{
+            padding: "3px 10px",
+            borderRadius: "4px",
+            border: "1px solid #EDF0F4",
+            backgroundColor: "#EDF0F4",
+            color: "#ADB3BF",
+            fontWeight: 600,
+          }}
+        >
+          목록
+        </button>
       </div>
-      <main className={`container px-3`} style={{paddingTop: "30px", paddingBottom: "80px"}}>
-        <div style={{ backgroundColor: "#ffffff", borderRadius: "17px", padding: "60px", paddingTop: "80px"}}>
+      <main className={`container px-3`} style={{ paddingTop: "30px", paddingBottom: "80px" }}>
+        <div style={{ backgroundColor: "#ffffff", borderRadius: "17px", padding: "60px", paddingTop: "80px" }}>
           <div>
             <div
               style={{
@@ -81,13 +108,13 @@ export default async function page({ params }: { params: PageParams }) {
                 borderRadius: "15px",
                 padding: "3px 7px",
                 textAlign: "center",
-                margin: "10px 0"
+                margin: "10px 0",
               }}
             >
               {postData["category"]}
             </div>
 
-            <h2 style={{ paddingTop: '30px' }}>{postData.title}</h2>
+            <h2 style={{ paddingTop: "30px" }}>{postData.title}</h2>
 
             <div className="row" style={{ marginTop: "20px" }}>
               <div style={{ width: "50px", height: "40px" }}>
@@ -96,7 +123,13 @@ export default async function page({ params }: { params: PageParams }) {
                   alt={"pic"}
                   width={40}
                   height={40}
-                  style={{ objectFit: "cover", borderRadius: "50px", overflow: "hidden", width: "35px", height: "35px" }}
+                  style={{
+                    objectFit: "cover",
+                    borderRadius: "50px",
+                    overflow: "hidden",
+                    width: "35px",
+                    height: "35px",
+                  }}
                 />
               </div>
               <div style={{ fontSize: "16px", color: "gray", fontWeight: "400", width: "auto", margin: "5px 0 0 0" }}>
@@ -108,7 +141,7 @@ export default async function page({ params }: { params: PageParams }) {
               className="py-5 my-5"
               style={{ minHeight: "500px" }}
               dangerouslySetInnerHTML={{
-                __html: purifiedDOM,
+                __html: DOMPurify.sanitize(String(postData["content"])),
               }}
             />
             <div
@@ -142,7 +175,12 @@ export default async function page({ params }: { params: PageParams }) {
           </div>
 
           {/* 추천정보 */}
-          <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
+          <PostMenu
+            title={"더 많은 글을 구경해보세요!"}
+            routeUrl={"/house"}
+            routeText={"더보기"}
+            horizontalScroll={true}
+          >
             <PostList numShowItems={6} />
           </PostMenu>
         </div>

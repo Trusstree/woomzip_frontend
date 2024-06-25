@@ -20,7 +20,6 @@ export async function getS3Url(key: string) {
 
 export async function setS3Url(key: string, body: any) {
   let [response, error] = [undefined, undefined] as any[];
-  console.log(key);
   const command = new PutObjectCommand({
     Bucket: process.env.NEXT_PUBLIC_AWS_S3_BUCKETNAME,
     Key: key,
