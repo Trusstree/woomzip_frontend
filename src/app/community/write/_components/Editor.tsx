@@ -10,13 +10,30 @@ import { setS3Url } from "@/lib/s3Util";
 import moment from "moment";
 import DOMPurify from "isomorphic-dompurify";
 import ReactQuill, { Quill } from "react-quill";
-//import ImageResize from "quill-image-resize-module";
+import { ImageActions } from "@xeger/quill-image-actions";
+import { ImageFormats } from "@xeger/quill-image-formats";
 
-//Quill.register("modules/ImageResize", ImageResize);
+Quill.register("modules/imageActions", ImageActions);
+// Quill.register("modules/imageFormats", ImageFormats);
 
 type EditorProps = {};
 
-const formats = ["header", "font", "size", "bold", "italic", "underline", "strike", "list", "bullet", "align", "image"];
+const formats = [
+  "header",
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "list",
+  "bullet",
+  "align",
+  "image",
+  // "float",
+  "height",
+  "width",
+];
 
 export default function Editor(props: EditorProps) {
   const router = useRouter();
@@ -76,10 +93,7 @@ export default function Editor(props: EditorProps) {
       clipboard: {
         matchVisual: false,
       },
-      // ImageResize: {
-      //   parchment: Quill.import("parchment"),
-      //   modules: ["Resize", "DisplaySize"],
-      // },
+      imageActions: {},
     }),
     []
   );
