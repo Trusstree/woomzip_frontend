@@ -5,8 +5,18 @@ import { Suspense } from "react";
 import MyPageProfile from "@/app/mypage/[uid]/_components/MyPageProfile";
 import AppPostList from "@/components/posts/AppPostList";
 import { AppLivingCardList } from "@/components/living/AppLivingCardList";
+import { getCompanyMypage } from "@/actions/apis/Mypage";
 
-export default function MypageCompany({ uid, userData }) {
+async function loadData(uid) {
+  "use server";
+  const [data, error] = await getCompanyMypage(uid);
+  console.log([data, error]);
+  return [data, error];
+}
+
+export default async function MypageCompany({ uid, userData }) {
+  const [data, error] = await loadData(uid);
+  //console.log(data)
   return (
     <main>
       <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
