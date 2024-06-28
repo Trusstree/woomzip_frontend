@@ -6,7 +6,16 @@ import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export function ReviewBox({ id, index, nickname, date, rating, tag, comment, images }) {
+export function ReviewBox({
+  id,
+  index,
+  nickname,
+  date,
+  rating,
+  tag,
+  comment,
+  images,
+}) {
   const router = useRouter();
   // function handleClick() {
   //   // e.target.value
@@ -30,9 +39,11 @@ export function ReviewBox({ id, index, nickname, date, rating, tag, comment, ima
           <div style={{ color: "gray", padding: "10px" }}>
             {nickname} |<span> {toStringByFormatting(new Date(date))}</span>
           </div>
-          <div style={{ color: "gray", padding: "10px" }}>{"판매자 이름 > 살아보기 후기"}</div>
+          <div style={{ color: "gray", padding: "10px" }}>
+            {"판매자 이름 > 살아보기 후기"}
+          </div>
         </div>
-        <div style={{ padding: "10px" }}>★ {rating.toFixed(1)}</div>
+        <div style={{ padding: "10px" }}>★ {rating?.toFixed(1) ?? "0.0"}</div>
         <div className="container row" style={{ margin: "0", padding: "0" }}>
           <div
             className="col-8"
@@ -89,7 +100,10 @@ export function ReviewBox({ id, index, nickname, date, rating, tag, comment, ima
             </div>
           </div>
         </div>
-        <div className="containr" style={{ width: "100%", float: "left", marginTop: "20px" }}>
+        <div
+          className="containr"
+          style={{ width: "100%", float: "left", marginTop: "20px" }}
+        >
           {tag.map((badge, index) => (
             <span
               className="badge"

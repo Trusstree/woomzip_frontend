@@ -70,7 +70,7 @@ export default function Carousel(props: CarouselProps) {
                 className="w-100"
                 style={{
                   overflow: "hidden",
-                  height: "600px",
+                  height: "500px",
                   objectFit: "cover",
                 }}
                 src={e.img}

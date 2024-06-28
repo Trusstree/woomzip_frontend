@@ -2,7 +2,6 @@ import Icon from "@/app/community/_components/Icon";
 import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
 import { Suspense } from "react";
-import { isMobile, isBrowser } from "react-device-detect";
 import SearchComponent from "@/components/SearchComponent";
 import CategoryButton from "@/components/CategoryButton";
 
