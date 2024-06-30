@@ -54,6 +54,7 @@ export default function AppPostCard(props: PostCardProps) {
               borderRadius: "10px",
               margin: "0",
               padding: "0",
+              objectFit: "cover",
             }}
           ></img>
           <div

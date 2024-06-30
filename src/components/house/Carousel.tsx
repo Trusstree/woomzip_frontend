@@ -44,7 +44,7 @@ export default function Carousel(props: CarouselProps) {
       className={`carousel slide ${className}`}
       data-bs-ride="carousel"
     >
-      <BrowserView>
+      <div>
         <div className="carousel-indicators">
           {carouselData.map((e, i) => (
             <button
@@ -70,7 +70,7 @@ export default function Carousel(props: CarouselProps) {
                 className="w-100"
                 style={{
                   overflow: "hidden",
-                  height: "600px",
+                  height: "500px",
                   objectFit: "cover",
                 }}
                 src={e.img}
@@ -112,59 +112,7 @@ export default function Carousel(props: CarouselProps) {
           <span className="carousel-control-next-icon" aria-hidden="true" />
           <span className="visually-hidden">Next</span>
         </button>
-      </BrowserView>
-
-      {/* <MobileView>
-        <div className="carousel-indicators" style={{}}>
-          {houseData
-            ? houseData.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  data-bs-target="#Carousel"
-                  data-bs-slide-to={`${i}`}
-                  className={i == 0 ? "active" : ""}
-                  aria-current={i == 0 ? "true" : "false"}
-                  aria-label={`Slide ${i + 1}`}
-                />
-              ))
-            : undefined}
-        </div>
-        <div className="carousel-inner">
-          {houseData ? (
-            houseData.map((e, i) => (
-              <div
-                key={i}
-                className={`carousel-item ${i == 0 ? "active" : ""}`}
-                data-bs-interval={(interval * 1000).toString()}
-              >
-                <Image
-                  src={e["house_img_url"] || "/blur_image.png"}
-                  alt="truss_logo.png"
-                  width={440}
-                  height={250}
-                  onClick={() => {
-                    router.push(`/house/${e["house_id"]}`);
-                  }}
-                  style={{ objectFit: "cover", width:"102vw"}}
-                  placeholder={"blur"}
-                  blurDataURL={"/placeholder.png"}
-                />
-              </div>
-            ))
-          ) : (
-            <button
-              className="d-block w-100 rounded-4"
-              style={{
-                backgroundColor: "gray",
-                borderColor: "gray",
-                objectFit: "cover",
-              }}
-            />
-          )}
-        </div>
-
-      </MobileView> */}
+      </div>
     </div>
   );
 }

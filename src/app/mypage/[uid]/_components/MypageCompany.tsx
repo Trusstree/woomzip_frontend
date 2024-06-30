@@ -39,10 +39,16 @@ export default async function MypageCompany({ uid, userData }) {
   }
   */
   return (
-    <main>
-      <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
+    <>
+      <div
+        className="row"
+        style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}
+      >
         <div style={{ fontSize: "28px", fontWeight: "500" }}>프로필</div>
-        <div className="row g-2" style={{ width: "100%", position: "relative" }}>
+        <div
+          className="row g-2"
+          style={{ width: "100%", position: "relative" }}
+        >
           <div className="col-6">
             <div style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}>
               <img
@@ -58,7 +64,9 @@ export default async function MypageCompany({ uid, userData }) {
                 style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
-            <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
+            <div
+              style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}
+            >
               <img
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
                 style={{ width: "100%", height: "196px", objectFit: "cover" }}
@@ -110,7 +118,9 @@ export default async function MypageCompany({ uid, userData }) {
                   style={{ width: "25px" }}
                 />
               </div>
-              <div style={{ width: "auto", marginTop: "2px" }}>사진 전체보기</div>
+              <div style={{ width: "auto", marginTop: "2px" }}>
+                사진 전체보기
+              </div>
             </div>
           </div>
         </div>
@@ -139,7 +149,12 @@ export default async function MypageCompany({ uid, userData }) {
               </div>
 
               <div style={{ width: "100%", marginTop: "60px" }}>
-                <PostMenu title={"판매자 체험 숙소"} routeUrl={"/living"} routeText={"더보기"} horizontalScroll={true}>
+                <PostMenu
+                  title={"판매자 체험 숙소"}
+                  routeUrl={"/living"}
+                  routeText={"더보기"}
+                  horizontalScroll={true}
+                >
                   <Suspense>
                     <AppLivingCardList numShowItems={4} />
                   </Suspense>
@@ -151,6 +166,6 @@ export default async function MypageCompany({ uid, userData }) {
           </div>
         </div>
       </div>
-    </main>
+    </>
   );
 }

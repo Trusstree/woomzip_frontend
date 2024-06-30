@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { BrowserView, MobileView } from "react-device-detect";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
@@ -150,65 +149,6 @@ export function LivingCard({ company, title, addr, img, url, context }) {
           </div>
         </div>
       </div>
-
-      <MobileView>
-        <div className="card" style={{ border: "none", width: "105%" }}>
-          <Image
-            className="card-img-top"
-            style={{ borderRadius: "10px", objectFit: "cover" }}
-            alt="main-img"
-            src={img}
-            width={100}
-            height={170}
-            unoptimized={true}
-            onClick={handleClick}
-          />
-
-          <div style={{ color: "gray" }}>
-            <div style={{ width: "100%" }}>
-              <div style={{ fontSize: "14px", marginLeft: "2px" }}>
-                {company}
-              </div>
-              <div style={{ fontSize: "18px", color: "black" }}>{title}</div>
-            </div>
-
-            <div className="row" style={{ width: "100%" }}>
-              <div className="row" style={{ width: "50%", marginTop: "10px" }}>
-                <Image
-                  src={
-                    "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/gps.png"
-                  }
-                  width={100}
-                  height={20}
-                  style={{ width: "40px" }}
-                  alt={"gpsIcon"}
-                />
-                <div style={{ fontSize: "14px", width: "110px" }}>{addr}</div>
-              </div>
-              <div className="row" style={{ width: "50%", marginTop: "10px" }}>
-                <div
-                  style={{ fontSize: "14px", fontWeight: "700", width: "30px" }}
-                >
-                  ₩
-                </div>
-                <div style={{ fontSize: "14px", width: "auto" }}>무료</div>
-              </div>
-            </div>
-            <div
-              style={{
-                fontWeight: "500",
-                fontSize: "14px",
-                color: "#314FC0",
-                marginTop: "5px",
-                textAlign: "right",
-              }}
-            >
-              지금까지 5명이 살아봤어요!
-            </div>
-            <hr />
-          </div>
-        </div>
-      </MobileView>
     </>
   );
 }
