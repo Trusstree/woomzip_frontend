@@ -1,6 +1,6 @@
 "use client";
 
-import { getCompanyList, postCompanyMypage } from "@/actions/apis/Mypage";
+import { getCompanyList, getCompanyConfirm } from "@/actions/apis/Mypage";
 import { useEffect, useState } from "react";
 
 export default function CompanyClient() {
@@ -15,11 +15,14 @@ export default function CompanyClient() {
   }, []);
   return (
     <div>
-      {dataList.map((e) => (
+      {dataList.map((e, i) => (
         <div
+          key={i}
           onClick={async () => {
-            await postCompanyMypage(e.company_signup_temp_id, e);
-            console.log("asdf");
+            console.log(e);
+            const [data, error] = await getCompanyConfirm(e.company_signup_temp_id);
+            if (data) console.log(data);
+            if (error) console.error(error);
           }}
         >
           {e.name}

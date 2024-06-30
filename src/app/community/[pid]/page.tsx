@@ -7,6 +7,7 @@ import PostMenu from "@/components/posts/PostMenu";
 import CommentForm from "@/app/community/[pid]/_components/CommentForm";
 import Comment from "@/app/community/[pid]/_components/Comment";
 import DOMPurify from "isomorphic-dompurify";
+import { cookies } from "next/headers";
 
 type PageParams = {
   pid: number;
@@ -23,6 +24,8 @@ async function loadData(pid) {
   let [postData, comments, isPostLike, isCommentLike] = [undefined, undefined, undefined, undefined];
 
   const [data, error] = await getPost(pid);
+  // const cookieStorage = cookies();
+  // cookieStorage.set(`vcnt_${pid}`, "1");
 
   if (error) {
     console.log(error);

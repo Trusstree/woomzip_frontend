@@ -7,7 +7,7 @@ import { AppHouseList } from "@/components/house/AppHouseList";
 import AppPostList from "@/components/posts/AppPostList";
 import { Suspense } from "react";
 import { getHouses } from "@/actions/apis/HouseAPI";
-import { AppLivingCardList } from "@/components/living/AppLivingCardList";
+import { AppLivingCardList } from "@/app/mypage/[uid]/_components/AppLivingCardList";
 
 async function loadData() {
   const [rawHouseData, houseError] = await getHouses({ skip: 1, limit: 6 });
@@ -15,10 +15,7 @@ async function loadData() {
     console.error(houseError);
     return;
   }
-  const [houseData, houseCount] = [
-    rawHouseData.data[0].houses,
-    rawHouseData.data[0].total_count,
-  ];
+  const [houseData, houseCount] = [rawHouseData.data[0].houses, rawHouseData.data[0].total_count];
   return { houseData, houseCount };
 }
 
@@ -87,12 +84,7 @@ export default function Home() {
         }}
       >
         <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
-          <PostMenu
-            title={"먼저 무료로 살아보세요"}
-            routeUrl={"/living"}
-            routeText={"더보기"}
-            horizontalScroll={true}
-          >
+          <PostMenu title={"먼저 무료로 살아보세요"} routeUrl={"/living"} routeText={"더보기"} horizontalScroll={true}>
             <Suspense>
               <AppLivingCardList numShowItems={4} />
             </Suspense>
@@ -100,10 +92,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div
-        className="container align-content-center"
-        style={{ width: "100%", height: "700px" }}
-      >
+      <div className="container align-content-center" style={{ width: "100%", height: "700px" }}>
         <PostMenu
           title={"당신을 위한 집들을 준비해두었어요"}
           routeUrl={"/house"}
@@ -111,11 +100,7 @@ export default function Home() {
           horizontalScroll={true}
         >
           <Suspense>
-            <AppHouseList
-              numShowItems={6}
-              houseData={houseData}
-              count={houseCount}
-            />
+            <AppHouseList numShowItems={6} houseData={houseData} count={houseCount} />
           </Suspense>
         </PostMenu>
       </div>

@@ -30,11 +30,11 @@ export const getCompanyMypage = async (uid: any) => {
   return [data, error];
 };
 
-export const postCompanyMypage = async (uid: any, body: any) => {
+export const getCompanyConfirm = async (uid: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.post(`/auth/company/confirm/${uid}`, body);
+    const result = await privateApi.get(`/auth/company/confirm/${uid}`);
     data = result?.data;
   } catch (err) {
     error = err.response?.data;

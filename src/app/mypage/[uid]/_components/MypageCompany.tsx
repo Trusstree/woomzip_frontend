@@ -4,19 +4,40 @@ import House from "@/app/mypage/[uid]/_components/House";
 import { Suspense } from "react";
 import MyPageProfile from "@/app/mypage/[uid]/_components/MyPageProfile";
 import AppPostList from "@/components/posts/AppPostList";
-import { AppLivingCardList } from "@/components/living/AppLivingCardList";
+import { AppLivingCardList } from "@/app/mypage/[uid]/_components/AppLivingCardList";
 import { getCompanyMypage } from "@/actions/apis/Mypage";
 
 async function loadData(uid) {
   "use server";
   const [data, error] = await getCompanyMypage(uid);
-  console.log([data, error]);
   return [data, error];
 }
 
 export default async function MypageCompany({ uid, userData }) {
   const [data, error] = await loadData(uid);
-  //console.log(data)
+  if (error) console.log(error);
+  console.log(data.data[0]);
+  /*
+  {
+    companyInfo: {
+      profile: {
+        nickname: '민둘맨둘11',
+        name: '박민규1',
+        one_line_introduce: 'qwerrqqr',
+        addr: 'asdf',
+        phone_number: '010-6358-9460',
+        user_img_url: 'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/users/박민규1/thumbnail20240629184430.png',
+        company_url: 'asdf',
+        pr_url: 'asdf'
+      },
+      images: '[,",h,t,t,p,s,:,/,/,t,r,u,s,s,b,u,c,k,e,t,d,e,v,.,s,3,.,a,p,-,n,o,r,t,h,e,a,s,t,-,2,.,a,m,a,z,o,n,a,w,s,.,c,o,m,/,u,s,e,r,s,/,박,민,규,1,/,i,m,a,g,e,s,2,0,2,4,0,6,2,9,1,8,4,4,3,0,0,.,j,p,e,g,",,,",h,t,t,p,s,:,/,/,t,r,u,s,s,b,u,c,k,e,t,d,e,v,.,s,3,.,a,p,-,n,o,r,t,h,e,a,s,t,-,2,.,a,m,a,z,o,n,a,w,s,.,c,o,m,/,u,s,e,r,s,/,박,민,규,1,/,i,m,a,g,e,s,2,0,2,4,0,6,2,9,1,8,4,4,3,0,1,.,j,p,e,g,",,,",h,t,t,p,s,:,/,/,t,r,u,s,s,b,u,c,k,e,t,d,e,v,.,s,3,.,a,p,-,n,o,r,t,h,e,a,s,t,-,2,.,a,m,a,z,o,n,a,w,s,.,c,o,m,/,u,s,e,r,s,/,박,민,규,1,/,i,m,a,g,e,s,2,0,2,4,0,6,2,9,1,8,4,4,3,0,2,.,j,p,e,g,",]'
+    },
+    reviews: { averageRating: null, allReviews: [] },
+    posts: [],
+    pavilions: [],
+    sellingHouses: []
+  }
+  */
   return (
     <main>
       <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
