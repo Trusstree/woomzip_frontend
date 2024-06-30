@@ -40,22 +40,6 @@ export default function Home() {
         <Carousel className="w-100" />
       </div>
 
-      {/* <div
-        className="container align-content-center"
-        style={{ width: "100%", height: "500px" }}
-      >
-        <PostMenu
-          title={"다른 사람들의 이야기를 들어보세요"}
-          routeUrl={"/community"}
-          routeText={"더보기"}
-          horizontalScroll={true}
-        >
-          <Suspense>
-            <PostList numShowItems={4} />
-          </Suspense>
-        </PostMenu>
-      </div> */}
-
       <div
         style={{
           width: "100%",

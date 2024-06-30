@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import AppPostCard from "./AppPostCard";
 import PostCardPlaceHolder from "@/components/posts/PostCardPlaceholder";
 import Pagination from "@/components/Pagination";
+import PostCard from "@/components/posts/PostCard";
 
 type PostListProps = {
   numShowItems: number;
@@ -50,19 +51,9 @@ export default function AppPostList(props: PostListProps) {
         }}
       >
         {postData
-          ? postData.map((e: any, i: number) => (
-              <AppPostCard data={e} key={i} />
-            ))
-          : new Array(numShowItems)
-              .fill(0)
-              .map((e: any, i: number) => <PostCardPlaceHolder key={i} />)}
-        {numShowPages && (
-          <Pagination
-            numItems={count}
-            numShowItems={numShowItems}
-            numShowPages={numShowPages}
-          />
-        )}
+          ? postData.map((e: any, i: number) => <PostCard data={e} key={i} />)
+          : new Array(numShowItems).fill(0).map((e: any, i: number) => <PostCardPlaceHolder key={i} />)}
+        {numShowPages && <Pagination numItems={count} numShowItems={numShowItems} numShowPages={numShowPages} />}
       </div>
     </>
   );

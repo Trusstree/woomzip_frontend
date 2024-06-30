@@ -46,9 +46,7 @@ export function SigninForm() {
       alertError("로그인 에러", error.response?.data?.message || `로그인에 실패했어요.`);
       return;
     }
-
     const userData = getUserdataByToken(data.data.access_token);
-    console.log(userData);
 
     setUserContext(userData.uid);
     router.push("/");

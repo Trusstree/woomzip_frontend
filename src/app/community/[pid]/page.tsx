@@ -24,8 +24,9 @@ async function loadData(pid) {
   let [postData, comments, isPostLike, isCommentLike] = [undefined, undefined, undefined, undefined];
 
   const [data, error] = await getPost(pid);
-  // const cookieStorage = cookies();
-  // cookieStorage.set(`vcnt_${pid}`, "1");
+  const cookieStorage = cookies();
+  console.log(cookieStorage);
+  //cookieStorage.set(`vcnt_${pid}`, "1");
 
   if (error) {
     console.log(error);
@@ -151,7 +152,7 @@ export default async function page({ params }: { params: PageParams }) {
               className={`card-footer rounded-bottom-3 fw-normal px-2`}
               style={{ backgroundColor: "white", borderColor: "white" }}
             >
-              <div className="d-flex justify-content-between" style={{ backgroundColor: "#FAFBFC" }}>
+              <div className="d-flex justify-content-between" style={{ backgroundColor: "#ffffff" }}>
                 <Count
                   pid={pid}
                   viewCount={postData["view_count"]}

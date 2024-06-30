@@ -171,7 +171,7 @@ export default function Editor(props: EditorProps) {
         </div>
       </form>
 
-      {dataText && (
+      {/* {dataText && (
         <div
           style={{
             width: "60vw",
@@ -181,7 +181,7 @@ export default function Editor(props: EditorProps) {
             __html: DOMPurify.sanitize(String(dataText)),
           }}
         />
-      )}
+      )} */}
     </div>
   );
 }
