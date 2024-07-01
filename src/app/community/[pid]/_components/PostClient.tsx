@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { BrowserView, MobileView } from "react-device-detect";
 import { getPost } from "@/actions/apis/postAPI";
 import DOMPurify from "dompurify";
 import PostMenu from "@/components/posts/PostMenu";
@@ -83,75 +82,73 @@ export default function PostClient(props: PostpageProps) {
 
   return postData ? (
     <div>
-      <BrowserView>
-        <div style={{ backgroundColor: "#FAFBFC", borderRadius: "17px", padding: "30px", marginTop: "80px" }}>
-          <div
-            style={{
-              backgroundColor: style[postData.category].backgroundColor,
-              borderColor: style[postData.category].backgroundColor,
-              width: "60px",
-              fontSize: "16px",
-              color: style[postData.category].color,
-              borderRadius: "15px",
-              padding: "3px 7px",
-              textAlign: "center",
-              margin: "10px 0",
-            }}
-          >
-            {postData.category}
-          </div>
-
-          <h2>{postData.title}</h2>
-
-          <div className="row" style={{ marginTop: "30px" }}>
-            <div style={{ width: "50px", height: "40px" }}>
-              <Image
-                src={postData.user_img_url || "/blur_image.png"}
-                alt={"pic"}
-                width={40}
-                height={40}
-                style={{ objectFit: "cover", borderRadius: "50px", overflow: "hidden", width: "35px", height: "35px" }}
-              />
-            </div>
-            <div style={{ fontSize: "16px", color: "gray", fontWeight: "400", width: "auto", margin: "5px 0 0 0" }}>
-              {postData.nickname}
-            </div>
-          </div>
-
-          <div
-            className="py-5 my-5"
-            style={{ minHeight: "300px" }}
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(postData.content),
-            }}
-          />
-        </div>
+      <div style={{ backgroundColor: "#FAFBFC", borderRadius: "17px", padding: "30px", marginTop: "80px" }}>
         <div
-          className={`card-footer rounded-bottom-3 fw-normal px-2`}
-          style={{ backgroundColor: "white", borderColor: "white", marginTop: "20px" }}
+          style={{
+            backgroundColor: style[postData.category].backgroundColor,
+            borderColor: style[postData.category].backgroundColor,
+            width: "60px",
+            fontSize: "16px",
+            color: style[postData.category].color,
+            borderRadius: "15px",
+            padding: "3px 7px",
+            textAlign: "center",
+            margin: "10px 0",
+          }}
         >
-          <div className="d-flex justify-content-between">
-            <Count
-              pid={pid}
-              viewCount={postData.viewCount}
-              commentCount={comments.length}
-              likeCount={postData.likeCount}
-              isPostLike={isPostLike}
+          {postData.category}
+        </div>
+
+        <h2>{postData.title}</h2>
+
+        <div className="row" style={{ marginTop: "30px" }}>
+          <div style={{ width: "50px", height: "40px" }}>
+            <Image
+              src={postData.user_img_url || "/blur_image.png"}
+              alt={"pic"}
+              width={40}
+              height={40}
+              style={{ objectFit: "cover", borderRadius: "50px", overflow: "hidden", width: "35px", height: "35px" }}
             />
           </div>
+          <div style={{ fontSize: "16px", color: "gray", fontWeight: "400", width: "auto", margin: "5px 0 0 0" }}>
+            {postData.nickname}
+          </div>
         </div>
 
-        <div style={{ backgroundColor: "#FAFBFC", borderRadius: "17px", padding: "30px", margin: "50px 0 100px 0" }}>
-          <Comments pid={pid} comments={comments} setComments={setComments} isCommentLike={isCommentLike} />
+        <div
+          className="py-5 my-5"
+          style={{ minHeight: "300px" }}
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(postData.content),
+          }}
+        />
+      </div>
+      <div
+        className={`card-footer rounded-bottom-3 fw-normal px-2`}
+        style={{ backgroundColor: "white", borderColor: "white", marginTop: "20px" }}
+      >
+        <div className="d-flex justify-content-between">
+          <Count
+            pid={pid}
+            viewCount={postData.viewCount}
+            commentCount={comments.length}
+            likeCount={postData.likeCount}
+            isPostLike={isPostLike}
+          />
         </div>
+      </div>
 
-        {/* 추천정보 */}
-        <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
-          <PostList numShowItems={4} />
-        </PostMenu>
-      </BrowserView>
+      <div style={{ backgroundColor: "#FAFBFC", borderRadius: "17px", padding: "30px", margin: "50px 0 100px 0" }}>
+        <Comments pid={pid} comments={comments} setComments={setComments} isCommentLike={isCommentLike} />
+      </div>
 
-      <MobileView style={{ width: "130%", marginLeft: "-10vw", overflow: "hidden" }}>
+      {/* 추천정보 */}
+      <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
+        <PostList numShowItems={4} />
+      </PostMenu>
+
+      {/* <MobileView style={{ width: "130%", marginLeft: "-10vw", overflow: "hidden" }}>
         <div
           style={{
             backgroundColor: style[postData.category].backgroundColor,
@@ -208,11 +205,10 @@ export default function PostClient(props: PostpageProps) {
           <Comments pid={pid} comments={comments} setComments={setComments} isCommentLike={isCommentLike} />
         </div>
 
-        {/* 추천정보 */}
         <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
           <PostList numShowItems={6} />
         </PostMenu>
-      </MobileView>
+      </MobileView> */}
     </div>
   ) : (
     <div>Loading</div>
