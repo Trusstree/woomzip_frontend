@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "@/actions/apis/postAPI";
 import { useSearchParams } from "next/navigation";
-import AppPostCard from "./AppPostCard";
 import PostCardPlaceHolder from "@/components/posts/PostCardPlaceholder";
 import Pagination from "@/components/Pagination";
 import PostCard from "@/components/posts/PostCard";
