@@ -16,7 +16,7 @@ export default function Pagination(props: PagenationProps) {
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
   const page = rawPage > 0 ? rawPage : 1;
-  const { createQuery, getParamsString } = useQuery();
+  const { createQuery, getRouteParams } = useQuery();
 
   const maxPageNumber = Math.ceil(numItems / numShowItems); //페이지네이션에서 가장 큰 페이지 값
   const remainder = (page - 1) % numShowPages; //페이지네이션에서 페이지 변수가 현재 보이는 숫자 중에 몇 번째?
@@ -27,7 +27,7 @@ export default function Pagination(props: PagenationProps) {
       // 맨 첫 줄에 있는 친구들보다는 커야 함
       createQuery("page", firstPage.toString());
 
-      router.push(`${pathname}?${getParamsString()}`); // 다음 수열 중에 가장 큰 숫자로 이동.
+      router.push(getRouteParams()); // 다음 수열 중에 가장 큰 숫자로 이동.
     }
     // ex) 6 7 8 9 10 => 1 2 3 4 5 면 page는 5
     window.scrollTo({ top: 0 });
@@ -38,7 +38,7 @@ export default function Pagination(props: PagenationProps) {
       // 마지막 페이지 숫자랑 줄에 있는 친구들보다는 커야 함
       createQuery("page", (firstPage + 1 + numShowPages).toString());
 
-      router.push(`${pathname}?${getParamsString()}`); // 다음 수열 중에 가장 작은 숫자로 이동.
+      router.push(getRouteParams()); // 다음 수열 중에 가장 작은 숫자로 이동.
     }
     // ex) 1 2 3 4 5 => 6 7 8 9 10 면 page는 5
     window.scrollTo({ top: 0 });
@@ -46,7 +46,7 @@ export default function Pagination(props: PagenationProps) {
 
   const handlePage = (number: number) => {
     createQuery("page", number.toString());
-    router.push(`${pathname}?${getParamsString()}`);
+    router.push(getRouteParams());
     window.scrollTo({ top: 0 });
   };
 

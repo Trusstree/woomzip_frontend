@@ -1,41 +1,42 @@
+"use client";
+
 import { usePathname, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function useQuery() {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const [params, setParams] = useState(new URLSearchParams(searchParams));
 
-  const createQuery = useCallback(
-    (name: string, value?: string) => {
-      if (value) {
-        params.set(name, value);
-      } else {
-        params.delete(name);
-      }
-    },
-    [searchParams]
-  );
+  useEffect(() => {
+    setParams(new URLSearchParams(searchParams));
+  }, [searchParams]);
 
-  const createQueryString = useCallback(
-    (name: string, value?: string) => {
-      if (value) {
-        params.set(name, value);
-      } else {
-        params.delete(name);
-      }
+  const createQuery = (name: string, value?: string) => {
+    if (value) {
+      params.set(name, value);
+    } else {
+      params.delete(name);
+    }
+  };
 
-      return params.toString();
-    },
-    [searchParams]
-  );
+  const createQueryString = (name: string, value?: string) => {
+    if (value) {
+      params.set(name, value);
+    } else {
+      params.delete(name);
+    }
+
+    return params.toString();
+  };
 
   const getParams = () => {
     return params;
   };
 
-  const getParamsString = () => {
-    return params.toString();
+  const getRouteParams = () => {
+    return `${pathname}?${params.toString()}`;
   };
 
-  return { createQuery, createQueryString, getParams, getParamsString };
+  return { createQuery, createQueryString, getParams, getRouteParams };
 }
