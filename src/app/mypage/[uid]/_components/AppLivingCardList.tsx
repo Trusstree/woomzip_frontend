@@ -2,7 +2,6 @@
 
 import { AppLivingCard } from "./AppLivingCard";
 import { useEffect, useState } from "react";
-import { BrowserView, MobileView } from "react-device-detect";
 
 const LivingCardExample = [
   {

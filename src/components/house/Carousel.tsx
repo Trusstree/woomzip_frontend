@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BrowserView } from "react-device-detect";
 import { useRouter } from "next/navigation";
 
 type CarouselProps = {
@@ -39,11 +38,7 @@ export default function Carousel(props: CarouselProps) {
   };
 
   return (
-    <div
-      id="Carousel"
-      className={`carousel slide ${className}`}
-      data-bs-ride="carousel"
-    >
+    <div id="Carousel" className={`carousel slide ${className}`} data-bs-ride="carousel">
       <div>
         <div className="carousel-indicators">
           {carouselData.map((e, i) => (

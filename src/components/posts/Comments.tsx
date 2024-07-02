@@ -4,7 +4,6 @@ import { getUserAccessToken } from "@/actions/auth/authAction";
 import { postComment } from "@/actions/apis/commentAPI";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { BrowserView, MobileView } from "react-device-detect";
 import Comment from "@/components/posts/Comment";
 
 export default function Comments({ pid, comments, setComments, isCommentLike }) {
@@ -39,7 +38,7 @@ export default function Comments({ pid, comments, setComments, isCommentLike }) 
 
   return (
     <div>
-      <BrowserView className="my-1">
+      <div className="my-1">
         <div style={{ fontSize: "22px", fontWeight: "600" }}>댓글</div>
         <div className="my-3 d-flex flex-column">
           <div className="d-flex">
@@ -67,9 +66,13 @@ export default function Comments({ pid, comments, setComments, isCommentLike }) 
             ))}
           </div>
         </div>
-      </BrowserView>
+      </div>
+    </div>
+  );
+}
 
-      <MobileView style={{ width: "100%" }}>
+{
+  /* <MobileView style={{ width: "100%" }}>
         <div style={{ fontSize: "18px", fontWeight: "600" }}>댓글</div>
         <div className="my-3 d-flex flex-column">
           <div className="d-flex">
@@ -103,7 +106,5 @@ export default function Comments({ pid, comments, setComments, isCommentLike }) 
             ))}
           </div>
         </div>
-      </MobileView>
-    </div>
-  );
+      </MobileView> */
 }

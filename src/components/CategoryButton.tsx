@@ -14,10 +14,12 @@ export default function CategoryButton({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  const { createQuery, getParamsString } = useQuery();
+  const { createQuery, getRouteParams } = useQuery();
   const handleClick = () => {
     createQuery("category", category);
-    router.push(`${pathname}?${getParamsString()}`);
+    console.log(category);
+    console.log(getRouteParams());
+    router.push(getRouteParams());
   };
 
   return (

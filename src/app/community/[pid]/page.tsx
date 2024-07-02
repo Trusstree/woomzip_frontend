@@ -2,7 +2,7 @@ import { getUserAccessToken } from "@/actions/auth/authAction";
 import { getPostHeartUser } from "@/actions/apis/HeartAPI";
 import { getPost } from "@/actions/apis/postAPI";
 import Count from "@/components/posts/Count";
-import PostList from "@/components/posts/PostList";
+import AppPostList from "@/components/posts/AppPostList";
 import PostMenu from "@/components/posts/PostMenu";
 import CommentForm from "@/app/community/[pid]/_components/CommentForm";
 import Comment from "@/app/community/[pid]/_components/Comment";
@@ -21,7 +21,12 @@ const style = {
 
 async function loadData(pid) {
   "use server";
-  let [postData, comments, isPostLike, isCommentLike] = [undefined, undefined, undefined, undefined];
+  let [postData, comments, isPostLike, isCommentLike] = [
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+  ];
 
   const [data, error] = await getPost(pid);
   const cookieStorage = cookies();
@@ -59,135 +64,167 @@ export default async function page({ params }: { params: PageParams }) {
 
   return (
     <div style={{ backgroundColor: "#F8F8FA" }}>
-      <div className={`container px-3`} style={{ display: "flex", justifyContent: "flex-end", paddingTop: "80px" }}>
-        <button
+      <main
+        style={{
+          width: "90%",
+          maxWidth: "1300px",
+          margin: "0 auto",
+        }}
+      >
+        <div
           style={{
-            padding: "3px 10px",
-            marginRight: "12px",
-            borderRadius: "4px",
-            border: "1px solid #EDF0F4",
-            backgroundColor: "#EDF0F4",
-            color: "#ADB3BF",
-            fontWeight: 600,
+            display: "flex",
+            justifyContent: "flex-end",
+            padding: "40px 0",
           }}
         >
-          이전글
-        </button>
-        <button
+          <button
+            style={{
+              padding: "3px 10px",
+              marginRight: "12px",
+              borderRadius: "4px",
+              border: "1px solid #EDF0F4",
+              backgroundColor: "#EDF0F4",
+              color: "#ADB3BF",
+              fontWeight: 600,
+            }}
+          >
+            이전글
+          </button>
+          <button
+            style={{
+              padding: "3px 10px",
+              marginRight: "12px",
+              borderRadius: "4px",
+              border: "1px solid #EDF0F4",
+              backgroundColor: "#EDF0F4",
+              color: "#ADB3BF",
+              fontWeight: 600,
+            }}
+          >
+            다음글
+          </button>
+          <button
+            style={{
+              padding: "3px 10px",
+              borderRadius: "4px",
+              border: "1px solid #EDF0F4",
+              backgroundColor: "#EDF0F4",
+              color: "#ADB3BF",
+              fontWeight: 600,
+            }}
+          >
+            목록
+          </button>
+        </div>
+        <div
           style={{
-            padding: "3px 10px",
-            marginRight: "12px",
-            borderRadius: "4px",
-            border: "1px solid #EDF0F4",
-            backgroundColor: "#EDF0F4",
-            color: "#ADB3BF",
-            fontWeight: 600,
+            backgroundColor: "#ffffff",
+            borderRadius: "10px",
+            width: "100%",
+            padding: "40px 30px",
           }}
         >
-          다음글
-        </button>
-        <button
-          style={{
-            padding: "3px 10px",
-            borderRadius: "4px",
-            border: "1px solid #EDF0F4",
-            backgroundColor: "#EDF0F4",
-            color: "#ADB3BF",
-            fontWeight: 600,
-          }}
-        >
-          목록
-        </button>
-      </div>
-      <main className={`container px-3`} style={{ paddingTop: "30px", paddingBottom: "80px" }}>
-        <div style={{ backgroundColor: "#ffffff", borderRadius: "17px", padding: "60px", paddingTop: "80px" }}>
-          <div>
+          <div
+            style={{
+              backgroundColor: style[postData.category].backgroundColor,
+              borderColor: style[postData.category].backgroundColor,
+              width: "60px",
+              fontSize: "16px",
+              color: style[postData.category].color,
+              borderRadius: "15px",
+              padding: "3px 7px",
+              textAlign: "center",
+              margin: "10px 0",
+            }}
+          >
+            {postData["category"]}
+          </div>
+
+          <h2 style={{ paddingTop: "30px" }}>{postData.title}</h2>
+
+          <div className="row" style={{ marginTop: "20px" }}>
+            <div style={{ width: "50px", height: "40px" }}>
+              <img
+                src={postData?.["user_img_url"] || "/blur_image.png"}
+                alt={"pic"}
+                width={40}
+                height={40}
+                style={{
+                  objectFit: "cover",
+                  borderRadius: "50px",
+                  overflow: "hidden",
+                  width: "35px",
+                  height: "35px",
+                }}
+              />
+            </div>
             <div
               style={{
-                backgroundColor: style[postData.category].backgroundColor,
-                borderColor: style[postData.category].backgroundColor,
-                width: "60px",
                 fontSize: "16px",
-                color: style[postData.category].color,
-                borderRadius: "15px",
-                padding: "3px 7px",
-                textAlign: "center",
-                margin: "10px 0",
+                color: "gray",
+                fontWeight: "400",
+                width: "auto",
+                margin: "5px 0 0 0",
               }}
             >
-              {postData["category"]}
-            </div>
-
-            <h2 style={{ paddingTop: "30px" }}>{postData.title}</h2>
-
-            <div className="row" style={{ marginTop: "20px" }}>
-              <div style={{ width: "50px", height: "40px" }}>
-                <img
-                  src={postData?.["user_img_url"] || "/blur_image.png"}
-                  alt={"pic"}
-                  width={40}
-                  height={40}
-                  style={{
-                    objectFit: "cover",
-                    borderRadius: "50px",
-                    overflow: "hidden",
-                    width: "35px",
-                    height: "35px",
-                  }}
-                />
-              </div>
-              <div style={{ fontSize: "16px", color: "gray", fontWeight: "400", width: "auto", margin: "5px 0 0 0" }}>
-                {postData["nickname"]}
-              </div>
-            </div>
-
-            <div
-              className="py-5 my-5"
-              style={{ minHeight: "500px" }}
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(String(postData["content"])),
-              }}
-            />
-            <div
-              className={`card-footer rounded-bottom-3 fw-normal px-2`}
-              style={{ backgroundColor: "white", borderColor: "white" }}
-            >
-              <div className="d-flex justify-content-between" style={{ backgroundColor: "#ffffff" }}>
-                <Count
-                  pid={pid}
-                  viewCount={postData["view_count"]}
-                  commentCount={comments.length}
-                  likeCount={postData["post_like_count"]}
-                  isPostLike={isPostLike}
-                />
-              </div>
+              {postData["nickname"]}
             </div>
           </div>
 
-          <div style={{ backgroundColor: "#FAFBFC", borderRadius: "17px", padding: "30px", margin: "50px 0 100px 0" }}>
-            <div className="my-1">
-              <div style={{ fontSize: "22px", fontWeight: "600" }}>댓글</div>
-              <div className="my-3 d-flex flex-column">
-                <CommentForm pid={pid} isCommentLike={isCommentLike} />
-                <div className="my-3">
-                  {comments.map((e, i) => (
-                    <Comment key={i} data={e} isCommentLike={isCommentLike} />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* 추천정보 */}
-          <PostMenu
-            title={"더 많은 글을 구경해보세요!"}
-            routeUrl={"/house"}
-            routeText={"더보기"}
-            horizontalScroll={true}
+          <div
+            style={{ width: "100%", minHeight: "500px", margin: "40px 0" }}
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(String(postData["content"])),
+            }}
+          />
+          <div
+            className={`card-footer rounded-bottom-3 fw-normal px-2`}
+            style={{ backgroundColor: "white", borderColor: "white" }}
           >
-            <PostList numShowItems={6} />
-          </PostMenu>
+            <div
+              className="d-flex justify-content-between"
+              style={{ backgroundColor: "#ffffff" }}
+            >
+              <Count
+                pid={pid}
+                viewCount={postData["view_count"]}
+                commentCount={comments.length}
+                likeCount={postData["post_like_count"]}
+                isPostLike={isPostLike}
+              />
+            </div>
+          </div>
         </div>
+
+        <div
+          style={{
+            backgroundColor: "white",
+            borderRadius: "10px",
+            padding: "30px",
+            margin: "40px 0",
+          }}
+        >
+          <div style={{ fontSize: "22px", fontWeight: "600" }}>댓글</div>
+          <div className="d-flex flex-column">
+            <CommentForm pid={pid} isCommentLike={isCommentLike} />
+            <div>
+              {comments.map((e, i) => (
+                <Comment key={i} data={e} isCommentLike={isCommentLike} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* 추천정보 */}
+        <PostMenu
+          title={"더 많은 글을 구경해보세요!"}
+          routeUrl={"/house"}
+          routeText={"더보기"}
+          horizontalScroll={true}
+        >
+          <AppPostList numShowItems={6} />
+        </PostMenu>
       </main>
     </div>
   );
