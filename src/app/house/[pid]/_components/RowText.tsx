@@ -1,3 +1,5 @@
+import { parseSpecificationInfo } from "@/lib/parseUtil";
+
 export default function RowText({ name, data }: { name: string; data: string }) {
   return (
     <div className="row">

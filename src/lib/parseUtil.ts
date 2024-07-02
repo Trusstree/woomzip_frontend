@@ -1,15 +1,9 @@
-export const parseSpecificationInfo = (data: string): {} => {
-  if (!data) return {};
-  return Object.fromEntries(
-    Object.entries(JSON.parse(data)).map(([key, value]) => [
-      key,
-      value["default"]
-        ? `${value["default"].join(", ")}${value["etc"] ? `, ${value["etc"]}` : ""}`
-        : value["etc"]
-          ? value["etc"]
-          : value,
-    ])
-  );
+// { default?: Array<string>; etc?: string }
+export const parseSpecificationInfo = (data: any) => {
+  if (!data) return undefined;
+  const def = data.default ? data.default.join(", ") : "";
+  const etc = data.etc ? data.etc : "";
+  return def ? def + (etc ? `, ${etc}` : "") : etc ? etc : "";
 };
 
 //base 64를 디코딩한 후에 parse 과정을 통해 json화 하는 함수

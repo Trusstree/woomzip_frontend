@@ -30,66 +30,41 @@ export function HouseClient(props: HouseComponentProps) {
         return;
       }
 
-      const JSONSpecificityInfo = JSON.parse(
-        data.data[0]["house_info"]["specificity_info"]
-      );
-      const asdf = [];
-      if (JSONSpecificityInfo["default"])
-        asdf.push(JSONSpecificityInfo["default"]);
-      if (JSONSpecificityInfo["etc"]) asdf.push(JSONSpecificityInfo["etc"]);
       setHouseData({
         ...data.data[0]["house_info"],
-        specificity_info: asdf.join(", "),
+        specificity_info: parseSpecificationInfo(data.data[0]["house_info"]["specificity_info"]),
       });
-      setImageData(data.data[0]["house_image"]);
+
+      setImageData([
+        ...data.data[0]["house_image"]["representative_images"],
+        ...data.data[0]["house_image"]["external_images"],
+        ...data.data[0]["house_image"]["internal_images"],
+        ...data.data[0]["house_image"]["elevation_plan_images"],
+        ...data.data[0]["house_image"]["floor_plan_images"],
+      ]);
       setOptionData(data.data[0]["option_info"]);
-      setSpecificationData(
-        parseSpecificationInfo(data.data[0]["house_info"]["specification_info"])
-      );
-      setDeliveryData(
-        JSON.parse(data.data[0]["house_info"]["delivery_unavailable"]).join(
-          ", "
-        )
-      );
+      setSpecificationData(data.data[0]["house_info"]["specification_info"]);
+      setDeliveryData(data.data[0]["house_info"]["delivery_unavailable"].join(", "));
     })();
   }, []);
 
   return houseData ? (
     <>
       <main>
-        <div
-          className="row"
-          style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}
-        >
+        <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
           <div style={{ fontSize: "28px", fontWeight: "500" }}>찾아보기</div>
-          <div
-            className="row g-2"
-            style={{ width: "100%", position: "relative" }}
-          >
+          <div className="row g-2" style={{ width: "100%", position: "relative" }}>
             <div className="col-6">
-              <div
-                style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}
-              >
-                <img
-                  className={styles.mainImg}
-                  src={imageData["representative_images"][0]}
-                />
+              <div style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}>
+                <img className={styles.mainImg} src={imageData[0]} />
               </div>
             </div>
             <div className="col-3">
               <div style={{ height: "50%", overflow: "hidden" }}>
-                <img
-                  className={styles.subImg}
-                  src={imageData["external_images"][0]}
-                />
+                <img className={styles.subImg} src={imageData[1]} />
               </div>
-              <div
-                style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}
-              >
-                <img
-                  className={styles.subImg}
-                  src={imageData["external_images"][1]}
-                />
+              <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
+                <img className={styles.subImg} src={imageData[2]} />
               </div>
             </div>
             <div className="col-3">
@@ -100,10 +75,7 @@ export function HouseClient(props: HouseComponentProps) {
                   borderRadius: "0 10px 0 0",
                 }}
               >
-                <img
-                  className={styles.subImg}
-                  src={imageData["internal_images"][0]}
-                />
+                <img className={styles.subImg} src={imageData[3]} />
               </div>
               <div
                 style={{
@@ -113,10 +85,7 @@ export function HouseClient(props: HouseComponentProps) {
                   borderRadius: "0 0 10px 0",
                 }}
               >
-                <img
-                  className={styles.subImg}
-                  src={imageData["internal_images"][1]}
-                />
+                <img className={styles.subImg} src={imageData[4]} />
               </div>
             </div>
             <div
@@ -137,9 +106,7 @@ export function HouseClient(props: HouseComponentProps) {
                     style={{ width: "25px" }}
                   />
                 </div>
-                <div style={{ width: "auto", marginTop: "2px" }}>
-                  사진 전체보기
-                </div>
+                <div style={{ width: "auto", marginTop: "2px" }}>사진 전체보기</div>
               </div>
             </div>
           </div>
@@ -156,11 +123,7 @@ export function HouseClient(props: HouseComponentProps) {
             </div>
 
             <div className="col-4">
-              <HouseRemocon
-                pid={pid}
-                houseData={houseData}
-                optionData={optionData}
-              />
+              <HouseRemocon pid={pid} houseData={houseData} optionData={optionData} />
             </div>
           </div>
         </div>
