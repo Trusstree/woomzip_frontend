@@ -58,10 +58,10 @@ export default function HouseExpl({
             상세 정보
           </div>
           <div className="btn" onClick={onMoveBoxC}>
-            후기(2)
+            후기
           </div>
           <div className="btn" onClick={onMoveBoxD}>
-            Q&A(5)
+            배송 정보
           </div>
         </div>
       </div>
@@ -142,8 +142,16 @@ export default function HouseExpl({
         <hr style={{ border: "1px solid gray" }} />
       </div>
 
+      <div
+        ref={elementC}
+        className="w-full h-screen relative flex flex-col"
+        style={{ marginTop: "150px" }}
+      >
+        <ReviewInfo />
+      </div>
+
       {/* 배송 정보 */}
-      <div>
+      <div ref={elementD}>
         <h5 style={{ margin: "150px 0 30px 0" }}>배송 정보</h5>
         <div style={{ fontSize: "16px", marginBottom: "40px" }}>
           배송 비용은 배송 위치와 진입 환경에 따라 측정됩니다.
@@ -246,13 +254,7 @@ export default function HouseExpl({
           ))}
       </div>
 
-      <div
-        ref={elementC}
-        className="w-full h-screen relative flex flex-col"
-        style={{ marginTop: "150px" }}
-      >
-        <ReviewInfo />
-      </div>
+      <div className="container" style={{ height: "100px" }}></div>
 
       {/* <div ref={elementD} className="w-full h-screen relative flex flex-col">
         <h5 style={{ margin: "150px 0 30px 0" }}>Q&A(5)</h5>
