@@ -254,7 +254,7 @@ export default function HouseExpl({
         <ReviewInfo />
       </div>
 
-      <div ref={elementD} className="w-full h-screen relative flex flex-col">
+      {/* <div ref={elementD} className="w-full h-screen relative flex flex-col">
         <h5 style={{ margin: "150px 0 30px 0" }}>Q&A(5)</h5>
         <div style={{ marginBottom: "200px" }}>
           <div className="d-flex justify-content-between">
@@ -298,7 +298,7 @@ export default function HouseExpl({
           </div>
           <hr style={{ border: "1px solid gray" }} />
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
