@@ -35,7 +35,7 @@ export default function CommentForm({ pid, isCommentLike }) {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex" style={{ margin: "30px 0" }}>
       <textarea
         rows={3}
         className="col-10"
@@ -45,14 +45,26 @@ export default function CommentForm({ pid, isCommentLike }) {
         style={{ resize: "none" }}
         disabled={at == undefined}
       ></textarea>
-      <button
-        className="col-2"
-        onClick={submit}
-        disabled={at == undefined}
-        style={{ backgroundColor: "none", border: "none", color: "#314FC0", fontSize: "17px", fontWeight: "600" }}
-      >
-        등록
-      </button>
+      <div className="col-2">
+        <button
+          onClick={submit}
+          disabled={at == undefined}
+          style={{
+            backgroundColor: "white",
+            border: "none",
+            color: "#314FC0",
+            fontSize: "17px",
+            fontWeight: "600",
+            width: "90%",
+            marginLeft: "10%",
+            padding: "30px 0",
+            borderRadius: "10px",
+            boxShadow: "3px 3px 13px rgba(0, 0, 0, 0.2)",
+          }}
+        >
+          등록
+        </button>
+      </div>
     </div>
   );
 }

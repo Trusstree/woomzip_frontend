@@ -55,7 +55,6 @@ export function ReviewBox({
           </div>
           <div
             className="col-4"
-            style={{ position: "relative" }}
             data-bs-toggle="modal"
             data-bs-target={`#living_modal_${index}`}
           >
@@ -71,32 +70,39 @@ export function ReviewBox({
                 unoptimized={true}
               />
             ))} */}
-            <Image
-              className="card-img-top"
-              style={{ borderRadius: "10px", objectFit: "cover" }}
-              alt="main-img"
-              src={images[0]}
-              width={100}
-              height={250}
-              unoptimized={true}
-            />
             <div
-              className="btn d-flex justify-content-center align-items-center"
-              style={{
-                position: "absolute",
-                right: "16px",
-                bottom: "5px",
-                width: "40px",
-                height: "40px",
-                backgroundColor: "white",
-                opacity: "0.7",
-                color: "gray",
-                fontSize: "18px",
-                fontWeight: "500",
-                padding: "0",
-              }}
+              style={{ position: "relative", width: "100%", height: "250px" }}
             >
-              +{images.length}
+              <Image
+                className="card-img-top"
+                style={{
+                  borderRadius: "10px",
+                  objectFit: "cover",
+                }}
+                alt="main-img"
+                src={images[0]}
+                width={100}
+                height={250}
+                unoptimized={true}
+              />
+              <div
+                className="btn d-flex justify-content-center align-items-center"
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  bottom: "10px",
+                  width: "40px",
+                  height: "40px",
+                  backgroundColor: "white",
+                  opacity: "0.7",
+                  color: "gray",
+                  fontSize: "18px",
+                  fontWeight: "500",
+                  padding: "0",
+                }}
+              >
+                +{images.length}
+              </div>
             </div>
           </div>
         </div>
