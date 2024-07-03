@@ -1,13 +1,10 @@
-import { getUserAccessToken } from "@/actions/auth/authAction";
-import { getPostHeartUser } from "@/actions/apis/HeartAPI";
-import { getPost } from "@/actions/apis/postAPI";
 import Count from "@/components/posts/Count";
 import AppPostList from "@/components/posts/AppPostList";
 import PostMenu from "@/components/posts/PostMenu";
 import CommentForm from "@/app/community/[pid]/_components/CommentForm";
 import Comment from "@/app/community/[pid]/_components/Comment";
 import DOMPurify from "isomorphic-dompurify";
-import { cookies } from "next/headers";
+import { loadData } from "@/app/community/[pid]/_actions/actions";
 
 type PageParams = {
   pid: number;
@@ -18,45 +15,6 @@ const style = {
   공지: { backgroundColor: "#FFCCCC", color: "#C03142" },
   질문: { backgroundColor: "#E2FFCC", cololr: "#8AC031" },
 };
-
-async function loadData(pid) {
-  "use server";
-  let [postData, comments, isPostLike, isCommentLike] = [
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-  ];
-
-  const [data, error] = await getPost(pid);
-  const cookieStorage = cookies();
-  console.log(cookieStorage);
-  //cookieStorage.set(`vcnt_${pid}`, "1");
-
-  if (error) {
-    console.log(error);
-    return { postData, comments, isPostLike, isCommentLike };
-  }
-
-  postData = data.data.post;
-  comments = data.data.comments;
-
-  // 로그인 확인하기
-  const at = await getUserAccessToken();
-  if (!at) return { postData, comments, isPostLike, isCommentLike };
-
-  const [heartData, heartError] = await getPostHeartUser(pid);
-
-  if (heartError) {
-    console.error(heartError);
-    return { postData, comments, isPostLike, isCommentLike };
-  }
-
-  isPostLike = heartData?.data[0]["isPostLike"];
-  isCommentLike = heartData?.data[0]["isCommentLike"];
-
-  return { postData, comments, isPostLike, isCommentLike };
-}
 
 export default async function page({ params }: { params: PageParams }) {
   const { pid } = params;
@@ -182,10 +140,7 @@ export default async function page({ params }: { params: PageParams }) {
             className={`card-footer rounded-bottom-3 fw-normal px-2`}
             style={{ backgroundColor: "white", borderColor: "white" }}
           >
-            <div
-              className="d-flex justify-content-between"
-              style={{ backgroundColor: "#ffffff" }}
-            >
+            <div className="d-flex justify-content-between" style={{ backgroundColor: "#ffffff" }}>
               <Count
                 pid={pid}
                 viewCount={postData["view_count"]}
@@ -217,12 +172,7 @@ export default async function page({ params }: { params: PageParams }) {
         </div>
 
         {/* 추천정보 */}
-        <PostMenu
-          title={"더 많은 글을 구경해보세요!"}
-          routeUrl={"/house"}
-          routeText={"더보기"}
-          horizontalScroll={true}
-        >
+        <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
           <AppPostList numShowItems={6} />
         </PostMenu>
       </main>
