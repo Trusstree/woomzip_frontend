@@ -1,6 +1,4 @@
-"use client";
-
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type RouteButtonProps = {
   url: string;
@@ -10,15 +8,9 @@ type RouteButtonProps = {
 
 export function RouteButton(props: RouteButtonProps) {
   const { url, text, className } = props;
-  const router = useRouter();
-
-  function handleClick() {
-    // e.target.value
-    router.push(url);
-  }
 
   return (
-    <div
+    <Link
       className={`btn${className ? ` ${className}` : ""}`}
       style={{
         width: "90%",
@@ -26,16 +18,16 @@ export function RouteButton(props: RouteButtonProps) {
         borderRadius: "10px",
         padding: "10px",
         marginBottom: "10px",
-        marginLeft:"5%",
+        marginLeft: "5%",
         backgroundColor: "#314FC0",
         color: "white",
         fontSize: "20px",
         fontWeight: "600",
         textAlign: "center",
       }}
-      onClick={handleClick}
+      href={url}
     >
       {text}
-    </div>
+    </Link>
   );
 }

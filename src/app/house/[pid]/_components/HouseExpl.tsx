@@ -207,40 +207,35 @@ export default function HouseExpl({ pid, deliveryData, houseData, specificationD
         <div style={{ marginBottom: "200px" }}>
           <div className="d-flex justify-content-between">
             <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜
-              안되나요 제발 부탁입...
+              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
             </div>
             <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
           </div>
           <hr style={{ border: "1px solid gray" }} />
           <div className="d-flex justify-content-between">
             <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜
-              안되나요 제발 부탁입...
+              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
             </div>
             <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
           </div>
           <hr style={{ border: "1px solid gray" }} />
           <div className="d-flex justify-content-between">
             <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜
-              안되나요 제발 부탁입...
+              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
             </div>
             <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
           </div>
           <hr style={{ border: "1px solid gray" }} />
           <div className="d-flex justify-content-between">
             <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜
-              안되나요 제발 부탁입...
+              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
             </div>
             <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
           </div>
           <hr style={{ border: "1px solid gray" }} />
           <div className="d-flex justify-content-between">
             <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜
-              안되나요 제발 부탁입...
+              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
             </div>
             <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
           </div>

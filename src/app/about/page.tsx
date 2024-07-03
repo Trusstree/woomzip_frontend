@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-
 const PartnerList = [
   {
     title: "숭실대학교",
@@ -38,8 +34,6 @@ const PartnerList = [
 ];
 
 export default function About() {
-  const [partnerData, setPartnerData] = useState(PartnerList);
-
   return (
     <div>
       <div style={{ width: "100%", height: "800px", position: "relative" }}>
@@ -426,7 +420,7 @@ export default function About() {
           </div>
         </div>
         <div className="row" style={{ width: "2000px", overflow: "hidden" }}>
-          {partnerData.map((e, i) => (
+          {PartnerList.map((e, i) => (
             <div
               key={i}
               style={{

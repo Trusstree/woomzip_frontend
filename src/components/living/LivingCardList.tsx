@@ -1,9 +1,6 @@
-"use client";
-
 import { LivingCard } from "@/components/living/LivingCard";
-import { useEffect, useState } from "react";
 
-const LivingCardExample = [
+const livingData = [
   {
     company: "모두가하우징",
     title: "힐링리버",
@@ -22,21 +19,12 @@ const LivingCardExample = [
 ];
 
 type LivingListProps = {
-  numShowItems: number;
+  numShowItems?: number;
   numShowPages?: number;
 };
 
 export function LivingCardList(props: LivingListProps) {
-  const [livingData, setLivingData] = useState(LivingCardExample);
-  const { numShowItems, numShowPages } = props;
-
-  useEffect(() => {
-    (async () => {
-      // const [data, error] = await getLivings();
-      // if (error) console.error(error);
-      // setLivingData(data);
-    })();
-  }, []);
+  // const { numShowItems, numShowPages } = props;
 
   return (
     <>
