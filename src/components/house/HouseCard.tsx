@@ -56,7 +56,7 @@ export default function HouseCard(props: MainPagePostProps) {
                     src={data.house_img_url || "/blur_image.png"}
                     alt={data.house_explanation}
                   />
-                  <div
+                  {/* <div
                     className="d-flex justify-content-left mb-2"
                     style={{
                       position: "absolute",
@@ -84,7 +84,7 @@ export default function HouseCard(props: MainPagePostProps) {
                         농막주택
                       </div>
                     )}
-                  </div>
+                  </div> */}
                 </div>
               </SwiperSlide>
             ))}

@@ -9,10 +9,10 @@ import Footer from "@/app/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Truss",
+  title: "움집",
   metadataBase: new URL("https://buildintruss.com"),
   openGraph: {
-    title: "Truss",
+    title: "움집",
     description: "전원생활의 시작을 함께, 움집",
     url: "https://buildintruss.com",
     siteName: "woomzip",
@@ -32,7 +32,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ko">
       <head>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export function ReviewModal({ id, date, comment, tag, images, nickname }) {
+export function PicModal({ id, images }) {
   return (
     <div
       className="modal fade"
@@ -37,7 +37,7 @@ export function ReviewModal({ id, date, comment, tag, images, nickname }) {
                     width: "48%",
                     margin: "1%",
                   }}
-                  alt="main-img"
+                  alt={`image-${i}`}
                   src={e}
                   width={400}
                   height={550}
@@ -46,11 +46,7 @@ export function ReviewModal({ id, date, comment, tag, images, nickname }) {
               ))}
             </div>
           </div>
-          <div className="modal-footer">
-            <div style={{ width: "auto" }}>
-              {nickname} |<span style={{ width: "auto" }}> {date}</span>
-            </div>
-          </div>
+          <div className="modal-footer"></div>
         </div>
       </div>
     </div>
