@@ -24,7 +24,7 @@ export default function Home() {
         >
           꿈 꾸는 삶을 현실로,
           <br />
-          움집에서 쉽고 간편하게
+          '움집'에서 쉽고 간편하게
         </div>
       </div>
 
@@ -37,12 +37,12 @@ export default function Home() {
             fontWeight: "500",
           }}
         >
-          전원생활을 고민할 때부터,
-          <br />내 집을 짓는 순간을 지나,
+          전원생활을 고민할 때부터
+          <br />내 집을 짓는 순간을 지나
           <br />
-          살아가는 삶까지
+          살아가는 삶까지,
           <br />
-          움집이 있다면 더욱 즐거워질거에요.
+          움집이 있다면 더욱 즐거워질 거예요.
         </div>
       </div>
 
@@ -133,7 +133,7 @@ export default function Home() {
                 fontWeight: "500",
               }}
             >
-              고민 중이라면, 가족 다 같이 살아보며 무료로 경험해보세요.
+              고민 중이라면, 가족 다 같이 살아보며 무료로 경험해 보세요.
             </div>
           </div>
         </div>
@@ -226,10 +226,10 @@ export default function Home() {
                 fontWeight: "500",
               }}
             >
-              움집의 건축 전문가 AI 타잔이 당신의 총 공사비용을 예측해드려요.
+              움집의 건축 전문가 'AI 타잔'이 당신의 총 공사비용을 예측해 드려요.
               <br />
               <br />
-              그래서 얼마가 드는데? 라는 질문을 해결해보세요.
+              그래서 얼마가 드는데? 라는 질문을 해결해 보세요.
             </div>
           </div>
         </div>
@@ -278,7 +278,7 @@ export default function Home() {
                 fontWeight: "500",
               }}
             >
-              믿을 만한 움집 팀에서 서비스를 만들어갑니다
+              믿을 만한 '움집' 팀에서 서비스를 만들어갑니다
             </div>
           </div>
           <div className="col-7" style={{ minWidth: "350px" }}>
