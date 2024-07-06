@@ -15,7 +15,10 @@ async function loadData() {
     console.error(houseError);
     return;
   }
-  const [houseData, houseCount] = [rawHouseData.data[0].houses, rawHouseData.data[0].total_count];
+  const [houseData, houseCount] = [
+    rawHouseData.data[0].houses,
+    rawHouseData.data[0].total_count,
+  ];
   return { houseData, houseCount };
 }
 
@@ -68,7 +71,12 @@ export default function Home() {
         }}
       >
         <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
-          <PostMenu title={"먼저 무료로 살아보세요"} routeUrl={"/living"} routeText={"더보기"} horizontalScroll={true}>
+          <PostMenu
+            title={"먼저 무료로 살아보세요"}
+            routeUrl={"/living"}
+            routeText={"더보기"}
+            horizontalScroll={true}
+          >
             <div style={{ width: "100%", overflow: "hidden" }}>
               <AppLivingCardList numShowItems={4} />
             </div>
@@ -90,7 +98,11 @@ export default function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: "100%", overflow: "hidden" }}>
-              <AppHouseList numShowItems={6} houseData={houseData} count={houseCount} />
+              <AppHouseList
+                numShowItems={10}
+                houseData={houseData}
+                count={houseCount}
+              />
             </div>
           </PostMenu>
         </div>

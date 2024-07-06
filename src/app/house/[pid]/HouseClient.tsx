@@ -126,7 +126,7 @@ export function HouseClient(props: HouseComponentProps) {
         </div>
 
         <div className="g-3 row w-100">
-          <div className="col-8">
+          <div className={`col-md-8 col-12 ${styles.houseExpl}`}>
             <HouseExpl
               pid={pid}
               deliveryData={deliveryData}
@@ -136,7 +136,7 @@ export function HouseClient(props: HouseComponentProps) {
             />
           </div>
 
-          <div className="col-4">
+          <div className={`col-md-4 col-12 ${styles.HouseRemocon}`}>
             <HouseRemocon
               pid={pid}
               houseData={houseData}

@@ -95,6 +95,7 @@ export default function Home() {
             className="btn"
             style={{
               width: "auto",
+              height: "70px",
               position: "absolute",
               top: 0,
               right: 0,

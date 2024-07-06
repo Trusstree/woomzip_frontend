@@ -1,0 +1,15 @@
+.navContainer {
+  border-bottom: 1px solid gray;
+  position: sticky;
+  top: 50px;
+  background-color: white;
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .navContainer {
+    border-bottom: 1px solid gray;
+    position: relative;
+    background-color: white;
+  }
+}

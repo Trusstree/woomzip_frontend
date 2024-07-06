@@ -3,6 +3,7 @@ import { LivingCardList } from "@/components/living/LivingCardList";
 import PostMenu from "@/components/posts/PostMenu";
 import SearchComponent from "@/components/SearchComponent";
 import React, { Suspense } from "react";
+import LivingCategory from "./_components/LivingCategory";
 
 export default function Living() {
   return (
@@ -30,34 +31,16 @@ export default function Living() {
         }}
       >
         <div
-          className="row"
+          className="container"
           style={{
-            width: "auto%",
+            width: "100%",
             marginLeft: "0",
-            marginBottom: "40px",
-            height: "80px",
+            overflow: "hidden",
+            padding: "0",
+            position: "relative",
           }}
         >
-          <CategoryButton
-            title={"전체"}
-            imgSrc={
-              "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"
-            }
-          />
-          <CategoryButton
-            title={"숙소"}
-            imgSrc={
-              "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/pavilion.png"
-            }
-            category={"숙소"}
-          />
-          <CategoryButton
-            title={"투어"}
-            imgSrc={
-              "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/tour.png"
-            }
-            category={"투어"}
-          />
+          <LivingCategory />
           <SearchComponent />
         </div>
         <PostMenu title={""} routeUrl={"/community/write"} routeText={""}>

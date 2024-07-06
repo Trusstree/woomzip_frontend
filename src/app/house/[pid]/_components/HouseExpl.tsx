@@ -7,6 +7,7 @@ import { parseSpecificationInfo } from "@/lib/parseUtil";
 import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
+import styles from "../_css/HouseExpl.module.css";
 
 export default function HouseExpl({
   pid,
@@ -42,15 +43,7 @@ export default function HouseExpl({
   return (
     <>
       {/*상품 네비게이션 */}
-      <div
-        className=" sticky-top"
-        style={{
-          backgroundColor: "white",
-          borderBottom: "1px solid black",
-          zIndex: 1,
-        }}
-      >
-        <div className="container" style={{ height: "60px" }}></div>
+      <div className={styles.navContainer}>
         <div className="d-flex justify-content-between">
           <div className="btn" onClick={onMoveBoxA}>
             기본 정보
