@@ -100,7 +100,7 @@ export default function About() {
           }}
         >
           <div>
-            우리를 통해 지방 인구소멸 문제 해결에 한 발자국 나아갈 수 있도록,
+            우리를 통해 지방 인구 소멸 문제 해결에 한 발자국 나아갈 수 있도록,
             <div style={{ color: "gray", fontWeight: "500" }}>건축시장을 혁신하여 귀촌 결정의 허들을 낮추겠습니다.</div>
           </div>
           <div style={{ marginTop: "30px" }}>
