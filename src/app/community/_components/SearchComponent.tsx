@@ -1,38 +1,27 @@
-"use client";
+import React from "react";
+import styles from "@/styles/SearchComponent.module.css"; // 외부 CSS 파일 import
 
-export default function SearchComponent({}: {}) {
-  // href={`${"/community"}${"" ? `?category=${category}` : ``}`}
+export default function SearchComponent() {
   return (
-    <div
-      style={{
-        width: "auto",
-        position: "absolute",
-        top: 0,
-        right: 0,
-        padding: "0",
-        borderLeft: "2px solid gray",
-        backgroundColor: "white",
-      }}
-    >
+    <div className={styles.searchContainer}>
       <input
-        style={{ width: "300px", marginLeft: "20px", height: "40px" }}
+        className={styles.searchInput}
         placeholder={" 찾고 싶은 내용을 검색해보세요"}
       />
       <div
-        className="btn"
-        style={{ width: "auto", backgroundColor: "white", borderRadius: "0" }}
+        className={`btn ${styles.searchButton}`}
         data-bs-toggle="modal"
         data-bs-target={`#search_modal`}
       >
-        <div style={{ width: "70px", height: "37px" }}>
+        <div style={{ width: "65px", height: "37px" }}>
           <img
             src={
               "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/search.png"
             }
-            width={30}
+            className={styles.searchButtonImg}
           ></img>
+          <div className={styles.searchButtonText}>검색</div>
         </div>
-        <div style={{ fontSize: "15px" }}>검색</div>
       </div>
     </div>
   );

@@ -1,0 +1,61 @@
+/* _css/SearchComponent.module.css */
+
+.searchContainer {
+  width: 360px;
+  height: 70px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  border-left: 2px solid gray;
+  background-color: white;
+  display: flex; /* Flexbox를 사용하여 내부 요소들을 가로로 배치 */
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+.searchInput {
+  flex: 1; /* 남은 공간을 모두 차지하도록 설정 */
+  width: 100%; /* 입력창이 부모 요소의 너비를 모두 차지하도록 설정 */
+  margin-left: 20px;
+  height: 40px;
+}
+
+.searchButton {
+  width: auto;
+  background-color: white;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  margin-left: 5px; /* 아이콘과의 간격을 조정 */
+  margin-top: 0;
+}
+
+.searchButton img {
+  width: 30px;
+}
+
+.searchButtonText {
+  font-size: 15px;
+}
+
+@media screen and (max-width: 700px) {
+  .searchContainer {
+    width: 100%;
+    height: 60px;
+    position: static;
+    border: none;
+    margin-top: 20px;
+    align-items: stretch; /* 자식 요소들을 수평으로 늘리도록 설정 */
+  }
+
+  .searchInput {
+    width: 100%; /* 부모 요소의 너비를 모두 차지하도록 설정 */
+    margin-left: 2.5%; /* 여백 초기화 */
+    margin-top: 10px;
+  }
+
+  .searchButton {
+    width: 80px; /* 고정 너비 설정 */
+    margin-left: 0; /* 여백 초기화 */
+  }
+}

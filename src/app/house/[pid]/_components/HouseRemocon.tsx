@@ -7,6 +7,7 @@ import { alertSuccess } from "@/lib/alertUtil";
 import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import styles from "../_css/HouseRemocon.module.css";
 
 export default function HouseRemocon({ pid, houseData, optionData }) {
   const { createQueryString } = useQuery();
@@ -43,9 +44,14 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
     }
   }, [heart]);
   return (
-    <div className="card sticky-top" style={{ width: "90%", border: "none", zIndex: 1, marginLeft: "10%" }}>
-      <div className="container" style={{ height: "60px" }}></div>
-      <div style={{ padding: "10px", boxShadow: "3px 3px 13px rgba(0, 0, 0, 0.2)", borderRadius: "10px" }}>
+    <div className={`card ${styles.HouseRemoconCard}`}>
+      <div
+        style={{
+          padding: "10px",
+          boxShadow: "3px 3px 13px rgba(0, 0, 0, 0.2)",
+          borderRadius: "10px",
+        }}
+      >
         <div
           className="btn"
           style={{ fontSize: "15px" }}

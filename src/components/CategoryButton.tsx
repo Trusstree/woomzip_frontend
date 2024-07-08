@@ -2,6 +2,7 @@
 
 import useQuery from "@/hooks/useQuery";
 import { usePathname, useRouter } from "next/navigation";
+import styles from "@/styles/CategoryButton.module.css";
 
 export default function CategoryButton({
   title,
@@ -21,11 +22,11 @@ export default function CategoryButton({
   };
 
   return (
-    <div className="btn" style={{ width: "auto" }} onClick={handleClick}>
-      <div style={{ width: "65px", height: "37px" }}>
-        <img src={imgSrc} width={30}></img>
+    <div className={styles.categoryButton} onClick={handleClick}>
+      <div className={styles.categoryIcon}>
+        <img src={imgSrc} alt={title} />
       </div>
-      <div style={{ fontSize: "15px" }}>{title}</div>
+      <div className={styles.categoryButtonText}>{title}</div>
     </div>
   );
 }

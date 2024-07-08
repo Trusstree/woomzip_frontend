@@ -1,0 +1,44 @@
+/* _css/CategoryButton.module.css */
+
+.categoryButton {
+  width: auto;
+  padding: 0;
+}
+
+.categoryIcon {
+  width: 30px;
+  height: 34px;
+  margin: 0 auto;
+}
+
+.categoryIcon img {
+  width: 30px; /* 이미지를 부모 요소의 크기에 맞게 설정 */
+}
+
+.categoryButtonText {
+  font-size: 15px;
+  width: 70px; /* 텍스트 너비를 아이콘과 일치하도록 설정 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+}
+
+@media screen and (max-width: 700px) {
+  .categoryButton {
+    width: auto;
+  }
+
+  .categoryIcon {
+    width: 28px;
+    height: 30px;
+    margin: 0 auto;
+  }
+
+  .categoryIcon img {
+    width: 100%; /* 이미지를 부모 요소의 크기에 맞게 설정 */
+  }
+
+  .categoryButtonText {
+    font-size: 14px;
+    width: 70px; /* 텍스트 너비를 아이콘과 일치하도록 설정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+  }
+}

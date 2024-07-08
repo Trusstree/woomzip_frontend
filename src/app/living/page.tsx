@@ -2,6 +2,7 @@ import { LivingCardList } from "@/app/living/_components/LivingCardList";
 import CategoryButton from "@/components/CategoryButton";
 import PostMenu from "@/components/posts/PostMenu";
 import SearchComponent from "@/app/community/_components/SearchComponent";
+import LivingCategory from "./_components/LivingCategory";
 
 export default function Living() {
   return (
@@ -28,12 +29,13 @@ export default function Living() {
         }}
       >
         <div
-          className="row"
+          className="container"
           style={{
-            width: "auto%",
+            width: "100%",
             marginLeft: "0",
-            marginBottom: "40px",
-            height: "80px",
+            overflow: "hidden",
+            padding: "0",
+            position: "relative",
           }}
         >
           <CategoryButton

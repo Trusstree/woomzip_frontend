@@ -1,0 +1,21 @@
+.categoryContainer {
+  width: 100%;
+}
+
+.categoryRow {
+  width: auto;
+  margin-left: 0;
+  height: 70px;
+}
+
+@media screen and (max-width: 700px) {
+  .categoryContainer {
+    width: 100%;
+    overflow: hidden;
+  }
+  .categoryRow {
+    width: 1000px;
+    margin-left: 0;
+    height: 70px;
+  }
+}
