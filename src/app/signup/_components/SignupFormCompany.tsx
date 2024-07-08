@@ -1,6 +1,6 @@
 "use client";
 
-import { signupCompany, validateID, validateName } from "@/actions/apis/userAPI";
+import { signupCompany, validateID, validateNickname } from "@/actions/apis/userAPI";
 import SignupGenderRadio from "@/app/signup/_components/SignupRadio";
 import SignupTextBox from "@/app/signup/_components/SignupTextBox";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
@@ -11,20 +11,20 @@ import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-async function S3Thumbnail(thumbnail, name) {
+async function S3Thumbnail(thumbnail, nickname) {
   const title = "thumbnail" + moment().format(`YYYYMMDDHHmmss`);
   console.log(thumbnail);
-  const url = `users/${name}/${title}.${thumbnail.type.split("/")[1]}`;
+  const url = `users/${nickname}/${title}.${thumbnail.type.split("/")[1]}`;
   const [response, error] = await setS3Url(url, thumbnail);
   return `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`;
 }
 
-async function S3CompanyImages(images, name) {
+async function S3CompanyImages(images, nickname) {
   const thumbnailArr = [];
   for (let i = 0; i < images.length; i++) {
     const title = "images" + moment().format(`YYYYMMDDHHmmss`) + `${i}`;
-    const url = `users/${name}/${title}.${images[i].type.split("/")[1]}`;
-    const [response, error] = await setS3Url(url, thumbnailArr[i]);
+    const url = `users/${nickname}/${title}.${images[i].type.split("/")[1]}`;
+    const [response, error] = await setS3Url(url, images[i]);
     if (error) {
       console.error(error);
       return;
@@ -86,12 +86,12 @@ export function SignupFormCompany() {
     if (!isRequired(name)) {
       return alertError("이름", `이름을 입력해주세요!`);
     }
-    const [vname, vnameError] = await validateName(id);
-    if (vnameError) {
-      return alertError("이름", `이름이 중복되었어요!`);
-    }
     if (!isRequired(nickname)) {
       return alertError("별명", `별명을 입력해주세요!`);
+    }
+    const [vnickname, vnicknameError] = await validateNickname(id);
+    if (vnicknameError) {
+      return alertError("별명", `별명이 중복되었어요!`);
     }
     if (!isPhoneNumber(phoneNumber)) {
       return alertError("연락처", `연락처를 형식에 맞게 입력해주세요!`);
@@ -110,11 +110,11 @@ export function SignupFormCompany() {
       return alertError("홍보채널", `홍보채널을 입력해주세요!`);
     }
 
-    const thumbnailUrl = await S3Thumbnail(thumbnail, name);
+    const thumbnailUrl = await S3Thumbnail(thumbnail, nickname);
     if (thumbnailUrl.length == 0) {
       return alertError("홍보사진", `홍보용 사진을 입력해주세요!`);
     }
-    const imagesArr = await S3CompanyImages(companyImages, name);
+    const imagesArr = await S3CompanyImages(companyImages, nickname);
     if (imagesArr.length == 0) {
       return alertError("홍보사진", `홍보용 사진을 입력해주세요!`);
     }

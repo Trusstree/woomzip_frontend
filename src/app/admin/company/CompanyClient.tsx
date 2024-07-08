@@ -13,6 +13,7 @@ export default function CompanyClient() {
       setDataList(data.data);
     })();
   }, []);
+
   return (
     <div>
       {dataList.map((e, i) => (

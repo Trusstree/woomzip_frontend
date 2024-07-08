@@ -122,7 +122,7 @@ export const validateID = async (user_id: any) => {
   return [data, error];
 };
 
-export const validateName = async (nickname: any) => {
+export const validateNickname = async (nickname: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {

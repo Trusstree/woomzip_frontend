@@ -1,6 +1,6 @@
 "use client";
 
-import { signupUser, validateID, validateName } from "@/actions/apis/userAPI";
+import { signupUser, validateID, validateNickname } from "@/actions/apis/userAPI";
 import SignupGenderRadio from "@/app/signup/_components/SignupRadio";
 import SignupTextBox from "@/app/signup/_components/SignupTextBox";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
@@ -20,6 +20,7 @@ export function SignupForm() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [gender, setGender] = useState("");
   const [birthday, setBirthday] = useState("1970-01-01");
+  const [addr, setAddr] = useState("");
 
   const handlePhoneNumber = (e) => {
     const regex = new RegExp(/^[0-9\b -]{0,13}$/);
@@ -55,18 +56,21 @@ export function SignupForm() {
     if (!isRequired(name)) {
       return alertError("이름", `이름을 입력해주세요!`);
     }
-    const [vname, vnameError] = await validateName(id);
-    if (vnameError) {
-      return alertError("이름", `이름이 중복되었어요!`);
-    }
     if (!isRequired(nickname)) {
       return alertError("별명", `별명을 입력해주세요!`);
+    }
+    const [vnickname, vnicknameError] = await validateNickname(id);
+    if (vnicknameError) {
+      return alertError("별명", `별명이 중복되었어요!`);
     }
     if (!isPhoneNumber(phoneNumber)) {
       return alertError("연락처", `연락처를 형식에 맞게 입력해주세요!`);
     }
     if (!isRequired(gender)) {
       return alertError("성별", `성별을 입력해주세요!`);
+    }
+    if (!isRequired(addr)) {
+      return alertError("주소", `주소를 입력해주세요!`);
     }
 
     const encryptedData = {
@@ -78,6 +82,7 @@ export function SignupForm() {
       phone_number: phoneNumber,
       gender: gender,
       birthday: birthday,
+      addr: addr,
     };
 
     const [data, error] = await signupUser(encryptedData);
@@ -103,7 +108,7 @@ export function SignupForm() {
       <SignupGenderRadio data={gender} setData={setGender} />
       <SignupTextBox title={"연락처"} name={"phoneNumber"} data={phoneNumber} setData={handlePhoneNumber} />
       <SignupTextBox title={"생년월일"} name={"birthday"} data={birthday} setData={setBirthday} type={"date"} />
-
+      <SignupTextBox title={"주소"} name={"addr"} data={addr} setData={setAddr} />
       <div className="w-100 btn btn-lg text-white" style={{ backgroundColor: "#101648" }} onClick={submit}>
         회원가입
       </div>
