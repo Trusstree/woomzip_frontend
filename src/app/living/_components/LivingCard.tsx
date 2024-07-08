@@ -1,67 +1,11 @@
+import LivingCardCarousel from "@/app/living/_components/LivingCardCarousel";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
 import Link from "next/link";
-
-// const badgeExample = [
-//   <span
-//     key={1}
-//     className="badge"
-//     style={{ padding: "8px 10px", marginRight: "5px", border: "2px solid lightgray", borderRadius:"10px", color: "gray", fontWeight:"400", fontSize:"14px" }}
-//   >
-//     전원생활 체험하기 좋아요
-//   </span>,
-//   <span
-//     key={2}
-//     className="badge"
-//     style={{ padding: "8px 10px", marginRight: "5px", border: "2px solid lightgray", borderRadius:"10px", color: "gray", fontWeight:"400", fontSize:"14px" }}
-//   >
-//     또 살아보고 싶어요
-//   </span>,
-//   <span
-//     key={3}
-//     className="badge"
-//     style={{ padding: "8px 10px", marginRight: "5px", border: "2px solid lightgray", borderRadius:"10px", color: "gray", fontWeight:"400", fontSize:"14px" }}
-//   >
-//     따뜻해요
-//   </span>,
-// ];
 
 export function LivingCard({ company, title, addr, img, url, context }) {
   return (
     <Link className="card" style={{ border: "none", width: "100%", marginBottom: "15px" }} href={url}>
-      <Swiper
-        pagination={{ dynamicBullets: true }}
-        modules={[Pagination]}
-        className="mySwiper"
-        style={{ width: "100%", height: "280px" }}
-      >
-        <SwiperSlide>
-          <img
-            src={img}
-            style={{
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
-              borderRadius: "10px",
-            }}
-          ></img>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"
-            style={{
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
-              borderRadius: "10px",
-            }}
-          ></img>
-        </SwiperSlide>
-      </Swiper>
+      <LivingCardCarousel images={[img]} />
 
       <div className="card-body" style={{ color: "gray", padding: "5px", overflow: "hidden" }}>
         <div style={{ fontSize: "16px", marginTop: "3px" }}>{company}</div>
@@ -113,9 +57,6 @@ export function LivingCard({ company, title, addr, img, url, context }) {
             </div>
           </div>
         </div>
-        {/* <div style={{width:"150%", marginTop:"5px"}}>
-            {badgeExample}
-          </div> */}
         <div
           style={{
             fontWeight: "500",

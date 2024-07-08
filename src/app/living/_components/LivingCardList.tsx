@@ -1,4 +1,4 @@
-import { LivingCard } from "@/components/living/LivingCard";
+import { LivingCard } from "@/app/living/_components/LivingCard";
 
 const livingData = [
   {
@@ -9,13 +9,13 @@ const livingData = [
     url: `/living/1`,
     context: "지금까지 5명이 살아봤어요!",
   },
-  {
-    company: "탑디자인",
-    title: "자연 속 작은 집",
-    addr: "경기도 이천시",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/topDesign1.png",
-    context: "",
-  },
+  // {
+  //   company: "탑디자인",
+  //   title: "자연 속 작은 집",
+  //   addr: "경기도 이천시",
+  //   img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/topDesign1.png",
+  //   context: "",
+  // },
 ];
 
 type LivingListProps = {

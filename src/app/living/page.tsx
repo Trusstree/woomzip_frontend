@@ -1,5 +1,5 @@
+import { LivingCardList } from "@/app/living/_components/LivingCardList";
 import CategoryButton from "@/components/CategoryButton";
-import { LivingCardList } from "@/components/living/LivingCardList";
 import PostMenu from "@/components/posts/PostMenu";
 import SearchComponent from "@/components/SearchComponent";
 

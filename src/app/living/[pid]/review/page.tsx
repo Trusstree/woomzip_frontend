@@ -15,7 +15,7 @@ async function loadData() {
 
   review = data.data[0]["pavilion_review"];
   count = data.data[0]["pavilion_review_cnt"];
-  rating = data.data[0]["pavilion_review_rating"];
+  rating = data.data[0]["pavilion_review_rating"] || 0;
 
   return { review, count, rating };
 }

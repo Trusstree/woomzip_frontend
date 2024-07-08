@@ -1,32 +1,28 @@
-"use client";
-
 import { getLivingReviews } from "@/actions/apis/living";
 import { ReviewMiniBox } from "@/app/living/[pid]/_components/ReviewMiniBox";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-export function LivingInfo() {
-  const [count, setCount] = useState(0);
-  const [review, setReview] = useState([]);
-  const [rating, setRating] = useState(0);
+async function loadData() {
+  "use server";
 
-  const router = useRouter();
-  const handleClick = () => {
-    router.push("/living/1/review");
-  };
+  let [review, count, rating] = [[], 0, 0];
 
-  useEffect(() => {
-    (async () => {
-      const [data, error] = await getLivingReviews(1);
-      if (error) {
-        console.error(error);
-        return;
-      }
-      setReview(data.data[0]["pavilion_review"]);
-      setCount(data.data[0]["pavilion_review_cnt"]);
-      setRating(data.data[0]["pavilion_review_rating"]);
-    })();
-  }, []);
+  const [data, error] = await getLivingReviews(1);
+  if (error) {
+    console.error(error);
+    return { review, count, rating };
+  }
+
+  review = data.data[0]["pavilion_review"];
+  count = data.data[0]["pavilion_review_cnt"];
+  rating = data.data[0]["pavilion_review_rating"] || 0;
+
+  return { review, count, rating };
+}
+
+export async function LivingInfo() {
+  const { review, count, rating } = await loadData();
+  const url = "/living/1/review";
 
   return (
     <div style={{ marginTop: "20px", width: "100%" }}>
@@ -43,9 +39,9 @@ export function LivingInfo() {
         <h5>
           후기({count}) ★ {rating.toFixed(1)}
         </h5>
-        <div style={{ color: "gray", fontSize: "15px" }} onClick={handleClick}>
+        <Link style={{ color: "gray", fontSize: "15px" }} href={url}>
           전체보기
-        </div>
+        </Link>
       </div>
       <div className="row flex-nowrap overflow-auto g-2" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
         {review.map((e, i) => (
