@@ -1,7 +1,7 @@
 import { LivingCardList } from "@/app/living/_components/LivingCardList";
 import CategoryButton from "@/components/CategoryButton";
 import PostMenu from "@/components/posts/PostMenu";
-import SearchComponent from "@/components/SearchComponent";
+import SearchComponent from "@/app/community/_components/SearchComponent";
 
 export default function Living() {
   return (

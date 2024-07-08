@@ -22,7 +22,7 @@ export default function Home() {
         >
           꿈 꾸는 삶을 현실로,
           <br />
-          움집에서 쉽고 간편하게
+          "움집"에서 쉽고 간편하게
         </div>
       </div>
 

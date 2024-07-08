@@ -18,7 +18,7 @@ export async function middleware(request: NextRequest, response: NextResponse) {
   }
 
   //로그인해야하는 페이지
-  const signinRequiredPage = ["/mypage", "/living/1/reservation", "/admin", "/community/write"];
+  const signinRequiredPage = ["/living/1/reservation", "/admin", "/community/write"];
   for (const page of signinRequiredPage) {
     if (!request.nextUrl.pathname.startsWith(page)) continue;
 

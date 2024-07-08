@@ -1,5 +1,7 @@
+"use client";
+
 import useQuery from "@/hooks/useQuery";
-import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 //컴포넌트가 받을 props
 interface PagenationProps {
@@ -12,7 +14,6 @@ export default function Pagination(props: PagenationProps) {
   const { numItems, numShowItems, numShowPages } = props;
 
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get("page"));
   const page = rawPage > 0 ? rawPage : 1;

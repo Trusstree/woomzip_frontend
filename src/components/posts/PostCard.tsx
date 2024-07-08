@@ -1,5 +1,3 @@
-"use client";
-
 import DOMPurify from "dompurify";
 import Link from "next/link";
 import { cardCountText } from "@/lib/stringUtil";

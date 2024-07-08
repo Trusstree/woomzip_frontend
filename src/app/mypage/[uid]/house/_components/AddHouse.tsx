@@ -63,8 +63,6 @@ export default function AddHouse({ uid }) {
       house_img_url: imageList,
     };
 
-    console.log(data);
-
     const [response, error] = await postHouse(data);
     if (error) {
       console.error(error);

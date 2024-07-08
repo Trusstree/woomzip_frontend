@@ -37,7 +37,7 @@ export default function ImageBox(props: ImageBoxProps) {
             width={180}
             height={180}
             style={{ objectFit: "cover", borderRadius: "90px", width: "180px", height: "180px" }}
-            placeholder={"blur"}
+            // placeholder={"blur"}
             // blurDataURL={"/blur_image.png"}
           />
         </label>

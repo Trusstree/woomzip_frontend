@@ -10,7 +10,6 @@ type HouseImageComponentProps = {
 
 export function HouseImageComponent(props: HouseImageComponentProps) {
   const { uid, imageList, setImageList } = props;
-  console.log(uid);
 
   return (
     <div className="mt-4 py-4" style={{ borderTopStyle: "solid", borderTopColor: "#101648", borderTopWidth: "2px" }}>

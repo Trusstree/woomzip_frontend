@@ -1,39 +1,11 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import PostMenu from "@/components/posts/PostMenu";
 import Carousel from "@/components/house/Carousel";
-import { AppHouseList } from "@/components/house/AppHouseList";
+import AppHouseList from "@/components/house/AppHouseList";
 import AppPostList from "@/components/posts/AppPostList";
-import { Suspense } from "react";
-import { getHouses } from "@/actions/apis/HouseAPI";
+
 import { AppLivingCardList } from "@/app/mypage/[uid]/_components/AppLivingCardList";
 
-async function loadData() {
-  const [rawHouseData, houseError] = await getHouses({ skip: 1, limit: 6 });
-  if (houseError) {
-    console.error(houseError);
-    return;
-  }
-  const [houseData, houseCount] = [rawHouseData.data[0].houses, rawHouseData.data[0].total_count];
-  return { houseData, houseCount };
-}
-
-export default function Home() {
-  const [isClient, setIsClient] = useState(false);
-  const [houseData, setHouseData] = useState([]);
-  const [houseCount, setHouseCount] = useState(0);
-
-  useEffect(() => {
-    setIsClient(true);
-    loadData().then((data) => {
-      if (data) {
-        setHouseData(data.houseData);
-        setHouseCount(data.houseCount);
-      }
-    });
-  }, []);
-
+export default async function Home() {
   return (
     <>
       <div>
@@ -54,7 +26,7 @@ export default function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: "100%", overflow: "hidden" }}>
-              <AppPostList numShowItems={10}></AppPostList>
+              <AppPostList numShowItems={10} />
             </div>
           </PostMenu>
         </div>
@@ -90,7 +62,8 @@ export default function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: "100%", overflow: "hidden" }}>
-              <AppHouseList numShowItems={6} houseData={houseData} count={houseCount} />
+              {/* @ts-expect-error Async Server Component */}
+              <AppHouseList numShowItems={6} />
             </div>
           </PostMenu>
         </div>

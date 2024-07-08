@@ -92,7 +92,6 @@ export default async function Parvilion() {
               힐링리버
             </div>
 
-            {/* @ts-expect-error Async Server Component */}
             <LivingInfo />
 
             <div

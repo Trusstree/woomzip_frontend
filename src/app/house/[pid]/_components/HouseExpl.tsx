@@ -33,6 +33,11 @@ export default function HouseExpl({ pid, deliveryData, houseData, specificationD
     elementD.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const elementE = useRef<HTMLDivElement>(null);
+  const onMoveBoxE = () => {
+    elementE.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <>
       {/*상품 네비게이션 */}
@@ -57,6 +62,9 @@ export default function HouseExpl({ pid, deliveryData, houseData, specificationD
           </div>
           <div className="btn" onClick={onMoveBoxD}>
             배송 정보
+          </div>
+          <div className="btn" onClick={onMoveBoxE}>
+            가격 정보
           </div>
         </div>
       </div>
@@ -148,7 +156,7 @@ export default function HouseExpl({ pid, deliveryData, houseData, specificationD
       </div>
 
       {/* 가격 정보 */}
-      <div>
+      <div ref={elementE}>
         <h5 style={{ margin: "150px 0 30px 0" }}>가격 정보</h5>
         <div style={{ fontSize: "16px", marginBottom: "40px" }}>
           <span style={{ color: "#314FC0", fontWeight: "600" }}>움집</span>의 모든 제품과 옵션에는 원칙적으로 제작 도중

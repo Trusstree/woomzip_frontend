@@ -7,10 +7,9 @@ import Link from "next/link";
 
 export default function MyPageProfile({ uid, userData }) {
   const cookieStorge = cookies();
-  const accessToken = cookieStorge.get("accessToken").value;
+  const accessToken = cookieStorge.get("accessToken")?.value;
   const signedUID = accessToken && getUserdataByToken(accessToken)?.uid;
 
-  console.log(userData);
   return (
     <div className="card sticky-top" style={{ width: "90%", border: "none", zIndex: 1 }}>
       <div className="container" style={{ height: "60px" }}></div>

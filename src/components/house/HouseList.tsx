@@ -1,5 +1,3 @@
-"use client";
-
 import HouseCard from "@/components/house/HouseCard";
 import HouseCardPlaceholder from "@/components/house/HouseCardPlaceholder";
 import Pagination from "@/components/Pagination";

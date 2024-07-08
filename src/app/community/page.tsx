@@ -1,10 +1,9 @@
 import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
-import { Suspense } from "react";
-import SearchComponent from "@/components/SearchComponent";
+import SearchComponent from "@/app/community/_components/SearchComponent";
 import Category from "@/app/community/_components/Category";
 
-export default function Community() {
+export default function CommunityPage() {
   const [numShowItems, numShowPages] = [24, 10];
   return (
     <div>
@@ -20,7 +19,6 @@ export default function Community() {
         >
           <span style={{ color: "#314FC0" }}>움집</span>에서 당신의 이야기를 들려주세요
         </div>
-
         <div
           className="container"
           style={{
@@ -36,9 +34,7 @@ export default function Community() {
         </div>
 
         <PostMenu title={""} routeUrl={"/community/write"} routeText={"글쓰기"}>
-          <Suspense>
-            <PostList numShowItems={numShowItems} numShowPages={numShowPages} />
-          </Suspense>
+          <PostList numShowItems={numShowItems} numShowPages={numShowPages} />
         </PostMenu>
       </div>
     </div>

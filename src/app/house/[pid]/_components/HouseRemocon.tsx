@@ -1,3 +1,5 @@
+"use client";
+
 import { getHousesHeart, getHousesHeartRemove } from "@/actions/apis/HeartAPI";
 import { useUser } from "@/app/ContextSession";
 import useQuery from "@/hooks/useQuery";
@@ -44,7 +46,13 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
     <div className="card sticky-top" style={{ width: "90%", border: "none", zIndex: 1, marginLeft: "10%" }}>
       <div className="container" style={{ height: "60px" }}></div>
       <div style={{ padding: "10px", boxShadow: "3px 3px 13px rgba(0, 0, 0, 0.2)", borderRadius: "10px" }}>
-        <div style={{ fontSize: "15px" }} onClick={() => {}}>
+        <div
+          className="btn"
+          style={{ fontSize: "15px" }}
+          onClick={() => {
+            router.push(`/mypage/${houseData["fk_seller_id"]}`);
+          }}
+        >
           {houseData["seller_nickname"]}
         </div>
         <div style={{ fontSize: "24px", fontWeight: "600", margin: "10px 0" }}>{houseData["house_name"]}</div>

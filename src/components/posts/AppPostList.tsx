@@ -50,19 +50,9 @@ export default function AppPostList(props: PostListProps) {
         }}
       >
         {postData
-          ? postData.map((e: any, i: number) => (
-              <AppPostCard data={e} key={i} />
-            ))
-          : new Array(numShowItems)
-              .fill(0)
-              .map((e: any, i: number) => <PostCardPlaceHolder key={i} />)}
-        {numShowPages && (
-          <Pagination
-            numItems={count}
-            numShowItems={numShowItems}
-            numShowPages={numShowPages}
-          />
-        )}
+          ? postData.map((e: any, i: number) => <AppPostCard data={e} key={i} />)
+          : new Array(numShowItems).fill(0).map((e: any, i: number) => <PostCardPlaceHolder key={i} />)}
+        {numShowPages && <Pagination numItems={count} numShowItems={numShowItems} numShowPages={numShowPages} />}
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 "use server";
 
-import { privateApi } from "@/configs/axiosClient";
+import { publicApi, privateApi } from "@/configs/axiosClient";
 
 export const getLikeHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -21,7 +21,7 @@ export const getCompanyMypage = async (uid: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/mypage/company/${uid}`);
+    const result = await publicApi.get(`/mypage/company/${uid}`);
     data = result?.data;
   } catch (err) {
     error = err.response?.data;

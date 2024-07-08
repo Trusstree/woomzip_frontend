@@ -17,8 +17,6 @@ export default function CategoryButton({
   const { createQuery, getRouteParams } = useQuery();
   const handleClick = () => {
     createQuery("category", category);
-    console.log(category);
-    console.log(getRouteParams());
     router.push(getRouteParams());
   };
 
