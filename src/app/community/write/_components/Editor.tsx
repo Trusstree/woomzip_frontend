@@ -30,7 +30,6 @@ const formats = [
   "bullet",
   "align",
   "image",
-  // "float",
   "height",
   "width",
 ];
@@ -40,6 +39,7 @@ export default function Editor(props: EditorProps) {
   const [dataTitle, setDataTitle] = useState("");
   const [dataText, setDataText] = useState("");
   const [dataCategory, setDataCategory] = useState("일반");
+  const category = ["일반", "질문", "공지", "칼럼"];
 
   const quillRef = useRef(null);
 
@@ -64,7 +64,24 @@ export default function Editor(props: EditorProps) {
             const editor = quillRef.current?.getEditor();
             if (editor) {
               const range = editor.getSelection();
-              editor.insertEmbed(range?.index || 0, "image", imageUrl);
+              const delta = editor.insertEmbed(range?.index || 0, "image", imageUrl);
+              editor.removeFormat(range?.index, range?.index + 1);
+              const newOps = delta.ops?.map((op) => {
+                if (op.insert && typeof op.insert === "object" && op.insert.image) {
+                  const imageAttributes = {
+                    ...op.attributes,
+                    alt: "post images",
+                    width: 500,
+                  };
+                  return {
+                    ...op,
+                    attributes: imageAttributes,
+                  };
+                }
+                return op;
+              });
+              delta.ops = newOps;
+              editor.updateContents(delta);
             }
           } else {
             console.error("Error uploading image:", error);
@@ -137,7 +154,7 @@ export default function Editor(props: EditorProps) {
               className="form-select"
               aria-label="Default select example"
             >
-              {["일반", "질문", "공지"].map((e, i) => (
+              {category.map((e, i) => (
                 <option key={i} value={e}>
                   {e}
                 </option>

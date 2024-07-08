@@ -14,6 +14,7 @@ const style = {
   일반: { backgroundColor: "#CCD6FF", color: "#314FC0" },
   공지: { backgroundColor: "#FFCCCC", color: "#C03142" },
   질문: { backgroundColor: "#E2FFCC", cololr: "#8AC031" },
+  칼럼: { backgroundColor: "#CC99CC", cololr: "#8CCCCC" },
 };
 
 export default async function page({ params }: { params: PageParams }) {
