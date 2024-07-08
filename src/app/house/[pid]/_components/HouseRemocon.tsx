@@ -7,7 +7,7 @@ import { alertSuccess } from "@/lib/alertUtil";
 import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import styles from "../_css/HouseRemocon.module.css";
+import styles from "@/app/house/[pid]/_styles/HouseRemocon.module.css";
 
 export default function HouseRemocon({ pid, houseData, optionData }) {
   const { createQueryString } = useQuery();

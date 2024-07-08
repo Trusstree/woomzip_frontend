@@ -2,7 +2,8 @@ import { getHouse } from "@/actions/apis/HouseAPI";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import HouseExpl from "@/app/house/[pid]/_components/HouseExpl";
 import HouseRemocon from "@/app/house/[pid]/_components/HouseRemocon";
-import styles from "./_css/HouseClient.module.css";
+import styles from "@/app/house/[pid]/_styles/HouseClient.module.css";
+import { PicModal } from "@/app/house/[pid]/_components/PicModal";
 
 type PageParams = {
   pid: number;
@@ -125,6 +126,7 @@ export default async function Home({ params }: { params: PageParams }) {
             </div>
           </div>
         </div>
+        <PicModal id={pid} images={imageData} />
       </main>
     </>
   ) : (
