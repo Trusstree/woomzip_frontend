@@ -7,7 +7,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-export function AppLivingCard({ company, title, addr, img, url, context }) {
+export default function AppLivingCard({ company, title, addr, img, url, context }) {
   const router = useRouter();
 
   function handleClick() {
@@ -82,11 +82,7 @@ export function AppLivingCard({ company, title, addr, img, url, context }) {
           </div>
           <div className="row" style={{ width: "100%", marginTop: "10px" }}>
             <div className="row" style={{ width: "45%" }}>
-              <div
-                style={{ fontSize: "15px", fontWeight: "600", width: "auto" }}
-              >
-                ₩
-              </div>
+              <div style={{ fontSize: "15px", fontWeight: "600", width: "auto" }}>₩</div>
               <div
                 style={{
                   textAlign: "center",
@@ -100,9 +96,7 @@ export function AppLivingCard({ company, title, addr, img, url, context }) {
             </div>
             <div className="row" style={{ width: "55%" }}>
               <Image
-                src={
-                  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/gps.png"
-                }
+                src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/gps.png"}
                 width={40}
                 height={19}
                 style={{ width: "40px" }}

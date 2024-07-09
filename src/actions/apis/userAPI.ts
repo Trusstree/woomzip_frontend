@@ -7,7 +7,7 @@ export const getUser = async (uid: string | number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/users/profile/${uid}`, {
+    const result = await privateApi.get(`/mypage/${uid}`, {
       params: {},
     });
     data = result?.data;

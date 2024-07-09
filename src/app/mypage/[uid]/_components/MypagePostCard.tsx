@@ -1,6 +1,6 @@
 "use client";
 
-import DOMPurify from "isomorphic-dompurify";
+import DOMPurify from "dompurify";
 import Link from "next/link";
 import { cardCountText } from "@/lib/stringUtil";
 

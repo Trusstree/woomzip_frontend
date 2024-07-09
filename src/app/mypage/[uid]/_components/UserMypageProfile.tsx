@@ -1,21 +1,14 @@
-import { getUser } from "@/actions/apis/userAPI";
-import ProfileImageBox from "@/app/mypage/[uid]/_components/ProfileImageBox";
 import SignoutButton from "@/app/mypage/[uid]/_components/SignoutButton";
 import { getUserdataByToken } from "@/lib/parseUtil";
 import { cookies } from "next/headers";
-import Link from "next/link";
 
 export default function UserMypageProfile({ uid, userData }) {
   const cookieStorge = cookies();
   const accessToken = cookieStorge.get("accessToken").value;
   const signedUID = accessToken && getUserdataByToken(accessToken)?.uid;
 
-  console.log(userData);
   return (
-    <div
-      className="card sticky-top"
-      style={{ width: "90%", border: "none", zIndex: 1 }}
-    >
+    <div className="card sticky-top" style={{ width: "90%", border: "none", zIndex: 1 }}>
       <div className="container" style={{ height: "60px" }}></div>
       <div
         style={{
@@ -26,7 +19,14 @@ export default function UserMypageProfile({ uid, userData }) {
       >
         <div className="row" style={{ width: "100%" }}>
           <div style={{ width: "90px" }}>
-            <ProfileImageBox data={userData} name={"user_img_url"} />
+            <img
+              className={"m-0 align-self-center"}
+              src={userData["user_img_url"]}
+              alt={`profile`}
+              width={100}
+              height={70}
+              style={{ objectFit: "cover", borderRadius: "90px", width: "70px", height: "70px" }}
+            />
           </div>
           <div
             style={{
@@ -39,9 +39,7 @@ export default function UserMypageProfile({ uid, userData }) {
             {userData?.["nickname"]}
           </div>
         </div>
-        <div style={{ width: "100%", margin: "30px 0", fontSize: "16px" }}>
-          {userData?.one_line_introduce}
-        </div>
+        <div style={{ width: "100%", margin: "30px 0", fontSize: "16px" }}>{userData?.one_line_introduce}</div>
         <div className="row">
           <div className="col-3" style={{ fontWeight: "600" }}>
             이름

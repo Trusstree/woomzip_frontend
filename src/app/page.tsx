@@ -3,8 +3,6 @@ import Carousel from "@/components/house/Carousel";
 import AppHouseList from "@/components/house/AppHouseList";
 import AppPostList from "@/components/posts/AppPostList";
 
-import { AppLivingCardList } from "@/app/mypage/[uid]/_components/AppLivingCardList";
-
 export default async function Home() {
   return (
     <>
@@ -41,9 +39,7 @@ export default async function Home() {
       >
         <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
           <PostMenu title={"먼저 무료로 살아보세요"} routeUrl={"/living"} routeText={"더보기"} horizontalScroll={true}>
-            <div style={{ width: "100%", overflow: "hidden" }}>
-              <AppLivingCardList numShowItems={4} />
-            </div>
+            <div style={{ width: "100%", overflow: "hidden" }}>{/* <AppLivingCardList numShowItems={4} /> */}</div>
           </PostMenu>
         </div>
       </div>

@@ -1,22 +1,33 @@
-import { ReviewInfo } from "@/components/house/ReviewInfo";
 import PostMenu from "@/components/posts/PostMenu";
-import House from "@/app/mypage/[uid]/_components/House";
-import { Suspense } from "react";
 import MyPageProfile from "@/app/mypage/[uid]/_components/MyPageProfile";
-import AppPostList from "@/components/posts/AppPostList";
-import { AppLivingCardList } from "@/app/mypage/[uid]/_components/AppLivingCardList";
-import { getCompanyMypage } from "@/actions/apis/Mypage";
+import ReviewList from "@/components/review/ReviewList";
+import MypagePostList from "@/app/mypage/[uid]/_components/MypagePostList";
+import MypageLivingCardList from "@/app/mypage/[uid]/_components/MypageLivingCardList";
+import MypageHouseList from "@/app/mypage/[uid]/_components/MypageHouseList";
 
-async function loadData(uid) {
-  "use server";
-  const [data, error] = await getCompanyMypage(uid);
-  return [data, error];
+function parseData(companyData) {
+  let [profile, companyImages, reviews, posts, pavilions, sellingHouses] = [
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+  ];
+
+  profile = companyData["companyInfo"]["profile"];
+  companyImages = companyData["companyInfo"]["images"];
+  reviews = companyData["reviews"];
+  posts = companyData["posts"];
+  pavilions = companyData["pavilions"];
+  sellingHouses = companyData["sellingHouses"];
+
+  console.log(companyData);
+  return { profile, companyImages, reviews, posts, pavilions, sellingHouses };
 }
 
 export default async function MypageCompany({ uid, userData }) {
-  const [data, error] = await loadData(uid);
-  if (error) console.log(error);
-  console.log(data.data[0]);
+  const { profile, companyImages, reviews, posts, pavilions, sellingHouses } = parseData(userData);
 
   return (
     <>
@@ -26,7 +37,8 @@ export default async function MypageCompany({ uid, userData }) {
           <div className="col-6">
             <div style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}>
               <img
-                src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
+                src={companyImages[0]}
+                alt={"company images 0"}
                 style={{ width: "100%", height: "400px", objectFit: "cover" }}
               />
             </div>
@@ -34,13 +46,15 @@ export default async function MypageCompany({ uid, userData }) {
           <div className="col-3">
             <div style={{ height: "50%", overflow: "hidden" }}>
               <img
-                src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
+                src={companyImages[1]}
+                alt={"company images 1"}
                 style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
             <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
               <img
-                src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
+                src={companyImages[2]}
+                alt={"company images 2"}
                 style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
@@ -54,7 +68,8 @@ export default async function MypageCompany({ uid, userData }) {
               }}
             >
               <img
-                src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
+                src={companyImages[3]}
+                alt={"company images 3"}
                 style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
@@ -67,7 +82,8 @@ export default async function MypageCompany({ uid, userData }) {
               }}
             >
               <img
-                src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
+                src={companyImages[4]}
+                alt={"company images 4"}
                 style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
@@ -97,12 +113,16 @@ export default async function MypageCompany({ uid, userData }) {
 
         <div className="g-3 row w-100">
           <div className="col-4">
-            <MyPageProfile uid={uid} userData={userData} />
+            <MyPageProfile uid={uid} userData={profile} />
           </div>
           <div className="col-8">
             <div style={{ width: "100%", marginTop: "60px" }}>
               <div style={{ margin: "0px" }}>
-                <ReviewInfo />
+                <ReviewList
+                  review={reviews["allReviews"]}
+                  count={reviews["allReviews"].length}
+                  rating={reviews["averageRating"]}
+                />
               </div>
 
               <div style={{ width: "100%", marginTop: "60px" }}>
@@ -112,21 +132,21 @@ export default async function MypageCompany({ uid, userData }) {
                   routeText={"더보기"}
                   horizontalScroll={true}
                 >
-                  <Suspense>
-                    <AppPostList numShowItems={4} />
-                  </Suspense>
+                  <MypagePostList posts={posts} numShowItems={4} />
                 </PostMenu>
               </div>
 
               <div style={{ width: "100%", marginTop: "60px" }}>
                 <PostMenu title={"판매자 체험 숙소"} routeUrl={"/living"} routeText={"더보기"} horizontalScroll={true}>
-                  <Suspense>
-                    <AppLivingCardList numShowItems={4} />
-                  </Suspense>
+                  <MypageLivingCardList pavilions={pavilions} numShowItems={4} />
                 </PostMenu>
               </div>
 
-              <House userData={userData} isYou={userData} />
+              <div style={{ width: "100%", marginTop: "60px" }}>
+                <PostMenu title={"판매자 체험 숙소"} routeUrl={"/living"} routeText={"더보기"} horizontalScroll={true}>
+                  <MypageHouseList houses={sellingHouses} numShowItems={4} />
+                </PostMenu>
+              </div>
             </div>
           </div>
         </div>

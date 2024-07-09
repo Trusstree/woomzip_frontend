@@ -1,35 +1,31 @@
 import { getUser } from "@/actions/apis/userAPI";
-import { ReviewInfo } from "@/components/house/ReviewInfo";
-import AppPostList from "@/components/posts/AppPostList";
-import PostMenu from "@/components/posts/PostMenu";
-import { AppLivingCardList } from "@/app/mypage/[uid]/_components/AppLivingCardList";
-import House from "@/app/mypage/[uid]/_components/House";
-import { Suspense } from "react";
-import MyPageProfile from "@/app/mypage/[uid]/_components/MyPageProfile";
 import MypageCompany from "@/app/mypage/[uid]/_components/MypageCompany";
 import MypageUser from "@/app/mypage/[uid]/_components/MypageUser";
 
-async function create(uid: string | number) {
+async function loadData(uid: string | number) {
   "use server";
 
+  let role = 0,
+    userData = undefined;
   const [data, error] = await getUser(uid);
   if (error) {
-    console.log(error);
+    console.error(error);
     console.log("user error");
-    return;
+    return { role, userData };
   }
-  console.log(data?.data[0]?.user_profile);
-  return data?.data[0]?.user_profile;
+  userData = data.data[0];
+
+  // 회사 데이터면 companyInfo가
+  // 아니라면 companyInfo 없이 바로 데이터가 쌩으로 나옴
+
+  if (userData["companyInfo"]) role = 1;
+  else role = 0;
+
+  return { role, userData };
 }
 
 export default async function Page({ params }) {
   const { uid } = params;
-  console.log("asdfasdf1");
-  const userData: any = await create(uid);
-  console.log("asdfasdf2");
-  return userData.role == "1" ? (
-    <MypageCompany uid={uid} userData={userData} />
-  ) : (
-    <MypageUser uid={uid} userData={userData} />
-  );
+  const { role, userData } = await loadData(uid);
+  return role == 1 ? <MypageCompany uid={uid} userData={userData} /> : <MypageUser uid={uid} userData={userData} />;
 }

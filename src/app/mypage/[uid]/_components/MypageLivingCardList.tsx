@@ -1,4 +1,4 @@
-import { AppLivingCard } from "./AppLivingCard";
+import AppLivingCard from "@/app/mypage/[uid]/_components/AppLivingCard";
 
 const livingData = [
   {
@@ -18,22 +18,16 @@ const livingData = [
   },
 ];
 
-type LivingListProps = {
+export default function MypageLivingCardList({
+  pavilions,
+  numShowItems,
+  numShowPages,
+}: {
+  pavilions: Array<any>;
   numShowItems: number;
   numShowPages?: number;
-};
-
-export function AppLivingCardList(props: LivingListProps) {
-  const { numShowItems, numShowPages } = props;
-
-  // useEffect(() => {
-  //   (async () => {
-  // const [data, error] = await getLivings();
-  // if (error) console.error(error);
-  // setLivingData(data);
-  //   })();
-  // }, []);
-
+}) {
+  const pavilionData = pavilions.filter((_, i) => i < numShowItems);
   return (
     <>
       <div
@@ -43,14 +37,14 @@ export function AppLivingCardList(props: LivingListProps) {
           msOverflowStyle: "none",
         }}
       >
-        {livingData?.map((e, i) => (
+        {pavilionData?.map((e, i) => (
           <AppLivingCard
             key={i}
             company={e["company"]}
-            title={e["title"]}
-            addr={e["addr"]}
-            img={e["img"]}
-            url={e["url"]}
+            title={e["pavilion_name"]}
+            addr={e["pavilion_addr"]}
+            img={e["img"] || "/blur_image.png"}
+            url={`living/${e["pavilion_id"]}`}
             context={e["context"]}
           />
         ))}

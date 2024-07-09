@@ -1,7 +1,6 @@
 "use client";
 
 import RowText from "@/app/house/[pid]/_components/RowText";
-import { ReviewInfo } from "@/components/house/ReviewInfo";
 import useQuery from "@/hooks/useQuery";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import { detailPriceText } from "@/lib/stringUtil";
@@ -116,7 +115,7 @@ export default function HouseExpl({ pid, deliveryData, houseData, specificationD
       </div>
 
       <div ref={elementC} className="w-full h-screen relative flex flex-col" style={{ marginTop: "150px" }}>
-        <ReviewInfo />
+        {/* <ReviewInfo /> */}
       </div>
 
       {/* 배송 정보 */}

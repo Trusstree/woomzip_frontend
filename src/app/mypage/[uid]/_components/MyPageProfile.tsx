@@ -1,14 +1,11 @@
-import { getUser } from "@/actions/apis/userAPI";
-import ProfileImageBox from "@/app/mypage/[uid]/_components/ProfileImageBox";
 import SignoutButton from "@/app/mypage/[uid]/_components/SignoutButton";
 import { getUserdataByToken } from "@/lib/parseUtil";
 import { cookies } from "next/headers";
-import Link from "next/link";
 
 export default function MyPageProfile({ uid, userData }) {
   const cookieStorge = cookies();
   const accessToken = cookieStorge.get("accessToken")?.value;
-  const signedUID = accessToken && getUserdataByToken(accessToken)?.uid;
+  const isSigned = accessToken && Number(uid) == getUserdataByToken(accessToken)?.uid;
 
   return (
     <div className="card sticky-top" style={{ width: "90%", border: "none", zIndex: 1 }}>
@@ -16,7 +13,14 @@ export default function MyPageProfile({ uid, userData }) {
       <div style={{ padding: "10px", boxShadow: "3px 3px 13px rgba(0, 0, 0, 0.2)", borderRadius: "10px" }}>
         <div className="row" style={{ width: "100%" }}>
           <div style={{ width: "90px" }}>
-            <ProfileImageBox data={userData} name={"user_img_url"} />
+            <img
+              className={"m-0 align-self-center"}
+              src={userData["user_img_url"]}
+              alt={`profile`}
+              width={100}
+              height={70}
+              style={{ objectFit: "cover", borderRadius: "90px", width: "70px", height: "70px" }}
+            />
           </div>
           <div style={{ fontSize: "24px", fontWeight: "600", margin: "20px 0", width: "auto" }}>
             {userData?.["nickname"]}
@@ -54,7 +58,7 @@ export default function MyPageProfile({ uid, userData }) {
           <div className="col-9">{userData?.pr_url}</div>
         </div>
         <div style={{ textAlign: "right" }}>
-          {Number(uid) == signedUID && (
+          {isSigned && (
             // <Link style={{}} href={`${uid}?tab=profile`}>
             //   <span className="" style={{ wordBreak: "keep-all" }}>
             //     프로필 수정

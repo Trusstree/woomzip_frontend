@@ -6,7 +6,7 @@ type RouteButtonProps = {
   className?: string;
 };
 
-export function RouteButton(props: RouteButtonProps) {
+export default function RouteButton(props: RouteButtonProps) {
   const { url, text, className } = props;
 
   return (

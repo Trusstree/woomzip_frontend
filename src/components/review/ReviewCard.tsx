@@ -4,14 +4,14 @@ import { badgeStyles } from "@/lib/badgeStyles";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export function ReviewMiniBox({ id, nickname, date, helpful, tag, comment, images }) {
+export default function ReviewCard({ id, nickname, date, helpful, tag, comment, images }) {
   const router = useRouter();
   // function handleClick() {
   //   // e.target.value
   //   router.push(url);
   // }
   const handleClick = () => {
-    router.push("/mypage/[uid]/review");
+    router.push("/living/1/review");
   };
 
   return (

@@ -1,18 +1,7 @@
-import UserMypageProfile from "./UserMypageProfile";
+import UserMypageProfile from "@/app/mypage/[uid]/_components/UserMypageProfile";
 import AppHouseList from "@/components/house/AppHouseList";
 import AppPostList from "@/components/posts/AppPostList";
 import PostMenu from "@/components/posts/PostMenu";
-import { getHouses } from "@/actions/apis/HouseAPI";
-
-async function loadData() {
-  const [rawHouseData, houseError] = await getHouses({ skip: 1, limit: 6 });
-  if (houseError) {
-    console.error(houseError);
-    return;
-  }
-  const [houseData, houseCount] = [rawHouseData.data[0].houses, rawHouseData.data[0].total_count];
-  return { houseData, houseCount };
-}
 
 export default function MypageUser({ uid, userData }) {
   return (
