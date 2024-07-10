@@ -143,7 +143,7 @@ export default async function MypageCompany({ uid, userData }) {
               </div>
 
               <div style={{ width: "100%", marginTop: "60px" }}>
-                <PostMenu title={"판매자 체험 숙소"} routeUrl={"/living"} routeText={"더보기"} horizontalScroll={true}>
+                <PostMenu title={"판매자 제품"} routeText={"더보기"} horizontalScroll={true}>
                   <MypageHouseList houses={sellingHouses} numShowItems={4} />
                 </PostMenu>
               </div>

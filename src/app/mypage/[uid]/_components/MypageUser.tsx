@@ -1,6 +1,6 @@
 import UserMypageProfile from "@/app/mypage/[uid]/_components/UserMypageProfile";
-import AppHouseList from "@/components/house/AppHouseList";
-import AppPostList from "@/components/posts/AppPostList";
+import { HouseList } from "@/components/house/HouseList";
+import PostList from "@/components/posts/PostList";
 import PostMenu from "@/components/posts/PostMenu";
 
 export default function MypageUser({ uid, userData }) {
@@ -16,22 +16,22 @@ export default function MypageUser({ uid, userData }) {
               <div style={{ width: "100%", marginTop: "60px" }}>
                 <PostMenu title={"내가 작성한 글"} routeUrl={"/community"} routeText={"더보기"} horizontalScroll={true}>
                   <div style={{ width: "100%", overflow: "hidden" }}>
-                    <AppPostList numShowItems={4} />
+                    <PostList numShowItems={4} />
                   </div>
                 </PostMenu>
               </div>
 
               <div style={{ width: "100%", marginTop: "60px" }}>
-                <PostMenu
+                {/* <PostMenu
                   title={"내가 좋아하는 집"}
                   routeUrl={"/community"}
                   routeText={"더보기"}
                   horizontalScroll={true}
                 >
                   <div style={{ width: "100%", overflow: "hidden" }}>
-                    <AppHouseList numShowItems={4} houseData={[]} count={0} />
+                    <HouseList numShowItems={4} />
                   </div>
-                </PostMenu>
+                </PostMenu> */}
               </div>
             </div>
           </div>

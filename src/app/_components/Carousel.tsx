@@ -1,13 +1,6 @@
-"use client";
+import Link from "next/link";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-
-type CarouselProps = {
-  className?: string;
-};
-
-const CarouselList = [
+const CarouselData = [
   {
     title: "움집 서비스 알아보기",
     img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/222.jpg",
@@ -16,32 +9,16 @@ const CarouselList = [
   {
     title: "움집 속 AI 타잔 알아보기",
     img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/444.png",
-    url: `/service`,
+    url: `/about`,
   },
 ];
 
-export default function Carousel(props: CarouselProps) {
-  const { className } = props;
-  const router = useRouter();
-  const [carouselData, setCarouselData] = useState(CarouselList);
-
-  useEffect(() => {
-    (async () => {
-      // const [data, error] = await getLivings();
-      // if (error) console.error(error);
-      // setLivingData(data);
-    })();
-  }, []);
-
-  const handleSlideClick = (url: string) => {
-    router.push(url);
-  };
-
+export default function Carousel({ className }: { className?: string }) {
   return (
     <div id="Carousel" className={`carousel slide ${className}`} data-bs-ride="carousel">
       <div>
         <div className="carousel-indicators">
-          {carouselData.map((e, i) => (
+          {CarouselData.map((e, i) => (
             <button
               key={i}
               type="button"
@@ -54,12 +31,12 @@ export default function Carousel(props: CarouselProps) {
           ))}
         </div>
         <div className="carousel-inner">
-          {carouselData.map((e, i) => (
-            <div
+          {CarouselData.map((e, i) => (
+            <Link
               key={i}
               className={`carousel-item ${i === 0 ? "active" : ""}`}
-              onClick={() => handleSlideClick(e.url)}
               style={{ cursor: "pointer" }}
+              href={e["url"]}
             >
               <img
                 className="w-100"
@@ -84,7 +61,7 @@ export default function Carousel(props: CarouselProps) {
                   {e.title}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <button

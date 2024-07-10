@@ -1,4 +1,4 @@
-import AppPostCard from "@/components/posts/AppPostCard";
+import PostCard from "@/components/posts/PostCard";
 
 export default function MypagePostList({
   posts,
@@ -20,7 +20,7 @@ export default function MypagePostList({
       }}
     >
       {postData.map((e: any, i: number) => (
-        <AppPostCard data={e} key={i} />
+        <PostCard data={e} key={i} />
       ))}
     </div>
   );

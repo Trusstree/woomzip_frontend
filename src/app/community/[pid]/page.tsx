@@ -1,5 +1,5 @@
 import Count from "@/components/posts/Count";
-import AppPostList from "@/components/posts/AppPostList";
+import AppPostList from "@/app/_components/PostList";
 import PostMenu from "@/components/posts/PostMenu";
 import CommentForm from "@/app/community/[pid]/_components/CommentForm";
 import Comment from "@/app/community/[pid]/_components/Comment";

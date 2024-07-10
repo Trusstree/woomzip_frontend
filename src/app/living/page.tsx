@@ -1,5 +1,4 @@
-import { LivingCardList } from "@/app/living/_components/LivingCardList";
-import CategoryButton from "@/components/CategoryButton";
+import LivingCardList from "@/components/living/LivingCardList";
 import PostMenu from "@/components/posts/PostMenu";
 import SearchComponent from "@/app/community/_components/SearchComponent";
 import LivingCategory from "./_components/LivingCategory";
@@ -16,8 +15,7 @@ export default function Living() {
           wordBreak: "keep-all",
         }}
       >
-        <span style={{ color: "#314FC0" }}>무료로</span> 새로운 삶을
-        경험해보세요
+        <span style={{ color: "#314FC0" }}>무료로</span> 새로운 삶을 경험해보세요
       </div>
       <div
         className="container"
@@ -42,7 +40,7 @@ export default function Living() {
           <LivingCategory />
           <SearchComponent />
         </div>
-        <PostMenu title={""} routeUrl={"/community/write"} routeText={""}>
+        <PostMenu>
           <LivingCardList numShowItems={4} />
         </PostMenu>
       </div>

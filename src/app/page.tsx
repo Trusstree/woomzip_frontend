@@ -1,7 +1,8 @@
 import PostMenu from "@/components/posts/PostMenu";
-import Carousel from "@/components/house/Carousel";
-import AppHouseList from "@/components/house/AppHouseList";
-import AppPostList from "@/components/posts/AppPostList";
+import Carousel from "@/app/_components/Carousel";
+import LivingCardList from "@/components/living/LivingCardList";
+import PostList from "@/app/_components/PostList";
+import HouseList from "@/app/_components/HouseList";
 
 export default async function Home() {
   return (
@@ -24,7 +25,7 @@ export default async function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: "100%", overflow: "hidden" }}>
-              <AppPostList numShowItems={10} />
+              <PostList numShowItems={10} />
             </div>
           </PostMenu>
         </div>
@@ -39,7 +40,7 @@ export default async function Home() {
       >
         <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
           <PostMenu title={"먼저 무료로 살아보세요"} routeUrl={"/living"} routeText={"더보기"} horizontalScroll={true}>
-            <div style={{ width: "100%", overflow: "hidden" }}>{/* <AppLivingCardList numShowItems={4} /> */}</div>
+            <LivingCardList numShowItems={4} />
           </PostMenu>
         </div>
       </div>
@@ -58,8 +59,7 @@ export default async function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: "100%", overflow: "hidden" }}>
-              {/* @ts-expect-error Async Server Component */}
-              <AppHouseList numShowItems={6} />
+              <HouseList numShowItems={6} />
             </div>
           </PostMenu>
         </div>
