@@ -3,8 +3,9 @@ import PostList from "@/components/posts/PostList";
 import SearchComponent from "@/app/community/_components/SearchComponent";
 import Category from "@/app/community/_components/Category";
 
-export default function CommunityPage() {
+export default function Page() {
   const [numShowItems, numShowPages] = [24, 10];
+
   return (
     <div>
       <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
@@ -33,7 +34,7 @@ export default function CommunityPage() {
           <SearchComponent />
         </div>
 
-        <PostMenu title={""} routeUrl={"/community/write"} routeText={"글쓰기"}>
+        <PostMenu routeUrl={"/community/write"} routeText={"글쓰기"}>
           <PostList numShowItems={numShowItems} numShowPages={numShowPages} />
         </PostMenu>
       </div>

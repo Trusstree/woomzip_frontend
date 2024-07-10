@@ -74,8 +74,16 @@ export default function PlanningClient() {
       }
 
       // 그냥 이부분은 HouseCard 재활용하려고 하드 코딩했어요.
+      console.log(data.data[0]["house_image"]);
+      const images = [
+        ...data.data[0]["house_image"]["representative_images"],
+        ...data.data[0]["house_image"]["external_images"],
+        ...data.data[0]["house_image"]["internal_images"],
+        ...data.data[0]["house_image"]["floor_plan_images"],
+        ...data.data[0]["house_image"]["elevation_plan_images"],
+      ].join(",");
       setHouseData({
-        house_img_url: data.data[0]["house_image"]["representative_images"][0],
+        house_img_urls: images,
         house_name: data.data[0]["house_info"]["house_name"],
         total_floor_area: data.data[0]["house_info"]["total_floor_area"],
         building_area: data.data[0]["house_info"]["building_area"],
@@ -103,7 +111,7 @@ export default function PlanningClient() {
           <div style={{ fontSize: "19px", marginBottom: "30px" }}>찾아보기 탭에서 마음에 드는 주택을 찾아보세요.</div>
           <div style={{ width: "1200px", height: "300px", borderRadius: "10px" }}>
             {houseData ? (
-              <HouseCard className="w-100" data={houseData} />
+              <HouseCard data={houseData} />
             ) : (
               <button
                 style={{

@@ -2,7 +2,7 @@ import RouteButton from "@/components/RouteButton";
 import { Children } from "@/types/props";
 
 type PostMenuProps = {
-  title: string;
+  title?: string;
   children: Children;
   routeUrl?: string;
   routeText?: string;
@@ -15,7 +15,7 @@ export default function PostMenu(props: PostMenuProps) {
   return (
     <div className="">
       <div className="d-flex justify-content-between mt-2 mb-1">
-        <h5 style={{ fontWeight: "600" }}>{title}</h5>
+        <h5 style={{ fontWeight: "600" }}>{title ?? ""}</h5>
         {routeText && routeUrl && <RouteButton url={routeUrl}>{routeText}</RouteButton>}
       </div>
       <div

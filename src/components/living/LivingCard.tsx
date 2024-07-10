@@ -1,8 +1,8 @@
-import LivingCardCarousel from "@/app/living/_components/LivingCardCarousel";
+import LivingCardCarousel from "@/components/living/LivingCardCarousel";
 import Image from "next/image";
 import Link from "next/link";
 
-export function LivingCard({ company, title, addr, img, url, context }) {
+export default function LivingCard({ company, title, addr, img, url, context }) {
   return (
     <Link
       className="card text-decoration-none"

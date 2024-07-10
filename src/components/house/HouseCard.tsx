@@ -1,3 +1,5 @@
+"use client";
+
 import { cardPriceText } from "@/lib/stringUtil";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -87,7 +89,7 @@ export default function HouseCard({ data }) {
               >
                 {data["company_name"]}
               </div>
-              <div style={{ fontSize: "16px", width: "auto" }}>★4.8</div>
+              {/* <div style={{ fontSize: "16px", width: "auto" }}>★4.8</div> */}
             </div>
 
             <div

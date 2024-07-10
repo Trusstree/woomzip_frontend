@@ -19,9 +19,9 @@ export default function MypageHouseList({ houses, numShowItems }) {
           </div>
         )} */}
       </div>
-      <PostMenu title={""}>
+      <PostMenu>
         {houseData.map((e, i) => (
-          <HouseCard className="" key={i} data={e} />
+          <HouseCard key={i} data={e} />
         ))}
       </PostMenu>
     </div>

@@ -1,4 +1,4 @@
-import { LivingCard } from "@/app/living/_components/LivingCard";
+import LivingCard from "@/components/living/LivingCard";
 
 const livingData = [
   {
@@ -23,7 +23,7 @@ type LivingListProps = {
   numShowPages?: number;
 };
 
-export function LivingCardList(props: LivingListProps) {
+export default function LivingCardList(props: LivingListProps) {
   // const { numShowItems, numShowPages } = props;
 
   return (
