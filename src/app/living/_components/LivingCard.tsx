@@ -4,7 +4,11 @@ import Link from "next/link";
 
 export function LivingCard({ company, title, addr, img, url, context }) {
   return (
-    <Link className="card" style={{ border: "none", width: "100%", marginBottom: "15px" }} href={url}>
+    <Link
+      className="card text-decoration-none"
+      style={{ border: "none", width: "100%", marginBottom: "15px" }}
+      href={url}
+    >
       <LivingCardCarousel images={[img]} />
 
       <div className="card-body" style={{ color: "gray", padding: "5px", overflow: "hidden" }}>
