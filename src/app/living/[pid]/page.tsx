@@ -445,6 +445,7 @@ export default async function Parvilion() {
           </div>
         </div>
       </div>
+      <PicModal id={1} images={imageData} />
     </main>
   );
 }

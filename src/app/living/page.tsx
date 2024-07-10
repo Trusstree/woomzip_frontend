@@ -16,7 +16,8 @@ export default function Living() {
           wordBreak: "keep-all",
         }}
       >
-        <span style={{ color: "#314FC0" }}>무료로</span> 새로운 삶을 경험해보세요
+        <span style={{ color: "#314FC0" }}>무료로</span> 새로운 삶을
+        경험해보세요
       </div>
       <div
         className="container"
@@ -38,20 +39,7 @@ export default function Living() {
             position: "relative",
           }}
         >
-          <CategoryButton
-            title={"전체"}
-            imgSrc={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"}
-          />
-          <CategoryButton
-            title={"숙소"}
-            imgSrc={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/pavilion.png"}
-            category={"숙소"}
-          />
-          <CategoryButton
-            title={"투어"}
-            imgSrc={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/tour.png"}
-            category={"투어"}
-          />
+          <LivingCategory />
           <SearchComponent />
         </div>
         <PostMenu title={""} routeUrl={"/community/write"} routeText={""}>
