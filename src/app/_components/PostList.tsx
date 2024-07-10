@@ -1,5 +1,5 @@
 import { getPosts } from "@/actions/apis/postAPI";
-import AppPostCard from "@/components/posts/AppPostCard";
+import PostCard from "@/components/posts/PostCard";
 
 async function loadData(numShowItems: number) {
   const params = {
@@ -28,7 +28,7 @@ export default async function PostList({ numShowItems }) {
       }}
     >
       {postData.map((e: any, i: number) => (
-        <AppPostCard data={e} key={i} />
+        <PostCard data={e} key={i} />
       ))}
     </div>
   );

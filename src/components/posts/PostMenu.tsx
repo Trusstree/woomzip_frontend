@@ -13,7 +13,7 @@ export default function PostMenu(props: PostMenuProps) {
   const { title, children, routeUrl, routeText, horizontalScroll } = props;
 
   return (
-    <div className="">
+    <div>
       <div className="d-flex justify-content-between mt-2 mb-1">
         <h5 style={{ fontWeight: "600" }}>{title ?? ""}</h5>
         {routeText && routeUrl && <RouteButton url={routeUrl}>{routeText}</RouteButton>}

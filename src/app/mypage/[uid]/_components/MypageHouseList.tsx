@@ -4,10 +4,10 @@ import PostMenu from "@/components/posts/PostMenu";
 export default function MypageHouseList({ houses, numShowItems }) {
   const houseData = houses.filter((_, i) => i < numShowItems);
   return (
-    <div className="mt-5">
-      <div className="d-flex justify-content-between" style={{ marginTop: "30px" }}>
-        <h5 style={{ width: "200px" }}>판매자 제품(13)</h5>
-        {/* {isYou && (
+    <div>
+      {/* <div className="d-flex justify-content-between" style={{ marginTop: "30px" }}> */}
+      {/* <h5 style={{ width: "200px" }}>판매자 제품(13)</h5> */}
+      {/* {isYou && (
           <div
             className="btn"
             style={{ fontSize:"14px", color:"blue"}}
@@ -18,7 +18,7 @@ export default function MypageHouseList({ houses, numShowItems }) {
               제품 추가하기
           </div>
         )} */}
-      </div>
+      {/* </div> */}
       <PostMenu>
         {houseData.map((e, i) => (
           <HouseCard key={i} data={e} />

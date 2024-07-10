@@ -1,12 +1,13 @@
-import AppLivingCard from "@/app/mypage/[uid]/_components/AppLivingCard";
+import LivingCard from "@/components/living/LivingCard";
 
 const livingData = [
   {
+    pavilion_id: 1,
     company: "모두가하우징",
     title: "힐링리버",
     addr: "강원도 화천군",
     img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg",
-    url: `/living/1`,
+    // url: `/living/1`,
     context: "지금까지 5명이 살아봤어요!",
   },
   {
@@ -27,7 +28,7 @@ export default function MypageLivingCardList({
   numShowItems: number;
   numShowPages?: number;
 }) {
-  const pavilionData = pavilions.filter((_, i) => i < numShowItems);
+  const pavilionData = livingData.filter((_, i) => i < numShowItems);
   return (
     <>
       <div
@@ -38,15 +39,16 @@ export default function MypageLivingCardList({
         }}
       >
         {pavilionData?.map((e, i) => (
-          <AppLivingCard
-            key={i}
-            company={e["company"]}
-            title={e["pavilion_name"]}
-            addr={e["pavilion_addr"]}
-            img={e["img"] || "/blur_image.png"}
-            url={`living/${e["pavilion_id"]}`}
-            context={e["context"]}
-          />
+          <div className="col-4" key={i}>
+            <LivingCard
+              company={e["company"]}
+              title={e["pavilion_name"]}
+              addr={e["pavilion_addr"]}
+              img={e["img"] || "/blur_image.png"}
+              url={e["pavilion_id"] && `/living/${e["pavilion_id"]}`}
+              context={e["context"]}
+            />
+          </div>
         ))}
       </div>
     </>

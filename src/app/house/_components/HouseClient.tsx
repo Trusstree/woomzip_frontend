@@ -98,7 +98,7 @@ export default function Home() {
         </div>
       </div>
       <SearchModal data={searchCondition} setData={setSearchCondition} setIsSubmit={setIsSubmit} />
-      <PostMenu title={""}>
+      <PostMenu>
         <HouseList numShowItems={numShowItems} numShowPages={numShowPages} houseData={houseData} count={count} />
       </PostMenu>
     </>

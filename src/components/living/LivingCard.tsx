@@ -2,13 +2,9 @@ import LivingCardCarousel from "@/components/living/LivingCardCarousel";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function LivingCard({ company, title, addr, img, url, context }) {
+function Card({ company, title, addr, img, context }) {
   return (
-    <Link
-      className="card text-decoration-none"
-      style={{ border: "none", width: "100%", marginBottom: "15px" }}
-      href={url}
-    >
+    <>
       <LivingCardCarousel images={[img]} />
 
       <div className="card-body" style={{ color: "gray", padding: "5px", overflow: "hidden" }}>
@@ -72,6 +68,36 @@ export default function LivingCard({ company, title, addr, img, url, context }) 
           {context}
         </div>
       </div>
+    </>
+  );
+}
+
+export default function LivingCard({
+  company,
+  title,
+  addr,
+  img,
+  url,
+  context,
+}: {
+  company: any;
+  title: any;
+  addr: any;
+  img: any;
+  context: any;
+  url?: any;
+}) {
+  return url ? (
+    <Link
+      className="card text-decoration-none"
+      style={{ border: "none", width: "100%", marginBottom: "15px" }}
+      href={url}
+    >
+      <Card company={company} title={title} addr={addr} img={img} context={context} />
     </Link>
+  ) : (
+    <div className="card text-decoration-none" style={{ border: "none", width: "100%", marginBottom: "15px" }}>
+      <Card company={company} title={title} addr={addr} img={img} context={context} />
+    </div>
   );
 }
