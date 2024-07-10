@@ -1,4 +1,4 @@
-import { RouteButton } from "@/app/living/[pid]/_components/RouteButton";
+import RouteButton from "@/app/living/[pid]/_components/RouteButton";
 
 export default function Home() {
   return (

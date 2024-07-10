@@ -2,7 +2,7 @@
 
 import { getHouse } from "@/actions/apis/HouseAPI";
 import { ReservationConfirm } from "@/app/admin/living/1/_components/ReservationConfirm";
-import { RouteButton } from "@/app/living/[pid]/_components/RouteButton";
+import RouteButton from "@/app/living/[pid]/_components/RouteButton";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import { useEffect, useState } from "react";
 
