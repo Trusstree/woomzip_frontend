@@ -18,10 +18,10 @@ export const metadata = {
     siteName: "woomzip",
     images: [
       {
-        url: "https://buildintruss.com/logo/truss_icon.png",
+        url: "https://woomzip.com/woomzip_logo.png",
         width: 1600,
         height: 1600,
-        alt: "truss logo",
+        alt: "woomzip logo",
       },
     ],
     icons: {
@@ -32,11 +32,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
       <head>

@@ -18,12 +18,7 @@ export default function Header(props: HeaderProps) {
         style={{ height: "40px", width: "90%", maxWidth: "1300px" }}
       >
         <RouteButton url="/" className="" style={{ marginLeft: "0", paddingLeft: "0" }}>
-          <Image
-            src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/woomzipLogo.png"}
-            alt={"Truss Logo"}
-            width={100}
-            height={26}
-          />
+          <Image src={"/woomzip_logo.png"} alt={"Truss Logo"} width={100} height={26} />
         </RouteButton>
 
         <div className="d-none d-md-flex w-100">
