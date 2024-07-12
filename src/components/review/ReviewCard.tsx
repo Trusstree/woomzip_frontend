@@ -14,6 +14,8 @@ export default function ReviewCard({ id, nickname, date, helpful, tag, comment, 
     router.push("/living/1/review");
   };
 
+  console.log(images);
+
   return (
     <div
       className="card"
@@ -65,7 +67,7 @@ export default function ReviewCard({ id, nickname, date, helpful, tag, comment, 
             className="card-img-top mt-3"
             style={{ width: 110, borderRadius: "10px", objectFit: "cover" }}
             alt="main-img"
-            src={images[0]}
+            src={images?.[0] || "blur_image.png"}
             width={110}
             height={110}
             unoptimized={true}

@@ -13,12 +13,12 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
     // 액세스토큰이 있으면 굳이 로그인하러 올 이유가 없음
     if (accessToken) {
-      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_CALLBACKURL}`);
+      return NextResponse.redirect(new URL("?alert=login", process.env.NEXT_PUBLIC_CALLBACKURL));
     }
   }
 
   //로그인해야하는 페이지
-  const signinRequiredPage = ["/living/1/reservation", "/admin", "/community/write"];
+  const signinRequiredPage = ["/living/1/reservation", "/living/1/review", "/admin", "/community/write"];
   for (const page of signinRequiredPage) {
     if (!request.nextUrl.pathname.startsWith(page)) continue;
 
@@ -26,7 +26,9 @@ export async function middleware(request: NextRequest, response: NextResponse) {
 
     // 액세스토큰이 없으면 로그인부터 하고 와야함
     if (!accessToken) {
-      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_CALLBACKURL}signin`);
+      return NextResponse.redirect(
+        new URL("signin?alert=로그인이 필요한 페이지입니다.", process.env.NEXT_PUBLIC_CALLBACKURL)
+      );
     }
 
     // 어드민 페이지

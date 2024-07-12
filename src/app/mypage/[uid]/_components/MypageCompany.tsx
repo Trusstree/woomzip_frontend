@@ -18,11 +18,17 @@ function parseData(companyData) {
   profile = companyData["companyInfo"]["profile"];
   companyImages = companyData["companyInfo"]["images"];
   reviews = companyData["reviews"];
+  reviews.allReviews = reviews.allReviews.map((e) => ({
+    nickname: e.nickname,
+    tag: e.tag,
+    comment: e.review_text,
+    pavilion_review_images: e.images,
+  }));
   posts = companyData["posts"];
   pavilions = companyData["pavilions"];
   sellingHouses = companyData["sellingHouses"];
 
-  console.log(companyData);
+  console.log(reviews);
   return { profile, companyImages, reviews, posts, pavilions, sellingHouses };
 }
 

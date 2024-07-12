@@ -21,7 +21,7 @@ export default function UserMypageProfile({ uid, userData }) {
           <div style={{ width: "90px" }}>
             <img
               className={"m-0 align-self-center"}
-              src={userData["user_img_url"]}
+              src={userData?.["user_img_url"] || "blur_image.png"}
               alt={`profile`}
               width={100}
               height={70}
@@ -59,6 +59,7 @@ export default function UserMypageProfile({ uid, userData }) {
           <div className="col-9">{userData?.phone_number}</div>
         </div>
         <div style={{ textAlign: "right" }}>
+          <SignoutButton />
           {Number(uid) == signedUID && (
             // <Link style={{}} href={`${uid}?tab=profile`}>
             //   <span className="" style={{ wordBreak: "keep-all" }}>
