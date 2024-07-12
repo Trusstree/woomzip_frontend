@@ -15,7 +15,7 @@ export default function MyPageProfile({ uid, userData }) {
           <div style={{ width: "90px" }}>
             <img
               className={"m-0 align-self-center"}
-              src={userData["user_img_url"]}
+              src={userData?.["user_img_url"] || "blur_image.png"}
               alt={`profile`}
               width={100}
               height={70}
