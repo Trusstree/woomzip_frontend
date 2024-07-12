@@ -47,8 +47,10 @@ export function SigninForm() {
       return;
     }
     const userData = getUserdataByToken(data.data.access_token);
-
-    setUserContext(userData.uid);
+    setUserContext({
+      uid: userData.uid,
+      role: userData.role,
+    });
     router.push("/");
     return;
   };
