@@ -11,22 +11,21 @@ export default function Home() {
         <div
           style={{
             position: "absolute",
-            top: "30%",
-            left: 0,
+            top: "10%",
+            left: "10%",
             width: "100%",
             color: "white",
-            fontSize: "4vw",
+            fontSize: "7vw",
             fontWeight: "500",
-            textAlign: "center",
           }}
         >
-          꿈 꾸는 삶을 현실로,
-          <br />
-          '움집'에서 쉽고 간편하게
+          WOOMZIP
         </div>
       </div>
 
-      <div style={{ width: "100%", height: "400px", backgroundColor: "#FAFBFC" }}>
+      {/* <div
+        style={{ width: "100%", height: "400px", backgroundColor: "#FAFBFC" }}
+      >
         <div
           style={{
             paddingTop: "120px",
@@ -42,6 +41,65 @@ export default function Home() {
           <br />
           움집이 있다면 더욱 즐거워질 거예요.
         </div>
+      </div> */}
+
+      <div style={{ width: "100%", backgroundColor: "#FAFBFC" }}>
+        <div
+          className="row"
+          style={{
+            width: "90%",
+            maxWidth: "1300px",
+            margin: "0 auto",
+            padding: "100px 0",
+          }}
+        >
+          <div className="col-md-7 col-12">
+            <div
+              style={{
+                fontSize: "48px",
+                fontWeight: "600",
+                wordBreak: "keep-all",
+              }}
+            >
+              꿈꾸는 삶을 현실로
+              <br />
+              움집에서 쉽고 간편하게
+            </div>
+          </div>
+          <div className="col-md-5 col-12">
+            <div
+              style={{
+                backgroundColor: "#314FC0",
+                borderRadius: "50px",
+                width: "10px",
+                height: "10px",
+                marginTop: "170px",
+              }}
+            ></div>
+            <div
+              style={{
+                padding: "20px 0",
+                fontSize: "18px",
+                fontWeight: "600",
+              }}
+            >
+              든든한 전원생활 파트너
+            </div>
+            <div
+              style={{
+                fontSize: "16px",
+                fontWeight: "500",
+                color: "#B5B5B5",
+                wordBreak: "keep-all",
+              }}
+            >
+              전원생활을 고민할 때부터, 내 집을 짓는 순간을 지나, 살아가는
+              삶까지
+              <br />
+              움집이 있다면 더욱 즐거워질거에요.
+            </div>
+          </div>
+        </div>
       </div>
 
       <div style={{ width: "100%" }}>
@@ -54,7 +112,7 @@ export default function Home() {
             padding: "100px 0",
           }}
         >
-          <div className="col-4" style={{ minWidth: "350px" }}>
+          <div className="col-md-6 col-12">
             <div
               style={{
                 backgroundColor: "#314FC0",
@@ -73,18 +131,39 @@ export default function Home() {
             <div
               style={{
                 padding: "50px 0",
-                fontSize: "25px",
-                fontWeight: "500",
+                fontSize: "40px",
+                fontWeight: "600",
+                wordBreak: "keep-all",
               }}
             >
-              커뮤니티에서는 비슷한 사람들과 소통할 수 있어요.
+              다른 사람들과
+              <br />
+              정보 공유
+            </div>
+            <div
+              style={{
+                paddingBottom: "50px",
+                fontSize: "16px",
+                fontWeight: "500",
+                color: "#B5B5B5",
+                wordBreak: "keep-all",
+              }}
+            >
+              즐거운 삶의 순간, 때로는 머리 아픈 고민들
+              <br />
+              다른 사람들과 나누면 더 좋아질거에요!
             </div>
           </div>
-          <div className="col-8" style={{ minWidth: "350px" }}>
+          <div className="col-md-6 col-12">
             <img
-              src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service1.png"}
+              src={
+                "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service11.png"
+              }
               width={"100%"}
-              style={{}}
+              style={{
+                borderRadius: "10px",
+                boxShadow: "3px 3px 10px rgba(0,0,0,0.2)",
+              }}
             ></img>
           </div>
         </div>
@@ -101,14 +180,7 @@ export default function Home() {
             paddingBottom: "50px",
           }}
         >
-          <div className="col-8" style={{ minWidth: "350px" }}>
-            <img
-              src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service1.png"}
-              width={"100%"}
-              style={{ paddingBottom: "50px" }}
-            ></img>
-          </div>
-          <div className="col-4" style={{ minWidth: "350px" }}>
+          <div className="col-md-6 col-12">
             <div
               style={{
                 backgroundColor: "#314FC0",
@@ -127,12 +199,42 @@ export default function Home() {
             <div
               style={{
                 padding: "50px 0",
-                fontSize: "25px",
-                fontWeight: "500",
+                fontSize: "40px",
+                fontWeight: "600",
+                wordBreak: "keep-all",
               }}
             >
-              고민 중이라면, 가족 다 같이 살아보며 무료로 경험해 보세요.
+              전원생활을
+              <br />
+              체험해보세요
             </div>
+            <div
+              style={{
+                paddingBottom: "50px",
+                fontSize: "16px",
+                fontWeight: "500",
+                color: "#B5B5B5",
+                wordBreak: "keep-all",
+              }}
+            >
+              이 업체에게 내 집을 맡겨도 될까? 우리 가족이 전원생활을 잘 할 수
+              있을까?
+              <br />
+              해당 업체가 지은 집에서 살아보며 알아보세요!
+            </div>
+          </div>
+          <div className="col-md-6 col-12">
+            <img
+              src={
+                "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service2.png"
+              }
+              width={"100%"}
+              style={{
+                marginBottom: "50px",
+                borderRadius: "10px",
+                boxShadow: "3px 3px 10px rgba(0,0,0,0.2)",
+              }}
+            ></img>
           </div>
         </div>
       </div>
@@ -147,7 +249,7 @@ export default function Home() {
             padding: "100px 0",
           }}
         >
-          <div className="col-4" style={{ minWidth: "350px" }}>
+          <div className="col-md-6 col-12">
             <div
               style={{
                 backgroundColor: "#314FC0",
@@ -166,18 +268,39 @@ export default function Home() {
             <div
               style={{
                 padding: "50px 0",
-                fontSize: "25px",
-                fontWeight: "500",
+                fontSize: "40px",
+                fontWeight: "600",
+                wordBreak: "keep-all",
               }}
             >
-              움집이 먼저 다 찾아두었으니, 맘껏 마음에 드는 집들을 알아보세요.
+              찾고 있던 집을
+              <br />
+              모았어요
+            </div>
+            <div
+              style={{
+                paddingBottom: "50px",
+                fontSize: "16px",
+                fontWeight: "500",
+                color: "#B5B5B5",
+                wordBreak: "keep-all",
+              }}
+            >
+              움집이 당신이 찾던 제품을 40가지 항목으로 데이터화 해두었어요.
+              <br />
+              다양한 카테고리, 필터링을 통해 빠르게 찾아보세요!
             </div>
           </div>
-          <div className="col-8" style={{ minWidth: "350px" }}>
+          <div className="col-md-6 col-12">
             <img
-              src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service1.png"}
+              src={
+                "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service3.png"
+              }
               width={"100%"}
-              style={{}}
+              style={{
+                borderRadius: "10px",
+                boxShadow: "3px 3px 10px rgba(0,0,0,0.2)",
+              }}
             ></img>
           </div>
         </div>
@@ -194,14 +317,7 @@ export default function Home() {
             paddingBottom: "50px",
           }}
         >
-          <div className="col-8" style={{ minWidth: "350px" }}>
-            <img
-              src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service1.png"}
-              width={"100%"}
-              style={{ paddingBottom: "50px" }}
-            ></img>
-          </div>
-          <div className="col-4" style={{ minWidth: "350px" }}>
+          <div className="col-md-6 col-12">
             <div
               style={{
                 backgroundColor: "#314FC0",
@@ -220,15 +336,42 @@ export default function Home() {
             <div
               style={{
                 padding: "50px 0",
-                fontSize: "25px",
-                fontWeight: "500",
+                fontSize: "40px",
+                fontWeight: "600",
+                wordBreak: "keep-all",
               }}
             >
-              움집의 건축 전문가 'AI 타잔'이 당신의 총 공사비용을 예측해 드려요.
+              총 비용을
               <br />
-              <br />
-              그래서 얼마가 드는데? 라는 질문을 해결해 보세요.
+              쉽게 알 수 있어요
             </div>
+            <div
+              style={{
+                paddingBottom: "50px",
+                fontSize: "16px",
+                fontWeight: "500",
+                color: "#B5B5B5",
+                wordBreak: "keep-all",
+              }}
+            >
+              그래서 총 얼마가 드는데? 라는 질문은 이제 그만!
+              <br />
+              움집 만의 건축 전문가 AI-타잔이 당신의 총 공사비용을
+              예측해드립니다.
+            </div>
+          </div>
+          <div className="col-md-6 col-12">
+            <img
+              src={
+                "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service4.png"
+              }
+              width={"100%"}
+              style={{
+                marginBottom: "50px",
+                borderRadius: "10px",
+                boxShadow: "3px 3px 10px rgba(0,0,0,0.2)",
+              }}
+            ></img>
           </div>
         </div>
       </div>
@@ -252,16 +395,24 @@ export default function Home() {
       </div>
 
       <div style={{ width: "100%", backgroundColor: "#FAFBFC" }}>
-        <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
-          <div className="col-5" style={{ paddingTop: "100px", minWidth: "350px" }}>
+        <div
+          className="row"
+          style={{
+            width: "90%",
+            maxWidth: "1300px",
+            margin: "0 auto",
+            padding: "100px 0",
+          }}
+        >
+          <div className="col-md-6 col-12">
             <div
               style={{
-                backgroundColor: "#314FC0",
+                backgroundColor: "#E2FFCC",
                 borderRadius: "40px",
                 width: "120px",
                 height: "40px",
                 textAlign: "center",
-                color: "white",
+                color: "#95C844",
                 fontSize: "23px",
                 fontWeight: "600",
                 padding: "5px 0",
@@ -272,69 +423,111 @@ export default function Home() {
             <div
               style={{
                 padding: "50px 0",
-                fontSize: "25px",
-                fontWeight: "500",
+                fontSize: "40px",
+                fontWeight: "600",
+                wordBreak: "keep-all",
               }}
             >
-              믿을 만한 '움집' 팀에서 서비스를 만들어갑니다
+              믿을 수 있는 움집 팀에서
+              <br />
+              만드는 서비스
+            </div>
+            <div
+              style={{
+                paddingBottom: "50px",
+                fontSize: "16px",
+                fontWeight: "500",
+                color: "#B5B5B5",
+                wordBreak: "keep-all",
+              }}
+            >
+              움집 팀이 궁금하시다면
+              <br />
+              하단의 회사소개를 참고해주세요
             </div>
           </div>
-          <div className="col-7" style={{ minWidth: "350px" }}>
+          <div className="col-md-6 col-12">
             <img
-              src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team.jpg"}
+              src={
+                "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team.jpg"
+              }
               width={"100%"}
-              style={{ objectFit: "cover" }}
+              style={{
+                height: "500px",
+                objectFit: "cover",
+                borderRadius: "10px",
+                boxShadow: "3px 3px 10px rgba(0,0,0,0.2)",
+              }}
             ></img>
           </div>
         </div>
       </div>
 
       <div style={{ width: "100%" }}>
-        <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
-          <div className="col-5" style={{ paddingTop: "100px", minWidth: "350px" }}>
+        <div
+          className="row"
+          style={{
+            width: "90%",
+            maxWidth: "1300px",
+            margin: "0 auto",
+            padding: "100px 0",
+          }}
+        >
+          <div className="col-md-6 col-12">
             <div
               style={{
-                backgroundColor: "#314FC0",
+                backgroundColor: "#FFCCCC",
                 borderRadius: "40px",
                 width: "120px",
                 height: "40px",
                 textAlign: "center",
-                color: "white",
                 fontSize: "23px",
                 fontWeight: "600",
                 padding: "5px 0",
+                color: "#BD4040",
               }}
             >
               만남
             </div>
             <div
               style={{
-                paddingTop: "50px",
-                fontSize: "25px",
-                fontWeight: "500",
+                padding: "50px 0",
+                fontSize: "40px",
+                fontWeight: "600",
+                wordBreak: "keep-all",
               }}
             >
-              언제, 어디서든 연락을 기다립니다.
+              연락을 기다립니다
             </div>
             <div
               style={{
-                padding: "50px 0",
+                paddingBottom: "50px",
                 fontSize: "16px",
                 fontWeight: "500",
+                color: "#B5B5B5",
+                wordBreak: "keep-all",
               }}
             >
               전화번호 : 0507-1369-6158
               <br />
               이메일 : service@woomzip.com
               <br />
-              주소 : 서울특별시 동작구 상도로 55길 8, 304호(상도동, 숭실대학교 챌린지스테이션)
+              주소 : 서울특별시 동작구 상도로 55길 8, 304호(상도동, 숭실대학교
+              챌린지스테이션)
             </div>
           </div>
-          <div className="col-7" style={{ minWidth: "350px" }}>
+          <div className="col-md-6 col-12">
             <img
-              src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/map.png"}
+              src={
+                "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/map.png"
+              }
               width={"100%"}
-              style={{ objectFit: "cover" }}
+              style={{
+                objectFit: "cover",
+                height: "500px",
+                borderRadius: "10px",
+                boxShadow: "3px 3px 10px rgba(0,0,0,0.2)",
+              }}
             ></img>
           </div>
         </div>
