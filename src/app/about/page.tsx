@@ -13,19 +13,19 @@ const PartnerList = [
   },
   {
     title: "모두가하우징",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/modugahousinglogo.jpg",
   },
   {
     title: "디자인아담",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/designadamlogo.jpg",
   },
   {
     title: "탑디자인",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/topdesignlogo.jpg",
   },
   {
     title: "명성하우징",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/myeongsunghousinglogo.jpg",
   },
   {
     title: "정우하우징",
@@ -148,7 +148,7 @@ export default function About() {
             <div className="col-6 row g-3" style={{ minWidth: "350px" }}>
               <div className="col-4" style={{ marginBottom: "30px" }}>
                 <img
-                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg"
+                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/junu.jpg"
                   style={{
                     width: "100%",
                     borderRadius: "10px",
@@ -189,7 +189,7 @@ export default function About() {
             <div className="col-6 row g-3" style={{ minWidth: "350px" }}>
               <div className="col-4" style={{ marginBottom: "30px" }}>
                 <img
-                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg"
+                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/sehong.jpg"
                   style={{
                     width: "100%",
                     borderRadius: "10px",
@@ -223,8 +223,8 @@ export default function About() {
                     DataBase(sub)
                   </span>
                 </div>
-                <div>{'"항상 진실된 사람이 되겠습니다."'}</div>
-                <div>zxcomkt@gmail.com</div>
+                <div>{"'믿음, 추진, 신뢰' 보여 드리겠습니다."}</div>
+                <div>beyounota@naver.com</div>
               </div>
             </div>
           </div>
@@ -266,14 +266,14 @@ export default function About() {
                     Infra
                   </span>
                 </div>
-                <div>{'"항상 진실된 사람이 되겠습니다."'}</div>
-                <div>zxcomkt@gmail.com</div>
+                <div>{'"Front. 기반부터 튼튼하게"'}</div>
+                <div>pencake33@naver.com</div>
               </div>
             </div>
             <div className="col-6 row g-3" style={{ minWidth: "350px" }}>
               <div className="col-4" style={{ marginBottom: "30px" }}>
                 <img
-                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg"
+                  src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/juseung.png"
                   style={{
                     width: "100%",
                     borderRadius: "10px",
@@ -307,8 +307,8 @@ export default function About() {
                     DataBase
                   </span>
                 </div>
-                <div>{'"항상 진실된 사람이 되겠습니다."'}</div>
-                <div>zxcomkt@gmail.com</div>
+                <div>{'"Trust, Truss_Back"'}</div>
+                <div>juseung0619@gmail.com</div>
               </div>
             </div>
           </div>
@@ -434,6 +434,7 @@ export default function About() {
                   width: "100%",
                   borderRadius: "10px",
                   boxShadow: "3px 3px 10px rgba(0,0,0,0.2)",
+                  objectFit:"cover"
                 }}
               ></img>
               <div style={{ fontSize: "18px", fontWeight: "500" }}>{e.title}</div>
