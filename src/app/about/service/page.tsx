@@ -40,7 +40,7 @@ export default function Home() {
           <br />
           살아가는 삶까지,
           <br />
-          움집이 있다면 더욱 즐거워질 거예요.
+          '움집'이 있다면 더욱 즐거워질 거예요.
         </div>
       </div>
 
@@ -170,7 +170,7 @@ export default function Home() {
                 fontWeight: "500",
               }}
             >
-              움집이 먼저 다 찾아두었으니, 맘껏 마음에 드는 집들을 알아보세요.
+              '움집'이 먼저 다 찾아두었으니, 맘껏 마음에 드는 집들을 알아보세요.
             </div>
           </div>
           <div className="col-8" style={{ minWidth: "350px" }}>
@@ -247,7 +247,7 @@ export default function Home() {
           <br />
           살아가는 삶까지
           <br />
-          움집이 있다면 더욱 즐거워질거에요.
+          '움집'이 있다면 더욱 즐거워질거에요.
         </div>
       </div>
 
