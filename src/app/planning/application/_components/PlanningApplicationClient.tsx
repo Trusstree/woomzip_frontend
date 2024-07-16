@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import SelectBoxApp from "@/app/planning/application/_components/SelectBoxApp";
 import { useSearchParams } from "next/navigation";
 import { alertError } from "@/lib/alertUtil";
@@ -32,22 +32,27 @@ export default function PlanningApplicationClient() {
     setPlanningData(res);
   }, []);
 
-  const submit = async () => {
+  const submit = useCallback(async () => {
     if (requiredService.length == 0) {
-      alertError("requiredService", "requiredService 이 선택되지 않았어요!");
+      alertError("입력이 빠져있어요!", "'어떤 도움이 필요하신가요?' 항목이 선택되지 않았어요!");
       return;
     }
     if (timeline.length == 0) {
-      alertError("timeline", "timeline 이 선택되지 않았어요!");
+      alertError("입력이 빠져있어요!", "'언제 시작하실 계획이신가요?' 항목이 선택되지 않았어요!");
       return;
     }
     if (finance.length == 0) {
-      alertError("finance", "finance 이 선택되지 않았어요!");
+      alertError("입력이 빠져있어요!", "'건축비를 위해 도움이 필요하신가요?' 항목이 선택되지 않았어요!");
       return;
     }
     console.log(planningData);
     const [data, error] = await postPlanning(planningData);
-  };
+    if (error) {
+      console.log(error);
+      alertError("에러", "입력값에 문제가 있어요. 새로고침하여 다시 시도해보세요!");
+    }
+    console.log(data);
+  }, [planningData]);
 
   return (
     <>
