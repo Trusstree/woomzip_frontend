@@ -1,4 +1,4 @@
-import LivingCardCarousel from "@/components/living/LivingCardCarousel";
+import LivingCardCarousel from "@/components/review/LivingCardCarousel";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -87,6 +87,7 @@ export default function LivingCard({
   context: any;
   url?: any;
 }) {
+  console.log(img);
   return url ? (
     <Link
       className="card text-decoration-none"

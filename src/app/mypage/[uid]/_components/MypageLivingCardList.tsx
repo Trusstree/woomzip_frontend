@@ -44,7 +44,7 @@ export default function MypageLivingCardList({
               company={e["company"]}
               title={e["pavilion_name"]}
               addr={e["pavilion_addr"]}
-              img={e["img"] || "/blur_image.png"}
+              img={[e["img"]] || "/blur_image.png"}
               url={e["pavilion_id"] && `/living/${e["pavilion_id"]}`}
               context={e["context"]}
             />

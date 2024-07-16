@@ -14,8 +14,6 @@ export default function ReviewCard({ id, nickname, date, helpful, tag, comment, 
     router.push("/living/1/review");
   };
 
-  console.log(images);
-
   return (
     <div
       className="card"
