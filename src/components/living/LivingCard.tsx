@@ -5,7 +5,7 @@ import Link from "next/link";
 function Card({ company, title, addr, img, context }) {
   return (
     <>
-      <LivingCardCarousel images={[img]} />
+      <LivingCardCarousel images={img} />
 
       <div className="card-body" style={{ color: "gray", padding: "5px", overflow: "hidden" }}>
         <div style={{ fontSize: "16px", marginTop: "3px" }}>{company}</div>

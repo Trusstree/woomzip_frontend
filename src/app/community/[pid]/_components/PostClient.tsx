@@ -7,7 +7,7 @@ import DOMPurify from "dompurify";
 import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
 import Comments from "@/components/posts/Comments";
-import { getPostHeartUser } from "@/actions/apis/HeartAPI";
+import { getPostHeartUser } from "@/actions/apis/heartAPI";
 import { getUserAccessToken } from "@/actions/auth/authAction";
 import Count from "@/components/posts/Count";
 

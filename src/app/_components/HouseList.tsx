@@ -1,4 +1,4 @@
-import { getHouses } from "@/actions/apis/HouseAPI";
+import { getHouses } from "@/actions/apis/houseAPI";
 import HouseCard from "@/components/house/HouseCard";
 
 async function loadData(numShowItems: number) {

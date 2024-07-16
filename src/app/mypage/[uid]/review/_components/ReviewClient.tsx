@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { ReviewBox } from "@/app/mypage/[uid]/review/_components/ReviewBox";
-import { getHouseReviews } from "@/actions/apis/HouseAPI";
+import { getHouseReviews } from "@/actions/apis/houseAPI";
 import { useRouter } from "next/navigation";
 
 export default function ReviewClient() {

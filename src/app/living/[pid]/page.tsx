@@ -1,7 +1,7 @@
 import RouteButton from "@/app/living/[pid]/_components/RouteButton";
 import ReviewList from "@/components/review/ReviewList";
 import PicModal from "@/app/living/[pid]/_components/PicModal";
-import { getLivingReviews } from "@/actions/apis/living";
+import { getLivingReviews } from "@/actions/apis/livingAPI";
 
 const imageData = [
   "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg",

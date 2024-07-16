@@ -1,6 +1,6 @@
 "use client";
 
-import { getHousesHeart, getHousesHeartRemove } from "@/actions/apis/HeartAPI";
+import { getHousesHeart, getHousesHeartRemove } from "@/actions/apis/heartAPI";
 import { useUser } from "@/app/ContextSession";
 import useQuery from "@/hooks/useQuery";
 import { alertSuccess } from "@/lib/alertUtil";

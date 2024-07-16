@@ -1,4 +1,4 @@
-import { getHouse } from "@/actions/apis/HouseAPI";
+import { getHouse } from "@/actions/apis/houseAPI";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import HouseExpl from "@/app/house/[pid]/_components/HouseExpl";
 import HouseRemocon from "@/app/house/[pid]/_components/HouseRemocon";

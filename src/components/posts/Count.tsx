@@ -1,6 +1,6 @@
 import { cardCountText } from "@/lib/stringUtil";
 import HeartComponent from "./HeartComponent";
-import { postPostHeart, postPostHeartRemove } from "@/actions/apis/HeartAPI";
+import { postPostHeart, postPostHeartRemove } from "@/actions/apis/heartAPI";
 
 export default function Count({ pid, viewCount, commentCount, likeCount, isPostLike }) {
   return (

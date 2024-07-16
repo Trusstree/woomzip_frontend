@@ -4,7 +4,7 @@ import PostMenu from "@/components/posts/PostMenu";
 import { HouseList } from "@/components/house/HouseList";
 import { useEffect, useState } from "react";
 import usePage from "@/hooks/usePage";
-import { getHouses } from "@/actions/apis/HouseAPI";
+import { getHouses } from "@/actions/apis/houseAPI";
 import { arraySort } from "@/lib/functionUtil";
 import { SearchModal } from "@/app/house/_components/SearchModal";
 import HouseCategory from "@/app/house/_components/HouseCategory";

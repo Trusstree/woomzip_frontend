@@ -4,7 +4,7 @@ import CalenderForm from "@/app/living/[pid]/reservation/_components/CalenderFor
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { toStringByFormatting } from "@/lib/stringUtil";
 import { useEffect, useState } from "react";
-import { getReservationUnavailable, postReservation } from "@/actions/apis/living";
+import { getReservationUnavailable, postReservation } from "@/actions/apis/livingAPI";
 import { useRouter } from "next/navigation";
 
 export function LivingReservationForm() {

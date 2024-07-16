@@ -1,6 +1,6 @@
 "use client";
 
-import { postHouseReview } from "@/actions/apis/HouseAPI";
+import { postHouseReview } from "@/actions/apis/houseAPI";
 import { HouseReviewImageInputComponent } from "@/app/mypage/[uid]/review/write/_components/HouseReviewImageInput";
 import { HouseReviewToggle } from "@/app/mypage/[uid]/review/write/_components/HouseReviewToggle";
 import { Rating } from "@/app/mypage/[uid]/review/write/_components/Rating";

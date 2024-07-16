@@ -26,17 +26,6 @@ export default function LivingCardCarousel({ images }) {
           />
         </SwiperSlide>
       ))}
-      <SwiperSlide>
-        <img
-          src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"
-          style={{
-            objectFit: "cover",
-            width: "100%",
-            height: "100%",
-            borderRadius: "10px",
-          }}
-        ></img>
-      </SwiperSlide>
     </Swiper>
   );
 }

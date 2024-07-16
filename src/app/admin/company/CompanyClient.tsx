@@ -1,6 +1,6 @@
 "use client";
 
-import { getCompanyList, getCompanyConfirm } from "@/actions/apis/Mypage";
+import { getCompanyList, getCompanyConfirm } from "@/actions/apis/mypageAPI";
 import { useEffect, useState } from "react";
 
 export default function CompanyClient() {

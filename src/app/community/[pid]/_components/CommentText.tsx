@@ -1,7 +1,7 @@
 "use client";
 
 import { elapsedTimeText } from "@/lib/stringUtil";
-import { postCommentHeart, postCommentHeartRemove } from "@/actions/apis/HeartAPI";
+import { postCommentHeart, postCommentHeartRemove } from "@/actions/apis/heartAPI";
 import { getUserAccessToken } from "@/actions/auth/authAction";
 import HeartComponent from "@/components/posts/HeartComponent";
 import { useEffect, useState } from "react";

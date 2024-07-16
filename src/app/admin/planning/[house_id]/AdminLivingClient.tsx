@@ -1,6 +1,6 @@
 "use client";
 
-import { getHouse } from "@/actions/apis/HouseAPI";
+import { getHouse } from "@/actions/apis/houseAPI";
 import { ReservationConfirm } from "@/app/admin/living/1/_components/ReservationConfirm";
 import RouteButton from "@/app/living/[pid]/_components/RouteButton";
 import { toStringByFormatting } from "@/lib/stringUtil";

@@ -1,7 +1,7 @@
 "use server";
 
 import { getUserAccessToken } from "@/actions/auth/authAction";
-import { getPostHeartUser } from "@/actions/apis/HeartAPI";
+import { getPostHeartUser } from "@/actions/apis/heartAPI";
 import { getPost } from "@/actions/apis/postAPI";
 
 export async function loadData(pid: any) {

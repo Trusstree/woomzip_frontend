@@ -6,7 +6,7 @@ import SelectMiniBox from "@/app/planning/_components/SelectMiniBox";
 import SelectCityBox from "@/app/planning/_components/SelectCityBox";
 import PriceBox from "@/app/planning/_components/PriceBox";
 import { useRouter, useSearchParams } from "next/navigation";
-import { getHouse } from "@/actions/apis/HouseAPI";
+import { getHouse } from "@/actions/apis/houseAPI";
 import HouseCard from "@/components/house/HouseCard";
 import { alertError } from "@/lib/alertUtil";
 

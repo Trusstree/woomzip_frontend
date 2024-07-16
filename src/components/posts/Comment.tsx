@@ -2,7 +2,7 @@
 
 import { cardCountText, elapsedTimeText } from "@/lib/stringUtil";
 import Image from "next/image";
-import { postCommentHeart, postCommentHeartRemove } from "@/actions/apis/HeartAPI";
+import { postCommentHeart, postCommentHeartRemove } from "@/actions/apis/heartAPI";
 import { getUserAccessToken } from "@/actions/auth/authAction";
 import { useEffect, useState } from "react";
 

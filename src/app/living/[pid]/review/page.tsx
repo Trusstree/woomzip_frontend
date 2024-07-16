@@ -1,5 +1,5 @@
 import { ReviewBox } from "@/app/living/[pid]/review/_components/ReviewBox";
-import { getLivingReviews } from "@/actions/apis/living";
+import { getLivingReviews } from "@/actions/apis/livingAPI";
 import Link from "next/link";
 
 async function loadData() {

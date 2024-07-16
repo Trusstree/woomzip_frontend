@@ -1,6 +1,6 @@
 "use client";
 
-import { postPavilionReview } from "@/actions/apis/living";
+import { postPavilionReview } from "@/actions/apis/livingAPI";
 import { LivingReviewImageInputComponent } from "@/app/living/[pid]/review/write/_components/LivingReviewImageInput";
 import { LivingReviewRadio } from "@/app/living/[pid]/review/write/_components/LivingReviewRadio";
 import { LivingReviewToggle } from "@/app/living/[pid]/review/write/_components/LivingReviewToggle";

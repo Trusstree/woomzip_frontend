@@ -2,8 +2,21 @@ import LivingCardList from "@/components/living/LivingCardList";
 import PostMenu from "@/components/posts/PostMenu";
 import SearchComponent from "@/app/community/_components/SearchComponent";
 import LivingCategory from "./_components/LivingCategory";
+import { getLivings } from "@/actions/apis/livingAPI";
 
-export default function Living() {
+async function loadData() {
+  "use server";
+  const [data, error] = await getLivings();
+  if (error) {
+    console.log(error);
+    return undefined;
+  }
+  return data.data[0];
+}
+
+export default async function Living() {
+  const pavilions = await loadData();
+  console.log(pavilions);
   return (
     <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
       <div
@@ -41,7 +54,7 @@ export default function Living() {
           <SearchComponent />
         </div>
         <PostMenu>
-          <LivingCardList numShowItems={4} />
+          <LivingCardList pavilions={pavilions} numShowItems={4} />
         </PostMenu>
       </div>
     </div>
