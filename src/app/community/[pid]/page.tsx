@@ -1,10 +1,9 @@
 import Count from "@/components/posts/Count";
 import AppPostList from "@/app/_components/PostList";
 import PostMenu from "@/components/posts/PostMenu";
-import CommentForm from "@/app/community/[pid]/_components/CommentForm";
-import Comment from "@/app/community/[pid]/_components/Comment";
 import DOMPurify from "isomorphic-dompurify";
 import { loadData } from "@/app/community/[pid]/_actions/actions";
+import CommentComponent from "@/app/community/[pid]/_components/CommentComponent";
 
 type PageParams = {
   pid: number;
@@ -153,24 +152,7 @@ export default async function page({ params }: { params: PageParams }) {
           </div>
         </div>
 
-        <div
-          style={{
-            backgroundColor: "white",
-            borderRadius: "10px",
-            padding: "30px",
-            margin: "40px 0",
-          }}
-        >
-          <div style={{ fontSize: "22px", fontWeight: "600" }}>댓글</div>
-          <div className="d-flex flex-column">
-            <CommentForm pid={pid} isCommentLike={isCommentLike} />
-            <div>
-              {comments.map((e, i) => (
-                <Comment key={i} data={e} isCommentLike={isCommentLike} />
-              ))}
-            </div>
-          </div>
-        </div>
+        <CommentComponent pid={pid} isCommentLike={isCommentLike} initialComments={comments} />
 
         {/* 추천정보 */}
         <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>

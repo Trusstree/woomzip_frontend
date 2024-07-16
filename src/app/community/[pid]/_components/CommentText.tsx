@@ -1,16 +1,13 @@
 "use client";
 
 import { elapsedTimeText } from "@/lib/stringUtil";
-import {
-  postCommentHeart,
-  postCommentHeartRemove,
-} from "@/actions/apis/HeartAPI";
+import { postCommentHeart, postCommentHeartRemove } from "@/actions/apis/HeartAPI";
 import { getUserAccessToken } from "@/actions/auth/authAction";
 import HeartComponent from "@/components/posts/HeartComponent";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default function Comment({ data, isCommentLike }) {
+export default function CommentText({ data, isCommentLike }) {
   const [isLike, setIsLike] = useState(0);
   const [likeCount, setLikeCount] = useState(data["comment_like_count"]);
 
@@ -27,18 +24,14 @@ export default function Comment({ data, isCommentLike }) {
     if (!at) return;
 
     if (!isLike) {
-      const [heartData, heartError] = await postCommentHeart(
-        data["comment_id"]
-      );
+      const [heartData, heartError] = await postCommentHeart(data["comment_id"]);
       if (heartError) {
         console.error(heartError);
         return;
       }
       setIsLike(1);
     } else {
-      const [heartData, heartError] = await postCommentHeartRemove(
-        data["comment_id"]
-      );
+      const [heartData, heartError] = await postCommentHeartRemove(data["comment_id"]);
       if (heartError) {
         console.error(heartError);
         return;
@@ -49,10 +42,7 @@ export default function Comment({ data, isCommentLike }) {
 
   return (
     <div style={{ background: "white" }}>
-      <div
-        className="d-flex justify-content-between"
-        style={{ marginBottom: "15px" }}
-      >
+      <div className="d-flex justify-content-between" style={{ marginBottom: "15px" }}>
         <div className="row">
           <div style={{ width: "40px", height: "40px" }}>
             <Image
@@ -81,9 +71,7 @@ export default function Comment({ data, isCommentLike }) {
           </div>
         </div>
         <div className="d-flex" style={{ width: "auto" }}>
-          <div
-            style={{ marginRight: "20px", fontSize: "15px", marginTop: "4px" }}
-          >
+          <div style={{ marginRight: "20px", fontSize: "15px", marginTop: "4px" }}>
             {elapsedTimeText(data["updated_at"] || data["created_at"])}
           </div>
           <HeartComponent

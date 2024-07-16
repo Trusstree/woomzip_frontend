@@ -3,15 +3,15 @@
 import { getUserAccessToken } from "@/actions/auth/authAction";
 import { postComment } from "@/actions/apis/commentAPI";
 import { useEffect, useState } from "react";
+import { getUserdataByToken } from "@/lib/parseUtil";
 
-export default function CommentForm({ pid, isCommentLike }) {
+export default function CommentForm({ pid, setNeedRender }: { pid: number | string; setNeedRender: any }) {
   const [comment, setComment] = useState("");
   const [at, setAT] = useState(undefined);
 
   useEffect(() => {
     (async () => {
-      setAT(await getUserAccessToken());
-      console.log(isCommentLike);
+      setAT(getUserdataByToken((await getUserAccessToken()).value));
     })();
   }, []);
 
@@ -20,6 +20,7 @@ export default function CommentForm({ pid, isCommentLike }) {
   };
 
   const submit = async () => {
+    if (!comment) return alert("메시지를 입력해주세요.");
     const [data, error] = await postComment({
       post_id: pid,
       content: comment,
@@ -31,11 +32,11 @@ export default function CommentForm({ pid, isCommentLike }) {
     }
 
     setComment("");
-    //setComments(["render"]);
+    setNeedRender(true);
   };
 
   return (
-    <div className="d-flex" style={{ margin: "30px 0" }}>
+    <div id={"commentForm"} className="d-flex" style={{ margin: "30px 0" }}>
       <textarea
         rows={3}
         className="col-10"

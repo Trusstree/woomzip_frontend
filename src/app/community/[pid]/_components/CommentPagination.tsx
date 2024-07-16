@@ -1,24 +1,6 @@
-"use client";
+import { useState } from "react";
 
-import useQuery from "@/hooks/useQuery";
-import { useRouter, useSearchParams } from "next/navigation";
-
-//컴포넌트가 받을 props
-interface PagenationProps {
-  numItems: number;
-  numShowItems: number;
-  numShowPages: number;
-}
-
-export default function Pagination(props: PagenationProps) {
-  const { numItems, numShowItems, numShowPages } = props;
-
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const rawPage = Number(searchParams.get("page"));
-  const page = rawPage > 0 ? rawPage : 1;
-  const { createQuery, getRouteParams } = useQuery();
-
+export default function CommentPagination({ page, setPage, numItems, numShowItems, numShowPages }) {
   const maxPageNumber = Math.ceil(numItems / numShowItems); //페이지네이션에서 가장 큰 페이지 값
   const remainder = (page - 1) % numShowPages; //페이지네이션에서 페이지 변수가 현재 보이는 숫자 중에 몇 번째?
   const firstPage = page - 1 - remainder; //페이지네이션에서 현재 보일 숫자들 중에 가장 작은 숫자
@@ -26,33 +8,30 @@ export default function Pagination(props: PagenationProps) {
   const prevPage = () => {
     if (page > numShowPages) {
       // 맨 첫 줄에 있는 친구들보다는 커야 함
-      createQuery("page", firstPage.toString());
+      setPage(firstPage);
     } else {
       // 맨 첫 줄에 있으면 그냥 1로 보내줌
-      createQuery("page", "1");
+      setPage(1);
     }
-    router.push(getRouteParams()); // 다음 수열 중에 가장 큰 숫자로 이동.
     // ex) 6 7 8 9 10 => 1 2 3 4 5 면 page는 5
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: document.getElementById("commentForm").offsetTop });
   };
 
   const nextPage = () => {
     if (maxPageNumber - firstPage > numShowPages) {
       // 마지막 페이지 숫자랑 줄에 있는 친구들보다는 커야 함
-      createQuery("page", (firstPage + 1 + numShowPages).toString());
+      setPage(firstPage + 1 + numShowPages);
     } else {
       // 맨 마지막 줄에 있으면 그냥 제일 큰 숫자로 보내줌
-      createQuery("page", maxPageNumber.toString());
+      setPage(maxPageNumber);
     }
-    router.push(getRouteParams()); // 다음 수열 중에 가장 작은 숫자로 이동.
     // ex) 1 2 3 4 5 => 6 7 8 9 10 면 page는 5
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: document.getElementById("commentForm").offsetTop });
   };
 
   const handlePage = (number: number) => {
-    createQuery("page", number.toString());
-    router.push(getRouteParams());
-    window.scrollTo({ top: 0 });
+    setPage(number);
+    window.scrollTo({ top: document.getElementById("commentForm").offsetTop });
   };
 
   return (

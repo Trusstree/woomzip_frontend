@@ -28,7 +28,6 @@ function parseData(companyData) {
   pavilions = companyData["pavilions"];
   sellingHouses = companyData["sellingHouses"];
 
-  console.log(reviews);
   return { profile, companyImages, reviews, posts, pavilions, sellingHouses };
 }
 
