@@ -1,6 +1,6 @@
 export const WorkerList = [
   {
-    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/junu.jpg",
     name: "양준우",
     dept: "대표",
     position: [
@@ -19,7 +19,7 @@ export const WorkerList = [
     email: "zxcomkt@gmail.com",
   },
   {
-    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/sehong.jpg",
     name: "박세홍",
     dept: "팀장",
     position: [
@@ -34,8 +34,8 @@ export const WorkerList = [
         color: "#8AC031",
       },
     ],
-    introduce: '"항상 진실된 사람이 되겠습니다."',
-    email: "zxcomkt@gmail.com",
+    introduce: "'믿음, 추진, 신뢰' 보여 드리겠습니다.",
+    email: "beyounota@naver.com",
   },
   {
     src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
@@ -53,11 +53,11 @@ export const WorkerList = [
         color: "#8AC031",
       },
     ],
-    introduce: '"항상 진실된 사람이 되겠습니다."',
-    email: "zxcomkt@gmail.com",
+    introduce: '"Front. 기반부터 튼튼하게"',
+    email: "pencake33@naver.com",
   },
   {
-    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/juseung.png",
     name: "이주승",
     dept: "개발자",
     position: [
@@ -72,12 +72,12 @@ export const WorkerList = [
         color: "#8AC031",
       },
     ],
-    introduce: '"항상 진실된 사람이 되겠습니다."',
-    email: "zxcomkt@gmail.com",
+    introduce: '"Trust, Truss_Back"',
+    email: "juseung0619@gmail.com",
   },
 ];
 
-export const PartnerList = [
+const PartnerList = [
   {
     title: "숭실대학교",
     img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
@@ -92,19 +92,19 @@ export const PartnerList = [
   },
   {
     title: "모두가하우징",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/modugahousinglogo.jpg",
   },
   {
     title: "디자인아담",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/designadamlogo.jpg",
   },
   {
     title: "탑디자인",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/topdesignlogo.jpg",
   },
   {
     title: "명성하우징",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/myeongsunghousinglogo.jpg",
   },
   {
     title: "정우하우징",

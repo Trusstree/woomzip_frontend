@@ -12,6 +12,7 @@ export default function PartnerCard({ src, title }) {
           width: "100%",
           borderRadius: "10px",
           boxShadow: "3px 3px 10px rgba(0,0,0,0.2)",
+          objectFit: "cover",
         }}
       />
       <div style={{ fontSize: "18px", fontWeight: "500" }}>{title}</div>
