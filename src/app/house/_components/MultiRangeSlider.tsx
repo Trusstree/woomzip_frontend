@@ -9,7 +9,6 @@ type MultiRangeSliderProps = {
   max: number;
   step: number;
   setData: Function;
-  setIsSubmit: Function;
 };
 
 export default function MultiRangeSlider(props: MultiRangeSliderProps) {

@@ -4,7 +4,7 @@ import FillteringButton from "@/app/house/_components/FillteringButton";
 import MultiRangeSlider from "@/app/house/_components/MultiRangeSlider";
 import { cardPriceText } from "@/lib/stringUtil";
 
-export function SearchModal({ data, setData, setIsSubmit }) {
+export function SearchModal({ data, setData }) {
   const [minPrice, maxPrice, stepPrice] = [0, 300000000, 10000000];
   const [minArea, maxArea, stepArea] = [0, 30, 1];
 
