@@ -16,7 +16,7 @@ async function loadData() {
 
 export default async function Living() {
   const pavilions = await loadData();
-  console.log(pavilions);
+
   return (
     <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
       <div

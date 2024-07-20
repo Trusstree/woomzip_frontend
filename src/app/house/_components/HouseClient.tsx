@@ -5,22 +5,19 @@ import { HouseList } from "@/components/house/HouseList";
 import { useEffect, useState } from "react";
 import usePage from "@/hooks/usePage";
 import { getHouses } from "@/actions/apis/houseAPI";
-import { arraySort } from "@/lib/functionUtil";
+import { arrayMin, arraySort } from "@/lib/functionUtil";
 import { SearchModal } from "@/app/house/_components/SearchModal";
 import HouseCategory from "@/app/house/_components/HouseCategory";
 
 export default function Home() {
   const { page } = usePage();
   const [searchCondition, setSearchCondition] = useState({});
-  const [isSubmit, setIsSubmit] = useState(true);
   const [numShowItems, numShowPages] = [24, 10];
   const [houseData, setHouseData] = useState([] as Array<any>);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     (async () => {
-      if (isSubmit != undefined && !isSubmit) return;
-
       const sCondition = {
         q: searchCondition["q"],
         price_min: searchCondition["price"]?.[0],
@@ -30,8 +27,8 @@ export default function Home() {
         room_count: arraySort(searchCondition["room_count"]),
         toilet_count: arraySort(searchCondition["toilet_count"]),
         floor_count: arraySort(searchCondition["floor_count"]),
-        warranty: searchCondition["warranty"],
-        estimate_duration: searchCondition["estimate_duration"],
+        warranty: arrayMin(searchCondition["warranty"]),
+        estimate_duration: arrayMin(searchCondition["estimate_duration"]),
         frame: arraySort(searchCondition["frame"]),
         specificity: arraySort(searchCondition["specificity"]),
         model: searchCondition["model"] == 1 ? 1 : undefined,
@@ -50,6 +47,7 @@ export default function Home() {
         limit: numShowItems,
         ...sCondition,
       };
+      console.log(params);
 
       const [data, error] = await getHouses(params);
       if (error) {
@@ -59,9 +57,8 @@ export default function Home() {
 
       setHouseData(data.data[0].houses);
       setCount(data.data[0].total_count);
-      if (isSubmit != undefined) setIsSubmit(false);
     })();
-  }, [isSubmit]);
+  }, [searchCondition]);
 
   return (
     <>
@@ -97,7 +94,7 @@ export default function Home() {
           <div style={{ fontSize: "15px" }}>필터</div>
         </div>
       </div>
-      <SearchModal data={searchCondition} setData={setSearchCondition} setIsSubmit={setIsSubmit} />
+      <SearchModal data={searchCondition} setData={setSearchCondition} />
       <PostMenu>
         <HouseList numShowItems={numShowItems} numShowPages={numShowPages} houseData={houseData} count={count} />
       </PostMenu>

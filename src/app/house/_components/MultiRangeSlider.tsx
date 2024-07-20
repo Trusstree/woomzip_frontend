@@ -13,7 +13,7 @@ type MultiRangeSliderProps = {
 };
 
 export default function MultiRangeSlider(props: MultiRangeSliderProps) {
-  const { name, min, max, step, setData, setIsSubmit } = props;
+  const { name, min, max, step, setData } = props;
 
   const [minValue, setMinValue] = useState(min);
   const [maxValue, setMaxValue] = useState(max);
@@ -37,7 +37,6 @@ export default function MultiRangeSlider(props: MultiRangeSliderProps) {
       setMinValue(_min);
     }
     setData((oldValue) => ({ ...oldValue, [name]: [_min, _max] }));
-    setIsSubmit(true);
   };
 
   return (
