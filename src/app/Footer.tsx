@@ -10,7 +10,7 @@ export default function Footer(props: FooterProps) {
   const serviceURL = "/about/service";
   const termsURL = "/about/terms";
   const youtubeURL = "https://www.youtube.com/@buildintruss";
-  const instagrmaURL = "https://www.instagram.com/buildintruss/";
+  const instagrmaURL = "https://www.instagram.com/woomzip/";
   const naverBlogURL = "https://blog.naver.com/truss369";
 
   return (

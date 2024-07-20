@@ -1,4 +1,6 @@
+import { getLivings } from "@/actions/apis/livingAPI";
 import LivingCard from "@/components/living/LivingCard";
+import { Suspense } from "react";
 
 const livingData = [
   {
@@ -21,28 +23,39 @@ const livingData = [
 ];
 
 type LivingListProps = {
-  pavilions: Array<any>;
+  pavilions?: Array<any>;
   numShowItems?: number;
   numShowPages?: number;
 };
 
-export default function LivingCardList(props: LivingListProps) {
-  const { pavilions } = props;
+async function loadData(): Promise<Array<any>> {
+  "use server";
+  const [data, error] = await getLivings();
+  if (error) {
+    console.log(error);
+    return [];
+  }
+  console.log(data.data[0]);
+  return [data.data[0]];
+}
+
+export default async function LivingCardList(props: LivingListProps) {
+  const pavilions = await loadData();
 
   return (
-    <>
+    <Suspense>
       {pavilions?.map((e, i) => (
         <div className="col-md-4 col-lg-3" key={i}>
           <LivingCard
             company={e["nickname"]}
             title={e["pavilion_name"]}
             addr={e["pavilion_addr"]}
-            img={[e["pavilion_representative_img"]]}
+            img={livingData[i].img}
             url={e["pavilion_id"] ? `/living/${e["pavilion_id"]}` : `/living/1`}
             context={`지금까지 ${e["use_count"]}명이 살아봤어요!`}
           />
         </div>
       ))}
-    </>
+    </Suspense>
   );
 }

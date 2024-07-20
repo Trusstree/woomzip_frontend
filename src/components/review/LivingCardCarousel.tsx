@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
 export default function LivingCardCarousel({ images }) {
-  console.log(images);
   return (
     <Swiper
       pagination={{ dynamicBullets: true }}

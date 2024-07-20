@@ -77,7 +77,7 @@ export const WorkerList = [
   },
 ];
 
-const PartnerList = [
+export const PartnerList = [
   {
     title: "숭실대학교",
     img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",

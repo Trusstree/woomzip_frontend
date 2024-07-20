@@ -1,4 +1,4 @@
-import TeamPositionBadge from "@/app/about/_components/TeamPositionBadge";
+import TeamPositionBadge from "@/app/(about)/about/_components/TeamPositionBadge";
 
 export default function WorkerCard({ name, dept, position, src, introduce, email }) {
   return (
@@ -16,8 +16,8 @@ export default function WorkerCard({ name, dept, position, src, introduce, email
       <div className="col-8">
         <div style={{ fontSize: "20px" }}>{` ${name} | ${dept} `}</div>
         <div>
-          {position.map((e) => (
-            <TeamPositionBadge backgroundColor={e.backgroundColor} color={e.color}>
+          {position.map((e, i) => (
+            <TeamPositionBadge key={i} backgroundColor={e.backgroundColor} color={e.color}>
               {e.name}
             </TeamPositionBadge>
           ))}

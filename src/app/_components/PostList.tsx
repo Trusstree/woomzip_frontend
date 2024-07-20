@@ -11,7 +11,7 @@ async function loadData(numShowItems: number) {
 
   if (error) {
     console.error(error);
-    return undefined;
+    return [];
   }
 
   return data.data[0].posts;

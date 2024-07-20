@@ -6,8 +6,8 @@ import StyledComponentsRegistry from "@/components/app/StyledComponentsRegistry"
 import ContextSession from "@/app/ContextSession";
 import Header from "@/app/Header";
 import Footer from "@/app/Footer";
-import AlertSession from "@/hooks/useAlert";
 import Options from "@/app/Options";
+import { Suspense } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -44,11 +44,13 @@ export default function RootLayout(arg) {
       <body className={inter.className}>
         <StyledComponentsRegistry>
           <ContextSession>
-            <Analytics />
-            <Options />
-            <Header />
-            {arg.children}
-            <Footer />
+            <Suspense>
+              <Analytics />
+              <Options />
+              <Header />
+              {arg.children}
+              <Footer />
+            </Suspense>
           </ContextSession>
         </StyledComponentsRegistry>
       </body>

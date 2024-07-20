@@ -9,7 +9,7 @@ async function loadData() {
   const [data, error] = await getLivings();
   if (error) {
     console.log(error);
-    return undefined;
+    return [];
   }
   return data.data[0];
 }
@@ -54,7 +54,7 @@ export default async function Living() {
           <SearchComponent />
         </div>
         <PostMenu>
-          <LivingCardList pavilions={pavilions} numShowItems={4} />
+          <LivingCardList numShowItems={4} />
         </PostMenu>
       </div>
     </div>

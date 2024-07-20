@@ -1,12 +1,14 @@
 import LivingCardCarousel from "@/components/review/LivingCardCarousel";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 
 function Card({ company, title, addr, img, context }) {
   return (
     <>
-      <LivingCardCarousel images={img} />
-
+      <Suspense>
+        <LivingCardCarousel images={img} />
+      </Suspense>
       <div className="card-body" style={{ color: "gray", padding: "5px", overflow: "hidden" }}>
         <div style={{ fontSize: "16px", marginTop: "3px" }}>{company}</div>
         <div
