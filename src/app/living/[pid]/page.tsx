@@ -2,6 +2,7 @@ import RouteButton from "@/app/living/[pid]/_components/RouteButton";
 import ReviewList from "@/components/review/ReviewList";
 import PicModal from "@/app/living/[pid]/_components/PicModal";
 import { getLivingReviews } from "@/actions/apis/livingAPI";
+import styles from "./_styles/livingPage.module.css";
 
 const imageData = [
   "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg",
@@ -46,22 +47,22 @@ export default async function Parvilion() {
           <div className="col-6">
             <div style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}>
               <img
+                className={styles.mainImg}
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg"
-                style={{ width: "100%", height: "400px", objectFit: "cover" }}
               />
             </div>
           </div>
           <div className="col-3">
             <div style={{ height: "50%", overflow: "hidden" }}>
               <img
+                className={styles.subImg}
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg"
-                style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
             <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
               <img
+                className={styles.subImg}
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg"
-                style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
           </div>
@@ -74,8 +75,8 @@ export default async function Parvilion() {
               }}
             >
               <img
+                className={styles.subImg}
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver4.jpeg"
-                style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
             <div
@@ -87,8 +88,8 @@ export default async function Parvilion() {
               }}
             >
               <img
+                className={styles.subImg}
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver5.jpeg"
-                style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
           </div>
@@ -118,7 +119,7 @@ export default async function Parvilion() {
         </div>
 
         <div className="g-3 row w-100">
-          <div className="col-8">
+          <div className="col-md-8 col-12">
             <div style={{ fontSize: "19px", margin: "5px 0 0 2px", color: "gray" }}>모두가하우징</div>
             <div
               style={{
@@ -224,16 +225,8 @@ export default async function Parvilion() {
               </div>
             </div>
           </div>
-          <div className="col-4">
-            <div
-              className="card sticky-top"
-              style={{
-                width: "90%",
-                border: "none",
-                zIndex: 1,
-                marginLeft: "10%",
-              }}
-            >
+          <div className="col-md-4 col-12">
+            <div className={`card ${styles.RemoconCard}`}>
               <div className="container" style={{ height: "60px" }}></div>
               <div
                 style={{
