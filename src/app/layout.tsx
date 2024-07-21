@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Script from "next/script";
-import { Analytics } from "@/components/Analytics";
+import { AnalyticsHead, AnalyticsBody } from "@/components/Analytics";
 import StyledComponentsRegistry from "@/components/app/StyledComponentsRegistry";
 import ContextSession from "@/app/ContextSession";
 import Header from "@/app/Header";
@@ -38,6 +38,7 @@ export default function RootLayout(arg) {
   return (
     <html lang="ko">
       <head>
+        <AnalyticsHead />
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" />
       </head>
 
@@ -45,7 +46,7 @@ export default function RootLayout(arg) {
         <StyledComponentsRegistry>
           <ContextSession>
             <Suspense>
-              <Analytics />
+              <AnalyticsBody />
               <Options />
               <Header />
               {arg.children}

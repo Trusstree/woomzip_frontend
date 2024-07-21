@@ -19,7 +19,7 @@ export const WorkerList = [
     email: "zxcomkt@gmail.com",
   },
   {
-    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/sehong.jpg",
+    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/sehongpark.jpg",
     name: "박세홍",
     dept: "팀장",
     position: [
@@ -38,7 +38,7 @@ export const WorkerList = [
     email: "beyounota@naver.com",
   },
   {
-    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/mindulpark.jpg",
     name: "박민규",
     dept: "개발자",
     position: [
@@ -57,7 +57,7 @@ export const WorkerList = [
     email: "pencake33@naver.com",
   },
   {
-    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/juseung.png",
+    src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/juseunglee.png",
     name: "이주승",
     dept: "개발자",
     position: [
@@ -80,15 +80,23 @@ export const WorkerList = [
 export const PartnerList = [
   {
     title: "숭실대학교",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/soongsiluniv.png",
   },
   {
     title: "서울시 캠퍼스타운",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/challengestation.png",
+  },
+  {
+    title: "서울과학기술대학교",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/seoultech.png",
+  },
+  {
+    title: "서울과기대 창업지원단",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/seoultechstartup.png",
   },
   {
     title: "한국건설기술연구원",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/kict.jpg",
   },
   {
     title: "모두가하우징",
@@ -108,6 +116,6 @@ export const PartnerList = [
   },
   {
     title: "정우하우징",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/jun.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/partner/jungwoohousing.png",
   },
 ];

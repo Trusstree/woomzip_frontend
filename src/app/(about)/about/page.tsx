@@ -165,7 +165,11 @@ export default function About() {
             다양한 기관, 기업들과 함께 합니다.
           </div>
         </div>
-        <div className="row" style={{ width: "2000px", overflow: "hidden" }}>
+
+        <div
+          className={`w-100 row ${true ? "flex-nowrap overflow-auto" : ""}`}
+          style={{ marginLeft: "30px", padding: "0", scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {PartnerList.map((e, i) => (
             <PartnerCard key={i} src={e.img} title={e.title} />
           ))}
