@@ -4,7 +4,7 @@ const CarouselData = [
   {
     title: "움집 서비스 알아보기",
     img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/222.jpg",
-    url: `/about/service`,
+    url: `/service`,
   },
   {
     title: "움집 속 AI 타잔 알아보기",
