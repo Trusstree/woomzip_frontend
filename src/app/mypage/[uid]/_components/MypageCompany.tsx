@@ -4,6 +4,7 @@ import ReviewList from "@/components/review/ReviewList";
 import MypagePostList from "@/app/mypage/[uid]/_components/MypagePostList";
 import MypageLivingCardList from "@/app/mypage/[uid]/_components/MypageLivingCardList";
 import MypageHouseList from "@/app/mypage/[uid]/_components/MypageHouseList";
+import { PicModal } from "@/app/house/[pid]/_components/PicModal";
 
 function parseData(companyData) {
   let [profile, companyImages, reviews, posts, pavilions, sellingHouses] = [
@@ -32,13 +33,20 @@ function parseData(companyData) {
 }
 
 export default async function MypageCompany({ uid, userData }) {
-  const { profile, companyImages, reviews, posts, pavilions, sellingHouses } = parseData(userData);
+  const { profile, companyImages, reviews, posts, pavilions, sellingHouses } =
+    parseData(userData);
 
   return (
     <>
-      <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
+      <div
+        className="row"
+        style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}
+      >
         <div style={{ fontSize: "28px", fontWeight: "500" }}>프로필</div>
-        <div className="row g-2" style={{ width: "100%", position: "relative" }}>
+        <div
+          className="row g-2"
+          style={{ width: "100%", position: "relative" }}
+        >
           <div className="col-6">
             <div style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}>
               <img
@@ -56,7 +64,9 @@ export default async function MypageCompany({ uid, userData }) {
                 style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
-            <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
+            <div
+              style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}
+            >
               <img
                 src={companyImages[2]}
                 alt={"company images 2"}
@@ -101,8 +111,10 @@ export default async function MypageCompany({ uid, userData }) {
               bottom: "15px",
               backgroundColor: "white",
               opacity: "0.7",
-              width: "150px",
+              width: "auto",
             }}
+            data-bs-toggle="modal"
+            data-bs-target={`#living_modal_${uid}`}
           >
             <div className="d-flex justify-content-between">
               <div style={{ width: "30px" }}>
@@ -111,7 +123,9 @@ export default async function MypageCompany({ uid, userData }) {
                   style={{ width: "25px" }}
                 />
               </div>
-              <div style={{ width: "auto", marginTop: "2px" }}>사진 전체보기</div>
+              <div style={{ width: "auto", marginTop: "2px" }}>
+                사진 전체보기
+              </div>
             </div>
           </div>
         </div>
@@ -142,13 +156,25 @@ export default async function MypageCompany({ uid, userData }) {
               </div>
 
               <div style={{ width: "100%", marginTop: "60px" }}>
-                <PostMenu title={"판매자 체험 숙소"} routeUrl={"/living"} routeText={"더보기"} horizontalScroll={true}>
-                  <MypageLivingCardList pavilions={pavilions} numShowItems={4} />
+                <PostMenu
+                  title={"판매자 체험 숙소"}
+                  routeUrl={"/living"}
+                  routeText={"더보기"}
+                  horizontalScroll={true}
+                >
+                  <MypageLivingCardList
+                    pavilions={pavilions}
+                    numShowItems={4}
+                  />
                 </PostMenu>
               </div>
 
               <div style={{ width: "100%", marginTop: "60px" }}>
-                <PostMenu title={"판매자 제품"} routeText={"더보기"} horizontalScroll={true}>
+                <PostMenu
+                  title={"판매자 제품"}
+                  routeText={"더보기"}
+                  horizontalScroll={true}
+                >
                   <MypageHouseList houses={sellingHouses} numShowItems={4} />
                 </PostMenu>
               </div>
@@ -156,6 +182,7 @@ export default async function MypageCompany({ uid, userData }) {
           </div>
         </div>
       </div>
+      <PicModal id={uid} images={companyImages} />
     </>
   );
 }
