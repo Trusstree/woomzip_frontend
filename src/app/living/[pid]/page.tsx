@@ -1,8 +1,8 @@
 import RouteButton from "@/app/living/[pid]/_components/RouteButton";
 import ReviewList from "@/components/review/ReviewList";
-import PicModal from "@/app/living/[pid]/_components/PicModal";
 import { getLivingReviews } from "@/actions/apis/livingAPI";
 import styles from "./_styles/livingPage.module.css";
+import { ReviewModal } from "@/components/house/ReviewModal";
 
 const imageData = [
   "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg",
@@ -438,7 +438,7 @@ export default async function Parvilion() {
           </div>
         </div>
       </div>
-      <PicModal id={1} images={imageData} />
+      <ReviewModal id={1} images={imageData} isTwoCol />
     </main>
   );
 }

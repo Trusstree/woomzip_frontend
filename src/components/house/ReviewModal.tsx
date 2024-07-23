@@ -1,11 +1,24 @@
 import Image from "next/image";
+import { toStringByFormatting } from "@/lib/stringUtil";
 
-export function ReviewModal({ id, date, comment, tag, images, nickname }) {
+export function ReviewModal({
+  id,
+  date,
+  images,
+  nickname,
+  isTwoCol,
+}: {
+  id: string;
+  images: any[];
+  date?: Date;
+  nickname?: string;
+  isTwoCol?: boolean;
+}) {
   return (
     <div
       className="modal fade"
-      id={`living_modal_${id}`}
-      aria-labelledby={`living_modal_${id}_Label`}
+      id={id}
+      aria-labelledby={`${id}_Label`}
       aria-hidden="true"
       data-bs-keyboard="false"
       tabIndex={-1}
@@ -13,7 +26,7 @@ export function ReviewModal({ id, date, comment, tag, images, nickname }) {
       <div className="modal-dialog modal-fullscreen">
         <div className="modal-content" style={{ width: "100%", height: "100%" }}>
           <div className="modal-header">
-            <h5 className="modal-title" id={`living_modal_${id}_Label`}>
+            <h5 className="modal-title" id={`${id}_Label`}>
               전체사진({images.length})
             </h5>
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -26,8 +39,8 @@ export function ReviewModal({ id, date, comment, tag, images, nickname }) {
                   className="card-img-top"
                   style={{
                     objectFit: "contain",
-                    width: "50%",
-                    margin: "10px",
+                    width: isTwoCol ? "48%" : "50%",
+                    margin: isTwoCol ? "1%" : "10px",
                   }}
                   alt="main-img"
                   src={e}
@@ -38,11 +51,14 @@ export function ReviewModal({ id, date, comment, tag, images, nickname }) {
               ))}
             </div>
           </div>
-          <div className="modal-footer">
-            <div style={{ width: "auto" }}>
-              {nickname} |<span style={{ width: "auto" }}> {date}</span>
+          {nickname && date && (
+            <div className="modal-footer">
+              <div style={{ width: "auto" }}>
+                {nickname && `${nickname} |`}{" "}
+                <span style={{ width: "auto" }}> {date && toStringByFormatting(date)}</span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

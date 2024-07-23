@@ -4,6 +4,7 @@ import HouseExpl from "@/app/house/[pid]/_components/HouseExpl";
 import HouseRemocon from "@/app/house/[pid]/_components/HouseRemocon";
 import styles from "@/app/house/[pid]/_styles/HouseClient.module.css";
 import { PicModal } from "@/app/house/[pid]/_components/PicModal";
+import { ReviewModal } from "@/components/house/ReviewModal";
 
 type PageParams = {
   pid: number;
@@ -89,6 +90,8 @@ export default async function Home({ params }: { params: PageParams }) {
             </div>
             <div
               className="btn"
+              data-bs-toggle="modal"
+              data-bs-target={`#house_detail_modal`}
               style={{
                 position: "absolute",
                 right: "25px",
@@ -128,6 +131,7 @@ export default async function Home({ params }: { params: PageParams }) {
         </div>
         <PicModal id={pid} images={imageData} />
       </main>
+      <ReviewModal id={"house_detail_modal"} images={imageData} isTwoCol />
     </>
   ) : (
     <div>로딩 중</div>

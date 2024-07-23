@@ -23,26 +23,28 @@ export default function HouseCard({ data }) {
           className="mySwiper"
           style={{ width: "100%", height: "280px" }}
         >
-          {houseImage?.map((e, i) => (
-            <SwiperSlide key={i}>
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <img
+          {houseImage
+            ?.filter((_, i) => i < 6)
+            .map((e, i) => (
+              <SwiperSlide key={i}>
+                <div
                   style={{
-                    objectFit: "cover",
+                    position: "relative",
                     width: "100%",
                     height: "100%",
-                    borderRadius: "10px",
                   }}
-                  src={e || "/blur_image.png"}
-                  alt={`${data["house_name"]}_${i}`}
-                />
-                {/* <div
+                >
+                  <img
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "10px",
+                    }}
+                    src={e || "/blur_image.png"}
+                    alt={`${data["house_name"]}_${i}`}
+                  />
+                  {/* <div
                     className="d-flex justify-content-left mb-2"
                     style={{
                       position: "absolute",
@@ -71,9 +73,9 @@ export default function HouseCard({ data }) {
                       </div>
                     )}
                   </div> */}
-              </div>
-            </SwiperSlide>
-          ))}
+                </div>
+              </SwiperSlide>
+            ))}
         </Swiper>
 
         <div className="card-body w-100" style={{ height: "160px", border: "none", padding: "5px" }}>

@@ -167,7 +167,7 @@ export default function About() {
         </div>
 
         <div
-          className={`w-100 row ${true ? "flex-nowrap overflow-auto" : ""}`}
+          className={`w-100 row flex-nowrap overflow-auto`}
           style={{ marginLeft: "30px", padding: "0", scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {PartnerList.map((e, i) => (

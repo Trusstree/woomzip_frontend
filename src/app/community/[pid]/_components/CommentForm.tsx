@@ -11,7 +11,7 @@ export default function CommentForm({ pid, setNeedRender }: { pid: number | stri
 
   useEffect(() => {
     (async () => {
-      setAT(getUserdataByToken((await getUserAccessToken()).value));
+      setAT(getUserdataByToken((await getUserAccessToken())?.value));
     })();
   }, []);
 
