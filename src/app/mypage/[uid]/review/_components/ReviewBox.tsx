@@ -6,16 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ReviewModal } from "@/components/house/ReviewModal";
 
-export function ReviewBox({
-  id,
-  index,
-  date,
-  rating,
-  tag,
-  comment,
-  images,
-  nickname,
-}) {
+export function ReviewBox({ id, index, date, rating, tag, comment, images, nickname }) {
   const router = useRouter();
   // function handleClick() {
   //   // e.target.value
@@ -95,10 +86,7 @@ export function ReviewBox({
             </div>
           </div>
         </div>
-        <div
-          className="containr"
-          style={{ width: "100%", float: "left", marginTop: "20px" }}
-        >
+        <div className="containr" style={{ width: "100%", float: "left", marginTop: "20px" }}>
           {tag.map((badge, index) => (
             <span
               className="badge"
@@ -117,14 +105,7 @@ export function ReviewBox({
           ))}
         </div>
       </div>
-      <ReviewModal
-        id={index}
-        date={toStringByFormatting(new Date(date))}
-        comment={comment}
-        tag={tag}
-        nickname={nickname}
-        images={images}
-      />
+      <ReviewModal id={index} date={new Date(date)} nickname={nickname} images={images} />
     </>
   );
 }

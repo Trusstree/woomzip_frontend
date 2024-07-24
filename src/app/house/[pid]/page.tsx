@@ -34,9 +34,7 @@ async function loadData(pid: number) {
 
   houseData = {
     ...data.data[0]["house_info"],
-    specificity_info: parseSpecificationInfo(
-      data.data[0]["house_info"]["specificity_info"]
-    ),
+    specificity_info: parseSpecificationInfo(data.data[0]["house_info"]["specificity_info"]),
   };
 
   imageData = [
@@ -54,25 +52,16 @@ async function loadData(pid: number) {
 
 export default async function Home({ params }: { params: PageParams }) {
   const { pid } = params;
-  const { houseData, imageData, optionData, specificationData, deliveryData } =
-    await loadData(pid);
+  const { houseData, imageData, optionData, specificationData, deliveryData } = await loadData(pid);
 
   return houseData ? (
     <>
       <main>
-        <div
-          className="row"
-          style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}
-        >
+        <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
           <div style={{ fontSize: "28px", fontWeight: "500" }}>찾아보기</div>
-          <div
-            className="row g-2"
-            style={{ width: "100%", position: "relative" }}
-          >
+          <div className="row g-2" style={{ width: "100%", position: "relative" }}>
             <div className="col-6">
-              <div
-                style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}
-              >
+              <div style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}>
                 <img className={styles.mainImg} src={imageData[0]} />
               </div>
             </div>
@@ -80,9 +69,7 @@ export default async function Home({ params }: { params: PageParams }) {
               <div style={{ height: "50%", overflow: "hidden" }}>
                 <img className={styles.subImg} src={imageData[1]} />
               </div>
-              <div
-                style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}
-              >
+              <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
                 <img className={styles.subImg} src={imageData[2]} />
               </div>
             </div>
@@ -119,8 +106,6 @@ export default async function Home({ params }: { params: PageParams }) {
                 opacity: "0.7",
                 width: "auto",
               }}
-              data-bs-toggle="modal"
-              data-bs-target={`#living_modal_${pid}`}
             >
               <div className="d-flex justify-content-between">
                 <div style={{ width: "30px" }}>
@@ -129,9 +114,7 @@ export default async function Home({ params }: { params: PageParams }) {
                     style={{ width: "25px" }}
                   />
                 </div>
-                <div style={{ width: "auto", marginTop: "2px" }}>
-                  사진 전체보기
-                </div>
+                <div style={{ width: "auto", marginTop: "2px" }}>사진 전체보기</div>
               </div>
             </div>
           </div>
@@ -148,11 +131,7 @@ export default async function Home({ params }: { params: PageParams }) {
             </div>
 
             <div className="col-md-4 col-12">
-              <HouseRemocon
-                pid={pid}
-                houseData={houseData}
-                optionData={optionData}
-              />
+              <HouseRemocon pid={pid} houseData={houseData} optionData={optionData} />
             </div>
           </div>
         </div>

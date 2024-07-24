@@ -41,15 +41,9 @@ export default async function Parvilion() {
   const { review, count, rating } = await loadData();
   return (
     <main>
-      <div
-        className="row"
-        style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}
-      >
+      <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
         <div style={{ fontSize: "28px", fontWeight: "500" }}>살아보기</div>
-        <div
-          className="row g-2"
-          style={{ width: "100%", position: "relative" }}
-        >
+        <div className="row g-2" style={{ width: "100%", position: "relative" }}>
           <div className="col-6">
             <div style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}>
               <img className={styles.mainImg} src={imageData[0]} />
@@ -59,9 +53,7 @@ export default async function Parvilion() {
             <div style={{ height: "50%", overflow: "hidden" }}>
               <img className={styles.subImg} src={imageData[1]} />
             </div>
-            <div
-              style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}
-            >
+            <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
               <img className={styles.subImg} src={imageData[2]} />
             </div>
           </div>
@@ -106,20 +98,14 @@ export default async function Parvilion() {
                   style={{ width: "25px" }}
                 />
               </div>
-              <div style={{ width: "auto", marginTop: "2px" }}>
-                사진 전체보기
-              </div>
+              <div style={{ width: "auto", marginTop: "2px" }}>사진 전체보기</div>
             </div>
           </div>
         </div>
 
         <div className="g-3 row w-100">
           <div className="col-md-8 col-12">
-            <div
-              style={{ fontSize: "19px", margin: "5px 0 0 2px", color: "gray" }}
-            >
-              모두가하우징
-            </div>
+            <div style={{ fontSize: "19px", margin: "5px 0 0 2px", color: "gray" }}>모두가하우징</div>
             <div
               style={{
                 fontSize: "32px",
@@ -138,12 +124,7 @@ export default async function Parvilion() {
               지금까지 {count}팀이 살아봤어요!
             </div>
             <hr />
-            <ReviewList
-              review={review}
-              count={count}
-              rating={rating}
-              url={"/living/1/review"}
-            />
+            <ReviewList review={review} count={count} rating={rating} url={"/living/1/review"} />
 
             <div
               style={{
@@ -178,13 +159,8 @@ export default async function Parvilion() {
                 <br />✅ 청소 상태 원상복구
                 <br />✅ 가이드라인 준수
               </div>
-              <div
-                className="container"
-                style={{ width: "100%", marginBottom: "10px", padding: "0" }}
-              >
-                <h5 style={{ margin: "0", paddingTop: "50px" }}>
-                  힐링리버 소개
-                </h5>
+              <div className="container" style={{ width: "100%", marginBottom: "10px", padding: "0" }}>
+                <h5 style={{ margin: "0", paddingTop: "50px" }}>힐링리버 소개</h5>
                 <div
                   style={{
                     fontSize: "16px",
@@ -193,11 +169,10 @@ export default async function Parvilion() {
                     padding: "10px",
                   }}
                 >
-                  힐링리버는 강원도 화천군에 위치한 모두가하우징의 체험형
-                  홍보관입니다.
+                  힐링리버는 강원도 화천군에 위치한 모두가하우징의 체험형 홍보관입니다.
                   <br />
-                  전원주택의 삶을 꿈꾸시는 분들에게 전원생활과 모두가하우징의
-                  주택을 체험하실 수 있도록 하기 위해 제공합니다.
+                  전원주택의 삶을 꿈꾸시는 분들에게 전원생활과 모두가하우징의 주택을 체험하실 수 있도록 하기 위해
+                  제공합니다.
                 </div>
                 <h5 style={{ margin: "0", paddingTop: "50px" }}>편의시설</h5>
                 <div
@@ -225,16 +200,12 @@ export default async function Parvilion() {
                     padding: "10px",
                   }}
                 >
-                  ● 2층과 주변 주택들에 주민들이 살고 있으니 늦은 밤에는
-                  정숙해주세요.
+                  ● 2층과 주변 주택들에 주민들이 살고 있으니 늦은 밤에는 정숙해주세요.
                   <br />
-                  ● 전원생활 체험 주택입니다. 전문 숙소가 아니기에 불편함이 있을
-                  수 있습니다.
+                  ● 전원생활 체험 주택입니다. 전문 숙소가 아니기에 불편함이 있을 수 있습니다.
                   <br />
-                  ● 지속적인 무료 서비스 제공을 위해, 퇴실 시 다음 사람을 위해
-                  기존 상태와 동일하게 청소해주셔야 합니다.
-                  <br />● 화장지, 수건 등 필요한 세면도구는 지참해주시길
-                  바랍니다.
+                  ● 지속적인 무료 서비스 제공을 위해, 퇴실 시 다음 사람을 위해 기존 상태와 동일하게 청소해주셔야 합니다.
+                  <br />● 화장지, 수건 등 필요한 세면도구는 지참해주시길 바랍니다.
                 </div>
               </div>
             </div>
@@ -257,10 +228,7 @@ export default async function Parvilion() {
                     margin: "10px 0 0 0",
                   }}
                 >
-                  <div
-                    className="d-flex justify-content-start px-1"
-                    style={{ width: "50%" }}
-                  >
+                  <div className="d-flex justify-content-start px-1" style={{ width: "50%" }}>
                     <svg
                       width="50"
                       height="50"
@@ -270,23 +238,10 @@ export default async function Parvilion() {
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                     >
-                      <rect
-                        opacity="0.8"
-                        width="30"
-                        height="30"
-                        fill="url(#pattern0_1672_959)"
-                      />
+                      <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_959)" />
                       <defs>
-                        <pattern
-                          id="pattern0_1672_959"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_1672_959"
-                            transform="translate(-0.001) scale(0.002)"
-                          />
+                        <pattern id="pattern0_1672_959" patternContentUnits="objectBoundingBox" width="1" height="1">
+                          <use xlinkHref="#image0_1672_959" transform="translate(-0.001) scale(0.002)" />
                         </pattern>
                         <image
                           id="image0_1672_959"
@@ -298,10 +253,7 @@ export default async function Parvilion() {
                     </svg>
                     <div style={{ width: "80px", marginTop: "12px" }}>12평</div>
                   </div>
-                  <div
-                    className="d-flex justify-content-start px-1"
-                    style={{ width: "50%" }}
-                  >
+                  <div className="d-flex justify-content-start px-1" style={{ width: "50%" }}>
                     <svg
                       width="50"
                       height="50"
@@ -311,23 +263,10 @@ export default async function Parvilion() {
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                     >
-                      <rect
-                        opacity="0.8"
-                        width="30"
-                        height="30"
-                        fill="url(#pattern0_1672_957)"
-                      />
+                      <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_957)" />
                       <defs>
-                        <pattern
-                          id="pattern0_1672_957"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_1672_957"
-                            transform="translate(-0.001) scale(0.002)"
-                          />
+                        <pattern id="pattern0_1672_957" patternContentUnits="objectBoundingBox" width="1" height="1">
+                          <use xlinkHref="#image0_1672_957" transform="translate(-0.001) scale(0.002)" />
                         </pattern>
                         <image
                           id="image0_1672_957"
@@ -349,10 +288,7 @@ export default async function Parvilion() {
                     margin: "10px 0 0 0",
                   }}
                 >
-                  <div
-                    className="d-flex justify-content-start px-1"
-                    style={{ width: "50%" }}
-                  >
+                  <div className="d-flex justify-content-start px-1" style={{ width: "50%" }}>
                     <svg
                       width="50"
                       height="50"
@@ -362,23 +298,10 @@ export default async function Parvilion() {
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                     >
-                      <rect
-                        opacity="0.8"
-                        width="30"
-                        height="30"
-                        fill="url(#pattern0_1672_959)"
-                      />
+                      <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_959)" />
                       <defs>
-                        <pattern
-                          id="pattern0_1672_959"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_1672_959"
-                            transform="translate(-0.001) scale(0.002)"
-                          />
+                        <pattern id="pattern0_1672_959" patternContentUnits="objectBoundingBox" width="1" height="1">
+                          <use xlinkHref="#image0_1672_959" transform="translate(-0.001) scale(0.002)" />
                         </pattern>
                         <image
                           id="image0_1672_959"
@@ -388,14 +311,9 @@ export default async function Parvilion() {
                         />
                       </defs>
                     </svg>
-                    <div style={{ width: "80px", marginTop: "12px" }}>
-                      최대 5명
-                    </div>
+                    <div style={{ width: "80px", marginTop: "12px" }}>최대 5명</div>
                   </div>
-                  <div
-                    className="d-flex justify-content-start px-1"
-                    style={{ width: "50%" }}
-                  >
+                  <div className="d-flex justify-content-start px-1" style={{ width: "50%" }}>
                     <svg
                       width="50"
                       height="50"
@@ -405,23 +323,10 @@ export default async function Parvilion() {
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                     >
-                      <rect
-                        opacity="0.8"
-                        width="30"
-                        height="30"
-                        fill="url(#pattern0_1672_957)"
-                      />
+                      <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_957)" />
                       <defs>
-                        <pattern
-                          id="pattern0_1672_957"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_1672_957"
-                            transform="translate(-0.001) scale(0.002)"
-                          />
+                        <pattern id="pattern0_1672_957" patternContentUnits="objectBoundingBox" width="1" height="1">
+                          <use xlinkHref="#image0_1672_957" transform="translate(-0.001) scale(0.002)" />
                         </pattern>
                         <image
                           id="image0_1672_957"
@@ -431,9 +336,7 @@ export default async function Parvilion() {
                         />
                       </defs>
                     </svg>
-                    <div style={{ width: "80px", marginTop: "12px" }}>
-                      최대 3일
-                    </div>
+                    <div style={{ width: "80px", marginTop: "12px" }}>최대 3일</div>
                   </div>
                 </div>
                 <hr style={{ margin: "0px", padding: "0px" }} />
@@ -445,10 +348,7 @@ export default async function Parvilion() {
                     padding: "10px",
                   }}
                 >
-                  <div
-                    className="d-flex justify-content-start px-1"
-                    style={{ width: "100%" }}
-                  >
+                  <div className="d-flex justify-content-start px-1" style={{ width: "100%" }}>
                     <svg
                       width="50"
                       height="50"
@@ -458,23 +358,10 @@ export default async function Parvilion() {
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                     >
-                      <rect
-                        opacity="0.8"
-                        width="30"
-                        height="30"
-                        fill="url(#pattern0_1672_959)"
-                      />
+                      <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_959)" />
                       <defs>
-                        <pattern
-                          id="pattern0_1672_959"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_1672_959"
-                            transform="translate(-0.001) scale(0.002)"
-                          />
+                        <pattern id="pattern0_1672_959" patternContentUnits="objectBoundingBox" width="1" height="1">
+                          <use xlinkHref="#image0_1672_959" transform="translate(-0.001) scale(0.002)" />
                         </pattern>
                         <image
                           id="image0_1672_959"
@@ -495,10 +382,7 @@ export default async function Parvilion() {
                     margin: "10px 0 0 0",
                   }}
                 >
-                  <div
-                    className="d-flex justify-content-start px-1"
-                    style={{ width: "100%" }}
-                  >
+                  <div className="d-flex justify-content-start px-1" style={{ width: "100%" }}>
                     <svg
                       width="50"
                       height="50"
@@ -508,23 +392,10 @@ export default async function Parvilion() {
                       xmlns="http://www.w3.org/2000/svg"
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                     >
-                      <rect
-                        opacity="0.8"
-                        width="30"
-                        height="30"
-                        fill="url(#pattern0_1672_959)"
-                      />
+                      <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_959)" />
                       <defs>
-                        <pattern
-                          id="pattern0_1672_959"
-                          patternContentUnits="objectBoundingBox"
-                          width="1"
-                          height="1"
-                        >
-                          <use
-                            xlinkHref="#image0_1672_959"
-                            transform="translate(-0.001) scale(0.002)"
-                          />
+                        <pattern id="pattern0_1672_959" patternContentUnits="objectBoundingBox" width="1" height="1">
+                          <use xlinkHref="#image0_1672_959" transform="translate(-0.001) scale(0.002)" />
                         </pattern>
                         <image
                           id="image0_1672_959"
@@ -534,9 +405,7 @@ export default async function Parvilion() {
                         />
                       </defs>
                     </svg>
-                    <div style={{ width: "80px", marginTop: "12px" }}>
-                      5만원
-                    </div>
+                    <div style={{ width: "80px", marginTop: "12px" }}>5만원</div>
                   </div>
                 </div>
                 <div
@@ -547,17 +416,14 @@ export default async function Parvilion() {
                     margin: "30px 0 0 0",
                   }}
                 >
-                  <RouteButton
-                    url={"/living/1/reservation"}
-                    text={"체험 예약하기"}
-                  />
+                  <RouteButton url={"/living/1/reservation"} text={"체험 예약하기"} />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <ReviewModal id={1} images={imageData} isTwoCol />
+      <ReviewModal id={"living_modal_1"} images={imageData} isTwoCol />
     </main>
   );
 }
