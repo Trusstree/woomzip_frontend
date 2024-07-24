@@ -1,7 +1,7 @@
 "use client";
 
 import useQuery from "@/hooks/useQuery";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import styles from "@/styles/CategoryButton.module.css";
 
 export default function CategoryButton({
@@ -14,7 +14,6 @@ export default function CategoryButton({
   category?: string;
 }) {
   const router = useRouter();
-  const pathname = usePathname();
   const { createQuery, getRouteParams } = useQuery();
   const handleClick = () => {
     createQuery("category", category);

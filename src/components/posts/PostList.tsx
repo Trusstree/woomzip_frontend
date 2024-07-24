@@ -17,6 +17,7 @@ export default function PostList(props: PostListProps) {
   const searchParams = useSearchParams();
   const page = searchParams.has("page") ? Number(searchParams.get("page")) : 1;
   const category = searchParams.get("category");
+  const q = searchParams.get("q");
   const [count, setCount] = useState(0);
   const [postData, setPostData] = useState(undefined);
 
@@ -27,6 +28,7 @@ export default function PostList(props: PostListProps) {
         limit: numShowItems,
       };
       if (category) params["category"] = category;
+      if (q) params["q"] = q;
 
       const [data, error] = await getPosts(params);
 
