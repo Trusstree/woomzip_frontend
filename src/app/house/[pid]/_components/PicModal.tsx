@@ -36,11 +36,13 @@ export function PicModal({ id, images }) {
                     objectFit: "contain",
                     width: "48%",
                     margin: "1%",
+                    padding: "0",
+                    height: "auto",
                   }}
                   alt={`image-${i}`}
                   src={e}
                   width={400}
-                  height={550}
+                  height={100}
                   unoptimized={true}
                 />
               ))}
