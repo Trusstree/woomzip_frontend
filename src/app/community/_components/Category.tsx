@@ -11,13 +11,13 @@ export default function Category() {
             "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"
           }
         />
-        <CategoryButton
+        {/* <CategoryButton
           title={"베스트"}
           imgSrc={
             "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/best.png"
           }
           category={"베스트"}
-        />
+        /> */}
         <CategoryButton
           title={"일반"}
           imgSrc={

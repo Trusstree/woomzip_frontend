@@ -1,12 +1,22 @@
 "use client";
 
-import { signupCompany, validateID, validateNickname } from "@/actions/apis/userAPI";
+import {
+  signupCompany,
+  validateID,
+  validateNickname,
+} from "@/actions/apis/userAPI";
 import SignupGenderRadio from "@/app/signup/_components/SignupRadio";
 import SignupTextBox from "@/app/signup/_components/SignupTextBox";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { encryptPW } from "@/lib/authUtil";
 import { setS3Url } from "@/lib/s3Util";
-import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/validator";
+import {
+  isEmail,
+  isID,
+  isPassword,
+  isPhoneNumber,
+  isRequired,
+} from "@/lib/validator";
 import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -58,12 +68,22 @@ export function SignupFormCompany() {
   };
 
   useEffect(() => {
-    if (phoneNumber.length === 10) setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
-    if (phoneNumber.length === 11) setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    if (phoneNumber.length === 10)
+      setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    if (phoneNumber.length === 11)
+      setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
     if (phoneNumber.length === 13)
-      setPhoneNumber(phoneNumber.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"));
+      setPhoneNumber(
+        phoneNumber
+          .replace(/-/g, "")
+          .replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
     if (phoneNumber.length === 14)
-      setPhoneNumber(phoneNumber.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"));
+      setPhoneNumber(
+        phoneNumber
+          .replace(/-/g, "")
+          .replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
   }, [phoneNumber]);
 
   const submit = async () => {
@@ -143,7 +163,10 @@ export function SignupFormCompany() {
       return;
     }
 
-    alertSuccess("회원가입 신청완료", "기업 회원 가입을 요청했습니다. 확인 후에 알려드릴게요!");
+    alertSuccess(
+      "회원가입 신청완료",
+      "기업 회원 가입을 요청했습니다. 확인 후에 알려드릴게요!"
+    );
     router.push("/");
     return;
   };
@@ -164,27 +187,84 @@ export function SignupFormCompany() {
 
   return (
     <div className="my-5">
-      <SignupTextBox title={"이름"} name={"name"} data={name} setData={setName} />
-      <SignupTextBox title={"별명"} name={"nickname"} data={nickname} setData={setNickname} />
+      <SignupTextBox
+        title={"이름"}
+        name={"name"}
+        data={name}
+        setData={setName}
+      />
+      <SignupTextBox
+        title={"별명"}
+        name={"nickname"}
+        data={nickname}
+        setData={setNickname}
+      />
       <SignupTextBox title={"ID"} name={"id"} data={id} setData={setID} />
-      <SignupTextBox title={"PW"} name={"pw"} data={pw} setData={setPW} type={"password"} />
-      <SignupTextBox title={"PW 확인"} name={"repw"} data={repw} setData={setRePW} type={"password"} />
-      <SignupTextBox title={"이메일"} name={"email"} data={email} setData={setEmail} />
-      <SignupTextBox title={"한줄설명"} name={"introduce"} data={introduce} setData={setIntroduce} />
+      <SignupTextBox
+        title={"PW"}
+        name={"pw"}
+        data={pw}
+        setData={setPW}
+        type={"password"}
+      />
+      <SignupTextBox
+        title={"PW 확인"}
+        name={"repw"}
+        data={repw}
+        setData={setRePW}
+        type={"password"}
+      />
+      <SignupTextBox
+        title={"이메일"}
+        name={"email"}
+        data={email}
+        setData={setEmail}
+      />
+      <SignupTextBox
+        title={"한줄설명"}
+        name={"introduce"}
+        data={introduce}
+        setData={setIntroduce}
+      />
       <SignupGenderRadio data={gender} setData={setGender} />
-      <SignupTextBox title={"연락처"} name={"phoneNumber"} data={phoneNumber} setData={handlePhoneNumber} />
-      <SignupTextBox title={"생년월일"} name={"birthday"} data={birthday} setData={setBirthday} type={"date"} />
+      <SignupTextBox
+        title={"연락처"}
+        name={"phoneNumber"}
+        data={phoneNumber}
+        setData={handlePhoneNumber}
+      />
+      <SignupTextBox
+        title={"생년월일"}
+        name={"birthday"}
+        data={birthday}
+        setData={setBirthday}
+        type={"date"}
+      />
 
       <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_thumbnail`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"섬네일"}
+        <label
+          htmlFor={`signin_thumbnail`}
+          className="fs-5 col-2"
+          style={{ color: "#101648" }}
+        >
+          {"프로필 사진"}
         </label>
-        <input className="w-100" type="file" id={`signin_thumbnail`} onChange={handleThumbnail} name={"thumbnail"} />
+        <input
+          className="w-100"
+          type="file"
+          id={`signin_thumbnail`}
+          onChange={handleThumbnail}
+          name={"thumbnail"}
+        />
       </div>
 
       <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_companyImages`} className="fs-5 col-2" style={{ color: "#101648" }}>
-          {"사진"}
+        <label
+          htmlFor={`signin_companyImages`}
+          className="fs-5 col-2"
+          style={{ color: "#101648" }}
+        >
+          {"프트폴리오 사진"}
         </label>
         <input
           className="w-100"
@@ -196,11 +276,35 @@ export function SignupFormCompany() {
         />
       </div>
 
-      <SignupTextBox title={"위치"} name={"addr"} data={addr} setData={setAddr} />
-      <SignupTextBox title={"홈페이지"} name={"prUrl"} data={prUrl} setData={setPrUrl} />
-      <SignupTextBox title={"홍보채널"} name={"youtubeUrl"} data={youtubeUrl} setData={setYoutubeUrl} />
+      <SignupTextBox
+        title={"위치"}
+        name={"addr"}
+        data={addr}
+        setData={setAddr}
+      />
+      <SignupTextBox
+        title={"홈페이지 주소"}
+        name={"prUrl"}
+        data={prUrl}
+        setData={setPrUrl}
+      />
+      <SignupTextBox
+        title={"홍보채널 주소"}
+        name={"youtubeUrl"}
+        data={youtubeUrl}
+        setData={setYoutubeUrl}
+      />
 
-      <div className="w-100 btn btn-lg text-white" style={{ backgroundColor: "#101648" }} onClick={submit}>
+      <div
+        className="btn"
+        style={{
+          backgroundColor: "#314FC0",
+          color: "white",
+          width: "100%",
+          padding: "10px",
+        }}
+        onClick={submit}
+      >
         회원가입
       </div>
     </div>

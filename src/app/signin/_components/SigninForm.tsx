@@ -43,7 +43,10 @@ export function SigninForm() {
 
     if (error) {
       console.log(error);
-      alertError("로그인 에러", error.response?.data?.message || `로그인에 실패했어요.`);
+      alertError(
+        "로그인 에러",
+        error.response?.data?.message || `로그인에 실패했어요.`
+      );
       return;
     }
     const userData = getUserdataByToken(data.data.access_token);
@@ -58,7 +61,7 @@ export function SigninForm() {
   return (
     <div className="my-5">
       <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_ID`} className="fs-5 col-2" style={{ color: "#101648" }}>
+        <label htmlFor={`signin_ID`} className="fs-5 col-2">
           {"ID"}
         </label>
         <input
@@ -74,7 +77,11 @@ export function SigninForm() {
       </div>
 
       <div className={`w-100 d-flex mt-3 mb-5`}>
-        <label htmlFor={`signin_PW`} className="fs-5 col-2" style={{ color: "#101648" }}>
+        <label
+          htmlFor={`signin_PW`}
+          className="fs-5 col-2"
+          style={{ color: "#101648" }}
+        >
           {"PW"}
         </label>
         <input
@@ -89,8 +96,17 @@ export function SigninForm() {
         />
       </div>
 
-      <div className="w-100 btn btn-lg text-white" style={{ backgroundColor: "#101648" }} onClick={submit}>
-        로그인
+      <div
+        className="btn"
+        style={{
+          backgroundColor: "#314FC0",
+          color: "white",
+          width: "100%",
+          padding: "10px",
+        }}
+        onClick={submit}
+      >
+        로그인 하기
       </div>
     </div>
   );

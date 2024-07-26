@@ -57,6 +57,9 @@ export default function Editor(props: EditorProps) {
         try {
           const title = `posts${moment().format("YYYYMMDDHHmmss")}${i}`;
           const url = `community/${title}.${file[i].type.split("/")[1]}`;
+
+          // 새로운 사진 포메팅 기법이 필요함
+
           const [response, error] = await setS3Url(url, file[i]);
 
           if (!error) {
@@ -64,10 +67,18 @@ export default function Editor(props: EditorProps) {
             const editor = quillRef.current?.getEditor();
             if (editor) {
               const range = editor.getSelection();
-              const delta = editor.insertEmbed(range?.index || 0, "image", imageUrl);
+              const delta = editor.insertEmbed(
+                range?.index || 0,
+                "image",
+                imageUrl
+              );
               editor.removeFormat(range?.index, range?.index + 1);
               const newOps = delta.ops?.map((op) => {
-                if (op.insert && typeof op.insert === "object" && op.insert.image) {
+                if (
+                  op.insert &&
+                  typeof op.insert === "object" &&
+                  op.insert.image
+                ) {
                   const imageAttributes = {
                     ...op.attributes,
                     alt: "post images",
@@ -116,7 +127,12 @@ export default function Editor(props: EditorProps) {
   );
 
   const handleSubmit = useCallback(async () => {
-    const result = await confirmSuccess("포스팅 확인", "현재 입력하신 정보가 모두 맞습니까?", "맞습니다!", "아닙니다.");
+    const result = await confirmSuccess(
+      "포스팅 확인",
+      "현재 입력하신 정보가 모두 맞습니까?",
+      "맞습니다!",
+      "아닙니다."
+    );
     if (result.isConfirmed) {
       const { data, error } = await postPost({
         title: dataTitle,

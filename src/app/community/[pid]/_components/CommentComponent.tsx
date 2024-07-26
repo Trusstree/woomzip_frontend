@@ -6,9 +6,13 @@ import CommentPagination from "@/app/community/[pid]/_components/CommentPaginati
 import CommentText from "@/app/community/[pid]/_components/CommentText";
 import { useEffect, useRef, useState } from "react";
 
-export default function CommentComponent({ pid, isCommentLike, initialComments }) {
+export default function CommentComponent({
+  pid,
+  isCommentLike,
+  initialComments,
+}) {
   const [comments, setComments] = useState(initialComments);
-  const [needRender, setNeedRender] = useState(false);
+  const [needRender, setNeedRender] = useState(true);
   const [page, setPage] = useState(1);
   const [numShowItems, numShowPages] = [10, 5];
 
@@ -21,7 +25,6 @@ export default function CommentComponent({ pid, isCommentLike, initialComments }
         console.error(error);
         return;
       }
-
       setComments(data.data.comments);
       setNeedRender(false);
     })();
@@ -41,7 +44,10 @@ export default function CommentComponent({ pid, isCommentLike, initialComments }
         <CommentForm pid={pid} setNeedRender={setNeedRender} />
         <div>
           {comments
-            .filter((_, i) => i > numShowItems * (page - 1) + 1 && i < numShowItems * page + 1)
+            .filter(
+              (_, i) =>
+                i >= numShowItems * (page - 1) && i < numShowItems * page
+            )
             .map((e, i) => (
               <CommentText key={i} data={e} isCommentLike={isCommentLike} />
             ))}

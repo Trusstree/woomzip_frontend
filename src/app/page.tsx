@@ -31,7 +31,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div
+      {/* <div
         style={{
           width: "100%",
           padding: "50px 0",
@@ -43,7 +43,7 @@ export default async function Home() {
             <LivingCardList numShowItems={4} />
           </PostMenu>
         </div>
-      </div>
+      </div> */}
 
       <div
         style={{

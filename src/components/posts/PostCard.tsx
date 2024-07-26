@@ -96,8 +96,8 @@ export default function PostCard(props: PostCardProps) {
               style={{
                 textDecoration: "none",
                 display: "block",
-                fontSize: "18px",
-                fontWeight: "700",
+                fontSize: "17px",
+                fontWeight: "500",
                 margin: "15px 0",
                 marginTop: "160px",
                 height: "50px",
@@ -127,7 +127,11 @@ export default function PostCard(props: PostCardProps) {
         </Link>
         <div
           className={`card-footer`}
-          style={{ border: "none", backgroundColor: "white" }}
+          style={{
+            border: "none",
+            backgroundColor: "white",
+            marginBottom: "30px",
+          }}
         >
           <div className="d-flex flex-column" style={{ width: "100%" }}>
             {/* <div className="d-flex">
@@ -138,10 +142,24 @@ export default function PostCard(props: PostCardProps) {
               className="d-flex justify-content-between"
               style={{ marginTop: "1px" }}
             >
-              <div style={{ fontSize: "15px", color: "gray", width: "auto" }}>
+              <div
+                style={{
+                  fontSize: "15px",
+                  color: "gray",
+                  width: "auto",
+                  fontWeight: "400",
+                }}
+              >
                 {data["nickname"]}
               </div>
-              <div style={{ fontSize: "15px", color: "gray", width: "auto" }}>
+              <div
+                style={{
+                  fontSize: "15px",
+                  color: "gray",
+                  width: "auto",
+                  fontWeight: "400",
+                }}
+              >
                 {data["created_at"].split("T")[0]}
               </div>
             </div>
@@ -151,7 +169,7 @@ export default function PostCard(props: PostCardProps) {
                 className="row"
                 style={{ width: "auto", marginTop: "3px", marginLeft: "0px" }}
               >
-                <div className="d-flex" style={{ width: "50px", padding: "0" }}>
+                {/* <div className="d-flex" style={{ width: "50px", padding: "0" }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -177,7 +195,7 @@ export default function PostCard(props: PostCardProps) {
                   >
                     {cardCountText(data?.["post_view_count"])}
                   </div>
-                </div>
+                </div> */}
                 <div className="d-flex" style={{ width: "50px", padding: "0" }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +213,12 @@ export default function PostCard(props: PostCardProps) {
                   </svg>
                   <div
                     className="ps-1"
-                    style={{ width: "34px", fontSize: "15px", color: "gray" }}
+                    style={{
+                      width: "34px",
+                      fontSize: "15px",
+                      color: "gray",
+                      fontWeight: "400",
+                    }}
                   >
                     {cardCountText(data?.["comment_count"])}
                   </div>
@@ -217,7 +240,12 @@ export default function PostCard(props: PostCardProps) {
                   </svg>
                   <div
                     className="ps-1"
-                    style={{ width: "34px", fontSize: "15px", color: "gray" }}
+                    style={{
+                      width: "34px",
+                      fontSize: "15px",
+                      color: "gray",
+                      fontWeight: "400",
+                    }}
                   >
                     {cardCountText(data?.["post_like_count"])}
                   </div>

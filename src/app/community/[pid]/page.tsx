@@ -13,7 +13,7 @@ const style = {
   일반: { backgroundColor: "#CCD6FF", color: "#314FC0" },
   공지: { backgroundColor: "#FFCCCC", color: "#C03142" },
   질문: { backgroundColor: "#E2FFCC", cololr: "#8AC031" },
-  칼럼: { backgroundColor: "#CC99CC", cololr: "#8CCCCC" },
+  칼럼: { backgroundColor: "#F9F871", color: "#FFC75F" },
 };
 
 export default async function page({ params }: { params: PageParams }) {
@@ -140,7 +140,10 @@ export default async function page({ params }: { params: PageParams }) {
             className={`card-footer rounded-bottom-3 fw-normal px-2`}
             style={{ backgroundColor: "white", borderColor: "white" }}
           >
-            <div className="d-flex justify-content-between" style={{ backgroundColor: "#ffffff" }}>
+            <div
+              className="d-flex justify-content-between"
+              style={{ backgroundColor: "#ffffff" }}
+            >
               <Count
                 pid={pid}
                 viewCount={postData["view_count"]}
@@ -152,10 +155,19 @@ export default async function page({ params }: { params: PageParams }) {
           </div>
         </div>
 
-        <CommentComponent pid={pid} isCommentLike={isCommentLike} initialComments={comments} />
+        <CommentComponent
+          pid={pid}
+          isCommentLike={isCommentLike}
+          initialComments={comments}
+        />
 
         {/* 추천정보 */}
-        <PostMenu title={"더 많은 글을 구경해보세요!"} routeUrl={"/house"} routeText={"더보기"} horizontalScroll={true}>
+        <PostMenu
+          title={"더 많은 글을 구경해보세요!"}
+          routeUrl={"/house"}
+          routeText={"더보기"}
+          horizontalScroll={true}
+        >
           <AppPostList numShowItems={6} />
         </PostMenu>
       </main>

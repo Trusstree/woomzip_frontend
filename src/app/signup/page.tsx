@@ -5,7 +5,16 @@ import Link from "next/link";
 export default async function Page({ searchParams }) {
   return (
     <main className={`container my-5 d-flex flex-column align-items-center`}>
-      <div className={`py-5 rounded-3 text-center fw-bold fs-2`}>트러스 회원가입</div>
+      <div
+        style={{
+          textAlign: "center",
+          fontSize: "28px",
+          fontWeight: "600",
+          marginBottom: "10px",
+        }}
+      >
+        <span style={{ color: "#314FC0" }}>움집</span> 회원가입
+      </div>
       <div>
         {searchParams.user == "company" ? (
           <Link href={"/signup"}>일반회원으로 이동</Link>
@@ -13,7 +22,13 @@ export default async function Page({ searchParams }) {
           <Link href={"/signup?user=company"}>기업회원으로 이동</Link>
         )}
       </div>
-      <div className="w-50">{searchParams.user == "company" ? <SignupFormCompany /> : <SignupForm />}</div>
+      <div style={{ maxWidth: "800px", width: "90%" }}>
+        {searchParams.user == "company" ? (
+          <SignupFormCompany />
+        ) : (
+          <SignupForm />
+        )}
+      </div>
     </main>
   );
 }

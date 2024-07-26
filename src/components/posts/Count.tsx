@@ -2,10 +2,16 @@ import { cardCountText } from "@/lib/stringUtil";
 import HeartComponent from "./HeartComponent";
 import { postPostHeart, postPostHeartRemove } from "@/actions/apis/heartAPI";
 
-export default function Count({ pid, viewCount, commentCount, likeCount, isPostLike }) {
+export default function Count({
+  pid,
+  viewCount,
+  commentCount,
+  likeCount,
+  isPostLike,
+}) {
   return (
     <div className="row" style={{ width: "auto" }}>
-      <div className="d-flex" style={{ width: "60px", padding: "0" }}>
+      {/* <div className="d-flex" style={{ width: "60px", padding: "0" }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -23,8 +29,8 @@ export default function Count({ pid, viewCount, commentCount, likeCount, isPostL
         </svg>
         <div className="ps-1" style={{ width: "34px" }}>
           {cardCountText(viewCount)}
-        </div>
-      </div>
+        </div> 
+      </div>*/}
       <div className="d-flex" style={{ width: "60px", padding: "0" }}>
         <svg
           xmlns="http://www.w3.org/2000/svg"

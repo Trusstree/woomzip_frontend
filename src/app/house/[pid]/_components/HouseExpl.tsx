@@ -114,14 +114,14 @@ export default function HouseExpl({
         <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"지붕재"}
-          data={parseSpecificationInfo(
-            specificationData["insulation_material"]
-          )}
+          data={parseSpecificationInfo(specificationData["roofing_material"])}
         />
         <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"단열재"}
-          data={parseSpecificationInfo(specificationData["roofing_material"])}
+          data={parseSpecificationInfo(
+            specificationData["insulation_material"]
+          )}
         />
         <hr style={{ border: "1px solid gray" }} />
         <RowText

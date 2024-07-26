@@ -1,11 +1,21 @@
 "use client";
 
-import { signupUser, validateID, validateNickname } from "@/actions/apis/userAPI";
+import {
+  signupUser,
+  validateID,
+  validateNickname,
+} from "@/actions/apis/userAPI";
 import SignupGenderRadio from "@/app/signup/_components/SignupRadio";
 import SignupTextBox from "@/app/signup/_components/SignupTextBox";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { encryptPW } from "@/lib/authUtil";
-import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/validator";
+import {
+  isEmail,
+  isID,
+  isPassword,
+  isPhoneNumber,
+  isRequired,
+} from "@/lib/validator";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -28,12 +38,22 @@ export function SignupForm() {
   };
 
   useEffect(() => {
-    if (phoneNumber.length === 10) setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
-    if (phoneNumber.length === 11) setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    if (phoneNumber.length === 10)
+      setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    if (phoneNumber.length === 11)
+      setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
     if (phoneNumber.length === 13)
-      setPhoneNumber(phoneNumber.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"));
+      setPhoneNumber(
+        phoneNumber
+          .replace(/-/g, "")
+          .replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
     if (phoneNumber.length === 14)
-      setPhoneNumber(phoneNumber.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"));
+      setPhoneNumber(
+        phoneNumber
+          .replace(/-/g, "")
+          .replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
   }, [phoneNumber]);
 
   const submit = async () => {
@@ -99,17 +119,69 @@ export function SignupForm() {
 
   return (
     <div className="my-5">
-      <SignupTextBox title={"이름"} name={"name"} data={name} setData={setName} />
-      <SignupTextBox title={"별명"} name={"nickname"} data={nickname} setData={setNickname} />
+      <SignupTextBox
+        title={"이름"}
+        name={"name"}
+        data={name}
+        setData={setName}
+      />
+      <SignupTextBox
+        title={"별명"}
+        name={"nickname"}
+        data={nickname}
+        setData={setNickname}
+      />
       <SignupTextBox title={"ID"} name={"id"} data={id} setData={setID} />
-      <SignupTextBox title={"PW"} name={"pw"} data={pw} setData={setPW} type={"password"} />
-      <SignupTextBox title={"PW 확인"} name={"repw"} data={repw} setData={setRePW} type={"password"} />
-      <SignupTextBox title={"이메일"} name={"email"} data={email} setData={setEmail} />
+      <SignupTextBox
+        title={"PW"}
+        name={"pw"}
+        data={pw}
+        setData={setPW}
+        type={"password"}
+      />
+      <SignupTextBox
+        title={"PW 확인"}
+        name={"repw"}
+        data={repw}
+        setData={setRePW}
+        type={"password"}
+      />
+      <SignupTextBox
+        title={"이메일"}
+        name={"email"}
+        data={email}
+        setData={setEmail}
+      />
       <SignupGenderRadio data={gender} setData={setGender} />
-      <SignupTextBox title={"연락처"} name={"phoneNumber"} data={phoneNumber} setData={handlePhoneNumber} />
-      <SignupTextBox title={"생년월일"} name={"birthday"} data={birthday} setData={setBirthday} type={"date"} />
-      <SignupTextBox title={"주소"} name={"addr"} data={addr} setData={setAddr} />
-      <div className="w-100 btn btn-lg text-white" style={{ backgroundColor: "#101648" }} onClick={submit}>
+      <SignupTextBox
+        title={"연락처"}
+        name={"phoneNumber"}
+        data={phoneNumber}
+        setData={handlePhoneNumber}
+      />
+      <SignupTextBox
+        title={"생년월일"}
+        name={"birthday"}
+        data={birthday}
+        setData={setBirthday}
+        type={"date"}
+      />
+      <SignupTextBox
+        title={"위치"}
+        name={"addr"}
+        data={addr}
+        setData={setAddr}
+      />
+      <div
+        className="btn"
+        style={{
+          backgroundColor: "#314FC0",
+          color: "white",
+          width: "100%",
+          padding: "10px",
+        }}
+        onClick={submit}
+      >
         회원가입
       </div>
     </div>

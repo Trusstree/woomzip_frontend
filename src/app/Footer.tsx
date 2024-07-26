@@ -24,9 +24,13 @@ export default function Footer(props: FooterProps) {
       }}
     >
       <div className="container">
-        <div className="pt-3 text-white d-flex align-items-center">
+        <div className="row" style={{ color: "white" }}>
           <div className="row" style={{ marginBottom: "50px" }}>
-            <div id="navigator" className="col" style={{ width: "200px" }}>
+            <div
+              id="navigator"
+              className="col-md-3 col-12"
+              style={{ marginBottom: "40px" }}
+            >
               <div style={{ fontWeight: "600", marginBottom: "10px" }}>
                 회사
               </div>
@@ -67,7 +71,7 @@ export default function Footer(props: FooterProps) {
                 </div>
               </Link>
             </div>
-            <div style={{ width: "290px" }}>
+            <div className="col-md-5 col-12" style={{ marginBottom: "40px" }}>
               <div style={{ fontWeight: "600", marginBottom: "10px" }}>
                 문의
               </div>
@@ -76,7 +80,7 @@ export default function Footer(props: FooterProps) {
                 이메일 : truss369@naver.com
               </div>
             </div>
-            <div style={{ width: "400px" }}>
+            <div className="col-md-4 col-12">
               <div style={{ fontWeight: "600", marginBottom: "10px" }}>
                 소셜
               </div>

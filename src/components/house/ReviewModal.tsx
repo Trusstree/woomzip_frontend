@@ -24,12 +24,20 @@ export function ReviewModal({
       tabIndex={-1}
     >
       <div className="modal-dialog modal-fullscreen">
-        <div className="modal-content" style={{ width: "100%", height: "100%" }}>
+        <div
+          className="modal-content"
+          style={{ width: "100%", height: "100%" }}
+        >
           <div className="modal-header">
             <h5 className="modal-title" id={`${id}_Label`}>
               전체사진({images.length})
             </h5>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div className="modal-body">
             <div className="row">
@@ -39,13 +47,15 @@ export function ReviewModal({
                   className="card-img-top"
                   style={{
                     objectFit: "contain",
-                    width: isTwoCol ? "48%" : "50%",
-                    margin: isTwoCol ? "1%" : "10px",
+                    width: "48%",
+                    margin: "1%",
+                    padding: "0",
+                    height: "auto",
                   }}
-                  alt="main-img"
+                  alt={`image-${i}`}
                   src={e}
                   width={400}
-                  height={600}
+                  height={100}
                   unoptimized={true}
                 />
               ))}
@@ -55,7 +65,10 @@ export function ReviewModal({
             <div className="modal-footer">
               <div style={{ width: "auto" }}>
                 {nickname && `${nickname} |`}{" "}
-                <span style={{ width: "auto" }}> {date && toStringByFormatting(date)}</span>
+                <span style={{ width: "auto" }}>
+                  {" "}
+                  {date && toStringByFormatting(date)}
+                </span>
               </div>
             </div>
           )}
