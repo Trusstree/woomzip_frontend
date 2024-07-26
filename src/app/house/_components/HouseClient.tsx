@@ -67,7 +67,7 @@ export default function Home() {
         style={{
           width: "100%",
           marginLeft: "0",
-          marginBottom: "40px",
+          marginBottom: "28px",
           overflow: "hidden",
           padding: "0",
           position: "relative",
@@ -88,15 +88,25 @@ export default function Home() {
           data-bs-toggle="modal"
           data-bs-target={`#search_modal`}
         >
-          <div style={{ width: "70px", height: "37px" }}>
-            <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"} width={30}></img>
+          <div style={{ width: "28px", height: "32px" }}>
+            <img
+              src={
+                "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"
+              }
+              width={28}
+            ></img>
           </div>
           <div style={{ fontSize: "15px" }}>필터</div>
         </div>
       </div>
       <SearchModal data={searchCondition} setData={setSearchCondition} />
       <PostMenu>
-        <HouseList numShowItems={numShowItems} numShowPages={numShowPages} houseData={houseData} count={count} />
+        <HouseList
+          numShowItems={numShowItems}
+          numShowPages={numShowPages}
+          houseData={houseData}
+          count={count}
+        />
       </PostMenu>
     </>
   );
