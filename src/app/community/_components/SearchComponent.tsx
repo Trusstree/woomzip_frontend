@@ -10,7 +10,23 @@ export default function SearchComponent() {
 
   const router = useRouter();
   const { createQuery, getRouteParams } = useQuery();
+
+  const handleChange = (e) => {
+    setQ(e.target.value);
+  };
+
   const handleClick = () => {
+    router.push(getRouteParams());
+  };
+
+  const handlePressEnter = (e) => {
+    if (e.key === "Enter") {
+      createQuery("q", q);
+      router.push(getRouteParams());
+    }
+  };
+
+  const handleOutOfFocus = () => {
     createQuery("q", q);
     router.push(getRouteParams());
   };
@@ -21,9 +37,9 @@ export default function SearchComponent() {
         className={styles.searchInput}
         placeholder={" 찾고 싶은 내용을 검색해보세요"}
         value={q}
-        onChange={(e) => {
-          setQ(e.target.value);
-        }}
+        onChange={handleChange}
+        onBlur={handleOutOfFocus}
+        onKeyDown={handlePressEnter}
       />
       <div
         className={`btn ${styles.searchButton}`}
