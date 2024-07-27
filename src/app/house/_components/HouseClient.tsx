@@ -15,7 +15,7 @@ export default function Home() {
   const [numShowItems, numShowPages] = [24, 10];
   const [houseData, setHouseData] = useState([] as Array<any>);
   const [count, setCount] = useState(0);
-
+  
   useEffect(() => {
     (async () => {
       const sCondition = {
@@ -58,7 +58,7 @@ export default function Home() {
       setHouseData(data.data[0].houses);
       setCount(data.data[0].total_count);
     })();
-  }, [searchCondition]);
+  }, []);
 
   return (
     <>

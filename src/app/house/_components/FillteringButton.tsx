@@ -1,6 +1,12 @@
 "use client";
 
-export default function FillteringButton({ title, type, value, name, data, setData }) {
+import { useRouter } from "next/navigation";
+import useQuery from "@/hooks/useQuery";
+
+export default function FillteringButton({ title, type, value, name }) {
+  const router = useRouter();
+  const { createQuery, getRouteParams } = useQuery();
+
   const handleClick = () => {
     if (type === "select") {
       let newValue = data[name];
@@ -12,9 +18,11 @@ export default function FillteringButton({ title, type, value, name, data, setDa
       } else {
         newValue = [...newValue, value];
       }
-      setData((oldValue) => ({ ...oldValue, [name]: newValue }));
+      createQuery(name, newValue.join(","));
+      router.replace(getRouteParams());
     } else {
-      setData((oldValue) => ({ ...oldValue, [name]: value }));
+      createQuery(name, value.join(","));
+      router.replace(getRouteParams());
     }
   };
 

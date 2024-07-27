@@ -1,10 +1,8 @@
-"use client";
-
 import FillteringButton from "@/app/house/_components/FillteringButton";
 import MultiRangeSlider from "@/app/house/_components/MultiRangeSlider";
 import { cardPriceText } from "@/lib/stringUtil";
 
-export function SearchModal({ data, setData }) {
+export function SearchModal() {
   const [minPrice, maxPrice, stepPrice] = [0, 300000000, 10000000];
   const [minArea, maxArea, stepArea] = [0, 30, 1];
 
@@ -46,13 +44,7 @@ export function SearchModal({ data, setData }) {
                 {cardPriceText(data?.["price"]?.[0])} ~{" "}
                 {cardPriceText(data?.["price"]?.[1])}
               </div>
-              <MultiRangeSlider
-                name={"price"}
-                min={minPrice}
-                max={maxPrice}
-                step={stepPrice}
-                setData={setData}
-              />
+              <MultiRangeSlider minName={"min_price"} maxName={"max_price"} min={minPrice} max={maxPrice} step={stepPrice} />
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>
@@ -66,13 +58,7 @@ export function SearchModal({ data, setData }) {
               >
                 {data?.["floor_area"]?.[0]}평 ~ {data?.["floor_area"]?.[1]}평
               </div>
-              <MultiRangeSlider
-                name={"floor_area"}
-                min={minArea}
-                max={maxArea}
-                step={stepArea}
-                setData={setData}
-              />
+              <MultiRangeSlider minName={"floor_area_min"} maxName={"floor_area_max"} min={minArea} max={maxArea} step={stepArea} />
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>층수</div>
@@ -81,16 +67,12 @@ export function SearchModal({ data, setData }) {
                 value={1}
                 name={"floor_count"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"2층"}
                 value={2}
                 name={"floor_count"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
@@ -102,40 +84,30 @@ export function SearchModal({ data, setData }) {
                 value={"데크"}
                 name={"specificity"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"다락방"}
                 value={"다락방"}
                 name={"specificity"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"발코니"}
                 value={"발코니"}
                 name={"specificity"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"베란다"}
                 value={"베란다"}
                 name={"specificity"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"옥상"}
                 value={"옥상"}
                 name={"specificity"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
@@ -147,24 +119,18 @@ export function SearchModal({ data, setData }) {
                 value={"경량목"}
                 name={"frame"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"경량스틸"}
                 value={"경량스틸"}
                 name={"frame"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"기타"}
                 value={"기타"}
                 type={"select"}
                 name={"frame"}
-                data={data}
-                setData={setData}
               />
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
@@ -176,24 +142,18 @@ export function SearchModal({ data, setData }) {
                 value={3}
                 name={"estimate_duration"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"6개월 이하"}
                 value={6}
                 name={"estimate_duration"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"12개월 이하"}
                 value={12}
                 name={"estimate_duration"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
@@ -205,16 +165,12 @@ export function SearchModal({ data, setData }) {
                 value={12}
                 name={"warranty"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
               <FillteringButton
                 title={"2년 이상"}
                 value={24}
                 name={"warranty"}
                 type={"select"}
-                data={data}
-                setData={setData}
               />
             </div>
             <div
@@ -231,8 +187,6 @@ export function SearchModal({ data, setData }) {
                   value={1}
                   name={"model"}
                   type={"select"}
-                  data={data}
-                  setData={setData}
                 />
               </div> */}
             </div>
