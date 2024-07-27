@@ -3,6 +3,7 @@ const nextConfig = {
   swcMinify: true,
   reactStrictMode: false,
   images: {
+    formats: ["image/avif", "image/webp"],
     domains: ["trussbucket.s3.ap-northeast-2.amazonaws.com", "trussbucketdev.s3.ap-northeast-2.amazonaws.com", "*"],
   },
   rewrites: () => [
