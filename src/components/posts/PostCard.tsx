@@ -1,6 +1,7 @@
 import DOMPurify from "isomorphic-dompurify";
 import Link from "next/link";
 import { cardCountText } from "@/lib/stringUtil";
+import Image from "next/image";
 
 type PostCardProps = {
   data: DataProps;
@@ -47,12 +48,13 @@ export default function PostCard(props: PostCardProps) {
         }}
       >
         <Link href={{ pathname: `/community/${data["post_id"]}` }}>
-          <img
+          <Image
             src={imgSrcArr[0] || "/blur_image.png"}
-            width={"100%"}
+            width={280}
             height={280}
-            style={{ borderRadius: "10px", objectFit: "cover" }}
-          ></img>
+            style={{ width: "100%", borderRadius: "10px", objectFit: "cover" }}
+            alt={"post card img"}
+          />
           <div
             style={{
               width: "100%",
@@ -138,10 +140,7 @@ export default function PostCard(props: PostCardProps) {
               <img src={data.profilePicture} width={40} height={40}/>
               <div className="mx-3 fw-bold align-self-center">{data.author}</div>
             </div> */}
-            <div
-              className="d-flex justify-content-between"
-              style={{ marginTop: "1px" }}
-            >
+            <div className="d-flex justify-content-between" style={{ marginTop: "1px" }}>
               <div
                 style={{
                   fontSize: "15px",
@@ -165,10 +164,7 @@ export default function PostCard(props: PostCardProps) {
             </div>
 
             <div className="d-flex justify-content-between">
-              <div
-                className="row"
-                style={{ width: "auto", marginTop: "3px", marginLeft: "0px" }}
-              >
+              <div className="row" style={{ width: "auto", marginTop: "3px", marginLeft: "0px" }}>
                 {/* <div className="d-flex" style={{ width: "50px", padding: "0" }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,7 @@
 
 import { useUser } from "@/app/ContextSession";
 import { AddressInputForm } from "@/app/test/_components/AddressInputForm";
-import InputImageComponent from "@/app/test/_components/InputImageComponent";
+import InputImageComponent from "@/components/InputImageComponent";
 import { encryptPW } from "@/lib/authUtil";
 import React, { Suspense, useState } from "react";
 
