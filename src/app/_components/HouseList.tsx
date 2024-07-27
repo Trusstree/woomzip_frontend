@@ -24,7 +24,7 @@ export default async function AppHouseList({ numShowItems }) {
       }}
     >
       {houseData.map((e, i) => (
-        <HouseCard key={i} data={e} />
+        <HouseCard key={i} data={e} className={"col-11"} />
       ))}
     </div>
   );

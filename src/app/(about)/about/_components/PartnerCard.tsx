@@ -2,7 +2,7 @@ export default function PartnerCard({ src, title }) {
   return (
     <div
       style={{
-        width: "250px",
+        width: "170px",
         textAlign: "center",
       }}
     >
@@ -15,7 +15,9 @@ export default function PartnerCard({ src, title }) {
           objectFit: "cover",
         }}
       />
-      <div style={{ fontSize: "18px", fontWeight: "500" }}>{title}</div>
+      <div style={{ fontSize: "16px", fontWeight: "500", marginTop: "10px" }}>
+        {title}
+      </div>
     </div>
   );
 }

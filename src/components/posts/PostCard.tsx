@@ -27,9 +27,7 @@ const style = {
   칼럼: { backgroundColor: "#F9F871", color: "#FFC75F" },
 };
 
-export default function PostCard(props: PostCardProps) {
-  const { data } = props;
-
+export default function PostCard({ data, className }: PostCardProps) {
   const regex = /<([^>]+)>/gi;
   const imgSrcArr = data["content"]
     .split(/img src="/g)
@@ -37,7 +35,7 @@ export default function PostCard(props: PostCardProps) {
     .map((e) => e.split('"')[0]);
 
   return (
-    <div className="col-md-4 col-lg-3">
+    <div className={`${className ? `${className} ` : ""}col-md-4 col-lg-3`}>
       <div
         className="card"
         style={{
@@ -48,7 +46,7 @@ export default function PostCard(props: PostCardProps) {
       >
         <Link href={{ pathname: `/community/${data["post_id"]}` }}>
           <img
-            src={imgSrcArr[0] || "/blur_image.png"}
+            src={imgSrcArr[0] || "/basic_image.png"}
             width={"100%"}
             height={280}
             style={{ borderRadius: "10px", objectFit: "cover" }}

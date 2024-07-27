@@ -15,7 +15,7 @@ export const WorkerList = [
         color: "#8AC031",
       },
     ],
-    introduce: '"항상 진실된 사람이 되겠습니다."',
+    introduce: "믿을 수 있는 움집을 만들어가겠습니다.",
     email: "zxcomkt@gmail.com",
   },
   {
@@ -24,7 +24,7 @@ export const WorkerList = [
     dept: "팀장",
     position: [
       {
-        name: "마케팅",
+        name: "입점사 소통",
         backgroundColor: "#FFCCCC",
         color: "#C03142",
       },

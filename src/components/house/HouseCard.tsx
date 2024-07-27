@@ -7,11 +7,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
 
-export default function HouseCard({ data }) {
+export default function HouseCard({ data, className }) {
   const houseImage = data["house_img_urls"].split(",");
 
   return (
-    <div className="col-md-4 col-lg-3">
+    <div className={`${className ? `${className} ` : ""}col-md-4 col-lg-3`}>
       <Link
         className="card text-decoration-none"
         style={{ width: "100%", border: "none" }}

@@ -1,11 +1,24 @@
-export default function HistoryCard({ year, children }: { year: number; children: any }) {
+export default function HistoryCard({
+  year,
+  children,
+}: {
+  year: number;
+  children: any;
+}) {
   return (
-    <div className="col-6 row g-2" style={{ minWidth: "350px", marginBottom: "30px" }}>
-      <div className="col-3 text-center" style={{ fontSize: "20px", fontWeight: "500" }}>
-        {year}
-      </div>
-      <div className="col-9" style={{ minWidth: "350px" }}>
-        <>{children}</>
+    <div className="row">
+      <div className="col-md-7 col-0"></div>
+      <div className="col-md-5 col-12" style={{ marginTop: "30px" }}>
+        <div
+          style={{
+            backgroundColor: "#314FC0",
+            borderRadius: "50px",
+            width: "10px",
+            height: "10px",
+          }}
+        ></div>
+        <div style={{ margin: "20px 0" }}>{year}</div>
+        <div style={{ lineHeight: "2", wordBreak: "keep-all" }}>{children}</div>
       </div>
     </div>
   );
