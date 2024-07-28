@@ -37,20 +37,8 @@ export default function AddHouse({ uid }) {
       alertError("이미지 에러!", "대표 이미지가 빠졌어요 ㅠㅠ");
       return;
     }
-    if (!imageList["external_images"]) {
-      alertError("이미지 에러!", "제품 외부 사진이 빠졌어요 ㅠㅠ");
-      return;
-    }
-    if (!imageList["internal_images"]) {
-      alertError("이미지 에러!", "제품 내부 사진이 빠졌어요 ㅠㅠ");
-      return;
-    }
-    if (!imageList["floor_plan_images"]) {
-      alertError("이미지 에러!", "설계도면 <평면도> 사진이 빠졌어요 ㅠㅠ");
-      return;
-    }
-    if (!imageList["elevation_plan_images"]) {
-      alertError("이미지 에러!", "설계도면 <입면도> 사진이 빠졌어요 ㅠㅠ");
+    if (imageList["external_images"].length + imageList["internal_images"].length > 4) {
+      alertError("이미지 에러!", "제품 사진을 5장 이상 채워주세요!");
       return;
     }
 

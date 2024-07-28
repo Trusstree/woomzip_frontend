@@ -2,8 +2,8 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import SelectBoxApp from "@/app/planning/application/_components/SelectBoxApp";
-import { useSearchParams } from "next/navigation";
-import { alertError } from "@/lib/alertUtil";
+import { useRouter, useSearchParams } from "next/navigation";
+import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { postPlanning } from "@/actions/apis/planningAPI";
 
 export default function PlanningApplicationClient() {
@@ -13,6 +13,7 @@ export default function PlanningApplicationClient() {
   const [finance, setFinance] = useState("");
 
   const params = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     setPlanningData((oldValues) => ({
@@ -50,8 +51,11 @@ export default function PlanningApplicationClient() {
     if (error) {
       console.log(error);
       alertError("에러", "입력값에 문제가 있어요. 새로고침하여 다시 시도해보세요!");
+      return;
     }
     console.log(data);
+    alertSuccess("성공적으로 등록되었어요!", "제대로 입력되었습니다!");
+    router.push("/");
   }, [planningData]);
 
   return (

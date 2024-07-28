@@ -1,22 +1,13 @@
 "use client";
 
-import {
-  signupCompany,
-  validateID,
-  validateNickname,
-} from "@/actions/apis/userAPI";
+import { signupCompany, validateID, validateNickname } from "@/actions/apis/userAPI";
 import SignupGenderRadio from "@/app/signup/_components/SignupRadio";
 import SignupTextBox from "@/app/signup/_components/SignupTextBox";
+import InputImageComponent from "@/components/InputImageComponent";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { encryptPW } from "@/lib/authUtil";
 import { setS3Url } from "@/lib/s3Util";
-import {
-  isEmail,
-  isID,
-  isPassword,
-  isPhoneNumber,
-  isRequired,
-} from "@/lib/validator";
+import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from "@/lib/validator";
 import moment from "moment";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -68,22 +59,12 @@ export function SignupFormCompany() {
   };
 
   useEffect(() => {
-    if (phoneNumber.length === 10)
-      setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
-    if (phoneNumber.length === 11)
-      setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    if (phoneNumber.length === 10) setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    if (phoneNumber.length === 11) setPhoneNumber(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
     if (phoneNumber.length === 13)
-      setPhoneNumber(
-        phoneNumber
-          .replace(/-/g, "")
-          .replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
-      );
+      setPhoneNumber(phoneNumber.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"));
     if (phoneNumber.length === 14)
-      setPhoneNumber(
-        phoneNumber
-          .replace(/-/g, "")
-          .replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
-      );
+      setPhoneNumber(phoneNumber.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"));
   }, [phoneNumber]);
 
   const submit = async () => {
@@ -130,13 +111,12 @@ export function SignupFormCompany() {
       return alertError("홍보채널", `홍보채널을 입력해주세요!`);
     }
 
-    const thumbnailUrl = await S3Thumbnail(thumbnail, nickname);
-    if (thumbnailUrl.length == 0) {
-      return alertError("홍보사진", `홍보용 사진을 입력해주세요!`);
+    if (companyImages.length < 1) {
+      return alertError("회사 프로필사진", "회사 프로필 사진을 입력해주세요!");
     }
-    const imagesArr = await S3CompanyImages(companyImages, nickname);
-    if (imagesArr.length == 0) {
-      return alertError("홍보사진", `홍보용 사진을 입력해주세요!`);
+
+    if (companyImages.length < 5) {
+      return alertError("홍보사진", "회사 사진을 적어도 5장 이상 입력해주세요!");
     }
 
     const encryptedData = {
@@ -144,7 +124,7 @@ export function SignupFormCompany() {
       password: encryptPW(pw),
       name: name,
       nickname: nickname,
-      user_img_url: thumbnailUrl,
+      user_img_url: thumbnail[0],
       one_line_introduce: introduce,
       phone_number: phoneNumber,
       email: email,
@@ -153,7 +133,7 @@ export function SignupFormCompany() {
       addr: addr,
       company_url: prUrl,
       pr_url: youtubeUrl,
-      company_images: imagesArr,
+      company_images: companyImages,
     };
 
     const [data, error] = await signupCompany(encryptedData);
@@ -163,137 +143,42 @@ export function SignupFormCompany() {
       return;
     }
 
-    alertSuccess(
-      "회원가입 신청완료",
-      "기업 회원 가입을 요청했습니다. 확인 후에 알려드릴게요!"
-    );
+    alertSuccess("회원가입 신청완료", "기업 회원 가입을 요청했습니다. 확인 후에 알려드릴게요!");
     router.push("/");
     return;
   };
 
-  const handleCompanyImages = (e) => {
-    const files = Array.from(e.target.files) as Array<File>;
-    const imgs = files.filter((ee) => ee?.type?.split("/")[0] == "image");
-
-    setCompanyImages((oldValues) => [...oldValues, ...imgs]);
-  };
-
-  const handleThumbnail = (e) => {
-    const img = e.target.files[0];
-    if (img.type?.split("/")[0] != "image") return;
-    console.log(img);
-    setThumbnail(img);
-  };
-
   return (
     <div className="my-5">
-      <SignupTextBox
-        title={"이름"}
-        name={"name"}
-        data={name}
-        setData={setName}
-      />
-      <SignupTextBox
-        title={"별명"}
-        name={"nickname"}
-        data={nickname}
-        setData={setNickname}
-      />
+      <SignupTextBox title={"이름"} name={"name"} data={name} setData={setName} />
+      <SignupTextBox title={"별명"} name={"nickname"} data={nickname} setData={setNickname} />
       <SignupTextBox title={"ID"} name={"id"} data={id} setData={setID} />
-      <SignupTextBox
-        title={"PW"}
-        name={"pw"}
-        data={pw}
-        setData={setPW}
-        type={"password"}
-      />
-      <SignupTextBox
-        title={"PW 확인"}
-        name={"repw"}
-        data={repw}
-        setData={setRePW}
-        type={"password"}
-      />
-      <SignupTextBox
-        title={"이메일"}
-        name={"email"}
-        data={email}
-        setData={setEmail}
-      />
-      <SignupTextBox
-        title={"한줄설명"}
-        name={"introduce"}
-        data={introduce}
-        setData={setIntroduce}
-      />
+      <SignupTextBox title={"PW"} name={"pw"} data={pw} setData={setPW} type={"password"} />
+      <SignupTextBox title={"PW 확인"} name={"repw"} data={repw} setData={setRePW} type={"password"} />
+      <SignupTextBox title={"이메일"} name={"email"} data={email} setData={setEmail} />
+      <SignupTextBox title={"한줄설명"} name={"introduce"} data={introduce} setData={setIntroduce} />
       <SignupGenderRadio data={gender} setData={setGender} />
-      <SignupTextBox
-        title={"연락처"}
-        name={"phoneNumber"}
-        data={phoneNumber}
-        setData={handlePhoneNumber}
-      />
-      <SignupTextBox
-        title={"생년월일"}
-        name={"birthday"}
-        data={birthday}
-        setData={setBirthday}
-        type={"date"}
+      <SignupTextBox title={"연락처"} name={"phoneNumber"} data={phoneNumber} setData={handlePhoneNumber} />
+      <SignupTextBox title={"생년월일"} name={"birthday"} data={birthday} setData={setBirthday} type={"date"} />
+
+      <InputImageComponent
+        s3Url={`users/company`}
+        name={"profile"}
+        images={thumbnail}
+        setImages={setThumbnail}
+        maxLength={1}
       />
 
-      <div className={`d-flex mb-3`}>
-        <label
-          htmlFor={`signin_thumbnail`}
-          className="fs-5 col-2"
-          style={{ color: "#101648" }}
-        >
-          {"프로필 사진"}
-        </label>
-        <input
-          className="w-100"
-          type="file"
-          id={`signin_thumbnail`}
-          onChange={handleThumbnail}
-          name={"thumbnail"}
-        />
-      </div>
+      <InputImageComponent
+        s3Url={`users/company`}
+        name={"portfolio"}
+        images={companyImages}
+        setImages={setCompanyImages}
+      />
 
-      <div className={`d-flex mb-3`}>
-        <label
-          htmlFor={`signin_companyImages`}
-          className="fs-5 col-2"
-          style={{ color: "#101648" }}
-        >
-          {"프트폴리오 사진"}
-        </label>
-        <input
-          className="w-100"
-          type="file"
-          id={`signin_companyImages`}
-          onChange={handleCompanyImages}
-          name={"companyImages"}
-          multiple
-        />
-      </div>
-
-      <SignupTextBox
-        title={"위치"}
-        name={"addr"}
-        data={addr}
-        setData={setAddr}
-      />
-      <SignupTextBox
-        title={"홈페이지 주소"}
-        name={"prUrl"}
-        data={prUrl}
-        setData={setPrUrl}
-      />
-      <SignupTextBox
-        title={"홍보채널 주소"}
-        name={"youtubeUrl"}
-        data={youtubeUrl}
-        setData={setYoutubeUrl}
-      />
+      <SignupTextBox title={"위치"} name={"addr"} data={addr} setData={setAddr} />
+      <SignupTextBox title={"홈페이지 주소"} name={"prUrl"} data={prUrl} setData={setPrUrl} />
+      <SignupTextBox title={"홍보채널 주소"} name={"youtubeUrl"} data={youtubeUrl} setData={setYoutubeUrl} />
 
       <div
         className="btn"

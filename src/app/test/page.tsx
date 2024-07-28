@@ -34,7 +34,13 @@ export default function Page() {
         <input onChange={handlePW}></input>
         <div>ori: {pw}</div>
         <div style={{ wordBreak: "break-all" }}>en: {encryptedPW}</div>
-        <InputImageComponent s3Url={"test/images"} name={"images"} images={images} setImages={setImages} />
+        <InputImageComponent
+          s3Url={"test/images"}
+          name={"images"}
+          images={images}
+          setImages={setImages}
+          maxLength={3}
+        />
         <button
           onClick={() => {
             console.log(images);

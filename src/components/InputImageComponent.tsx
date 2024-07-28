@@ -1,5 +1,6 @@
 "use client";
 
+import { alertError } from "@/lib/alertUtil";
 import { deleteS3Url, setS3Url } from "@/lib/s3Util";
 import imageCompression from "browser-image-compression";
 import moment from "moment";
@@ -10,10 +11,31 @@ const options = {
   useWebWorker: true,
 };
 
-export default function InputImageComponent({ s3Url, name, images, setImages }) {
+export default function InputImageComponent({
+  s3Url,
+  name,
+  images,
+  setImages,
+  maxLength,
+}: {
+  s3Url: string;
+  name: string;
+  images: any;
+  setImages: any;
+  maxLength?: number;
+}) {
   const handleChange = async (e) => {
     const files = Array.from(e.target.files) as Array<File>;
-    const imgs = files.filter((ee) => ee?.type?.split("/")[0] == "image");
+    let imgs = files.filter((ee) => ee?.type?.split("/")[0] == "image");
+    if (maxLength) {
+      if (imgs.length + images.length > maxLength) {
+        alertError(
+          "너무 많은 사진이 들어왔어요..",
+          `해당 선택지에는 사진을 최대 ${maxLength}장까지 넣을 수 있어요. 사진을 지운 후에 다시 넣어주세요!`
+        );
+      }
+      imgs = imgs.filter((_, i) => images.length + i < maxLength);
+    }
 
     imgs.forEach(async (e, i) => {
       const compressedImage = await imageCompression(e, options);
@@ -31,8 +53,6 @@ export default function InputImageComponent({ s3Url, name, images, setImages }) 
 
   const deleteImage = async (index) => {
     const url = images[index].split(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/`)[1];
-    console.log(url);
-
     await deleteS3Url(url);
     setImages((oldValues) => oldValues.filter((_, i) => i != index));
   };
