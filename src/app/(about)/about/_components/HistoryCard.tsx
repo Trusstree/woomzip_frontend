@@ -17,7 +17,7 @@ export default function HistoryCard({
             height: "10px",
           }}
         ></div>
-        <div style={{ margin: "20px 0" }}>{year}</div>
+        <div style={{ margin: "20px 0", fontWeight: "600" }}>{year}</div>
         <div style={{ lineHeight: "2", wordBreak: "keep-all" }}>{children}</div>
       </div>
     </div>

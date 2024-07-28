@@ -13,7 +13,7 @@ export default function Home() {
             position: "absolute",
             top: "10%",
             left: "10%",
-            width: "100%",
+            width: "90%",
             color: "white",
             fontSize: "7vw",
             fontWeight: "500",

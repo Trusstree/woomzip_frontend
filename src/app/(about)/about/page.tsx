@@ -19,7 +19,7 @@ export default function About() {
             position: "absolute",
             bottom: "10%",
             left: "10%",
-            width: "100%",
+            width: "90%",
             color: "white",
             fontSize: "4vw",
             fontWeight: "500",
@@ -63,19 +63,20 @@ export default function About() {
             fontWeight: "600",
             marginTop: "20px",
             wordBreak: "keep-all",
+            width: "90%",
+            marginLeft: "5%",
           }}
         >
           <div>
-            우리를 통해 지방 인구 소멸 문제 해결에 한 발자국 나아갈 수 있도록,
+            지방소멸 문제 해결에 한 발자국 나아갈 수 있도록,
             <div style={{ color: "gray", fontWeight: "500" }}>
               건축시장을 혁신하여 귀촌 결정의 허들을 낮추겠습니다.
             </div>
           </div>
           <div style={{ marginTop: "30px" }}>
-            우리를 통해 대한민국에 아름다운 집들이 많아지도록,
+            대한민국에 아름다운 집들이 많아지도록,
             <div style={{ color: "gray", fontWeight: "500" }}>
-              기술을 통해 짓는 과정마저 아름다운 행복을 담은 집들을
-              만들겠습니다.
+              기술을 통해 짓는 과정마저 아름다운 집들을 만들겠습니다.
             </div>
           </div>
         </div>
@@ -162,7 +163,6 @@ export default function About() {
                 우수상
               </div>
               <div>7월 / 서울시 캠퍼스타운, 숭실대학교 챌린지스테이션 입주</div>
-              <div>8월 / 개인사업자 트러스 설립</div>
               <div>
                 9월 / 하나금융그룹 주최 언더독스 주관, 하나소셜유니버시티 수료
               </div>
@@ -182,7 +182,7 @@ export default function About() {
                 베타서비스 출시
               </div>
               <div>5월 / 주식회사 트러스트리 법인 설립</div>
-              <div>6월 / 플랫폼명 '움집(woomzip)'으로 변경</div>
+              <div>6월 / 서비스명 '움집(woomzip)'으로 변경</div>
               <div>7월 / 학생 창업유망팀 300 성장트랙 선정</div>
               <div>8월 / '움집(woomzip)' 정식서비스 출시</div>
             </HistoryCard>
@@ -219,9 +219,10 @@ export default function About() {
         </div>
 
         <div
-          className={`w-100 row flex-nowrap overflow-auto`}
+          className={`row flex-nowrap overflow-auto`}
           style={{
-            marginLeft: "-50px",
+            width: "103%",
+            marginLeft: "-3%",
             padding: "0",
             scrollbarWidth: "none",
             msOverflowStyle: "none",
@@ -272,11 +273,12 @@ export default function About() {
                     padding: "50px 0",
                     fontSize: "16px",
                     fontWeight: "400",
+                    wordBreak: "keep-all",
                   }}
                 >
                   전화번호 : 0507-1369-6158
                   <br />
-                  이메일 : service@woomzip.com
+                  이메일 : truss369@naver.com
                   <br />
                   주소 : 서울특별시 동작구 상도로 55길 8, 304호(상도동,
                   숭실대학교 챌린지스테이션)

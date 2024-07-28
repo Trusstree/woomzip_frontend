@@ -21,7 +21,7 @@ export const WorkerList = [
   {
     src: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team/sehongpark.jpg",
     name: "박세홍",
-    dept: "팀장",
+    dept: "비즈니스 팀장",
     position: [
       {
         name: "입점사 소통",
