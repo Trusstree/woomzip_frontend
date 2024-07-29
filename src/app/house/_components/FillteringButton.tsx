@@ -5,11 +5,11 @@ import useQuery from "@/hooks/useQuery";
 
 export default function FillteringButton({ title, type, value, name }) {
   const router = useRouter();
-  const { createQuery, getRouteParams } = useQuery();
+  const { createQuery, getParams, getRouteParams } = useQuery();
 
   const handleClick = () => {
     if (type === "select") {
-      let newValue = data?.[name];
+      let newValue = [getParams().get(name)];
       if (!newValue) {
         newValue = [value];
       } else if (newValue.includes(value)) {
@@ -38,10 +38,14 @@ export default function FillteringButton({ title, type, value, name }) {
         justifyContent: "center",
         alignContent: "center",
         backgroundColor:
-          data?.[name] === value || (type === "select" && data?.[name]?.includes(value)) ? "#F5F7FF" : "white",
+          getParams().get(name) === value || (type === "select" && getParams().get(name)?.includes(value))
+            ? "#F5F7FF"
+            : "white",
         borderWidth: "2px",
         borderColor:
-          data?.[name] === value || (type === "select" && data?.[name]?.includes(value)) ? "#314FC0" : "gray",
+          getParams().get(name) === value || (type === "select" && getParams().get(name)?.includes(value))
+            ? "#314FC0"
+            : "gray",
       }}
     >
       <div onClick={handleClick}>

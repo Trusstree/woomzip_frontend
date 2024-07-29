@@ -8,16 +8,19 @@ import { getHouses } from "@/actions/apis/houseAPI";
 import { arrayMin, arraySort } from "@/lib/functionUtil";
 import { SearchModal } from "@/app/house/_components/SearchModal";
 import HouseCategory from "@/app/house/_components/HouseCategory";
+import useQuery from "@/hooks/useQuery";
 
 export default function Home() {
   const { page } = usePage();
-  const [searchCondition, setSearchCondition] = useState({});
   const [numShowItems, numShowPages] = [24, 10];
   const [houseData, setHouseData] = useState([] as Array<any>);
   const [count, setCount] = useState(0);
-  
+  const { getParams } = useQuery();
+
   useEffect(() => {
     (async () => {
+      const searchCondition = getParams();
+
       const sCondition = {
         q: searchCondition["q"],
         price_min: searchCondition["price"]?.[0],
@@ -89,24 +92,14 @@ export default function Home() {
           data-bs-target={`#search_modal`}
         >
           <div style={{ width: "28px", height: "32px" }}>
-            <img
-              src={
-                "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"
-              }
-              width={28}
-            ></img>
+            <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"} width={28}></img>
           </div>
           <div style={{ fontSize: "15px" }}>필터</div>
         </div>
       </div>
-      <SearchModal data={searchCondition} setData={setSearchCondition} />
+      <SearchModal />
       <PostMenu>
-        <HouseList
-          numShowItems={numShowItems}
-          numShowPages={numShowPages}
-          houseData={houseData}
-          count={count}
-        />
+        <HouseList numShowItems={numShowItems} numShowPages={numShowPages} houseData={houseData} count={count} />
       </PostMenu>
     </>
   );

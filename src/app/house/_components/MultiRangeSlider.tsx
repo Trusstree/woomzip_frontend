@@ -28,9 +28,9 @@ export default function MultiRangeSlider(props: MultiRangeSliderProps) {
     if (e.target.value >= maxValue) {
       _max = Math.min(Math.max(Number(e.target.value) + step, minValue + step), max);
       setMaxValue(_max);
-      createQuery(maxName, (_max).toString());
+      createQuery(maxName, _max.toString());
     }
-    createQuery(minName, (_min).toString());
+    createQuery(minName, _min.toString());
     router.replace(getRouteParams());
   };
 
@@ -41,9 +41,9 @@ export default function MultiRangeSlider(props: MultiRangeSliderProps) {
     if (e.target.value <= minValue) {
       _min = Math.max(Math.min(Number(e.target.value) - step, maxValue - step), min);
       setMinValue(_min);
-      createQuery(minName, (_min).toString());
+      createQuery(minName, _min.toString());
     }
-    createQuery(maxName, (_max).toString());
+    createQuery(maxName, _max.toString());
     router.replace(getRouteParams());
   };
 
@@ -71,10 +71,10 @@ export default function MultiRangeSlider(props: MultiRangeSliderProps) {
           onChange={setMax}
         />
 
-        <div id={`${name}Slider`} className={`slider ${styles.slider}`}>
-          <div id={`${name}Track`} className={`track ${styles.track}`}></div>
+        <div id={`${minName}Slider`} className={`slider ${styles.slider}`}>
+          <div id={`${minName}Track`} className={`track ${styles.track}`}></div>
           <div
-            id={`${name}Range`}
+            id={`${minName}Range`}
             className={`range ${styles.range}`}
             style={{
               left: `${(100 * (minValue - min)) / (max - min)}%`,

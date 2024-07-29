@@ -1,10 +1,15 @@
+"use client";
+
 import FillteringButton from "@/app/house/_components/FillteringButton";
 import MultiRangeSlider from "@/app/house/_components/MultiRangeSlider";
+import useQuery from "@/hooks/useQuery";
 import { cardPriceText } from "@/lib/stringUtil";
+import { useEffect, useState } from "react";
 
-export function SearchModal({ data }) {
+export function SearchModal() {
   const [minPrice, maxPrice, stepPrice] = [0, 300000000, 10000000];
   const [minArea, maxArea, stepArea] = [0, 30, 1];
+  const { getParams } = useQuery();
 
   return (
     <div
@@ -26,8 +31,13 @@ export function SearchModal({ data }) {
           <div className="modal-body">
             <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>가격</div>
-              <div className="ms-3" style={{ visibility: data?.["price"] ? "visible" : "hidden" }}>
-                {cardPriceText(data?.["price"]?.[0])} ~ {cardPriceText(data?.["price"]?.[1])}
+              <div
+                className="ms-3"
+                style={{
+                  visibility: getParams().get("min_price") && getParams().get("max_price") ? "visible" : "hidden",
+                }}
+              >
+                {cardPriceText(getParams().get("min_price"))} ~ {cardPriceText(getParams().get("max_price"))}
               </div>
               <MultiRangeSlider
                 minName={"min_price"}
@@ -42,10 +52,11 @@ export function SearchModal({ data }) {
               <div
                 className="ms-3"
                 style={{
-                  visibility: data?.["floor_area"] ? "visible" : "hidden",
+                  visibility:
+                    getParams().get("floor_area_min") && getParams().get("floor_area_max") ? "visible" : "hidden",
                 }}
               >
-                {data?.["floor_area"]?.[0]}평 ~ {data?.["floor_area"]?.[1]}평
+                {getParams().get("floor_area_min")}평 ~ {getParams().get("floor_area_max")}평
               </div>
               <MultiRangeSlider
                 minName={"floor_area_min"}
