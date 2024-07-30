@@ -1,6 +1,6 @@
 import LivingCardList from "@/components/living/LivingCardList";
 import PostMenu from "@/components/posts/PostMenu";
-import SearchComponent from "@/app/community/_components/SearchComponent";
+import SearchComponent from "@/components/SearchComponent";
 import LivingCategory from "./_components/LivingCategory";
 import { getLivings } from "@/actions/apis/livingAPI";
 

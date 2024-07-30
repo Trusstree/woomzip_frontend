@@ -8,28 +8,31 @@ export default function FillteringButton({ title, type, value, name }) {
   const { createQuery, getParams, getRouteParams } = useQuery();
 
   const handleClick = () => {
+    const _value = typeof value == "number" ? value.toString() : value;
     if (type === "select") {
-      let newValue = [getParams().get(name)];
+      let newValue = getParams().get(name)?.split(",");
       if (!newValue) {
-        newValue = [value];
-      } else if (newValue.includes(value)) {
-        const ind = newValue.indexOf(value);
+        newValue = [_value];
+      } else if (newValue.includes(_value)) {
+        const ind = newValue.indexOf(_value);
         newValue = newValue.filter((_, i) => i !== ind);
       } else {
-        newValue = [...newValue, value];
+        newValue = [...newValue, _value];
       }
       createQuery(name, newValue.join(","));
       router.replace(getRouteParams());
     } else {
-      createQuery(name, value.join(","));
+      createQuery(name, _value.join(","));
       router.replace(getRouteParams());
     }
   };
 
   return (
     <div
+      onClick={handleClick}
       className="btn"
       style={{
+        cursor: "pointer",
         width: "auto",
         borderRadius: "10px",
         borderStyle: "solid",
@@ -48,7 +51,7 @@ export default function FillteringButton({ title, type, value, name }) {
             : "gray",
       }}
     >
-      <div onClick={handleClick}>
+      <div>
         <div
           style={{
             fontSize: "12px",

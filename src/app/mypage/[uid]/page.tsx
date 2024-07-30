@@ -13,6 +13,7 @@ async function loadData(uid: string | number) {
     console.log("user error");
     return { role, userData };
   }
+
   userData = data.data[0];
 
   // 회사 데이터면 companyInfo가

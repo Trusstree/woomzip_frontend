@@ -2,9 +2,11 @@
 
 import FillteringButton from "@/app/house/_components/FillteringButton";
 import MultiRangeSlider from "@/app/house/_components/MultiRangeSlider";
+import ResetButton from "@/app/house/_components/ResetButton";
+import SearchComponent from "@/app/house/_components/SearchComponent";
+
 import useQuery from "@/hooks/useQuery";
 import { cardPriceText } from "@/lib/stringUtil";
-import { useEffect, useState } from "react";
 
 export function SearchModal() {
   const [minPrice, maxPrice, stepPrice] = [0, 300000000, 10000000];
@@ -30,14 +32,14 @@ export function SearchModal() {
           </div>
           <div className="modal-body">
             <div style={{ width: "100%", margin: "20px 0" }}>
+              <div style={{ margin: "0 10px", fontWeight: "600" }}>검색</div>
+              <SearchComponent />
+            </div>
+            <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>가격</div>
-              <div
-                className="ms-3"
-                style={{
-                  visibility: getParams().get("min_price") && getParams().get("max_price") ? "visible" : "hidden",
-                }}
-              >
-                {cardPriceText(getParams().get("min_price"))} ~ {cardPriceText(getParams().get("max_price"))}
+              <div className="ms-3">
+                {getParams().get("min_price") && cardPriceText(getParams().get("min_price"))} ~{" "}
+                {getParams().get("max_price") && cardPriceText(getParams().get("max_price"))}
               </div>
               <MultiRangeSlider
                 minName={"min_price"}
@@ -49,13 +51,7 @@ export function SearchModal() {
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>사용 평수</div>
-              <div
-                className="ms-3"
-                style={{
-                  visibility:
-                    getParams().get("floor_area_min") && getParams().get("floor_area_max") ? "visible" : "hidden",
-                }}
-              >
+              <div className="ms-3">
                 {getParams().get("floor_area_min")}평 ~ {getParams().get("floor_area_max")}평
               </div>
               <MultiRangeSlider
@@ -65,6 +61,17 @@ export function SearchModal() {
                 max={maxArea}
                 step={stepArea}
               />
+            </div>
+            <div style={{ width: "100%", margin: "20px 0" }}>
+              <div style={{ margin: "0 10px", fontWeight: "600" }}>방 개수</div>
+              <FillteringButton title={"1개"} value={1} name={"room_count"} type={"select"} />
+              <FillteringButton title={"2개"} value={2} name={"room_count"} type={"select"} />
+              <FillteringButton title={"3개"} value={3} name={"room_count"} type={"select"} />
+            </div>
+            <div style={{ width: "100%", margin: "20px 0" }}>
+              <div style={{ margin: "0 10px", fontWeight: "600" }}>화장실 개수</div>
+              <FillteringButton title={"1개"} value={1} name={"toilet_count"} type={"select"} />
+              <FillteringButton title={"2개"} value={2} name={"toilet_count"} type={"select"} />
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>층수</div>
@@ -103,6 +110,10 @@ export function SearchModal() {
                 margin: "20px 0",
               }}
             >
+              <div style={{ width: "100%" }}>
+                <div style={{ margin: "0 10px", fontWeight: "600" }}>리셋</div>
+                <ResetButton img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"} />
+              </div>
               {/* <div style={{ width: "100%" }}>
                 <div style={{ margin: "0 10px", fontWeight: "600" }}>모델하우스</div>
                 <FillteringButton

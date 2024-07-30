@@ -23,9 +23,7 @@ export default async function AppHouseList({ numShowItems }) {
         msOverflowStyle: "none",
       }}
     >
-      {houseData.map((e, i) => (
-        <HouseCard key={i} data={e} />
-      ))}
+      {houseData?.map((e, i) => <HouseCard key={i} data={e} />)}
     </div>
   );
 }
