@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
 
-export default function HouseCard({ data, className }) {
+export default function HouseCard({ data, className }: { data: any; className?: string }) {
   const houseImage = data["house_img_urls"].split(",");
 
   return (

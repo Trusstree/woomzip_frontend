@@ -20,8 +20,8 @@ export default function PlanningCardList() {
   }, []);
   return (
     <>
-      {planning.map((e) => (
-        <PlanningCard data={e} />
+      {planning.map((e, i) => (
+        <PlanningCard key={i} data={e} />
       ))}
     </>
   );
