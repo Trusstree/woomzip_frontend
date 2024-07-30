@@ -8,46 +8,83 @@ import { getHouses } from "@/actions/apis/houseAPI";
 import { arrayMin, arraySort } from "@/lib/functionUtil";
 import { SearchModal } from "@/app/house/_components/SearchModal";
 import HouseCategory from "@/app/house/_components/HouseCategory";
+import useQuery from "@/hooks/useQuery";
+import { useSearchParams } from "next/navigation";
+import SearchComponent from "@/components/SearchComponent";
 
 export default function Home() {
   const { page } = usePage();
-  const [searchCondition, setSearchCondition] = useState({});
   const [numShowItems, numShowPages] = [24, 10];
   const [houseData, setHouseData] = useState([] as Array<any>);
   const [count, setCount] = useState(0);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     (async () => {
-      const sCondition = {
-        q: searchCondition["q"],
-        price_min: searchCondition["price"]?.[0],
-        price_max: searchCondition["price"]?.[1],
-        floor_area_min: searchCondition["floor_area"]?.[0],
-        floor_area_max: searchCondition["floor_area"]?.[1],
-        room_count: arraySort(searchCondition["room_count"]),
-        toilet_count: arraySort(searchCondition["toilet_count"]),
-        floor_count: arraySort(searchCondition["floor_count"]),
-        warranty: arrayMin(searchCondition["warranty"]),
-        estimate_duration: arrayMin(searchCondition["estimate_duration"]),
-        frame: arraySort(searchCondition["frame"]),
-        specificity: arraySort(searchCondition["specificity"]),
-        model: searchCondition["model"] == 1 ? 1 : undefined,
+      const searchCondition = {
+        q: searchParams.get("q"),
+        price_min: searchParams.get("min_price"),
+        price_max: searchParams.get("max_price"),
+        floor_area_min: searchParams.get("floor_area_min"),
+        floor_area_max: searchParams.get("floor_area_max"),
+        room_count: Number(
+          arraySort(
+            searchParams
+              .get("room_count")
+              ?.split(",")
+              .map((e) => Number(e))
+          )
+        ),
+        toilet_count: Number(
+          arraySort(
+            searchParams
+              .get("toilet_count")
+              ?.split(",")
+              .map((e) => Number(e))
+          )
+        ),
+        floor_count: Number(
+          arraySort(
+            searchParams
+              .get("floor_count")
+              ?.split(",")
+              .map((e) => Number(e))
+          )
+        ),
+        warranty: Number(
+          arrayMin(
+            searchParams
+              .get("warranty")
+              ?.split(",")
+              .map((e) => Number(e))
+          )
+        ),
+        estimate_duration: Number(
+          arrayMin(
+            searchParams
+              .get("estimate_duration")
+              ?.split(",")
+              .map((e) => Number(e))
+          )
+        ),
+        frame: arraySort(searchParams.get("frame")?.split(",")),
+        specificity: arraySort(searchParams.get("specificity")?.split(",")),
+        model: searchParams.get("model") == "1" ? 1 : undefined,
       };
 
-      for (const key in sCondition) {
-        if (!sCondition.hasOwnProperty(key)) {
-          delete sCondition[key];
-        } else if (!sCondition[key] || sCondition[key].length == 0) {
-          delete sCondition[key];
+      for (const key in searchCondition) {
+        if (!searchCondition.hasOwnProperty(key)) {
+          delete searchCondition[key];
+        } else if (!searchCondition[key] || searchCondition[key].length == 0) {
+          delete searchCondition[key];
         }
       }
 
       const params = {
-        skip: sCondition ? 1 : numShowItems * (page - 1) + 1,
+        skip: searchCondition ? 1 : numShowItems * (page - 1) + 1,
         limit: numShowItems,
-        ...sCondition,
+        ...searchCondition,
       };
-      console.log(params);
 
       const [data, error] = await getHouses(params);
       if (error) {
@@ -58,7 +95,7 @@ export default function Home() {
       setHouseData(data.data[0].houses);
       setCount(data.data[0].total_count);
     })();
-  }, [searchCondition]);
+  }, [searchParams]);
 
   return (
     <>
@@ -89,24 +126,15 @@ export default function Home() {
           data-bs-target={`#search_modal`}
         >
           <div style={{ width: "28px", height: "32px" }}>
-            <img
-              src={
-                "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"
-              }
-              width={28}
-            ></img>
+            <img src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png"} width={28}></img>
           </div>
           <div style={{ fontSize: "15px" }}>필터</div>
         </div>
       </div>
-      <SearchModal data={searchCondition} setData={setSearchCondition} />
+      <SearchModal />
+
       <PostMenu>
-        <HouseList
-          numShowItems={numShowItems}
-          numShowPages={numShowPages}
-          houseData={houseData}
-          count={count}
-        />
+        <HouseList numShowItems={numShowItems} numShowPages={numShowPages} houseData={houseData} count={count} />
       </PostMenu>
     </>
   );

@@ -1,6 +1,7 @@
-import { ImageComponent } from "@/components/forms/ImageComponent";
-import { ImageInputComponent } from "@/components/forms/ImageInputComponent";
-import { ImageThumbComponent } from "@/components/forms/ImageThumbComponent";
+"use client";
+
+import InputImageComponent from "@/components/InputImageComponent";
+import { useEffect, useState } from "react";
 
 type HouseImageComponentProps = {
   uid: string | number;
@@ -9,7 +10,24 @@ type HouseImageComponentProps = {
 };
 
 export function HouseImageComponent(props: HouseImageComponentProps) {
-  const { uid, imageList, setImageList } = props;
+  const { uid, setImageList } = props;
+
+  // image states
+  const [representativeImage, setRepresentativeImage] = useState([]);
+  const [externalImages, setExternalImages] = useState([]);
+  const [internalImages, setInternalImages] = useState([]);
+  const [floorPlanImages, setFloorPlanImages] = useState([]);
+  const [elevationPlanImages, setElevationPlanImages] = useState([]);
+
+  useEffect(() => {
+    setImageList({
+      representative_image: representativeImage[0],
+      external_images: externalImages,
+      internal_images: internalImages,
+      floor_plan_images: floorPlanImages,
+      elevation_plan_images: elevationPlanImages,
+    });
+  }, [representativeImage, externalImages, internalImages, floorPlanImages, elevationPlanImages]);
 
   return (
     <div className="mt-4 py-4" style={{ borderTopStyle: "solid", borderTopColor: "#101648", borderTopWidth: "2px" }}>
@@ -17,75 +35,52 @@ export function HouseImageComponent(props: HouseImageComponentProps) {
 
       <div className="row mb-4">
         <h5 className="col-12 fw-bold">대표사진 (1장)</h5>
-        {imageList["representative_image"] ? (
-          <ImageComponent
-            className={"col-2 pb-3"}
-            data={imageList["representative_image"]}
-            title={"representative_image"}
-          />
-        ) : (
-          <ImageThumbComponent uid={uid} className={"col-2"} data={imageList} setData={setImageList} />
-        )}
+        <InputImageComponent
+          s3Url={`houses/${uid}`}
+          name={"representative_image"}
+          images={representativeImage}
+          setImages={setRepresentativeImage}
+          maxLength={1}
+        />
       </div>
 
       <div className="row mb-4">
         <h5 className="fw-bold">제품 외부 사진 (여러장 추가 가능)</h5>
-        {imageList["external_images"]?.map((e, i) => (
-          <ImageComponent key={i} className={"col-2 pb-3"} data={imageList["external_images"][i]} title={e.title} />
-        ))}
-        <ImageInputComponent
-          uid={uid}
-          className={"col-2"}
-          data={imageList}
-          setData={setImageList}
+        <InputImageComponent
+          s3Url={`houses/${uid}`}
           name={"external_images"}
+          images={externalImages}
+          setImages={setExternalImages}
         />
       </div>
 
       <div className="row mb-4">
         <h5 className="fw-bold">제품 내부 사진 (여러장 추가 가능)</h5>
-        {imageList["internal_images"]?.map((e, i) => (
-          <ImageComponent key={i} className={"col-2 pb-3"} data={imageList["internal_images"][i]} title={e.title} />
-        ))}
-        <ImageInputComponent
-          uid={uid}
-          className={"col-2"}
-          data={imageList}
-          setData={setImageList}
+        <InputImageComponent
+          s3Url={`houses/${uid}`}
           name={"internal_images"}
+          images={internalImages}
+          setImages={setInternalImages}
         />
       </div>
 
       <div className="row mb-4">
         <h5 className="fw-bold">설계도면 {`<평면도>`} 사진 (여러장 추가 가능)</h5>
-        {imageList["floor_plan_images"]?.map((e, i) => (
-          <ImageComponent key={i} className={"col-2 pb-3"} data={imageList["floor_plan_images"][i]} title={e.title} />
-        ))}
-        <ImageInputComponent
-          uid={uid}
-          className={"col-2"}
-          data={imageList}
-          setData={setImageList}
+        <InputImageComponent
+          s3Url={`houses/${uid}`}
           name={"floor_plan_images"}
+          images={floorPlanImages}
+          setImages={setFloorPlanImages}
         />
       </div>
 
       <div className="row mb-4">
         <h5 className="fw-bold">설계도면 {`<입면도>`} 사진 (여러장 추가 가능)</h5>
-        {imageList["elevation_plan_images"]?.map((e, i) => (
-          <ImageComponent
-            key={i}
-            className={"col-2 pb-3"}
-            data={imageList["elevation_plan_images"][i]}
-            title={e.title}
-          />
-        ))}
-        <ImageInputComponent
-          uid={uid}
-          className={"col-2"}
-          data={imageList}
-          setData={setImageList}
+        <InputImageComponent
+          s3Url={`houses/${uid}`}
           name={"elevation_plan_images"}
+          images={elevationPlanImages}
+          setImages={setElevationPlanImages}
         />
       </div>
     </div>

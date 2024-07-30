@@ -1,10 +1,14 @@
 "use client";
-import Image from "next/image";
 
-export default function ResetButton({ img, setData, setIsSubmit }) {
+import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+
+export default function ResetButton({ img }) {
+  const router = useRouter();
+  const pathname = usePathname();
+
   const handleClick = () => {
-    setData({});
-    setIsSubmit(true);
+    router.replace(pathname);
   };
 
   return (

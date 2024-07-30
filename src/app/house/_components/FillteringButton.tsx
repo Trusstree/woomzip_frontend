@@ -1,27 +1,38 @@
 "use client";
 
-export default function FillteringButton({ title, type, value, name, data, setData }) {
+import { useRouter } from "next/navigation";
+import useQuery from "@/hooks/useQuery";
+
+export default function FillteringButton({ title, type, value, name }) {
+  const router = useRouter();
+  const { createQuery, getParams, getRouteParams } = useQuery();
+
   const handleClick = () => {
+    const _value = typeof value == "number" ? value.toString() : value;
     if (type === "select") {
-      let newValue = data[name];
+      let newValue = getParams().get(name)?.split(",");
       if (!newValue) {
-        newValue = [value];
-      } else if (newValue.includes(value)) {
-        const ind = newValue.indexOf(value);
+        newValue = [_value];
+      } else if (newValue.includes(_value)) {
+        const ind = newValue.indexOf(_value);
         newValue = newValue.filter((_, i) => i !== ind);
       } else {
-        newValue = [...newValue, value];
+        newValue = [...newValue, _value];
       }
-      setData((oldValue) => ({ ...oldValue, [name]: newValue }));
+      createQuery(name, newValue.join(","));
+      router.replace(getRouteParams());
     } else {
-      setData((oldValue) => ({ ...oldValue, [name]: value }));
+      createQuery(name, _value.join(","));
+      router.replace(getRouteParams());
     }
   };
 
   return (
     <div
+      onClick={handleClick}
       className="btn"
       style={{
+        cursor: "pointer",
         width: "auto",
         borderRadius: "10px",
         borderStyle: "solid",
@@ -30,12 +41,17 @@ export default function FillteringButton({ title, type, value, name, data, setDa
         justifyContent: "center",
         alignContent: "center",
         backgroundColor:
-          data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#F5F7FF" : "white",
+          getParams().get(name) === value || (type === "select" && getParams().get(name)?.includes(value))
+            ? "#F5F7FF"
+            : "white",
         borderWidth: "2px",
-        borderColor: data[name] === value || (type === "select" && data[name]?.includes(value)) ? "#314FC0" : "gray",
+        borderColor:
+          getParams().get(name) === value || (type === "select" && getParams().get(name)?.includes(value))
+            ? "#314FC0"
+            : "gray",
       }}
     >
-      <div onClick={handleClick}>
+      <div>
         <div
           style={{
             fontSize: "12px",

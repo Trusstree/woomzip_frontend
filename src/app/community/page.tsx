@@ -1,6 +1,6 @@
 import PostMenu from "@/components/posts/PostMenu";
 import PostList from "@/components/posts/PostList";
-import SearchComponent from "@/app/community/_components/SearchComponent";
+import SearchComponent from "@/components/SearchComponent";
 import Category from "@/app/community/_components/Category";
 
 export default function Page() {
@@ -18,8 +18,7 @@ export default function Page() {
             wordBreak: "keep-all",
           }}
         >
-          <span style={{ color: "#314FC0" }}>움집</span>에서 당신의 이야기를
-          들려주세요
+          <span style={{ color: "#314FC0" }}>움집</span>에서 당신의 이야기를 들려주세요
         </div>
         <div
           className="container"

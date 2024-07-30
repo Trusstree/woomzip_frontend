@@ -21,7 +21,7 @@ export default function CategoryButton({
   };
 
   return (
-    <div className={styles.categoryButton} onClick={handleClick}>
+    <div className={styles.categoryButton} onClick={handleClick} style={{ cursor: "pointer" }}>
       <div className={styles.categoryIcon}>
         <img src={imgSrc} alt={title} />
       </div>

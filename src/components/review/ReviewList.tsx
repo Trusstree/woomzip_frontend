@@ -25,7 +25,7 @@ export default async function ReviewList({
         )}
       </div>
       <div className="row flex-nowrap overflow-auto g-2" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
-        {review.map((e, i) => (
+        {review?.map((e, i) => (
           <ReviewCard
             key={e["pavilion_review_id"]}
             id={e["fk_pavilion_id"]}

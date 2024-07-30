@@ -30,3 +30,29 @@ export const postPlanning = async (house: any) => {
 
   return [data, error];
 };
+
+export const getPlanning = async () => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await privateApi.get(`/planning/admin/pending`);
+    data = result?.data;
+  } catch (err) {
+    error = err.response?.data;
+  }
+
+  return [data, error];
+};
+
+export const postPlanningConfirm = async (pid: any) => {
+  let [data, error] = [undefined, undefined] as any;
+
+  try {
+    const result = await privateApi.post(`/planning/admin/deliver`, { planningId: pid });
+    data = result?.data;
+  } catch (err) {
+    error = err.response?.data;
+  }
+
+  return [data, error];
+};
