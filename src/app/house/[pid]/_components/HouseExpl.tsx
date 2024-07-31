@@ -1,6 +1,7 @@
 "use client";
 
 import RowText from "@/app/house/[pid]/_components/RowText";
+import HalfRowText from "@/app/house/[pid]/_components/HalfRowText";
 import useQuery from "@/hooks/useQuery";
 import { parseSpecificationInfo } from "@/lib/parseUtil";
 import { detailPriceText } from "@/lib/stringUtil";
@@ -41,7 +42,7 @@ export default function HouseExpl({
 
   return (
     <>
-      {/*상품 네비게이션 */}
+      {/* 상품 네비게이션
       <div className={styles.navContainer}>
         <div className="d-flex justify-content-between">
           <div className="btn" onClick={onMoveBoxA}>
@@ -57,46 +58,208 @@ export default function HouseExpl({
             배송, 가격
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* 상세 정보 */}
-      <div ref={elementA} className="w-full h-screen relative flex flex-col">
-        <h5 style={{ margin: "100px 0 30px 0" }}>기본 정보</h5>
-        <div style={{ fontSize: "16px", marginBottom: "40px" }}>
+      <div
+        ref={elementA}
+        className="w-full h-screen relative flex flex-col"
+        style={{ margin: "50px 0" }}
+      >
+        <div className="row g-5">
+          <HalfRowText name={"방"} data={`${houseData["room_count"]}개`} />
+          <HalfRowText name={"욕실"} data={`${houseData["toilet_count"]}개`} />
+          <HalfRowText
+            name={"실평수"}
+            data={`${houseData["total_floor_area"].toFixed(1)}평`}
+          />
+          <HalfRowText
+            name={"건축면적"}
+            data={`${houseData["building_area"].toFixed(1)}㎡`}
+          />
+          <HalfRowText
+            name={"소요기간"}
+            data={`${houseData["estimate_duration"]}개월`}
+          />
+          <HalfRowText name={"AS보증"} data={houseData["warranty"]} />
+          <HalfRowText
+            name={"골조"}
+            data={parseSpecificationInfo(specificationData["framework"])}
+          />
+          <HalfRowText name={"특이사항"} data={houseData["specificity_info"]} />
+        </div>
+      </div>
+      <hr />
+      <div
+        className="btn"
+        style={{ fontSize: "16px" }}
+        onClick={() => {
+          router.push(`/mypage/${houseData["fk_seller_id"]}`);
+        }}
+      >
+        <div>{houseData["seller_nickname"]}</div>
+      </div>
+      <div className="row">
+        <div
+          style={{
+            fontSize: "15px",
+            margin: "30px 0 50px 0",
+            fontWeight: "350",
+          }}
+        >
           {houseData["house_explanation"]}
         </div>
-
-        <RowText name={"제품명"} data={houseData["house_name"]} />
-        <hr style={{ border: "1px solid gray" }} />
-        <RowText
-          name={"실 사용 평수"}
-          data={`${houseData["total_floor_area"].toFixed(1)}평`}
-        />
-        <hr style={{ border: "1px solid gray" }} />
-        <RowText
-          name={"건축면적"}
-          data={`${houseData["building_area"].toFixed(1)}㎡`}
-        />
-        <hr style={{ border: "1px solid gray" }} />
-        <RowText
-          name={"제작 소요기간"}
-          data={`${houseData["estimate_duration"]}개월`}
-        />
-        <hr style={{ border: "1px solid gray" }} />
-        <RowText name={"AS 보증기간"} data={houseData["warranty"]} />
-        <hr style={{ border: "1px solid gray" }} />
-        <RowText
-          name={"방문 가능한 모델하우스"}
-          data={houseData["has_model"] ? "있음" : "없음"}
-        />
-        <hr style={{ border: "1px solid gray" }} />
-        <RowText name={"특이사항"} data={houseData["specificity_info"]} />
-        <hr style={{ border: "1px solid gray" }} />
       </div>
+      <hr />
+
+      {/* 배송 정보 */}
+      <div ref={elementD} style={{ margin: "50px 0" }}>
+        <h5 style={{ marginTop: "30px", fontWeight: "400" }}>배송 정보</h5>
+        <div
+          className="col-12"
+          style={{
+            width: "100%",
+            border: "none",
+            backgroundColor: "#F8F8F9",
+            borderRadius: "5px",
+            padding: "10px",
+            margin: "15px 0",
+            fontSize: "14px",
+          }}
+        >
+          배송 비용은 배송 위치와 진입 환경에 따라 측정됩니다.
+        </div>
+        <div className="row">
+          <div className="col-md-8 col-12" style={{ marginBottom: "20px" }}>
+            <RowText name={"기본 배송비"} data={"미포함(조건에 따라 상이)"} />
+            <RowText name={"배송불가 지역"} data={deliveryData} />
+          </div>
+          <div className="col-md-4 col-12">
+            <div
+              className="card"
+              style={{ width: "100%", padding: "10px", borderColor: "#314FC0" }}
+            >
+              <div style={{ fontSize: "14px" }}>
+                토지 위치와 진입 환경에 따라{" "}
+                <span style={{ color: "#314FC0" }}>
+                  배송비가 최대 2.5배 추가될 수 있어요!
+                </span>
+                <br />
+                <br />
+                <span
+                  className="btn"
+                  onClick={() => {
+                    router.push(gyeonjeokLink);
+                  }}
+                  style={{
+                    backgroundColor: "#314FC0",
+                    color: "white",
+                    padding: "2px",
+                    fontSize: "14px",
+                  }}
+                >
+                  내 집짓기 길잡이, AI 타잔
+                </span>
+                과 내 예상 배송비용을 꼭 확인해보세요!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+
+      {/* 가격 정보 */}
+      <div ref={elementD} style={{ margin: "50px 0" }}>
+        <h5 style={{ marginTop: "30px", fontWeight: "400" }}>가격 정보</h5>
+        <div
+          className="col-12"
+          style={{
+            width: "100%",
+            border: "none",
+            backgroundColor: "#F8F8F9",
+            borderRadius: "5px",
+            padding: "10px",
+            margin: "15px 0",
+            fontSize: "14px",
+          }}
+        >
+          <span style={{ color: "#314FC0" }}>움집</span>의 모든 제품과 옵션에는
+          원칙적으로 제작 도중 추가비용이 발생하지 않으니, 안심하세요!
+          <br />
+          <span style={{ fontSize: "13px" }}>
+            (단, 소비자의 변경 요청사항에 따른 추가비용 제외)
+          </span>
+        </div>
+        <div className="row">
+          <div className="col-md-8 col-12">
+            <RowText
+              name={"기본 가격"}
+              data={detailPriceText(houseData["final_price"])}
+            />
+            <RowText
+              name={"기본 부가세(10%)"}
+              data={detailPriceText(houseData["final_price"] / 10)}
+            />
+            <hr />
+            <div style={{ margin: "20px 0" }}>추가가능 옵션</div>
+            {optionData &&
+              optionData.map((e, i) => (
+                <div key={i}>
+                  <RowText
+                    name={e["option_product_name"]}
+                    data={detailPriceText(e["option_product_price"])}
+                  />
+                </div>
+              ))}
+            <div className="container" style={{ height: "30px" }}></div>
+          </div>
+
+          <div className="col-md-4 col-12">
+            <div
+              className="card"
+              style={{ width: "100%", padding: "10px", borderColor: "#314FC0" }}
+            >
+              <div style={{ fontSize: "14px" }}>
+                고지된 비용에 제품 제작을 제외한 부대 비용은 포함되어 있지
+                않아요.
+                <br />
+                <br />
+                인허가, 토목공사, 기초공사, 각종 인입 공사, 보험, 세금 등 지금
+                보고 있는 비용에서{" "}
+                <span style={{ color: "#314FC0" }}>
+                  평균 약 30%가 추가되고 있어요!
+                </span>
+                <br />
+                <br />
+                <span
+                  className="btn"
+                  onClick={() => {
+                    router.push(gyeonjeokLink);
+                  }}
+                  style={{
+                    backgroundColor: "#314FC0",
+                    color: "white",
+                    padding: "2px",
+                    fontSize: "14px",
+                  }}
+                >
+                  내 집짓기 길잡이, AI 타잔
+                </span>
+                과 내 예상 총비용을 꼭 확인해보세요!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
 
       {/* 제품 사양 */}
-      <div ref={elementB} className="w-full h-screen relative flex flex-col">
-        <h5 style={{ margin: "150px 0 30px 0" }}>상세 정보</h5>
+      <div
+        ref={elementB}
+        className="w-full h-screen relative flex flex-col"
+        style={{ margin: "50px 0" }}
+      >
+        <h5 style={{ marginTop: "30px" }}>상세 정보</h5>
         <div style={{ fontSize: "16px", marginBottom: "40px" }}>
           {parseSpecificationInfo(
             specificationData["specification_description"]
@@ -106,64 +269,52 @@ export default function HouseExpl({
           name={"골조 구조"}
           data={parseSpecificationInfo(specificationData["framework"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"외장재"}
           data={parseSpecificationInfo(specificationData["exterior_material"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"지붕재"}
           data={parseSpecificationInfo(specificationData["roofing_material"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"단열재"}
           data={parseSpecificationInfo(
             specificationData["insulation_material"]
           )}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"내장재"}
           data={parseSpecificationInfo(specificationData["interior_material"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"창호"}
           data={parseSpecificationInfo(specificationData["window"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"난방"}
           data={parseSpecificationInfo(specificationData["heating"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"포함된 가구"}
           data={parseSpecificationInfo(specificationData["furniture"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"주방"}
           data={parseSpecificationInfo(specificationData["kitchen"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"화장실"}
           data={parseSpecificationInfo(specificationData["toilet"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"조명"}
           data={parseSpecificationInfo(specificationData["lighting"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
         <RowText
           name={"기타"}
           data={parseSpecificationInfo(specificationData["etc_info"])}
         />
-        <hr style={{ border: "1px solid gray" }} />
       </div>
 
       <div
@@ -172,109 +323,6 @@ export default function HouseExpl({
         style={{ marginTop: "150px" }}
       >
         {/* <ReviewInfo /> */}
-      </div>
-
-      {/* 배송 정보 */}
-      <div ref={elementD}>
-        <h5 style={{ margin: "150px 0 30px 0" }}>배송 정보</h5>
-        <div style={{ fontSize: "16px", marginBottom: "40px" }}>
-          배송 비용은 배송 위치와 진입 환경에 따라 측정됩니다.
-          <br />
-          <br />
-          토지 위치와 진입 환경에 따라{" "}
-          <span style={{ color: "#314FC0", fontWeight: "600" }}>
-            배송비가 최대 2.5배 추가될 수 있어요!
-          </span>
-          <br />
-          <span style={{ color: "#314FC0", fontWeight: "600" }}>
-            움집만의 내 집짓기 길잡이, AI 타잔
-          </span>
-          과 내 예상 배송비용을 꼭 확인해보세요!
-          <br />
-          <br />
-          <span
-            className="btn"
-            onClick={() => {
-              router.push(gyeonjeokLink);
-            }}
-            style={{ backgroundColor: "#314FC0", color: "white" }}
-          >
-            AI 타잔과 내 배송비 확인해보기
-          </span>
-        </div>
-
-        <RowText name={"배송 불가능한 지역"} data={deliveryData} />
-        <hr style={{ border: "1px solid gray" }} />
-      </div>
-
-      {/* 가격 정보 */}
-      <div>
-        <h5 style={{ margin: "150px 0 30px 0" }}>가격 정보</h5>
-        <div style={{ fontSize: "16px", marginBottom: "40px" }}>
-          <span style={{ color: "#314FC0", fontWeight: "600" }}>움집</span>의
-          모든 제품과 옵션에는 원칙적으로 제작 도중 추가비용이 발생하지 않으니,
-          안심하세요!
-          <br />
-          <span style={{ fontSize: "14px" }}>
-            (단, 소비자의 변경 요청사항에 따른 추가 비용 발생 제외)
-          </span>
-          <br />
-          <br />
-          고지된 비용에 제품 제작을 제외한 부대 비용은 포함되어 있지 않아요.
-          <br />
-          인허가, 토목공사, 기초공사, 각종 인입 공사, 보험, 세금 등 지금 보고
-          있는 비용에서{" "}
-          <span style={{ color: "#314FC0", fontWeight: "600" }}>
-            평균 약 30%정도가 추가되고 있어요!
-          </span>
-          <br />
-          <span style={{ color: "#314FC0", fontWeight: "600" }}>
-            움집만의 내 집짓기 길잡이, AI 타잔
-          </span>
-          과 내 예상 총 건축비용을 알아보세요!
-          <br />
-          <br />
-          <span
-            className="btn"
-            onClick={() => {
-              router.push(gyeonjeokLink);
-            }}
-            style={{ backgroundColor: "#314FC0", color: "white" }}
-          >
-            AI 타잔과 내 총 비용 확인해보기
-          </span>
-        </div>
-
-        <RowText
-          name={"기본 가격"}
-          data={detailPriceText(houseData["final_price"])}
-        />
-        <hr style={{ border: "1px solid gray" }} />
-        <RowText
-          name={"기본 부가세(10%)"}
-          data={detailPriceText(houseData["final_price"] / 10)}
-        />
-        <hr style={{ border: "1px solid gray" }} />
-        <div
-          className="col-4"
-          style={{
-            fontSize: "16px",
-            fontWeight: "600",
-            margin: "40px 0 20px 0",
-          }}
-        >
-          옵션 가격
-        </div>
-        {optionData &&
-          optionData.map((e, i) => (
-            <div key={i}>
-              <RowText
-                name={e["option_product_name"]}
-                data={detailPriceText(e["option_product_price"])}
-              />
-              <hr style={{ border: "1px solid gray" }} />
-            </div>
-          ))}
       </div>
 
       <div className="container" style={{ height: "100px" }}></div>
