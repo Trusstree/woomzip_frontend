@@ -38,8 +38,8 @@ export function SearchModal() {
             <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>가격</div>
               <div className="ms-3">
-                {getParams().get("min_price") && cardPriceText(getParams().get("min_price"))} ~{" "}
-                {getParams().get("max_price") && cardPriceText(getParams().get("max_price"))}
+                {cardPriceText(getParams().get("min_price") ? getParams().get("min_price") : minPrice)} ~{" "}
+                {cardPriceText(getParams().get("max_price") ? getParams().get("max_price") : maxPrice)}
               </div>
               <MultiRangeSlider
                 minName={"min_price"}
@@ -52,7 +52,8 @@ export function SearchModal() {
             <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>사용 평수</div>
               <div className="ms-3">
-                {getParams().get("floor_area_min")}평 ~ {getParams().get("floor_area_max")}평
+                {getParams().get("floor_area_min") ? getParams().get("floor_area_min") : minArea}평 ~{" "}
+                {getParams().get("floor_area_max") ? getParams().get("floor_area_max") : maxArea}평
               </div>
               <MultiRangeSlider
                 minName={"floor_area_min"}
@@ -94,14 +95,14 @@ export function SearchModal() {
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>제작 소요기간</div>
-              <FillteringButton title={"3개월 이하"} value={3} name={"estimate_duration"} type={"select"} />
-              <FillteringButton title={"6개월 이하"} value={6} name={"estimate_duration"} type={"select"} />
-              <FillteringButton title={"12개월 이하"} value={12} name={"estimate_duration"} type={"select"} />
+              <FillteringButton title={"3개월 이하"} value={3} name={"estimate_duration"} type={"text"} />
+              <FillteringButton title={"6개월 이하"} value={6} name={"estimate_duration"} type={"text"} />
+              <FillteringButton title={"12개월 이하"} value={12} name={"estimate_duration"} type={"text"} />
             </div>
             <div style={{ width: "100%", margin: "20px 0" }}>
               <div style={{ margin: "0 10px", fontWeight: "600" }}>AS 보증기간</div>
-              <FillteringButton title={"1년 이상"} value={12} name={"warranty"} type={"select"} />
-              <FillteringButton title={"2년 이상"} value={24} name={"warranty"} type={"select"} />
+              <FillteringButton title={"1년 이상"} value={12} name={"warranty"} type={"text"} />
+              <FillteringButton title={"2년 이상"} value={24} name={"warranty"} type={"text"} />
             </div>
             <div
               style={{

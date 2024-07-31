@@ -11,6 +11,7 @@ import HouseCategory from "@/app/house/_components/HouseCategory";
 import useQuery from "@/hooks/useQuery";
 import { useSearchParams } from "next/navigation";
 import SearchComponent from "@/components/SearchComponent";
+import BadgeList from "@/app/house/_components/BadgeList";
 
 export default function Home() {
   const { page } = usePage();
@@ -131,6 +132,7 @@ export default function Home() {
           <div style={{ fontSize: "15px" }}>필터</div>
         </div>
       </div>
+      <BadgeList />
       <SearchModal />
 
       <PostMenu>

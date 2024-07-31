@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const CarouselData = [
   {
@@ -38,7 +39,7 @@ export default function Carousel({ className }: { className?: string }) {
               style={{ cursor: "pointer" }}
               href={e["url"]}
             >
-              <img
+              <Image
                 className="w-100"
                 style={{
                   overflow: "hidden",
@@ -47,6 +48,8 @@ export default function Carousel({ className }: { className?: string }) {
                 }}
                 src={e.img}
                 alt={"홈"}
+                width={400}
+                height={400}
               />
               <div className="carousel-caption">
                 <div

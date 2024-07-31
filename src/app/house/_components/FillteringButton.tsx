@@ -22,7 +22,7 @@ export default function FillteringButton({ title, type, value, name }) {
       createQuery(name, newValue.join(","));
       router.replace(getRouteParams());
     } else {
-      createQuery(name, _value.join(","));
+      createQuery(name, _value);
       router.replace(getRouteParams());
     }
   };
@@ -41,12 +41,12 @@ export default function FillteringButton({ title, type, value, name }) {
         justifyContent: "center",
         alignContent: "center",
         backgroundColor:
-          getParams().get(name) === value || (type === "select" && getParams().get(name)?.includes(value))
+          getParams().get(name) == value || (type === "select" && getParams().get(name)?.includes(value))
             ? "#F5F7FF"
             : "white",
         borderWidth: "2px",
         borderColor:
-          getParams().get(name) === value || (type === "select" && getParams().get(name)?.includes(value))
+          getParams().get(name) == value || (type === "select" && getParams().get(name)?.includes(value))
             ? "#314FC0"
             : "gray",
       }}
