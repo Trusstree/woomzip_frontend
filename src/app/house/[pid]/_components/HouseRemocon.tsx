@@ -47,12 +47,16 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
     <div className={`card ${styles.HouseRemoconCard}`}>
       <div
         style={{
-          padding: "10px",
+          padding: "15px",
           boxShadow: "3px 3px 13px rgba(0, 0, 0, 0.2)",
           borderRadius: "10px",
         }}
       >
-        <div
+        <div style={{ fontSize: "20px", fontWeight: "500" }}>
+          ₩ {detailPriceText(houseData["final_price"])}{" "}
+          <span style={{ fontWeight: "300" }}>/채</span>
+        </div>
+        {/* <div
           className="btn"
           style={{ fontSize: "15px" }}
           onClick={() => {
@@ -61,24 +65,37 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
         >
           {houseData["seller_nickname"]}
         </div>
-        <div style={{ fontSize: "24px", fontWeight: "600", margin: "10px 0" }}>{houseData["house_name"]}</div>
+        <div style={{ fontSize: "24px", fontWeight: "600", margin: "10px 0" }}>
+          {houseData["house_name"]}
+        </div>
 
         <div className="d-flex" style={{ marginTop: "15px" }}>
           <div>
             {houseData["has_model"] == "1" && (
-              <div className="badge text-white p-2 mx-1" style={{ backgroundColor: "#136E11" }}>
+              <div
+                className="badge text-white p-2 mx-1"
+                style={{ backgroundColor: "#136E11" }}
+              >
                 모델하우스
               </div>
             )}
             {houseData["is_hut"] == "1" && (
-              <div className="badge text-white p-2 mx-1" style={{ backgroundColor: "#314FC0" }}>
+              <div
+                className="badge text-white p-2 mx-1"
+                style={{ backgroundColor: "#314FC0" }}
+              >
                 농막주택
               </div>
             )}
           </div>
           <button className="btn py-0 border-0" onClick={ClickHeart}>
             {heart ? (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width={25}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width={25}
+              >
                 <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
               </svg>
             ) : (
@@ -101,7 +118,10 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
           <div style={{ marginTop: "2px" }}>{heart}</div>
         </div>
 
-        <div className="row" style={{ width: "100%", marginLeft: "0px", marginTop: "10px" }}>
+        <div
+          className="row"
+          style={{ width: "100%", marginLeft: "0px", marginTop: "10px" }}
+        >
           <div className="row" style={{ width: "125px" }}>
             <div style={{ width: "28px", padding: "0" }}>
               <svg
@@ -112,10 +132,23 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
               >
-                <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_959)" />
+                <rect
+                  opacity="0.8"
+                  width="30"
+                  height="30"
+                  fill="url(#pattern0_1672_959)"
+                />
                 <defs>
-                  <pattern id="pattern0_1672_959" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlinkHref="#image0_1672_959" transform="translate(-0.001) scale(0.002)" />
+                  <pattern
+                    id="pattern0_1672_959"
+                    patternContentUnits="objectBoundingBox"
+                    width="1"
+                    height="1"
+                  >
+                    <use
+                      xlinkHref="#image0_1672_959"
+                      transform="translate(-0.001) scale(0.002)"
+                    />
                   </pattern>
                   <image
                     id="image0_1672_959"
@@ -141,10 +174,23 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
               >
-                <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_957)" />
+                <rect
+                  opacity="0.8"
+                  width="30"
+                  height="30"
+                  fill="url(#pattern0_1672_957)"
+                />
                 <defs>
-                  <pattern id="pattern0_1672_957" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlinkHref="#image0_1672_957" transform="translate(-0.001) scale(0.002)" />
+                  <pattern
+                    id="pattern0_1672_957"
+                    patternContentUnits="objectBoundingBox"
+                    width="1"
+                    height="1"
+                  >
+                    <use
+                      xlinkHref="#image0_1672_957"
+                      transform="translate(-0.001) scale(0.002)"
+                    />
                   </pattern>
                   <image
                     id="image0_1672_957"
@@ -155,7 +201,9 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
                 </defs>
               </svg>
             </div>
-            <div style={{ width: "60px", fontSize: "16px", marginTop: "3px" }}>{houseData["room_count"]}개</div>
+            <div style={{ width: "60px", fontSize: "16px", marginTop: "3px" }}>
+              {houseData["room_count"]}개
+            </div>
           </div>
 
           <div className="row" style={{ width: "108px" }}>
@@ -168,10 +216,23 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
               >
-                <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_958)" />
+                <rect
+                  opacity="0.8"
+                  width="30"
+                  height="30"
+                  fill="url(#pattern0_1672_958)"
+                />
                 <defs>
-                  <pattern id="pattern0_1672_958" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlinkHref="#image0_1672_958" transform="translate(-0.001) scale(0.002)" />
+                  <pattern
+                    id="pattern0_1672_958"
+                    patternContentUnits="objectBoundingBox"
+                    width="1"
+                    height="1"
+                  >
+                    <use
+                      xlinkHref="#image0_1672_958"
+                      transform="translate(-0.001) scale(0.002)"
+                    />
                   </pattern>
                   <image
                     id="image0_1672_958"
@@ -182,15 +243,25 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
                 </defs>
               </svg>
             </div>
-            <div style={{ width: "53px", fontSize: "16px", marginTop: "3px" }}>{houseData["toilet_count"]}개</div>
+            <div style={{ width: "53px", fontSize: "16px", marginTop: "3px" }}>
+              {houseData["toilet_count"]}개
+            </div>
           </div>
-        </div>
+        </div> */}
 
         <div className={""} style={{ width: "100%" }}>
           <select
             onChange={(ee) => {
-              if (Number(ee.target.value) >= 0 && !selectedOptionData.includes(optionData[Number(ee.target.value)])) {
-                setSelectedOptionData((oldValue) => [...oldValue, optionData[ee.target.value]]);
+              if (
+                Number(ee.target.value) >= 0 &&
+                !selectedOptionData.includes(
+                  optionData[Number(ee.target.value)]
+                )
+              ) {
+                setSelectedOptionData((oldValue) => [
+                  ...oldValue,
+                  optionData[ee.target.value],
+                ]);
               }
             }}
             disabled={optionData?.length == 0}
@@ -204,22 +275,60 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
               optionData.map((e, i) => (
                 <option key={i} value={i}>
                   {" "}
-                  {e["option_type"]} - {e["option_product_name"]} ({detailPriceText(e["option_product_price"])})
+                  {e["option_type"]} - {e["option_product_name"]} (
+                  {detailPriceText(e["option_product_price"])})
                 </option>
               ))}
           </select>
+
+          <div
+            className={"row"}
+            style={{ width: "100%", marginTop: "10px", marginLeft: "2px" }}
+          >
+            <div
+              className="w-100 btn text-white d-flex justify-content-center align-items-center"
+              style={{ backgroundColor: "#314FC0", height: "60px" }}
+              onClick={() => {
+                router.push(gyeonjeokLink);
+              }}
+            >
+              <span style={{ wordBreak: "keep-all", fontSize: "16px" }}>
+                <span style={{ fontWeight: "600" }}>AI 타잔</span>과
+                <br />내 총 비용 확인하기
+              </span>
+            </div>
+          </div>
+
+          <div
+            style={{
+              fontSize: "14px",
+              fontWeight: "330",
+              textAlign: "center",
+              margin: "10px 0",
+            }}
+          >
+            본 계약 전에는 요금이 청구되지 않습니다.
+          </div>
 
           {/* 선택된 옵션 */}
           <div className="">
             {selectedOptionData &&
               selectedOptionData.map((e, i) => (
-                <div key={i} className="d-flex align-items-center justify-content-between">
-                  <div className="row d-flex align-items-center" style={{ width: "auto", marginLeft: "0px" }}>
+                <div
+                  key={i}
+                  className="d-flex align-items-center justify-content-between"
+                >
+                  <div
+                    className="row d-flex align-items-center"
+                    style={{ width: "auto", marginLeft: "0px" }}
+                  >
                     <div
                       className="btn"
                       style={{ fontSize: "14px", color: "gray", width: "20px" }}
                       onClick={() => {
-                        setSelectedOptionData((oldValue) => oldValue.filter((_, j) => j != i));
+                        setSelectedOptionData((oldValue) =>
+                          oldValue.filter((_, j) => j != i)
+                        );
                       }}
                     >
                       X
@@ -229,43 +338,62 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
                     </div>
                   </div>
 
-                  <div style={{ fontSize: "14px", width: "auto" }}>{detailPriceText(e["option_product_price"])}</div>
+                  <div style={{ fontSize: "14px", width: "auto" }}>
+                    {detailPriceText(e["option_product_price"])}
+                  </div>
                 </div>
               ))}
           </div>
         </div>
 
-        <div className="d-flex justify-content-between" style={{ width: "99%", marginLeft: "3px", marginTop: "10px" }}>
-          <div style={{ width: "100px", fontSize: "16px" }}>할인율</div>
-          <div style={{ width: "auto", fontSize: "16px", fontWeight: "500" }}>
+        <hr style={{ margin: "0" }} />
+        <div
+          className="d-flex justify-content-between"
+          style={{ width: "99%", marginLeft: "3px", marginTop: "10px" }}
+        >
+          <div style={{ width: "100px", fontSize: "15px" }}>할인</div>
+          <div style={{ width: "auto", fontSize: "15px", fontWeight: "400" }}>
             {houseData["discount_rate"] > 0 && ( //houseData.discount
               <>
-                <span style={{ color: "#314FC0", fontSize: "16px" }}>{houseData["discount_rate"]}%</span>
+                <span style={{ color: "#314FC0", fontSize: "16px" }}>
+                  {houseData["discount_rate"]}%
+                </span>
               </>
             )}
           </div>
         </div>
-        <div className="d-flex justify-content-between" style={{ width: "99%", marginLeft: "3px", marginTop: "3px" }}>
-          <div style={{ width: "100px", fontSize: "16px" }}>총 금액</div>
-          <div style={{ width: "auto", fontSize: "16px", fontWeight: "500" }}>
+        <div
+          className="d-flex justify-content-between"
+          style={{ width: "99%", marginLeft: "3px", marginTop: "3px" }}
+        >
+          <div style={{ width: "100px", fontSize: "15px" }}>부가세(10%)</div>
+          <div style={{ width: "auto", fontSize: "15px", fontWeight: "400" }}>
             {detailPriceText(
-              selectedOptionData.reduce((acc, cur) => acc + cur["option_product_price"], 0) + houseData["final_price"]
+              (selectedOptionData.reduce(
+                (acc, cur) => acc + cur["option_product_price"],
+                0
+              ) +
+                houseData["final_price"]) /
+                10
             )}
           </div>
         </div>
-
-        <div className={"row"} style={{ width: "100%", marginTop: "10px", marginLeft: "2px" }}>
-          <div
-            className="w-100 btn text-white d-flex justify-content-center align-items-center"
-            style={{ backgroundColor: "#314FC0", height: "60px" }}
-            onClick={() => {
-              router.push(gyeonjeokLink);
-            }}
-          >
-            <span style={{ wordBreak: "keep-all", fontSize: "16px" }}>
-              <span style={{ fontWeight: "600" }}>AI 타잔</span>과
-              <br />내 총 공사비용 확인하기
-            </span>
+        <div
+          className="d-flex justify-content-between"
+          style={{ width: "99%", marginLeft: "3px", marginTop: "3px" }}
+        >
+          <div style={{ width: "100px", fontSize: "15px", fontWeight: "500" }}>
+            총 금액
+          </div>
+          <div style={{ width: "auto", fontSize: "15px", fontWeight: "500" }}>
+            {detailPriceText(
+              (selectedOptionData.reduce(
+                (acc, cur) => acc + cur["option_product_price"],
+                0
+              ) +
+                houseData["final_price"]) *
+                1.1
+            )}
           </div>
         </div>
       </div>
