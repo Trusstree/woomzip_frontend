@@ -27,17 +27,20 @@ export default function InputImageComponent({
   const handleChange = async (e) => {
     const files = Array.from(e.target.files) as Array<File>;
     let imgs = files.filter((ee) => ee?.type?.split("/")[0] == "image");
+    const imagesLen = images ? images.length : 0;
+
     if (maxLength) {
-      if (imgs.length + images.length > maxLength) {
+      if (imgs.length + imagesLen > maxLength) {
         alertError(
           "너무 많은 사진이 들어왔어요..",
           `해당 선택지에는 사진을 최대 ${maxLength}장까지 넣을 수 있어요. 사진을 지운 후에 다시 넣어주세요!`
         );
       }
-      imgs = imgs.filter((_, i) => images.length + i < maxLength);
+      imgs = imgs.filter((_, i) => imagesLen + i < maxLength);
     }
 
     imgs.forEach(async (e, i) => {
+      console.log(e);
       const compressedImage = await imageCompression(e, options);
       const title = "images" + moment().format(`YYYYMMDDHHmmss`) + `${i}`;
       const url = `${s3Url}/${title}.${e.type.split("/")[1]}`;
@@ -73,7 +76,7 @@ export default function InputImageComponent({
         />
       </div>
       <div className="row flex-nowrap overflow-auto">
-        {images.map((e, i) => (
+        {images?.map((e, i) => (
           <div className="col-2 card p-0 mx-3" key={i}>
             <img className={"card-img-top"} src={e} alt={`images ${name} ${i}`} />
             <div className="card-img-overlay p-0">

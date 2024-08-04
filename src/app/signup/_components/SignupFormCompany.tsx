@@ -41,8 +41,8 @@ export function SignupFormCompany() {
   const [pw, setPW] = useState("");
   const [repw, setRePW] = useState("");
   const [name, setName] = useState("");
-  const [thumbnail, setThumbnail] = useState(undefined as any);
-  const [introduce, setIntroduce] = useState("");
+  const [thumbnail, setThumbnail] = useState([]);
+  const [introduce, setIntroduce] = useState([]);
   const [nickname, setNickname] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -161,20 +161,29 @@ export function SignupFormCompany() {
       <SignupTextBox title={"연락처"} name={"phoneNumber"} data={phoneNumber} setData={handlePhoneNumber} />
       <SignupTextBox title={"생년월일"} name={"birthday"} data={birthday} setData={setBirthday} type={"date"} />
 
-      <InputImageComponent
-        s3Url={`users/company`}
-        name={"profile"}
-        images={thumbnail}
-        setImages={setThumbnail}
-        maxLength={1}
-      />
-
-      <InputImageComponent
-        s3Url={`users/company`}
-        name={"portfolio"}
-        images={companyImages}
-        setImages={setCompanyImages}
-      />
+      <div className={`d-flex mb-3`}>
+        <label className="fs-5 col-2" style={{ color: "#101648" }}>
+          프로필 사진
+        </label>
+        <InputImageComponent
+          s3Url={`users/company`}
+          name={"profile"}
+          images={thumbnail}
+          setImages={setThumbnail}
+          maxLength={1}
+        />
+      </div>
+      <div className={`d-flex mb-3`}>
+        <label className="fs-5 col-2" style={{ color: "#101648" }}>
+          포트폴리오 사진
+        </label>
+        <InputImageComponent
+          s3Url={`users/company`}
+          name={"portfolio"}
+          images={companyImages}
+          setImages={setCompanyImages}
+        />
+      </div>
 
       <SignupTextBox title={"위치"} name={"addr"} data={addr} setData={setAddr} />
       <SignupTextBox title={"홈페이지 주소"} name={"prUrl"} data={prUrl} setData={setPrUrl} />

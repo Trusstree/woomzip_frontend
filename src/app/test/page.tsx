@@ -39,7 +39,7 @@ export default function Page() {
           name={"images"}
           images={images}
           setImages={setImages}
-          maxLength={3}
+          maxLength={5}
         />
         <button
           onClick={() => {

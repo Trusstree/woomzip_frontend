@@ -13,13 +13,13 @@ export default function SignupTextBox({
 }) {
   return (
     <div className={`d-flex mb-3`}>
-      <label htmlFor={`signin_${name}`} className="fs-5 col-2" style={{ color: "#101648" }}>
+      <label htmlFor={`signup_${name}`} className="fs-5 col-2" style={{ color: "#101648" }}>
         {title}
       </label>
       <input
         className="w-100"
         type={type || "text"}
-        id={`signin_${name}`}
+        id={`signup_${name}`}
         onChange={(e) => {
           setData(e.target.value);
         }}
