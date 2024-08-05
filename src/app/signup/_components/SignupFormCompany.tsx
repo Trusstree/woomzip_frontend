@@ -81,8 +81,14 @@ export function SignupFormCompany() {
     if (!isPassword(pw)) {
       return alertError("PW", `비밀번호를 8~16자 사이로 입력해주세요!`);
     }
+    if (introduce.length > 30) {
+      alertError("한 줄 설명", `한 줄 설명이 너무 길어요. 30자 이내로 작성부탁드려요!`);
+    }
     if (!isEmail(email)) {
       return alertError("이메일", `이메일 형식에 맞게 입력해주세요!`);
+    }
+    if (email.length > 50) {
+      return alertError("이메일", `이메일이 너무 길어서 입력이 되지 않습니다. 대표자 번호로 문의 남겨주세요 ㅠㅠ`);
     }
     if (!isRequired(name)) {
       return alertError("이름", `이름을 입력해주세요!`);
