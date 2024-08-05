@@ -3,39 +3,37 @@ import { TextAreaComponent } from "@/components/forms/TextAreaComponent";
 import { TextBoxComponent } from "@/components/forms/TextBoxComponent";
 
 type HouseSpecificationComponentProps = {
-  specificationInfo: any
-  setSpecificationInfo: Function
-  handleSpecification: Function
-}
+  specificationInfo: any;
+  setSpecificationInfo: Function;
+  handleSpecification: Function;
+};
 
 export function HouseSpecificationComponent(props: HouseSpecificationComponentProps) {
-  const {specificationInfo, setSpecificationInfo, handleSpecification} = props;
+  const { specificationInfo, setSpecificationInfo, handleSpecification } = props;
 
   return (
-    <div
-      className="mt-4 py-4"
-      style={{borderTopStyle:"solid", borderTopColor:"#101648", borderTopWidth:"2px"}}>
+    <div className="mt-4 py-4" style={{ borderTopStyle: "solid", borderTopColor: "#101648", borderTopWidth: "2px" }}>
       <h3 className="fw-bold mb-4">기본 제품 제작 사양을 입력해주세요.</h3>
-      
+
       <SelectComponent
         title={"골조구조"}
         name={"framework"}
         onChange={setSpecificationInfo}
-        dataList={["경량목","경량스틸","철근콘크리트"]}
+        dataList={["경량목", "경량스틸", "철근콘크리트"]}
       />
 
       <SelectComponent
         title={"외장재"}
         name={"exterior_material"}
         onChange={setSpecificationInfo}
-        dataList={["써모사이딩","리얼징크","루버강판","우드루바"]}
+        dataList={["써모사이딩", "징크", "리얼징크", "루버강판", "우드루바"]}
       />
 
       <SelectComponent
         title={"지붕재"}
         name={"roofing_material"}
         onChange={setSpecificationInfo}
-        dataList={["리얼징크","아스팔트슁글"]}
+        dataList={["징크", "리얼징크", "아스팔트슁글"]}
       />
 
       <SelectComponent
@@ -49,53 +47,61 @@ export function HouseSpecificationComponent(props: HouseSpecificationComponentPr
         title={"내장재"}
         name={"interior_material"}
         onChange={setSpecificationInfo}
-        dataList={["합지도배","랩핑몰딩","강화마루"]}
+        dataList={["합지도배", "랩핑몰딩", "강화마루"]}
       />
 
       <SelectComponent
         title={"창호"}
         name={"window"}
         onChange={setSpecificationInfo}
-        dataList={["미국식","유럽식","KCC"]}
+        dataList={["미국식", "유럽식", "KCC"]}
       />
-      
+
       <SelectComponent
         title={"난방"}
         name={"heating"}
         onChange={setSpecificationInfo}
-        dataList={["전기탄소필름","LPG"]}
+        dataList={["전기탄소필름", "LPG"]}
       />
 
       <SelectComponent
         title={"가구"}
         name={"furniture"}
         onChange={setSpecificationInfo}
-        dataList={["신발장","수납장","붙박이장"]}
+        dataList={["신발장", "수납장", "붙박이장"]}
       />
 
       <SelectComponent
         title={"화장실"}
         name={"toilet"}
         onChange={setSpecificationInfo}
-        dataList={["온수기","양변기","세면대","샤워부스"]}
+        dataList={["온수기", "양변기", "세면대", "샤워부스"]}
       />
 
       <SelectComponent
         title={"주방"}
         name={"kitchen"}
         onChange={setSpecificationInfo}
-        dataList={["싱크대","인덕션","가스레인지"]}
+        dataList={["싱크대", "인덕션", "가스레인지", "하이라이트"]}
       />
 
-      <SelectComponent
-        title={"조명"}
-        name={"lighting"}
-        onChange={setSpecificationInfo}
-        dataList={["LED"]}
-      />
+      <SelectComponent title={"조명"} name={"lighting"} onChange={setSpecificationInfo} dataList={["LED"]} />
 
-      <TextBoxComponent className={"my-2"} title={"기타"} name={"etc_info"} data={specificationInfo} onChange={handleSpecification}/>
-      <TextAreaComponent className={"my-2"} title={"제작 사양 관련 설명글 (최대 2,000자)"} name={"specification_description"} data={specificationInfo} onChange={handleSpecification} placeholder={""}/>
+      <TextBoxComponent
+        className={"my-2"}
+        title={"기타"}
+        name={"etc_info"}
+        data={specificationInfo}
+        onChange={handleSpecification}
+      />
+      <TextAreaComponent
+        className={"my-2"}
+        title={"제작 사양 관련 설명글 (최대 2,000자)"}
+        name={"specification_description"}
+        data={specificationInfo}
+        onChange={handleSpecification}
+        placeholder={""}
+      />
     </div>
   );
 }

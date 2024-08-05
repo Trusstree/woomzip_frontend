@@ -34,22 +34,29 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         />
         <TextBoxComponent
           className={"my-2"}
-          title={"건축면적"}
+          title={"건축면적 (단위: ㎡)"}
           name={"building_area"}
+          data={houseInfo}
+          onChange={handleHouse}
+        />
+        <TextBoxComponent
+          className={"my-2"}
+          title={"연면적 (단위: ㎡)"}
+          name={"yeon_area"}
           data={houseInfo}
           onChange={handleHouse}
         />
         <div className="row">
           <TextBoxComponent
-            className={"col-8 my-2"}
-            title={"기본 가격(부가세 포함)"}
+            className={"col-6 my-2"}
+            title={"기본 가격(부가세 제외)"}
             name={"base_price"}
             data={houseInfo}
             onChange={handleHouse}
           />
           <TextBoxComponent
-            className={"col-4 my-2"}
-            title={"최종 가격(부가세 포함)"}
+            className={"col-6 my-2"}
+            title={"최종 가격(부가세 제외)"}
             name={"final_price"}
             data={houseInfo}
             onChange={handleHouse}
@@ -125,7 +132,7 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
 
         {/* hasModel */}
         <RadioComponent
-          title={"해당 제품 모델하우스 유/무"}
+          title={"농촌 체류형 주택으로 사용 가능한지 여부"}
           name={"has_model"}
           onChange={handleHouse}
           data={[
@@ -147,10 +154,10 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
 
         {/* 특이사항 */}
         <SelectComponent
-          title={"특이사항 (다중선택 가능)"}
+          title={"가격에 포함된 특이사항 (다중선택 가능)"}
           name={"specificity_info"}
           onChange={setHouseInfo}
-          dataList={["다락방", "발코니", "배란다", "옥상", "데크"]}
+          dataList={["없음", "다락방", "발코니", "배란다", "옥상", "데크", "포치"]}
         />
 
         <TextAreaComponent

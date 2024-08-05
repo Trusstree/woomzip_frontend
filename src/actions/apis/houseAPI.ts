@@ -39,7 +39,7 @@ export const postHouse = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.post(`/house/enroll`, house);
+    const result = await privateApi.post(`/house/v2/enroll`, house);
     data = result?.data;
   } catch (err) {
     error = err.response?.data;

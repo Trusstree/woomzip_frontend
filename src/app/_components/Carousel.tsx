@@ -4,12 +4,12 @@ import Image from "next/image";
 const CarouselData = [
   {
     title: "움집 서비스 알아보기",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/222.jpg",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/222.webp",
     url: `/service`,
   },
   {
     title: "움집 속 AI 타잔 알아보기",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/444.png",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/444.webp",
     url: `/about`,
   },
 ];
@@ -39,7 +39,9 @@ export default function Carousel({ className }: { className?: string }) {
               style={{ cursor: "pointer" }}
               href={e["url"]}
             >
-              <img
+              <Image
+                width={1920}
+                height={500}
                 className="w-100"
                 style={{
                   overflow: "hidden",

@@ -37,8 +37,9 @@ export default function AddHouse({ uid }) {
       alertError("이미지 에러!", "대표 이미지가 빠졌어요 ㅠㅠ");
       return;
     }
-    if (imageList["external_images"].length + imageList["internal_images"].length > 4) {
-      alertError("이미지 에러!", "제품 사진을 5장 이상 채워주세요!");
+
+    if (imageList["external_images"].length + imageList["internal_images"].length < 5) {
+      alertError("이미지 에러!", "제품 내외부 사진을 합쳐서 5장 이상 채워주세요!");
       return;
     }
 

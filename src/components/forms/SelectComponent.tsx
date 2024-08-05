@@ -47,7 +47,7 @@ export function SelectComponent(props: SelectComponentProps) {
     <div className={`${className || ""} my-2 d-flex flex-column`}>
       <span className="fs-5">{title}</span>
       <div className="row">
-        <div className="col-5 d-flex">
+        <div className="col-7 d-flex">
           {dataList.map((e, i) => (
             <SelectBoxComponent
               key={i}
@@ -68,7 +68,7 @@ export function SelectComponent(props: SelectComponentProps) {
               setETC(!ETC);
             }}
           />
-          <label className="fs-5 form-check-label" htmlFor={`${name}_etc`}>
+          <label className="ms-2 fs-5 form-check-label" htmlFor={`${name}_etc`}>
             기타
           </label>
           <input
