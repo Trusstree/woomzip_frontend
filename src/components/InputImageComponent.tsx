@@ -47,12 +47,17 @@ export default function InputImageComponent({
         return;
       }
 
-      setImages((oldValues) => [...oldValues, `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`]);
+      setImages((oldValues) => [
+        ...oldValues,
+        `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`,
+      ]);
     });
   };
 
   const deleteImage = async (index) => {
-    const url = images[index].split(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/`)[1];
+    const url = images[index].split(
+      `${process.env.NEXT_PUBLIC_AWS_S3_URL}/`
+    )[1];
     await deleteS3Url(url);
     setImages((oldValues) => oldValues.filter((_, i) => i != index));
   };
@@ -73,9 +78,13 @@ export default function InputImageComponent({
         />
       </div>
       <div className="row flex-nowrap overflow-auto">
-        {images.map((e, i) => (
+        {images?.map((e, i) => (
           <div className="col-2 card p-0 mx-3" key={i}>
-            <img className={"card-img-top"} src={e} alt={`images ${name} ${i}`} />
+            <img
+              className={"card-img-top"}
+              src={e}
+              alt={`images ${name} ${i}`}
+            />
             <div className="card-img-overlay p-0">
               <div className="d-flex justify-content-end">
                 <button
