@@ -41,6 +41,22 @@ export const postHouseHeartRemove = async (hid: number) => {
   return [data, error];
 };
 
+export const getPostHeartUser = async (pid: any) => {
+  let [data, error] = [undefined, undefined] as any[];
+
+  try {
+    const result = await privateApi.get(`/community/detail/like/${pid}`, {
+      params: { pid: pid },
+      headers: {},
+    });
+    data = result?.data;
+  } catch (err) {
+    error = err.response?.data;
+  }
+
+  return [data, error];
+};
+
 export const postPostHeart = async (pid: any) => {
   let [data, error] = [undefined, undefined] as any;
 

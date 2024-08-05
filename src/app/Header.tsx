@@ -17,25 +17,13 @@ export default function Header(props: HeaderProps) {
         className="d-flex justify-content-between w-100"
         style={{ height: "40px", width: "90%", maxWidth: "1300px" }}
       >
-        <RouteButton
-          url="/"
-          className=""
-          style={{ marginLeft: "0", paddingLeft: "0" }}
-        >
-          <Image
-            src={"/woomzip_logo.png"}
-            alt={"Truss Logo"}
-            width={100}
-            height={26}
-          />
+        <RouteButton url="/" className="" style={{ marginLeft: "0", paddingLeft: "0" }}>
+          <Image src={"/woomzip_logo.webp"} alt={"Truss Logo"} width={100} height={26} />
         </RouteButton>
 
         <div className="d-none d-md-flex w-100">
           <div className="d-flex align-items-center me-auto">
-            <RouteButton
-              url="/"
-              style={{ fontSize: "15px", marginBottom: "0px" }}
-            >
+            <RouteButton url="/" style={{ fontSize: "15px", marginBottom: "0px" }}>
               홈
             </RouteButton>
             <RouteButton url="/community" style={{ fontSize: "15px" }}>

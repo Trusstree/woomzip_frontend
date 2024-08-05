@@ -23,7 +23,7 @@ export const metadata = {
     siteName: "woomzip",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_CALLBACKURL}/woomzip_logo.png`,
+        url: `${process.env.NEXT_PUBLIC_CALLBACKURL}/woomzip_logo.webp`,
         width: 1600,
         height: 1600,
         alt: "woomzip logo",

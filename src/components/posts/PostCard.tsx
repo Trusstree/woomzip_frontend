@@ -47,7 +47,7 @@ export default function PostCard({ data, className }: PostCardProps) {
       >
         <Link href={{ pathname: `/community/${data["post_id"]}` }}>
           <Image
-            src={imgSrcArr[0] || "/basic_image.png"}
+            src={imgSrcArr[0] || "/basic_image.webp"}
             width={280}
             height={280}
             style={{ width: "100%", height: 280, borderRadius: "10px", objectFit: "cover" }}
