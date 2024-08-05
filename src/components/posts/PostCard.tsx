@@ -50,7 +50,7 @@ export default function PostCard({ data, className }: PostCardProps) {
             src={imgSrcArr[0] || "/basic_image.png"}
             width={280}
             height={280}
-            style={{ width: "100%", borderRadius: "10px", objectFit: "cover" }}
+            style={{ width: "100%", height: 280, borderRadius: "10px", objectFit: "cover" }}
             alt={"post card img"}
           />
           <div

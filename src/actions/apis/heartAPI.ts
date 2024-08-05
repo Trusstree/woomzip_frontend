@@ -2,27 +2,11 @@
 
 import { privateApi } from "@/configs/axiosClient";
 
-export const getHousesHeartUser = async (hid: any) => {
-  let [data, error] = [undefined, undefined] as any;
-
-  try {
-    const result = await privateApi.get(`/community/comment/like`, {
-      params: { hid: hid },
-      headers: {},
-    });
-    data = result?.data;
-  } catch (err) {
-    error = err.response?.data;
-  }
-
-  return [data, error];
-};
-
-export const getHousesHeart = async (params: any) => {
+export const getHouseHeartUser = async (hid: number, params?: any) => {
   let [count, countError] = [undefined, undefined] as any;
   try {
-    const result = await privateApi.get(`/house/find-my-house/detail/like`, {
-      params: params,
+    const result = await privateApi.get(`/house/detail/like/${hid}`, {
+      params: params ?? {},
       headers: {},
     });
     count = result?.data;
@@ -32,30 +16,23 @@ export const getHousesHeart = async (params: any) => {
   return [count, countError];
 };
 
-export const getHousesHeartRemove = async (params: any) => {
+export const postHouseHeart = async (pid: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/house/find-my-house/detail/unlike`, {
-      params: params,
-      headers: {},
-    });
+    const result = await privateApi.post(`/house/find-my-house/detail/like`, { house_id: pid });
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
   }
-
   return [data, error];
 };
 
-export const getPostHeartUser = async (pid: any) => {
-  let [data, error] = [undefined, undefined] as any[];
+export const postHouseHeartRemove = async (hid: number) => {
+  let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(`/community/detail/like/${pid}`, {
-      params: { pid: pid },
-      headers: {},
-    });
+    const result = await privateApi.post(`/house/find-my-house/detail/unlike`, { house_id: hid });
     data = result?.data;
   } catch (err) {
     error = err.response?.data;

@@ -1,17 +1,15 @@
 "use client";
 
-import { getHousesHeart, getHousesHeartRemove } from "@/actions/apis/heartAPI";
-import { useUser } from "@/app/ContextSession";
 import useQuery from "@/hooks/useQuery";
-import { alertSuccess } from "@/lib/alertUtil";
 import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "@/app/house/[pid]/_styles/HouseRemocon.module.css";
+import HeartComponent from "@/components/posts/HeartComponent";
+import { postHouseHeart, postHouseHeartRemove } from "@/actions/apis/heartAPI";
 
-export default function HouseRemocon({ pid, houseData, optionData }) {
+export default function HouseRemocon({ pid, houseData, optionData, isHouseLike }) {
   const { createQueryString } = useQuery();
-  const { userContext } = useUser();
   const router = useRouter();
 
   const [heart, setHeart] = useState(0);
@@ -19,30 +17,6 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
 
   const gyeonjeokLink = `${"/planning"}?${createQueryString("house_id", pid.toString())}`;
 
-  useEffect(() => {
-    (async () => {
-      setHeart(houseData["like_count"]);
-    })();
-  }, []);
-
-  const ClickHeart = useCallback(async () => {
-    if (userContext) {
-      const heartParams = { house_id: pid, user_id: userContext.uid };
-
-      if (heart > 0) {
-        const [response, error] = await getHousesHeartRemove({ house_id: pid });
-        if (error) console.log(error);
-        setHeart(heart - 1);
-      } else {
-        const [response, error] = await getHousesHeart({ house_id: pid });
-        if (error) console.log(error);
-        console.log(response);
-        setHeart(heart + 1);
-      }
-    } else {
-      alertSuccess("로그인이 필요한 서비스입니다.", "로그인해주세요!");
-    }
-  }, [heart]);
   return (
     <div className={`card ${styles.HouseRemoconCard}`}>
       <div
@@ -53,9 +27,16 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
         }}
       >
         <div style={{ fontSize: "20px", fontWeight: "500" }}>
-          ₩ {detailPriceText(houseData["final_price"])}{" "}
-          <span style={{ fontWeight: "300" }}>/채</span>
+          ₩ {detailPriceText(houseData["final_price"])} <span style={{ fontWeight: "300" }}>/채</span>
         </div>
+        {/* 이거 백엔드에서 likeCount만 쏴주면 바로 기능 살릴 수 있음
+          <HeartComponent
+          pid={pid}
+          likeCount={houseData["likeCount"] ?? 0}
+          isLiked={isHouseLike}
+          postHeart={postHouseHeart}
+          postHeartRemove={postHouseHeartRemove}
+        /> */}
         {/* <div
           className="btn"
           style={{ fontSize: "15px" }}
@@ -88,34 +69,7 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
               </div>
             )}
           </div>
-          <button className="btn py-0 border-0" onClick={ClickHeart}>
-            {heart ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                width={25}
-              >
-                <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                width={25}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                />
-              </svg>
-            )}
-          </button>
-          <div style={{ marginTop: "2px" }}>{heart}</div>
+          
         </div>
 
         <div
@@ -252,16 +206,8 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
         <div className={""} style={{ width: "100%" }}>
           <select
             onChange={(ee) => {
-              if (
-                Number(ee.target.value) >= 0 &&
-                !selectedOptionData.includes(
-                  optionData[Number(ee.target.value)]
-                )
-              ) {
-                setSelectedOptionData((oldValue) => [
-                  ...oldValue,
-                  optionData[ee.target.value],
-                ]);
+              if (Number(ee.target.value) >= 0 && !selectedOptionData.includes(optionData[Number(ee.target.value)])) {
+                setSelectedOptionData((oldValue) => [...oldValue, optionData[ee.target.value]]);
               }
             }}
             disabled={optionData?.length == 0}
@@ -275,16 +221,12 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
               optionData.map((e, i) => (
                 <option key={i} value={i}>
                   {" "}
-                  {e["option_type"]} - {e["option_product_name"]} (
-                  {detailPriceText(e["option_product_price"])})
+                  {e["option_type"]} - {e["option_product_name"]} ({detailPriceText(e["option_product_price"])})
                 </option>
               ))}
           </select>
 
-          <div
-            className={"row"}
-            style={{ width: "100%", marginTop: "10px", marginLeft: "2px" }}
-          >
+          <div className={"row"} style={{ width: "100%", marginTop: "10px", marginLeft: "2px" }}>
             <div
               className="w-100 btn text-white d-flex justify-content-center align-items-center"
               style={{ backgroundColor: "#314FC0", height: "60px" }}
@@ -314,21 +256,13 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
           <div className="">
             {selectedOptionData &&
               selectedOptionData.map((e, i) => (
-                <div
-                  key={i}
-                  className="d-flex align-items-center justify-content-between"
-                >
-                  <div
-                    className="row d-flex align-items-center"
-                    style={{ width: "auto", marginLeft: "0px" }}
-                  >
+                <div key={i} className="d-flex align-items-center justify-content-between">
+                  <div className="row d-flex align-items-center" style={{ width: "auto", marginLeft: "0px" }}>
                     <div
                       className="btn"
                       style={{ fontSize: "14px", color: "gray", width: "20px" }}
                       onClick={() => {
-                        setSelectedOptionData((oldValue) =>
-                          oldValue.filter((_, j) => j != i)
-                        );
+                        setSelectedOptionData((oldValue) => oldValue.filter((_, j) => j != i));
                       }}
                     >
                       X
@@ -338,59 +272,38 @@ export default function HouseRemocon({ pid, houseData, optionData }) {
                     </div>
                   </div>
 
-                  <div style={{ fontSize: "14px", width: "auto" }}>
-                    {detailPriceText(e["option_product_price"])}
-                  </div>
+                  <div style={{ fontSize: "14px", width: "auto" }}>{detailPriceText(e["option_product_price"])}</div>
                 </div>
               ))}
           </div>
         </div>
 
         <hr style={{ margin: "0" }} />
-        <div
-          className="d-flex justify-content-between"
-          style={{ width: "99%", marginLeft: "3px", marginTop: "10px" }}
-        >
+        <div className="d-flex justify-content-between" style={{ width: "99%", marginLeft: "3px", marginTop: "10px" }}>
           <div style={{ width: "100px", fontSize: "15px" }}>할인</div>
           <div style={{ width: "auto", fontSize: "15px", fontWeight: "400" }}>
             {houseData["discount_rate"] > 0 && ( //houseData.discount
               <>
-                <span style={{ color: "#314FC0", fontSize: "16px" }}>
-                  {houseData["discount_rate"]}%
-                </span>
+                <span style={{ color: "#314FC0", fontSize: "16px" }}>{houseData["discount_rate"]}%</span>
               </>
             )}
           </div>
         </div>
-        <div
-          className="d-flex justify-content-between"
-          style={{ width: "99%", marginLeft: "3px", marginTop: "3px" }}
-        >
+        <div className="d-flex justify-content-between" style={{ width: "99%", marginLeft: "3px", marginTop: "3px" }}>
           <div style={{ width: "100px", fontSize: "15px" }}>부가세(10%)</div>
           <div style={{ width: "auto", fontSize: "15px", fontWeight: "400" }}>
             {detailPriceText(
-              (selectedOptionData.reduce(
-                (acc, cur) => acc + cur["option_product_price"],
-                0
-              ) +
+              (selectedOptionData.reduce((acc, cur) => acc + cur["option_product_price"], 0) +
                 houseData["final_price"]) /
                 10
             )}
           </div>
         </div>
-        <div
-          className="d-flex justify-content-between"
-          style={{ width: "99%", marginLeft: "3px", marginTop: "3px" }}
-        >
-          <div style={{ width: "100px", fontSize: "15px", fontWeight: "500" }}>
-            총 금액
-          </div>
+        <div className="d-flex justify-content-between" style={{ width: "99%", marginLeft: "3px", marginTop: "3px" }}>
+          <div style={{ width: "100px", fontSize: "15px", fontWeight: "500" }}>총 금액</div>
           <div style={{ width: "auto", fontSize: "15px", fontWeight: "500" }}>
             {detailPriceText(
-              (selectedOptionData.reduce(
-                (acc, cur) => acc + cur["option_product_price"],
-                0
-              ) +
+              (selectedOptionData.reduce((acc, cur) => acc + cur["option_product_price"], 0) +
                 houseData["final_price"]) *
                 1.1
             )}
