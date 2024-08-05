@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@aws-sdk/s3-request-presigner": "^3.600.0",
+    "@next/third-parties": "^14.2.5",
     "@types/react": "^18.3.3",
     "@xeger/quill-image-actions": "^0.7.2",
     "@xeger/quill-image-formats": "^0.7.2",
