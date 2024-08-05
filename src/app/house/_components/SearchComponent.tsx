@@ -38,7 +38,7 @@ export default function SearchComponent() {
       <input
         className="w-75"
         style={{ height: 37 }}
-        placeholder={" 찾고 싶은 내용을 검색해보세요"}
+        placeholder={"제품이나 업체명을 검색해보세요"}
         value={q}
         onChange={handleChange}
         onBlur={handleOutOfFocus}
@@ -52,9 +52,11 @@ export default function SearchComponent() {
       >
         <div style={{ cursor: "pointer" }}>
           <Image
-            width={37}
-            height={37}
-            src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/search.png"}
+            width={35}
+            height={30}
+            src={
+              "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/search.png"
+            }
             className={styles.searchButtonImg}
             alt={"search submit btn"}
           />

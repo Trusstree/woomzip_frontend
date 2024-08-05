@@ -28,7 +28,7 @@
   top: 0;
   bottom: 0;
   border-radius: 5px;
-  background-color: #101648;
+  background-color: #314fc0;
 }
 
 .slider > .thumbleft {
@@ -36,7 +36,7 @@
   z-index: 3;
   width: 20px;
   height: 20px;
-  background-color: #101648;
+  background-color: #314fc0;
   border-radius: 50%;
   transform: translate(-15px, -8px);
 }
@@ -46,7 +46,7 @@
   z-index: 3;
   width: 20px;
   height: 20px;
-  background-color: #101648;
+  background-color: #314fc0;
   border-radius: 50%;
   transform: translate(15px, -8px);
 }

@@ -48,11 +48,13 @@ export default function SearchComponent() {
         data-bs-target={`#search_modal`}
         onClick={handleClick}
       >
-        <div style={{ width: "65x" }}>
+        <div style={{ width: "65px" }}>
           <Image
-            width={37}
-            height={37}
-            src={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/search.png"}
+            width={35}
+            height={30}
+            src={
+              "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/search.png"
+            }
             className={styles.searchButtonImg}
             alt={"search submit btn"}
           />
