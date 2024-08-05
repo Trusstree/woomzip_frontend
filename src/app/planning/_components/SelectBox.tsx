@@ -6,8 +6,8 @@ export default function SelectBox({ title, text, img, value, data, setData }) {
   return (
     <button
       style={{
-        width: "280px",
-        height: "220px",
+        width: "100%",
+        height: "200px",
         borderRadius: "10px",
         borderStyle: "solid",
         margin: "5px",
@@ -24,7 +24,7 @@ export default function SelectBox({ title, text, img, value, data, setData }) {
         style={{ width: "100%" }}
         src={img}
         width={80}
-        height={120}
+        height={110}
         unoptimized={true}
         alt={"설명 로고"}
       />
