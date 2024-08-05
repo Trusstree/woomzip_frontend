@@ -150,44 +150,111 @@ export function SignupFormCompany() {
 
   return (
     <div className="my-5">
-      <SignupTextBox title={"이름"} name={"name"} data={name} setData={setName} />
-      <SignupTextBox title={"별명"} name={"nickname"} data={nickname} setData={setNickname} />
-      <SignupTextBox title={"ID"} name={"id"} data={id} setData={setID} />
-      <SignupTextBox title={"PW"} name={"pw"} data={pw} setData={setPW} type={"password"} />
-      <SignupTextBox title={"PW 확인"} name={"repw"} data={repw} setData={setRePW} type={"password"} />
-      <SignupTextBox title={"이메일"} name={"email"} data={email} setData={setEmail} />
-      <SignupTextBox title={"한줄설명"} name={"introduce"} data={introduce} setData={setIntroduce} />
+      <SignupTextBox
+        title={"이름"}
+        name={"name"}
+        data={name}
+        setData={setName}
+        explain={"*기업회원은 대표자명을 입력해주세요"}
+      />
+      <SignupTextBox
+        title={"별명"}
+        name={"nickname"}
+        data={nickname}
+        setData={setNickname}
+        explain={"*기업회원은 회사명을 입력해주세요"}
+      />
+      <SignupTextBox title={"ID"} name={"id"} data={id} setData={setID} explain={""} />
+      <SignupTextBox
+        title={"PW"}
+        name={"pw"}
+        data={pw}
+        setData={setPW}
+        type={"password"}
+        explain={"*영문+숫자 조합으로 8자리 이상 입력해주세요"}
+      />
+      <SignupTextBox title={"PW 확인"} name={"repw"} data={repw} setData={setRePW} type={"password"} explain={""} />
+      <SignupTextBox title={"이메일"} name={"email"} data={email} setData={setEmail} explain={""} />
+      <SignupTextBox
+        title={"한 줄 설명"}
+        name={"introduce"}
+        data={introduce}
+        setData={setIntroduce}
+        explain={"*회사를 표현할 수 있는 한 줄 소개글을 작성해주세요 (업체 프로필에 노출됩니다)"}
+      />
       <SignupGenderRadio data={gender} setData={setGender} />
-      <SignupTextBox title={"연락처"} name={"phoneNumber"} data={phoneNumber} setData={handlePhoneNumber} />
-      <SignupTextBox title={"생년월일"} name={"birthday"} data={birthday} setData={setBirthday} type={"date"} />
+      <SignupTextBox
+        title={"연락처"}
+        name={"phoneNumber"}
+        data={phoneNumber}
+        setData={handlePhoneNumber}
+        explain={""}
+      />
+      <SignupTextBox
+        title={"개업일"}
+        name={"birthday"}
+        data={birthday}
+        setData={setBirthday}
+        type={"date"}
+        explain={""}
+      />
 
-      <div className={`d-flex mb-3`}>
-        <label className="fs-5 col-2" style={{ color: "#101648" }}>
+      <div className="row">
+        <div className="col-2" style={{ fontSize: "18px" }}>
           프로필 사진
-        </label>
-        <InputImageComponent
-          s3Url={`users/company`}
-          name={"profile"}
-          images={thumbnail}
-          setImages={setThumbnail}
-          maxLength={1}
-        />
-      </div>
-      <div className={`d-flex mb-3`}>
-        <label className="fs-5 col-2" style={{ color: "#101648" }}>
-          포트폴리오 사진
-        </label>
-        <InputImageComponent
-          s3Url={`users/company`}
-          name={"portfolio"}
-          images={companyImages}
-          setImages={setCompanyImages}
-        />
+        </div>
+        <div className="col-10">
+          <InputImageComponent
+            s3Url={`users/company`}
+            name={"profile"}
+            images={thumbnail}
+            setImages={setThumbnail}
+            maxLength={1}
+          />
+          <div style={{ fontSize: "13px", color: "blue", marginBottom: "10px" }}>
+            *1장의 대표 프로필 사진을 업로드 해주세요 (업체명 옆에 노출됩니다)
+          </div>
+        </div>
       </div>
 
-      <SignupTextBox title={"위치"} name={"addr"} data={addr} setData={setAddr} />
-      <SignupTextBox title={"홈페이지 주소"} name={"prUrl"} data={prUrl} setData={setPrUrl} />
-      <SignupTextBox title={"홍보채널 주소"} name={"youtubeUrl"} data={youtubeUrl} setData={setYoutubeUrl} />
+      <div className="row">
+        <div className="col-2" style={{ fontSize: "18px" }}>
+          대문 사진
+        </div>
+        <div className="col-10">
+          <InputImageComponent
+            s3Url={`users/company`}
+            name={"portfolio"}
+            images={companyImages}
+            setImages={setCompanyImages}
+          />
+          <div style={{ fontSize: "13px", color: "blue", marginBottom: "10px" }}>
+            *최소 7장의 포트폴리오 사진을 업로드 해주세요 (업체 프로필에 노출됩니다)
+          </div>
+        </div>
+      </div>
+
+      <SignupTextBox
+        title={"위치"}
+        name={"addr"}
+        data={addr}
+        setData={setAddr}
+        explain={"*본사 주소/공장 주소 모두 입력해주세요"}
+      />
+      <SignupTextBox
+        title={"홈페이지 주소"}
+        name={"prUrl"}
+        data={prUrl}
+        setData={setPrUrl}
+        explain={"*현재 운영중인 자체 홈페이지 주소를 입력해주세요"}
+      />
+      <SignupTextBox
+        title={"홍보채널 주소"}
+        name={"youtubeUrl"}
+        data={youtubeUrl}
+        setData={setYoutubeUrl}
+        explain={"*현재 운영중인 홍보채널(유튜브, 블로그 등) 주소를 입력해주세요"}
+      />
 
       <div
         className="btn"
@@ -199,7 +266,7 @@ export function SignupFormCompany() {
         }}
         onClick={submit}
       >
-        회원가입
+        회원가입 요청하기
       </div>
     </div>
   );

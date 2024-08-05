@@ -45,7 +45,7 @@ export default function HouseCategory() {
         imgSrc={
           "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/luxury.png"
         }
-        category={"아이들과"}
+        category={"고급스러운"}
       />
       <CategoryButton
         title={"세모지붕"}
@@ -68,7 +68,7 @@ export default function HouseCategory() {
         }
         category={"특이한"}
       />
-      <CategoryButton
+      {/* <CategoryButton
         title={"미국식"}
         imgSrc={
           "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"
@@ -102,7 +102,7 @@ export default function HouseCategory() {
           "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"
         }
         category={"탁트여있는"}
-      />
+      /> */}
     </div>
   );
 }
