@@ -124,20 +124,29 @@ export function SignupForm() {
         name={"name"}
         data={name}
         setData={setName}
+        explain={""}
       />
       <SignupTextBox
         title={"별명"}
         name={"nickname"}
         data={nickname}
         setData={setNickname}
+        explain={""}
       />
-      <SignupTextBox title={"ID"} name={"id"} data={id} setData={setID} />
+      <SignupTextBox
+        title={"ID"}
+        name={"id"}
+        data={id}
+        setData={setID}
+        explain={""}
+      />
       <SignupTextBox
         title={"PW"}
         name={"pw"}
         data={pw}
         setData={setPW}
         type={"password"}
+        explain={""}
       />
       <SignupTextBox
         title={"PW 확인"}
@@ -145,12 +154,14 @@ export function SignupForm() {
         data={repw}
         setData={setRePW}
         type={"password"}
+        explain={""}
       />
       <SignupTextBox
         title={"이메일"}
         name={"email"}
         data={email}
         setData={setEmail}
+        explain={""}
       />
       <SignupGenderRadio data={gender} setData={setGender} />
       <SignupTextBox
@@ -158,6 +169,7 @@ export function SignupForm() {
         name={"phoneNumber"}
         data={phoneNumber}
         setData={handlePhoneNumber}
+        explain={""}
       />
       <SignupTextBox
         title={"생년월일"}
@@ -165,12 +177,14 @@ export function SignupForm() {
         data={birthday}
         setData={setBirthday}
         type={"date"}
+        explain={""}
       />
       <SignupTextBox
         title={"위치"}
         name={"addr"}
         data={addr}
         setData={setAddr}
+        explain={""}
       />
       <div
         className="btn"
