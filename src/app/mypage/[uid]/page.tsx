@@ -1,6 +1,7 @@
 import { getUser } from "@/actions/apis/userAPI";
 import MypageCompany from "@/app/mypage/[uid]/_components/MypageCompany";
 import MypageUser from "@/app/mypage/[uid]/_components/MypageUser";
+import LoadPage from "@/components/app/LoadPage";
 
 async function loadData(uid: string | number) {
   "use server";
@@ -28,5 +29,13 @@ async function loadData(uid: string | number) {
 export default async function Page({ params }) {
   const { uid } = params;
   const { role, userData } = await loadData(uid);
-  return role == 1 ? <MypageCompany uid={uid} userData={userData} /> : <MypageUser uid={uid} userData={userData} />;
+  return userData ? (
+    role == 1 ? (
+      <MypageCompany uid={uid} userData={userData} />
+    ) : (
+      <MypageUser uid={uid} userData={userData} />
+    )
+  ) : (
+    <LoadPage />
+  );
 }

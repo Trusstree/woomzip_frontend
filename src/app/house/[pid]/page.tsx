@@ -6,6 +6,7 @@ import styles from "@/app/house/[pid]/_styles/HouseClient.module.css";
 import { PicModal } from "@/app/house/[pid]/_components/PicModal";
 import { ReviewModal } from "@/components/house/ReviewModal";
 import { loadData } from "@/app/house/[pid]/_actions/actions";
+import LoadPage from "@/components/app/LoadPage";
 
 type PageParams = {
   pid: number;
@@ -101,6 +102,6 @@ export default async function Home({ params }: { params: PageParams }) {
       <ReviewModal id={"house_detail_modal"} images={imageData} isTwoCol />
     </>
   ) : (
-    <div>로딩 중</div>
+    <LoadPage />
   );
 }
