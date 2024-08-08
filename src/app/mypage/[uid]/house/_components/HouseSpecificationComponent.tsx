@@ -8,12 +8,26 @@ type HouseSpecificationComponentProps = {
   handleSpecification: Function;
 };
 
-export function HouseSpecificationComponent(props: HouseSpecificationComponentProps) {
-  const { specificationInfo, setSpecificationInfo, handleSpecification } = props;
+export function HouseSpecificationComponent(
+  props: HouseSpecificationComponentProps
+) {
+  const { specificationInfo, setSpecificationInfo, handleSpecification } =
+    props;
 
   return (
-    <div className="mt-4 py-4" style={{ borderTopStyle: "solid", borderTopColor: "#101648", borderTopWidth: "2px" }}>
+    <div
+      className="mt-4 py-4"
+      style={{
+        borderTopStyle: "solid",
+        borderTopColor: "#101648",
+        borderTopWidth: "2px",
+      }}
+    >
       <h3 className="fw-bold mb-4">기본 제품 제작 사양을 입력해주세요.</h3>
+      <div style={{ fontSize: "18px", color: "red" }}>
+        *선택사항에 해당되는 내용을 모두 체크하고, 해당 내용이 선택지에 없다면
+        기타에 자세히 적어주세요.
+      </div>
 
       <SelectComponent
         title={"골조구조"}
@@ -85,7 +99,12 @@ export function HouseSpecificationComponent(props: HouseSpecificationComponentPr
         dataList={["싱크대", "인덕션", "가스레인지", "하이라이트"]}
       />
 
-      <SelectComponent title={"조명"} name={"lighting"} onChange={setSpecificationInfo} dataList={["LED"]} />
+      <SelectComponent
+        title={"조명"}
+        name={"lighting"}
+        onChange={setSpecificationInfo}
+        dataList={["LED"]}
+      />
 
       <TextBoxComponent
         className={"my-2"}
@@ -96,7 +115,9 @@ export function HouseSpecificationComponent(props: HouseSpecificationComponentPr
       />
       <TextAreaComponent
         className={"my-2"}
-        title={"제작 사양 관련 설명글 (최대 2,000자)"}
+        title={
+          "추가로, 제작사양 관련 하고 싶은 말을 적어주세요. (최대 2,000자)"
+        }
         name={"specification_description"}
         data={specificationInfo}
         onChange={handleSpecification}

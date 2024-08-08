@@ -13,10 +13,20 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
   const { handleHouse, setHouseInfo, houseInfo } = props;
 
   return (
-    <div className="py-4 my-4" style={{ borderTopStyle: "solid", borderTopColor: "#101648", borderTopWidth: "2px" }}>
+    <div
+      className="py-4 my-4"
+      style={{
+        borderTopStyle: "solid",
+        borderTopColor: "#101648",
+        borderTopWidth: "2px",
+      }}
+    >
       <h3 className="fw-bold mb-4" style={{ color: "#101648" }}>
         제품 기본 정보를 입력해주세요.
       </h3>
+      <div style={{ fontSize: "18px", color: "red" }}>
+        *단위를 제외한, 숫자만 입력해주세요.
+      </div>
       <div className="d-flex flex-column">
         <TextBoxComponent
           className={"my-2"}
@@ -49,18 +59,21 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         <div className="row">
           <TextBoxComponent
             className={"col-6 my-2"}
-            title={"기본 가격(부가세 제외)"}
+            title={"기본 가격(단위: 원) *부가세 제외"}
             name={"base_price"}
             data={houseInfo}
             onChange={handleHouse}
           />
           <TextBoxComponent
             className={"col-6 my-2"}
-            title={"최종 가격(부가세 제외)"}
+            title={"할인 후 최종 가격(단위: 원) *부가세 제외"}
             name={"final_price"}
             data={houseInfo}
             onChange={handleHouse}
           />
+          <div style={{ fontSize: "18px", color: "red" }}>
+            *할인이 없다면, 기본 가격과 최종 가격에 같은 값을 입력해주세요.
+          </div>
         </div>
 
         {/* floor */}
@@ -157,7 +170,15 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
           title={"가격에 포함된 특이사항 (다중선택 가능)"}
           name={"specificity_info"}
           onChange={setHouseInfo}
-          dataList={["없음", "다락방", "발코니", "배란다", "옥상", "데크", "포치"]}
+          dataList={[
+            "없음",
+            "다락방",
+            "발코니",
+            "배란다",
+            "옥상",
+            "데크",
+            "포치",
+          ]}
         />
 
         <TextAreaComponent
@@ -168,6 +189,9 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
           onChange={handleHouse}
           placeholder={""}
         />
+        <div style={{ fontSize: "18px", color: "red" }}>
+          *제품의 특징 및 강점 등 제품 관련한 설명을 최대한 자세히 적어주세요.
+        </div>
       </div>
     </div>
   );

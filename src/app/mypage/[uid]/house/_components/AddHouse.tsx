@@ -20,14 +20,24 @@ export default function AddHouse({ uid }) {
   const [specificationInfo, setSpecificationInfo] = useState({});
   const [imageList, setImageList] = useState([]);
 
-  const handleHouse = (e: ChangeEvent<HTMLInputElement>): ChangeEventHandler<HTMLInputElement> => {
-    setHouseInfo((oldValues) => ({ ...oldValues, [e.target.name]: e.target.value }));
+  const handleHouse = (
+    e: ChangeEvent<HTMLInputElement>
+  ): ChangeEventHandler<HTMLInputElement> => {
+    setHouseInfo((oldValues) => ({
+      ...oldValues,
+      [e.target.name]: e.target.value,
+    }));
     return;
   };
 
-  const handleSpecification = (e: ChangeEvent<HTMLInputElement>): ChangeEventHandler<HTMLInputElement> => {
+  const handleSpecification = (
+    e: ChangeEvent<HTMLInputElement>
+  ): ChangeEventHandler<HTMLInputElement> => {
     if (e) e.preventDefault();
-    setSpecificationInfo((oldValues) => ({ ...oldValues, [e.target.name]: e.target.value }));
+    setSpecificationInfo((oldValues) => ({
+      ...oldValues,
+      [e.target.name]: e.target.value,
+    }));
     return;
   };
 
@@ -38,8 +48,15 @@ export default function AddHouse({ uid }) {
       return;
     }
 
-    if (imageList["external_images"].length + imageList["internal_images"].length < 5) {
-      alertError("이미지 에러!", "제품 내외부 사진을 합쳐서 5장 이상 채워주세요!");
+    if (
+      imageList["external_images"].length +
+        imageList["internal_images"].length <
+      5
+    ) {
+      alertError(
+        "이미지 에러!",
+        "제품 내외부 사진을 합쳐서 5장 이상 채워주세요!"
+      );
       return;
     }
 
@@ -68,11 +85,15 @@ export default function AddHouse({ uid }) {
   return (
     <div>
       <div className="d-flex justify-content-start flex-column mt-5">
-        <h1 className="fw-bold" style={{ color: "#101648" }}>
+        <h1 className="fw-bold" style={{}}>
           집 데이터 추가
         </h1>
         {/* 제품 기본 정보 */}
-        <HouseInfoComponent handleHouse={handleHouse} setHouseInfo={setHouseInfo} houseInfo={houseInfo} />
+        <HouseInfoComponent
+          handleHouse={handleHouse}
+          setHouseInfo={setHouseInfo}
+          houseInfo={houseInfo}
+        />
 
         {/* 배송 */}
         <HouseDeliveryComponent setDeliveryInfo={setDeliveryInfo} />
@@ -93,12 +114,20 @@ export default function AddHouse({ uid }) {
         />
 
         {/* 사진 */}
-        <HouseImageComponent uid={uid} imageList={imageList} setImageList={setImageList} />
+        <HouseImageComponent
+          uid={uid}
+          imageList={imageList}
+          setImageList={setImageList}
+        />
 
         {/* submit */}
         <div
           className="mt-4 py-4 d-flex justify-content-center flex-column"
-          style={{ borderTopStyle: "solid", borderTopColor: "#101648", borderTopWidth: "2px" }}
+          style={{
+            borderTopStyle: "solid",
+            borderTopColor: "#101648",
+            borderTopWidth: "2px",
+          }}
         >
           <div className="mt-2 fw-bold fs-5" style={{ color: "#101648" }}>
             마지막으로 작성 정보를 다시 한 번 확인해주세요.
