@@ -1,7 +1,6 @@
-import PlanningApplicationClient from "@/app/planning/application/_components/PlanningApplicationClient";
-import React, { Suspense } from "react";
+import React from "react";
 
-export default function Application() {
+export default function Confirm() {
   return (
     <main>
       <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
@@ -14,11 +13,8 @@ export default function Application() {
             wordBreak: "keep-all",
           }}
         >
-          마지막 단계입니다. 준비되셨나요?
+          축하드립니다!
         </div>
-        <Suspense>
-          <PlanningApplicationClient />
-        </Suspense>
       </div>
     </main>
   );

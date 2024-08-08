@@ -13,7 +13,7 @@ const CarouselData = [
   {
     title: "AI 타잔 알아보기",
     explain: "당신만의 건축 전문가",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/222.webp",
+    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/333.webp",
     subImg:
       "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/2222.png",
     url: `/planning?house_id=14`,

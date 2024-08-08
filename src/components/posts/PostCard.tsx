@@ -47,7 +47,7 @@ export default function PostCard({ data, className }: PostCardProps) {
       >
         <Link href={{ pathname: `/community/${data["post_id"]}` }}>
           <Image
-            src={imgSrcArr[0] || "/basic_image.png"}
+            src={imgSrcArr[0] || "/111.webp"}
             width={280}
             height={280}
             style={{ width: "100%", borderRadius: "10px", objectFit: "cover" }}
@@ -138,7 +138,10 @@ export default function PostCard({ data, className }: PostCardProps) {
               <img src={data.profilePicture} width={40} height={40}/>
               <div className="mx-3 fw-bold align-self-center">{data.author}</div>
             </div> */}
-            <div className="d-flex justify-content-between" style={{ marginTop: "1px" }}>
+            <div
+              className="d-flex justify-content-between"
+              style={{ marginTop: "1px" }}
+            >
               <div
                 style={{
                   fontSize: "15px",
@@ -162,7 +165,10 @@ export default function PostCard({ data, className }: PostCardProps) {
             </div>
 
             <div className="d-flex justify-content-between">
-              <div className="row" style={{ width: "auto", marginTop: "3px", marginLeft: "0px" }}>
+              <div
+                className="row"
+                style={{ width: "auto", marginTop: "3px", marginLeft: "0px" }}
+              >
                 {/* <div className="d-flex" style={{ width: "50px", padding: "0" }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

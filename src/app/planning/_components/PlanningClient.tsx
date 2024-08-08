@@ -443,6 +443,16 @@ export default function PlanningClient() {
           >
             AI 타잔과 다음 단계로 가보기
           </div>
+          <div
+            style={{
+              fontSize: "14px",
+              fontWeight: "330",
+              textAlign: "center",
+              margin: "10px 0",
+            }}
+          >
+            본 계약 전에는 요금이 청구되지 않습니다.
+          </div>
         </div>
       </div>
     </div>
