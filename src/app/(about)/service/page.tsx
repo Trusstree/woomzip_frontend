@@ -3,7 +3,7 @@ export default function Home() {
     <div>
       <div style={{ width: "100%", height: "700px", position: "relative" }}>
         <img
-          src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/222.jpg"
+          src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/111.webp"
           width={"100%"}
           height={"700px"}
           style={{ objectFit: "cover" }}
