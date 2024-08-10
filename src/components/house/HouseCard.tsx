@@ -62,7 +62,7 @@ export default function HouseCard({
                     }}
                     width={300}
                     height={300}
-                    src={e || "/blur_image.png"}
+                    src={e || "/blur_image.webp"}
                     alt={`${data["house_name"]}_${i}`}
                   />
                 </div>

@@ -4,6 +4,7 @@ import PostMenu from "@/components/posts/PostMenu";
 import DOMPurify from "isomorphic-dompurify";
 import { loadData } from "@/app/community/[pid]/_actions/actions";
 import CommentComponent from "@/app/community/[pid]/_components/CommentComponent";
+import LoadPage from "@/components/app/LoadPage";
 
 type PageParams = {
   pid: number;
@@ -156,10 +157,7 @@ export default async function page({ params }: { params: PageParams }) {
             className={`card-footer rounded-bottom-3 fw-normal px-2`}
             style={{ backgroundColor: "white", borderColor: "white" }}
           >
-            <div
-              className="d-flex justify-content-between"
-              style={{ backgroundColor: "#ffffff" }}
-            >
+            <div className="d-flex justify-content-between" style={{ backgroundColor: "#ffffff" }}>
               <Count
                 pid={pid}
                 viewCount={postData["view_count"]}
@@ -187,5 +185,7 @@ export default async function page({ params }: { params: PageParams }) {
         <AppPostList numShowItems={6} />
       </PostMenu>
     </div>
+  ) : (
+    <LoadPage />
   );
 }

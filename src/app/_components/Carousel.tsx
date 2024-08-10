@@ -50,6 +50,7 @@ export default function Carousel({ className }: { className?: string }) {
               href={e["url"]}
             >
               <Image
+                priority
                 width={1920}
                 height={350}
                 className="w-100"

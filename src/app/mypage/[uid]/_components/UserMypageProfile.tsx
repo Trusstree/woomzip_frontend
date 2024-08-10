@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 
 export default function UserMypageProfile({ uid, userData }) {
   const cookieStorge = cookies();
-  const accessToken = cookieStorge.get("accessToken").value;
+  const accessToken = cookieStorge.get("accessToken")?.value;
   const signedUID = accessToken && getUserdataByToken(accessToken)?.uid;
 
   return (
