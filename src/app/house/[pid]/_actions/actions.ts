@@ -8,16 +8,7 @@ import { getUser } from "@/actions/apis/userAPI";
 
 export async function loadData(hid: number) {
   "use server";
-  let [
-    houseData,
-    imageData,
-    optionData,
-    specificationData,
-    userData,
-    reviewData,
-    deliveryData,
-    isHouseLike,
-  ] = [
+  let [houseData, imageData, optionData, specificationData, userData, reviewData, deliveryData, isHouseLike] = [
     undefined,
     undefined,
     undefined,
@@ -45,9 +36,7 @@ export async function loadData(hid: number) {
 
   houseData = {
     ...data.data[0]["house_info"],
-    specificity_info: parseSpecificationInfo(
-      data.data[0]["house_info"]["specificity_info"]
-    ),
+    specificity_info: parseSpecificationInfo(data.data[0]["house_info"]["specificity_info"]),
   };
   houseData.house_explanation = getExplanationHTML(houseData.house_explanation);
   houseData.price_variation = getExplanationHTML(houseData.price_variation);
@@ -85,7 +74,7 @@ export async function loadData(hid: number) {
   reviewData = user.data[0].reviews;
   reviewData.houseReview = reviewData.houseReview?.map((e) => ({
     nickname: e.nickname,
-    tag: JSON.parse(e.tag),
+    tag: typeof e["tag"] == "string" ? JSON.parse(e["tag"]) : e["tag"],
     rating: e.rating,
     created_at: e.created_at,
     updated_at: e.updated_at,

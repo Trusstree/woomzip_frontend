@@ -8,11 +8,8 @@ type HouseSpecificationComponentProps = {
   handleSpecification: Function;
 };
 
-export function HouseSpecificationComponent(
-  props: HouseSpecificationComponentProps
-) {
-  const { specificationInfo, setSpecificationInfo, handleSpecification } =
-    props;
+export function HouseSpecificationComponent(props: HouseSpecificationComponentProps) {
+  const { specificationInfo, setSpecificationInfo, handleSpecification } = props;
 
   return (
     <div
@@ -25,8 +22,7 @@ export function HouseSpecificationComponent(
     >
       <h3 className="fw-bold mb-4">기본 제품 제작 사양을 입력해주세요.</h3>
       <div style={{ fontSize: "18px", color: "red" }}>
-        *선택사항에 해당되는 내용을 모두 체크하고, 해당 내용이 선택지에 없다면
-        기타에 자세히 적어주세요.
+        *선택사항에 해당되는 내용을 모두 체크하고, 해당 내용이 선택지에 없다면 기타에 자세히 적어주세요.
       </div>
 
       <SelectComponent
@@ -34,6 +30,13 @@ export function HouseSpecificationComponent(
         name={"framework"}
         onChange={setSpecificationInfo}
         dataList={["경량목", "경량스틸", "철근콘크리트"]}
+      />
+
+      <SelectComponent
+        title={"벽체 구조체"}
+        name={"wall"}
+        onChange={setSpecificationInfo}
+        dataList={["샌드위치 판넬", "OSB 합판", "석고보드"]}
       />
 
       <SelectComponent
@@ -99,12 +102,7 @@ export function HouseSpecificationComponent(
         dataList={["싱크대", "인덕션", "가스레인지", "하이라이트"]}
       />
 
-      <SelectComponent
-        title={"조명"}
-        name={"lighting"}
-        onChange={setSpecificationInfo}
-        dataList={["LED"]}
-      />
+      <SelectComponent title={"조명"} name={"lighting"} onChange={setSpecificationInfo} dataList={["LED"]} />
 
       <TextBoxComponent
         className={"my-2"}
@@ -115,9 +113,7 @@ export function HouseSpecificationComponent(
       />
       <TextAreaComponent
         className={"my-2"}
-        title={
-          "추가로, 제작사양 관련 하고 싶은 말을 적어주세요. (최대 2,000자)"
-        }
+        title={"추가로, 제작사양 관련 하고 싶은 말을 적어주세요. (최대 2,000자)"}
         name={"specification_description"}
         data={specificationInfo}
         onChange={handleSpecification}
