@@ -34,12 +34,10 @@ export default function CommentComponent({
     <div
       style={{
         backgroundColor: "white",
-        borderRadius: "10px",
-        padding: "30px",
-        margin: "40px 0",
+        margin: "50px 0",
       }}
     >
-      <div style={{ fontSize: "22px", fontWeight: "600" }}>댓글</div>
+      <div style={{ fontSize: "20px", fontWeight: "600" }}>댓글</div>
       <div className="d-flex flex-column">
         <CommentForm pid={pid} setNeedRender={setNeedRender} />
         <div>

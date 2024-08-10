@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 export default function Planning() {
   return (
     <main>
-      <div style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
+      <div style={{ width: "90%", maxWidth: "1100px", margin: "0 auto" }}>
         <div
           style={{
             width: "auto",

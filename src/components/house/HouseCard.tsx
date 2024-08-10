@@ -8,7 +8,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
 
-export default function HouseCard({ data, className }: { data: any; className?: string }) {
+export default function HouseCard({
+  data,
+  className,
+}: {
+  data: any;
+  className?: string;
+}) {
   const houseImage = data["house_img_urls"].split(",");
 
   return (
@@ -18,7 +24,19 @@ export default function HouseCard({ data, className }: { data: any; className?: 
         style={{ width: "100%", border: "none" }}
         href={`/house/${data.house_id}`}
       >
-        <Swiper
+        <Image
+          style={{
+            objectFit: "cover",
+            width: "100%",
+            height: "280px",
+            borderRadius: "10px",
+          }}
+          width={280}
+          height={280}
+          src={houseImage[0]}
+          alt={"representive_image"}
+        ></Image>
+        {/* <Swiper
           pagination={{ dynamicBullets: true }}
           modules={[Pagination]}
           className="mySwiper"
@@ -47,41 +65,44 @@ export default function HouseCard({ data, className }: { data: any; className?: 
                     src={e || "/blur_image.png"}
                     alt={`${data["house_name"]}_${i}`}
                   />
-                  {/* <div
-                    className="d-flex justify-content-left mb-2"
-                    style={{
-                      position: "absolute",
-                      top: "10px",
-                      left: "10px",
-                      zIndex: "10",
-                    }}
-                  >
-                    {data.has_model === "1" && (
-                      <div
-                        className="badge me-1 text-white rounded-3 text-center align-self-center"
-                        style={{
-                          backgroundColor: "#136E11",
-                          fontWeight: "500",
-                        }}
-                      >
-                        모델하우스
-                      </div>
-                    )}
-                    {data.is_hut === "1" && (
-                      <div
-                        className="badge me-1 text-white rounded-3 text-center align-self-center"
-                        style={{ backgroundColor: "#3284e8" }}
-                      >
-                        농막주택
-                      </div>
-                    )}
-                  </div> */}
                 </div>
               </SwiperSlide>
             ))}
-        </Swiper>
+        </Swiper> */}
+        {/* <div
+          className="d-flex justify-content-left mb-2"
+          style={{
+            position: "absolute",
+            top: "10px",
+            left: "10px",
+            zIndex: "10",
+          }}
+        >
+          {data.has_model === "1" && (
+            <div
+              className="badge me-1 text-white rounded-3 text-center align-self-center"
+              style={{
+                backgroundColor: "#136E11",
+                fontWeight: "500",
+              }}
+            >
+              모델하우스
+            </div>
+          )}
+          {data.is_hut === "1" && (
+            <div
+              className="badge me-1 text-white rounded-3 text-center align-self-center"
+              style={{ backgroundColor: "#3284e8" }}
+            >
+              농막주택
+            </div>
+          )}
+        </div> */}
 
-        <div className="card-body w-100" style={{ height: "160px", border: "none", padding: "5px" }}>
+        <div
+          className="card-body w-100"
+          style={{ height: "160px", border: "none", padding: "5px" }}
+        >
           <div className="d-flex flex-column" style={{ width: "100%" }}>
             <div className="d-flex justify-content-between">
               <div
@@ -109,9 +130,14 @@ export default function HouseCard({ data, className }: { data: any; className?: 
               {data["house_name"]}
             </div>
 
-            <div className="row d-flex justify-content-between">
-              <div style={{ width: "auto", marginTop: "-7px" }}>
-                <div style={{ fontSize: "15px", fontWeight: "500" }}>{cardPriceText(data["final_price"])}</div>
+            <div
+              className="row d-flex justify-content-between"
+              style={{ marginTop: "-7px" }}
+            >
+              <div style={{ width: "auto" }}>
+                <div style={{ fontSize: "15px", fontWeight: "500" }}>
+                  {cardPriceText(data["final_price"])}
+                </div>
               </div>
               <div style={{ width: "auto" }}>
                 {data["discount_rate"] > 0 && (
@@ -129,7 +155,10 @@ export default function HouseCard({ data, className }: { data: any; className?: 
             </div>
 
             <div className="row" style={{ marginBottom: "10px" }}>
-              <div className="d-flex justify-content-start px-1" style={{ width: "33%" }}>
+              <div
+                className="d-flex justify-content-start px-1"
+                style={{ width: "33%" }}
+              >
                 <svg
                   width="30"
                   height="30"
@@ -138,10 +167,23 @@ export default function HouseCard({ data, className }: { data: any; className?: 
                   xmlns="http://www.w3.org/2000/svg"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
                 >
-                  <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_959)" />
+                  <rect
+                    opacity="0.8"
+                    width="30"
+                    height="30"
+                    fill="url(#pattern0_1672_959)"
+                  />
                   <defs>
-                    <pattern id="pattern0_1672_959" patternContentUnits="objectBoundingBox" width="1" height="1">
-                      <use xlinkHref="#image0_1672_959" transform="translate(-0.001) scale(0.002)" />
+                    <pattern
+                      id="pattern0_1672_959"
+                      patternContentUnits="objectBoundingBox"
+                      width="1"
+                      height="1"
+                    >
+                      <use
+                        xlinkHref="#image0_1672_959"
+                        transform="translate(-0.001) scale(0.002)"
+                      />
                     </pattern>
                     <image
                       id="image0_1672_959"
@@ -162,7 +204,10 @@ export default function HouseCard({ data, className }: { data: any; className?: 
                   {data["total_floor_area"]?.toFixed(1) || "NaN"}평
                 </div>
               </div>
-              <div className="d-flex justify-content-start px-1" style={{ width: "29%" }}>
+              <div
+                className="d-flex justify-content-start px-1"
+                style={{ width: "29%" }}
+              >
                 <svg
                   width="30"
                   height="30"
@@ -171,10 +216,23 @@ export default function HouseCard({ data, className }: { data: any; className?: 
                   xmlns="http://www.w3.org/2000/svg"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
                 >
-                  <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_957)" />
+                  <rect
+                    opacity="0.8"
+                    width="30"
+                    height="30"
+                    fill="url(#pattern0_1672_957)"
+                  />
                   <defs>
-                    <pattern id="pattern0_1672_957" patternContentUnits="objectBoundingBox" width="1" height="1">
-                      <use xlinkHref="#image0_1672_957" transform="translate(-0.001) scale(0.002)" />
+                    <pattern
+                      id="pattern0_1672_957"
+                      patternContentUnits="objectBoundingBox"
+                      width="1"
+                      height="1"
+                    >
+                      <use
+                        xlinkHref="#image0_1672_957"
+                        transform="translate(-0.001) scale(0.002)"
+                      />
                     </pattern>
                     <image
                       id="image0_1672_957"
@@ -195,7 +253,10 @@ export default function HouseCard({ data, className }: { data: any; className?: 
                   {data["room_count"]}개
                 </div>
               </div>
-              <div className="d-flex justify-content-start px-1" style={{ width: "29%" }}>
+              <div
+                className="d-flex justify-content-start px-1"
+                style={{ width: "29%" }}
+              >
                 <svg
                   width="30"
                   height="30"
@@ -204,10 +265,23 @@ export default function HouseCard({ data, className }: { data: any; className?: 
                   xmlns="http://www.w3.org/2000/svg"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
                 >
-                  <rect opacity="0.8" width="30" height="30" fill="url(#pattern0_1672_958)" />
+                  <rect
+                    opacity="0.8"
+                    width="30"
+                    height="30"
+                    fill="url(#pattern0_1672_958)"
+                  />
                   <defs>
-                    <pattern id="pattern0_1672_958" patternContentUnits="objectBoundingBox" width="1" height="1">
-                      <use xlinkHref="#image0_1672_958" transform="translate(-0.001) scale(0.002)" />
+                    <pattern
+                      id="pattern0_1672_958"
+                      patternContentUnits="objectBoundingBox"
+                      width="1"
+                      height="1"
+                    >
+                      <use
+                        xlinkHref="#image0_1672_958"
+                        transform="translate(-0.001) scale(0.002)"
+                      />
                     </pattern>
                     <image
                       id="image0_1672_958"

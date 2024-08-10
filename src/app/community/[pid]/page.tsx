@@ -21,66 +21,65 @@ export default async function page({ params }: { params: PageParams }) {
   const { postData, comments, isPostLike, isCommentLike } = await loadData(pid);
 
   return (
-    <div style={{ backgroundColor: "#F8F8FA" }}>
-      <main
+    <div
+      className="row"
+      style={{
+        width: "90%",
+        maxWidth: "1100px",
+        margin: "0 auto",
+      }}
+    >
+      {/* <div
         style={{
-          width: "90%",
-          maxWidth: "1300px",
-          margin: "0 auto",
+          display: "flex",
+          justifyContent: "flex-end",
+          padding: "40px 0",
         }}
       >
-        <div
+        <button
           style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            padding: "40px 0",
+            padding: "3px 10px",
+            marginRight: "12px",
+            borderRadius: "4px",
+            border: "1px solid #EDF0F4",
+            backgroundColor: "#EDF0F4",
+            color: "#ADB3BF",
+            fontWeight: 600,
           }}
         >
-          <button
-            style={{
-              padding: "3px 10px",
-              marginRight: "12px",
-              borderRadius: "4px",
-              border: "1px solid #EDF0F4",
-              backgroundColor: "#EDF0F4",
-              color: "#ADB3BF",
-              fontWeight: 600,
-            }}
-          >
-            이전글
-          </button>
-          <button
-            style={{
-              padding: "3px 10px",
-              marginRight: "12px",
-              borderRadius: "4px",
-              border: "1px solid #EDF0F4",
-              backgroundColor: "#EDF0F4",
-              color: "#ADB3BF",
-              fontWeight: 600,
-            }}
-          >
-            다음글
-          </button>
-          <button
-            style={{
-              padding: "3px 10px",
-              borderRadius: "4px",
-              border: "1px solid #EDF0F4",
-              backgroundColor: "#EDF0F4",
-              color: "#ADB3BF",
-              fontWeight: 600,
-            }}
-          >
-            목록
-          </button>
-        </div>
+          이전글
+        </button>
+        <button
+          style={{
+            padding: "3px 10px",
+            marginRight: "12px",
+            borderRadius: "4px",
+            border: "1px solid #EDF0F4",
+            backgroundColor: "#EDF0F4",
+            color: "#ADB3BF",
+            fontWeight: 600,
+          }}
+        >
+          다음글
+        </button>
+        <button
+          style={{
+            padding: "3px 10px",
+            borderRadius: "4px",
+            border: "1px solid #EDF0F4",
+            backgroundColor: "#EDF0F4",
+            color: "#ADB3BF",
+            fontWeight: 600,
+          }}
+        >
+          목록
+        </button>
+      </div> */}
+      <div className="col-md-8 col-12">
         <div
           style={{
             backgroundColor: "#ffffff",
-            borderRadius: "10px",
             width: "100%",
-            padding: "40px 30px",
           }}
         >
           <div
@@ -93,13 +92,13 @@ export default async function page({ params }: { params: PageParams }) {
               borderRadius: "15px",
               padding: "3px 7px",
               textAlign: "center",
-              margin: "10px 0",
+              marginTop: "30px",
             }}
           >
             {postData["category"]}
           </div>
 
-          <h2 style={{ paddingTop: "30px" }}>{postData.title}</h2>
+          <h3 style={{ paddingTop: "30px" }}>{postData.title}</h3>
 
           <div className="row" style={{ marginTop: "20px" }}>
             <div style={{ width: "50px", height: "40px" }}>
@@ -120,7 +119,6 @@ export default async function page({ params }: { params: PageParams }) {
             <div
               style={{
                 fontSize: "16px",
-                color: "gray",
                 fontWeight: "400",
                 width: "auto",
                 margin: "5px 0 0 0",
@@ -129,6 +127,24 @@ export default async function page({ params }: { params: PageParams }) {
               {postData["nickname"]}
             </div>
           </div>
+          <div
+            className="d-flex justify-content-between"
+            style={{ fontSize: "15px", color: "gray", marginTop: "10px" }}
+          >
+            <div style={{ width: "auto" }}>
+              {postData["created_at"].split("T")[0]}
+            </div>
+            <div style={{ width: "auto" }}>
+              <Count
+                pid={pid}
+                viewCount={postData["view_count"]}
+                commentCount={comments.length}
+                likeCount={postData["post_like_count"]}
+                isPostLike={isPostLike}
+              />
+            </div>
+          </div>
+          <hr />
 
           <div
             style={{ width: "100%", minHeight: "500px", margin: "40px 0" }}
@@ -136,7 +152,7 @@ export default async function page({ params }: { params: PageParams }) {
               __html: DOMPurify.sanitize(String(postData["content"])),
             }}
           />
-          <div
+          {/* <div
             className={`card-footer rounded-bottom-3 fw-normal px-2`}
             style={{ backgroundColor: "white", borderColor: "white" }}
           >
@@ -152,7 +168,7 @@ export default async function page({ params }: { params: PageParams }) {
                 isPostLike={isPostLike}
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         <CommentComponent
@@ -160,17 +176,16 @@ export default async function page({ params }: { params: PageParams }) {
           isCommentLike={isCommentLike}
           initialComments={comments}
         />
-
-        {/* 추천정보 */}
-        <PostMenu
-          title={"더 많은 글을 구경해보세요!"}
-          routeUrl={"/house"}
-          routeText={"더보기"}
-          horizontalScroll={true}
-        >
-          <AppPostList numShowItems={6} />
-        </PostMenu>
-      </main>
+      </div>
+      {/* 추천정보 */}
+      <PostMenu
+        title={"더 많은 글을 구경해보세요!"}
+        routeUrl={"/house"}
+        routeText={"더보기"}
+        horizontalScroll={true}
+      >
+        <AppPostList numShowItems={6} />
+      </PostMenu>
     </div>
   );
 }
