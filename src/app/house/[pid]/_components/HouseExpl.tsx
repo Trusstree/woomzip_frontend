@@ -8,6 +8,7 @@ import { detailPriceText } from "@/lib/stringUtil";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import styles from "@/app/house/[pid]/_styles/HouseExpl.module.css";
+import ReviewList from "@/app/mypage/[uid]/_components/ReviewList";
 
 export default function HouseExpl({
   pid,
@@ -15,6 +16,8 @@ export default function HouseExpl({
   houseData,
   specificationData,
   optionData,
+  userData,
+  reviewData,
 }) {
   const { createQueryString } = useQuery();
   const router = useRouter();
@@ -39,6 +42,7 @@ export default function HouseExpl({
   const onMoveBoxD = () => {
     elementD.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+  console.log(userData);
 
   return (
     <>
@@ -64,7 +68,7 @@ export default function HouseExpl({
       <div
         ref={elementA}
         className="w-full h-screen relative flex flex-col"
-        style={{ margin: "50px 0" }}
+        style={{ marginTop: "50px" }}
       >
         <div className="row g-5">
           <HalfRowText name={"방"} data={`${houseData["room_count"]}개`} />
@@ -89,31 +93,47 @@ export default function HouseExpl({
           <HalfRowText name={"특이사항"} data={houseData["specificity_info"]} />
         </div>
       </div>
-      <hr />
+      <hr style={{ margin: "60px 0" }} />
       <div
         className="btn"
-        style={{ fontSize: "16px" }}
+        style={{ fontSize: "16px", padding: "0" }}
         onClick={() => {
           router.push(`/mypage/${houseData["fk_seller_id"]}`);
         }}
       >
-        <div>{houseData["seller_nickname"]}</div>
+        <span>
+          <img
+            className={"m-0 align-self-center"}
+            src={userData?.["user_img_url"] || "blur_image.png"}
+            alt={`profile`}
+            width={30}
+            height={30}
+            style={{
+              objectFit: "cover",
+              borderRadius: "90px",
+              width: "35px",
+              height: "35px",
+            }}
+          />
+        </span>
+        <span style={{ paddingLeft: "10px", fontWeight: "600" }}>
+          {houseData["seller_nickname"]}
+        </span>
       </div>
       <div className="row">
         <div
           style={{
             fontSize: "15px",
-            margin: "30px 0 50px 0",
+            marginTop: "40px",
             fontWeight: "350",
           }}
           dangerouslySetInnerHTML={{ __html: houseData["house_explanation"] }}
         />
       </div>
-      <hr />
+      <hr style={{ margin: "60px 0" }} />
 
       {/* 배송 정보 */}
-      <div ref={elementD} style={{ margin: "50px 0" }}>
-        <h5 style={{ marginTop: "30px", fontWeight: "400" }}>배송 정보</h5>
+      <div ref={elementD}>
         <div
           className="col-12"
           style={{
@@ -128,48 +148,44 @@ export default function HouseExpl({
         >
           배송 비용은 배송 위치와 진입 환경에 따라 측정됩니다.
         </div>
-        <div className="row">
-          <div className="col-md-8 col-12" style={{ marginBottom: "20px" }}>
+        <div>
+          <div style={{ margin: "50px 0" }}>
             <RowText name={"기본 배송비"} data={"미포함(조건에 따라 상이)"} />
             <RowText name={"배송불가 지역"} data={deliveryData} />
           </div>
-          <div className="col-md-4 col-12">
-            <div
-              className="card"
-              style={{ width: "100%", padding: "10px", borderColor: "#314FC0" }}
-            >
-              <div style={{ fontSize: "14px" }}>
-                토지 위치와 진입 환경에 따라{" "}
-                <span style={{ color: "#314FC0" }}>
-                  배송비가 최대 2.5배 추가될 수 있어요!
-                </span>
-                <br />
-                <br />
-                <span
-                  className="btn"
-                  onClick={() => {
-                    router.push(gyeonjeokLink);
-                  }}
-                  style={{
-                    backgroundColor: "#314FC0",
-                    color: "white",
-                    padding: "2px",
-                    fontSize: "14px",
-                  }}
-                >
-                  내 집짓기 길잡이, AI 타잔
-                </span>
-                과 내 예상 배송비용을 꼭 확인해보세요!
-              </div>
+          <div
+            className="card"
+            style={{ width: "100%", padding: "10px", borderColor: "#314FC0" }}
+          >
+            <div style={{ fontSize: "14px" }}>
+              토지 위치와 진입 환경에 따라{" "}
+              <span style={{ color: "#314FC0" }}>
+                배송비가 최대 2.5배 추가될 수 있어요!
+              </span>
+              <br />
+              <span
+                className="btn"
+                onClick={() => {
+                  router.push(gyeonjeokLink);
+                }}
+                style={{
+                  backgroundColor: "#314FC0",
+                  color: "white",
+                  padding: "2px",
+                  fontSize: "14px",
+                }}
+              >
+                내 집짓기 길잡이, AI 타잔
+              </span>
+              과 내 예상 배송비용을 꼭 확인해보세요!
             </div>
           </div>
         </div>
       </div>
-      <hr />
+      <hr style={{ margin: "60px 0" }} />
 
       {/* 가격 정보 */}
-      <div ref={elementD} style={{ margin: "50px 0" }}>
-        <h5 style={{ marginTop: "30px", fontWeight: "400" }}>가격 정보</h5>
+      <div ref={elementD}>
         <div
           className="col-12"
           style={{
@@ -189,8 +205,8 @@ export default function HouseExpl({
             (단, 소비자의 변경 요청사항에 따른 추가비용 제외)
           </span>
         </div>
-        <div className="row">
-          <div className="col-md-8 col-12">
+        <div style={{ margin: "50px 0" }}>
+          <div>
             <RowText
               name={"기본 가격"}
               data={detailPriceText(houseData["final_price"])}
@@ -199,8 +215,15 @@ export default function HouseExpl({
               name={"기본 부가세(10%)"}
               data={detailPriceText(houseData["final_price"] / 10)}
             />
-            <hr />
-            <div style={{ margin: "20px 0" }}>추가가능 옵션</div>
+            <div
+              style={{
+                margin: "30px 0 0 12px",
+                fontWeight: "600",
+                fontSize: "15px",
+              }}
+            >
+              추가가능 옵션
+            </div>
             {optionData &&
               optionData.map((e, i) => (
                 <div key={i}>
@@ -213,7 +236,7 @@ export default function HouseExpl({
             <div className="container" style={{ height: "30px" }}></div>
           </div>
 
-          <div className="col-md-4 col-12">
+          <div>
             <div
               className="card"
               style={{ width: "100%", padding: "10px", borderColor: "#314FC0" }}
@@ -222,13 +245,11 @@ export default function HouseExpl({
                 고지된 비용에 제품 제작을 제외한 부대 비용은 포함되어 있지
                 않아요.
                 <br />
-                <br />
                 인허가, 토목공사, 기초공사, 각종 인입 공사, 보험, 세금 등 지금
                 보고 있는 비용에서{" "}
                 <span style={{ color: "#314FC0" }}>
                   평균 약 30%가 추가되고 있어요!
                 </span>
-                <br />
                 <br />
                 <span
                   className="btn"
@@ -250,7 +271,7 @@ export default function HouseExpl({
           </div>
         </div>
       </div>
-      <hr />
+      <hr style={{ margin: "60px 0" }} />
 
       {/* 제품 사양 */}
       <div
@@ -258,114 +279,98 @@ export default function HouseExpl({
         className="w-full h-screen relative flex flex-col"
         style={{ margin: "50px 0" }}
       >
-        <h5 style={{ marginTop: "30px" }}>상세 정보</h5>
-        <div style={{ fontSize: "16px", marginBottom: "40px" }}>
-          {parseSpecificationInfo(
-            specificationData["specification_description"]
-          )}
+        <div
+          className="col-12"
+          style={{
+            width: "100%",
+            border: "none",
+            backgroundColor: "#F8F8F9",
+            borderRadius: "5px",
+            padding: "10px",
+            margin: "15px 0",
+            fontSize: "14px",
+          }}
+        >
+          어떻게 만들어졌는지 상세 재료를 확인해보세요!
         </div>
-        <RowText
-          name={"골조 구조"}
-          data={parseSpecificationInfo(specificationData["framework"])}
-        />
-        <RowText
-          name={"외장재"}
-          data={parseSpecificationInfo(specificationData["exterior_material"])}
-        />
-        <RowText
-          name={"지붕재"}
-          data={parseSpecificationInfo(specificationData["roofing_material"])}
-        />
-        <RowText
-          name={"단열재"}
-          data={parseSpecificationInfo(
-            specificationData["insulation_material"]
-          )}
-        />
-        <RowText
-          name={"내장재"}
-          data={parseSpecificationInfo(specificationData["interior_material"])}
-        />
-        <RowText
-          name={"창호"}
-          data={parseSpecificationInfo(specificationData["window"])}
-        />
-        <RowText
-          name={"난방"}
-          data={parseSpecificationInfo(specificationData["heating"])}
-        />
-        <RowText
-          name={"포함된 가구"}
-          data={parseSpecificationInfo(specificationData["furniture"])}
-        />
-        <RowText
-          name={"주방"}
-          data={parseSpecificationInfo(specificationData["kitchen"])}
-        />
-        <RowText
-          name={"화장실"}
-          data={parseSpecificationInfo(specificationData["toilet"])}
-        />
-        <RowText
-          name={"조명"}
-          data={parseSpecificationInfo(specificationData["lighting"])}
-        />
-        <RowText
-          name={"기타"}
-          data={parseSpecificationInfo(specificationData["etc_info"])}
-        />
+        <div style={{ margin: "50px 0" }}>
+          <div style={{ fontSize: "16px", marginBottom: "20px" }}>
+            {parseSpecificationInfo(
+              specificationData["specification_description"]
+            )}
+          </div>
+          <RowText
+            name={"골조 구조"}
+            data={parseSpecificationInfo(specificationData["framework"])}
+          />
+          <RowText
+            name={"외장재"}
+            data={parseSpecificationInfo(
+              specificationData["exterior_material"]
+            )}
+          />
+          <RowText
+            name={"지붕재"}
+            data={parseSpecificationInfo(specificationData["roofing_material"])}
+          />
+          <RowText
+            name={"단열재"}
+            data={parseSpecificationInfo(
+              specificationData["insulation_material"]
+            )}
+          />
+          <RowText
+            name={"내장재"}
+            data={parseSpecificationInfo(
+              specificationData["interior_material"]
+            )}
+          />
+          <RowText
+            name={"창호"}
+            data={parseSpecificationInfo(specificationData["window"])}
+          />
+          <RowText
+            name={"난방"}
+            data={parseSpecificationInfo(specificationData["heating"])}
+          />
+          <RowText
+            name={"포함된 가구"}
+            data={parseSpecificationInfo(specificationData["furniture"])}
+          />
+          <RowText
+            name={"주방"}
+            data={parseSpecificationInfo(specificationData["kitchen"])}
+          />
+          <RowText
+            name={"화장실"}
+            data={parseSpecificationInfo(specificationData["toilet"])}
+          />
+          <RowText
+            name={"조명"}
+            data={parseSpecificationInfo(specificationData["lighting"])}
+          />
+          <RowText
+            name={"기타"}
+            data={parseSpecificationInfo(specificationData["etc_info"])}
+          />
+        </div>
       </div>
+      <hr />
 
       <div
         ref={elementC}
         className="w-full h-screen relative flex flex-col"
-        style={{ marginTop: "150px" }}
+        style={{ marginTop: "50px" }}
       >
-        {/* <ReviewInfo /> */}
-      </div>
-
-      <div className="container" style={{ height: "100px" }}></div>
-
-      {/* <div ref={elementD} className="w-full h-screen relative flex flex-col">
-        <h5 style={{ margin: "150px 0 30px 0" }}>Q&A(5)</h5>
-        <div style={{ marginBottom: "200px" }}>
-          <div className="d-flex justify-content-between">
-            <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
-            </div>
-            <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
-          </div>
-          <hr style={{ border: "1px solid gray" }} />
-          <div className="d-flex justify-content-between">
-            <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
-            </div>
-            <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
-          </div>
-          <hr style={{ border: "1px solid gray" }} />
-          <div className="d-flex justify-content-between">
-            <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
-            </div>
-            <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
-          </div>
-          <hr style={{ border: "1px solid gray" }} />
-          <div className="d-flex justify-content-between">
-            <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
-            </div>
-            <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
-          </div>
-          <hr style={{ border: "1px solid gray" }} />
-          <div className="d-flex justify-content-between">
-            <div style={{ fontSize: "16px", fontWeight: "600" }}>
-              질문 제목입니다. 모듈러 주택 구매하려고 하는데 제주도는 진짜 안되나요 제발 부탁입...
-            </div>
-            <div style={{ fontSize: "16px" }}>민서아빠 | 2024-06-12</div>
-          </div>
-          <hr style={{ border: "1px solid gray" }} />
+        <div style={{ marginBottom: "60px" }}>
+          <ReviewList
+            uid={houseData["fk_seller_id"]}
+            review={reviewData?.["houseReview"] || []}
+            rating={reviewData?.["averageRating"] || 0.0}
+            url={`/mypage/${houseData["fk_seller_id"]}/review`}
+          />
         </div>
-      </div> */}
+      </div>
     </>
   );
 }

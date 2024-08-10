@@ -144,7 +144,6 @@ export default async function MypageCompany({ uid, userData }) {
                 <ReviewList
                   uid={uid}
                   review={reviews["houseReview"]}
-                  count={reviews["houseReview"]?.length}
                   rating={reviews["averageRating"]}
                   url={`/mypage/${uid}/review`}
                 />

@@ -115,7 +115,16 @@ export default function HouseCard({
               >
                 {data["company_name"]}
               </div>
-              {/* <div style={{ fontSize: "16px", width: "auto" }}>★4.8</div> */}
+              <div
+                style={{
+                  fontSize: "15px",
+                  color: "gray",
+                  marginTop: "3px",
+                  width: "auto",
+                }}
+              >
+                ★{data["rating"]?.toFixed(1) || "0.0"}
+              </div>
             </div>
 
             <div

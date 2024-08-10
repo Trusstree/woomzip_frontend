@@ -15,6 +15,7 @@ export default function Home() {
         <span style={{ color: "#314FC0" }}>움집</span>에서 가장 쉽고 빠른 집
         찾기
       </div>
+
       <HouseClient />
     </div>
   );

@@ -1,17 +1,14 @@
 import ReviewCard from "@/app/mypage/[uid]/_components/ReviewCard";
-import Link from "next/link";
 import RouteButton from "@/components/RouteButton";
 
-export default async function ReviewList({
+export default function ReviewList({
   uid,
   review,
-  count,
   rating,
   url,
 }: {
   uid: any;
   review: Array<any>;
-  count: number;
   rating: number;
   url?: string;
 }) {
@@ -22,7 +19,7 @@ export default async function ReviewList({
         style={{ margin: "30px 0 10px 0" }}
       >
         <h5>
-          후기({count}) ★ {rating ? rating.toFixed(1) : 0}
+          후기({review.length}) ★ {rating ? rating.toFixed(1) : 0}
         </h5>
         {url && <RouteButton url={url}>전체보기</RouteButton>}
       </div>

@@ -4,6 +4,7 @@ import { getUserAccessToken } from "@/actions/auth/authAction";
 import { getHouseHeartUser } from "@/actions/apis/heartAPI";
 import { getHouse } from "@/actions/apis/houseAPI";
 import { getExplanationHTML, parseSpecificationInfo } from "@/lib/parseUtil";
+import { getUser } from "@/actions/apis/userAPI";
 
 export async function loadData(hid: number) {
   "use server";
@@ -12,9 +13,20 @@ export async function loadData(hid: number) {
     imageData,
     optionData,
     specificationData,
+    userData,
+    reviewData,
     deliveryData,
     isHouseLike,
-  ] = [undefined, undefined, undefined, undefined, undefined, undefined];
+  ] = [
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+  ];
 
   const [data, error] = await getHouse(hid);
   if (error) {
@@ -24,7 +36,10 @@ export async function loadData(hid: number) {
       imageData,
       optionData,
       specificationData,
+      userData,
+      reviewData,
       deliveryData,
+      isHouseLike,
     };
   }
 
@@ -51,6 +66,34 @@ export async function loadData(hid: number) {
   specificationData = data.data[0]["house_info"]["specification_info"];
   deliveryData = data.data[0]["house_info"]["delivery_unavailable"].join(", ");
 
+  const [user, userError] = await getUser(houseData["fk_seller_id"]);
+  if (userError) {
+    console.log(userError);
+    return {
+      houseData,
+      imageData,
+      optionData,
+      specificationData,
+      userData,
+      reviewData,
+      deliveryData,
+      isHouseLike,
+    };
+  }
+
+  userData = user.data[0].companyInfo?.profile || user.data[0].profile;
+  reviewData = user.data[0].reviews;
+  reviewData.houseReview = reviewData.houseReview?.map((e) => ({
+    nickname: e.nickname,
+    tag: JSON.parse(e.tag),
+    rating: e.rating,
+    created_at: e.created_at,
+    updated_at: e.updated_at,
+    id: e.house_review_id,
+    comment: e.review_text,
+    images: e.images,
+  }));
+
   // 로그인 확인하기
   const at = await getUserAccessToken();
   if (!at)
@@ -59,6 +102,8 @@ export async function loadData(hid: number) {
       imageData,
       optionData,
       specificationData,
+      userData,
+      reviewData,
       deliveryData,
       isHouseLike,
     };
@@ -71,6 +116,8 @@ export async function loadData(hid: number) {
       imageData,
       optionData,
       specificationData,
+      userData,
+      reviewData,
       deliveryData,
       isHouseLike,
     };
@@ -83,6 +130,8 @@ export async function loadData(hid: number) {
     imageData,
     optionData,
     specificationData,
+    userData,
+    reviewData,
     deliveryData,
     isHouseLike,
   };
