@@ -25,16 +25,14 @@ export default function ReviewClient({ uid }) {
         console.error(userError);
         return;
       }
-      setUser(
-        userData.data[0]?.companyInfo.profile || userData.data[0]?.profile
-      );
+      setUser(userData.data[0]?.companyInfo.profile || userData.data[0]?.profile);
 
       let parsedReviewData = userData.data[0].reviews.houseReview.map((e) => ({
         id: e["house_review_id"],
         nickname: e["nickname"],
         date: e["updated_at"] ? e["updated_at"] : e["created_at"],
         rating: e["rating"],
-        tag: JSON.parse(e["tag"]),
+        tag: typeof e["tag"] == "string" ? JSON.parse(e["tag"]) : e["tag"],
         comment: e["review_text"],
         images: e["images"],
       }));
@@ -90,12 +88,8 @@ export default function ReviewClient({ uid }) {
                     {user?.nickname}({review.length})
                   </span>
                 </div>
-                <div style={{ fontSize: "20px", margin: "10px 0" }}>
-                  ★ {rating.toFixed(1)}
-                </div>
-                <div style={{ fontSize: "20px", margin: "10px 0" }}>
-                  가장 많이 받은 키워드
-                </div>
+                <div style={{ fontSize: "20px", margin: "10px 0" }}>★ {rating.toFixed(1)}</div>
+                <div style={{ fontSize: "20px", margin: "10px 0" }}>가장 많이 받은 키워드</div>
                 <div
                   className="btn"
                   onClick={handleClick}

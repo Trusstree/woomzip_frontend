@@ -10,11 +10,9 @@ export const parseSpecificationInfo = (data: any) => {
 //jwt-decode 안 쓰고, 맛깔나는 커스텀 함수를 통해 decode작업을 진행할 예정
 export const getUserdataByToken = (accessToken: string) => {
   if (!accessToken) return undefined;
-  return JSON.parse(
-    Buffer.from(accessToken.split(".")[1], "base64").toString()
-  );
+  return JSON.parse(Buffer.from(accessToken.split(".")[1], "base64").toString());
 };
 
 export const getExplanationHTML = (data: string) => {
-  return "<div>" + data.replace(/\n/g, "<br/>") + "</div>";
+  return "<div>" + data?.replace(/\n/g, "<br/>") + "</div>";
 };
