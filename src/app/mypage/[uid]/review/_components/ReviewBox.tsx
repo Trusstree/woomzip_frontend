@@ -5,8 +5,18 @@ import { toStringByFormatting } from "@/lib/stringUtil";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ReviewModal } from "@/components/house/ReviewModal";
+import { getExplanationHTML } from "@/lib/parseUtil";
 
-export function ReviewBox({ id, index, date, rating, tag, comment, images, nickname }) {
+export function ReviewBox({
+  id,
+  index,
+  date,
+  rating,
+  tag,
+  comment,
+  images,
+  nickname,
+}) {
   const router = useRouter();
   // function handleClick() {
   //   // e.target.value
@@ -18,8 +28,8 @@ export function ReviewBox({ id, index, date, rating, tag, comment, images, nickn
       <div
         className="card"
         style={{
-          margin: "20px",
           padding: "20px",
+          marginBottom: "10px",
           width: "100%",
           borderRadius: "15px",
           overflow: "hidden",
@@ -29,42 +39,31 @@ export function ReviewBox({ id, index, date, rating, tag, comment, images, nickn
         <div style={{ color: "gray", padding: "10px" }}>
           {nickname} |<span> {toStringByFormatting(new Date(date))}</span>
         </div>
-        <div style={{ padding: "10px" }}>★ 0.0</div>
+        <div style={{ padding: "10px" }}>★ {rating.toFixed(1)}</div>
         <div className="container row" style={{ margin: "0", padding: "0" }}>
           <div
-            className="col-8"
+            className="col-md-8 col-6"
             style={{
               fontWeight: "500",
             }}
-          >
-            {comment}
-          </div>
+            dangerouslySetInnerHTML={{ __html: getExplanationHTML(comment) }}
+          ></div>
           <div
-            className="col-4"
+            className="col-md-4 col-6"
             style={{ position: "relative" }}
             data-bs-toggle="modal"
             data-bs-target={`#living_modal_${index}`}
           >
-            {/* {images.map((src, i) => (
-              <Image
-                key={i}
-                className="card-img-top"
-                style={{ borderRadius: "10px", objectFit: "cover" }}
-                alt="main-img"
-                src={src}
-                width={100}
-                height={200}
-                unoptimized={true}
-              />
-            ))} */}
             <Image
               className="card-img-top"
               style={{ borderRadius: "10px", objectFit: "cover" }}
               alt="main-img"
               src={images[0]}
               width={100}
-              height={250}
+              height={200}
               unoptimized={true}
+              data-bs-toggle="modal"
+              data-bs-target={`#review_detail_modal_${id}`}
             />
             <div
               className="btn d-flex justify-content-center align-items-center"
@@ -86,7 +85,10 @@ export function ReviewBox({ id, index, date, rating, tag, comment, images, nickn
             </div>
           </div>
         </div>
-        <div className="containr" style={{ width: "100%", float: "left", marginTop: "20px" }}>
+        <div
+          className="containr"
+          style={{ width: "100%", float: "left", marginTop: "20px" }}
+        >
           {tag.map((badge, index) => (
             <span
               className="badge"
@@ -105,7 +107,12 @@ export function ReviewBox({ id, index, date, rating, tag, comment, images, nickn
           ))}
         </div>
       </div>
-      <ReviewModal id={index} date={new Date(date)} nickname={nickname} images={images} />
+      <ReviewModal
+        id={`review_detail_modal_${id}`}
+        date={new Date(date)}
+        nickname={nickname}
+        images={images}
+      />
     </>
   );
 }
