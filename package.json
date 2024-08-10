@@ -17,7 +17,6 @@
     "@xeger/quill-image-formats": "^0.7.2",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
-    "browser-image-compression": "^2.0.2",
     "crypto-js": "^4.2.0",
     "dotenv": "^16.3.1",
     "isomorphic-dompurify": "^2.12.0",

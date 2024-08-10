@@ -114,9 +114,7 @@ export default function PlanningClient() {
           >
             <span style={{ color: "#314FC0" }}>선택하신 집</span>이 맞나요?
           </div>
-          <div style={{ fontSize: "19px", marginBottom: "30px" }}>
-            찾아보기 탭에서 마음에 드는 주택을 찾아보세요.
-          </div>
+          <div style={{ fontSize: "19px", marginBottom: "30px" }}>찾아보기 탭에서 마음에 드는 주택을 찾아보세요.</div>
           <div style={{ width: "auto", height: "300px", borderRadius: "10px" }}>
             {houseData ? (
               <HouseCard data={houseData} />
@@ -149,9 +147,7 @@ export default function PlanningClient() {
           >
             <span style={{ color: "#314FC0" }}>어떻게</span> 사실 건가요?
           </div>
-          <div style={{ fontSize: "19px", marginBottom: "30px" }}>
-            방식을 선택해주세요.
-          </div>
+          <div style={{ fontSize: "19px", marginBottom: "30px" }}>방식을 선택해주세요.</div>
           <div className="row g-2">
             <div className="col-md-4 col-12">
               <SelectBox
@@ -160,9 +156,7 @@ export default function PlanningClient() {
                 value={"hut"}
                 data={houseType}
                 setData={setHouseType}
-                img={
-                  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"
-                }
+                img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home1.png"}
               />
             </div>
             <div className="col-md-4 col-12">
@@ -172,9 +166,7 @@ export default function PlanningClient() {
                 value={"house"}
                 data={houseType}
                 setData={setHouseType}
-                img={
-                  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home2.png"
-                }
+                img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/home2.png"}
               />
             </div>
           </div>
@@ -190,63 +182,16 @@ export default function PlanningClient() {
           >
             <span style={{ color: "#314FC0" }}>어디에</span> 지으실 건가요?
           </div>
-          <div style={{ fontSize: "19px", marginBottom: "30px" }}>
-            아직 구매 전이라면 원하시는 위치를 알려주세요.
-          </div>
-          <SelectCityBox
-            title={"경기도"}
-            value={"경기도"}
-            data={addr}
-            setData={setAddr}
-          />
-          <SelectCityBox
-            title={"강원도"}
-            value={"강원도"}
-            data={addr}
-            setData={setAddr}
-          />
-          <SelectCityBox
-            title={"충청북도"}
-            value={"충청북도"}
-            data={addr}
-            setData={setAddr}
-          />
-          <SelectCityBox
-            title={"충청남도"}
-            value={"충청남도"}
-            data={addr}
-            setData={setAddr}
-          />
-          <SelectCityBox
-            title={"경상북도"}
-            value={"경상북도"}
-            data={addr}
-            setData={setAddr}
-          />
-          <SelectCityBox
-            title={"경상남도"}
-            value={"경상남도"}
-            data={addr}
-            setData={setAddr}
-          />
-          <SelectCityBox
-            title={"전라북도"}
-            value={"전라북도"}
-            data={addr}
-            setData={setAddr}
-          />
-          <SelectCityBox
-            title={"전라남도"}
-            value={"전라남도"}
-            data={addr}
-            setData={setAddr}
-          />
-          <SelectCityBox
-            title={"제주도"}
-            value={"제주도"}
-            data={addr}
-            setData={setAddr}
-          />
+          <div style={{ fontSize: "19px", marginBottom: "30px" }}>아직 구매 전이라면 원하시는 위치를 알려주세요.</div>
+          <SelectCityBox title={"경기도"} value={"경기도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"강원도"} value={"강원도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"충청북도"} value={"충청북도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"충청남도"} value={"충청남도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"경상북도"} value={"경상북도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"경상남도"} value={"경상남도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"전라북도"} value={"전라북도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"전라남도"} value={"전라남도"} data={addr} setData={setAddr} />
+          <SelectCityBox title={"제주도"} value={"제주도"} data={addr} setData={setAddr} />
         </div>
 
         <div style={{ marginBottom: "150px" }}>
@@ -259,51 +204,13 @@ export default function PlanningClient() {
           >
             <span style={{ color: "#314FC0" }}>토지 면적</span>을 알려주세요.
           </div>
-          <div style={{ fontSize: "19px", marginBottom: "30px" }}>
-            아직 구매 전이라면 원하시는 면적을 알려주세요.
-          </div>
-          <SelectMiniBox
-            title={"50평 이하"}
-            text={"~165㎡"}
-            value={"50"}
-            data={area}
-            setData={setArea}
-          />
-          <SelectMiniBox
-            title={"75평 이하"}
-            text={"~248㎡"}
-            value={"75"}
-            data={area}
-            setData={setArea}
-          />
-          <SelectMiniBox
-            title={"100평 이하"}
-            text={"~330㎡"}
-            value={"100"}
-            data={area}
-            setData={setArea}
-          />
-          <SelectMiniBox
-            title={"125평 이하"}
-            text={"~413㎡"}
-            value={"125"}
-            data={area}
-            setData={setArea}
-          />
-          <SelectMiniBox
-            title={"150평 이하"}
-            text={"~496㎡"}
-            value={"150"}
-            data={area}
-            setData={setArea}
-          />
-          <SelectMiniBox
-            title={"150평 초과"}
-            text={"496㎡~"}
-            value={"151"}
-            data={area}
-            setData={setArea}
-          />
+          <div style={{ fontSize: "19px", marginBottom: "30px" }}>아직 구매 전이라면 원하시는 면적을 알려주세요.</div>
+          <SelectMiniBox title={"50평 이하"} text={"~165㎡"} value={"50"} data={area} setData={setArea} />
+          <SelectMiniBox title={"75평 이하"} text={"~248㎡"} value={"75"} data={area} setData={setArea} />
+          <SelectMiniBox title={"100평 이하"} text={"~330㎡"} value={"100"} data={area} setData={setArea} />
+          <SelectMiniBox title={"125평 이하"} text={"~413㎡"} value={"125"} data={area} setData={setArea} />
+          <SelectMiniBox title={"150평 이하"} text={"~496㎡"} value={"150"} data={area} setData={setArea} />
+          <SelectMiniBox title={"150평 초과"} text={"496㎡~"} value={"151"} data={area} setData={setArea} />
         </div>
 
         <div style={{ marginBottom: "150px" }}>
@@ -314,12 +221,9 @@ export default function PlanningClient() {
               fontWeight: "600",
             }}
           >
-            <span style={{ color: "#314FC0" }}>토지 경사도</span> 상태는
-            어떤가요?
+            <span style={{ color: "#314FC0" }}>토지 경사도</span> 상태는 어떤가요?
           </div>
-          <div style={{ fontSize: "19px", marginBottom: "30px" }}>
-            대략적인 느낌을 알려주세요.
-          </div>
+          <div style={{ fontSize: "19px", marginBottom: "30px" }}>대략적인 느낌을 알려주세요.</div>
           <div className="row g-2">
             <div className="col-md-4 col-12">
               <SelectBox
@@ -328,9 +232,7 @@ export default function PlanningClient() {
                 value={"Flat"}
                 data={landCondition}
                 setData={setLandCondition}
-                img={
-                  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope1.png"
-                }
+                img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope1.png"}
               />
             </div>
             <div className="col-md-4 col-12">
@@ -340,9 +242,7 @@ export default function PlanningClient() {
                 value={"SlightlySloped"}
                 data={landCondition}
                 setData={setLandCondition}
-                img={
-                  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope2.png"
-                }
+                img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope2.png"}
               />
             </div>
             <div className="col-md-4 col-12">
@@ -352,9 +252,7 @@ export default function PlanningClient() {
                 value={"SteeplySloped"}
                 data={landCondition}
                 setData={setLandCondition}
-                img={
-                  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope3.png"
-                }
+                img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/slope3.png"}
               />
             </div>
           </div>
@@ -368,12 +266,9 @@ export default function PlanningClient() {
               fontWeight: "600",
             }}
           >
-            <span style={{ color: "#314FC0" }}>토지 진입로</span> 상태는
-            어떤가요?
+            <span style={{ color: "#314FC0" }}>토지 진입로</span> 상태는 어떤가요?
           </div>
-          <div style={{ fontSize: "19px", marginBottom: "30px" }}>
-            대략적인 느낌을 알려주세요.
-          </div>
+          <div style={{ fontSize: "19px", marginBottom: "30px" }}>대략적인 느낌을 알려주세요.</div>
           <div className="row g-2">
             <div className="col-md-4 col-12">
               <SelectBox
@@ -382,9 +277,7 @@ export default function PlanningClient() {
                 value={"Wide"}
                 data={roadCondition}
                 setData={setRoadCondition}
-                img={
-                  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/raod1.png"
-                }
+                img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/raod1.png"}
               />
             </div>
             <div className="col-md-4 col-12">
@@ -394,9 +287,7 @@ export default function PlanningClient() {
                 value={"Narrow"}
                 data={roadCondition}
                 setData={setRoadCondition}
-                img={
-                  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/road2.png"
-                }
+                img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/road2.png"}
               />
             </div>
             <div className="col-md-4 col-12">
@@ -406,9 +297,7 @@ export default function PlanningClient() {
                 value={"VeryNarrow"}
                 data={roadCondition}
                 setData={setRoadCondition}
-                img={
-                  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/road3.png"
-                }
+                img={"https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/road3.png"}
               />
             </div>
           </div>
@@ -441,7 +330,7 @@ export default function PlanningClient() {
             }}
             onClick={submit}
           >
-            AI 타잔과 다음 단계로 가보기
+            AI 타잔과 다음 단계로 가보기( 1 / 2 )
           </div>
           <div
             style={{

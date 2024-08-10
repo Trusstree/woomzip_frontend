@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "움집",
   description: "전원생활의 시작을 함께, 움집",
-  keywords: ["모듈러", "모듈러주택", "움집", "주택", "전원생활"],
+  keywords: ["모듈러", "모듈러주택", "움집", "주택", "전원생활", "농막", "체류형 쉼터"],
   metadataBase: new URL(process.env.NEXT_PUBLIC_CALLBACKURL),
   openGraph: {
     title: "움집",

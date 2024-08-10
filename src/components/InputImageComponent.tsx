@@ -2,7 +2,6 @@
 
 import { alertError } from "@/lib/alertUtil";
 import { deleteS3Url, setS3Url } from "@/lib/s3Util";
-import imageCompression from "browser-image-compression";
 import moment from "moment";
 
 const options = {
@@ -41,26 +40,21 @@ export default function InputImageComponent({
 
     imgs.forEach(async (e, i) => {
       console.log(e);
-      const compressedImage = await imageCompression(e, options);
+      //const compressedImage = await imageCompression(e, options);
       const title = "images" + moment().format(`YYYYMMDDHHmmss`) + `${i}`;
       const url = `${s3Url}/${title}.${e.type.split("/")[1]}`;
-      const [response, error] = await setS3Url(url, compressedImage);
+      const [response, error] = await setS3Url(url, e);
       if (error) {
         console.error(error);
         return;
       }
 
-      setImages((oldValues) => [
-        ...oldValues,
-        `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`,
-      ]);
+      setImages((oldValues) => [...oldValues, `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`]);
     });
   };
 
   const deleteImage = async (index) => {
-    const url = images[index].split(
-      `${process.env.NEXT_PUBLIC_AWS_S3_URL}/`
-    )[1];
+    const url = images[index].split(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/`)[1];
     await deleteS3Url(url);
     setImages((oldValues) => oldValues.filter((_, i) => i != index));
   };
@@ -83,11 +77,7 @@ export default function InputImageComponent({
       <div className="row flex-nowrap overflow-auto">
         {images?.map((e, i) => (
           <div className="col-2 card p-0 mx-3" key={i}>
-            <img
-              className={"card-img-top"}
-              src={e}
-              alt={`images ${name} ${i}`}
-            />
+            <img className={"card-img-top"} src={e} alt={`images ${name} ${i}`} />
             <div className="card-img-overlay p-0">
               <div className="d-flex justify-content-end">
                 <button
