@@ -1,13 +1,15 @@
-import ReviewCard from "@/components/review/ReviewCard";
+import ReviewCard from "@/app/mypage/[uid]/_components/ReviewCard";
 import Link from "next/link";
 import RouteButton from "@/components/RouteButton";
 
 export default async function ReviewList({
+  uid,
   review,
   count,
   rating,
   url,
 }: {
+  uid: any;
   review: Array<any>;
   count: number;
   rating: number;
@@ -30,14 +32,15 @@ export default async function ReviewList({
       >
         {review?.map((e, i) => (
           <ReviewCard
-            key={e["pavilion_review_id"]}
-            id={e["fk_pavilion_id"]}
+            uid={uid}
+            key={e["id"]}
+            id={e["id"]}
             nickname={e["nickname"]}
             date={e["updated_at"] ? e["updated_at"] : e["created_at"]}
-            helpful={e["helpful"]}
+            rating={e["rating"]}
             tag={e["tag"]}
-            comment={e["pavilion_review_text"]}
-            images={e["pavilion_review_images"]}
+            comment={e["comment"]}
+            images={e["images"]}
           />
         ))}
       </div>

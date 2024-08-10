@@ -106,9 +106,8 @@ export default function HouseExpl({
             margin: "30px 0 50px 0",
             fontWeight: "350",
           }}
-        >
-          {houseData["house_explanation"]}
-        </div>
+          dangerouslySetInnerHTML={{ __html: houseData["house_explanation"] }}
+        />
       </div>
       <hr />
 

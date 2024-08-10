@@ -21,7 +21,7 @@ export default async function page({ params }: { params: PageParams }) {
   const { pid } = params;
   const { postData, comments, isPostLike, isCommentLike } = await loadData(pid);
 
-  return (
+  return postData ? (
     <div
       className="row"
       style={{

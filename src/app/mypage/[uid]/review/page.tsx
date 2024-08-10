@@ -1,10 +1,10 @@
 import ReviewClient from "@/app/mypage/[uid]/review/_components/ReviewClient";
 import React from "react";
 
-export default function Review() {
+export default function Review({ params }) {
   return (
     <main>
-      <ReviewClient />
+      <ReviewClient uid={params.uid} />
     </main>
   );
 }

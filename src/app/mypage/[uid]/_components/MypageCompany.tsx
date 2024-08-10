@@ -1,6 +1,6 @@
 import PostMenu from "@/components/posts/PostMenu";
 import MyPageProfile from "@/app/mypage/[uid]/_components/MyPageProfile";
-import ReviewList from "@/components/review/ReviewList";
+import ReviewList from "@/app/mypage/[uid]/_components/ReviewList";
 import MypagePostList from "@/app/mypage/[uid]/_components/MypagePostList";
 import MypageLivingCardList from "@/app/mypage/[uid]/_components/MypageLivingCardList";
 import MypageHouseList from "@/app/mypage/[uid]/_components/MypageHouseList";
@@ -21,9 +21,13 @@ function parseData(companyData) {
   reviews = companyData["reviews"];
   reviews.houseReview = reviews.houseReview?.map((e) => ({
     nickname: e.nickname,
-    tag: e.tag,
+    tag: JSON.parse(e.tag),
+    rating: e.rating,
+    created_at: e.created_at,
+    updated_at: e.updated_at,
+    id: e.house_review_id,
     comment: e.review_text,
-    pavilion_review_images: e.images,
+    images: e.images,
   }));
   posts = companyData["posts"];
   pavilions = companyData["pavilions"];
@@ -33,13 +37,20 @@ function parseData(companyData) {
 }
 
 export default async function MypageCompany({ uid, userData }) {
-  const { profile, companyImages, reviews, posts, pavilions, sellingHouses } = parseData(userData);
+  const { profile, companyImages, reviews, posts, pavilions, sellingHouses } =
+    parseData(userData);
 
   return (
     <>
-      <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
+      <div
+        className="row"
+        style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}
+      >
         <div style={{ fontSize: "28px", fontWeight: "500" }}>프로필</div>
-        <div className="row g-2" style={{ width: "100%", position: "relative" }}>
+        <div
+          className="row g-2"
+          style={{ width: "100%", position: "relative" }}
+        >
           <div className="col-6">
             <div style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}>
               <img
@@ -57,7 +68,9 @@ export default async function MypageCompany({ uid, userData }) {
                 style={{ width: "100%", height: "196px", objectFit: "cover" }}
               />
             </div>
-            <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
+            <div
+              style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}
+            >
               <img
                 src={companyImages[2]}
                 alt={"company images 2"}
@@ -114,7 +127,9 @@ export default async function MypageCompany({ uid, userData }) {
                   style={{ width: "25px" }}
                 />
               </div>
-              <div style={{ width: "auto", marginTop: "2px" }}>사진 전체보기</div>
+              <div style={{ width: "auto", marginTop: "2px" }}>
+                사진 전체보기
+              </div>
             </div>
           </div>
         </div>
@@ -127,9 +142,11 @@ export default async function MypageCompany({ uid, userData }) {
             <div style={{ width: "100%", marginTop: "60px" }}>
               <div style={{ margin: "0px" }}>
                 <ReviewList
+                  uid={uid}
                   review={reviews["houseReview"]}
                   count={reviews["houseReview"]?.length}
                   rating={reviews["averageRating"]}
+                  url={`/mypage/${uid}/review`}
                 />
               </div>
 

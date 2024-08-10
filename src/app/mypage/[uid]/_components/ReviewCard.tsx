@@ -5,10 +5,11 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function ReviewCard({
+  uid,
   id,
   nickname,
   date,
-  helpful,
+  rating,
   tag,
   comment,
   images,
@@ -19,7 +20,7 @@ export default function ReviewCard({
   //   router.push(url);
   // }
   const handleClick = () => {
-    router.push("/living/1/review");
+    router.push(`/mypage/${uid}/review`);
   };
 
   return (
@@ -84,7 +85,7 @@ export default function ReviewCard({
         className="container"
         style={{ width: "1000px", marginBottom: "15px" }}
       >
-        {JSON.parse(tag).map((badge, index) => (
+        {tag?.map((badge, index) => (
           <span
             className="badge"
             key={index}

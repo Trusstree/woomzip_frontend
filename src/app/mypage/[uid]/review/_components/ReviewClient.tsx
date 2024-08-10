@@ -4,33 +4,45 @@ import React, { useEffect, useState } from "react";
 import { ReviewBox } from "@/app/mypage/[uid]/review/_components/ReviewBox";
 import { getHouseReviews } from "@/actions/apis/houseAPI";
 import { useRouter } from "next/navigation";
+import { getUser } from "@/actions/apis/userAPI";
 
-export default function ReviewClient() {
+export default function ReviewClient({ uid }) {
+  const [user, setUser] = useState({} as any);
   const [review, setReview] = useState([]);
-  const [count, setCount] = useState(17);
+  const [count, setCount] = useState(0);
+  console.log(uid);
 
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/mypage/[uid]/review/write");
+    router.push(`/mypage/${uid}/review/write`);
   };
 
   useEffect(() => {
     (async () => {
-      const [data, error] = await getHouseReviews(0);
-      if (error) {
-        console.error("Error fetching house reviews:", error);
+      const [userData, userError] = await getUser(uid);
+      if (userError) {
+        console.error(userError);
+        return;
+      }
+      setUser(
+        userData.data[0]?.companyInfo.profile || userData.data[0]?.profile
+      );
+
+      const [reviewData, reviewError] = await getHouseReviews(uid);
+      if (reviewError) {
+        console.error(reviewError);
         return;
       }
 
       // 콘솔에 응답 출력
-      console.log("API Response:", data);
+      console.log(reviewData);
 
-      if (data && data.data && data.data[0]) {
-        setReview(data.data[0]["house_review"]);
-        setCount(data.data[0]["house_review_cnt"]);
+      if (reviewData && reviewData.data && reviewData.data[0]) {
+        setReview(reviewData.data[0]["house_review"]);
+        setCount(reviewData.data[0]["house_review_cnt"]);
       } else {
-        console.error("Unexpected API response format:", data);
+        console.error("Unexpected API response format:", reviewData);
       }
     })();
   }, []);
@@ -61,10 +73,14 @@ export default function ReviewClient() {
                 }}
               >
                 <div style={{ fontSize: "20px", margin: "10px 0" }}>
-                  <span>판매자 이름({count})</span>
+                  <span>
+                    {user?.nickname}({count})
+                  </span>
                 </div>
                 <div style={{ fontSize: "20px", margin: "10px 0" }}>★ 0.0</div>
-                <div style={{ fontSize: "20px", margin: "10px 0" }}>가장 많이 받은 키워드</div>
+                <div style={{ fontSize: "20px", margin: "10px 0" }}>
+                  가장 많이 받은 키워드
+                </div>
                 <div
                   className="btn"
                   onClick={handleClick}
@@ -80,7 +96,10 @@ export default function ReviewClient() {
               </div>
             </div>
           </div>
-          <div className="col-8" style={{ marginTop: "40px", minWidth: "350px" }}>
+          <div
+            className="col-8"
+            style={{ marginTop: "40px", minWidth: "350px" }}
+          >
             {review.map((e, i) => (
               <ReviewBox
                 key={i}
