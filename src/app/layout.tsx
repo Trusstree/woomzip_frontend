@@ -1,6 +1,5 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import Script from 'next/script';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import StyledComponentsRegistry from '@/components/app/StyledComponentsRegistry';
 import ContextSession from '@/app/_components/ContextSession';
