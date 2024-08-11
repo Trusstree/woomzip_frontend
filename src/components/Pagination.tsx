@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import useQuery from "@/hooks/useQuery";
-import { useRouter, useSearchParams } from "next/navigation";
+import useQuery from '@/hooks/useQuery';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 //컴포넌트가 받을 props
 interface PagenationProps {
@@ -15,7 +15,7 @@ export default function Pagination(props: PagenationProps) {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const rawPage = Number(searchParams.get("page"));
+  const rawPage = Number(searchParams.get('page'));
   const page = rawPage > 0 ? rawPage : 1;
   const { createQuery, getRouteParams } = useQuery();
 
@@ -26,10 +26,10 @@ export default function Pagination(props: PagenationProps) {
   const prevPage = () => {
     if (page > numShowPages) {
       // 맨 첫 줄에 있는 친구들보다는 커야 함
-      createQuery("page", firstPage.toString());
+      createQuery('page', firstPage.toString());
     } else {
       // 맨 첫 줄에 있으면 그냥 1로 보내줌
-      createQuery("page", "1");
+      createQuery('page', '1');
     }
     router.push(getRouteParams()); // 다음 수열 중에 가장 큰 숫자로 이동.
     // ex) 6 7 8 9 10 => 1 2 3 4 5 면 page는 5
@@ -39,10 +39,10 @@ export default function Pagination(props: PagenationProps) {
   const nextPage = () => {
     if (maxPageNumber - firstPage > numShowPages) {
       // 마지막 페이지 숫자랑 줄에 있는 친구들보다는 커야 함
-      createQuery("page", (firstPage + 1 + numShowPages).toString());
+      createQuery('page', (firstPage + 1 + numShowPages).toString());
     } else {
       // 맨 마지막 줄에 있으면 그냥 제일 큰 숫자로 보내줌
-      createQuery("page", maxPageNumber.toString());
+      createQuery('page', maxPageNumber.toString());
     }
     router.push(getRouteParams()); // 다음 수열 중에 가장 작은 숫자로 이동.
     // ex) 1 2 3 4 5 => 6 7 8 9 10 면 page는 5
@@ -50,7 +50,7 @@ export default function Pagination(props: PagenationProps) {
   };
 
   const handlePage = (number: number) => {
-    createQuery("page", number.toString());
+    createQuery('page', number.toString());
     router.push(getRouteParams());
     window.scrollTo({ top: 0 });
   };
@@ -59,8 +59,8 @@ export default function Pagination(props: PagenationProps) {
     <nav aria-label="Page navigation">
       <ul className="pagination justify-content-center">
         <li className="page-item">
-          <button type="button" className="btn page-link link-dark" style={{ border: "none" }} onClick={prevPage}>
-            {"<"}
+          <button type="button" className="btn page-link link-dark" style={{ border: 'none' }} onClick={prevPage}>
+            {'<'}
           </button>
         </li>
 
@@ -72,8 +72,8 @@ export default function Pagination(props: PagenationProps) {
               <li className="page-item" key={number}>
                 <button
                   type="button"
-                  className={`btn page-link link-dark ${page === firstPage + i + 1 ? "fw-bold" : ""}`}
-                  style={{ border: "none" }}
+                  className={`btn page-link link-dark ${page === firstPage + i + 1 ? 'fw-bold' : ''}`}
+                  style={{ border: 'none' }}
                   onClick={() => {
                     handlePage(number);
                   }}
@@ -86,8 +86,8 @@ export default function Pagination(props: PagenationProps) {
         })}
 
         <li className="page-item">
-          <button type="button" className="btn page-link link-dark" style={{ border: "none" }} onClick={nextPage}>
-            {">"}
+          <button type="button" className="btn page-link link-dark" style={{ border: 'none' }} onClick={nextPage}>
+            {'>'}
           </button>
         </li>
       </ul>

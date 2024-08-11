@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Children } from "@/types/props";
-import { CSSProperties } from "react";
+import { Children } from '@/types/props';
+import { CSSProperties } from 'react';
 
 type CollapsingButtonProps = {
   collapsedId: string;
@@ -15,8 +15,8 @@ export default function CollapsingButton(props: CollapsingButtonProps) {
   return (
     <button
       type="button"
-      style={{ ...style, color: "#101648" }}
-      className={`${className ? className : ""} px-4 py-2 btn rounded-lg fw-bold`}
+      style={{ ...style, color: '#101648' }}
+      className={`${className ? className : ''} px-4 py-2 btn rounded-lg fw-bold`}
       data-bs-toggle="collapse"
       data-bs-target={`#${collapsedId}`}
       aria-controls={`${collapsedId}`}

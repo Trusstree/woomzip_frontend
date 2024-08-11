@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from 'react';
 
 export default function useForm(callback: Function, validate: Function) {
   const [values, setValues] = useState({});
@@ -37,11 +37,7 @@ export default function useForm(callback: Function, validate: Function) {
     setIsSubmitting(true);
   };
 
-  const handleChange = (
-    event: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     event.persist();
 
     const { name, value } = event.target;
@@ -54,11 +50,7 @@ export default function useForm(callback: Function, validate: Function) {
     });
   };
 
-  const handleClick = (
-    event: React.MouseEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
+  const handleClick = (event: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     event.persist();
 
     const { name, value } = event.currentTarget;

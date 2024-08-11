@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import useQuery from "@/hooks/useQuery";
-import { useRouter } from "next/navigation";
-import styles from "@/styles/CategoryButton.module.css";
+import useQuery from '@/hooks/useQuery';
+import { useRouter } from 'next/navigation';
+import styles from '@/styles/CategoryButton.module.css';
 
 export default function CategoryButton({
   title,
@@ -16,12 +16,12 @@ export default function CategoryButton({
   const router = useRouter();
   const { createQuery, getRouteParams } = useQuery();
   const handleClick = () => {
-    createQuery("category", category);
+    createQuery('category', category);
     router.push(getRouteParams());
   };
 
   return (
-    <div className={styles.categoryButton} onClick={handleClick} style={{ cursor: "pointer" }}>
+    <div className={styles.categoryButton} onClick={handleClick} style={{ cursor: 'pointer' }}>
       <div className={styles.categoryIcon}>
         <img src={imgSrc} alt={title} />
       </div>

@@ -1,9 +1,9 @@
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 // 성공 알림
 export const alertSuccess = (title: string, text: string) => {
   return Swal.fire({
-    icon: "success",
+    icon: 'success',
     title: title,
     html: text,
   });
@@ -12,7 +12,7 @@ export const alertSuccess = (title: string, text: string) => {
 // 실패 알림
 export const alertError = (title: string, text: string) => {
   return Swal.fire({
-    icon: "error",
+    icon: 'error',
     title: title,
     html: text,
   });
@@ -24,20 +24,20 @@ export const confirmSuccess = async (
   text: string,
   confirmText: string,
   denyText: string,
-  imgSrc?: string
+  imgSrc?: string,
 ) => {
   return Swal.fire({
-    icon: "success",
+    icon: 'success',
     title: title,
     text: text,
     allowOutsideClick: false,
     showCloseButton: true,
     showDenyButton: true,
     confirmButtonText: confirmText,
-    confirmButtonColor: "#81c147",
+    confirmButtonColor: '#81c147',
     denyButtonText: denyText,
-    denyButtonColor: "#d33",
-    imageUrl: imgSrc ? imgSrc : "",
+    denyButtonColor: '#d33',
+    imageUrl: imgSrc ? imgSrc : '',
   });
 };
 
@@ -54,11 +54,11 @@ export const alertImage = (title: string, src: string) => {
 
 export const confirmThumbnail = async () => {
   const { value: file } = await Swal.fire({
-    title: "Select image",
-    input: "file",
+    title: 'Select image',
+    input: 'file',
     inputAttributes: {
-      accept: "image/*",
-      "aria-label": "Upload your profile picture",
+      accept: 'image/*',
+      'aria-label': 'Upload your profile picture',
     },
   });
 
@@ -66,9 +66,9 @@ export const confirmThumbnail = async () => {
     const reader = new FileReader();
     reader.onload = (e) => {
       Swal.fire({
-        title: "Your uploaded picture",
+        title: 'Your uploaded picture',
         imageUrl: e.target.result.toString(),
-        imageAlt: "The uploaded picture",
+        imageAlt: 'The uploaded picture',
       });
     };
     reader.readAsDataURL(file);
