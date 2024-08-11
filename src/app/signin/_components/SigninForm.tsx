@@ -1,36 +1,36 @@
-"use client";
+'use client';
 
-import { signinUser } from "@/actions/apis/userAPI";
-import { useUser } from "@/app/ContextSession";
-import { alertError } from "@/lib/alertUtil";
-import { getUserdataByToken } from "@/lib/parseUtil";
-import { encryptPW } from "@/lib/authUtil";
-import { isID, isPassword, isRequired } from "@/lib/validator";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { signinUser } from '@/actions/apis/userAPI';
+import { useUser } from '@/app/_components/ContextSession';
+import { alertError } from '@/lib/alertUtil';
+import { getUserdataByToken } from '@/lib/parseUtil';
+import { encryptPW } from '@/lib/authUtil';
+import { isID, isPassword, isRequired } from '@/lib/validator';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export function SigninForm() {
   const router = useRouter();
   const { setUserContext } = useUser();
-  const [id, setID] = useState("");
-  const [pw, setPW] = useState("");
+  const [id, setID] = useState('');
+  const [pw, setPW] = useState('');
 
   const submit = async () => {
     // 유효성 검사부터
     if (!isRequired(id)) {
-      alertError("로그인 에러", `아이디를 입력했는지 확인해주세요.`);
+      alertError('로그인 에러', `아이디를 입력했는지 확인해주세요.`);
       return;
     }
     if (!isRequired(pw)) {
-      alertError("로그인 에러", `비밀번호를 입력했는지 확인해주세요.`);
+      alertError('로그인 에러', `비밀번호를 입력했는지 확인해주세요.`);
       return;
     }
     if (!isID(id)) {
-      alertError("로그인 에러", `아이디가 8~16자인지 확인해주세요.`);
+      alertError('로그인 에러', `아이디가 8~16자인지 확인해주세요.`);
       return;
     }
     if (!isPassword(pw)) {
-      alertError("로그인 에러", `비밀번호가 8~16자인지 확인해주세요.`);
+      alertError('로그인 에러', `비밀번호가 8~16자인지 확인해주세요.`);
       return;
     }
 
@@ -43,10 +43,7 @@ export function SigninForm() {
 
     if (error) {
       console.log(error);
-      alertError(
-        "로그인 에러",
-        error.response?.data?.message || `로그인에 실패했어요.`
-      );
+      alertError('로그인 에러', error.response?.data?.message || `로그인에 실패했어요.`);
       return;
     }
     const userData = getUserdataByToken(data.data.access_token);
@@ -54,7 +51,7 @@ export function SigninForm() {
       uid: userData.uid,
       role: userData.role,
     });
-    router.push("/");
+    router.push('/');
     return;
   };
 
@@ -62,7 +59,7 @@ export function SigninForm() {
     <div className="my-5">
       <div className={`d-flex mb-3`}>
         <label htmlFor={`signin_ID`} className="fs-5 col-2">
-          {"ID"}
+          {'ID'}
         </label>
         <input
           className="w-100"
@@ -71,18 +68,14 @@ export function SigninForm() {
           onChange={(e) => {
             setID(e.target.value);
           }}
-          name={"id"}
+          name={'id'}
           value={id}
         />
       </div>
 
       <div className={`w-100 d-flex mt-3 mb-5`}>
-        <label
-          htmlFor={`signin_PW`}
-          className="fs-5 col-2"
-          style={{ color: "#101648" }}
-        >
-          {"PW"}
+        <label htmlFor={`signin_PW`} className="fs-5 col-2" style={{ color: '#101648' }}>
+          {'PW'}
         </label>
         <input
           className="w-100"
@@ -91,7 +84,7 @@ export function SigninForm() {
           onChange={(e) => {
             setPW(e.target.value);
           }}
-          name={"pw"}
+          name={'pw'}
           value={pw}
         />
       </div>
@@ -99,10 +92,10 @@ export function SigninForm() {
       <div
         className="btn"
         style={{
-          backgroundColor: "#314FC0",
-          color: "white",
-          width: "100%",
-          padding: "10px",
+          backgroundColor: '#314FC0',
+          color: 'white',
+          width: '100%',
+          padding: '10px',
         }}
         onClick={submit}
       >

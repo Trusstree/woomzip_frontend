@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { getUserAccessToken } from "@/actions/auth/authAction";
-import { useUser } from "@/app/ContextSession";
-import { getUserdataByToken } from "@/lib/parseUtil";
-import { useEffect } from "react";
+import { getUserAccessToken } from '@/actions/auth/authAction';
+import { useUser } from '@/app/_components/ContextSession';
+import { getUserdataByToken } from '@/lib/parseUtil';
+import { useEffect } from 'react';
 
 // 로그인이 되어있는지 여부를 컨텍스트에 집어넣기 위함
 export default function useAuth() {

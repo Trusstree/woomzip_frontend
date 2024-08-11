@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { signout } from "@/actions/auth/authAction";
-import { useUser } from "@/app/ContextSession";
-import { useRouter } from "next/navigation";
+import { signout } from '@/actions/auth/authAction';
+import { useUser } from '@/app/_components/ContextSession';
+import { useRouter } from 'next/navigation';
 
 export default function SignoutButton() {
   const router = useRouter();
@@ -13,10 +13,10 @@ export default function SignoutButton() {
       onClick={() => {
         signout();
         setUserContext(undefined);
-        router.replace("/");
+        router.replace('/');
       }}
     >
-      <span className="btn" style={{ wordBreak: "keep-all", color: "red", fontSize: "13px" }}>
+      <span className="btn" style={{ wordBreak: 'keep-all', color: 'red', fontSize: '13px' }}>
         로그아웃
       </span>
     </div>
