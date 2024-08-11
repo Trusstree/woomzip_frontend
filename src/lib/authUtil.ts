@@ -1,4 +1,4 @@
-import { SHA256 } from "crypto-js";
+import { SHA256 } from 'crypto-js';
 
 //암호화
 export const encryptPW = (pw: string) => {

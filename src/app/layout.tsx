@@ -8,6 +8,7 @@ import Header from '@/app/_components/Header';
 import Footer from '@/app/_components/Footer';
 import Options from '@/app/_components/Options';
 import { Suspense } from 'react';
+import { WebVitals } from '@/app/_components/WebVitals';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -39,11 +40,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <head>
-        <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" />
-      </head>
+      <head></head>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       <body className={inter.className}>
+        <WebVitals />
         <StyledComponentsRegistry>
           <ContextSession>
             <Suspense>

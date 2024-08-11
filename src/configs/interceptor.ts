@@ -1,6 +1,6 @@
-import { privateApi } from "@/configs/axiosClient";
-import { AxiosError } from "axios";
-import { cookies } from "next/headers";
+import { privateApi } from '@/configs/axiosClient';
+import { AxiosError } from 'axios';
+import { cookies } from 'next/headers';
 //public client 함수
 
 export const onPublicRequest = async (request: any) => {
@@ -23,9 +23,9 @@ export const onPublicResponseError = async (error: any) => {
 
 export const onPrivateRequest = async (request: any) => {
   const cookieStorage = cookies();
-  const accessToken = cookieStorage.get("accessToken")?.value;
+  const accessToken = cookieStorage.get('accessToken')?.value;
   if (accessToken) {
-    request.headers["Authorization"] = `Bearer ${accessToken}`;
+    request.headers['Authorization'] = `Bearer ${accessToken}`;
   }
   return request;
 };
@@ -37,20 +37,20 @@ export const onPrivateResponseError = async (error: any) => {
 
   try {
     if (status == 401) {
-      console.log("access token이 유효하지 않습니다");
+      console.log('access token이 유효하지 않습니다');
     }
 
     // Access Token 재발급해서 다시 신호 보내주는 작업
     if (status == 402) {
       const prevRequest = errorConfig;
       const cookieStorage = cookies();
-      cookieStorage.set("accessToken", error.response.data.data[0].access_token);
-      prevRequest.headers["Authorization"] = `Bearer ${error.response.data.data[0].access_token}`;
+      cookieStorage.set('accessToken', error.response.data.data[0].access_token);
+      prevRequest.headers['Authorization'] = `Bearer ${error.response.data.data[0].access_token}`;
       return privateApi(errorConfig);
     }
 
     if (status == 500) {
-      console.log("internal error");
+      console.log('internal error');
     }
   } catch (referenceError) {
     console.log(referenceError);
