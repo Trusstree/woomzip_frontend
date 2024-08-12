@@ -1,7 +1,7 @@
-import DOMPurify from "isomorphic-dompurify";
-import Link from "next/link";
-import { cardCountText } from "@/lib/stringUtil";
-import Image from "next/image";
+import DOMPurify from 'isomorphic-dompurify';
+import Link from 'next/link';
+import { cardCountText, elapsedTimeText } from '@/lib/stringUtil';
+import Image from 'next/image';
 
 type PostCardProps = {
   data: DataProps;
@@ -22,45 +22,45 @@ type DataProps = {
 };
 
 const style = {
-  일반: { backgroundColor: "#CCD6FF", color: "#314FC0" },
-  공지: { backgroundColor: "#FFCCCC", color: "#C03142" },
-  질문: { backgroundColor: "#E2FFCC", color: "#8AC031" },
-  칼럼: { backgroundColor: "#F9F871", color: "#FFC75F" },
+  일반: { backgroundColor: '#CCD6FF', color: '#314FC0' },
+  공지: { backgroundColor: '#FFCCCC', color: '#C03142' },
+  질문: { backgroundColor: '#E2FFCC', color: '#8AC031' },
+  칼럼: { backgroundColor: '#F9F871', color: '#FFC75F' },
 };
 
 export default function PostCard({ data, className }: PostCardProps) {
   const regex = /<([^>]+)>/gi;
-  const imgSrcArr = data["content"]
+  const imgSrcArr = data['content']
     .split(/img src="/g)
     .filter((e) => e.search(/https?/g) > -1)
     .map((e) => e.split('"')[0]);
 
   return (
-    <div className={`${className ? `${className} ` : ""}col-md-4 col-lg-3`}>
+    <div className={`${className ? `${className} ` : ''}col-md-4 col-lg-3`}>
       <div
         className="card"
         style={{
-          width: "100%",
-          borderRadius: "10px",
-          border: "none",
+          width: '100%',
+          borderRadius: '10px',
+          border: 'none',
         }}
       >
-        <Link href={{ pathname: `/community/${data["post_id"]}` }}>
+        <Link href={{ pathname: `/community/${data['post_id']}` }}>
           <Image
-            src={imgSrcArr[0] || "/111.webp"}
+            src={imgSrcArr[0] || '/111.webp'}
             width={280}
             height={280}
-            style={{ width: "100%", height: 280, borderRadius: "10px", objectFit: "cover" }}
-            alt={"post card img"}
+            style={{ width: '100%', height: 280, borderRadius: '10px', objectFit: 'cover' }}
+            alt={'post card img'}
           />
           <div
             style={{
-              width: "100%",
-              height: "100px",
-              backgroundColor: "black",
-              opacity: "0.7",
-              borderRadius: "0 0 10px 10px",
-              position: "absolute",
+              width: '100%',
+              height: '100px',
+              backgroundColor: 'black',
+              opacity: '0.7',
+              borderRadius: '0 0 10px 10px',
+              position: 'absolute',
               top: 180,
               left: 0,
             }}
@@ -69,10 +69,10 @@ export default function PostCard({ data, className }: PostCardProps) {
           <div
             className="card-body"
             style={{
-              width: "100%",
-              height: "280px",
-              borderRadius: "10px",
-              position: "absolute",
+              width: '100%',
+              height: '280px',
+              borderRadius: '10px',
+              position: 'absolute',
               top: 0,
               left: 0,
             }}
@@ -81,27 +81,27 @@ export default function PostCard({ data, className }: PostCardProps) {
               style={{
                 backgroundColor: style[data.category].backgroundColor,
                 borderColor: style[data.category].backgroundColor,
-                width: "60px",
-                fontSize: "14px",
+                width: '60px',
+                fontSize: '14px',
                 color: style[data.category].color,
-                borderRadius: "15px",
-                padding: "3px 6px",
-                textAlign: "center",
+                borderRadius: '15px',
+                padding: '3px 6px',
+                textAlign: 'center',
               }}
             >
-              {data["category"]}
+              {data['category']}
             </div>
             <div
               className="text-white text-wrap"
               style={{
-                textDecoration: "none",
-                display: "block",
-                fontSize: "17px",
-                fontWeight: "500",
-                margin: "15px 0",
-                marginTop: "160px",
-                height: "50px",
-                overflow: "hidden",
+                textDecoration: 'none',
+                display: 'block',
+                fontSize: '17px',
+                fontWeight: '500',
+                margin: '15px 0',
+                marginTop: '160px',
+                height: '50px',
+                overflow: 'hidden',
               }}
             >
               {data.title}
@@ -128,41 +128,41 @@ export default function PostCard({ data, className }: PostCardProps) {
         <div
           className={`card-footer`}
           style={{
-            border: "none",
-            backgroundColor: "white",
-            marginBottom: "30px",
+            border: 'none',
+            backgroundColor: 'white',
+            marginBottom: '30px',
           }}
         >
-          <div className="d-flex flex-column" style={{ width: "100%" }}>
+          <div className="d-flex flex-column" style={{ width: '100%' }}>
             {/* <div className="d-flex">
               <img src={data.profilePicture} width={40} height={40}/>
               <div className="mx-3 fw-bold align-self-center">{data.author}</div>
             </div> */}
-            <div className="d-flex justify-content-between" style={{ marginTop: "1px" }}>
+            <div className="d-flex justify-content-between" style={{ marginTop: '1px' }}>
               <div
                 style={{
-                  fontSize: "15px",
-                  color: "gray",
-                  width: "auto",
-                  fontWeight: "400",
+                  fontSize: '15px',
+                  color: 'gray',
+                  width: 'auto',
+                  fontWeight: '400',
                 }}
               >
-                {data["nickname"]}
+                {data['nickname']}
               </div>
               <div
                 style={{
-                  fontSize: "15px",
-                  color: "gray",
-                  width: "auto",
-                  fontWeight: "400",
+                  fontSize: '15px',
+                  color: 'gray',
+                  width: 'auto',
+                  fontWeight: '400',
                 }}
               >
-                {data["created_at"].split("T")[0]}
+                {elapsedTimeText(data['created_at'])}
               </div>
             </div>
 
             <div className="d-flex justify-content-between">
-              <div className="row" style={{ width: "auto", marginTop: "3px", marginLeft: "0px" }}>
+              <div className="row" style={{ width: 'auto', marginTop: '3px', marginLeft: '0px' }}>
                 {/* <div className="d-flex" style={{ width: "50px", padding: "0" }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +190,7 @@ export default function PostCard({ data, className }: PostCardProps) {
                     {cardCountText(data?.["post_view_count"])}
                   </div>
                 </div> */}
-                <div className="d-flex" style={{ width: "50px", padding: "0" }}>
+                <div className="d-flex" style={{ width: '50px', padding: '0' }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -208,16 +208,16 @@ export default function PostCard({ data, className }: PostCardProps) {
                   <div
                     className="ps-1"
                     style={{
-                      width: "34px",
-                      fontSize: "15px",
-                      color: "gray",
-                      fontWeight: "400",
+                      width: '34px',
+                      fontSize: '15px',
+                      color: 'gray',
+                      fontWeight: '400',
                     }}
                   >
-                    {cardCountText(data?.["comment_count"])}
+                    {cardCountText(data?.['comment_count'])}
                   </div>
                 </div>
-                <div className="d-flex" style={{ width: "50px", padding: "0" }}>
+                <div className="d-flex" style={{ width: '50px', padding: '0' }}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -235,13 +235,13 @@ export default function PostCard({ data, className }: PostCardProps) {
                   <div
                     className="ps-1"
                     style={{
-                      width: "34px",
-                      fontSize: "15px",
-                      color: "gray",
-                      fontWeight: "400",
+                      width: '34px',
+                      fontSize: '15px',
+                      color: 'gray',
+                      fontWeight: '400',
                     }}
                   >
-                    {cardCountText(data?.["post_like_count"])}
+                    {cardCountText(data?.['post_like_count'])}
                   </div>
                 </div>
               </div>
