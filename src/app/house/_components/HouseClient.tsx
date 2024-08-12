@@ -69,6 +69,7 @@ export default function Home() {
         frame: arraySort(searchParams.get('frame')?.split(',')),
         specificity: arraySort(searchParams.get('specificity')?.split(',')),
         model: searchParams.get('model') == '1' ? 1 : undefined,
+        tag: searchParams.get('tag'),
       };
 
       for (const key in searchCondition) {
