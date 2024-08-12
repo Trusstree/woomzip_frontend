@@ -1,6 +1,7 @@
 import SignoutButton from '@/app/mypage/[uid]/_components/SignoutButton';
 import { getUserdataByToken } from '@/lib/parseUtil';
 import { cookies } from 'next/headers';
+import EditProfileButton from './EditProfileButton';
 
 export default function UserMypageProfile({ uid, userData }) {
   const cookieStorge = cookies();
@@ -21,7 +22,7 @@ export default function UserMypageProfile({ uid, userData }) {
           <div style={{ width: '90px' }}>
             <img
               className={'m-0 align-self-center'}
-              src={userData?.['user_img_url'] || 'blur_image.png'}
+              src={userData?.userInfo.user_img_url || '/blur_image.png'}
               alt={`profile`}
               width={100}
               height={70}
@@ -36,39 +37,38 @@ export default function UserMypageProfile({ uid, userData }) {
               width: 'auto',
             }}
           >
-            {userData?.['nickname']}
+            {userData?.userInfo['nickname']}
           </div>
         </div>
-        <div style={{ width: '100%', margin: '30px 0', fontSize: '16px' }}>{userData?.one_line_introduce}</div>
-        <div className="row">
-          <div className="col-3" style={{ fontWeight: '600' }}>
-            이름
-          </div>
-          <div className="col-9">{userData?.name}</div>
-        </div>
-        <div className="row">
-          <div className="col-3" style={{ fontWeight: '600' }}>
-            이메일
-          </div>
-          <div className="col-9">{userData?.email}</div>
-        </div>
-        <div className="row">
-          <div className="col-3" style={{ fontWeight: '600' }}>
-            전화번호
-          </div>
-          <div className="col-9">{userData?.phone_number}</div>
-        </div>
-        <div style={{ textAlign: 'right' }}>
-          <SignoutButton />
-          {Number(uid) == signedUID && (
-            // <Link style={{}} href={`${uid}?tab=profile`}>
-            //   <span className="" style={{ wordBreak: "keep-all" }}>
-            //     프로필 수정
-            //   </span>
-            // </Link>
-            <SignoutButton />
-          )}
-        </div>
+        <div style={{ width: '100%', margin: '30px 0', fontSize: '16px' }}>{userData?.userInfo.one_line_introduce}</div>
+        {Number(uid) == signedUID && (
+          <>
+            <div className="row">
+              <div className="col-3" style={{ fontWeight: '600' }}>
+                이름
+              </div>
+              <div className="col-9">{userData?.userInfo.name}</div>
+            </div>
+            <div className="row">
+              <div className="col-3" style={{ fontWeight: '600' }}>
+                이메일
+              </div>
+              <div className="col-9">{userData?.userInfo.email}</div>
+            </div>
+            <div className="row">
+              <div className="col-3" style={{ fontWeight: '600' }}>
+                전화번호
+              </div>
+              <div className="col-9">{userData?.userInfo.phone_number}</div>
+            </div>
+            <div className={'d-flex justify-content-end'}>
+              <>
+                <EditProfileButton uid={uid} />
+                <SignoutButton />
+              </>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

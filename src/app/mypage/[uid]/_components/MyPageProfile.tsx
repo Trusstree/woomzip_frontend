@@ -77,14 +77,11 @@ export default function MyPageProfile({ uid, userData }) {
           <div className="col-9">{userData?.pr_url}</div>
         </div>
         <div className={'d-flex justify-content-end'}>
-          <EditProfileButton />
           {isSigned && (
-            // <Link style={{}} href={`${uid}?tab=profile`}>
-            //   <span className="" style={{ wordBreak: "keep-all" }}>
-            //     프로필 수정
-            //   </span>
-            // </Link>
-            <SignoutButton />
+            <>
+              <EditProfileButton uid={uid} />
+              <SignoutButton />
+            </>
           )}
         </div>
       </div>

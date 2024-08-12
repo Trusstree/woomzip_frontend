@@ -1,7 +1,7 @@
-"use server";
+'use server';
 
-import { privateApi, publicApi } from "@/configs/axiosClient";
-import { cookies } from "next/headers";
+import { privateApi, publicApi } from '@/configs/axiosClient';
+import { cookies } from 'next/headers';
 
 export const getUser = async (uid: string | number) => {
   let [data, error] = [undefined, undefined] as any;
@@ -33,7 +33,7 @@ export const getCompanyUser = async (uid: string | number) => {
   return [data, error];
 };
 
-export const postUser = async (user: any, token: string) => {
+export const postUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
@@ -43,7 +43,7 @@ export const postUser = async (user: any, token: string) => {
     error = err.response?.data;
   }
 
-  return { data, error };
+  return [data, error];
 };
 
 export const putUser = async (user: any) => {
@@ -64,10 +64,10 @@ export const signinUser = async (user: { login_id: string; password: string }) =
   try {
     const result = await publicApi.post(`/auth/sign-in`, user);
     const cookieStorage = cookies();
-    cookieStorage.set("accessToken", result?.data.data.access_token, {
+    cookieStorage.set('accessToken', result?.data.data.access_token, {
       //expires?: Date;
       //domain: ".buildintruss.com",
-      path: "/",
+      path: '/',
       secure: true,
       httpOnly: true,
       sameSite: true,

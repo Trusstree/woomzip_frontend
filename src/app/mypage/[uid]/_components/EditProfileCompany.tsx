@@ -1,32 +1,33 @@
 'use client';
 
-import { signupCompany, validateID, validateNickname } from '@/actions/apis/userAPI';
+import { validateID, validateNickname, signupCompany, postUser } from '@/actions/apis/userAPI';
 import SignupGenderRadio from '@/app/signup/_components/SignupRadio';
 import SignupTextBox from '@/app/signup/_components/SignupTextBox';
 import InputImageComponent from '@/components/InputImageComponent';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { encryptPW } from '@/lib/authUtil';
-import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from '@/lib/validator';
+import { isID, isPassword, isEmail, isRequired, isPhoneNumber } from '@/lib/validator';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
-export function SignupFormCompany() {
+import { useState, useEffect } from 'react';
+
+export default function EditProfileCompany({ companyInfo }) {
   const router = useRouter();
-  const [id, setID] = useState('');
+  const [id, setID] = useState(companyInfo.profile.email);
   const [pw, setPW] = useState('');
   const [repw, setRePW] = useState('');
-  const [name, setName] = useState('');
-  const [thumbnail, setThumbnail] = useState([]);
-  const [introduce, setIntroduce] = useState([]);
-  const [nickname, setNickname] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [gender, setGender] = useState('');
-  const [birthday, setBirthday] = useState('1970-01-01');
-  const [companyImages, setCompanyImages] = useState([] as Array<File>);
-  const [addr, setAddr] = useState('');
-  const [prUrl, setPrUrl] = useState('');
-  const [youtubeUrl, setYoutubeUrl] = useState('');
+  const [name, setName] = useState(companyInfo.profile.name);
+  const [thumbnail, setThumbnail] = useState([companyInfo.profile.user_img_url]);
+  const [introduce, setIntroduce] = useState(companyInfo.profile.one_line_introduce);
+  const [nickname, setNickname] = useState(companyInfo.profile.nickname);
+  const [email, setEmail] = useState(companyInfo.profile.email);
+  const [phoneNumber, setPhoneNumber] = useState(companyInfo.profile.phone_number);
+  const [gender, setGender] = useState(companyInfo.profile.gender);
+  const [birthday, setBirthday] = useState(companyInfo.profile.birthday);
+  const [companyImages, setCompanyImages] = useState(companyInfo.images);
+  const [addr, setAddr] = useState(companyInfo.profile.addr);
+  const [prUrl, setPrUrl] = useState(companyInfo.profile.company_url);
+  const [youtubeUrl, setYoutubeUrl] = useState(companyInfo.profile.pr_url);
 
   const handlePhoneNumber = (e) => {
     const regex = new RegExp(/^[0-9\b -]{0,13}$/);
@@ -117,15 +118,14 @@ export function SignupFormCompany() {
       company_images: companyImages,
     };
 
-    const [data, error] = await signupCompany(encryptedData);
+    const [data, error] = await postUser(companyInfo.profile.user_profile_id);
     if (error) {
       console.log(error);
       alertError('로그인 에러', error.message || `회원가입에 실패했어요.`);
       return;
     }
 
-    alertSuccess('회원가입 신청완료', '기업 회원 가입을 요청했습니다. 확인 후에 알려드릴게요!');
-    router.push('/');
+    router.push(`/mypage/${companyInfo.profile.user_profile_id}`);
     return;
   };
 
@@ -247,7 +247,7 @@ export function SignupFormCompany() {
         }}
         onClick={submit}
       >
-        회원가입 요청하기
+        정보 수정하기
       </div>
     </div>
   );

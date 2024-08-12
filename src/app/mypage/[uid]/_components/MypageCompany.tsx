@@ -1,10 +1,9 @@
 import PostMenu from '@/components/posts/PostMenu';
 import MyPageProfile from '@/app/mypage/[uid]/_components/MyPageProfile';
 import ReviewList from '@/app/mypage/[uid]/_components/ReviewList';
-import MypagePostList from '@/app/mypage/[uid]/_components/MypagePostList';
-import MypageLivingCardList from '@/app/mypage/[uid]/_components/MypageLivingCardList';
 import MypageHouseList from '@/app/mypage/[uid]/_components/MypageHouseList';
 import { PicModal } from '@/app/house/[pid]/_components/PicModal';
+import EditProfile from '@/app/mypage/[uid]/_components/EditProfileCompany';
 
 function parseData(companyData) {
   let [profile, companyImages, reviews, posts, pavilions, sellingHouses] = [
@@ -36,9 +35,9 @@ function parseData(companyData) {
   return { profile, companyImages, reviews, posts, pavilions, sellingHouses };
 }
 
-export default async function MypageCompany({ uid, userData }) {
+export default async function MypageCompany({ uid, userData, searchParams }) {
   const { profile, companyImages, reviews, posts, pavilions, sellingHouses } = parseData(userData);
-
+  console.log(searchParams);
   return (
     <>
       <div className="row" style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
@@ -128,17 +127,20 @@ export default async function MypageCompany({ uid, userData }) {
             <MyPageProfile uid={uid} userData={profile} />
           </div>
           <div className="col-md-8 col-12">
-            <div style={{ width: '100%', marginTop: '60px' }}>
-              <div style={{ margin: '0px' }}>
-                <ReviewList
-                  uid={uid}
-                  review={reviews['houseReview']}
-                  rating={reviews['averageRating']}
-                  url={`/mypage/${uid}/review`}
-                />
-              </div>
+            {searchParams['method'] == 'edit' ? (
+              <EditProfile companyInfo={userData.companyInfo} />
+            ) : (
+              <div style={{ width: '100%', marginTop: '60px' }}>
+                <div style={{ margin: '0px' }}>
+                  <ReviewList
+                    uid={uid}
+                    review={reviews['houseReview']}
+                    rating={reviews['averageRating']}
+                    url={`/mypage/${uid}/review`}
+                  />
+                </div>
 
-              {/* <div style={{ width: "100%", marginTop: "60px" }}>
+                {/* <div style={{ width: "100%", marginTop: "60px" }}>
                 <PostMenu
                   title={"판매자 연관 칼럼"}
                   routeUrl={"/community"}
@@ -163,17 +165,18 @@ export default async function MypageCompany({ uid, userData }) {
                 </PostMenu>
               </div> */}
 
-              <div style={{ width: '100%', marginTop: '60px' }}>
-                <PostMenu
-                  title={'판매자 제품'}
-                  routeText={'추가하기'}
-                  routeUrl={`${uid}/house`}
-                  horizontalScroll={true}
-                >
-                  <MypageHouseList houses={sellingHouses} numShowItems={4} />
-                </PostMenu>
+                <div style={{ width: '100%', marginTop: '60px' }}>
+                  <PostMenu
+                    title={'판매자 제품'}
+                    routeText={'추가하기'}
+                    routeUrl={`${uid}/house`}
+                    horizontalScroll={true}
+                  >
+                    <MypageHouseList houses={sellingHouses} numShowItems={4} />
+                  </PostMenu>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

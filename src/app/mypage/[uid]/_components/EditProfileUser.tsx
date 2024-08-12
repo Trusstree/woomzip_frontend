@@ -1,26 +1,28 @@
 'use client';
 
-import { signupUser, validateID, validateNickname } from '@/actions/apis/userAPI';
+import { validateID, validateNickname, signupCompany, postUser } from '@/actions/apis/userAPI';
 import SignupGenderRadio from '@/app/signup/_components/SignupRadio';
 import SignupTextBox from '@/app/signup/_components/SignupTextBox';
+import InputImageComponent from '@/components/InputImageComponent';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { encryptPW } from '@/lib/authUtil';
-import { isEmail, isID, isPassword, isPhoneNumber, isRequired } from '@/lib/validator';
+import { isID, isPassword, isEmail, isRequired, isPhoneNumber } from '@/lib/validator';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
-export function SignupForm() {
+import { useState, useEffect } from 'react';
+
+export default function EditProfileUser({ userInfo }) {
   const router = useRouter();
   const [id, setID] = useState('');
   const [pw, setPW] = useState('');
   const [repw, setRePW] = useState('');
-  const [name, setName] = useState('');
-  const [nickname, setNickname] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [gender, setGender] = useState('');
-  const [birthday, setBirthday] = useState('1970-01-01');
-  const [addr, setAddr] = useState('');
+  const [name, setName] = useState(userInfo.name);
+  const [nickname, setNickname] = useState(userInfo.nickname);
+  const [email, setEmail] = useState(userInfo.email);
+  const [phoneNumber, setPhoneNumber] = useState(userInfo.phone_number);
+  const [gender, setGender] = useState(userInfo.gender);
+  const [birthday, setBirthday] = useState(userInfo.birthday);
+  const [addr, setAddr] = useState(userInfo.addr);
 
   const handlePhoneNumber = (e) => {
     const regex = new RegExp(/^[0-9\b -]{0,13}$/);
@@ -85,7 +87,7 @@ export function SignupForm() {
       addr: addr,
     };
 
-    const [data, error] = await signupUser(encryptedData);
+    const [data, error] = await postUser(encryptedData);
     if (error) {
       console.log(error);
       alertError('로그인 에러', error.message || `회원가입에 실패했어요.`);
@@ -132,7 +134,7 @@ export function SignupForm() {
         }}
         onClick={submit}
       >
-        회원가입
+        회원정보 수정
       </div>
     </div>
   );
