@@ -8,12 +8,13 @@ import Footer from '@/app/_components/Footer';
 import Options from '@/app/_components/Options';
 import { Suspense } from 'react';
 import { WebVitals } from '@/app/_components/WebVitals';
+import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: '움집',
   description: '전원생활의 시작을 함께, 움집',
-  keywords: ['모듈러', '모듈러주택', '움집', '주택', '전원생활', '농막', '체류형 쉼터'],
+  keywords: ['모듈러', '모듈러주택', '움집', '주택', '전원생활', '농막', '체류형 쉼터', '세컨하우스'],
   metadataBase: new URL(process.env.NEXT_PUBLIC_CALLBACKURL),
   openGraph: {
     title: '움집',
@@ -39,7 +40,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <head></head>
+      <head>
+        <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" />
+      </head>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       <body className={inter.className}>
         <WebVitals />

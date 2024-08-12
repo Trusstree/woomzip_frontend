@@ -3,27 +3,12 @@
 import { useRouter } from 'next/navigation';
 import useQuery from '@/hooks/useQuery';
 
-export default function FillteringButton({
-  title,
-  type,
-  value,
-  name,
-}: {
-  title: string;
-  type: string;
-  name: string;
-  value?: any;
-}) {
+export default function FillteringCheck({ title, type, value, name }) {
   const router = useRouter();
   const { createQuery, getParams, getRouteParams } = useQuery();
 
   const handleClick = () => {
     const _value = typeof value == 'number' ? value.toString() : value;
-    if (!_value) {
-      createQuery(name);
-      router.replace(getRouteParams());
-      return;
-    }
     if (type === 'select') {
       let newValue = getParams().get(name)?.split(',');
       if (!newValue) {
@@ -43,14 +28,15 @@ export default function FillteringButton({
   };
 
   return (
-    <div className="col-3">
+    <div className="col-6 row" style={{ padding: '10px' }}>
       <div
         onClick={handleClick}
         className="btn"
         style={{
           cursor: 'pointer',
-          width: '100%',
-          borderRadius: '20px',
+          width: '30px',
+          height: '30px',
+          padding: '0',
           borderStyle: 'solid',
           justifyContent: 'center',
           alignContent: 'center',
@@ -63,23 +49,20 @@ export default function FillteringButton({
             getParams().get(name) == value || (type === 'select' && getParams().get(name)?.includes(value))
               ? '#314FC0'
               : 'gray',
-          color:
-            getParams().get(name) == value || (type === 'select' && getParams().get(name)?.includes(value))
-              ? 'white'
-              : 'black',
+          color: 'white',
         }}
       >
-        <div>
-          <div
-            style={{
-              fontSize: '15px',
-              fontWeight: '500',
-              wordBreak: 'keep-all',
-            }}
-          >
-            {title}
-          </div>
-        </div>
+        ✓
+      </div>
+      <div
+        style={{
+          width: 'auto',
+          fontSize: '15px',
+          fontWeight: '500',
+          wordBreak: 'keep-all',
+        }}
+      >
+        {title}
       </div>
     </div>
   );

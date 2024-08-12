@@ -7,7 +7,6 @@
   top: 0;
   right: 0;
   padding: 0;
-  border-left: 2px solid gray;
   background-color: white;
   display: flex; /* Flexbox를 사용하여 내부 요소들을 가로로 배치 */
   align-items: center; /* 세로 중앙 정렬 */
