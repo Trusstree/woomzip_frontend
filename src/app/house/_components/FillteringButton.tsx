@@ -28,38 +28,45 @@ export default function FillteringButton({ title, type, value, name }) {
   };
 
   return (
-    <div
-      onClick={handleClick}
-      className="btn"
-      style={{
-        cursor: "pointer",
-        width: "auto",
-        borderRadius: "10px",
-        borderStyle: "solid",
-        margin: "3px",
-        padding: "10px 15px",
-        justifyContent: "center",
-        alignContent: "center",
-        backgroundColor:
-          getParams().get(name) == value || (type === "select" && getParams().get(name)?.includes(value))
-            ? "#F5F7FF"
-            : "white",
-        borderWidth: "2px",
-        borderColor:
-          getParams().get(name) == value || (type === "select" && getParams().get(name)?.includes(value))
-            ? "#314FC0"
-            : "gray",
-      }}
-    >
-      <div>
-        <div
-          style={{
-            fontSize: "12px",
-            fontWeight: "600",
-            wordBreak: "keep-all",
-          }}
-        >
-          {title}
+    <div className="col-3">
+      <div
+        onClick={handleClick}
+        className="btn"
+        style={{
+          cursor: "pointer",
+          width: "100%",
+          borderRadius: "20px",
+          borderStyle: "solid",
+          justifyContent: "center",
+          alignContent: "center",
+          backgroundColor:
+            getParams().get(name) == value ||
+            (type === "select" && getParams().get(name)?.includes(value))
+              ? "#314FC0"
+              : "white",
+          borderWidth: "1px",
+          borderColor:
+            getParams().get(name) == value ||
+            (type === "select" && getParams().get(name)?.includes(value))
+              ? "#314FC0"
+              : "gray",
+          color:
+            getParams().get(name) == value ||
+            (type === "select" && getParams().get(name)?.includes(value))
+              ? "white"
+              : "black",
+        }}
+      >
+        <div>
+          <div
+            style={{
+              fontSize: "15px",
+              fontWeight: "500",
+              wordBreak: "keep-all",
+            }}
+          >
+            {title}
+          </div>
         </div>
       </div>
     </div>

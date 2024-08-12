@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
-export default function ResetButton({ img }) {
+export default function ResetButton({}) {
   const router = useRouter();
   const pathname = usePathname();
 
@@ -15,18 +15,15 @@ export default function ResetButton({ img }) {
     <div>
       <button
         style={{
-          width: "50px",
+          width: "auto",
           height: "40px",
-          borderRadius: "10px",
-          borderStyle: "solid",
-          margin: "3px",
+          border: "none",
           backgroundColor: "white",
-          borderWidth: "2px",
-          borderColor: "gray",
+          fontSize: "16px",
         }}
         onClick={handleClick}
       >
-        <Image src={img} alt={"icon"} width={25} height={25} style={{ padding: "3px", marginLeft: "2px" }} />
+        조건 초기화
       </button>
     </div>
   );

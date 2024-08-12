@@ -51,7 +51,7 @@ export default function SearchComponent() {
         onClick={handleClick}
       >
         <div style={{ cursor: "pointer" }}>
-          <Image
+          {/* <Image
             width={35}
             height={30}
             src={
@@ -59,7 +59,7 @@ export default function SearchComponent() {
             }
             className={styles.searchButtonImg}
             alt={"search submit btn"}
-          />
+          /> */}
           <div className={styles.searchButtonText}>검색</div>
         </div>
       </div>
