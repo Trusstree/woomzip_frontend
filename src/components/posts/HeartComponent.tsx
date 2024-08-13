@@ -1,5 +1,6 @@
 'use client';
 
+import { getHouseHeartUser } from '@/actions/apis/heartAPI';
 import { getUserAccessToken } from '@/actions/auth/authAction';
 import HeartLineSVG from '@/components/svg/HeartLineSVG';
 import HeartSolidSVG from '@/components/svg/HeartSolidSVG';
@@ -9,48 +10,72 @@ import { cardCountText } from '@/lib/stringUtil';
 import { useCallback, useEffect, useState } from 'react';
 
 export default function HeartComponent({
-  pid,
+  heart_id,
   likeCount,
-  isLiked,
+  getHeart,
   postHeart,
   postHeartRemove,
   type,
 }: {
-  pid: string | number;
+  heart_id: string | number;
   likeCount: number;
-  isLiked: number;
-  postHeart: any;
-  postHeartRemove: any;
+  getHeart: Function | any;
+  postHeart: Function;
+  postHeartRemove: Function;
   type: 'heart' | 'thumb';
 }) {
-  const [isLike, setIsLike] = useState(isLiked);
+  const [at, setAT] = useState(undefined as any);
+  const [isLike, setIsLike] = useState(0);
+  const [isLiked, setIsLiked] = useState(0);
 
   const handleLike = useCallback(async () => {
     // 로그인 확인하기
-    const at = await getUserAccessToken();
     if (!at) return;
 
     if (!isLike) {
-      const [data, error] = await postHeart(pid);
+      const [data, error] = await postHeart(heart_id);
       if (error) {
         console.error(error);
         return;
       }
       setIsLike(1);
     } else {
-      const [data, error] = await postHeartRemove(pid);
+      const [data, error] = await postHeartRemove(heart_id);
       if (error) {
         console.error(error);
         return;
       }
       setIsLike(0);
     }
-  }, [isLike]);
+  }, [isLike, at]);
 
   useEffect(() => {
-    console.log(isLiked);
     setIsLike(isLiked ? isLiked : 0);
   }, [isLiked]);
+
+  useEffect(() => {
+    (async () => {
+      const at = await getUserAccessToken();
+      if (!at) return;
+      setAT(at);
+
+      if (typeof getHeart == 'function') {
+        // 로그인 확인하기
+
+        const [heartData, heartError] = await getHeart(heart_id);
+        if (heartError) {
+          console.error(heartError);
+          return;
+        }
+        const data = heartData.data[0];
+        console.log(data);
+        setIsLiked(data.isHouseLike || data.isPostLike);
+        return;
+      } else {
+        setIsLiked(getHeart);
+      }
+    })();
+  }, []);
 
   return (
     <div className="d-flex" style={{ width: '60px', padding: '0' }}>

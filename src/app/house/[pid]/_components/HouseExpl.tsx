@@ -7,7 +7,6 @@ import { parseSpecificationInfo } from '@/lib/parseUtil';
 import { detailPriceText } from '@/lib/stringUtil';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
-import styles from '@/app/house/[pid]/_styles/HouseExpl.module.css';
 import ReviewList from '@/app/mypage/[uid]/_components/ReviewList';
 
 export default function HouseExpl({

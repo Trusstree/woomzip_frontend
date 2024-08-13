@@ -20,7 +20,7 @@ const style = {
 
 export default async function page({ params }: { params: PageParams }) {
   const { pid } = params;
-  const { postData, comments, isPostLike, isCommentLike } = await loadData(pid);
+  const { postData, comments } = await loadData(pid);
 
   return postData ? (
     <div
@@ -140,7 +140,6 @@ export default async function page({ params }: { params: PageParams }) {
                 viewCount={postData['view_count']}
                 commentCount={comments.length}
                 likeCount={postData['post_like_count']}
-                isPostLike={isPostLike}
               />
             </div>
           </div>
@@ -168,7 +167,7 @@ export default async function page({ params }: { params: PageParams }) {
           </div> */}
         </div>
 
-        <CommentComponent pid={pid} isCommentLike={isCommentLike} initialComments={comments} />
+        <CommentComponent pid={pid} initialComments={comments} />
       </div>
       {/* 추천정보 */}
       <PostMenu title={'더 많은 글을 구경해보세요!'} routeUrl={'/house'} routeText={'더보기'} horizontalScroll={true}>

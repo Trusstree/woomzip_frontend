@@ -8,8 +8,7 @@ import { getUser } from '@/actions/apis/userAPI';
 
 export async function loadData(hid: number) {
   'use server';
-  let [houseData, imageData, optionData, specificationData, userData, reviewData, deliveryData, isHouseLike] = [
-    undefined,
+  let [houseData, imageData, optionData, specificationData, userData, reviewData, deliveryData] = [
     undefined,
     undefined,
     undefined,
@@ -30,7 +29,6 @@ export async function loadData(hid: number) {
       userData,
       reviewData,
       deliveryData,
-      isHouseLike,
     };
   }
 
@@ -66,7 +64,6 @@ export async function loadData(hid: number) {
       userData,
       reviewData,
       deliveryData,
-      isHouseLike,
     };
   }
 
@@ -83,37 +80,6 @@ export async function loadData(hid: number) {
     images: e.images,
   }));
 
-  // 로그인 확인하기
-  const at = await getUserAccessToken();
-  if (!at)
-    return {
-      houseData,
-      imageData,
-      optionData,
-      specificationData,
-      userData,
-      reviewData,
-      deliveryData,
-      isHouseLike,
-    };
-
-  const [heartData, heartError] = await getHouseHeartUser(hid);
-  if (heartError) {
-    console.error(heartError);
-    return {
-      houseData,
-      imageData,
-      optionData,
-      specificationData,
-      userData,
-      reviewData,
-      deliveryData,
-      isHouseLike,
-    };
-  }
-
-  isHouseLike = heartData?.data[0]['isHouseLike'];
-
   return {
     houseData,
     imageData,
@@ -122,6 +88,5 @@ export async function loadData(hid: number) {
     userData,
     reviewData,
     deliveryData,
-    isHouseLike,
   };
 }

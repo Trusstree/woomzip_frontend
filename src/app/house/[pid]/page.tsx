@@ -1,5 +1,3 @@
-import { getHouse } from '@/actions/apis/houseAPI';
-import { parseSpecificationInfo } from '@/lib/parseUtil';
 import HouseExpl from '@/app/house/[pid]/_components/HouseExpl';
 import HouseRemocon from '@/app/house/[pid]/_components/HouseRemocon';
 import styles from '@/app/house/[pid]/_styles/HouseClient.module.css';
@@ -7,7 +5,7 @@ import { ReviewModal } from '@/components/house/ReviewModal';
 import { loadData } from '@/app/house/[pid]/_actions/actions';
 import LoadPage from '@/components/app/LoadPage';
 import HeartComponent from '@/components/posts/HeartComponent';
-import { postHouseHeart, postHouseHeartRemove } from '@/actions/apis/heartAPI';
+import { getHouseHeartUser, postHouseHeart, postHouseHeartRemove } from '@/actions/apis/heartAPI';
 
 type PageParams = {
   pid: number;
@@ -15,7 +13,7 @@ type PageParams = {
 
 export default async function Home({ params }: { params: PageParams }) {
   const { pid } = params;
-  const { houseData, imageData, optionData, specificationData, userData, reviewData, deliveryData, isHouseLike } =
+  const { houseData, imageData, optionData, specificationData, userData, reviewData, deliveryData } =
     await loadData(pid);
 
   return houseData ? (
@@ -26,9 +24,9 @@ export default async function Home({ params }: { params: PageParams }) {
             <div style={{ fontSize: '28px', fontWeight: '400', margin: '10px 0' }}>{houseData['house_name']}</div>
             <div style={{ marginTop: '25px' }}>
               <HeartComponent
-                pid={pid}
+                heart_id={pid}
                 likeCount={houseData['like_count']}
-                isLiked={isHouseLike}
+                getHeart={getHouseHeartUser}
                 postHeart={postHouseHeart}
                 postHeartRemove={postHouseHeartRemove}
                 type={'heart'}
@@ -109,7 +107,7 @@ export default async function Home({ params }: { params: PageParams }) {
             </div>
 
             <div className="col-md-4 col-12">
-              <HouseRemocon pid={pid} houseData={houseData} optionData={optionData} isHouseLike={isHouseLike} />
+              <HouseRemocon pid={pid} houseData={houseData} optionData={optionData} />
             </div>
           </div>
         </div>
