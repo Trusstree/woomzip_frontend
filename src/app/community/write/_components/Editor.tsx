@@ -8,11 +8,7 @@ import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { setS3Url } from '@/lib/s3Util';
 import moment from 'moment';
-import ReactQuill, { Quill } from 'react-quill';
-import { ImageActions } from '@xeger/quill-image-actions';
-
-Quill.register('modules/imageActions', ImageActions);
-// Quill.register("modules/imageFormats", ImageFormats);
+import ReactQuill from 'react-quill';
 
 const formats = [
   'header',
@@ -70,7 +66,7 @@ export default function Editor() {
                   const imageAttributes = {
                     ...op.attributes,
                     alt: 'post images',
-                    width: 500,
+                    width: '80%',
                   };
                   return {
                     ...op,

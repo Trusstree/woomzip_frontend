@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@next/third-parties": "^14.2.5",
-    "@xeger/quill-image-actions": "^0.7.2",
-    "@xeger/quill-image-formats": "^0.7.2",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.3",
     "crypto-js": "^4.2.0",
