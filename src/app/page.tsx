@@ -14,12 +14,12 @@ export default async function Home() {
       <div
         style={{
           width: '100%',
-          padding: '50px 0',
+          padding: '30px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
           <PostMenu
-            title={'다른 사람들의 이야기를 들어보세요'}
+            title={'전원생활 고민을 나눠보세요!'}
             routeUrl={'/community'}
             routeText={'더보기'}
             horizontalScroll={true}
@@ -48,16 +48,11 @@ export default async function Home() {
       <div
         style={{
           width: '100%',
-          padding: '50px 0',
+          padding: '30px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
-          <PostMenu
-            title={'당신을 위한 집들을 준비해두었어요'}
-            routeUrl={'/house'}
-            routeText={'더보기'}
-            horizontalScroll={true}
-          >
+          <PostMenu title={'모든 주택들을 모았어요.'} routeUrl={'/house'} routeText={'더보기'} horizontalScroll={true}>
             <div style={{ width: '100%', overflow: 'hidden' }}>
               <HouseList numShowItems={6} />
             </div>
