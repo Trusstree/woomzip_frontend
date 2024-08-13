@@ -43,6 +43,7 @@ export default function PostCard({ data, className }: PostCardProps) {
           width: '100%',
           borderRadius: '10px',
           border: 'none',
+          marginBottom: '20px',
         }}
       >
         <Link href={{ pathname: `/community/${data['post_id']}` }}>
@@ -194,6 +195,8 @@ export default function PostCard({ data, className }: PostCardProps) {
                 fontSize: '16px',
                 width: 'auto',
                 fontWeight: '500',
+                height: '50px',
+                overflow: 'hidden',
               }}
             >
               {data.title}
