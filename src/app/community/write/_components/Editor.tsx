@@ -128,7 +128,7 @@ export default function Editor() {
       }
       router.push(`/community`);
     }
-  }, [dataTitle, dataText]);
+  }, [dataTitle, dataText, dataCategory]);
 
   return (
     <div>
