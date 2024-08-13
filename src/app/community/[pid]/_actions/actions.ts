@@ -1,8 +1,8 @@
-"use server";
+'use server';
 
-import { getUserAccessToken } from "@/actions/auth/authAction";
-import { getPostHeartUser } from "@/actions/apis/heartAPI";
-import { getPost } from "@/actions/apis/postAPI";
+import { getUserAccessToken } from '@/actions/auth/authAction';
+import { getPostHeartUser } from '@/actions/apis/heartAPI';
+import { getPost } from '@/actions/apis/postAPI';
 
 export async function loadData(pid: any) {
   let [postData, comments, isPostLike, isCommentLike] = [undefined, undefined, undefined, undefined];
@@ -28,8 +28,8 @@ export async function loadData(pid: any) {
     return { postData, comments, isPostLike, isCommentLike };
   }
 
-  isPostLike = heartData?.data[0]["isPostLike"];
-  isCommentLike = heartData?.data[0]["isCommentLike"];
+  isPostLike = heartData?.data[0]['isPostLike'];
+  isCommentLike = heartData?.data[0]['isCommentLike'];
 
   return { postData, comments, isPostLike, isCommentLike };
 }
