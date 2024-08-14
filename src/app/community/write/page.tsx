@@ -1,10 +1,9 @@
-import dynamic from "next/dynamic";
-const Editor = dynamic(() => import("@/app/community/write/_components/Editor"), { ssr: false });
+import WriteComponent from '@/app/community/write/_components/WriteComponent';
 
 export default function Write() {
   return (
     <div className={`container px-5 my-5`}>
-      <Editor />
+      <WriteComponent />
     </div>
   );
 }

@@ -170,7 +170,12 @@ export default async function page({ params }: { params: PageParams }) {
         <CommentComponent pid={pid} initialComments={comments} />
       </div>
       {/* 추천정보 */}
-      <PostMenu title={'더 많은 글을 구경해보세요!'} routeUrl={'/house'} routeText={'더보기'} horizontalScroll={true}>
+      <PostMenu
+        title={'더 많은 글을 구경해보세요!'}
+        routeUrl={'/community'}
+        routeText={'더보기'}
+        horizontalScroll={true}
+      >
         <AppPostList numShowItems={6} />
       </PostMenu>
     </div>

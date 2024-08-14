@@ -68,7 +68,7 @@ export default function HeartComponent({
           return;
         }
         const data = heartData.data[0];
-        console.log(data);
+
         setIsLiked(data.isHouseLike || data.isPostLike);
         return;
       } else {
