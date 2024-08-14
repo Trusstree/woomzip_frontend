@@ -21,10 +21,10 @@ const dict = {
 };
 
 function parseValue(name, value) {
-  if (name == 'min_price') return cardPriceText(value);
-  if (name == 'max_price') return cardPriceText(value);
-  if (name == 'floor_area_min') return value + '평';
-  if (name == 'floor_area_max') return value + '평';
+  if (name == 'min_price') return '최소 ' + cardPriceText(value);
+  if (name == 'max_price') return '최대 ' + cardPriceText(value);
+  if (name == 'floor_area_min') return '최소 ' + value + '평';
+  if (name == 'floor_area_max') return '최대 ' + value + '평';
   if (name == 'room_count') return arraySort(value.split(',')) + '개의 침실';
   if (name == 'toilet_count') return arraySort(value.split(',')) + '개의 욕실';
   if (name == 'floor_count') return arraySort(value.split(',')) + '층';
