@@ -52,10 +52,17 @@ export default function FilterBadge({ name, value }) {
         border: '1px solid #314FC0',
         borderRadius: '15px',
         padding: '0 4px 0 5px',
+        height: '25px',
       }}
     >
-      <span style={{ fontWeight: '600', marginLeft: '5px', color: '#314FC0' }}>{parseValue(name, value)}</span>
-      <div className="btn" style={{ color: 'gray', border: 'none', margin: '0', padding: '5px' }} onClick={handleClick}>
+      <span style={{ fontWeight: '600', marginLeft: '5px', color: '#314FC0', padding: '0' }}>
+        {parseValue(name, value)}
+      </span>
+      <div
+        className="btn"
+        style={{ color: 'gray', border: 'none', margin: '0', padding: '1px 5px' }}
+        onClick={handleClick}
+      >
         x
       </div>
     </div>

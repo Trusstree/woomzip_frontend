@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function ResetButton({}) {
   const router = useRouter();
@@ -15,11 +15,14 @@ export default function ResetButton({}) {
     <div>
       <button
         style={{
-          width: "auto",
-          height: "40px",
-          border: "none",
-          backgroundColor: "white",
-          fontSize: "16px",
+          width: 'auto',
+          padding: '0',
+          height: '40px',
+          border: 'none',
+          backgroundColor: 'white',
+          fontSize: '15px',
+          color: '#314FC0',
+          fontWeight: '600',
         }}
         onClick={handleClick}
       >

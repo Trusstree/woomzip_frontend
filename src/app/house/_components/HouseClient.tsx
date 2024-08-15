@@ -130,7 +130,9 @@ export default function Home() {
           <div style={{ fontSize: '15px' }}>필터</div>
         </div>
       </div>
-      <BadgeList />
+      <div style={{ width: '100%', overflow: 'hidden' }}>
+        <BadgeList />
+      </div>
       <SearchModal />
 
       <PostMenu>

@@ -22,11 +22,11 @@ export default function HouseCard({ data, className }: { data: any; className?: 
           style={{
             objectFit: 'cover',
             width: '100%',
-            height: '280px',
+            height: '250px',
             borderRadius: '10px',
           }}
           width={280}
-          height={280}
+          height={250}
           src={houseImage[0]}
           alt={'representive_image'}
         ></Image>
@@ -35,7 +35,7 @@ export default function HouseCard({ data, className }: { data: any; className?: 
           <div className="d-flex flex-column" style={{ width: '100%' }}>
             <div
               style={{
-                fontSize: '16px',
+                fontSize: '15px',
                 fontWeight: '400',
                 color: 'gray',
                 marginTop: '3px',
@@ -51,7 +51,7 @@ export default function HouseCard({ data, className }: { data: any; className?: 
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
-                  fontSize: '16px',
+                  fontSize: '15px',
                   fontWeight: '500',
                 }}
               >
@@ -59,9 +59,10 @@ export default function HouseCard({ data, className }: { data: any; className?: 
               </div>
               <div
                 style={{
-                  fontSize: '16px',
+                  fontSize: '15px',
                   fontWeight: '500',
                   width: 'auto',
+                  marginTop: '-2px',
                 }}
               >
                 <span style={{ fontSize: '18px', fontWeight: '800', color: '#DA0004' }}>♥</span>{' '}
@@ -71,14 +72,14 @@ export default function HouseCard({ data, className }: { data: any; className?: 
 
             <div className="row d-flex justify-content-between" style={{ marginTop: '-7px' }}>
               <div style={{ width: 'auto' }}>
-                <div style={{ fontSize: '16px', fontWeight: '500' }}>{cardPriceText(data['final_price'])}</div>
+                <div style={{ fontSize: '15px', fontWeight: '500' }}>{cardPriceText(data['final_price'])}</div>
               </div>
               <div style={{ width: 'auto' }}>
                 {data['discount_rate'] > 0 && (
                   <div
                     style={{
                       color: '#314FC0',
-                      fontSize: '16px',
+                      fontSize: '15px',
                       fontWeight: '500',
                     }}
                   >
@@ -88,7 +89,7 @@ export default function HouseCard({ data, className }: { data: any; className?: 
               </div>
             </div>
 
-            <div className="d-flex justify-content-between" style={{ padding: '0 7px' }}>
+            <div className="d-flex justify-content-between" style={{ padding: '0 7px', fontSize: '15px' }}>
               <div className="row" style={{ width: 'auto' }}>
                 <div style={{ width: 'auto', padding: '0' }}>
                   <Image src={'/houseIcons/pyeong.png'} alt={'pyeong.png'} width={30} height={30}></Image>

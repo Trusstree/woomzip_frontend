@@ -6,7 +6,7 @@ import EditProfileUser from '@/app/mypage/[uid]/_components/EditProfileUser';
 export default function MypageUser({ uid, userData, searchParams }) {
   return (
     <>
-      <div className="row" style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
+      <div className="row" style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
         <div className="row w-100">
           <div className="col-md-4 col-12">
             <UserMypageProfile uid={uid} userData={userData} />

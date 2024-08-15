@@ -1,5 +1,5 @@
-import { getHouses } from "@/actions/apis/houseAPI";
-import HouseCard from "@/components/house/HouseCard";
+import { getHouses } from '@/actions/apis/houseAPI';
+import HouseCard from '@/components/house/HouseCard';
 
 async function loadData(numShowItems: number) {
   const params = { skip: 1, limit: numShowItems };
@@ -19,11 +19,11 @@ export default async function AppHouseList({ numShowItems }) {
     <div
       className="row flex-nowrap overflow-auto"
       style={{
-        scrollbarWidth: "none",
-        msOverflowStyle: "none",
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
       }}
     >
-      {houseData?.map((e, i) => <HouseCard key={i} data={e} className={"col-11"} />)}
+      {houseData?.map((e, i) => <HouseCard key={i} data={e} className={'col-10'} />)}
     </div>
   );
 }
