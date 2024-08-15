@@ -52,7 +52,7 @@ export default function SearchComponent() {
           <Image
             width={35}
             height={30}
-            src={'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/search.png'}
+            src={'/buttonIcons/search.png'}
             className={styles.searchButtonImg}
             alt={'search submit btn'}
           />

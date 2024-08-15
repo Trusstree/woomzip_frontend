@@ -148,7 +148,6 @@ export function SearchModal() {
                 <FillteringButton title={'상관 없음'} name={'toilet_count'} type={'select'} />
                 <FillteringButton title={'1'} value={1} name={'toilet_count'} type={'select'} />
                 <FillteringButton title={'2'} value={2} name={'toilet_count'} type={'select'} />
-                <FillteringButton title={'3+'} value={2} name={'toilet_count'} type={'select'} />
               </div>
             </div>
             <hr style={{ margin: '30px 0' }} />
