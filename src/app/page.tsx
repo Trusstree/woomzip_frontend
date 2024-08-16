@@ -53,9 +53,9 @@ export default async function Home() {
         }}
       >
         <div style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
-          <PostMenu title={'농막에서 살아요!'} routeUrl={'/house'} routeText={'더보기'} horizontalScroll={true}>
+          <PostMenu title={'세모지붕 주택을 찾아요'} routeUrl={'/house'} routeText={'더보기'} horizontalScroll={true}>
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              <HouseList numShowItems={6} searchConditions={{ is_hut: 1 }} />
+              <HouseList numShowItems={6} searchConditions={{ tag: '경사지붕' }} />
             </div>
           </PostMenu>
         </div>
@@ -76,7 +76,7 @@ export default async function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              <HouseList numShowItems={6} searchConditions={{ has_model: 1 }} />
+              <HouseList numShowItems={6} searchConditions={{ model: 1 }} />
             </div>
           </PostMenu>
         </div>
