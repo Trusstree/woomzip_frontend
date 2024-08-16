@@ -1,0 +1,19 @@
+.mainPhrase {
+  width: 100%;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 50px 0;
+  padding-left: 10px;
+  word-break: keep-all;
+}
+
+@media screen and (max-width: 768px) {
+  .mainPhrase {
+    width: 95%;
+    font-size: 21px;
+    font-weight: 600;
+    margin: 10px 0 30px 0;
+    padding-left: 4%;
+    word-break: keep-all;
+  }
+}

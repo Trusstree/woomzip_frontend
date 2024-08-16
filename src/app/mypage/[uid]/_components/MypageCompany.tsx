@@ -40,7 +40,7 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
   console.log(searchParams);
   return (
     <>
-      <div className="row" style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
+      <div className="row" style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
         <div style={{ fontSize: '28px', fontWeight: '500' }}>프로필</div>
         <div className="row g-2" style={{ width: '100%', position: 'relative' }}>
           <div className="col-6">

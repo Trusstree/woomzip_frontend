@@ -11,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="text-muted text-left pt-4 pb-5 text-white"
+      className="text-muted text-left pt-4 pb-5 text-white w-100"
       style={{
         backgroundColor: 'gray',
         color: 'white',

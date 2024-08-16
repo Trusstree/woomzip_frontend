@@ -7,15 +7,15 @@ const CarouselData = [
   {
     title: '움집 서비스 알아보기',
     explain: '모듈러 기반 단독주택 프롭테크 플랫폼',
-    img: 'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/111.webp',
-    subImg: 'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/1111.png',
+    img: '/CarouselImgs/CarouselMain1.webp',
+    subImg: '/CarouselImgs/CarouselSub1.png',
     url: `/service`,
   },
   {
     title: 'AI 타잔 알아보기',
     explain: '당신만의 건축 전문가',
-    img: 'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/333.webp',
-    subImg: 'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/2222.png',
+    img: '/CarouselImgs/CarouselMain2.webp',
+    subImg: '/CarouselImgs/CarouselSub2.png',
     url: `/planning?house_id=14`,
   },
 ];

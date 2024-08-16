@@ -50,8 +50,8 @@ export default function PostCard({ data, className }: PostCardProps) {
           <Image
             src={imgSrcArr[0] || '/111.webp'}
             width={280}
-            height={280}
-            style={{ width: '100%', height: 280, borderRadius: '10px', objectFit: 'cover' }}
+            height={250}
+            style={{ width: '100%', height: 250, borderRadius: '10px', objectFit: 'cover' }}
             alt={'post card img'}
           />
 
@@ -59,7 +59,7 @@ export default function PostCard({ data, className }: PostCardProps) {
             className="card-body"
             style={{
               width: '100%',
-              height: '280px',
+              height: '250px',
               borderRadius: '10px',
               position: 'absolute',
               top: 0,
@@ -170,7 +170,7 @@ export default function PostCard({ data, className }: PostCardProps) {
             <div className="d-flex justify-content-between" style={{ marginTop: '1px' }}>
               <div
                 style={{
-                  fontSize: '16px',
+                  fontSize: '15px',
                   color: 'gray',
                   width: 'auto',
                   fontWeight: '400',
@@ -180,7 +180,7 @@ export default function PostCard({ data, className }: PostCardProps) {
               </div>
               <div
                 style={{
-                  fontSize: '16px',
+                  fontSize: '15px',
                   color: 'gray',
                   width: 'auto',
                   fontWeight: '400',

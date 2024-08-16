@@ -33,30 +33,29 @@ export default function SearchComponent() {
   };
 
   return (
-    <div className={styles.searchContainer}>
-      <input
-        className={styles.searchInput}
-        placeholder={' 찾고 싶은 내용을 검색해보세요'}
-        value={q}
-        onChange={handleChange}
-        onBlur={handleOutOfFocus}
-        onKeyDown={handlePressEnter}
-      />
-      <div
-        className={`btn ${styles.searchButton}`}
-        data-bs-toggle="modal"
-        data-bs-target={`#search_modal`}
-        onClick={handleClick}
-      >
-        <div style={{ width: '65px' }}>
-          <Image
-            width={35}
-            height={30}
-            src={'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/search.png'}
-            className={styles.searchButtonImg}
-            alt={'search submit btn'}
-          />
-          <div className={styles.searchButtonText}>검색</div>
+    <div className="row col-md-4 col-12" style={{ alignItems: 'center', padding: '0' }}>
+      <div className="col-11">
+        <input
+          style={{ height: '40px', width: '95%', marginLeft: '4%' }}
+          placeholder={' 찾고 싶은 내용을 검색해보세요'}
+          value={q}
+          onChange={handleChange}
+          onBlur={handleOutOfFocus}
+          onKeyDown={handlePressEnter}
+        />
+      </div>
+      <div className="col-1" style={{ alignItems: 'right', padding: '0' }}>
+        <div
+          className={`btn`}
+          style={{ paddingLeft: '0' }}
+          data-bs-toggle="modal"
+          data-bs-target={`#search_modal`}
+          onClick={handleClick}
+        >
+          <div style={{ float: 'right', padding: '0' }}>
+            <Image width={30} height={30} src={'/buttonIcons/search.png'} alt={'search submit btn'} />
+            <div style={{ fontSize: '15px' }}>검색</div>
+          </div>
         </div>
       </div>
     </div>

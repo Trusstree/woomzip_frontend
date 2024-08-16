@@ -125,12 +125,14 @@ export default function Home() {
           data-bs-target={`#search_modal`}
         >
           <div style={{ width: '28px', height: '32px' }}>
-            <img src={'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/fillter.png'} width={28}></img>
+            <img src={'/buttonIcons/fillter.png'} width={28}></img>
           </div>
           <div style={{ fontSize: '15px' }}>필터</div>
         </div>
       </div>
-      <BadgeList />
+      <div style={{ width: '100%', overflow: 'hidden' }}>
+        <BadgeList />
+      </div>
       <SearchModal />
 
       <PostMenu>

@@ -15,7 +15,7 @@ export default function Header(props: HeaderProps) {
     >
       <div
         className="d-flex justify-content-between w-100"
-        style={{ height: '40px', width: '90%', maxWidth: '1300px' }}
+        style={{ height: '40px', width: '90%', maxWidth: '1150px' }}
       >
         <RouteButton url="/" className="" style={{ marginLeft: '0' }}>
           <Image src={'/woomzip_logo.webp'} alt={'Truss Logo'} width={100} height={26} />

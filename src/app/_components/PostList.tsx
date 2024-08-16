@@ -1,5 +1,5 @@
-import { getPosts } from "@/actions/apis/postAPI";
-import PostCard from "@/components/posts/PostCard";
+import { getPosts } from '@/actions/apis/postAPI';
+import PostCard from '@/components/posts/PostCard';
 
 async function loadData(numShowItems: number) {
   const params = {
@@ -23,12 +23,12 @@ export default async function PostList({ numShowItems }) {
     <div
       className="row flex-nowrap overflow-auto"
       style={{
-        scrollbarWidth: "none",
-        msOverflowStyle: "none",
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
       }}
     >
       {postData.map((e: any, i: number) => (
-        <PostCard data={e} key={i} className="col-11" />
+        <PostCard data={e} key={i} className="col-10" />
       ))}
     </div>
   );

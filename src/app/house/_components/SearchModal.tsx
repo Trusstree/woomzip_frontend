@@ -135,7 +135,7 @@ export function SearchModal() {
               <div style={{ margin: '20px 0' }}>
                 <div style={{ margin: '0 10px', fontSize: '16px' }}>침실</div>
                 <div className="row g-2">
-                  <FillteringButton title={'상관없음'} name={'room_count'} type={'select'} />
+                  <FillteringButton title={'상관 없음'} name={'room_count'} type={'select'} />
                   <FillteringButton title={'1'} value={1} name={'room_count'} type={'select'} />
                   <FillteringButton title={'2'} value={2} name={'room_count'} type={'select'} />
                   <FillteringButton title={'3+'} value={3} name={'room_count'} type={'select'} />
@@ -148,7 +148,6 @@ export function SearchModal() {
                 <FillteringButton title={'상관 없음'} name={'toilet_count'} type={'select'} />
                 <FillteringButton title={'1'} value={1} name={'toilet_count'} type={'select'} />
                 <FillteringButton title={'2'} value={2} name={'toilet_count'} type={'select'} />
-                <FillteringButton title={'3+'} value={2} name={'toilet_count'} type={'select'} />
               </div>
             </div>
             <hr style={{ margin: '30px 0' }} />
