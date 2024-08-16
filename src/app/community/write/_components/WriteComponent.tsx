@@ -33,8 +33,8 @@ export default function WriteComponent() {
   return (
     <div>
       <form className="my-3">
-        <div className="d-flex">
-          <div className="col-10">
+        <div className="d-flex" style={{ maxWidth: '1150px' }}>
+          <div className="w-100">
             <input
               type={'text'}
               className={`w-100 py-2 px-4`}
@@ -45,12 +45,12 @@ export default function WriteComponent() {
               value={dataTitle}
             />
           </div>
-          <div className="col-2">
+          <div style={{ width: 140 }}>
             <select
               onChange={(ee) => {
                 setDataCategory(ee.target.value);
               }}
-              className="form-select"
+              className="w-100 form-select"
               aria-label="Default select example"
             >
               {category.map((e, i) => (
