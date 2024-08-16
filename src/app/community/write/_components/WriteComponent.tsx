@@ -72,7 +72,7 @@ export default function WriteComponent() {
               handleSubmit();
             }}
           >
-            Post
+            게시하기
           </button>
         </div>
       </form>

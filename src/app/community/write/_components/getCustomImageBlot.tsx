@@ -51,7 +51,7 @@ export async function getCustomImageBlot(QuillComponent: typeof ReactQuill, read
         alt: domNode.getAttribute('alt') || '',
         src: domNode.getAttribute('src') || '',
         dataSrc: domNode.dataset.src || '',
-        width: domNode.getAttribute('width') || '100%',
+        width: domNode.getAttribute('width') || '80%',
         height: domNode.getAttribute('height') || 'auto',
         iHeight: domNode.getAttribute('iHeight') || 'auto',
       };

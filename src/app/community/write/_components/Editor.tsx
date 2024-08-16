@@ -4,12 +4,8 @@ import 'react-quill/dist/quill.snow.css';
 import { useMemo } from 'react';
 import { setS3Url } from '@/lib/s3Util';
 import moment from 'moment';
-import QuillComponent, { Quill } from 'react-quill';
-import { ImageActions } from '@xeger/quill-image-actions';
 import { getCustomImageBlot } from '@/app/community/write/_components/getCustomImageBlot';
 import dynamic from 'next/dynamic';
-
-// Quill.register("modules/imageFormats", ImageFormats);
 
 const formats = [
   'header',
@@ -30,10 +26,7 @@ const formats = [
 const Editor = dynamic(
   async () => {
     const { default: QuillComponent } = await import('react-quill');
-    //.. import dynamic some modules..
-    const ImageBlot = await getCustomImageBlot(QuillComponent);
-    //.. register some modules
-    QuillComponent.Quill.register('modules/imageActions', ImageActions);
+    const ImageBlot = await getCustomImageBlot(QuillComponent, true);
     QuillComponent.Quill.register(ImageBlot);
 
     const Quill = ({ quillRef, data, setData }) => {
@@ -95,7 +88,6 @@ const Editor = dynamic(
           clipboard: {
             matchVisual: false,
           },
-          imageActions: {},
         }),
         [],
       );
@@ -104,7 +96,7 @@ const Editor = dynamic(
         <QuillComponent
           ref={quillRef}
           className="mb-5"
-          style={{ height: '25vw' }}
+          style={{ maxWidth: '1150px', height: '25vw' }}
           value={data}
           onChange={setData}
           modules={modules}
