@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { getPosts } from "@/actions/apis/postAPI";
-import { useSearchParams } from "next/navigation";
-import PostCard from "@/components/posts/PostCard";
-import PostCardPlaceHolder from "@/components/posts/PostCardPlaceholder";
-import Pagination from "@/components/Pagination";
+import { useEffect, useState } from 'react';
+import { getPosts } from '@/actions/apis/postAPI';
+import { useSearchParams } from 'next/navigation';
+import PostCard from '@/components/posts/PostCard';
+import PostCardPlaceHolder from '@/components/posts/PostCardPlaceholder';
+import Pagination from '@/components/Pagination';
 
 type PostListProps = {
   numShowItems: number;
@@ -15,9 +15,9 @@ type PostListProps = {
 export default function PostList(props: PostListProps) {
   const { numShowItems, numShowPages } = props;
   const searchParams = useSearchParams();
-  const page = searchParams.has("page") ? Number(searchParams.get("page")) : 1;
-  const category = searchParams.get("category");
-  const q = searchParams.get("q");
+  const page = searchParams.has('page') ? Number(searchParams.get('page')) : 1;
+  const category = searchParams.get('category');
+  const q = searchParams.get('q');
   const [count, setCount] = useState(0);
   const [postData, setPostData] = useState(undefined);
 
@@ -27,9 +27,10 @@ export default function PostList(props: PostListProps) {
         skip: numShowItems * (page - 1) + 1,
         limit: numShowItems,
       };
-      if (category) params["category"] = category;
-      if (q) params["q"] = q;
+      if (category) params['category'] = category;
+      if (q) params['q'] = q;
 
+      console.log(params);
       const [data, error] = await getPosts(params);
 
       if (error) {

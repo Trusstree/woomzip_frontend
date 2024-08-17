@@ -36,6 +36,7 @@ export default async function Home() {
         style={{
           width: '100%',
           padding: '30px 0',
+          backgroundColor: '#FAFBFC',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
