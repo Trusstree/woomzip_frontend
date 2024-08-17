@@ -29,7 +29,7 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>{postData ?? <PostList postData={postData} />}</div>
+            <div style={{ width: '100%', overflow: 'hidden' }}>{postData && <PostList postData={postData} />}</div>
           </PostMenu>
         </div>
       </div>
@@ -45,7 +45,7 @@ export default async function Home() {
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu title={'세모지붕 주택을 찾아요'} routeUrl={'/house'} routeText={'더보기'} horizontalScroll={true}>
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              {semoHouseData ?? <HouseList houseData={semoHouseData} />}
+              {semoHouseData && <HouseList houseData={semoHouseData} />}
             </div>
           </PostMenu>
         </div>
@@ -66,7 +66,7 @@ export default async function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              {nongchonHouseData ?? <HouseList houseData={nongchonHouseData} />}
+              {nongchonHouseData && <HouseList houseData={nongchonHouseData} />}
             </div>
           </PostMenu>
         </div>

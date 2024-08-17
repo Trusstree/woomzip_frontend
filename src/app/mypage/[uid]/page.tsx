@@ -1,6 +1,6 @@
 import MypageCompany from '@/app/mypage/[uid]/_components/_company/MypageCompany';
 import MypageUser from '@/app/mypage/[uid]/_components/_user/MypageUser';
-import { loadUserData } from '@/app/mypage/_actions/actions';
+import { loadUserData } from '@/app/mypage/[uid]/_actions/actions';
 import LoadPage from '@/components/app/LoadPage';
 
 export default async function Page({ params, searchParams }) {
