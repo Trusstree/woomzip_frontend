@@ -12,10 +12,12 @@ import { useEffect, useState } from 'react';
 export function SignupForm() {
   const router = useRouter();
   const [id, setID] = useState('');
+  const [idCheck, setIdCheck] = useState(false);
   const [pw, setPW] = useState('');
   const [repw, setRePW] = useState('');
   const [name, setName] = useState('');
   const [nickname, setNickname] = useState('');
+  const [nicknameCheck, setNicknameCheck] = useState(false);
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [gender, setGender] = useState('');
@@ -36,42 +38,57 @@ export function SignupForm() {
       setPhoneNumber(phoneNumber.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
   }, [phoneNumber]);
 
-  const submit = async () => {
+  const idCheckFunc = async () => {
+    console.log(id);
     if (!isID(id)) {
-      return alertError('ID', `ID를 8~16자 사이로 숫자와 함께 입력해주세요!`);
+      alertError('ID', `ID를 8~16자 사이로 숫자와 함께 입력해주세요!`);
+      setIdCheck(false);
+      return;
     }
+
     const [vid, vidError] = await validateID(id);
     if (vidError) {
-      return alertError('ID', `ID가 중복되었어요!`);
+      alertError('ID', `ID가 중복되었어요!`);
+      setIdCheck(false);
+      return;
     }
-    if (pw != repw) {
-      return alertError('PW 확인', `PW를 제대로 입력했는지 확인해주세요!`);
-    }
-    if (!isPassword(pw)) {
-      return alertError('PW', `비밀번호를 8~16자 사이로 입력해주세요!`);
-    }
-    if (!isEmail(email)) {
-      return alertError('이메일', `이메일 형식에 맞게 입력해주세요!`);
-    }
-    if (!isRequired(name)) {
-      return alertError('이름', `이름을 입력해주세요!`);
-    }
+    alertSuccess('ID', `사용가능한 ID에요!`);
+    setIdCheck(true);
+  };
+
+  const nicknameCheckFunc = async () => {
     if (!isRequired(nickname)) {
-      return alertError('별명', `별명을 입력해주세요!`);
+      alertError('별명', `별명을 입력해주세요!`);
+      setNicknameCheck(false);
+      return;
     }
+
     const [vnickname, vnicknameError] = await validateNickname(id);
     if (vnicknameError) {
-      return alertError('별명', `별명이 중복되었어요!`);
+      alertError('별명', `별명이 중복되었어요!`);
+      setNicknameCheck(false);
+      return;
     }
-    if (!isPhoneNumber(phoneNumber)) {
-      return alertError('연락처', `연락처를 형식에 맞게 입력해주세요!`);
-    }
-    if (!isRequired(gender)) {
-      return alertError('성별', `성별을 입력해주세요!`);
-    }
-    if (!isRequired(addr)) {
-      return alertError('주소', `주소를 입력해주세요!`);
-    }
+    alertSuccess('별명', `사용가능한 별명이에요!`);
+    setNicknameCheck(true);
+  };
+
+  const submit = async () => {
+    // 유효성검사는 필수
+    if (
+      !validate({
+        idCheck,
+        pw,
+        repw,
+        name,
+        nicknameCheck,
+        phoneNumber,
+        email,
+        gender,
+        addr,
+      })
+    )
+      return;
 
     const encryptedData = {
       login_id: id,
@@ -99,29 +116,48 @@ export function SignupForm() {
 
   return (
     <div className="my-5">
-      <SignupTextBox title={'이름'} name={'name'} data={name} setData={setName} explain={''} />
-      <SignupTextBox title={'별명'} name={'nickname'} data={nickname} setData={setNickname} explain={''} />
-      <SignupTextBox title={'ID'} name={'id'} data={id} setData={setID} explain={''} />
-      <SignupTextBox title={'PW'} name={'pw'} data={pw} setData={setPW} type={'password'} explain={''} />
-      <SignupTextBox title={'PW 확인'} name={'repw'} data={repw} setData={setRePW} type={'password'} explain={''} />
-      <SignupTextBox title={'이메일'} name={'email'} data={email} setData={setEmail} explain={''} />
+      <SignupTextBox title={'이름'} name={'name'} data={name} setData={setName} />
+      <SignupTextBox
+        title={'별명'}
+        name={'nickname'}
+        data={nickname}
+        setData={setNickname}
+        checked
+        isChecked={idCheck}
+        checkedFunction={nicknameCheckFunc}
+      />
+
+      <SignupTextBox
+        title={'ID'}
+        name={'id'}
+        data={id}
+        setData={setID}
+        explain={'*8자리 이상 입력해주세요'}
+        checked
+        isChecked={idCheck}
+        checkedFunction={idCheckFunc}
+      />
+      <SignupTextBox
+        title={'PW'}
+        name={'pw'}
+        data={pw}
+        setData={setPW}
+        type={'password'}
+        explain={'*영문+숫자 조합으로 8자리 이상 입력해주세요'}
+      />
+      <SignupTextBox
+        title={'PW 확인'}
+        name={'repw'}
+        data={repw}
+        setData={setRePW}
+        type={'password'}
+        explain={pw != repw && '비밀번호가 맞지 않습니다.'}
+      />
+      <SignupTextBox title={'이메일'} name={'email'} data={email} setData={setEmail} />
       <SignupGenderRadio data={gender} setData={setGender} />
-      <SignupTextBox
-        title={'연락처'}
-        name={'phoneNumber'}
-        data={phoneNumber}
-        setData={handlePhoneNumber}
-        explain={''}
-      />
-      <SignupTextBox
-        title={'생년월일'}
-        name={'birthday'}
-        data={birthday}
-        setData={setBirthday}
-        type={'date'}
-        explain={''}
-      />
-      <SignupTextBox title={'위치'} name={'addr'} data={addr} setData={setAddr} explain={''} />
+      <SignupTextBox title={'연락처'} name={'phoneNumber'} data={phoneNumber} setData={handlePhoneNumber} />
+      <SignupTextBox title={'생년월일'} name={'birthday'} data={birthday} setData={setBirthday} type={'date'} />
+      <SignupTextBox title={'위치'} name={'addr'} data={addr} setData={setAddr} />
       <div
         className="btn"
         style={{
@@ -137,3 +173,47 @@ export function SignupForm() {
     </div>
   );
 }
+
+const validate = ({ idCheck, pw, repw, name, nicknameCheck, phoneNumber, email, gender, addr }) => {
+  if (!idCheck) {
+    alertError('ID', `확인 버튼을 통해 중복체크를 해주세요.`);
+    return false;
+  }
+  if (pw != repw) {
+    alertError('PW 확인', `PW를 제대로 입력했는지 확인해주세요!`);
+    return false;
+  }
+  if (!isPassword(pw)) {
+    alertError('PW', `비밀번호를 8~16자 사이로 입력해주세요!`);
+    return false;
+  }
+  if (!isEmail(email)) {
+    alertError('이메일', `이메일 형식에 맞게 입력해주세요!`);
+    return false;
+  }
+  if (email.length > 50) {
+    alertError('이메일', `이메일이 너무 길어서 입력이 되지 않습니다. 대표자 번호로 문의 남겨주세요 ㅠㅠ`);
+    return false;
+  }
+  if (!isRequired(name)) {
+    alertError('이름', `이름을 입력해주세요!`);
+    return false;
+  }
+  if (!nicknameCheck) {
+    alertError('닉네임', `확인 버튼을 통해 중복체크를 해주세요.`);
+    return false;
+  }
+  if (!isPhoneNumber(phoneNumber)) {
+    alertError('연락처', `연락처를 형식에 맞게 입력해주세요!`);
+    return false;
+  }
+  if (!isRequired(gender)) {
+    alertError('성별', `성별을 입력해주세요!`);
+    return false;
+  }
+  if (!isRequired(addr)) {
+    alertError('주소', `주소를 입력해주세요!`);
+    return false;
+  }
+  return true;
+};

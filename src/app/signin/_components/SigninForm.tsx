@@ -9,6 +9,27 @@ import { isID, isPassword, isRequired } from '@/lib/validator';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
+const validate = ({ id, pw }) => {
+  // 유효성 검사부터
+  if (!isRequired(id)) {
+    alertError('로그인 에러', `아이디를 입력했는지 확인해주세요.`);
+    return false;
+  }
+  if (!isRequired(pw)) {
+    alertError('로그인 에러', `비밀번호를 입력했는지 확인해주세요.`);
+    return false;
+  }
+  if (!isID(id)) {
+    alertError('로그인 에러', `아이디가 8~16자인지 확인해주세요.`);
+    return false;
+  }
+  if (!isPassword(pw)) {
+    alertError('로그인 에러', `비밀번호가 8~16자인지 확인해주세요.`);
+    return false;
+  }
+  return true;
+};
+
 export function SigninForm() {
   const router = useRouter();
   const { setUserContext } = useUser();
@@ -16,23 +37,7 @@ export function SigninForm() {
   const [pw, setPW] = useState('');
 
   const submit = async () => {
-    // 유효성 검사부터
-    if (!isRequired(id)) {
-      alertError('로그인 에러', `아이디를 입력했는지 확인해주세요.`);
-      return;
-    }
-    if (!isRequired(pw)) {
-      alertError('로그인 에러', `비밀번호를 입력했는지 확인해주세요.`);
-      return;
-    }
-    if (!isID(id)) {
-      alertError('로그인 에러', `아이디가 8~16자인지 확인해주세요.`);
-      return;
-    }
-    if (!isPassword(pw)) {
-      alertError('로그인 에러', `비밀번호가 8~16자인지 확인해주세요.`);
-      return;
-    }
+    if (!validate({ id, pw })) return;
 
     const encryptedData = {
       login_id: id,
