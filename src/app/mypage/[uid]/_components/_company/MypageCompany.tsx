@@ -1,9 +1,9 @@
 import PostMenu from '@/components/posts/PostMenu';
-import MyPageProfile from '@/app/mypage/[uid]/_components/_company/MyPageProfileCompany';
-import ReviewList from '@/app/mypage/[uid]/_components/_company/ReviewListCompany';
 import MypageHouseList from '@/app/mypage/[uid]/_components/_company/MypageHouseList';
 import { PicModal } from '@/app/house/[pid]/_components/PicModal';
-import EditProfile from '@/app/mypage/[uid]/_components/_company/EditProfileCompany';
+import EditProfileCompany from '@/app/mypage/[uid]/_components/_company/EditProfileCompany';
+import MyPageProfileCompany from '@/app/mypage/[uid]/_components/_company/MyPageProfileCompany';
+import ReviewListCompany from '@/app/mypage/[uid]/_components/_company/ReviewListCompany';
 
 function parseData(companyData) {
   let [profile, companyImages, reviews, posts, pavilions, sellingHouses] = [
@@ -124,15 +124,15 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
 
         <div className="row w-100">
           <div className="col-md-4 col-12">
-            <MyPageProfile uid={uid} userData={profile} />
+            <MyPageProfileCompany uid={uid} userData={profile} />
           </div>
           <div className="col-md-8 col-12">
             {searchParams['method'] == 'edit' ? (
-              <EditProfile companyInfo={userData.companyInfo} />
+              <EditProfileCompany companyInfo={userData.companyInfo} />
             ) : (
               <div style={{ width: '100%', marginTop: '60px' }}>
                 <div style={{ margin: '0px' }}>
-                  <ReviewList
+                  <ReviewListCompany
                     uid={uid}
                     review={reviews['houseReview']}
                     rating={reviews['averageRating']}

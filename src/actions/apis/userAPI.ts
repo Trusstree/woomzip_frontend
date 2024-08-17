@@ -46,7 +46,7 @@ export const postUser = async (user: any) => {
   return [data, error];
 };
 
-export const putUser = async (user: any) => {
+export const updateUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {

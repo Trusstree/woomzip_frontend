@@ -1,6 +1,6 @@
 'use client';
 
-import { validateID, validateNickname, postUser } from '@/actions/apis/userAPI';
+import { validateNickname, updateUser } from '@/actions/apis/userAPI';
 import SignupGenderRadio from '@/app/signup/_components/SignupRadio';
 import SignupTextBox from '@/app/signup/_components/SignupTextBox';
 import InputImageComponent from '@/components/InputImageComponent';
@@ -40,10 +40,6 @@ export default function EditProfileCompany({ companyInfo }) {
   }, [phoneNumber]);
 
   const submit = async () => {
-    const [vid, vidError] = await validateID(companyInfo.profile.id);
-    if (vidError) {
-      return alertError('ID', `ID가 중복되었어요!`);
-    }
     if (introduce.length > 30) {
       alertError('한 줄 설명', `한 줄 설명이 너무 길어요. 30자 이내로 작성부탁드려요!`);
     }
@@ -88,7 +84,7 @@ export default function EditProfileCompany({ companyInfo }) {
       return alertError('홍보사진', '회사 사진을 적어도 5장 이상 입력해주세요!');
     }
 
-    const encryptedData = {
+    const parsedData = {
       name: name,
       nickname: nickname,
       user_img_url: thumbnail[0],
@@ -103,7 +99,7 @@ export default function EditProfileCompany({ companyInfo }) {
       company_images: companyImages,
     };
 
-    const [data, error] = await postUser(companyInfo.profile.user_profile_id);
+    const [data, error] = await updateUser(parsedData);
     if (error) {
       console.log(error);
       alertError('로그인 에러', error.message || `회원가입에 실패했어요.`);
@@ -130,7 +126,7 @@ export default function EditProfileCompany({ companyInfo }) {
         setData={setNickname}
         explain={'*기업회원은 회사명을 입력해주세요'}
       />
-      <SignupTextBox title={'이메일'} name={'email'} data={email} setData={setEmail} explain={''} />
+      <SignupTextBox title={'이메일'} name={'email'} data={email} setData={setEmail} />
       <SignupTextBox
         title={'한 줄 설명'}
         name={'introduce'}
@@ -139,21 +135,8 @@ export default function EditProfileCompany({ companyInfo }) {
         explain={'*회사를 표현할 수 있는 한 줄 소개글을 작성해주세요 (업체 프로필에 노출됩니다)'}
       />
       <SignupGenderRadio data={gender} setData={setGender} />
-      <SignupTextBox
-        title={'연락처'}
-        name={'phoneNumber'}
-        data={phoneNumber}
-        setData={handlePhoneNumber}
-        explain={''}
-      />
-      <SignupTextBox
-        title={'개업일'}
-        name={'birthday'}
-        data={birthday}
-        setData={setBirthday}
-        type={'date'}
-        explain={''}
-      />
+      <SignupTextBox title={'연락처'} name={'phoneNumber'} data={phoneNumber} setData={handlePhoneNumber} />
+      <SignupTextBox title={'개업일'} name={'birthday'} data={birthday} setData={setBirthday} type={'date'} />
 
       <div className="row">
         <div className="col-2" style={{ fontSize: '18px' }}>

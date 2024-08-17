@@ -1,22 +1,23 @@
 export default function SignupGenderRadio({ data, setData }) {
   return (
     <div className="d-flex mb-3">
-      <div className="col-2" style={{ fontSize: "18px" }}>
+      <div className="col-2" style={{ fontSize: '18px' }}>
         성별
       </div>
       <div className={`form-check mx-2`}>
         <input
           className="form-check-input"
           type="radio"
-          name={"gender"}
+          name={'gender'}
           id={`gender_man`}
           value={data}
           onChange={() => {
-            setData("M");
+            setData('M');
           }}
+          checked={data == 'M'}
         />
         <label className="fs-6 form-check-label" htmlFor={`gender_man`}>
-          {"남성"}
+          {'남성'}
         </label>
       </div>
 
@@ -24,15 +25,16 @@ export default function SignupGenderRadio({ data, setData }) {
         <input
           className="form-check-input"
           type="radio"
-          name={"gender"}
+          name={'gender'}
           id={`gender_woman`}
           value={data}
           onChange={() => {
-            setData("W");
+            setData('W');
           }}
+          checked={data == 'W'}
         />
         <label className="fs-6 form-check-label" htmlFor={`gender_woman`}>
-          {"여성"}
+          {'여성'}
         </label>
       </div>
     </div>
