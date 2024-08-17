@@ -1,6 +1,6 @@
-import HouseCard from "@/components/house/HouseCard";
-import HouseCardPlaceholder from "@/components/house/HouseCardPlaceholder";
-import Pagination from "@/components/Pagination";
+import HouseCard from '@/components/house/HouseCard';
+import HouseCardPlaceholder from '@/components/house/HouseCardPlaceholder';
+import Pagination from '@/components/Pagination';
 
 type HousePostProps = {
   houseData: any[];
@@ -9,7 +9,7 @@ type HousePostProps = {
   numShowPages?: number;
 };
 
-export function HouseList({ houseData, count, numShowItems, numShowPages }: HousePostProps) {
+export default function HouseList({ houseData, count, numShowItems, numShowPages }: HousePostProps) {
   return (
     <>
       {houseData

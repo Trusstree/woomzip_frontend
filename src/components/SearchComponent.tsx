@@ -8,7 +8,6 @@ import Image from 'next/image';
 
 export default function SearchComponent() {
   const [q, setQ] = useState('');
-
   const router = useRouter();
   const { createQuery, getRouteParams } = useQuery();
 

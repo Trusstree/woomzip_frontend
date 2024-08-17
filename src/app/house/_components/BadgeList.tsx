@@ -1,3 +1,5 @@
+'use client';
+
 import FilterBadge from '@/app/house/_components/FilterBadge';
 import { useSearchParams } from 'next/navigation';
 

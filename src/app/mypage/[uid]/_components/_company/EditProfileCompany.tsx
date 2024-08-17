@@ -1,21 +1,17 @@
 'use client';
 
-import { validateID, validateNickname, signupCompany, postUser } from '@/actions/apis/userAPI';
+import { validateID, validateNickname, postUser } from '@/actions/apis/userAPI';
 import SignupGenderRadio from '@/app/signup/_components/SignupRadio';
 import SignupTextBox from '@/app/signup/_components/SignupTextBox';
 import InputImageComponent from '@/components/InputImageComponent';
-import { alertError, alertSuccess } from '@/lib/alertUtil';
-import { encryptPW } from '@/lib/authUtil';
-import { isID, isPassword, isEmail, isRequired, isPhoneNumber } from '@/lib/validator';
+import { alertError } from '@/lib/alertUtil';
+import { isEmail, isRequired, isPhoneNumber } from '@/lib/validator';
 import { useRouter } from 'next/navigation';
 
 import { useState, useEffect } from 'react';
 
 export default function EditProfileCompany({ companyInfo }) {
   const router = useRouter();
-  const [id, setID] = useState(companyInfo.profile.email);
-  const [pw, setPW] = useState('');
-  const [repw, setRePW] = useState('');
   const [name, setName] = useState(companyInfo.profile.name);
   const [thumbnail, setThumbnail] = useState([companyInfo.profile.user_img_url]);
   const [introduce, setIntroduce] = useState(companyInfo.profile.one_line_introduce);
@@ -44,18 +40,9 @@ export default function EditProfileCompany({ companyInfo }) {
   }, [phoneNumber]);
 
   const submit = async () => {
-    if (!isID(id)) {
-      return alertError('ID', `ID를 8~16자 사이로 숫자와 함께 입력해주세요!`);
-    }
-    const [vid, vidError] = await validateID(id);
+    const [vid, vidError] = await validateID(companyInfo.profile.id);
     if (vidError) {
       return alertError('ID', `ID가 중복되었어요!`);
-    }
-    if (pw != repw) {
-      return alertError('PW 확인', `PW를 제대로 입력했는지 확인해주세요!`);
-    }
-    if (!isPassword(pw)) {
-      return alertError('PW', `비밀번호를 8~16자 사이로 입력해주세요!`);
     }
     if (introduce.length > 30) {
       alertError('한 줄 설명', `한 줄 설명이 너무 길어요. 30자 이내로 작성부탁드려요!`);
@@ -72,7 +59,7 @@ export default function EditProfileCompany({ companyInfo }) {
     if (!isRequired(nickname)) {
       return alertError('별명', `별명을 입력해주세요!`);
     }
-    const [vnickname, vnicknameError] = await validateNickname(id);
+    const [vnickname, vnicknameError] = await validateNickname(companyInfo.profile.id);
     if (vnicknameError) {
       return alertError('별명', `별명이 중복되었어요!`);
     }
@@ -102,8 +89,6 @@ export default function EditProfileCompany({ companyInfo }) {
     }
 
     const encryptedData = {
-      login_id: id,
-      password: encryptPW(pw),
       name: name,
       nickname: nickname,
       user_img_url: thumbnail[0],
@@ -145,16 +130,6 @@ export default function EditProfileCompany({ companyInfo }) {
         setData={setNickname}
         explain={'*기업회원은 회사명을 입력해주세요'}
       />
-      <SignupTextBox title={'ID'} name={'id'} data={id} setData={setID} explain={'*8자리 이상 입력해주세요'} />
-      <SignupTextBox
-        title={'PW'}
-        name={'pw'}
-        data={pw}
-        setData={setPW}
-        type={'password'}
-        explain={'*영문+숫자 조합으로 8자리 이상 입력해주세요'}
-      />
-      <SignupTextBox title={'PW 확인'} name={'repw'} data={repw} setData={setRePW} type={'password'} explain={''} />
       <SignupTextBox title={'이메일'} name={'email'} data={email} setData={setEmail} explain={''} />
       <SignupTextBox
         title={'한 줄 설명'}

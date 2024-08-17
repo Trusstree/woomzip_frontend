@@ -1,7 +1,7 @@
-import UserMypageProfile from '@/app/mypage/[uid]/_components/UserMypageProfile';
-import PostList from '@/components/posts/PostList';
+import UserMypageProfile from '@/app/mypage/[uid]/_components/_user/MypageProfileUser';
+import PostList from '@/app/community/_components/PostList';
 import PostMenu from '@/components/posts/PostMenu';
-import EditProfileUser from '@/app/mypage/[uid]/_components/EditProfileUser';
+import EditProfileUser from '@/app/mypage/[uid]/_components/_user/EditProfileUser';
 
 export default function MypageUser({ uid, userData, searchParams }) {
   return (
@@ -23,7 +23,7 @@ export default function MypageUser({ uid, userData, searchParams }) {
                     routeText={'더보기'}
                     horizontalScroll={true}
                   >
-                    <PostList numShowItems={4} />
+                    <PostList numShowItems={4} postData={undefined} postCount={undefined} numShowPages={undefined} />
                   </PostMenu>
                 </div>
 

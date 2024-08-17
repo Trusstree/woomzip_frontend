@@ -1,9 +1,9 @@
 import SignoutButton from '@/app/mypage/[uid]/_components/SignoutButton';
 import { getUserdataByToken } from '@/lib/parseUtil';
 import { cookies } from 'next/headers';
-import EditProfileButton from './EditProfileButton';
+import EditProfileButton from '../EditProfileButton';
 
-export default function MyPageProfile({ uid, userData }) {
+export default function MyPageProfileCompany({ uid, userData }) {
   const cookieStorge = cookies();
   const accessToken = cookieStorge.get('accessToken')?.value;
   const isSigned = accessToken && Number(uid) == getUserdataByToken(accessToken)?.uid;

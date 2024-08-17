@@ -7,16 +7,20 @@ import styles from '@/styles/CategoryButton.module.css';
 export default function CategoryButton({
   title,
   imgSrc,
+  queryName,
   category,
 }: {
   title: string;
   imgSrc: string;
+  queryName: string;
   category?: string;
 }) {
   const router = useRouter();
   const { createQuery, getRouteParams } = useQuery();
   const handleClick = () => {
-    createQuery('tag', category);
+    createQuery('page');
+    createQuery('q');
+    createQuery(queryName, category);
     router.push(getRouteParams());
   };
 
