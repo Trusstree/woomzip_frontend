@@ -1,6 +1,7 @@
 'use client';
 
 import RowText from '@/app/house/[pid]/_components/RowText';
+import RowTextReverse from '@/app/house/[pid]/_components/RowTextReverse';
 import HalfRowText from '@/app/house/[pid]/_components/HalfRowText';
 import useQuery from '@/hooks/useQuery';
 import { parseSpecificationInfo } from '@/lib/parseUtil';
@@ -65,7 +66,7 @@ export default function HouseExpl({
       {/* 상세 정보 */}
       <div ref={elementA} className="w-full h-screen relative flex flex-col" style={{ marginTop: '50px' }}>
         <div className="row g-5">
-          <HalfRowText name={'방'} data={`${houseData['room_count']}개`} />
+          <HalfRowText name={'침실'} data={`${houseData['room_count']}개`} />
           <HalfRowText name={'욕실'} data={`${houseData['toilet_count']}개`} />
           <HalfRowText name={'실평수'} data={`${houseData['total_floor_area'].toFixed(1)}평`} />
           <HalfRowText name={'건축면적'} data={`${houseData['building_area'].toFixed(1)}㎡`} />
@@ -180,8 +181,8 @@ export default function HouseExpl({
         </div>
         <div style={{ margin: '50px 0' }}>
           <div>
-            <RowText name={'기본 가격'} data={detailPriceText(houseData['final_price'])} />
-            <RowText name={'기본 부가세(10%)'} data={detailPriceText(houseData['final_price'] / 10)} />
+            <RowTextReverse name={'기본 가격'} data={detailPriceText(houseData['final_price'])} />
+            <RowTextReverse name={'기본 부가세(10%)'} data={detailPriceText(houseData['final_price'] / 10)} />
             <div
               style={{
                 margin: '30px 0 0 12px',
@@ -194,7 +195,7 @@ export default function HouseExpl({
             {optionData &&
               optionData.map((e, i) => (
                 <div key={i}>
-                  <RowText name={e['option_product_name']} data={detailPriceText(e['option_product_price'])} />
+                  <RowTextReverse name={e['option_product_name']} data={detailPriceText(e['option_product_price'])} />
                 </div>
               ))}
             <div className="container" style={{ height: '30px' }}></div>
@@ -250,14 +251,14 @@ export default function HouseExpl({
           <div style={{ fontSize: '16px', marginBottom: '20px' }}>
             {parseSpecificationInfo(specificationData['specification_description'])}
           </div>
-          <RowText name={'골조 구조'} data={parseSpecificationInfo(specificationData['framework'])} />
+          <RowText name={'골조구조'} data={parseSpecificationInfo(specificationData['framework'])} />
           <RowText name={'외장재'} data={parseSpecificationInfo(specificationData['exterior_material'])} />
           <RowText name={'지붕재'} data={parseSpecificationInfo(specificationData['roofing_material'])} />
           <RowText name={'단열재'} data={parseSpecificationInfo(specificationData['insulation_material'])} />
           <RowText name={'내장재'} data={parseSpecificationInfo(specificationData['interior_material'])} />
           <RowText name={'창호'} data={parseSpecificationInfo(specificationData['window'])} />
           <RowText name={'난방'} data={parseSpecificationInfo(specificationData['heating'])} />
-          <RowText name={'포함된 가구'} data={parseSpecificationInfo(specificationData['furniture'])} />
+          <RowText name={'기본가구'} data={parseSpecificationInfo(specificationData['furniture'])} />
           <RowText name={'주방'} data={parseSpecificationInfo(specificationData['kitchen'])} />
           <RowText name={'화장실'} data={parseSpecificationInfo(specificationData['toilet'])} />
           <RowText name={'조명'} data={parseSpecificationInfo(specificationData['lighting'])} />
