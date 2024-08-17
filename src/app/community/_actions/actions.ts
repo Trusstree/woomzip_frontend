@@ -18,7 +18,7 @@ export async function loadPostData({ searchParams, numShowItems }) {
 
   if (error) {
     console.error(error);
-    return;
+    return [undefined, undefined];
   }
 
   return [data.data[0].posts, data.data[0].total];

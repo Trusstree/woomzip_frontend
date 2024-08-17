@@ -39,7 +39,7 @@ export async function loadHouseData(searchParams, numShowItems) {
   const [data, error] = await getHouses(params);
   if (error) {
     console.error(error);
-    return;
+    return [undefined, undefined];
   }
 
   return [data.data[0].houses, data.data[0].total_count];

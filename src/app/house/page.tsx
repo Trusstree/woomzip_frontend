@@ -6,11 +6,12 @@ import HouseList from '@/app/house/_components/HouseList';
 import PostMenu from '@/components/posts/PostMenu';
 import styles from '@/styles/Phrase.module.css';
 import { count } from 'console';
+import LoadPage from '@/components/app/LoadPage';
 
 export default async function Home({ searchParams }) {
   const [numShowItems, numShowPages] = [24, 10];
   const [houseData, houseCount] = await loadHouseData(searchParams, numShowItems);
-  return (
+  return houseData ? (
     <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
       <div className={styles.mainPhrase}>
         <span style={{ color: '#314FC0' }}>움집</span>에서 가장 쉽고 빠른 집 찾기
@@ -56,5 +57,7 @@ export default async function Home({ searchParams }) {
         <HouseList houseData={houseData} count={houseCount} numShowItems={numShowItems} numShowPages={numShowPages} />
       </PostMenu>
     </div>
+  ) : (
+    <LoadPage />
   );
 }

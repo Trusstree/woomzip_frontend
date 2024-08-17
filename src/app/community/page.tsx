@@ -4,13 +4,14 @@ import SearchComponent from '@/components/SearchComponent';
 import Category from '@/app/community/_components/Category';
 import styles from '@/styles/Phrase.module.css';
 import { loadPostData } from '@/app/community/_actions/actions';
+import LoadPage from '@/components/app/LoadPage';
 
 export default async function Page({ searchParams }) {
   const [numShowItems, numShowPages] = [8, 10];
 
   const [postData, postCount] = await loadPostData({ searchParams, numShowItems });
 
-  return (
+  return postData ? (
     <div>
       <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
         <div className={styles.mainPhrase}>
@@ -36,5 +37,7 @@ export default async function Page({ searchParams }) {
         </PostMenu>
       </div>
     </div>
+  ) : (
+    <LoadPage />
   );
 }

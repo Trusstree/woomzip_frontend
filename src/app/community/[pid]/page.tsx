@@ -2,7 +2,7 @@ import Count from '@/components/posts/Count';
 import AppPostList from '@/app/_components/PostList';
 import PostMenu from '@/components/posts/PostMenu';
 import DOMPurify from 'isomorphic-dompurify';
-import { loadData } from '@/app/community/[pid]/_actions/actions';
+import { loadPostData, loadRecommendPostData } from '@/app/community/[pid]/_actions/actions';
 import CommentComponent from '@/app/community/[pid]/_components/CommentComponent';
 import LoadPage from '@/components/app/LoadPage';
 import { elapsedTimeText } from '@/lib/stringUtil';
@@ -20,7 +20,8 @@ const style = {
 
 export default async function page({ params }: { params: PageParams }) {
   const { pid } = params;
-  const { postData, comments } = await loadData(pid);
+  const { postData, comments } = await loadPostData(pid);
+  const recommendPostData = await loadRecommendPostData(pid);
 
   return postData ? (
     <div
@@ -176,7 +177,7 @@ export default async function page({ params }: { params: PageParams }) {
         routeText={'더보기'}
         horizontalScroll={true}
       >
-        <AppPostList numShowItems={6} />
+        <AppPostList postData={recommendPostData} />
       </PostMenu>
     </div>
   ) : (

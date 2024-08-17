@@ -11,7 +11,7 @@ type PageParams = {
   pid: number;
 };
 
-export default async function Home({ params }: { params: PageParams }) {
+export default async function House({ params }: { params: PageParams }) {
   const { pid } = params;
   const { houseData, imageData, optionData, specificationData, userData, reviewData, deliveryData } =
     await loadData(pid);

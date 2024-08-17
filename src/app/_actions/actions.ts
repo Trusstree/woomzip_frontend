@@ -14,7 +14,7 @@ export async function loadPostData() {
 
   if (error) {
     console.error(error);
-    return [];
+    return undefined;
   }
 
   return data.data[0].posts;
