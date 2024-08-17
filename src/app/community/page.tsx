@@ -1,11 +1,14 @@
 import PostMenu from '@/components/posts/PostMenu';
-import PostList from '@/components/posts/PostList';
+import PostList from '@/app/community/_components/PostList';
 import SearchComponent from '@/components/SearchComponent';
 import Category from '@/app/community/_components/Category';
 import styles from '@/styles/Phrase.module.css';
+import { loadPostData } from '@/app/community/_actions/actions';
 
-export default function Page() {
-  const [numShowItems, numShowPages] = [24, 10];
+export default async function Page({ searchParams }) {
+  const [numShowItems, numShowPages] = [8, 10];
+
+  const [postData, postCount] = await loadPostData({ searchParams, numShowItems });
 
   return (
     <div>
@@ -29,7 +32,7 @@ export default function Page() {
         </div>
 
         <PostMenu routeUrl={'/community/write'} routeText={'글쓰기'}>
-          <PostList numShowItems={numShowItems} numShowPages={numShowPages} />
+          <PostList postData={postData} postCount={postCount} numShowItems={numShowItems} numShowPages={numShowPages} />
         </PostMenu>
       </div>
     </div>

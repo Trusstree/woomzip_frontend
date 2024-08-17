@@ -1,24 +1,6 @@
-import { getPosts } from '@/actions/apis/postAPI';
 import PostCard from '@/components/posts/PostCard';
 
-async function loadData(numShowItems: number) {
-  const params = {
-    skip: 1,
-    limit: numShowItems,
-  };
-
-  const [data, error] = await getPosts(params);
-
-  if (error) {
-    console.error(error);
-    return [];
-  }
-
-  return data.data[0].posts;
-}
-
-export default async function PostList({ numShowItems }) {
-  const postData = await loadData(numShowItems);
+export default async function PostList({ postData }) {
   return (
     <div
       className="row flex-nowrap overflow-auto"

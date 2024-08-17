@@ -16,6 +16,8 @@ export default function CategoryButton({
   const router = useRouter();
   const { createQuery, getRouteParams } = useQuery();
   const handleClick = () => {
+    createQuery('page');
+    createQuery('q');
     createQuery('tag', category);
     router.push(getRouteParams());
   };

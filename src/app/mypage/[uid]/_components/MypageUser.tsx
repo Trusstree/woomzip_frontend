@@ -1,5 +1,5 @@
 import UserMypageProfile from '@/app/mypage/[uid]/_components/UserMypageProfile';
-import PostList from '@/components/posts/PostList';
+import PostList from '@/app/community/_components/PostList';
 import PostMenu from '@/components/posts/PostMenu';
 import EditProfileUser from '@/app/mypage/[uid]/_components/EditProfileUser';
 

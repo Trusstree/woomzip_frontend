@@ -3,8 +3,13 @@ import Carousel from '@/app/_components/Carousel';
 import LivingCardList from '@/components/living/LivingCardList';
 import PostList from '@/app/_components/PostList';
 import HouseList from '@/app/_components/HouseList';
+import { loadHouseData, loadPostData } from '@/app/_actions/actions';
 
 export default async function Home() {
+  const postData = await loadPostData();
+  const semoHouseData = await loadHouseData({ tag: '경사지붕' });
+  const nongchonHouseData = await loadHouseData({ has_model: 1 });
+
   return (
     <>
       <div>
@@ -25,7 +30,7 @@ export default async function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              <PostList numShowItems={10} />
+              <PostList postData={postData} />
             </div>
           </PostMenu>
         </div>
@@ -41,7 +46,7 @@ export default async function Home() {
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu title={'세모지붕 주택을 찾아요'} routeUrl={'/house'} routeText={'더보기'} horizontalScroll={true}>
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              <HouseList numShowItems={6} searchConditions={{ tag: '경사지붕' }} />
+              <HouseList houseData={semoHouseData} />
             </div>
           </PostMenu>
         </div>
@@ -62,7 +67,7 @@ export default async function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              <HouseList numShowItems={10} searchConditions={{ model: 1 }} />
+              <HouseList houseData={nongchonHouseData} />
             </div>
           </PostMenu>
         </div>
