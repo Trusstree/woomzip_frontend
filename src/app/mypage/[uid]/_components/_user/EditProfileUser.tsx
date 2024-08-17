@@ -1,9 +1,8 @@
 'use client';
 
-import { validateID, validateNickname, signupCompany, postUser } from '@/actions/apis/userAPI';
+import { validateID, validateNickname, postUser } from '@/actions/apis/userAPI';
 import SignupGenderRadio from '@/app/signup/_components/SignupRadio';
 import SignupTextBox from '@/app/signup/_components/SignupTextBox';
-import InputImageComponent from '@/components/InputImageComponent';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { encryptPW } from '@/lib/authUtil';
 import { isID, isPassword, isEmail, isRequired, isPhoneNumber } from '@/lib/validator';

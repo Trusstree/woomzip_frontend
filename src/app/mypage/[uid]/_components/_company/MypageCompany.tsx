@@ -1,9 +1,9 @@
 import PostMenu from '@/components/posts/PostMenu';
-import MyPageProfile from '@/app/mypage/[uid]/_components/MyPageProfile';
-import ReviewList from '@/app/mypage/[uid]/_components/ReviewList';
-import MypageHouseList from '@/app/mypage/[uid]/_components/MypageHouseList';
+import MyPageProfile from '@/app/mypage/[uid]/_components/_company/MyPageProfileCompany';
+import ReviewList from '@/app/mypage/[uid]/_components/_company/ReviewListCompany';
+import MypageHouseList from '@/app/mypage/[uid]/_components/_company/MypageHouseList';
 import { PicModal } from '@/app/house/[pid]/_components/PicModal';
-import EditProfile from '@/app/mypage/[uid]/_components/EditProfileCompany';
+import EditProfile from '@/app/mypage/[uid]/_components/_company/EditProfileCompany';
 
 function parseData(companyData) {
   let [profile, companyImages, reviews, posts, pavilions, sellingHouses] = [
@@ -37,7 +37,7 @@ function parseData(companyData) {
 
 export default async function MypageCompany({ uid, userData, searchParams }) {
   const { profile, companyImages, reviews, posts, pavilions, sellingHouses } = parseData(userData);
-  console.log(searchParams);
+
   return (
     <>
       <div className="row" style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>

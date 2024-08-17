@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 export default function SignoutButton() {
   const router = useRouter();
   const { setUserContext } = useUser();
+
   return (
     <div
       style={{}}
