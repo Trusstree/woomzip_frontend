@@ -3,7 +3,7 @@ import styles from '@/styles/Category.module.css';
 
 export default function Category() {
   return (
-    <div className="col-md-8 col-12">
+    <div className="col-md-8 col-12 g-0">
       <div className={`row ${styles.categoryRow}`}>
         <CategoryButton title={'전체'} imgSrc={'/buttonIcons/all.png'} queryName={'category'} />
         <CategoryButton title={'일반'} imgSrc={'/buttonIcons/free.png'} queryName={'category'} category={'일반'} />
