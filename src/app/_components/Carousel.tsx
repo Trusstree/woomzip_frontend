@@ -59,7 +59,6 @@ export default function Carousel({ className }: { className?: string }) {
                     style={{
                       color: 'white',
                       wordBreak: 'keep-all',
-                      margin: '0 auto',
                       textAlign: 'center',
                     }}
                   >

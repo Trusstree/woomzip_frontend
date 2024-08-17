@@ -14,7 +14,7 @@ export default async function Home() {
       <div
         style={{
           width: '100%',
-          padding: '30px 0',
+          padding: '30px 0 20px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
@@ -35,7 +35,7 @@ export default async function Home() {
       <div
         style={{
           width: '100%',
-          padding: '30px 0',
+          padding: '20px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
@@ -51,7 +51,7 @@ export default async function Home() {
       <div
         style={{
           width: '100%',
-          padding: '30px 0',
+          padding: '20px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
