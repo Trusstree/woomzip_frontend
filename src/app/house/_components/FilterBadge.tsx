@@ -5,22 +5,7 @@ import { arraySort } from '@/lib/functionUtil';
 import { cardPriceText } from '@/lib/stringUtil';
 import { useRouter } from 'next/navigation';
 
-const dict = {
-  q: '검색어',
-  min_price: '최소 가격',
-  max_price: '최대 가격',
-  floor_area_min: '최소 평수',
-  floor_area_max: '최대 평수',
-  room_count: '방',
-  toilet_count: '화장실',
-  floor_count: '층',
-  specificity: '특이사항',
-  frame: '골조구조',
-  estimate_duration: '제작 소요기간',
-  warranty: 'AS 보증기간',
-};
-
-function parseValue(name, value) {
+function parseValue(name: string, value: any) {
   if (name == 'min_price') return '최소 ' + cardPriceText(value);
   if (name == 'max_price') return '최대 ' + cardPriceText(value);
   if (name == 'floor_area_min') return '최소 ' + value + '평';
@@ -30,7 +15,11 @@ function parseValue(name, value) {
   if (name == 'floor_count') return arraySort(value.split(',')) + '층';
   if (name == 'estimate_duration') return value + '개월 이하의 제작 소요기간';
   if (name == 'warranty') return Math.round(value / 12) + '년 이상의 AS 보증기간';
-  return value;
+  if (name == 'tag') return value;
+  if (name == 'is_hut') return '농막';
+  if (name == 'has_model') return '농촌 체류형 쉼터';
+  if (name == 'page') return '';
+  return `${name}: ${value}`;
 }
 
 export default function FilterBadge({ name, value }) {
@@ -68,4 +57,3 @@ export default function FilterBadge({ name, value }) {
     </div>
   );
 }
-// {dict[name] ? dict[name] : name}: {parseValue(name, value)}

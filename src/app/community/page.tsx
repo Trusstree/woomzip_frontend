@@ -7,7 +7,7 @@ import { loadPostData } from '@/app/community/_actions/actions';
 import LoadPage from '@/components/app/LoadPage';
 
 export default async function Page({ searchParams }) {
-  const [numShowItems, numShowPages] = [8, 10];
+  const [numShowItems, numShowPages] = [24, 10];
 
   const [postData, postCount] = await loadPostData({ searchParams, numShowItems });
 

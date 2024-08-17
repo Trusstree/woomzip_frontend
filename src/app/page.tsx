@@ -43,7 +43,12 @@ export default async function Home() {
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
-          <PostMenu title={'세모지붕 주택을 찾아요'} routeUrl={'/house'} routeText={'더보기'} horizontalScroll={true}>
+          <PostMenu
+            title={'세모지붕 주택을 찾아요'}
+            routeUrl={'/house?tag=경사지붕'}
+            routeText={'더보기'}
+            horizontalScroll={true}
+          >
             <div style={{ width: '100%', overflow: 'hidden' }}>
               {semoHouseData && <HouseList houseData={semoHouseData} />}
             </div>
@@ -61,7 +66,7 @@ export default async function Home() {
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
             title={'농촌 체류형 쉼터를 원해요.'}
-            routeUrl={'/house'}
+            routeUrl={'/house?has_model=1'}
             routeText={'더보기'}
             horizontalScroll={true}
           >
