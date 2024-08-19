@@ -1,7 +1,8 @@
-import { RadioButtonComponent } from "@/components/forms/RadioButtonComponent";
+import { RadioButtonComponent } from '@/components/forms/RadioButtonComponent';
 
 type RadioComponentProps = {
   title: string;
+  essential: string;
   name: string;
   data: Array<any>;
   onChange: Function;
@@ -9,10 +10,13 @@ type RadioComponentProps = {
 };
 
 export function RadioComponent(props: RadioComponentProps) {
-  const { title, name, data, onChange, className } = props;
+  const { title, name, data, onChange, className, essential } = props;
   return (
-    <div className={`${className || ""} my-2 d-flex flex-column`}>
-      <span className="fs-5">{title}</span>
+    <div className={`${className || ''} my-2 d-flex flex-column`}>
+      <span className="" style={{ fontSize: '17px' }}>
+        <span style={{ color: 'red' }}>{essential}</span>
+        {title}
+      </span>
       <div className="d-flex">
         {data.map((e, i) => (
           <RadioButtonComponent
@@ -21,7 +25,7 @@ export function RadioComponent(props: RadioComponentProps) {
             title={e.title}
             data={e.data}
             onChange={onChange}
-            className={`${e.className || ""} mx-2`}
+            className={`${e.className || ''} mx-2`}
           />
         ))}
       </div>

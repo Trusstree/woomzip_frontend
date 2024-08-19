@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import { SelectBoxComponent } from "@/components/forms/SelectBoxComponent";
-import { ChangeEvent, useState } from "react";
+import { SelectBoxComponent } from '@/components/forms/SelectBoxComponent';
+import { ChangeEvent, useState } from 'react';
 
 type SelectComponentProps = {
   title: string;
+  essential: string;
   name: string;
   dataList: Array<string>;
   onChange: any;
@@ -12,7 +13,7 @@ type SelectComponentProps = {
 };
 
 export function SelectComponent(props: SelectComponentProps) {
-  const { title, name, dataList, onChange, className } = props;
+  const { title, name, dataList, onChange, className, essential } = props;
 
   const [ETC, setETC] = useState(true as any);
 
@@ -44,8 +45,11 @@ export function SelectComponent(props: SelectComponentProps) {
   };
 
   return (
-    <div className={`${className || ""} my-2 d-flex flex-column`}>
-      <span className="fs-5">{title}</span>
+    <div className={`${className || ''} my-2 d-flex flex-column`}>
+      <span className="" style={{ fontSize: '17px' }}>
+        <span style={{ color: 'red' }}>{essential}</span>
+        {title}
+      </span>
       <div className="row">
         <div className="col-7 d-flex">
           {dataList.map((e, i) => (
@@ -54,7 +58,7 @@ export function SelectComponent(props: SelectComponentProps) {
               name={name}
               title={e}
               onChange={onChangeDefault}
-              className={`${className || ""} mx-2`}
+              className={`${className || ''} mx-2`}
             />
           ))}
         </div>
@@ -68,7 +72,7 @@ export function SelectComponent(props: SelectComponentProps) {
               setETC(!ETC);
             }}
           />
-          <label className="ms-2 fs-5 form-check-label" htmlFor={`${name}_etc`}>
+          <label className="ms-2 fs-7 form-check-label" htmlFor={`${name}_etc`}>
             기타
           </label>
           <input
@@ -77,7 +81,7 @@ export function SelectComponent(props: SelectComponentProps) {
             id={`${name}_etc_input`}
             name={name}
             onChange={onChangeETC}
-            value={name["etc"]}
+            value={name['etc']}
             disabled={ETC}
           />
         </div>

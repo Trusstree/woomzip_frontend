@@ -71,7 +71,10 @@ export default function AddHouse({ uid }) {
 
   return (
     <div>
-      <div className="d-flex justify-content-start flex-column mt-5">
+      <div
+        className="d-flex justify-content-start flex-column"
+        style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}
+      >
         <h1 className="fw-bold" style={{}}>
           집 데이터 추가
         </h1>
@@ -113,14 +116,12 @@ export default function AddHouse({ uid }) {
             <br />
             수정 필요가 있다면 검수 후, 수정 요청드릴 수 있습니다.
             <br />
-            (수정은 우측 상단 *마이페이지*에서 가능합니다.)
-            <br />
-            추가로 표현하고 싶은데, 해당사항이 없다면 전화주세요!
+            추가로 문의사항은 전화주시면 감사하겠습니다.
           </div>
           <button
             type="button"
             name="submit"
-            style={{ backgroundColor: '#101648' }}
+            style={{ backgroundColor: '#314FC0' }}
             className={`my-5 px-5 py-3 btn btn-lg rounded-lg text-white fw-bold fs-3`}
             onClick={async () => {
               await submitFunction();

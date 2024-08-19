@@ -63,7 +63,9 @@ export default function InputImageComponent({
     <div>
       <div>
         <label htmlFor={`images_${name}`}>
-          <div className="btn btn-secondary btn-lg">클릭하여 추가</div>
+          <div className="btn btn-lg" style={{ backgroundColor: '#314FC0', color: 'white' }}>
+            클릭하여 추가
+          </div>
         </label>
         <input
           id={`images_${name}`}

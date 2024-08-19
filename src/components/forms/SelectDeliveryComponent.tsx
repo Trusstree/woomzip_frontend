@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import { SelectBoxComponent } from "@/components/forms/SelectBoxComponent";
-import { ChangeEvent } from "react";
+import { SelectBoxComponent } from '@/components/forms/SelectBoxComponent';
+import { ChangeEvent } from 'react';
 
 type SelectComponentProps = {
   title: string;
+  essential: string;
   name: string;
   dataList: Array<string>;
   onChange: any;
@@ -12,7 +13,7 @@ type SelectComponentProps = {
 };
 
 export function SelectDeliveryComponent(props: SelectComponentProps) {
-  const { title, name, dataList, onChange, className } = props;
+  const { title, name, dataList, onChange, className, essential } = props;
 
   const onChangeSelect = (e: ChangeEvent<HTMLInputElement>, title: string) => {
     onChange((oldValues) => {
@@ -22,8 +23,11 @@ export function SelectDeliveryComponent(props: SelectComponentProps) {
   };
 
   return (
-    <div className={`${className || ""} my-2 d-flex flex-column`}>
-      <span className="fs-5">{title}</span>
+    <div className={`${className || ''} my-2 d-flex flex-column`}>
+      <span className="" style={{ fontSize: '17px' }}>
+        <span style={{ color: 'red' }}>{essential}</span>
+        {title}
+      </span>
       <div className="row">
         {dataList.map((e, i) => (
           <SelectBoxComponent
@@ -33,7 +37,7 @@ export function SelectDeliveryComponent(props: SelectComponentProps) {
             onChange={(el) => {
               onChangeSelect(el, e);
             }}
-            className={`${className || ""} mx-2 col-2`}
+            className={`${className || ''} mx-2 col-2`}
           />
         ))}
       </div>
