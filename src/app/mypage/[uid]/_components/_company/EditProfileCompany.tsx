@@ -55,9 +55,11 @@ export default function EditProfileCompany({ companyInfo }) {
     if (!isRequired(nickname)) {
       return alertError('별명', `별명을 입력해주세요!`);
     }
-    const [vnickname, vnicknameError] = await validateNickname(companyInfo.profile.id);
-    if (vnicknameError) {
-      return alertError('별명', `별명이 중복되었어요!`);
+    if (companyInfo.profile.nickname != nickname) {
+      const [vnickname, vnicknameError] = await validateNickname(nickname);
+      if (vnicknameError) {
+        return alertError('별명', `별명이 중복되었어요!`);
+      }
     }
     if (!isPhoneNumber(phoneNumber)) {
       return alertError('연락처', `연락처를 형식에 맞게 입력해주세요!`);
