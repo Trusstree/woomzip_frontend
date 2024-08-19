@@ -9,42 +9,31 @@ import { HouseDeliveryComponent } from '@/app/mypage/[uid]/house/_components/Hou
 import { HouseInfoComponent } from '@/app/mypage/[uid]/house/_components/HouseInfoComponent';
 import { HousePriceComponent } from '@/app/mypage/[uid]/house/_components/HousePriceComponent';
 import { usePathname, useRouter } from 'next/navigation';
+import useHouseInfo from '@/app/mypage/[uid]/house/_store/houseInfo';
+import useSpecificityInfo from '@/app/mypage/[uid]/house/_store/specificationInfo';
+import useImageInfo from '@/app/mypage/[uid]/house/_store/imageInfo';
+import useOptionInfo from '@/app/mypage/[uid]/house/_store/optionInfo';
+import useDeliveryInfo from '@/app/mypage/[uid]/house/_store/deliveryInfo';
 
 export default function AddHouse({ uid }) {
   const pathname = usePathname();
   const router = useRouter();
 
-  const [houseInfo, setHouseInfo] = useState({});
-  const [optionInfo, setOptionInfo] = useState([] as Array<any>);
-  const [deliveryInfo, setDeliveryInfo] = useState([] as Array<any>);
-  const [specificationInfo, setSpecificationInfo] = useState({});
-  const [imageList, setImageList] = useState([]);
+  const houseInfo = useHouseInfo();
+  const optionInfo = useOptionInfo();
+  const deliveryInfo = useDeliveryInfo();
+  const specificationInfo = useSpecificityInfo();
+  const imageInfo = useImageInfo();
 
-  const handleHouse = (e: ChangeEvent<HTMLInputElement>): ChangeEventHandler<HTMLInputElement> => {
-    setHouseInfo((oldValues) => ({
-      ...oldValues,
-      [e.target.name]: e.target.value,
-    }));
-    return;
-  };
-
-  const handleSpecification = (e: ChangeEvent<HTMLInputElement>): ChangeEventHandler<HTMLInputElement> => {
-    if (e) e.preventDefault();
-    setSpecificationInfo((oldValues) => ({
-      ...oldValues,
-      [e.target.name]: e.target.value,
-    }));
-    return;
-  };
-
-  const submitFunction = useCallback(async () => {
+  const submit = useCallback(async () => {
+    console.log(imageInfo);
     //validate를 위한 부분
-    if (!imageList['representative_image']) {
+    if (!imageInfo['representative_image']) {
       alertError('이미지 에러!', '대표 이미지가 빠졌어요 ㅠㅠ');
       return;
     }
 
-    if (imageList['external_images'].length + imageList['internal_images'].length < 5) {
+    if (imageInfo['external_images'].length + imageInfo['internal_images'].length < 5) {
       alertError('이미지 에러!', '제품 내외부 사진을 합쳐서 5장 이상 채워주세요!');
       return;
     }
@@ -55,7 +44,7 @@ export default function AddHouse({ uid }) {
       option_info: optionInfo,
       delivery_unavailable: deliveryInfo,
       specification_info: specificationInfo,
-      house_img_url: imageList,
+      house_img_url: imageInfo,
     };
 
     const [response, error] = await postHouse(data);
@@ -67,7 +56,7 @@ export default function AddHouse({ uid }) {
 
     alertSuccess(houseInfo['house_name'], '제대로 들어갔어요~');
     router.push(pathname.slice(0, pathname.length - 6));
-  }, [houseInfo, optionInfo, deliveryInfo, specificationInfo, imageList]);
+  }, [houseInfo, optionInfo, deliveryInfo, specificationInfo, imageInfo]);
 
   return (
     <div>
@@ -76,28 +65,19 @@ export default function AddHouse({ uid }) {
           집 데이터 추가
         </h1>
         {/* 제품 기본 정보 */}
-        <HouseInfoComponent handleHouse={handleHouse} setHouseInfo={setHouseInfo} houseInfo={houseInfo} />
+        <HouseInfoComponent />
 
         {/* 배송 */}
-        <HouseDeliveryComponent setDeliveryInfo={setDeliveryInfo} />
+        <HouseDeliveryComponent />
 
         {/* 가격 */}
-        <HousePriceComponent
-          optionInfo={optionInfo}
-          setOptionInfo={setOptionInfo}
-          houseInfo={houseInfo}
-          handleHouse={handleHouse}
-        />
+        <HousePriceComponent />
 
         {/* 기본 제품 제작 사양 */}
-        <HouseSpecificationComponent
-          specificationInfo={specificationInfo}
-          setSpecificationInfo={setSpecificationInfo}
-          handleSpecification={handleSpecification}
-        />
+        <HouseSpecificationComponent />
 
         {/* 사진 */}
-        <HouseImageComponent uid={uid} imageList={imageList} setImageList={setImageList} />
+        <HouseImageComponent uid={uid} />
 
         {/* submit */}
         <div
@@ -122,9 +102,7 @@ export default function AddHouse({ uid }) {
             name="submit"
             style={{ backgroundColor: '#101648' }}
             className={`my-5 px-5 py-3 btn btn-lg rounded-lg text-white fw-bold fs-3`}
-            onClick={async () => {
-              await submitFunction();
-            }}
+            onClick={submit}
           >
             {'등록하기'}
           </button>
