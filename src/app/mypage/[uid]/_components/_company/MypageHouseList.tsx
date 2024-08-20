@@ -1,5 +1,5 @@
-import HouseCard from "@/components/house/HouseCard";
-import PostMenu from "@/components/posts/PostMenu";
+import HouseCard from '@/components/house/HouseCard';
+import PostMenu from '@/components/posts/PostMenu';
 
 export default function MypageHouseList({ houses, numShowItems }) {
   const houseData = houses.filter((_, i) => i < numShowItems);
@@ -17,11 +17,11 @@ export default function MypageHouseList({ houses, numShowItems }) {
             >
               제품 추가하기
           </div>
-        )} */}
+          )} */}
       {/* </div> */}
       <PostMenu>
         {houseData.map((e, i) => (
-          <HouseCard key={i} data={e} />
+          <HouseCard key={i} data={e} className={'col-md-4'} />
         ))}
       </PostMenu>
     </div>

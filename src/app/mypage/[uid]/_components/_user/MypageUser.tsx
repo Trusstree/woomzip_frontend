@@ -1,7 +1,8 @@
 import UserMypageProfile from '@/app/mypage/[uid]/_components/_user/MypageProfileUser';
-import PostList from '@/app/community/_components/PostList';
+
 import PostMenu from '@/components/posts/PostMenu';
 import EditProfileUser from '@/app/mypage/[uid]/_components/_user/EditProfileUser';
+import PostListUser from '@/app/mypage/[uid]/_components/_user/PostListUser';
 
 export default function MypageUser({ uid, userData, searchParams }) {
   return (
@@ -19,11 +20,11 @@ export default function MypageUser({ uid, userData, searchParams }) {
                 <div style={{ width: '100%', marginTop: '60px' }}>
                   <PostMenu
                     title={'내가 작성한 글'}
-                    routeUrl={'/community'}
+                    routeUrl={`/community?q=${userData.userInfo.nickname}`}
                     routeText={'더보기'}
                     horizontalScroll={true}
                   >
-                    <PostList numShowItems={4} postData={undefined} postCount={undefined} numShowPages={undefined} />
+                    <PostListUser postData={userData.post} />
                   </PostMenu>
                 </div>
 

@@ -1,6 +1,6 @@
 import PostCard from '@/components/posts/PostCard';
 
-export default async function PostList({ postData }) {
+export default function PostList({ postData }) {
   return (
     <div
       className="row flex-nowrap overflow-auto"
@@ -10,7 +10,7 @@ export default async function PostList({ postData }) {
       }}
     >
       {postData.map((e: any, i: number) => (
-        <PostCard data={e} key={i} className="col-10 col-md-4 col-lg-3" />
+        <PostCard data={e} key={i} className="col-10 col-md-5 col-lg-4" />
       ))}
     </div>
   );

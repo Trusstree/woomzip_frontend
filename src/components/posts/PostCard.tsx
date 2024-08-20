@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 type PostCardProps = {
   data: DataProps;
-  className?: string;
+  className: string;
 };
 
 type DataProps = {
@@ -36,7 +36,7 @@ export default function PostCard({ data, className }: PostCardProps) {
     .map((e) => e.split('"')[0]);
 
   return (
-    <div className={`${className ? `${className} ` : ''}col-md-4 col-lg-3`}>
+    <div className={`${className}`}>
       <div
         className="card"
         style={{
