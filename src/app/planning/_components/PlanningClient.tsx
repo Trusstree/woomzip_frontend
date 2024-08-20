@@ -117,7 +117,7 @@ export default function PlanningClient() {
           <div style={{ fontSize: '19px', marginBottom: '30px' }}>찾아보기 탭에서 마음에 드는 주택을 찾아보세요.</div>
           <div style={{ width: 'auto', height: '300px', borderRadius: '10px' }}>
             {houseData ? (
-              <HouseCard data={houseData} />
+              <HouseCard data={houseData} className={'col-md-4 col-lg-3'} />
             ) : (
               <button
                 style={{
