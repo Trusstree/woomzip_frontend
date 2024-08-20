@@ -7,7 +7,7 @@ type RadioComponentProps = {
   data: Array<any>;
   onChange: Function;
   className?: string;
-  essential?: string;
+  essential?: boolean;
 };
 
 export function RadioComponent(props: RadioComponentProps) {
@@ -15,7 +15,7 @@ export function RadioComponent(props: RadioComponentProps) {
   return (
     <div className={`${className || ''} my-2 d-flex flex-column`}>
       <span className="" style={{ fontSize: '17px' }}>
-        {essential && <span style={{ color: 'red' }}>{essential}</span>}
+        {essential && <span style={{ color: 'red' }}>* </span>}
         {title}
       </span>
       <div className="d-flex">

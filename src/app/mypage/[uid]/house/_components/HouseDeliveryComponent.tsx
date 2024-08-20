@@ -72,40 +72,22 @@ export function HouseDeliveryComponent() {
       <h3 className="fw-bold mb-4">배송 정보를 입력해주세요.</h3>
 
       <div className={` my-2 d-flex flex-column`}>
-        <span className="fs-5">배송 불가능 지역</span>
+        <span className="" style={{ fontSize: '17px' }}>
+          <span style={{ color: 'red' }}>*</span> 배송 불가능 지역
+        </span>
         <div className="row">
           {deliveryRegion.map((title, i) => (
             <SelectBoxComponent
               key={i}
               name={'delivery_unavailable'}
               title={title}
-              handleChange={handleChange}
+              onChange={handleChange}
               className={`mx-2 col-2`}
               disable={title != '없음(전국 배송 가능)' && disable}
             />
           ))}
         </div>
       </div>
-      <SelectDeliveryComponent
-        title={'배송 불가능 지역'}
-        name={'delivery_unavailable'}
-        onChange={setDeliveryInfo}
-        dataList={[
-          '없음(전국 배송 가능)',
-          '제주도',
-          '전라남도',
-          '전라북도',
-          '경상남도',
-          '경상북도',
-          '충청남도',
-          '충청북도',
-          '경기남부',
-          '경기북부',
-          '강원도',
-          '서울',
-        ]}
-        essential={'* '}
-      />
     </div>
   );
 }

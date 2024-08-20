@@ -5,7 +5,7 @@ type TextComponentProps = {
   value: string;
   onChange: any;
   className?: string;
-  essential?: string;
+  essential?: true;
 };
 
 export function TextAreaComponent(props: TextComponentProps) {
@@ -13,7 +13,7 @@ export function TextAreaComponent(props: TextComponentProps) {
   return (
     <div className={`${className} d-flex flex-column`}>
       <label htmlFor={`${name}_${title}`} className="" style={{ fontSize: '17px' }}>
-        {essential && <span style={{ color: 'red' }}>{essential}</span>}
+        {essential && <span style={{ color: 'red' }}>* </span>}
         {title}
       </label>
       <textarea

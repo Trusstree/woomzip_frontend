@@ -154,33 +154,33 @@ export function HouseInfoComponent() {
           className={'my-2'}
           title={'제품명 (최대 15자)'}
           name={'house_name'}
-          data={houseInfo}
-          onChange={handleHouse}
-          essential={'* '}
+          value={houseName}
+          onChange={handleHouseName}
+          essential
         />
         <TextBoxComponent
           className={'my-2'}
           title={'실제 사용 평수 (단위: 평)'}
           name={'total_floor_area'}
-          data={houseInfo}
-          onChange={handleHouse}
-          essential={'* '}
+          value={totalFloorArea}
+          onChange={handleTotalFloorArea}
+          essential
         />
         <TextBoxComponent
           className={'my-2'}
           title={'건축면적 (단위: ㎡)'}
           name={'building_area'}
-          data={houseInfo}
-          onChange={handleHouse}
-          essential={'* '}
+          value={buildingArea}
+          onChange={handleBuildingArea}
+          essential
         />
         <TextBoxComponent
           className={'my-2'}
           title={'연면적 (단위: ㎡)'}
-          essential={'* '}
           name={'gross_floor_area'}
           value={grossFloorArea}
           onChange={handleGrossFloorArea}
+          essential
         />
         <div
           style={{
@@ -198,17 +198,17 @@ export function HouseInfoComponent() {
             className={'col-6 my-2'}
             title={'기본 가격(단위: 원 / 부가세 제외)'}
             name={'base_price'}
-            data={houseInfo}
-            onChange={handleHouse}
-            essential={'* '}
+            value={basePrice}
+            onChange={handleBasePrice}
+            essential
           />
           <TextBoxComponent
             className={'col-6 my-2'}
             title={'할인 후 최종 가격(단위: 원 / 부가세 제외)'}
             name={'final_price'}
-            data={houseInfo}
-            onChange={handleHouse}
-            essential={'* '}
+            value={discountPrice}
+            onChange={handleDiscountPrice}
+            essential
           />
         </div>
 
@@ -223,7 +223,7 @@ export function HouseInfoComponent() {
             { title: '2층', data: 2 },
             { title: '3층 이상', data: 3 },
           ]}
-          essential={'* '}
+          essential
         />
 
         {/* room_count */}
@@ -239,21 +239,22 @@ export function HouseInfoComponent() {
             { title: '4개', data: 4 },
             { title: '5개 이상', data: 5 },
           ]}
-          essential={'* '}
+          essential
         />
 
         {/* toilet_count */}
         <RadioComponent
           title={'화장실 개수'}
           name={'toilet_count'}
-          onChange={handleHouse}
+          value={toiletCount}
+          onChange={handleToiletCount}
           data={[
             { title: '1개', data: 1 },
             { title: '2개', data: 2 },
             { title: '3개', data: 3 },
             { title: '4개 이상', data: 4 },
           ]}
-          essential={'* '}
+          essential
         />
 
         {/* estimate_duration */}
@@ -270,7 +271,7 @@ export function HouseInfoComponent() {
             { title: '5개월', data: 5 },
             { title: '6개월 이상', data: 6 },
           ]}
-          essential={'* '}
+          essential
         />
 
         {/* warranty */}
@@ -285,7 +286,7 @@ export function HouseInfoComponent() {
             { title: '24개월', data: '24개월' },
             { title: '36개월', data: '36개월' },
           ]}
-          essential={'* '}
+          essential
         />
 
         {/* hasModel */}
@@ -298,7 +299,7 @@ export function HouseInfoComponent() {
             { title: '예', data: 1 },
             { title: '아니오', data: 0 },
           ]}
-          essential={'* '}
+          essential
         />
 
         {/* 농막인지 확인 */}
@@ -311,7 +312,7 @@ export function HouseInfoComponent() {
             { title: '예', data: 1 },
             { title: '아니오', data: 0 },
           ]}
-          essential={'* '}
+          essential
         />
 
         {/* 특이사항 */}
@@ -327,7 +328,7 @@ export function HouseInfoComponent() {
           className={'my-2'}
           title={'제품 소개글 (최대 2,000자)'}
           name={'house_explanation'}
-          essential={'* '}
+          essential
           value={houseExplanation}
           onChange={handleHouseExplanation}
         />
