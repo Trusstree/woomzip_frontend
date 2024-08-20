@@ -158,7 +158,6 @@ export default function PostCard({ data, className }: PostCardProps) {
           style={{
             border: 'none',
             backgroundColor: 'white',
-            marginBottom: '40px',
             padding: '6px',
           }}
         >

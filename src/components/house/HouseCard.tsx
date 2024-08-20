@@ -27,7 +27,7 @@ export default function HouseCard({ data, className }: { data: any; className?: 
           alt={'representive_image'}
         ></Image>
 
-        <div className="card-body w-100" style={{ height: '160px', border: 'none', padding: '5px' }}>
+        <div className="card-body w-100" style={{ height: '110px', border: 'none', padding: '5px' }}>
           <div className="d-flex flex-column" style={{ width: '100%' }}>
             <div
               style={{

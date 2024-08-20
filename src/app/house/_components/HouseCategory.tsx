@@ -4,12 +4,12 @@ export default function HouseCategory() {
   return (
     <div className="row w-100 flex-nowrap overflow-auto" style={{ marginLeft: '0', height: '80px' }}>
       <CategoryButton title={'전체'} imgSrc={'/buttonIcons/all.png'} queryName={'tag'} />
-      <CategoryButton title={'농막'} imgSrc={'/buttonIcons/farmhouse.png'} queryName={'is_hut'} category={'1'} />
+      <CategoryButton title={'농막'} imgSrc={'/buttonIcons/farmhouse.png'} queryName={'tag'} category={'농막'} />
       <CategoryButton
         title={'체류형쉼터'}
         imgSrc={'/buttonIcons/farmvisit.png'}
-        queryName={'has_model'}
-        category={'1'}
+        queryName={'tag'}
+        category={'체류형쉼터'}
       />
       <CategoryButton
         title={'컨테이너'}
