@@ -3,11 +3,12 @@ type RadioButtonComponentProps = {
   data: any;
   title: string;
   onChange: any;
+  checked?: boolean;
   className?: string;
 };
 
 export function RadioButtonComponent(props: RadioButtonComponentProps) {
-  const { name, data, onChange, title, className } = props;
+  const { name, data, onChange, title, checked, className } = props;
   return (
     <div className={`${className} form-check`}>
       <input
@@ -17,8 +18,9 @@ export function RadioButtonComponent(props: RadioButtonComponentProps) {
         id={`${name}_${data}`}
         value={data}
         onChange={onChange}
+        checked={checked}
       />
-      <label className="fs-7 form-check-label" htmlFor={`${name}_${data}`}>
+      <label className="fs-5 form-check-label" htmlFor={`${name}_${data}`}>
         {title}
       </label>
     </div>

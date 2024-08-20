@@ -1,16 +1,128 @@
+'use client';
+
 import { RadioComponent } from '@/components/forms/RadioComponent';
-import { SelectComponent } from '@/components/forms/SelectComponent';
+import { HouseSelectComponent } from '@/app/mypage/[uid]/house/_components/HouseSelectComponent';
 import { TextAreaComponent } from '@/components/forms/TextAreaComponent';
 import { TextBoxComponent } from '@/components/forms/TextBoxComponent';
+import { ChangeEvent } from 'react';
+import useHouseInfo from '@/app/mypage/[uid]/house/_store/houseInfo';
+import { alertError } from '@/lib/alertUtil';
+import { HouseSpecificationSelectComponent } from '@/app/mypage/[uid]/house/_components/HouseSpecificationSelectComponent';
 
-type HouseInfoComponent = {
-  handleHouse: any;
-  setHouseInfo: Function;
-  houseInfo: any;
+const validateNumber = (e: ChangeEvent<HTMLInputElement>): boolean => {
+  const regex = /^([1-9]{1}\d{0,9})(\.{1}\d{0,2})?$/g;
+  if (e.target.value && !regex.test(e.target.value)) {
+    alertError('유효한 숫자를 입력해주세요', '100억 미만의 소수점 두 자리까지의 숫자만 입력해주세요.');
+    return true;
+  }
+  return false;
 };
 
-export function HouseInfoComponent(props: HouseInfoComponent) {
-  const { handleHouse, setHouseInfo, houseInfo } = props;
+export function HouseInfoComponent() {
+  const {
+    houseName,
+    houseExplanation,
+    floorCount,
+    buildingArea,
+    totalFloorArea,
+    grossFloorArea,
+    roomCount,
+    toiletCount,
+    estimateDuration,
+    warranty,
+    hasModel,
+    isHut,
+    basePrice,
+    discountPrice,
+    specificityInfo,
+    setHouseName,
+    setHouseExplanation,
+    setFloorCount,
+    setBuildingArea,
+    setTotalFloorArea,
+    setGrossFloorArea,
+    setRoomCount,
+    setToiletCount,
+    setEstimateDuration,
+    setWarranty,
+    setHasModel,
+    setIsHut,
+    setBasePrice,
+    setDiscountPrice,
+    setSpecificityInfo,
+  } = useHouseInfo();
+
+  const handleHouseName = (e: ChangeEvent<HTMLInputElement>) => {
+    setHouseName(e.target.value);
+  };
+
+  const handleHouseExplanation = (e: ChangeEvent<HTMLInputElement>) => {
+    setHouseExplanation(e.target.value);
+  };
+
+  const handleFloorCount = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setFloorCount(e.target.value);
+  };
+
+  const handleBuildingArea = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setBuildingArea(e.target.value);
+  };
+
+  const handleTotalFloorArea = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setTotalFloorArea(e.target.value);
+  };
+
+  const handleGrossFloorArea = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setGrossFloorArea(e.target.value);
+  };
+
+  const handleRoomCount = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setRoomCount(e.target.value);
+  };
+
+  const handleToiletCount = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setToiletCount(e.target.value);
+  };
+
+  const handleEstimateDuration = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setEstimateDuration(e.target.value);
+  };
+
+  const handleWarranty = (e: ChangeEvent<HTMLInputElement>) => {
+    setWarranty(e.target.value);
+  };
+
+  const handleHasModel = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setHasModel(e.target.value);
+  };
+
+  const handleIsHut = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setIsHut(e.target.value);
+  };
+
+  const handleBasePrice = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    setDiscountPrice(e.target.value);
+    setBasePrice(e.target.value);
+  };
+
+  const handleDiscountPrice = (e: ChangeEvent<HTMLInputElement>) => {
+    if (validateNumber(e)) return;
+    if (!basePrice || Number(basePrice) < Number(e.target.value)) {
+      alertError('가격을 올바르게 입력해주세요.', '할인된 가격은 기본 가격보다 적어야 합니다.');
+      return;
+    }
+    setDiscountPrice(e.target.value);
+  };
 
   return (
     <div
@@ -65,10 +177,10 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         <TextBoxComponent
           className={'my-2'}
           title={'연면적 (단위: ㎡)'}
-          name={'yeon_area'}
-          data={houseInfo}
-          onChange={handleHouse}
           essential={'* '}
+          name={'gross_floor_area'}
+          value={grossFloorArea}
+          onChange={handleGrossFloorArea}
         />
         <div
           style={{
@@ -104,7 +216,8 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         <RadioComponent
           title={'층수'}
           name={'floor'}
-          onChange={handleHouse}
+          onChange={handleFloorCount}
+          value={floorCount}
           data={[
             { title: '1층', data: 1 },
             { title: '2층', data: 2 },
@@ -117,7 +230,8 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         <RadioComponent
           title={'방 개수'}
           name={'room_count'}
-          onChange={handleHouse}
+          onChange={handleRoomCount}
+          value={roomCount}
           data={[
             { title: '1개', data: 1 },
             { title: '2개', data: 2 },
@@ -146,7 +260,8 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         <RadioComponent
           title={'예상 소요 기간 (제작일 기준)'}
           name={'estimate_duration'}
-          onChange={handleHouse}
+          onChange={handleEstimateDuration}
+          value={estimateDuration}
           data={[
             { title: '1개월', data: 1 },
             { title: '2개월', data: 2 },
@@ -162,7 +277,8 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         <RadioComponent
           title={'AS 보증 기간'}
           name={'warranty'}
-          onChange={handleHouse}
+          onChange={handleWarranty}
+          value={warranty}
           data={[
             { title: '없음', data: '없음' },
             { title: '12개월', data: '12개월' },
@@ -176,7 +292,8 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         <RadioComponent
           title={'농촌 체류형 주택으로 사용 가능한지 여부'}
           name={'has_model'}
-          onChange={handleHouse}
+          onChange={handleHasModel}
+          value={hasModel}
           data={[
             { title: '예', data: 1 },
             { title: '아니오', data: 0 },
@@ -188,7 +305,8 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         <RadioComponent
           title={'농막으로 사용가능한지 여부'}
           name={'is_hut'}
-          onChange={handleHouse}
+          onChange={handleIsHut}
+          value={isHut}
           data={[
             { title: '예', data: 1 },
             { title: '아니오', data: 0 },
@@ -197,32 +315,21 @@ export function HouseInfoComponent(props: HouseInfoComponent) {
         />
 
         {/* 특이사항 */}
-        <SelectComponent
+        <HouseSpecificationSelectComponent
           title={'가격에 포함된 특이사항 (다중선택 가능)'}
           name={'specificity_info'}
-          onChange={setHouseInfo}
-          dataList={['없음', '다락방', '발코니', '배란다', '옥상', '데크', '창고']}
-          essential={'* '}
+          value={specificityInfo}
+          onChange={setSpecificityInfo}
+          dataList={['없음', '다락방', '발코니', '베란다', '옥상', '데크', '창고']}
         />
-        <div
-          style={{
-            width: 'auto',
-            borderRadius: '10px',
-            backgroundColor: 'lightgray',
-            padding: '10px',
-            marginTop: '20px',
-          }}
-        >
-          💡 제품의 특징 및 강점 등 제품 관련한 설명을 최대한 자세히 적어주세요.
-        </div>
+
         <TextAreaComponent
           className={'my-2'}
           title={'제품 소개글 (최대 2,000자)'}
           name={'house_explanation'}
-          data={houseInfo}
-          onChange={handleHouse}
-          placeholder={''}
           essential={'* '}
+          value={houseExplanation}
+          onChange={handleHouseExplanation}
         />
       </div>
     </div>

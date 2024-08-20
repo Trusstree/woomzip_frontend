@@ -2,19 +2,20 @@ import { RadioButtonComponent } from '@/components/forms/RadioButtonComponent';
 
 type RadioComponentProps = {
   title: string;
-  essential: string;
   name: string;
+  value: any;
   data: Array<any>;
   onChange: Function;
   className?: string;
+  essential?: string;
 };
 
 export function RadioComponent(props: RadioComponentProps) {
-  const { title, name, data, onChange, className, essential } = props;
+  const { title, name, value, data, onChange, className, essential } = props;
   return (
     <div className={`${className || ''} my-2 d-flex flex-column`}>
       <span className="" style={{ fontSize: '17px' }}>
-        <span style={{ color: 'red' }}>{essential}</span>
+        {essential && <span style={{ color: 'red' }}>{essential}</span>}
         {title}
       </span>
       <div className="d-flex">
@@ -26,6 +27,7 @@ export function RadioComponent(props: RadioComponentProps) {
             data={e.data}
             onChange={onChange}
             className={`${e.className || ''} mx-2`}
+            checked={value == e.data}
           />
         ))}
       </div>

@@ -5,51 +5,51 @@ import { ChangeEvent, useState } from 'react';
 
 type SelectComponentProps = {
   title: string;
-  essential: string;
   name: string;
+  value: { default: Array<string>; etc: string };
   dataList: Array<string>;
   onChange: any;
   className?: string;
 };
 
-export function SelectComponent(props: SelectComponentProps) {
-  const { title, name, dataList, onChange, className, essential } = props;
-
+export function HouseSelectComponent(props: SelectComponentProps) {
+  const { title, name, value, dataList, onChange, className } = props;
   const [ETC, setETC] = useState(true as any);
 
   const onChangeDefault = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange((oldValues) => {
-      const def = oldValues?.[e.target.name]?.default
-        ? [...oldValues?.[e.target.name]?.default, e.target.value]
-        : [e.target.value];
-      const etc = oldValues?.[e.target.name]?.etc;
+    let def = value.default;
+    if (e.target.checked) {
+      if (!value.default.includes(e.target.value)) def = [...value.default, e.target.value];
+    } else {
+      if (value.default.includes(e.target.value)) def = def.filter((el) => el != e.target.value);
+    }
 
-      return {
-        ...oldValues,
-        [e.target.name]: {
-          default: def,
-          etc: etc,
-        },
-      };
+    onChange({
+      default: def,
+      etc: value.etc,
     });
   };
 
+  const checkChangeETC = () => {
+    setETC(!ETC);
+    if (!ETC) {
+      onChange({
+        default: value.default,
+        etc: '',
+      });
+    }
+  };
+
   const onChangeETC = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange((oldValues) => ({
-      ...oldValues,
-      [e.target.name]: {
-        default: oldValues[e.target.name]?.default,
-        etc: e.target.value,
-      },
-    }));
+    onChange({
+      default: value.default,
+      etc: e.target.value,
+    });
   };
 
   return (
     <div className={`${className || ''} my-2 d-flex flex-column`}>
-      <span className="" style={{ fontSize: '17px' }}>
-        <span style={{ color: 'red' }}>{essential}</span>
-        {title}
-      </span>
+      <span className="fs-5">{title}</span>
       <div className="row">
         <div className="col-7 d-flex">
           {dataList.map((e, i) => (
@@ -57,7 +57,7 @@ export function SelectComponent(props: SelectComponentProps) {
               key={i}
               name={name}
               title={e}
-              onChange={onChangeDefault}
+              handleChange={onChangeDefault}
               className={`${className || ''} mx-2`}
             />
           ))}
@@ -68,11 +68,9 @@ export function SelectComponent(props: SelectComponentProps) {
             type="checkbox"
             id={`${name}_etc`}
             value={ETC}
-            onChange={() => {
-              setETC(!ETC);
-            }}
+            onChange={checkChangeETC}
           />
-          <label className="ms-2 fs-7 form-check-label" htmlFor={`${name}_etc`}>
+          <label className="ms-2 fs-5 form-check-label" htmlFor={`${name}_etc`}>
             기타
           </label>
           <input

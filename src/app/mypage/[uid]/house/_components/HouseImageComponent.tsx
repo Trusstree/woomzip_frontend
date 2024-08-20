@@ -1,33 +1,28 @@
 'use client';
 
+import useImageInfo from '@/app/mypage/[uid]/house/_store/imageInfo';
 import InputImageComponent from '@/components/InputImageComponent';
-import { useEffect, useState } from 'react';
 
 type HouseImageComponentProps = {
   uid: string | number;
-  imageList: any;
-  setImageList: Function;
 };
 
 export function HouseImageComponent(props: HouseImageComponentProps) {
-  const { uid, setImageList } = props;
+  const { uid } = props;
 
   // image states
-  const [representativeImage, setRepresentativeImage] = useState([]);
-  const [externalImages, setExternalImages] = useState([]);
-  const [internalImages, setInternalImages] = useState([]);
-  const [floorPlanImages, setFloorPlanImages] = useState([]);
-  const [elevationPlanImages, setElevationPlanImages] = useState([]);
-
-  useEffect(() => {
-    setImageList({
-      representative_image: representativeImage[0],
-      external_images: externalImages,
-      internal_images: internalImages,
-      floor_plan_images: floorPlanImages,
-      elevation_plan_images: elevationPlanImages,
-    });
-  }, [representativeImage, externalImages, internalImages, floorPlanImages, elevationPlanImages]);
+  const {
+    representativeImage,
+    externalImages,
+    internalImages,
+    floorPlanImages,
+    elevationPlanImages,
+    setRepresentativeImage,
+    setExternalImages,
+    setInternalImages,
+    setFloorPlanImages,
+    setElevationPlanImages,
+  } = useImageInfo();
 
   return (
     <div className="mt-4 py-4" style={{ borderTopStyle: 'solid', borderTopColor: '#101648', borderTopWidth: '2px' }}>

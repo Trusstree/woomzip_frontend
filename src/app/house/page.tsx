@@ -5,7 +5,6 @@ import { SearchModal } from '@/app/house/_components/SearchModal';
 import HouseList from '@/app/house/_components/HouseList';
 import PostMenu from '@/components/posts/PostMenu';
 import styles from '@/styles/Phrase.module.css';
-import { count } from 'console';
 import LoadPage from '@/components/app/LoadPage';
 
 export default async function Home({ searchParams }) {

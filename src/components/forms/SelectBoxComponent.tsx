@@ -3,10 +3,11 @@ type SelectBoxComponentProps = {
   title: string;
   onChange: any;
   className?: string;
+  disable?: boolean;
 };
 
 export function SelectBoxComponent(props: SelectBoxComponentProps) {
-  const { name, title, onChange, className } = props;
+  const { name, title, onChange, className, disable } = props;
   return (
     <div className={`${className} form-check`}>
       <input

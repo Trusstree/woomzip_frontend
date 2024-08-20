@@ -18,7 +18,8 @@ export async function loadHouseData(searchParams, numShowItems) {
     estimate_duration: Number(arrayMin(searchParams['estimate_duration']?.split(',').map((e) => Number(e)))),
     frame: arraySort(searchParams['frame']?.split(',')),
     specificity: arraySort(searchParams['specificity']?.split(',')),
-    model: searchParams['model'] == '1' ? 1 : undefined,
+    has_model: searchParams['has_model'] == '1' ? 1 : undefined,
+    is_hut: searchParams['is_hut'] == '1' ? 1 : undefined,
     tag: searchParams['tag'],
   };
 

@@ -1,16 +1,19 @@
-import { PriceComponent } from '@/components/forms/PriceComponent';
-import { PriceInputComponent } from '@/components/forms/PriceInputComponent';
+'use client';
+
+import { PriceComponent } from '@/app/mypage/[uid]/house/_components/PriceComponent';
+import { PriceInputComponent } from '@/app/mypage/[uid]/house/_components/PriceInputComponent';
+import useHouseInfo from '@/app/mypage/[uid]/house/_store/houseInfo';
+import useOptionInfo from '@/app/mypage/[uid]/house/_store/optionInfo';
 import { TextAreaComponent } from '@/components/forms/TextAreaComponent';
+import { ChangeEvent } from 'react';
 
-type HousePriceComponentProps = {
-  optionInfo: any;
-  setOptionInfo: Function;
-  houseInfo: any;
-  handleHouse: Function;
-};
+export function HousePriceComponent() {
+  const { optionInfo } = useOptionInfo();
+  const { priceVariation, setPriceVariation } = useHouseInfo();
+  const handlePriceVariation = (e: ChangeEvent<HTMLInputElement>) => {
+    setPriceVariation(e.target.value);
+  };
 
-export function HousePriceComponent(props: HousePriceComponentProps) {
-  const { optionInfo, setOptionInfo, houseInfo, handleHouse } = props;
   return (
     <div
       className="mt-4 py-4"
@@ -26,9 +29,6 @@ export function HousePriceComponent(props: HousePriceComponentProps) {
       </div>
 
       <div className={`mt-2 row`}>
-        <div className="col-3" style={{ fontSize: '17px' }}>
-          옵션 구분
-        </div>
         <div className="col-4 ps-1" style={{ fontSize: '17px' }}>
           옵션 이름
         </div>
@@ -38,21 +38,19 @@ export function HousePriceComponent(props: HousePriceComponentProps) {
       </div>
 
       <div className="row">
-        <PriceInputComponent setData={setOptionInfo} className={''} />
+        <PriceInputComponent />
       </div>
 
       <div className="w-100 d-flex flex-column">
-        {optionInfo?.map((e, i) => <PriceComponent key={i} index={i} price={e} setData={setOptionInfo} />)}
+        {optionInfo?.map((e: any, i: number) => <PriceComponent key={i} index={i} />)}
       </div>
 
       <TextAreaComponent
         className={'mt-5 mb-2'}
         title={'추가로, 가격 관련 하고 싶은 말을 적어주세요. (최대 2,000자)'}
         name={'price_variation'}
-        data={houseInfo}
-        onChange={handleHouse}
-        placeholder={''}
-        essential={''}
+        value={priceVariation}
+        onChange={handlePriceVariation}
       />
     </div>
   );

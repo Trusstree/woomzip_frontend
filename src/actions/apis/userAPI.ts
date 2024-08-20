@@ -46,11 +46,11 @@ export const postUser = async (user: any) => {
   return [data, error];
 };
 
-export const putUser = async (user: any) => {
+export const updateUser = async (user: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.post(`/users/update`, user);
+    const result = await privateApi.patch(`/users/profile`, user);
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
