@@ -13,7 +13,7 @@ export default function HouseList({ houseData, count, numShowItems, numShowPages
   return (
     <>
       {houseData
-        ? houseData.map((e, i) => <HouseCard key={i} data={e} />)
+        ? houseData.map((e, i) => <HouseCard key={i} data={e} className={'col-md-4 col-lg-3'} />)
         : new Array(numShowItems).fill(0).map((e, i) => <HouseCardPlaceholder key={i} />)}
       {numShowPages && <Pagination numItems={count} numShowItems={numShowItems} numShowPages={numShowPages} />}
     </>

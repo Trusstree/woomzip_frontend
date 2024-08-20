@@ -4,11 +4,11 @@ import { cardPriceText } from '@/lib/stringUtil';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function HouseCard({ data, className }: { data: any; className?: string }) {
+export default function HouseCard({ data, className }: { data: any; className: string }) {
   const houseImage = data['house_img_urls'].split(',');
 
   return (
-    <div className={`${className ? `${className} ` : ''}col-md-4 col-lg-3`}>
+    <div className={`${className}`}>
       <Link
         className="card text-decoration-none"
         style={{ width: '100%', border: 'none' }}

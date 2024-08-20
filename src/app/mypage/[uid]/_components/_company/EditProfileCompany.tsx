@@ -4,7 +4,7 @@ import { validateNickname, updateUser } from '@/actions/apis/userAPI';
 import SignupGenderRadio from '@/app/signup/_components/SignupRadio';
 import SignupTextBox from '@/app/signup/_components/SignupTextBox';
 import InputImageComponent from '@/components/InputImageComponent';
-import { alertError } from '@/lib/alertUtil';
+import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { isEmail, isRequired, isPhoneNumber } from '@/lib/validator';
 import { useRouter } from 'next/navigation';
 
@@ -55,7 +55,7 @@ export default function EditProfileCompany({ companyInfo }) {
     if (!isRequired(nickname)) {
       return alertError('별명', `별명을 입력해주세요!`);
     }
-    if (companyInfo.profile.nickname != nickname) {
+    if (companyInfo.nickname != nickname) {
       const [vnickname, vnicknameError] = await validateNickname(nickname);
       if (vnicknameError) {
         return alertError('별명', `별명이 중복되었어요!`);
@@ -104,12 +104,12 @@ export default function EditProfileCompany({ companyInfo }) {
     const [data, error] = await updateUser(parsedData);
     if (error) {
       console.log(error);
-      alertError('로그인 에러', error.message || `회원가입에 실패했어요.`);
+      alertError('프로필 수정 에러', error.message || `프로필 수정에 실패했어요.`);
       return;
     }
 
+    alertSuccess('프로필 수정 완료', '프로필이 성공적으로 수정되었습니다!');
     router.push(`/mypage/${companyInfo.profile.user_profile_id}`);
-    return;
   };
 
   return (
