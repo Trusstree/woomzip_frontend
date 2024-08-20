@@ -1,0 +1,56 @@
+.imageContainer {
+  width: 40px;
+  height: 40px;
+}
+
+.profileImage {
+  object-fit: cover;
+  border-radius: 50px;
+  overflow: hidden;
+  width: 30px;
+  height: 30px;
+}
+
+.nickname {
+  width: auto;
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.createdTime {
+  margin-right: 20px;
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.content {
+  width: 100;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 768px) {
+  .imageContainer {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profileImage {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nickname {
+    font-size: 13px;
+  }
+
+  .createdTime {
+    margin-right: 10px;
+    font-size: 13px;
+  }
+
+  .content {
+    width: 100;
+    font-size: 13px;
+  }
+}

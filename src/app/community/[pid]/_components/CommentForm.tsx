@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import { getUserAccessToken } from "@/actions/auth/authAction";
-import { postComment } from "@/actions/apis/commentAPI";
-import { useEffect, useState } from "react";
-import { getUserdataByToken } from "@/lib/parseUtil";
+import { getUserAccessToken } from '@/actions/auth/authAction';
+import { postComment } from '@/actions/apis/commentAPI';
+import { useEffect, useState } from 'react';
+import { getUserdataByToken } from '@/lib/parseUtil';
+import styles from '@/app/community/[pid]/_styles/CommentForm.module.css';
 
 export default function CommentForm({ pid, setNeedRender }: { pid: number | string; setNeedRender: any }) {
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
   const [at, setAT] = useState(undefined);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function CommentForm({ pid, setNeedRender }: { pid: number | stri
   };
 
   const submit = async () => {
-    if (!comment) return alert("메시지를 입력해주세요.");
+    if (!comment) return alert('메시지를 입력해주세요.');
     const [data, error] = await postComment({
       post_id: pid,
       content: comment,
@@ -31,38 +32,23 @@ export default function CommentForm({ pid, setNeedRender }: { pid: number | stri
       return;
     }
 
-    setComment("");
+    setComment('');
     setNeedRender(true);
   };
 
   return (
-    <div id={"commentForm"} className="d-flex" style={{ margin: "30px 0" }}>
+    <div id={'commentForm'} className={styles.container}>
       <textarea
         rows={3}
-        className="col-10"
+        className={`${styles.textarea} col-10`}
         placeholder={at ? `댓글을 입력해 주세요.` : `로그인이 필요합니다.`}
         value={comment}
         onChange={handleComment}
-        style={{ resize: "none" }}
+        style={{ resize: 'none' }}
         disabled={at == undefined}
       ></textarea>
       <div className="col-2">
-        <button
-          onClick={submit}
-          disabled={at == undefined}
-          style={{
-            backgroundColor: "white",
-            border: "none",
-            color: "#314FC0",
-            fontSize: "17px",
-            fontWeight: "600",
-            width: "90%",
-            marginLeft: "10%",
-            padding: "30px 0",
-            borderRadius: "10px",
-            boxShadow: "3px 3px 13px rgba(0, 0, 0, 0.2)",
-          }}
-        >
+        <button onClick={submit} disabled={at == undefined} className={styles.submitButton}>
           등록
         </button>
       </div>

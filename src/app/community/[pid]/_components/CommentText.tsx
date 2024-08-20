@@ -5,6 +5,7 @@ import { postCommentHeart, postCommentHeartRemove } from '@/actions/apis/heartAP
 import HeartComponent from '@/components/posts/HeartComponent';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import styles from '@/app/community/[pid]/_styles/CommentText.module.css';
 
 export default function CommentText({ data, isCommentLike }) {
   const [isLike, setIsLike] = useState(0);
@@ -21,36 +22,19 @@ export default function CommentText({ data, isCommentLike }) {
     <div style={{ background: 'white' }}>
       <div className="d-flex justify-content-between" style={{ marginBottom: '15px' }}>
         <div className="row">
-          <div style={{ width: '40px', height: '40px' }}>
+          <div className={styles.imageContainer}>
             <Image
               src={data['user_img_url'] || '/blur_image.png'}
               alt={'user_img_url'}
               width={30}
               height={30}
-              style={{
-                objectFit: 'cover',
-                borderRadius: '50px',
-                overflow: 'hidden',
-                width: '30px',
-                height: '30px',
-              }}
+              className={styles.profileImage}
             />
           </div>
-          <div
-            style={{
-              width: '200px',
-              fontWeight: '500',
-              fontSize: '15px',
-              marginTop: '4px',
-            }}
-          >
-            {data['nickname']}
-          </div>
+          <div className={styles.nickname}>{data['nickname']}</div>
         </div>
         <div className="d-flex" style={{ width: 'auto' }}>
-          <div style={{ marginRight: '20px', fontSize: '15px', marginTop: '4px' }}>
-            {elapsedTimeText(data['updated_at'] || data['created_at'])}
-          </div>
+          <div className={styles.createdTime}>{elapsedTimeText(data['updated_at'] || data['created_at'])}</div>
           <HeartComponent
             heart_id={data['comment_id']}
             likeCount={data['comment_like_count']}
@@ -61,9 +45,7 @@ export default function CommentText({ data, isCommentLike }) {
           />
         </div>
       </div>
-      <div style={{ width: '100%' }}>
-        <div>{data['content']}</div>
-      </div>
+      <div className={styles.content}>{data['content']}</div>
       <hr style={{ border: '1px solid gray' }} />
     </div>
   );
