@@ -39,7 +39,6 @@ export default function InputImageComponent({
     }
 
     imgs.forEach(async (e, i) => {
-      console.log(e);
       //const compressedImage = await imageCompression(e, options);
       const title = 'images' + moment().format(`YYYYMMDDHHmmss`) + `${i}`;
       const url = `${s3Url}/${title}.${e.type.split('/')[1]}`;

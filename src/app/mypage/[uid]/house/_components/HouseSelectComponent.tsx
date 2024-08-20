@@ -49,7 +49,7 @@ export function HouseSelectComponent(props: SelectComponentProps) {
 
   return (
     <div className={`${className || ''} my-2 d-flex flex-column`}>
-      <span className="fs-5">{title}</span>
+      <span style={{ fontSize: '17px' }}>{title}</span>
       <div className="row">
         <div className="col-7 d-flex">
           {dataList.map((e, i) => (

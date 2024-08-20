@@ -26,7 +26,7 @@ export default function AddHouse({ uid }) {
   const imageInfo = useImageInfo();
 
   const submit = useCallback(async () => {
-    console.log(deliveryInfo);
+    console.log(imageInfo);
     //validate를 위한 부분
     if (!imageInfo['representative_image']) {
       alertError('이미지 에러!', '대표 이미지가 빠졌어요 ㅠㅠ');
@@ -64,8 +64,8 @@ export default function AddHouse({ uid }) {
         className="d-flex justify-content-start flex-column"
         style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}
       >
-        <h1 className="fw-bold" style={{}}>
-          집 데이터 추가
+        <h1 className="fw-bold" style={{ marginTop: '30px' }}>
+          제품 등록 관리자
         </h1>
         {/* 제품 기본 정보 */}
         <HouseInfoComponent />
@@ -86,13 +86,19 @@ export default function AddHouse({ uid }) {
         <div
           className="mt-4 py-4 d-flex justify-content-center flex-column"
           style={{
-            borderTopStyle: 'solid',
-            borderTopColor: '#101648',
-            borderTopWidth: '2px',
+            borderTop: '1px solid gray',
           }}
         >
-          <div className="mt-2 fw-bold fs-5" style={{ color: '#101648' }}>
-            마지막으로 작성 정보를 다시 한 번 확인해주세요.
+          <div
+            style={{
+              width: 'auto',
+              borderRadius: '10px',
+              backgroundColor: 'lightgray',
+              padding: '10px',
+              marginBottom: '20px',
+            }}
+          >
+            💡 마지막으로 작성 정보를 다시 한 번 확인해주세요.
             <br />
             수정 필요가 있다면 검수 후, 수정 요청드릴 수 있습니다.
             <br />

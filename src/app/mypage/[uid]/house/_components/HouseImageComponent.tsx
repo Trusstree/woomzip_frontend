@@ -25,8 +25,8 @@ export function HouseImageComponent(props: HouseImageComponentProps) {
   } = useImageInfo();
 
   return (
-    <div className="mt-4 py-4" style={{ borderTopStyle: 'solid', borderTopColor: '#101648', borderTopWidth: '2px' }}>
-      <h3 className="fw-bold mb-4">제품 사진을 업로드 해주세요.</h3>
+    <div className="mt-4 py-4" style={{ borderTop: '1px solid gray' }}>
+      <h3 style={{ margin: '50px 0' }}>5. 제품 사진을 업로드 해주세요.</h3>
 
       <div className="row mb-4">
         <div className="col-12" style={{ fontSize: '17px' }}>
@@ -41,6 +41,17 @@ export function HouseImageComponent(props: HouseImageComponentProps) {
         />
       </div>
 
+      <div
+        style={{
+          width: 'auto',
+          borderRadius: '10px',
+          backgroundColor: 'lightgray',
+          padding: '10px',
+          marginBottom: '20px',
+        }}
+      >
+        💡 실물사진을 우선하여, 최대한 자세히 볼 수 있도록 많은 사진을 첨부해주세요.
+      </div>
       <div className="row mb-4">
         <div className="col-12" style={{ fontSize: '17px' }}>
           <span style={{ color: 'red' }}>* </span>제품 외부 사진 (여러장 추가 가능)

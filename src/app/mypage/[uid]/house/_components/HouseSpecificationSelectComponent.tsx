@@ -10,10 +10,11 @@ type SelectComponentProps = {
   dataList: Array<string>;
   onChange: any;
   className?: string;
+  essential?: boolean;
 };
 
 export function HouseSpecificationSelectComponent(props: SelectComponentProps) {
-  const { title, name, value, dataList, onChange, className } = props;
+  const { title, name, value, dataList, onChange, className, essential } = props;
   const [disable, setDisable] = useState(false);
   const [dataCheckList, setDataCheckList] = useState(
     dataList.filter((e) => e != '없음').map((e) => [e, false]) as Array<[string, boolean]>,
@@ -55,7 +56,10 @@ export function HouseSpecificationSelectComponent(props: SelectComponentProps) {
 
   return (
     <div className={`${className || ''} my-2 d-flex flex-column`}>
-      <span className="fs-5">{title}</span>
+      <span className="" style={{ fontSize: '17px' }}>
+        {essential && <span style={{ color: 'red' }}>* </span>}
+        {title}
+      </span>
       <div className="d-flex">
         {dataList.map((e, i) => (
           <SelectBoxComponent

@@ -126,14 +126,13 @@ export function HouseInfoComponent() {
 
   return (
     <div
-      className="py-4 my-4"
+      className="py-4"
       style={{
-        borderTopStyle: 'solid',
-        borderTopWidth: '2px',
+        borderTop: '1px solid gray',
       }}
     >
-      <h3 className="fw-bold mb-4" style={{}}>
-        제품 기본 정보를 입력해주세요.
+      <h3 className="" style={{ margin: '50px 0' }}>
+        1. 제품 기본 정보를 입력해주세요.
       </h3>
       <div style={{ width: 'auto', borderRadius: '10px', backgroundColor: 'lightgray', padding: '10px' }}>
         💡 <span style={{ color: 'red' }}>*</span> 표시가 된 항목은 필수 항목입니다.
@@ -196,7 +195,7 @@ export function HouseInfoComponent() {
         <div className="row">
           <TextBoxComponent
             className={'col-6 my-2'}
-            title={'기본 가격(단위: 원 / 부가세 제외)'}
+            title={'기본 가격 (단위: 원 / 부가세 제외)'}
             name={'base_price'}
             value={basePrice}
             onChange={handleBasePrice}
@@ -204,7 +203,7 @@ export function HouseInfoComponent() {
           />
           <TextBoxComponent
             className={'col-6 my-2'}
-            title={'할인 후 최종 가격(단위: 원 / 부가세 제외)'}
+            title={'할인 후 최종 가격 (단위: 원 / 부가세 제외)'}
             name={'final_price'}
             value={discountPrice}
             onChange={handleDiscountPrice}
@@ -214,6 +213,7 @@ export function HouseInfoComponent() {
 
         {/* floor */}
         <RadioComponent
+          className="mt-5"
           title={'층수'}
           name={'floor'}
           onChange={handleFloorCount}
@@ -317,11 +317,12 @@ export function HouseInfoComponent() {
 
         {/* 특이사항 */}
         <HouseSpecificationSelectComponent
-          title={'가격에 포함된 특이사항 (다중선택 가능)'}
+          title={'제품 구조 특이사항 (다중선택 가능)'}
           name={'specificity_info'}
           value={specificityInfo}
           onChange={setSpecificityInfo}
           dataList={['없음', '다락방', '발코니', '베란다', '옥상', '데크', '창고']}
+          essential
         />
 
         <TextAreaComponent

@@ -13,7 +13,11 @@ export function PriceComponent({ index, className }: { index: number; className?
     <div className={`${className} mt-2 col-12 row`}>
       <div className="col-6">{optionInfo[index].option_product_name}</div>
       <div className="col-4">{optionInfo[index].option_product_price}</div>
-      <div className={'col-2 btn d-flex flex-column justify-content-center align-self-center'} onClick={onClick}>
+      <div
+        className={'col-2 btn d-flex flex-column justify-content-center align-self-center'}
+        style={{ color: 'red', border: 'none' }}
+        onClick={onClick}
+      >
         X
       </div>
     </div>

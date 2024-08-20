@@ -74,7 +74,7 @@ export function PriceInputComponent() {
       </div>
 
       <div className="col-2">
-        <button style={{ backgroundColor: '#101648' }} className="btn text-white w-100" onClick={submitChange}>
+        <button style={{ backgroundColor: '#314FC0' }} className="btn text-white w-100" onClick={submitChange}>
           추가
         </button>
       </div>

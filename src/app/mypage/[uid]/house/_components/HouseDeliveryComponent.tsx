@@ -65,11 +65,12 @@ export function HouseDeliveryComponent() {
     <div
       className="mt-4 py-4"
       style={{
-        borderTopStyle: 'solid',
-        borderTopWidth: '2px',
+        borderTop: '1px solid gray',
       }}
     >
-      <h3 className="fw-bold mb-4">배송 정보를 입력해주세요.</h3>
+      <h3 className="" style={{ margin: '50px 0' }}>
+        2. 배송 정보를 입력해주세요.
+      </h3>
 
       <div className={` my-2 d-flex flex-column`}>
         <span className="" style={{ fontSize: '17px' }}>

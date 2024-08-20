@@ -20,7 +20,7 @@ export function RadioButtonComponent(props: RadioButtonComponentProps) {
         onChange={onChange}
         checked={checked}
       />
-      <label className="fs-5 form-check-label" htmlFor={`${name}_${data}`}>
+      <label className="form-check-label" style={{ fontSize: '17px' }} htmlFor={`${name}_${data}`}>
         {title}
       </label>
     </div>
