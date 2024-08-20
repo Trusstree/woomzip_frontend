@@ -1,113 +1,106 @@
 import { create } from 'zustand';
 
-type SpecificityInfoType = {
-  default: Array<string>;
-  etc: string;
-};
 interface HouseInfoState {
   houseName: string;
   houseExplanation: string;
-  floorCount: number;
-  buildingArea: number;
-  totalFloorArea: number;
-  grossFloorArea: number;
-  roomCount: number;
-  toiletCount: number;
-  estimateDuration: number;
+  floorCount: string;
+  buildingArea: string;
+  totalFloorArea: string;
+  grossFloorArea: string;
+  roomCount: string;
+  toiletCount: string;
+  estimateDuration: string;
   warranty: string;
-  hasModel: number;
-  isHut: number;
-  basePrice: number;
-  discountPrice: number;
+  hasModel: string;
+  isHut: string;
+  basePrice: string;
+  discountPrice: string;
   priceVariation: string;
-  specificityInfo: SpecificityInfoType;
+  specificityInfo: Array<string>;
 }
 
 interface HouseInfoActions {
   setHouseName: (houseName: string) => void;
   setHouseExplanation: (houseExplanation: string) => void;
-  setFloorCount: (floorCount: number) => void;
-  setBuildingArea: (buildingArea: number) => void;
-  setTotalFloorArea: (totalFloorArea: number) => void;
-  setGrossFloorArea: (grossFloorArea: number) => void;
-  setRoomCount: (roomCount: number) => void;
-  setToiletCount: (toiletCount: number) => void;
-  setEstimateDuration: (estimateDuration: number) => void;
+  setFloorCount: (floorCount: string) => void;
+  setBuildingArea: (buildingArea: string) => void;
+  setTotalFloorArea: (totalFloorArea: string) => void;
+  setGrossFloorArea: (grossFloorArea: string) => void;
+  setRoomCount: (roomCount: string) => void;
+  setToiletCount: (toiletCount: string) => void;
+  setEstimateDuration: (estimateDuration: string) => void;
   setWarranty: (warranty: string) => void;
-  setHasModel: (hasModel: number) => void;
-  setIsHut: (isHut: number) => void;
-  setBasePrice: (basePrice: number) => void;
-  setDiscountPrice: (discountRate: number) => void;
+  setHasModel: (hasModel: string) => void;
+  setIsHut: (isHut: string) => void;
+  setBasePrice: (basePrice: string) => void;
+  setDiscountPrice: (discountPrice: string) => void;
   setPriceVariation: (priceVariation: string) => void;
-  setSpecificityInfo: (specificityInfo: SpecificityInfoType) => void;
+  setSpecificityInfo: (specificityInfo: Array<string>) => void;
 }
 
 const useHouseInfo = create<HouseInfoState & HouseInfoActions>((set) => ({
   houseName: '',
   houseExplanation: '',
-  floorCount: 1,
-  buildingArea: 0,
-  totalFloorArea: 0,
-  grossFloorArea: 0,
-  roomCount: 1,
-  toiletCount: 1,
-  estimateDuration: 1,
+  floorCount: '1',
+  buildingArea: '',
+  totalFloorArea: '',
+  grossFloorArea: '',
+  roomCount: '1',
+  toiletCount: '1',
+  estimateDuration: '1',
   warranty: '없음',
-  hasModel: 0,
-  isHut: 0,
-  basePrice: 0,
-  discountPrice: 0,
+  hasModel: '0',
+  isHut: '0',
+  basePrice: '',
+  discountPrice: '',
   priceVariation: '',
-  specificityInfo: {
-    default: [],
-    etc: '',
-  },
+  specificityInfo: [],
   setHouseName: (houseName: string) => {
     set({ houseName });
   },
   setHouseExplanation: (houseExplanation: string) => {
     set({ houseExplanation });
   },
-  setFloorCount: (floorCount: number) => {
+  setFloorCount: (floorCount: string) => {
     set({ floorCount });
   },
-  setBuildingArea: (buildingArea: number) => {
+  setBuildingArea: (buildingArea: string) => {
     set({ buildingArea });
   },
-  setTotalFloorArea: (totalFloorArea: number) => {
+  setTotalFloorArea: (totalFloorArea: string) => {
     set({ totalFloorArea });
   },
-  setGrossFloorArea: (grossFloorArea: number) => {
+  setGrossFloorArea: (grossFloorArea: string) => {
     set({ grossFloorArea });
   },
-  setRoomCount: (roomCount: number) => {
+  setRoomCount: (roomCount: string) => {
     set({ roomCount });
   },
-  setToiletCount: (toiletCount: number) => {
+  setToiletCount: (toiletCount: string) => {
     set({ toiletCount });
   },
-  setEstimateDuration: (estimateDuration: number) => {
+  setEstimateDuration: (estimateDuration: string) => {
     set({ estimateDuration });
   },
   setWarranty: (warranty: string) => {
     set({ warranty });
   },
-  setHasModel: (hasModel: number) => {
+  setHasModel: (hasModel: string) => {
     set({ hasModel });
   },
-  setIsHut: (isHut: number) => {
+  setIsHut: (isHut: string) => {
     set({ isHut });
   },
-  setBasePrice: (basePrice: number) => {
+  setBasePrice: (basePrice: string) => {
     set({ basePrice });
   },
-  setDiscountPrice: (discountPrice: number) => {
+  setDiscountPrice: (discountPrice: string) => {
     set({ discountPrice });
   },
   setPriceVariation: (priceVariation: string) => {
     set({ priceVariation });
   },
-  setSpecificityInfo: (specificityInfo: SpecificityInfoType) => {
+  setSpecificityInfo: (specificityInfo: Array<string>) => {
     set({ specificityInfo });
   },
 }));

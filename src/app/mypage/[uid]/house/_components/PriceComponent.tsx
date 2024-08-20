@@ -1,37 +1,21 @@
-"use client"
+'use client';
 
-import { useCallback, useEffect } from "react"
+import useOptionInfo from '@/app/mypage/[uid]/house/_store/optionInfo';
 
-type PriceComponentProps = {
-  index: number
-  price: any
-  setData: Function
-  className?: string
-}
+export function PriceComponent({ index, className }: { index: number; className?: string }) {
+  const { optionInfo, setOptionInfo } = useOptionInfo();
 
-export function PriceComponent(props: PriceComponentProps) {
-  const { index, price, setData, className } = props;
-
-  const onClick = useCallback(()=>{
-    setData((oldValues)=>(oldValues.filter((_,i)=>i!=index)));
-  }, [price]);
+  const onClick = () => {
+    setOptionInfo(optionInfo.filter((_, i) => i != index));
+  };
 
   return (
     <div className={`${className} mt-2 col-12 row`}>
-      <div className="col-3">
-        {price.option_type}
-      </div>
-      <div className="col-4">
-        {price.option_product_name}
-      </div>
-      <div className="col-3">
-        {price.option_product_price}
-      </div>
-      <div
-        className={"col-2 btn d-flex flex-column justify-content-center align-self-center"}
-        onClick={onClick}>
+      <div className="col-6">{optionInfo[index].option_product_name}</div>
+      <div className="col-4">{optionInfo[index].option_product_price}</div>
+      <div className={'col-2 btn d-flex flex-column justify-content-center align-self-center'} onClick={onClick}>
         X
       </div>
     </div>
-  )
+  );
 }

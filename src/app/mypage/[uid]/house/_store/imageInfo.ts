@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
 interface ImageInfoState {
-  representativeImage: string;
+  representativeImage: Array<string>;
   externalImages: Array<string>;
   internalImages: Array<string>;
   floorPlanImages: Array<string>;
@@ -9,7 +9,7 @@ interface ImageInfoState {
 }
 
 interface ImageInfoActions {
-  setRepresentativeImage: (representativeImage: string) => void;
+  setRepresentativeImage: (representativeImage: Array<string>) => void;
   setExternalImages: (externalImages: Array<string>) => void;
   setInternalImages: (internalImages: Array<string>) => void;
   setFloorPlanImages: (floorPlanImages: Array<string>) => void;
@@ -17,12 +17,12 @@ interface ImageInfoActions {
 }
 
 const useImageInfo = create<ImageInfoState & ImageInfoActions>((set) => ({
-  representativeImage: '',
+  representativeImage: [],
   externalImages: [],
   internalImages: [],
   floorPlanImages: [],
   elevationPlanImages: [],
-  setRepresentativeImage: (representativeImage: string) => set({ representativeImage }),
+  setRepresentativeImage: (representativeImage: Array<string>) => set({ representativeImage }),
   setExternalImages: (externalImages: Array<string>) => set({ externalImages }),
   setInternalImages: (internalImages: Array<string>) => set({ internalImages }),
   setFloorPlanImages: (floorPlanImages: Array<string>) => set({ floorPlanImages }),

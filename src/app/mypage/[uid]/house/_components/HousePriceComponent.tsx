@@ -8,7 +8,7 @@ import { TextAreaComponent } from '@/components/forms/TextAreaComponent';
 import { ChangeEvent } from 'react';
 
 export function HousePriceComponent() {
-  const { optionInfo, setOptionInfo } = useOptionInfo();
+  const { optionInfo } = useOptionInfo();
   const { priceVariation, setPriceVariation } = useHouseInfo();
   const handlePriceVariation = (e: ChangeEvent<HTMLInputElement>) => {
     setPriceVariation(e.target.value);
@@ -29,17 +29,16 @@ export function HousePriceComponent() {
       </div>
 
       <div className={`mt-2 row`}>
-        <div className="fs-5 col-3">옵션 구분</div>
-        <div className="fs-5 col-4 ps-1">옵션 이름</div>
-        <div className="fs-5 col-3 ps-0">옵션 추가 가격(부가세 제외)</div>
+        <div className="fs-5 col-6 ps-3">옵션 이름</div>
+        <div className="fs-5 col-4 ps-1">옵션 추가 가격(부가세 제외)</div>
       </div>
 
       <div className="row">
-        <PriceInputComponent setData={setOptionInfo} className={''} />
+        <PriceInputComponent />
       </div>
 
       <div className="w-100 d-flex flex-column">
-        {optionInfo?.map((e: any, i: number) => <PriceComponent key={i} index={i} price={e} setData={setOptionInfo} />)}
+        {optionInfo?.map((e: any, i: number) => <PriceComponent key={i} index={i} />)}
       </div>
 
       <TextAreaComponent

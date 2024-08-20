@@ -26,7 +26,7 @@ export default function AddHouse({ uid }) {
   const imageInfo = useImageInfo();
 
   const submit = useCallback(async () => {
-    console.log(imageInfo);
+    console.log(deliveryInfo);
     //validate를 위한 부분
     if (!imageInfo['representative_image']) {
       alertError('이미지 에러!', '대표 이미지가 빠졌어요 ㅠㅠ');

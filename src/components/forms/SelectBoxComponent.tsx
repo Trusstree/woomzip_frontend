@@ -3,10 +3,11 @@ type SelectBoxComponentProps = {
   title: string;
   handleChange: any;
   className?: string;
+  disable?: boolean;
 };
 
 export function SelectBoxComponent(props: SelectBoxComponentProps) {
-  const { name, title, handleChange, className } = props;
+  const { name, title, handleChange, className, disable } = props;
   return (
     <div className={`${className} form-check`}>
       <input
@@ -16,6 +17,8 @@ export function SelectBoxComponent(props: SelectBoxComponentProps) {
         id={`${name}_${title}`}
         value={title}
         onChange={handleChange}
+        checked={disable}
+        disabled={disable || false}
       />
       <label className="fs-5 form-check-label" htmlFor={`${title}`}>
         {title}

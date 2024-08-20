@@ -23,7 +23,6 @@ export function HouseSelectComponent(props: SelectComponentProps) {
     } else {
       if (value.default.includes(e.target.value)) def = def.filter((el) => el != e.target.value);
     }
-    console.log(`${value.default} // ${def}`);
 
     onChange({
       default: def,

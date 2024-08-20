@@ -49,14 +49,14 @@ export default function InputImageComponent({
         return;
       }
 
-      setImages((oldValues) => [...oldValues, `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`]);
+      setImages([...images, `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`]);
     });
   };
 
   const deleteImage = async (index) => {
     const url = images[index].split(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/`)[1];
     await deleteS3Url(url);
-    setImages((oldValues) => oldValues.filter((_, i) => i != index));
+    setImages(images.filter((_, i) => i != index));
   };
 
   return (

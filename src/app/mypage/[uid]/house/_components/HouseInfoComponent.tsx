@@ -7,11 +7,12 @@ import { TextBoxComponent } from '@/components/forms/TextBoxComponent';
 import { ChangeEvent } from 'react';
 import useHouseInfo from '@/app/mypage/[uid]/house/_store/houseInfo';
 import { alertError } from '@/lib/alertUtil';
+import { HouseSpecificationSelectComponent } from '@/app/mypage/[uid]/house/_components/HouseSpecificationSelectComponent';
 
 const validateNumber = (e: ChangeEvent<HTMLInputElement>): boolean => {
-  const _value = Number(e.target.value);
-  if (isNaN(_value)) {
-    alertError('타입 오류', '해당 칸은 숫자만 입력가능해요!');
+  const regex = /^([1-9]{1}\d{0,9})(\.{1}\d{0,2})?$/g;
+  if (e.target.value && !regex.test(e.target.value)) {
+    alertError('유효한 숫자를 입력해주세요', '100억 미만의 소수점 두 자리까지의 숫자만 입력해주세요.');
     return true;
   }
   return false;
@@ -61,37 +62,37 @@ export function HouseInfoComponent() {
 
   const handleFloorCount = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setFloorCount(Number(e.target.value));
+    setFloorCount(e.target.value);
   };
 
   const handleBuildingArea = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setBuildingArea(Number(e.target.value));
+    setBuildingArea(e.target.value);
   };
 
   const handleTotalFloorArea = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setTotalFloorArea(Number(e.target.value));
+    setTotalFloorArea(e.target.value);
   };
 
   const handleGrossFloorArea = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setGrossFloorArea(Number(e.target.value));
+    setGrossFloorArea(e.target.value);
   };
 
   const handleRoomCount = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setRoomCount(Number(e.target.value));
+    setRoomCount(e.target.value);
   };
 
   const handleToiletCount = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setToiletCount(Number(e.target.value));
+    setToiletCount(e.target.value);
   };
 
   const handleEstimateDuration = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setEstimateDuration(Number(e.target.value));
+    setEstimateDuration(e.target.value);
   };
 
   const handleWarranty = (e: ChangeEvent<HTMLInputElement>) => {
@@ -100,22 +101,27 @@ export function HouseInfoComponent() {
 
   const handleHasModel = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setHasModel(Number(e.target.value));
+    setHasModel(e.target.value);
   };
 
   const handleIsHut = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setIsHut(Number(e.target.value));
+    setIsHut(e.target.value);
   };
 
   const handleBasePrice = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setBasePrice(Number(e.target.value));
+    setDiscountPrice(e.target.value);
+    setBasePrice(e.target.value);
   };
 
   const handleDiscountPrice = (e: ChangeEvent<HTMLInputElement>) => {
     if (validateNumber(e)) return;
-    setDiscountPrice(Number(e.target.value));
+    if (!basePrice || Number(basePrice) < Number(e.target.value)) {
+      alertError('가격을 올바르게 입력해주세요.', '할인된 가격은 기본 가격보다 적어야 합니다.');
+      return;
+    }
+    setDiscountPrice(e.target.value);
   };
 
   return (
@@ -277,7 +283,7 @@ export function HouseInfoComponent() {
         />
 
         {/* 특이사항 */}
-        <HouseSelectComponent
+        <HouseSpecificationSelectComponent
           title={'가격에 포함된 특이사항 (다중선택 가능)'}
           name={'specificity_info'}
           value={specificityInfo}
