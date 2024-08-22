@@ -5,6 +5,7 @@ import Category from '@/app/community/_components/Category';
 import styles from '@/styles/Phrase.module.css';
 import { loadPostData } from '@/app/community/_actions/actions';
 import LoadPage from '@/components/app/LoadPage';
+import Image from 'next/image';
 
 export default async function Page({ searchParams }) {
   const [numShowItems, numShowPages] = [24, 10];

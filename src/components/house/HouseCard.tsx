@@ -14,24 +14,28 @@ export default function HouseCard({ data, className }: { data: any; className: s
         style={{ width: '100%', border: 'none' }}
         href={`/house/${data.house_id}`}
       >
-        <Image
+        <div
           style={{
-            objectFit: 'cover',
+            position: 'relative',
             width: '100%',
-            height: '250px',
-            borderRadius: '10px',
+            paddingTop: '100%', // 1:1 비율을 유지하기 위해 padding-top을 100%로 설정
+            borderRadius: '5px',
+            overflow: 'hidden',
           }}
-          width={280}
-          height={250}
-          src={houseImage[0]}
-          alt={'representive_image'}
-        ></Image>
+        >
+          <Image
+            src={houseImage[0]}
+            alt="representative_image"
+            layout="fill" // 부모 요소를 꽉 채우도록 설정
+            objectFit="cover" // 이미지의 비율을 유지하며, 컨테이너를 덮도록 설정
+          />
+        </div>
 
         <div className="card-body w-100" style={{ height: '110px', border: 'none', padding: '5px' }}>
           <div className="d-flex flex-column" style={{ width: '100%' }}>
             <div
               style={{
-                fontSize: '15px',
+                fontSize: '14px',
                 fontWeight: '400',
                 color: 'gray',
                 marginTop: '3px',

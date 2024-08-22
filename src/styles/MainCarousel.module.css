@@ -1,0 +1,16 @@
+.imageContainer {
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s linear;
+  transform: scale(1); /* Initial scale */
+}
+
+.imageContainer:hover .image {
+  transform: scale(1.2); /* Image zooms in on hover */
+}
