@@ -1,31 +1,38 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '@/styles/Carousel.module.css';
-import { Stint_Ultra_Condensed } from 'next/font/google';
 
-const CarouselData = [
+const SubCarouselData = [
   {
-    title: '움집 서비스 알아보기',
-    explain: '모듈러 기반 단독주택 프롭테크 플랫폼',
-    img: '/CarouselImgs/CarouselMain1.webp',
-    subImg: '/CarouselImgs/CarouselSub1.png',
-    url: `/service`,
+    backgroundColor: '#5F380C',
+    tagColor: '#314FC0',
+    subTitle: '최대 20% 할인',
+    title: '패시브하우스 명장,',
+    title2: '모두가하우징 기획전!',
+    subTitle2: '08.25~',
+    color: 'white',
+    img: '/CarouselImgs/moduga.png',
+    url: `/house?q=모두가하우징`,
   },
   {
-    title: 'AI 타잔 알아보기',
-    explain: '당신만의 건축 전문가',
-    img: '/CarouselImgs/CarouselMain2.webp',
-    subImg: '/CarouselImgs/CarouselSub2.png',
-    url: `/planning?house_id=14`,
+    backgroundColor: '#686C00',
+    tagColor: '#314FC0',
+    subTitle: '나무내음 가득',
+    title: '목조 주택 전문가,',
+    title2: '탑디자인의 새로운 제품!',
+    subTitle2: '',
+    color: 'white',
+    img: '/CarouselImgs/topdesign.png',
+    url: `/house?q=탑디자인`,
   },
 ];
 
-export default function Carousel({ className }: { className?: string }) {
+export default function SubCarousel() {
   return (
-    <div id="Carousel" className={`carousel slide ${className}`} data-bs-ride="carousel">
+    <div id="Carousel" className={`carousel slide w-100`} data-bs-ride="carousel">
       <div>
         <div className="carousel-indicators">
-          {CarouselData.map((e, i) => (
+          {SubCarouselData.map((e, i) => (
             <button
               key={i}
               type="button"
@@ -38,37 +45,38 @@ export default function Carousel({ className }: { className?: string }) {
           ))}
         </div>
         <div className="carousel-inner">
-          {CarouselData.map((e, i) => (
+          {SubCarouselData.map((e, i) => (
             <Link
               key={i}
               className={`carousel-item ${i === 0 ? 'active' : ''}`}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: 'pointer', textDecoration: 'none' }}
               href={e['url']}
             >
-              <Image priority width={1920} height={350} className={styles.mainImg} src={e.img} alt={'홈'} />
-              <div className={`row ${styles.mainContainer}`}>
-                <div
-                  className="col-7"
-                  style={{
-                    height: '100%',
-                    justifyContent: 'center',
-                    alignContent: 'center',
-                  }}
-                >
-                  <div
-                    style={{
-                      color: 'white',
-                      wordBreak: 'keep-all',
-                      textAlign: 'center',
-                    }}
-                  >
-                    <div className={styles.explain}>{e.explain}</div>
-                    <div className={styles.title}>{e.title}</div>
+              <div
+                className={`justify-content-center align-content-center ${styles.container}`}
+                style={{
+                  width: '100%',
+                  backgroundColor: SubCarouselData[i].backgroundColor,
+                }}
+              >
+                <div className="row">
+                  <div className="col-md-2 col-0"></div>
+                  <div className="col-md-4 col-6">
+                    <div
+                      style={{
+                        color: SubCarouselData[i].color,
+                        marginTop: '10%',
+                      }}
+                    >
+                      <div className={styles.subTitle}>{e.subTitle}</div>
+                      <div className={styles.title}>{e.title}</div>
+                      <div className={styles.title}>{e.title2}</div>
+                      <div className={styles.subTitle}>{e.subTitle2}</div>
+                    </div>
                   </div>
-                </div>
-
-                <div className="col-5" style={{ justifyContent: 'center', alignContent: 'center', height: '100%' }}>
-                  <Image width={400} height={300} className={styles.subImg} src={e.subImg} alt={'홈'} />
+                  <div className="col-6">
+                    <Image src={e.img} alt={'mainPic'} width={400} height={200} className={styles.img}></Image>
+                  </div>
                 </div>
               </div>
             </Link>
@@ -96,5 +104,54 @@ export default function Carousel({ className }: { className?: string }) {
         </button>
       </div>
     </div>
+
+    // <div className="col-md-3 col-12" style={{ marginTop: '20px' }}>
+    //   {SubCarouselData.map((e, i) => (
+    //     <Link key={i} style={{ cursor: 'pointer' }} href={e.url}>
+    //       <div
+    //         style={{
+    //           width: '100%',
+    //           backgroundColor: SubCarouselData[i].backgroundColor,
+    //           borderRadius: '5px',
+    //           height: '450px',
+    //         }}
+    //       >
+    //         <div style={{ paddingTop: '30%' }}>
+    //           <div
+    //             style={{
+    //               backgroundColor: SubCarouselData[i].tagBackgroundColor,
+    //               color: SubCarouselData[i].tagColor,
+    //               width: '50px',
+    //               margin: '20px auto',
+    //               borderRadius: '5px',
+    //               textAlign: 'center',
+    //               fontSize: '14px',
+    //             }}
+    //           >
+    //             {e.tag}
+    //           </div>
+    //           <div
+    //             style={{
+    //               textAlign: 'center',
+    //               color: SubCarouselData[i].color,
+    //               margin: '20px 0',
+    //               fontSize: '16px',
+    //             }}
+    //           >
+    //             <div>{e.subTitle}</div>
+    //             <div style={{ fontSize: '18px', margin: '10px 0', fontWeight: '600' }}>{e.title}</div>
+    //           </div>
+    //           <Image
+    //             src={e.img}
+    //             alt={'mainPic'}
+    //             width={400}
+    //             height={450}
+    //             style={{ width: '100%', height: '100px', borderRadius: '5px', objectFit: 'cover', margin: '30px 0' }}
+    //           ></Image>
+    //         </div>
+    //       </div>
+    //     </Link>
+    //   ))}
+    // </div>
   );
 }

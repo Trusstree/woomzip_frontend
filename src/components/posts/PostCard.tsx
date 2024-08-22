@@ -22,10 +22,10 @@ type DataProps = {
 };
 
 const style = {
-  일반: { backgroundColor: '#CCD6FF', color: '#314FC0' },
-  공지: { backgroundColor: '#FFCCCC', color: '#C03142' },
-  질문: { backgroundColor: '#E2FFCC', color: '#8AC031' },
-  칼럼: { backgroundColor: '#F9F871', color: '#FFC75F' },
+  일반: { backgroundColor: '#CCD6FF', color: '#314FC0', height: '260px' },
+  공지: { backgroundColor: '#FFCCCC', color: '#C03142', height: '260px' },
+  질문: { backgroundColor: '#E2FFCC', color: '#8AC031', height: '260px' },
+  칼럼: { backgroundColor: '#F9F871', color: '#FFC75F', height: '260px' },
 };
 
 export default function PostCard({ data, className }: PostCardProps) {
@@ -41,32 +41,41 @@ export default function PostCard({ data, className }: PostCardProps) {
         className="card"
         style={{
           width: '100%',
-          borderRadius: '10px',
+          borderRadius: '5px',
           border: 'none',
           marginBottom: '20px',
         }}
       >
         <Link href={{ pathname: `/community/${data['post_id']}` }}>
-          <Image
-            src={imgSrcArr[0] || '/111.webp'}
-            width={280}
-            height={250}
-            style={{ width: '100%', height: 250, borderRadius: '10px', objectFit: 'cover' }}
-            alt={'post card img'}
-          />
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              paddingTop: '100%', // 1:1 비율을 유지하기 위해 padding-top을 100%로 설정
+              borderRadius: '5px',
+              overflow: 'hidden',
+            }}
+          >
+            <Image
+              src={imgSrcArr[0] || '/111.webp'}
+              alt="post card img"
+              layout="fill" // 부모 요소를 꽉 채우도록 설정
+              objectFit="cover" // 이미지의 비율을 유지하며, 컨테이너를 덮도록 설정
+            />
+          </div>
 
           <div
             className="card-body"
             style={{
               width: '100%',
-              height: '250px',
+              height: '260px',
               borderRadius: '10px',
               position: 'absolute',
               top: 0,
               left: 0,
             }}
           >
-            <div className="d-flex justify-content-between">
+            {/* <div className="d-flex justify-content-between">
               <div
                 style={{
                   backgroundColor: style[data.category].backgroundColor,
@@ -150,7 +159,7 @@ export default function PostCard({ data, className }: PostCardProps) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </Link>
         <div
@@ -166,39 +175,40 @@ export default function PostCard({ data, className }: PostCardProps) {
               <img src={data.profilePicture} width={40} height={40}/>
               <div className="mx-3 fw-bold align-self-center">{data.author}</div>
             </div> */}
-            <div className="d-flex justify-content-between" style={{ marginTop: '1px' }}>
-              <div
+            <div
+              style={{
+                fontSize: '15px',
+                width: 'auto',
+                fontWeight: '600',
+                height: '50px',
+                overflow: 'hidden',
+                padding: '5px 0',
+              }}
+            >
+              <span
                 style={{
-                  fontSize: '15px',
-                  color: 'gray',
-                  width: 'auto',
-                  fontWeight: '400',
+                  color: style[data.category].color,
                 }}
               >
-                {data['nickname']}
-              </div>
-              <div
-                style={{
-                  fontSize: '15px',
-                  color: 'gray',
-                  width: 'auto',
-                  fontWeight: '400',
-                }}
-              >
-                {elapsedTimeText(data['created_at'])}
-              </div>
+                {data['category']} ·{' '}
+              </span>
+              {data.title}
             </div>
 
             <div
-              style={{
-                fontSize: '16px',
-                width: 'auto',
-                fontWeight: '500',
-                height: '50px',
-                overflow: 'hidden',
-              }}
+              className="d-flex justify-content-between"
+              style={{ fontSize: '14px', width: 'auto', fontWeight: '400', marginTop: '2px' }}
             >
-              {data.title}
+              <div>{data['nickname']}</div>
+
+              <div
+                className="d-flex justify-content-center align-content-center"
+                style={{ fontSize: '13px', color: 'gray', width: 'auto', fontWeight: '400' }}
+              >
+                <div>댓글 {cardCountText(data?.['comment_count'])}</div>
+                <span style={{ padding: '0 5px' }}>·</span>
+                <div>좋아요 {cardCountText(data?.['post_like_count'])}</div>
+              </div>
             </div>
           </div>
         </div>

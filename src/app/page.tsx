@@ -1,9 +1,12 @@
 import PostMenu from '@/components/posts/PostMenu';
 import Carousel from '@/app/_components/Carousel';
-import LivingCardList from '@/components/living/LivingCardList';
+import MainCarousel from '@/app/_components/MainCarousel';
+import SubCarousel from '@/app/_components/SubCarousel';
 import PostList from '@/app/_components/PostList';
 import HouseList from '@/app/_components/HouseList';
 import { loadHouseData, loadPostData } from '@/app/_actions/actions';
+import Image from 'next/image';
+import { relative } from 'path';
 
 export default async function Home() {
   const postData = await loadPostData();
@@ -14,8 +17,15 @@ export default async function Home() {
 
   return (
     <>
-      <div>
+      {/* <div>
         <Carousel className="w-100" />
+      </div> */}
+
+      <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
+        <div className="row">
+          <MainCarousel></MainCarousel>
+          <SubCarousel></SubCarousel>
+        </div>
       </div>
 
       <div
@@ -57,91 +67,6 @@ export default async function Home() {
           </PostMenu>
         </div>
       </div>
-
-      {/* 농막 */}
-      <div
-        style={{
-          width: '100%',
-          padding: '20px 0',
-        }}
-      >
-        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
-          <PostMenu
-            title={'농막을 찾으시나요?'}
-            routeUrl={'/house?tag=농막'}
-            routeText={'더보기'}
-            horizontalScroll={true}
-          >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
-              {semoHouseData && <HouseList houseData={nongmakHouseData} />}
-            </div>
-          </PostMenu>
-        </div>
-      </div>
-
-      {/* 세모지붕 */}
-      <div
-        style={{
-          width: '100%',
-          padding: '20px 0',
-          backgroundColor: '#FAFBFC',
-        }}
-      >
-        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
-          <PostMenu
-            title={'세모지붕 주택을 찾아보세요!'}
-            routeUrl={'/house?tag=세모지붕'}
-            routeText={'더보기'}
-            horizontalScroll={true}
-          >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
-              {semoHouseData && <HouseList houseData={semoHouseData} />}
-            </div>
-          </PostMenu>
-        </div>
-      </div>
-
-      {/* 세모지붕 */}
-      <div
-        style={{
-          width: '100%',
-          padding: '20px 0',
-        }}
-      >
-        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
-          <PostMenu
-            title={'고급스러운 주택을 찾아보세요!'}
-            routeUrl={'/house?tag=고급스러운'}
-            routeText={'더보기'}
-            horizontalScroll={true}
-          >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
-              {semoHouseData && <HouseList houseData={luxuryHouseData} />}
-            </div>
-          </PostMenu>
-        </div>
-      </div>
-
-      {/* 농촌 체류형 쉼터
-      <div
-        style={{
-          width: '100%',
-          padding: '20px 0',
-        }}
-      >
-        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
-          <PostMenu
-            title={'농촌 체류형 쉼터를 원해요.'}
-            routeUrl={'/house?has_model=1'}
-            routeText={'더보기'}
-            horizontalScroll={true}
-          >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
-              {nongchonHouseData && <HouseList houseData={nongchonHouseData} />}
-            </div>
-          </PostMenu>
-        </div>
-      </div> */}
     </>
   );
 }

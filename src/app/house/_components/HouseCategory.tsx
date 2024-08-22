@@ -2,7 +2,7 @@ import CategoryButton from '@/components/CategoryButton';
 
 export default function HouseCategory() {
   return (
-    <div className="row w-100 flex-nowrap overflow-auto" style={{ marginLeft: '0', height: '80px' }}>
+    <div className="row w-100 flex-nowrap overflow-auto" style={{ marginLeft: '0' }}>
       <CategoryButton title={'전체'} imgSrc={'/buttonIcons/all.png'} queryName={'tag'} />
       <CategoryButton title={'농막'} imgSrc={'/buttonIcons/farmhouse.png'} queryName={'tag'} category={'농막'} />
       <CategoryButton

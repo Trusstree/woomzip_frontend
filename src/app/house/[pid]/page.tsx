@@ -19,7 +19,7 @@ export default async function House({ params }: { params: PageParams }) {
   return houseData ? (
     <>
       <main>
-        <div className="row" style={{ width: '90%', maxWidth: '1100px', margin: '0 auto' }}>
+        <div className="row" style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <div className="d-flex justify-content-between">
             <div style={{ fontSize: '28px', fontWeight: '400', margin: '10px 0' }}>{houseData['house_name']}</div>
             <div style={{ marginTop: '25px' }}>
