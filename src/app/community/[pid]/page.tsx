@@ -1,5 +1,5 @@
 import Count from '@/components/posts/Count';
-import AppPostList from '@/app/_components/PostList';
+import PostList from '@/app/_components/PostList';
 import PostMenu from '@/components/posts/PostMenu';
 import DOMPurify from 'isomorphic-dompurify';
 import { loadPostData, loadRecommendPostData } from '@/app/community/[pid]/_actions/actions';
@@ -177,7 +177,7 @@ export default async function page({ params }: { params: PageParams }) {
         routeText={'더보기'}
         horizontalScroll={true}
       >
-        <AppPostList postData={recommendPostData} />
+        <PostList postData={recommendPostData} />
       </PostMenu>
     </div>
   ) : (

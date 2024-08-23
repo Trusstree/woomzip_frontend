@@ -2,11 +2,13 @@ import PostMenu from '@/components/posts/PostMenu';
 import Carousel from '@/app/_components/Carousel';
 import MainCarousel from '@/app/_components/MainCarousel';
 import SubCarousel from '@/app/_components/SubCarousel';
-import PostList from '@/app/_components/PostList';
+import QnaPostList from '@/app/_components/QnaPostList';
 import HouseList from '@/app/_components/HouseList';
 import { loadHouseData, loadPostData } from '@/app/_actions/actions';
 import Image from 'next/image';
 import { relative } from 'path';
+import ColumnPostList from '@/app/_components/ColumnPostList';
+import VisitPostList from '@/app/_components/VisitPostList';
 
 export default async function Home() {
   const postData = await loadPostData();
@@ -28,6 +30,7 @@ export default async function Home() {
         </div>
       </div>
 
+      {/* 일반, 질문 */}
       <div
         style={{
           width: '100%',
@@ -41,7 +44,47 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>{postData && <PostList postData={postData} />}</div>
+            <div style={{ width: '100%', overflow: 'hidden' }}>{postData && <QnaPostList postData={postData} />}</div>
+          </PostMenu>
+        </div>
+      </div>
+
+      {/*집들이*/}
+      <div
+        style={{
+          width: '100%',
+          padding: '30px 0 20px 0',
+        }}
+      >
+        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
+          <PostMenu
+            title={'집들이 구경하고 가세요!'}
+            routeUrl={'/community'}
+            routeText={'더보기'}
+            horizontalScroll={true}
+          >
+            <div style={{ width: '100%', overflow: 'hidden' }}>{postData && <VisitPostList postData={postData} />}</div>
+          </PostMenu>
+        </div>
+      </div>
+
+      {/* 칼럼 */}
+      <div
+        style={{
+          width: '100%',
+          padding: '30px 0 20px 0',
+        }}
+      >
+        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
+          <PostMenu
+            title={'꼭 필요한 건축정보를 알려드려요!'}
+            routeUrl={'/community'}
+            routeText={'더보기'}
+            horizontalScroll={true}
+          >
+            <div style={{ width: '100%', overflow: 'hidden' }}>
+              {postData && <ColumnPostList postData={postData} />}
+            </div>
           </PostMenu>
         </div>
       </div>
@@ -51,7 +94,6 @@ export default async function Home() {
         style={{
           width: '100%',
           padding: '20px 0',
-          backgroundColor: '#FAFBFC',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
@@ -63,6 +105,27 @@ export default async function Home() {
           >
             <div style={{ width: '100%', overflow: 'hidden' }}>
               {semoHouseData && <HouseList houseData={nongchonHouseData} />}
+            </div>
+          </PostMenu>
+        </div>
+      </div>
+
+      {/* 공지 */}
+      <div
+        style={{
+          width: '100%',
+          padding: '30px 0 20px 0',
+        }}
+      >
+        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
+          <PostMenu
+            title={'움집 소식을 확인해보세요!'}
+            routeUrl={'/community'}
+            routeText={'더보기'}
+            horizontalScroll={true}
+          >
+            <div style={{ width: '100%', overflow: 'hidden' }}>
+              {postData && <ColumnPostList postData={postData} />}
             </div>
           </PostMenu>
         </div>

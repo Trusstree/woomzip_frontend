@@ -13,7 +13,7 @@ export default function PostList({ postData, postCount, numShowItems, numShowPag
   return (
     <>
       {postData || postData.length > 0
-        ? postData.map((e: any, i: number) => <PostCard data={e} key={i} className={`col-md-4 col-lg-3`} />)
+        ? postData.map((e: any, i: number) => <PostCard data={e} key={i} className={`col-6 col-md-4 col-lg-3`} />)
         : new Array(numShowItems).fill(0).map((e: any, i: number) => <PostCardPlaceHolder key={i} />)}
       {numShowPages && <Pagination numItems={postCount} numShowItems={numShowItems} numShowPages={numShowPages} />}
     </>
