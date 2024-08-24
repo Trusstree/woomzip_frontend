@@ -20,8 +20,8 @@ export default async function Home() {
 
       <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
         <div className="row">
-          <MainCarousel></MainCarousel>
-          <SubCarousel></SubCarousel>
+          <MainCarousel />
+          <SubCarousel />
         </div>
       </div>
 

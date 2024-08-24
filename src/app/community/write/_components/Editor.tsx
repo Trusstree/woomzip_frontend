@@ -33,20 +33,22 @@ const Editor = dynamic(
       const imageHandler = () => {
         const input = document.createElement('input');
         input.setAttribute('type', 'file');
-        input.setAttribute('accept', 'image/*');
+        input.setAttribute('accept', 'image/jpg');
+        input.setAttribute('accept', 'image/png');
         input.click();
 
         input.onchange = async (e: any) => {
           const file = Array.from(e.target.files) as Array<any>;
           if (!file) return;
           for (let i = 0; i < file.length; i++) {
-            if (file[i].type.split('/')[0] != 'image') continue;
+            const [fileType, fileExecutor] = file[i].type.split('/')[0];
+            if (fileType != 'image') continue;
+            if (fileExecutor != 'jpg' || fileExecutor != 'jpeg' || fileExecutor != 'png') continue;
             try {
               const title = `posts${moment().format('YYYYMMDDHHmmss')}${i}`;
-              const url = `community/${title}.${file[i].type.split('/')[1]}`;
+              const url = `community/${title}.${fileExecutor}`;
 
-              // 새로운 사진 포메팅 기법이 필요함
-
+              // 이번에야말로 사진 압축하는 거 집어넣자
               const [response, error] = await setS3Url(url, file[i]);
 
               if (!error) {

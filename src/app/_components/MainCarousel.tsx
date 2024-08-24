@@ -18,7 +18,7 @@ export default function MainCarousel() {
       {MainCarouselData.map((e, i) => (
         <Link key={i} style={{ cursor: 'pointer' }} href={e.url}>
           <div className={styles.imageContainer}>
-            <Image src={e.img} alt="mainPic" layout="fill" className={styles.image} />
+            <Image src={e.img} alt="mainPic" fill sizes="(max-width: 880px) 80vw, 100vw" className={styles.image} />
           </div>
         </Link>
       ))}
