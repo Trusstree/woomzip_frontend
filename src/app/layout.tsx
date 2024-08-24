@@ -43,8 +43,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" />
       </head>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+
       <body className={inter.className}>
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         <WebVitals />
         <StyledComponentsRegistry>
           <ContextSession>
@@ -57,7 +58,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </ContextSession>
         </StyledComponentsRegistry>
       </body>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+
+      {/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} /> */}
     </html>
   );
 }

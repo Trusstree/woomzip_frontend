@@ -56,12 +56,7 @@ export default function PostCard({ data, className }: PostCardProps) {
               overflow: 'hidden',
             }}
           >
-            <Image
-              src={imgSrcArr[0] || '/111.webp'}
-              alt="post card img"
-              layout="fill" // 부모 요소를 꽉 채우도록 설정
-              objectFit="cover" // 이미지의 비율을 유지하며, 컨테이너를 덮도록 설정
-            />
+            <Image src={imgSrcArr[0] || '/111.webp'} alt="post card img" style={{ objectFit: 'cover' }} fill />
           </div>
 
           <div

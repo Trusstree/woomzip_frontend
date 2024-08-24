@@ -1,14 +1,20 @@
-import Badge from '@/app/(about)/about/_components/Badge';
 import { PartnerList, WorkerList } from '@/app/(about)/about/_data/Data';
 import HistoryCard from '@/app/(about)/about/_components/HistoryCard';
 import PartnerCard from '@/app/(about)/about/_components/PartnerCard';
 import WorkerCard from '@/app/(about)/about/_components/WorkerCard';
+import Image from 'next/image';
 
 export default function About() {
   return (
     <div>
       <div style={{ width: '100%', height: '700px', position: 'relative' }}>
-        <img src="/company.gif" width={'100%'} height={'700px'} style={{ objectFit: 'cover' }} />
+        <Image
+          src="/company.gif"
+          width={540}
+          height={304}
+          style={{ width: '100%', objectFit: 'cover' }}
+          alt={'company'}
+        />
         <div
           style={{
             position: 'absolute',
@@ -265,15 +271,17 @@ export default function About() {
               </div>
             </div>
             <div className="col-md-6 col-12 row">
-              <img
+              <Image
+                width={1049}
+                height={1311}
+                alt={'map'}
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/map.png"
                 style={{
                   width: '100%',
-                  height: '400px',
                   objectFit: 'cover',
                   borderRadius: '10px',
                 }}
-              ></img>
+              />
             </div>
           </div>
         </div>

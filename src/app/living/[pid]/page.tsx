@@ -1,26 +1,27 @@
-import RouteButton from "@/app/living/[pid]/_components/RouteButton";
-import ReviewList from "@/components/review/ReviewList";
-import { getLivingReviews } from "@/actions/apis/livingAPI";
-import styles from "./_styles/livingPage.module.css";
-import { ReviewModal } from "@/components/house/ReviewModal";
+import RouteButton from '@/app/living/[pid]/_components/RouteButton';
+import ReviewList from '@/components/review/ReviewList';
+import { getLivingReviews } from '@/actions/apis/livingAPI';
+import styles from './_styles/livingPage.module.css';
+import { ReviewModal } from '@/components/house/ReviewModal';
+import Image from 'next/image';
 
 const imageData = [
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver4.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver5.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver6.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver7.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver8.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver9.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver10.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver11.jpeg",
-  "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver12.jpeg",
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver2.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver3.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver4.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver5.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver6.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver7.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver8.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver9.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver10.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver11.jpeg',
+  'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver12.jpeg',
 ];
 
 async function loadData() {
-  "use server";
+  'use server';
 
   let [review, count, rating] = [[], 0, 0];
 
@@ -30,9 +31,9 @@ async function loadData() {
     return { review, count, rating };
   }
 
-  review = data.data[0]["pavilion_review"];
-  count = data.data[0]["pavilion_review_cnt"];
-  rating = data.data[0]["pavilion_review_rating"] || 0;
+  review = data.data[0]['pavilion_review'];
+  count = data.data[0]['pavilion_review_cnt'];
+  rating = data.data[0]['pavilion_review_rating'] || 0;
 
   return { review, count, rating };
 }
@@ -41,132 +42,133 @@ export default async function Parvilion() {
   const { review, count, rating } = await loadData();
   return (
     <main>
-      <div className="row" style={{ width: "90%", maxWidth: "1300px", margin: "0 auto" }}>
-        <div style={{ fontSize: "28px", fontWeight: "500" }}>살아보기</div>
-        <div className="row g-2" style={{ width: "100%", position: "relative" }}>
+      <div className="row" style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
+        <div style={{ fontSize: '28px', fontWeight: '500' }}>살아보기</div>
+        <div className="row g-2" style={{ width: '100%', position: 'relative' }}>
           <div className="col-6">
-            <div style={{ borderRadius: "10px 0 0 10px", overflow: "hidden" }}>
-              <img className={styles.mainImg} src={imageData[0]} />
+            <div style={{ borderRadius: '10px 0 0 10px', overflow: 'hidden' }}>
+              <Image alt={'main image'} className={styles.mainImg} src={imageData[0]} />
             </div>
           </div>
           <div className="col-3">
-            <div style={{ height: "50%", overflow: "hidden" }}>
-              <img className={styles.subImg} src={imageData[1]} />
+            <div style={{ height: '50%', overflow: 'hidden' }}>
+              <Image alt={'sub image 1'} className={styles.subImg} src={imageData[1]} />
             </div>
-            <div style={{ height: "50%", marginTop: "4px", overflow: "hidden" }}>
-              <img className={styles.subImg} src={imageData[2]} />
+            <div style={{ height: '50%', marginTop: '4px', overflow: 'hidden' }}>
+              <Image alt={'sub image 2'} className={styles.subImg} src={imageData[2]} />
             </div>
           </div>
           <div className="col-3">
             <div
               style={{
-                height: "50%",
-                overflow: "hidden",
-                borderRadius: "0 10px 0 0",
+                height: '50%',
+                overflow: 'hidden',
+                borderRadius: '0 10px 0 0',
               }}
             >
-              <img className={styles.subImg} src={imageData[3]} />
+              <Image alt={'sub image 3'} className={styles.subImg} src={imageData[3]} />
             </div>
             <div
               style={{
-                height: "50%",
-                marginTop: "4px",
-                overflow: "hidden",
-                borderRadius: "0 0 10px 0",
+                height: '50%',
+                marginTop: '4px',
+                overflow: 'hidden',
+                borderRadius: '0 0 10px 0',
               }}
             >
-              <img className={styles.subImg} src={imageData[4]} />
+              <Image alt={'sub image 4'} className={styles.subImg} src={imageData[4]} />
             </div>
           </div>
           <div
             className="btn"
             style={{
-              position: "absolute",
-              right: "25px",
-              bottom: "15px",
-              backgroundColor: "white",
-              opacity: "0.7",
-              width: "auto",
+              position: 'absolute',
+              right: '25px',
+              bottom: '15px',
+              backgroundColor: 'white',
+              opacity: '0.7',
+              width: 'auto',
             }}
             data-bs-toggle="modal"
             data-bs-target="#living_modal_1"
           >
             <div className="d-flex justify-content-between">
-              <div style={{ width: "30px" }}>
-                <img
+              <div style={{ width: '30px' }}>
+                <Image
+                  alt={'filter'}
                   src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"
-                  style={{ width: "25px" }}
+                  style={{ width: '25px' }}
                 />
               </div>
-              <div style={{ width: "auto", marginTop: "2px" }}>사진 전체보기</div>
+              <div style={{ width: 'auto', marginTop: '2px' }}>사진 전체보기</div>
             </div>
           </div>
         </div>
 
         <div className="g-3 row w-100">
           <div className="col-md-8 col-12">
-            <div style={{ fontSize: "19px", margin: "5px 0 0 2px", color: "gray" }}>모두가하우징</div>
+            <div style={{ fontSize: '19px', margin: '5px 0 0 2px', color: 'gray' }}>모두가하우징</div>
             <div
               style={{
-                fontSize: "32px",
-                marginBottom: "15px",
-                fontWeight: "500",
+                fontSize: '32px',
+                marginBottom: '15px',
+                fontWeight: '500',
               }}
             >
               힐링리버
             </div>
             <div
               style={{
-                margin: "10px 0",
-                fontSize: "17px",
+                margin: '10px 0',
+                fontSize: '17px',
               }}
             >
               지금까지 {count}팀이 살아봤어요!
             </div>
             <hr />
-            <ReviewList review={review} count={count} rating={rating} url={"/living/1/review"} />
+            <ReviewList review={review} count={count} rating={rating} url={'/living/1/review'} />
 
             <div
               style={{
-                fontWeight: "600",
-                lineHeight: "30px",
-                marginBottom: "100px",
+                fontWeight: '600',
+                lineHeight: '30px',
+                marginBottom: '100px',
               }}
             >
-              <h5 style={{ marginTop: "80px" }}>체험 조건</h5>
+              <h5 style={{ marginTop: '80px' }}>체험 조건</h5>
               <div
                 style={{
-                  fontSize: "16px",
-                  fontWeight: "400",
-                  marginTop: "30px",
-                  padding: "10px",
+                  fontSize: '16px',
+                  fontWeight: '400',
+                  marginTop: '30px',
+                  padding: '10px',
                 }}
               >
                 ✅ 체험 후기 작성
                 <br />✅ SNS에 체험 후기 작성(유튜브, 블로그, 카페 등)
               </div>
 
-              <h5 style={{ marginTop: "80px" }}>보증금 반환 조건</h5>
+              <h5 style={{ marginTop: '80px' }}>보증금 반환 조건</h5>
               <div
                 style={{
-                  fontSize: "16px",
-                  fontWeight: "400",
-                  margin: "30px 0 60px 0",
-                  padding: "10px",
+                  fontSize: '16px',
+                  fontWeight: '400',
+                  margin: '30px 0 60px 0',
+                  padding: '10px',
                 }}
               >
                 ✅ 체험 조건 이수
                 <br />✅ 청소 상태 원상복구
                 <br />✅ 가이드라인 준수
               </div>
-              <div className="container" style={{ width: "100%", marginBottom: "10px", padding: "0" }}>
-                <h5 style={{ margin: "0", paddingTop: "50px" }}>힐링리버 소개</h5>
+              <div className="container" style={{ width: '100%', marginBottom: '10px', padding: '0' }}>
+                <h5 style={{ margin: '0', paddingTop: '50px' }}>힐링리버 소개</h5>
                 <div
                   style={{
-                    fontSize: "16px",
-                    fontWeight: "400",
-                    marginTop: "30px",
-                    padding: "10px",
+                    fontSize: '16px',
+                    fontWeight: '400',
+                    marginTop: '30px',
+                    padding: '10px',
                   }}
                 >
                   힐링리버는 강원도 화천군에 위치한 모두가하우징의 체험형 홍보관입니다.
@@ -174,13 +176,13 @@ export default async function Parvilion() {
                   전원주택의 삶을 꿈꾸시는 분들에게 전원생활과 모두가하우징의 주택을 체험하실 수 있도록 하기 위해
                   제공합니다.
                 </div>
-                <h5 style={{ margin: "0", paddingTop: "50px" }}>편의시설</h5>
+                <h5 style={{ margin: '0', paddingTop: '50px' }}>편의시설</h5>
                 <div
                   style={{
-                    fontSize: "16px",
-                    fontWeight: "400",
-                    marginTop: "30px",
-                    padding: "10px",
+                    fontSize: '16px',
+                    fontWeight: '400',
+                    marginTop: '30px',
+                    padding: '10px',
                   }}
                 >
                   ● TV
@@ -191,13 +193,13 @@ export default async function Parvilion() {
                   <br />● 조리도구
                   <br />● 전자레인지
                 </div>
-                <h5 style={{ margin: "0", paddingTop: "50px" }}>주의사항</h5>
+                <h5 style={{ margin: '0', paddingTop: '50px' }}>주의사항</h5>
                 <div
                   style={{
-                    fontSize: "16px",
-                    fontWeight: "400",
-                    marginTop: "30px",
-                    padding: "10px",
+                    fontSize: '16px',
+                    fontWeight: '400',
+                    marginTop: '30px',
+                    padding: '10px',
                   }}
                 >
                   ● 2층과 주변 주택들에 주민들이 살고 있으니 늦은 밤에는 정숙해주세요.
@@ -212,27 +214,27 @@ export default async function Parvilion() {
           </div>
           <div className="col-md-4 col-12">
             <div className={`card ${styles.RemoconCard}`}>
-              <div className="container" style={{ height: "60px" }}></div>
+              <div className="container" style={{ height: '60px' }}></div>
               <div
                 style={{
-                  padding: "10px",
-                  boxShadow: "3px 3px 13px rgba(0, 0, 0, 0.2)",
-                  borderRadius: "10px",
+                  padding: '10px',
+                  boxShadow: '3px 3px 13px rgba(0, 0, 0, 0.2)',
+                  borderRadius: '10px',
                 }}
               >
                 <div
                   className="container row"
                   style={{
-                    width: "100%",
-                    padding: "10px",
-                    margin: "10px 0 0 0",
+                    width: '100%',
+                    padding: '10px',
+                    margin: '10px 0 0 0',
                   }}
                 >
-                  <div className="d-flex justify-content-start px-1" style={{ width: "50%" }}>
+                  <div className="d-flex justify-content-start px-1" style={{ width: '50%' }}>
                     <svg
                       width="50"
                       height="50"
-                      style={{ width: "60px" }}
+                      style={{ width: '60px' }}
                       viewBox="0 0 30 30"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -251,13 +253,13 @@ export default async function Parvilion() {
                         />
                       </defs>
                     </svg>
-                    <div style={{ width: "80px", marginTop: "12px" }}>12평</div>
+                    <div style={{ width: '80px', marginTop: '12px' }}>12평</div>
                   </div>
-                  <div className="d-flex justify-content-start px-1" style={{ width: "50%" }}>
+                  <div className="d-flex justify-content-start px-1" style={{ width: '50%' }}>
                     <svg
                       width="50"
                       height="50"
-                      style={{ width: "60px" }}
+                      style={{ width: '60px' }}
                       viewBox="0 0 30 30"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -276,23 +278,23 @@ export default async function Parvilion() {
                         />
                       </defs>
                     </svg>
-                    <div style={{ width: "80px", marginTop: "12px" }}>1개</div>
+                    <div style={{ width: '80px', marginTop: '12px' }}>1개</div>
                   </div>
                 </div>
 
                 <div
                   className="container row"
                   style={{
-                    width: "100%",
-                    padding: "10px",
-                    margin: "10px 0 0 0",
+                    width: '100%',
+                    padding: '10px',
+                    margin: '10px 0 0 0',
                   }}
                 >
-                  <div className="d-flex justify-content-start px-1" style={{ width: "50%" }}>
+                  <div className="d-flex justify-content-start px-1" style={{ width: '50%' }}>
                     <svg
                       width="50"
                       height="50"
-                      style={{ width: "60px" }}
+                      style={{ width: '60px' }}
                       viewBox="0 0 30 30"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -311,13 +313,13 @@ export default async function Parvilion() {
                         />
                       </defs>
                     </svg>
-                    <div style={{ width: "80px", marginTop: "12px" }}>최대 5명</div>
+                    <div style={{ width: '80px', marginTop: '12px' }}>최대 5명</div>
                   </div>
-                  <div className="d-flex justify-content-start px-1" style={{ width: "50%" }}>
+                  <div className="d-flex justify-content-start px-1" style={{ width: '50%' }}>
                     <svg
                       width="50"
                       height="50"
-                      style={{ width: "60px" }}
+                      style={{ width: '60px' }}
                       viewBox="0 0 30 30"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -336,23 +338,23 @@ export default async function Parvilion() {
                         />
                       </defs>
                     </svg>
-                    <div style={{ width: "80px", marginTop: "12px" }}>최대 3일</div>
+                    <div style={{ width: '80px', marginTop: '12px' }}>최대 3일</div>
                   </div>
                 </div>
-                <hr style={{ margin: "0px", padding: "0px" }} />
+                <hr style={{ margin: '0px', padding: '0px' }} />
                 <div
                   className="container row"
                   style={{
-                    width: "100%",
-                    margin: "10px 0 0 0",
-                    padding: "10px",
+                    width: '100%',
+                    margin: '10px 0 0 0',
+                    padding: '10px',
                   }}
                 >
-                  <div className="d-flex justify-content-start px-1" style={{ width: "100%" }}>
+                  <div className="d-flex justify-content-start px-1" style={{ width: '100%' }}>
                     <svg
                       width="50"
                       height="50"
-                      style={{ width: "60px" }}
+                      style={{ width: '60px' }}
                       viewBox="0 0 30 30"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -371,22 +373,22 @@ export default async function Parvilion() {
                         />
                       </defs>
                     </svg>
-                    <div style={{ width: "80px", marginTop: "12px" }}>무료</div>
+                    <div style={{ width: '80px', marginTop: '12px' }}>무료</div>
                   </div>
                 </div>
                 <div
                   className="container row"
                   style={{
-                    width: "100%",
-                    padding: "10px",
-                    margin: "10px 0 0 0",
+                    width: '100%',
+                    padding: '10px',
+                    margin: '10px 0 0 0',
                   }}
                 >
-                  <div className="d-flex justify-content-start px-1" style={{ width: "100%" }}>
+                  <div className="d-flex justify-content-start px-1" style={{ width: '100%' }}>
                     <svg
                       width="50"
                       height="50"
-                      style={{ width: "60px" }}
+                      style={{ width: '60px' }}
                       viewBox="0 0 30 30"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -405,25 +407,25 @@ export default async function Parvilion() {
                         />
                       </defs>
                     </svg>
-                    <div style={{ width: "80px", marginTop: "12px" }}>5만원</div>
+                    <div style={{ width: '80px', marginTop: '12px' }}>5만원</div>
                   </div>
                 </div>
                 <div
                   className="container"
                   style={{
-                    width: "100%",
-                    padding: "10px",
-                    margin: "30px 0 0 0",
+                    width: '100%',
+                    padding: '10px',
+                    margin: '30px 0 0 0',
                   }}
                 >
-                  <RouteButton url={"/living/1/reservation"} text={"체험 예약하기"} />
+                  <RouteButton url={'/living/1/reservation'} text={'체험 예약하기'} />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <ReviewModal id={"living_modal_1"} images={imageData} isTwoCol />
+      <ReviewModal id={'living_modal_1'} images={imageData} isTwoCol />
     </main>
   );
 }

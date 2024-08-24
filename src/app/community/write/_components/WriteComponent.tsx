@@ -28,7 +28,7 @@ export default function WriteComponent() {
       }
       router.push(`/community`);
     }
-  }, [dataTitle, dataText]);
+  }, [dataTitle, dataText, dataCategory, router]);
 
   return (
     <div>

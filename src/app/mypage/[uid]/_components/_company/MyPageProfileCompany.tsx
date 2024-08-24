@@ -1,6 +1,7 @@
 import SignoutButton from '@/app/mypage/[uid]/_components/SignoutButton';
 import { getUserdataByToken } from '@/lib/parseUtil';
 import { cookies } from 'next/headers';
+import Image from 'next/image';
 import EditProfileButton from '../EditProfileButton';
 
 export default function MyPageProfileCompany({ uid, userData }) {
@@ -20,7 +21,7 @@ export default function MyPageProfileCompany({ uid, userData }) {
       >
         <div className="row" style={{ width: '100%' }}>
           <div style={{ width: '90px' }}>
-            <img
+            <Image
               className={'m-0 align-self-center'}
               src={userData?.['user_img_url'] || 'blur_image.png'}
               alt={`profile`}

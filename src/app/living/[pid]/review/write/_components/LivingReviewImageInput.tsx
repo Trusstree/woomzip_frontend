@@ -3,6 +3,7 @@
 import { useUser } from '@/app/_components/ContextSession';
 import { setS3Url } from '@/lib/s3Util';
 import moment from 'moment';
+import Image from 'next/image';
 import { ChangeEvent } from 'react';
 
 type LivingReviewImageInputComponentProps = {
@@ -30,7 +31,7 @@ export function LivingReviewImageInputComponent(props: LivingReviewImageInputCom
   return (
     <div className={className ? className : ''}>
       <label htmlFor={name}>
-        <img src={'/blur_image.png'} alt={name} width={188} height={188} style={{ objectFit: 'fill' }} />
+        <Image src={'/blur_image.png'} alt={name} width={188} height={188} style={{ objectFit: 'fill' }} />
       </label>
       <input
         id={`${name}`}

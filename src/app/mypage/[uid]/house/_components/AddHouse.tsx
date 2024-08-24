@@ -90,7 +90,7 @@ export default function AddHouse({ uid }) {
 
     alertSuccess(houseInfo['house_name'], '제대로 들어갔어요~');
     router.push(pathname.slice(0, pathname.length - 6));
-  }, [houseInfo, optionInfo, deliveryInfo, specificationInfo, imageInfo]);
+  }, [houseInfo, optionInfo, deliveryInfo, specificationInfo, imageInfo, pathname, router]);
 
   return (
     <div>

@@ -4,6 +4,7 @@ import { PicModal } from '@/app/house/[pid]/_components/PicModal';
 import EditProfileCompany from '@/app/mypage/[uid]/_components/_company/EditProfileCompany';
 import MyPageProfileCompany from '@/app/mypage/[uid]/_components/_company/MyPageProfileCompany';
 import ReviewListCompany from '@/app/mypage/[uid]/_components/_company/ReviewListCompany';
+import Image from 'next/image';
 
 function parseData(companyData) {
   let [profile, companyImages, reviews, posts, pavilions, sellingHouses] = [
@@ -112,9 +113,11 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
           >
             <div className="d-flex justify-content-between">
               <div style={{ width: '30px' }}>
-                <img
+                <Image
+                  width={25}
+                  height={25}
+                  alt={'more'}
                   src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/all.png"
-                  style={{ width: '25px' }}
                 />
               </div>
               <div style={{ width: 'auto', marginTop: '2px' }}>사진 전체보기</div>

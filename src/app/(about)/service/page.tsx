@@ -1,8 +1,16 @@
+import Image from 'next/image';
+
 export default function Home() {
   return (
     <div>
       <div style={{ width: '100%', height: '700px', position: 'relative' }}>
-        <img src="/111.webp" width={'100%'} height={'700px'} style={{ objectFit: 'cover' }} />
+        <Image
+          src="/111.webp"
+          alt="carousel image"
+          width={500}
+          height={500}
+          style={{ width: '100%', objectFit: 'cover' }}
+        />
         <div
           style={{
             position: 'absolute',
@@ -149,14 +157,17 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md-6 col-12">
-            <img
+            <Image
               src={'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service11.png'}
-              width={'100%'}
+              alt={'community image'}
+              width={500}
+              height={500}
               style={{
+                width: '100%',
                 borderRadius: '10px',
                 boxShadow: '3px 3px 10px rgba(0,0,0,0.2)',
               }}
-            ></img>
+            />
           </div>
         </div>
       </div>
@@ -215,15 +226,18 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md-6 col-12">
-            <img
+            <Image
               src={'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service2.png'}
-              width={'100%'}
+              alt={'living images'}
+              width={500}
+              height={500}
               style={{
+                width: '100%',
                 marginBottom: '50px',
                 borderRadius: '10px',
                 boxShadow: '3px 3px 10px rgba(0,0,0,0.2)',
               }}
-            ></img>
+            />
           </div>
         </div>
       </div>
@@ -281,14 +295,17 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md-6 col-12">
-            <img
+            <Image
               src={'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service3.png'}
-              width={'100%'}
+              alt={'house finding image'}
+              width={500}
+              height={500}
               style={{
+                width: '100%',
                 borderRadius: '10px',
                 boxShadow: '3px 3px 10px rgba(0,0,0,0.2)',
               }}
-            ></img>
+            />
           </div>
         </div>
       </div>
@@ -347,15 +364,18 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md-6 col-12">
-            <img
+            <Image
               src={'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/service4.png'}
-              width={'100%'}
+              alt={'planning ai image'}
+              width={500}
+              height={500}
               style={{
+                width: '100%',
                 marginBottom: '50px',
                 borderRadius: '10px',
                 boxShadow: '3px 3px 10px rgba(0,0,0,0.2)',
               }}
-            ></img>
+            />
           </div>
         </div>
       </div>
@@ -431,16 +451,19 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md-6 col-12">
-            <img
+            <Image
               src={'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/team.jpg'}
-              width={'100%'}
+              alt={'woomzip team image'}
+              width={500}
+              height={500}
               style={{
+                width: '100%',
                 height: '500px',
                 objectFit: 'cover',
                 borderRadius: '10px',
                 boxShadow: '3px 3px 10px rgba(0,0,0,0.2)',
               }}
-            ></img>
+            />
           </div>
         </div>
       </div>
@@ -498,16 +521,19 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md-6 col-12">
-            <img
+            <Image
               src={'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/map.png'}
-              width={'100%'}
+              alt={'map image'}
+              width={500}
+              height={500}
               style={{
+                width: '100%',
                 objectFit: 'cover',
                 height: '500px',
                 borderRadius: '10px',
                 boxShadow: '3px 3px 10px rgba(0,0,0,0.2)',
               }}
-            ></img>
+            />
           </div>
         </div>
       </div>

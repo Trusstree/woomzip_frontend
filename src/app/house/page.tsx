@@ -7,6 +7,7 @@ import PostMenu from '@/components/posts/PostMenu';
 import styles from '@/styles/Phrase.module.css';
 import LoadPage from '@/components/app/LoadPage';
 import Carousel from '@/app/_components/Carousel';
+import Image from 'next/image';
 
 export default async function Home({ searchParams }) {
   const [numShowItems, numShowPages] = [24, 10];
@@ -47,7 +48,7 @@ export default async function Home({ searchParams }) {
             data-bs-target={`#search_modal`}
           >
             <div style={{ width: '28px', height: '28px' }}>
-              <img src={'/buttonIcons/fillter.png'} width={28}></img>
+              <Image src={'/buttonIcons/fillter.png'} alt={'filter'} width={28} height={28} />
             </div>
             <div style={{ fontSize: '15px' }}>필터</div>
           </div>

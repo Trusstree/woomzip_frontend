@@ -23,12 +23,7 @@ export default function HouseCard({ data, className }: { data: any; className: s
             overflow: 'hidden',
           }}
         >
-          <Image
-            src={houseImage[0]}
-            alt="representative_image"
-            layout="fill" // 부모 요소를 꽉 채우도록 설정
-            objectFit="cover" // 이미지의 비율을 유지하며, 컨테이너를 덮도록 설정
-          />
+          <Image src={houseImage[0]} alt="representative_image" style={{ objectFit: 'cover' }} fill />
         </div>
 
         <div className="card-body w-100" style={{ height: '110px', border: 'none', padding: '5px' }}>

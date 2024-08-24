@@ -1,17 +1,18 @@
-"use client";
+'use client';
 
-import { postPavilionReview } from "@/actions/apis/livingAPI";
-import { LivingReviewImageInputComponent } from "@/app/living/[pid]/review/write/_components/LivingReviewImageInput";
-import { LivingReviewRadio } from "@/app/living/[pid]/review/write/_components/LivingReviewRadio";
-import { LivingReviewToggle } from "@/app/living/[pid]/review/write/_components/LivingReviewToggle";
-import { Star } from "@/components/review/Star";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { postPavilionReview } from '@/actions/apis/livingAPI';
+import { LivingReviewImageInputComponent } from '@/app/living/[pid]/review/write/_components/LivingReviewImageInput';
+import { LivingReviewRadio } from '@/app/living/[pid]/review/write/_components/LivingReviewRadio';
+import { LivingReviewToggle } from '@/app/living/[pid]/review/write/_components/LivingReviewToggle';
+import { Star } from '@/components/review/Star';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export function LivingReviewWriteClient() {
   const router = useRouter();
 
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
   const [images, setImages] = useState([]);
   const [tags, setTags] = useState([]);
   const [rating, setRating] = useState(5);
@@ -51,81 +52,82 @@ export function LivingReviewWriteClient() {
     }
     console.log(data);
 
-    router.push("/living/1");
+    router.push('/living/1');
     return;
   };
 
   return (
     <>
-      <div style={{ marginTop: "40px" }}>
-        <div style={{ color: "#101648", fontSize: "21px", fontWeight: "500" }}>
+      <div style={{ marginTop: '40px' }}>
+        <div style={{ color: '#101648', fontSize: '21px', fontWeight: '500' }}>
           키워드를 선택해주세요. (최대 5개 선택가능)
         </div>
         {/* 태그 제한 5개 구현 안딤 */}
         <div>
-          <div style={{ width: "100%" }}>
-            <LivingReviewToggle name={"집이 예뻐요"} onClick={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"깔끔해요"} onClick={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"주변 자연이 좋아요"} onClick={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"힐링하기 좋아요"} onClick={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"조용해요"} onClick={handleBadge} theme={"success"} />
-            <LivingReviewToggle name={"가족과 다녀오기 좋아요"} onClick={handleBadge} theme={"warning"} />
-            <LivingReviewToggle name={"아이와 다녀오기 좋아요"} onClick={handleBadge} theme={"warning"} />
-            <LivingReviewToggle name={"친구와 다녀오기 좋아요"} onClick={handleBadge} theme={"warning"} />
-            <LivingReviewToggle name={"또 오고 싶어요"} onClick={handleBadge} theme={"primary"} />
-            <LivingReviewToggle name={"전원생활 경험하기 좋아요"} onClick={handleBadge} theme={"primary"} />
-            <LivingReviewToggle name={"전원생활을 하고 싶어졌어요"} onClick={handleBadge} theme={"primary"} />
+          <div style={{ width: '100%' }}>
+            <LivingReviewToggle name={'집이 예뻐요'} onClick={handleBadge} theme={'success'} />
+            <LivingReviewToggle name={'깔끔해요'} onClick={handleBadge} theme={'success'} />
+            <LivingReviewToggle name={'주변 자연이 좋아요'} onClick={handleBadge} theme={'success'} />
+            <LivingReviewToggle name={'힐링하기 좋아요'} onClick={handleBadge} theme={'success'} />
+            <LivingReviewToggle name={'조용해요'} onClick={handleBadge} theme={'success'} />
+            <LivingReviewToggle name={'가족과 다녀오기 좋아요'} onClick={handleBadge} theme={'warning'} />
+            <LivingReviewToggle name={'아이와 다녀오기 좋아요'} onClick={handleBadge} theme={'warning'} />
+            <LivingReviewToggle name={'친구와 다녀오기 좋아요'} onClick={handleBadge} theme={'warning'} />
+            <LivingReviewToggle name={'또 오고 싶어요'} onClick={handleBadge} theme={'primary'} />
+            <LivingReviewToggle name={'전원생활 경험하기 좋아요'} onClick={handleBadge} theme={'primary'} />
+            <LivingReviewToggle name={'전원생활을 하고 싶어졌어요'} onClick={handleBadge} theme={'primary'} />
           </div>
         </div>
       </div>
-      <div style={{ marginTop: "40px" }}>
-        <div style={{ color: "#101648", fontSize: "21px", fontWeight: "500" }}>사진을 첨부해주세요.</div>
+      <div style={{ marginTop: '40px' }}>
+        <div style={{ color: '#101648', fontSize: '21px', fontWeight: '500' }}>사진을 첨부해주세요.</div>
         {/* 여기는 사진을 여러장 첨부할 수 있어야함. 일단 틀만 만들어 놓음 */}
         <div className="row">
           {images.map((e, i) => (
-            <img
+            <Image
               key={i}
               src={e}
+              alt={`review image ${i}`}
+              width={200}
+              height={200}
               style={{
-                width: "200px",
-                height: "200px",
-                backgroundColor: "lightGray",
-                borderRadius: "20px",
-                color: "white",
+                backgroundColor: 'lightGray',
+                borderRadius: '20px',
+                color: 'white',
               }}
             />
           ))}
-          <LivingReviewImageInputComponent className="col-2" name={"image"} setData={setImages} />
+          <LivingReviewImageInputComponent className="col-2" name={'image'} setData={setImages} />
         </div>
         클릭해서 이미지 추가
       </div>
 
-      <div style={{ marginTop: "40px" }}>
-        <div style={{ color: "#101648", fontSize: "21px", fontWeight: "500" }}>후기를 남겨주세요.</div>
+      <div style={{ marginTop: '40px' }}>
+        <div style={{ color: '#101648', fontSize: '21px', fontWeight: '500' }}>후기를 남겨주세요.</div>
         {/* 텍스트 첨부 */}
         <textarea
           className="container"
           style={{
-            width: "100%",
-            padding: "0",
-            margin: "0",
-            resize: "none",
-            overflowY: "auto",
-            borderRadius: "10px",
-            borderColor: "lightGray",
+            width: '100%',
+            padding: '0',
+            margin: '0',
+            resize: 'none',
+            overflowY: 'auto',
+            borderRadius: '10px',
+            borderColor: 'lightGray',
           }}
           rows={8}
-          placeholder={"최대한 구체적으로 적어주세요!"}
+          placeholder={'최대한 구체적으로 적어주세요!'}
           value={comment}
           onKeyDown={(event) => {
-            if (event.key === "Tab") {
+            if (event.key === 'Tab') {
               event.preventDefault();
-              setComment(comment + "\t");
+              setComment(comment + '\t');
             }
 
-            if (event.key === "Enter") {
+            if (event.key === 'Enter') {
               event.preventDefault();
-              setComment(comment + "\n");
+              setComment(comment + '\n');
             }
           }}
           onChange={(e) => {
@@ -138,16 +140,16 @@ export function LivingReviewWriteClient() {
       <div
         className="btn"
         style={{
-          width: "400px",
-          height: "50px",
-          borderRadius: "10px",
-          padding: "10px",
-          marginBottom: "10px",
-          backgroundColor: "#101648",
-          color: "white",
-          fontSize: "20px",
-          fontWeight: "600",
-          textAlign: "center",
+          width: '400px',
+          height: '50px',
+          borderRadius: '10px',
+          padding: '10px',
+          marginBottom: '10px',
+          backgroundColor: '#101648',
+          color: 'white',
+          fontSize: '20px',
+          fontWeight: '600',
+          textAlign: 'center',
         }}
         onClick={submit}
       >

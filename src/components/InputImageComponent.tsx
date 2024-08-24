@@ -3,6 +3,7 @@
 import { alertError } from '@/lib/alertUtil';
 import { deleteS3Url, setS3Url } from '@/lib/s3Util';
 import moment from 'moment';
+import Image from 'next/image';
 
 const options = {
   maxSizeMB: 1,
@@ -78,7 +79,14 @@ export default function InputImageComponent({
       <div className="row flex-nowrap overflow-auto">
         {images?.map((e, i) => (
           <div className="col-2 card p-0 mx-3" key={i}>
-            <img className={'card-img-top'} src={e} alt={`images ${name} ${i}`} />
+            <Image
+              className={'card-img-top'}
+              src={e}
+              alt={`images ${name} ${i}`}
+              width={200}
+              height={200}
+              fill={true}
+            />
             <div className="card-img-overlay p-0">
               <div className="d-flex justify-content-end">
                 <button

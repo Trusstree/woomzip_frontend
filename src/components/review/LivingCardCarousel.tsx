@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import "swiper/css";
-import "swiper/css/pagination";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import Image from 'next/image';
 
 export default function LivingCardCarousel({ images }) {
   return (
@@ -11,17 +12,20 @@ export default function LivingCardCarousel({ images }) {
       pagination={{ dynamicBullets: true }}
       modules={[Pagination]}
       className="mySwiper"
-      style={{ width: "100%", height: "280px" }}
+      style={{ width: '100%', height: '280px' }}
     >
       {images.map((e, i) => (
         <SwiperSlide key={i}>
-          <img
+          <Image
+            alt={'living card image'}
             src={e}
+            width={300}
+            height={300}
             style={{
-              objectFit: "cover",
-              width: "100%",
-              height: "100%",
-              borderRadius: "10px",
+              objectFit: 'cover',
+              width: '100%',
+              height: '100%',
+              borderRadius: '10px',
             }}
           />
         </SwiperSlide>

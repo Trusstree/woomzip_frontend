@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import { Children } from "@/types/props";
-import { useRouter } from "next/navigation";
+import { Children } from '@/types/props';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 type RouteButtonProps = {
   url: string;
@@ -20,8 +21,8 @@ export function AdminConfirmCard(props: RouteButtonProps) {
   }
 
   return (
-    <div className={`card${className ? ` ${className}` : ""}`} onClick={handleClick}>
-      {src && <img src={src} className="card-img-top" alt={title}></img>}
+    <div className={`card${className ? ` ${className}` : ''}`} onClick={handleClick}>
+      {src && <Image src={src} className="card-img-top" alt={title} width={300} height={300} />}
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{children}</p>

@@ -89,7 +89,7 @@ const Editor = dynamic(
             matchVisual: false,
           },
         }),
-        [],
+        [imageHandler],
       );
 
       return (

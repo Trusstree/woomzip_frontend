@@ -7,8 +7,8 @@ import useQuery from '@/hooks/useQuery';
 import { parseSpecificationInfo } from '@/lib/parseUtil';
 import { detailPriceText } from '@/lib/stringUtil';
 import { useRouter } from 'next/navigation';
-import { useRef } from 'react';
 import ReviewList from '@/app/mypage/[uid]/_components/_company/ReviewListCompany';
+import Image from 'next/image';
 
 export default function HouseExpl({
   pid,
@@ -23,25 +23,25 @@ export default function HouseExpl({
   const router = useRouter();
   const gyeonjeokLink = `${'/planning'}?${createQueryString('house_id', pid.toString())}`;
 
-  const elementA = useRef<HTMLDivElement>(null);
-  const onMoveBoxA = () => {
-    elementA.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  // const elementA = useRef<HTMLDivElement>(null);
+  // const onMoveBoxA = () => {
+  //   elementA.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // };
 
-  const elementB = useRef<HTMLDivElement>(null);
-  const onMoveBoxB = () => {
-    elementB.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  // const elementB = useRef<HTMLDivElement>(null);
+  // const onMoveBoxB = () => {
+  //   elementB.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // };
 
-  const elementC = useRef<HTMLDivElement>(null);
-  const onMoveBoxC = () => {
-    elementC.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  // const elementC = useRef<HTMLDivElement>(null);
+  // const onMoveBoxC = () => {
+  //   elementC.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // };
 
-  const elementD = useRef<HTMLDivElement>(null);
-  const onMoveBoxD = () => {
-    elementD.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  // const elementD = useRef<HTMLDivElement>(null);
+  // const onMoveBoxD = () => {
+  //   elementD.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // };
 
   return (
     <>
@@ -64,7 +64,7 @@ export default function HouseExpl({
       </div> */}
 
       {/* 상세 정보 */}
-      <div ref={elementA} className="w-full h-screen relative flex flex-col" style={{ marginTop: '50px' }}>
+      <div className="w-full h-screen relative flex flex-col" style={{ marginTop: '50px' }}>
         <div className="row g-5">
           <HalfRowText name={'침실'} data={`${houseData['room_count']}개`} />
           <HalfRowText name={'욕실'} data={`${houseData['toilet_count']}개`} />
@@ -85,7 +85,7 @@ export default function HouseExpl({
         }}
       >
         <span>
-          <img
+          <Image
             className={'m-0 align-self-center'}
             src={userData?.['user_img_url'] || 'blur_image.png'}
             alt={`profile`}
@@ -114,7 +114,7 @@ export default function HouseExpl({
       <hr style={{ margin: '60px 0' }} />
 
       {/* 배송 정보 */}
-      <div ref={elementD}>
+      <div>
         <div
           className="col-12"
           style={{
@@ -161,7 +161,7 @@ export default function HouseExpl({
       <hr style={{ margin: '60px 0' }} />
 
       {/* 가격 정보 */}
-      <div ref={elementD}>
+      <div>
         <div
           className="col-12"
           style={{
@@ -232,7 +232,7 @@ export default function HouseExpl({
       <hr style={{ margin: '60px 0' }} />
 
       {/* 제품 사양 */}
-      <div ref={elementB} className="w-full h-screen relative flex flex-col" style={{ margin: '50px 0' }}>
+      <div className="w-full h-screen relative flex flex-col" style={{ margin: '50px 0' }}>
         <div
           className="col-12"
           style={{
@@ -267,7 +267,7 @@ export default function HouseExpl({
       </div>
       <hr />
 
-      <div ref={elementC} className="w-full h-screen relative flex flex-col" style={{ marginTop: '50px' }}>
+      <div className="w-full h-screen relative flex flex-col" style={{ marginTop: '50px' }}>
         <div style={{ marginBottom: '60px' }}>
           <ReviewList
             uid={houseData['fk_seller_id']}

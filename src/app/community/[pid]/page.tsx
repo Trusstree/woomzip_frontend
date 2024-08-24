@@ -6,6 +6,7 @@ import { loadPostData, loadRecommendPostData } from '@/app/community/[pid]/_acti
 import CommentComponent from '@/app/community/[pid]/_components/CommentComponent';
 import LoadPage from '@/components/app/LoadPage';
 import { elapsedTimeText } from '@/lib/stringUtil';
+import Image from 'next/image';
 
 type PageParams = {
   pid: number;
@@ -105,9 +106,9 @@ export default async function page({ params }: { params: PageParams }) {
 
           <div className="row" style={{ marginTop: '20px' }}>
             <div style={{ width: '50px', height: '40px' }}>
-              <img
+              <Image
                 src={postData?.['user_img_url'] || '/blur_image.png'}
-                alt={'pic'}
+                alt={'user image'}
                 width={40}
                 height={40}
                 style={{
