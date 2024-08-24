@@ -1,19 +1,16 @@
 import PostMenu from '@/components/posts/PostMenu';
-import Carousel from '@/app/_components/Carousel';
 import MainCarousel from '@/app/_components/MainCarousel';
 import SubCarousel from '@/app/_components/SubCarousel';
 import PostList from '@/app/_components/PostList';
 import HouseList from '@/app/_components/HouseList';
 import { loadHouseData, loadPostData } from '@/app/_actions/actions';
-import Image from 'next/image';
-import { relative } from 'path';
 
 export default async function Home() {
   const postData = await loadPostData();
   const semoHouseData = await loadHouseData({ tag: '세모지붕' });
   const nongchonHouseData = await loadHouseData({ tag: '체류형쉼터' });
-  const nongmakHouseData = await loadHouseData({ tag: '농막' });
-  const luxuryHouseData = await loadHouseData({ tag: '고급스러운' });
+  // const nongmakHouseData = await loadHouseData({ tag: '농막' });
+  // const luxuryHouseData = await loadHouseData({ tag: '고급스러운' });
 
   return (
     <>

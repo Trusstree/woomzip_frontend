@@ -26,7 +26,6 @@ export default function AddHouse({ uid }) {
   const imageInfo = useImageInfo();
 
   const submit = useCallback(async () => {
-    console.log(imageInfo);
     //validate를 위한 부분
     if (!imageInfo['representative_image']) {
       alertError('이미지 에러!', '대표 이미지가 빠졌어요 ㅠㅠ');
@@ -39,12 +38,47 @@ export default function AddHouse({ uid }) {
     }
 
     const data = {
-      seller_id: uid,
-      house_info: houseInfo,
+      house_info: {
+        house_name: houseInfo.houseName,
+        house_explanation: houseInfo.houseExplanation,
+        floor: houseInfo.floorCount,
+        building_area: houseInfo.buildingArea,
+        total_floor_area: houseInfo.totalFloorArea,
+        room_count: houseInfo.roomCount,
+        toilet_count: houseInfo.toiletCount,
+        estimate_duration: houseInfo.estimateDuration,
+        warranty: houseInfo.warranty,
+        has_model: houseInfo.hasModel,
+        is_hut: houseInfo.isHut,
+        base_price: houseInfo.basePrice,
+        discount_rate: houseInfo.discountPrice,
+        price_variation: houseInfo.priceVariation,
+        specificity_info: houseInfo.specificityInfo,
+      },
       option_info: optionInfo,
       delivery_unavailable: deliveryInfo,
-      specification_info: specificationInfo,
-      house_img_url: imageInfo,
+      specification_info: {
+        framework: specificationInfo.framework,
+        exterior_material: specificationInfo.exteriorMaterial,
+        roofing_material: specificationInfo.roofingMaterial,
+        insulation_material: specificationInfo.insulationMaterial,
+        interior_material: specificationInfo.interiorMaterial,
+        window: specificationInfo.window,
+        heating: specificationInfo.heating,
+        furniture: specificationInfo.furniture,
+        toilet: specificationInfo.toilet,
+        kitchen: specificationInfo.kitchen,
+        lighting: specificationInfo.lighting,
+        etc_info: specificationInfo.etcInfo,
+        specification_description: specificationInfo.specificationDescription,
+      },
+      house_img_url: {
+        representative_image: imageInfo.representativeImage,
+        external_images: imageInfo.externalImages,
+        internal_images: imageInfo.internalImages,
+        floor_plan_images: imageInfo.floorPlanImages,
+        elevation_plan_images: imageInfo.elevationPlanImages,
+      },
     };
 
     const [response, error] = await postHouse(data);
