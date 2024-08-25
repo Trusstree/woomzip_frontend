@@ -11,7 +11,7 @@ const SubCarouselData = [
     title2: '모두가하우징 기획전!',
     subTitle2: '08.25~',
     color: 'white',
-    img: '/CarouselImgs/moduga.png',
+    img: '/CarouselImgs/moduga.wepb',
     url: `/house?q=모두가하우징`,
   },
   {
@@ -22,7 +22,7 @@ const SubCarouselData = [
     title2: '탑디자인의 새로운 제품!',
     subTitle2: '',
     color: 'white',
-    img: '/CarouselImgs/topdesign.png',
+    img: '/CarouselImgs/topdesign.wepb',
     url: `/house?q=탑디자인`,
   },
 ];

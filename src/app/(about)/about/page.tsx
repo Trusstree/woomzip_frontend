@@ -8,13 +8,7 @@ export default function About() {
   return (
     <div>
       <div style={{ width: '100%', height: '700px', position: 'relative' }}>
-        <Image
-          src="/company.gif"
-          width={540}
-          height={304}
-          style={{ width: '100%', objectFit: 'cover' }}
-          alt={'company'}
-        />
+        <Image src="/111.wepb" width={540} height={304} style={{ width: '100%', objectFit: 'cover' }} alt={'company'} />
         <div
           style={{
             position: 'absolute',

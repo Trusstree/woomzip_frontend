@@ -10,7 +10,7 @@ export default async function PostList({ postData }) {
       }}
     >
       {postData.map((e: any, i: number) => (
-        <PostCard data={e} key={i} className="col-10 col-md-4 col-lg-3" />
+        <PostCard data={e} key={i} className="col-10 col-md-3" />
       ))}
     </div>
   );
