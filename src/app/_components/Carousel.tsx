@@ -75,7 +75,7 @@ export default function SubCarousel() {
                     </div>
                   </div>
                   <div className="col-6">
-                    <Image src={e.img} alt={'mainPic'} width={400} height={200} className={styles.img}></Image>
+                    <Image src={e.img} alt={'mainPic'} width={400} height={200} className={styles.img} />
                   </div>
                 </div>
               </div>

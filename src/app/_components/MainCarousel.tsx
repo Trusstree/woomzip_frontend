@@ -14,11 +14,18 @@ const MainCarouselData = [
 
 export default function MainCarousel() {
   return (
-    <div className="col-md-9 col-12" style={{ position: 'relative', overflow: 'hidden', borderRadius: '5px' }}>
+    <div className="col-md-9 col-12" style={{ position: 'relative', overflow: 'hidden' }}>
       {MainCarouselData.map((e, i) => (
-        <Link key={i} style={{ cursor: 'pointer' }} href={e.url}>
-          <div className={styles.imageContainer}>
-            <Image src={e.img} alt="mainPic" fill sizes="(max-width: 880px) 80vw, 100vw" className={styles.image} />
+        <Link key={i} style={{ position: 'relative', cursor: 'pointer' }} href={e.url}>
+          <div className={styles.imageContainer} style={{ position: 'relative', height: 450 }}>
+            <Image
+              src={e.img}
+              alt="mainPic"
+              fill
+              sizes="(max-width: 880px) 80vw, 100vw"
+              className={styles.image}
+              style={{ borderRadius: '5px' }}
+            />
           </div>
         </Link>
       ))}

@@ -56,7 +56,13 @@ export default function PostCard({ data, className }: PostCardProps) {
               overflow: 'hidden',
             }}
           >
-            <Image src={imgSrcArr[0] || '/111.webp'} alt="post card img" style={{ objectFit: 'cover' }} fill />
+            <Image
+              src={imgSrcArr[0] || '/111.webp'}
+              alt="post card img"
+              style={{ objectFit: 'cover' }}
+              fill
+              sizes="(max-width: 767px) 100vw, (max-width: 991px) 40vw, 20vw"
+            />
           </div>
 
           <div

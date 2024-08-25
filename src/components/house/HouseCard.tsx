@@ -23,7 +23,13 @@ export default function HouseCard({ data, className }: { data: any; className: s
             overflow: 'hidden',
           }}
         >
-          <Image src={houseImage[0]} alt="representative_image" style={{ objectFit: 'cover' }} fill />
+          <Image
+            src={houseImage[0]}
+            alt="representative_image"
+            style={{ objectFit: 'cover' }}
+            fill
+            sizes="(max-width: 767px)100vw, 20vw"
+          />
         </div>
 
         <div className="card-body w-100" style={{ height: '110px', border: 'none', padding: '5px' }}>
