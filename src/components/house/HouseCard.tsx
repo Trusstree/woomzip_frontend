@@ -31,6 +31,23 @@ export default function HouseCard({ data, className }: { data: any; className: s
                 layout="fill" // 부모 요소를 꽉 채우도록 설정
                 objectFit="cover" // 이미지의 비율을 유지하며, 컨테이너를 덮도록 설정
               />
+
+              <div
+                style={{
+                  fontSize: '15px',
+                  fontWeight: '500',
+                  width: 'auto',
+                  position: 'absolute',
+                  bottom: 9,
+                  right: 10,
+                  backgroundColor: '#D1D1DA',
+                  padding: '0 7px',
+                  borderRadius: '10px',
+                }}
+              >
+                <span style={{ fontSize: '19px', fontWeight: '800', color: '#314FC0' }}>♥</span>{' '}
+                {data['like_count'] || '0'}
+              </div>
             </div>
           </div>
 
@@ -61,25 +78,11 @@ export default function HouseCard({ data, className }: { data: any; className: s
                   >
                     {data['house_name']}
                   </div>
-                  <div
-                    style={{
-                      fontSize: '15px',
-                      fontWeight: '500',
-                      width: 'auto',
-                      marginTop: '-2px',
-                    }}
-                  >
-                    <span style={{ fontSize: '18px', fontWeight: '800', color: '#DA0004' }}>♥</span>{' '}
-                    {data['like_count'] || '0'}
-                  </div>
                 </div>
 
-                <div className="row d-flex justify-content-between" style={{ marginTop: '-7px' }}>
-                  <div style={{ width: 'auto' }}>
-                    <div style={{ fontSize: '15px', fontWeight: '500' }}>{cardPriceText(data['final_price'])}</div>
-                  </div>
-                  <div style={{ width: 'auto' }}>
-                    {data['discount_rate'] > 0 && (
+                <div className="row" style={{ marginTop: '-7px' }}>
+                  {data['discount_rate'] > 0 && (
+                    <div style={{ width: 'auto', paddingRight: '0' }}>
                       <div
                         style={{
                           color: '#314FC0',
@@ -89,32 +92,50 @@ export default function HouseCard({ data, className }: { data: any; className: s
                       >
                         {data['discount_rate']}%
                       </div>
-                    )}
+                    </div>
+                  )}
+                  <div style={{ width: 'auto' }}>
+                    <div style={{ fontSize: '15px', fontWeight: '500' }}>{cardPriceText(data['final_price'])}</div>
                   </div>
                 </div>
 
-                <div className="d-flex justify-content-between" style={{ padding: '0 7px', fontSize: '15px' }}>
-                  <div className="row" style={{ width: 'auto' }}>
-                    <div style={{ width: 'auto', padding: '0' }}>
-                      <Image src={'/houseIcons/pyeong.png'} alt={'pyeong.png'} width={30} height={30}></Image>
-                    </div>
-                    <div style={{ width: 'auto', padding: '3px' }}>
-                      {data['total_floor_area']?.toFixed(1) || 'NaN'}평
-                    </div>
+                <div className="row g-1" style={{ fontSize: '14px', fontWeight: '400' }}>
+                  <div className="col-4">
+                    <Image src={'/houseIcons/pyeong.png'} alt={'pyeong.png'} width={28} height={28}></Image>
+                    <span>{data['total_floor_area']?.toFixed(1) || 'NaN'}평</span>
                   </div>
-                  <div className="row" style={{ width: 'auto' }}>
-                    <div style={{ width: 'auto', padding: '0' }}>
-                      <Image src={'/houseIcons/room.png'} alt={'pyeong.png'} width={30} height={30}></Image>
-                    </div>
-                    <div style={{ width: 'auto', padding: '3px' }}>{data['room_count']}개</div>
+                  <div className="col-4">
+                    <Image src={'/houseIcons/room.png'} alt={'pyeong.png'} width={28} height={28}></Image>
+                    <span>{data['room_count']}개</span>
                   </div>
-                  <div className="row" style={{ width: 'auto' }}>
-                    <div style={{ width: 'auto', padding: '0' }}>
-                      <Image src={'/houseIcons/toilet.png'} alt={'pyeong.png'} width={30} height={30}></Image>
-                    </div>
-                    <div style={{ width: 'auto', padding: '3px' }}>{data['toilet_count']}개</div>
+                  <div className="col-4">
+                    <Image src={'/houseIcons/toilet.png'} alt={'pyeong.png'} width={28} height={28}></Image>
+                    <span>{data['toilet_count']}개</span>
                   </div>
                 </div>
+
+                {/* <div className="row" style={{ padding: '0 7px', fontSize: '14px', width: '100%' }}>
+                  <div className="row" style={{ width: 'auto' }}>
+                    <div style={{ width: 'auto', padding: '0' }}>
+                      <Image src={'/houseIcons/pyeong.png'} alt={'pyeong.png'} width={28} height={28}></Image>
+                    </div>
+                    <span style={{ width: 'auto', padding: '0', marginTop: '6px' }}>
+                      {data['total_floor_area']?.toFixed(1) || 'NaN'}평
+                    </span>
+                  </div>
+                  <div className="row" style={{ width: 'auto' }}>
+                    <div style={{ width: 'auto', padding: '0' }}>
+                      <Image src={'/houseIcons/room.png'} alt={'pyeong.png'} width={28} height={28}></Image>
+                    </div>
+                    <div style={{ width: 'auto', padding: '0', marginTop: '6px' }}>{data['room_count']}개</div>
+                  </div>
+                  <div className="row" style={{ width: 'auto' }}>
+                    <div style={{ width: 'auto', padding: '0' }}>
+                      <Image src={'/houseIcons/toilet.png'} alt={'pyeong.png'} width={28} height={28}></Image>
+                    </div>
+                    <div style={{ width: 'auto', padding: '0', marginTop: '6px' }}>{data['toilet_count']}개</div>
+                  </div>
+                </div> */}
               </div>
             </div>
           </div>

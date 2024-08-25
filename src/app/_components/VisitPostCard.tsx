@@ -115,13 +115,13 @@ export default function VisitPostCard({ data, className }: PostCardProps) {
 
                 <div
                   className="d-flex justify-content-between"
-                  style={{ fontSize: '14px', width: 'auto', fontWeight: '400', marginTop: '2px' }}
+                  style={{ fontSize: '14px', width: 'auto', fontWeight: '400', marginTop: '5px', color: '#D1D1DA' }}
                 >
-                  <div>{data['nickname']}</div>
+                  <div style={{ fontWeight: '500' }}>{data['nickname']}</div>
 
                   <div
                     className="d-flex justify-content-center align-content-center"
-                    style={{ fontSize: '13px', color: 'gray', width: 'auto', fontWeight: '400' }}
+                    style={{ fontSize: '13px', width: 'auto', fontWeight: '400' }}
                   >
                     <div>댓글 {cardCountText(data?.['comment_count'])}</div>
                     <span style={{ padding: '0 5px' }}>·</span>

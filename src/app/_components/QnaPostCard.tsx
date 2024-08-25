@@ -69,31 +69,6 @@ export default function QnaPostCard({ data, className }: PostCardProps) {
               width: '100%',
               borderRadius: '10px',
               position: 'absolute',
-              top: 5,
-              left: 5,
-            }}
-          >
-            <div
-              style={{
-                backgroundColor: style[data.category].backgroundColor,
-                borderColor: style[data.category].backgroundColor,
-                width: '50px',
-                fontSize: '14px',
-                color: style[data.category].color,
-                borderRadius: '15px',
-                padding: '3px 6px',
-                textAlign: 'center',
-              }}
-            >
-              {data['category']}
-            </div>
-          </div>
-
-          <div
-            style={{
-              width: '100%',
-              borderRadius: '10px',
-              position: 'absolute',
               bottom: 90,
               left: 5,
             }}
@@ -116,9 +91,9 @@ export default function QnaPostCard({ data, className }: PostCardProps) {
               </div>
               <div
                 style={{
-                  marginTop: '3px',
+                  marginTop: '5px',
                   color: 'white',
-                  fontSize: '14px',
+                  fontSize: '13px',
                   fontWeight: '440',
                   textShadow: '3px 3px 10px raba(0,0,0,0.3)',
                 }}
@@ -217,23 +192,26 @@ export default function QnaPostCard({ data, className }: PostCardProps) {
                 padding: '5px 0',
               }}
             >
-              {/* <span
+              <span
                 style={{
                   color: style[data.category].color,
+                  backgroundColor: style[data.category].backgroundColor,
+                  borderRadius: '20px',
+                  padding: '0 5px',
                 }}
               >
-                {data['category']} ·{' '}
-              </span> */}
+                {data['category']}
+              </span>{' '}
               {data.title}
             </div>
 
             <div
               className="d-flex justify-content-between"
-              style={{ fontSize: '14px', width: 'auto', fontWeight: '400', marginTop: '2px' }}
+              style={{ fontSize: '14px', width: 'auto', fontWeight: '400', marginTop: '5px' }}
             >
               <div
                 className="d-flex justify-content-center align-content-center"
-                style={{ fontSize: '13px', color: 'gray', width: 'auto', fontWeight: '400' }}
+                style={{ fontSize: '13px', color: '#D1D1DA', width: 'auto', fontWeight: '400' }}
               >
                 <div>댓글 {cardCountText(data?.['comment_count'])}</div>
                 <span style={{ padding: '0 5px' }}>·</span>

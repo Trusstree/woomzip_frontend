@@ -8,7 +8,7 @@ export default function About() {
   return (
     <div>
       <div style={{ width: '100%', height: '700px', position: 'relative' }}>
-        <img src="/company.gif" width={'100%'} height={'700px'} style={{ objectFit: 'cover' }} />
+        <img src="/111.wepb" width={'100%'} height={'700px'} style={{ objectFit: 'cover' }} />
         <div
           style={{
             position: 'absolute',

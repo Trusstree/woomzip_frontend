@@ -34,12 +34,12 @@ export default async function Home() {
       <div
         style={{
           width: '100%',
-          padding: '30px 0 20px 0',
+          padding: '60px 0 20px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
-            title={'전원생활 고민을 나눠보세요!'}
+            title={'전원생활 고민을 나눠보세요!🏕️'}
             routeUrl={'/community'}
             routeText={'더보기'}
             horizontalScroll={true}
@@ -58,7 +58,7 @@ export default async function Home() {
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
-            title={'집들이 구경하고 가세요!'}
+            title={'집들이 구경하고 가세요!🏠'}
             routeUrl={'/community'}
             routeText={'더보기'}
             horizontalScroll={true}
@@ -77,7 +77,7 @@ export default async function Home() {
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
-            title={'꼭 필요한 건축정보를 알려드려요!'}
+            title={'꼭 필요한 건축정보를 알려드려요!📚'}
             routeUrl={'/community'}
             routeText={'더보기'}
             horizontalScroll={true}
@@ -93,12 +93,12 @@ export default async function Home() {
       <div
         style={{
           width: '100%',
-          padding: '20px 0',
+          padding: '30px 0 20px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
-            title={'농촌 체류형 쉼터는 움집에서!'}
+            title={'요즘 핫한 농촌 체류형 쉼터 구경하기🏡'}
             routeUrl={'/house?tag=체류형쉼터'}
             routeText={'더보기'}
             horizontalScroll={true}
@@ -114,7 +114,7 @@ export default async function Home() {
       <div
         style={{
           width: '100%',
-          padding: '30px 0 20px 0',
+          padding: '40px 0 50px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
