@@ -48,25 +48,6 @@ export default async function Home() {
         </div>
       </div>
 
-      {/*집들이*/}
-      <div
-        style={{
-          width: '100%',
-          padding: '30px 0 20px 0',
-        }}
-      >
-        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
-          <PostMenu
-            title={'집들이 구경하고 가세요!🏠'}
-            routeUrl={'/community'}
-            routeText={'더보기'}
-            horizontalScroll={true}
-          >
-            <div style={{ width: '100%', overflow: 'hidden' }}>{postData && <VisitPostList postData={postData} />}</div>
-          </PostMenu>
-        </div>
-      </div>
-
       {/* 칼럼 */}
       <div
         style={{
@@ -84,6 +65,25 @@ export default async function Home() {
             <div style={{ width: '100%', overflow: 'hidden' }}>
               {postData && <ColumnPostList postData={postData} />}
             </div>
+          </PostMenu>
+        </div>
+      </div>
+
+      {/*집들이*/}
+      <div
+        style={{
+          width: '100%',
+          padding: '30px 0 20px 0',
+        }}
+      >
+        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
+          <PostMenu
+            title={'집들이 구경하고 가세요!🏠'}
+            routeUrl={'/community'}
+            routeText={'더보기'}
+            horizontalScroll={true}
+          >
+            <div style={{ width: '100%', overflow: 'hidden' }}>{postData && <VisitPostList postData={postData} />}</div>
           </PostMenu>
         </div>
       </div>

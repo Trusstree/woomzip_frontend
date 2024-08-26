@@ -15,7 +15,7 @@ export default function PostMenu(props: PostMenuProps) {
   return (
     <div>
       <div className="d-flex justify-content-between mt-2 mb-1">
-        <h5 style={{ fontWeight: '640' }}>{title ?? ''}</h5>
+        <h5 style={{ fontSize: '18px' }}>{title ?? ''}</h5>
         {routeText && routeUrl && (
           <RouteButton style={{ border: 'none', fontSize: '15px', color: '#314FC0' }} url={routeUrl}>
             {routeText}

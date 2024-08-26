@@ -100,7 +100,7 @@ export default function HouseCard({ data, className }: { data: any; className: s
                   </div>
                 </div>
 
-                <div className="row g-1" style={{ fontSize: '14px', fontWeight: '400' }}>
+                <div className="row g-0" style={{ fontSize: '14px', fontWeight: '400' }}>
                   <div className="col-4">
                     <Image src={'/houseIcons/pyeong.png'} alt={'pyeong.png'} width={28} height={28}></Image>
                     <span>{data['total_floor_area']?.toFixed(1) || 'NaN'}평</span>

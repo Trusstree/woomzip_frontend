@@ -14,7 +14,7 @@ export default function MyPageProfileCompany({ uid, userData }) {
       <div className="container" style={{ height: '60px' }}></div>
       <div
         style={{
-          padding: '10px',
+          padding: '25px',
           boxShadow: '3px 3px 13px rgba(0, 0, 0, 0.2)',
           borderRadius: '10px',
         }}

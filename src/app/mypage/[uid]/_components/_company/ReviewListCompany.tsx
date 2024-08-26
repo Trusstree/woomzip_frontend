@@ -15,10 +15,14 @@ export default function ReviewListCompany({
   return (
     <div style={{ marginTop: '20px', width: '100%' }}>
       <div className="d-flex justify-content-between" style={{ margin: '30px 0 10px 0' }}>
-        <h5>
+        <h5 style={{ fontSize: '18px' }}>
           후기({review.length}) ★ {rating ? rating.toFixed(1) : 0}
         </h5>
-        {url && <RouteButton url={url}>전체보기</RouteButton>}
+        {url && (
+          <RouteButton style={{ border: 'none', fontSize: '15px', color: '#314FC0' }} url={url}>
+            전체보기
+          </RouteButton>
+        )}
       </div>
       <div className="row flex-nowrap overflow-auto g-2" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
         {review?.map((e, i) => (
