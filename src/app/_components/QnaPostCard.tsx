@@ -76,7 +76,7 @@ export default function QnaPostCard({ data, className }: PostCardProps) {
             <div className="d-flex">
               <div style={{ width: '35px', height: '30px' }}>
                 <img
-                  src={data.profilePicture || '/blur_image.png'}
+                  src={data.profilePicture || '/blur_image.webp'}
                   alt={'pic'}
                   width={30}
                   height={30}

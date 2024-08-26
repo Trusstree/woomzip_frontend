@@ -12,7 +12,7 @@ const SubCarouselData = [
     title: '전 제품 구매 시,',
     title2: '금액의 1%를 환급!',
     color: 'white',
-    img: '/SubCarouselImgs/present.wepb',
+    img: '/SubCarouselImgs/present.webp',
     url: `/community/19`,
   },
   {
@@ -23,7 +23,7 @@ const SubCarouselData = [
     subTitle: '전원생활 동반자',
     title: '움집 서비스 알아보기',
     color: 'white',
-    img: '/SubCarouselImgs/girl.wepb',
+    img: '/SubCarouselImgs/girl.webp',
     url: `/service`,
   },
   {
@@ -75,14 +75,10 @@ export default function SubCarousel() {
                 <div className="row">
                   <div className="col-md-12 col-6">
                     <div
+                      className={styles.tag}
                       style={{
                         backgroundColor: SubCarouselData[i].tagBackgroundColor,
                         color: SubCarouselData[i].tagColor,
-                        width: '50px',
-                        margin: '20px auto',
-                        borderRadius: '20px',
-                        textAlign: 'center',
-                        fontSize: '14px',
                       }}
                     >
                       {e.tag}
@@ -91,14 +87,11 @@ export default function SubCarousel() {
                       style={{
                         textAlign: 'center',
                         color: SubCarouselData[i].color,
-                        margin: '20px 0',
-                        fontSize: '15px',
-                        fontWeight: '340',
                       }}
                     >
-                      <div>{e.subTitle}</div>
-                      <div style={{ fontSize: '18px', margin: '5px 0', fontWeight: '600' }}>{e.title}</div>
-                      <div style={{ fontSize: '18px', margin: '5px 0', fontWeight: '600' }}>{e.title2}</div>
+                      <div className={styles.subTitle}>{e.subTitle}</div>
+                      <div className={styles.title}>{e.title}</div>
+                      <div className={styles.title}>{e.title2}</div>
                     </div>
                   </div>
                   <div className="col-md-12 col-6">

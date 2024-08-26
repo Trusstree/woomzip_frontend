@@ -8,7 +8,13 @@ export default function About() {
   return (
     <div>
       <div style={{ width: '100%', height: '700px', position: 'relative' }}>
-        <Image src="/111.wepb" width={540} height={304} style={{ width: '100%', objectFit: 'cover' }} alt={'company'} />
+        <Image
+          src="/111.webp"
+          width={540}
+          height={304}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          alt={'company'}
+        />
         <div
           style={{
             position: 'absolute',
@@ -266,8 +272,8 @@ export default function About() {
             </div>
             <div className="col-md-6 col-12 row">
               <Image
-                width={1049}
-                height={1311}
+                width={500}
+                height={400}
                 alt={'map'}
                 src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/map.png"
                 style={{
