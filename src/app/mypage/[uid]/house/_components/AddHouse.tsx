@@ -27,15 +27,7 @@ export default function AddHouse({ uid }) {
 
   const submit = useCallback(async () => {
     //validate를 위한 부분
-    if (!imageInfo['representative_image']) {
-      alertError('이미지 에러!', '대표 이미지가 빠졌어요 ㅠㅠ');
-      return;
-    }
-
-    if (imageInfo['external_images'].length + imageInfo['internal_images'].length < 5) {
-      alertError('이미지 에러!', '제품 내외부 사진을 합쳐서 5장 이상 채워주세요!');
-      return;
-    }
+    if (!validate(houseInfo, optionInfo, deliveryInfo, specificationInfo, imageInfo)) return;
 
     const data = {
       house_info: {
@@ -51,12 +43,12 @@ export default function AddHouse({ uid }) {
         has_model: houseInfo.hasModel,
         is_hut: houseInfo.isHut,
         base_price: houseInfo.basePrice,
-        discount_rate: houseInfo.discountPrice,
+        final_price: houseInfo.discountPrice,
         price_variation: houseInfo.priceVariation,
         specificity_info: houseInfo.specificityInfo,
       },
-      option_info: optionInfo,
-      delivery_unavailable: deliveryInfo,
+      option_info: optionInfo.optionInfo,
+      delivery_unavailable: deliveryInfo.deliveryInfo,
       specification_info: {
         framework: specificationInfo.framework,
         exterior_material: specificationInfo.exteriorMaterial,
@@ -73,7 +65,7 @@ export default function AddHouse({ uid }) {
         specification_description: specificationInfo.specificationDescription,
       },
       house_img_url: {
-        representative_image: imageInfo.representativeImage,
+        representative_image: imageInfo.representativeImage[0],
         external_images: imageInfo.externalImages,
         internal_images: imageInfo.internalImages,
         floor_plan_images: imageInfo.floorPlanImages,
@@ -152,3 +144,72 @@ export default function AddHouse({ uid }) {
     </div>
   );
 }
+
+const validate = (houseInfo, optionInfo, deliveryInfo, specificationInfo, imageInfo) => {
+  if (!houseInfo.houseName) {
+    alertError('필수 데이터가 빠졌어요', '제품명을 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.houseExplanation) {
+    alertError('필수 데이터가 빠졌어요', '제품 소개글을 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.floorCount) {
+    alertError('필수 데이터가 빠졌어요', '층수를 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.buildingArea) {
+    alertError('필수 데이터가 빠졌어요', '건축면적을 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.totalFloorArea) {
+    alertError('필수 데이터가 빠졌어요', '실제 사용 평수를 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.roomCount) {
+    alertError('필수 데이터가 빠졌어요', '방 개수를 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.toiletCount) {
+    alertError('필수 데이터가 빠졌어요', '화장실 개수를 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.estimateDuration) {
+    alertError('필수 데이터가 빠졌어요', '예상 소요 기간을 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.warranty) {
+    alertError('필수 데이터가 빠졌어요', 'AS 보증 기간을 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.hasModel) {
+    alertError('필수 데이터가 빠졌어요', '농촌 체류형 주택으로 사용 가능한지 여부를 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.isHut) {
+    alertError('필수 데이터가 빠졌어요', '농막으로 사용가능한지 여부를 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.basePrice) {
+    alertError('필수 데이터가 빠졌어요', '기본가격을 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.discountPrice) {
+    alertError('필수 데이터가 빠졌어요', '할인 후 최종 가격을 입력해주세요!');
+    return false;
+  }
+  if (!houseInfo.specificityInfo) {
+    alertError('필수 데이터가 빠졌어요', '제품 구조 특이사항을 입력해주세요!');
+    return false;
+  }
+  if (!imageInfo['representativeImage']) {
+    alertError('이미지 에러!', '대표 이미지가 빠졌어요 ㅠㅠ');
+    return false;
+  }
+  if (imageInfo['externalImages'].length + imageInfo['internalImages'].length < 5) {
+    alertError('이미지 에러!', '제품 내외부 사진을 합쳐서 5장 이상 채워주세요!');
+    return false;
+  }
+
+  return true;
+};

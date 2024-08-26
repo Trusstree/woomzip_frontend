@@ -12,7 +12,7 @@ const SubCarouselData = [
     title: '전 제품 구매 시,',
     title2: '금액의 1%를 환급!',
     color: 'white',
-    img: '/SubCarouselImgs/present.wepb',
+    img: '/SubCarouselImgs/present.webp',
     url: `/community/19`,
   },
   {
@@ -23,7 +23,7 @@ const SubCarouselData = [
     subTitle: '전원생활 동반자',
     title: '움집 서비스 알아보기',
     color: 'white',
-    img: '/SubCarouselImgs/girl.wepb',
+    img: '/SubCarouselImgs/girl.webp',
     url: `/service`,
   },
   {

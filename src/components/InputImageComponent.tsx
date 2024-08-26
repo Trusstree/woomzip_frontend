@@ -2,6 +2,7 @@
 
 import { alertError } from '@/lib/alertUtil';
 import { deleteS3Url, setS3Url } from '@/lib/s3Util';
+import imageCompression from 'browser-image-compression';
 import moment from 'moment';
 import Image from 'next/image';
 
@@ -26,31 +27,36 @@ export default function InputImageComponent({
 }) {
   const handleChange = async (e) => {
     const files = Array.from(e.target.files) as Array<File>;
-    let imgs = files.filter((ee) => ee?.type?.split('/')[0] == 'image');
-    const imagesLen = images ? images.length : 0;
+    let inputImgs = files.filter((ee) => ee?.type?.split('/')[0] == 'image');
+    const imagesLen = images?.length ?? 0;
 
     if (maxLength) {
-      if (imgs.length + imagesLen > maxLength) {
+      if (inputImgs.length + imagesLen > maxLength) {
         alertError(
           '너무 많은 사진이 들어왔어요..',
           `해당 선택지에는 사진을 최대 ${maxLength}장까지 넣을 수 있어요. 사진을 지운 후에 다시 넣어주세요!`,
         );
       }
-      imgs = imgs.filter((_, i) => imagesLen + i < maxLength);
+      inputImgs = inputImgs.filter((_, i) => imagesLen + i < maxLength);
     }
 
-    imgs.forEach(async (e, i) => {
-      //const compressedImage = await imageCompression(e, options);
+    let resImgs = [];
+    for (const [i, e] of inputImgs.entries()) {
+      const compressedImage = imageCompression(e, options);
       const title = 'images' + moment().format(`YYYYMMDDHHmmss`) + `${i}`;
       const url = `${s3Url}/${title}.${e.type.split('/')[1]}`;
       const [response, error] = await setS3Url(url, e);
+
       if (error) {
         console.error(error);
         return;
       }
+      console.log(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`);
+      resImgs.push(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`);
+      console.log(resImgs);
+    }
 
-      setImages([...images, `${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`]);
-    });
+    setImages([...images, ...resImgs]);
   };
 
   const deleteImage = async (index) => {
@@ -78,15 +84,8 @@ export default function InputImageComponent({
       </div>
       <div className="row flex-nowrap overflow-auto">
         {images?.map((e, i) => (
-          <div className="col-2 card p-0 mx-3" key={i}>
-            <Image
-              className={'card-img-top'}
-              src={e}
-              alt={`images ${name} ${i}`}
-              width={200}
-              height={200}
-              fill={true}
-            />
+          <div className="col-2 card p-0 mx-3" key={i} style={{ position: 'relative', height: '200px' }}>
+            <Image className={'card-img-top'} src={e} alt={`images ${name} ${i}`} fill={true} />
             <div className="card-img-overlay p-0">
               <div className="d-flex justify-content-end">
                 <button
