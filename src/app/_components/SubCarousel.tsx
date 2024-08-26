@@ -75,14 +75,10 @@ export default function SubCarousel() {
                 <div className="row">
                   <div className="col-md-12 col-6">
                     <div
+                      className={styles.tag}
                       style={{
                         backgroundColor: SubCarouselData[i].tagBackgroundColor,
                         color: SubCarouselData[i].tagColor,
-                        width: '50px',
-                        margin: '20px auto',
-                        borderRadius: '20px',
-                        textAlign: 'center',
-                        fontSize: '14px',
                       }}
                     >
                       {e.tag}
@@ -91,14 +87,11 @@ export default function SubCarousel() {
                       style={{
                         textAlign: 'center',
                         color: SubCarouselData[i].color,
-                        margin: '20px 0',
-                        fontSize: '15px',
-                        fontWeight: '340',
                       }}
                     >
-                      <div>{e.subTitle}</div>
-                      <div style={{ fontSize: '18px', margin: '5px 0', fontWeight: '600' }}>{e.title}</div>
-                      <div style={{ fontSize: '18px', margin: '5px 0', fontWeight: '600' }}>{e.title2}</div>
+                      <div className={styles.subTitle}>{e.subTitle}</div>
+                      <div className={styles.title}>{e.title}</div>
+                      <div className={styles.title}>{e.title2}</div>
                     </div>
                   </div>
                   <div className="col-md-12 col-6">

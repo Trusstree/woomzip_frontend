@@ -15,13 +15,13 @@ export default function Header(props: HeaderProps) {
     >
       <div
         className="d-flex justify-content-between w-100"
-        style={{ height: '40px', width: '90%', maxWidth: '1150px' }}
+        style={{ height: '45px', width: '90%', maxWidth: '1150px' }}
       >
-        <RouteButton url="/" className="" style={{ marginLeft: '0', border: 'none' }}>
-          <Image src={'/woomzip_logo.webp'} alt={'Truss Logo'} width={100} height={26} />
+        <RouteButton url="/" className="" style={{ marginLeft: '0', marginBottom: '3px', border: 'none' }}>
+          <Image src={'/woomzip_logo.webp'} alt={'Truss Logo'} width={110} height={29} />
         </RouteButton>
 
-        <div className="d-none d-md-flex w-100">
+        <div className="d-none d-md-flex w-100 align-items-center">
           <div className="d-flex align-items-center me-auto">
             <RouteButton url="/" style={{ fontSize: '15px', marginBottom: '0px', border: 'none' }}>
               홈
@@ -39,7 +39,7 @@ export default function Header(props: HeaderProps) {
                 계획하기
               </RouteButton> */}
           </div>
-          <div style={{ textAlign: 'right', marginRight: '0', padding: '0', border: 'none' }}>
+          <div style={{ textAlign: 'right', margin: '0', padding: '0', border: 'none' }}>
             <SigninButton />
           </div>
         </div>

@@ -35,13 +35,13 @@ export default function ReviewCardCompany({ uid, id, nickname, date, rating, tag
           margin: '0',
           padding: '10px',
           width: '100%',
-          height: '150px',
+          height: '130px',
         }}
       >
-        <div className="col-8" style={{ height: '150px' }}>
-          <div className="pb-1" style={{ color: 'gray' }}>
+        <div className="col-8" style={{ height: '130px' }}>
+          {/* <div className="pb-1" style={{ color: 'gray' }}>
             {nickname}
-          </div>
+          </div> */}
 
           <div
             className="container p-0"
@@ -62,7 +62,7 @@ export default function ReviewCardCompany({ uid, id, nickname, date, rating, tag
         </div>
         <div className="col-4 m-0 p-0 d-flex flex-column align-items-center">
           <Image
-            className="card-img-top mt-3"
+            className="card-img-top"
             style={{ width: 110, borderRadius: '10px', objectFit: 'cover' }}
             alt="main-img"
             src={images?.[0] || 'blur_image.png'}

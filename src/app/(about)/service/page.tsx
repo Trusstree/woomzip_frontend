@@ -9,7 +9,7 @@ export default function Home() {
           alt="carousel image"
           width={500}
           height={500}
-          style={{ width: '100%', objectFit: 'cover' }}
+          style={{ width: '100%', height: '700px', objectFit: 'cover' }}
         />
         <div
           style={{

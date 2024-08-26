@@ -7,7 +7,7 @@ export default function SigninButton() {
   const { userContext } = useUser();
   return userContext == undefined ? (
     <Link
-      className={'btn px-4 py-2 btn rounded-lg fw-bold align-self-end'}
+      className={'btn rounded-lg fw-bold align-self-end'}
       style={{ fontSize: '14px', border: 'none' }}
       href="/signin"
     >
@@ -15,7 +15,7 @@ export default function SigninButton() {
     </Link>
   ) : (
     <Link
-      className={'btn px-4 py-2 btn rounded-lg fw-bold align-self-end'}
+      className={'btn rounded-lg fw-bold align-self-end'}
       style={{ fontSize: '14px', border: 'none' }}
       href={`/mypage/${userContext.uid}`}
     >

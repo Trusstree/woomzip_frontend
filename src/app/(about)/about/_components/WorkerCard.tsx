@@ -8,8 +8,11 @@ export default function WorkerCard({ name, dept, position, src, introduce, email
         <Image
           alt={'worker card image'}
           src={src}
+          width={300}
+          height={150}
           style={{
             width: '100%',
+            height: '100%',
             borderRadius: '10px',
             boxShadow: '3px 3px 10px rgba(0,0,0,0.2)',
           }}

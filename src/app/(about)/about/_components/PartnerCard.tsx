@@ -10,6 +10,8 @@ export default function PartnerCard({ src, title }) {
     >
       <Image
         src={src}
+        width={300}
+        height={150}
         style={{
           width: '100%',
           borderRadius: '10px',

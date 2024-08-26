@@ -25,7 +25,7 @@ const style = {
   일반: { backgroundColor: '#CCD6FF', color: '#314FC0', height: '260px' },
   공지: { backgroundColor: '#FFCCCC', color: '#C03142', height: '260px' },
   질문: { backgroundColor: '#E2FFCC', color: '#8AC031', height: '260px' },
-  칼럼: { backgroundColor: '#F9F871', color: '#FFC75F', height: '260px' },
+  칼럼: { backgroundColor: '#ECECF3', color: '#686875', height: '260px' },
 };
 
 export default function QnaPostCard({ data, className }: PostCardProps) {
@@ -76,7 +76,7 @@ export default function QnaPostCard({ data, className }: PostCardProps) {
             <div className="d-flex">
               <div style={{ width: '35px', height: '30px' }}>
                 <img
-                  src={data.profilePicture || '/blur_image.png'}
+                  src={data.profilePicture || '/blur_image.webp'}
                   alt={'pic'}
                   width={30}
                   height={30}

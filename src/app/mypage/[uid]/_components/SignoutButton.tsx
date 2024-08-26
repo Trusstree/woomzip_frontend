@@ -17,7 +17,16 @@ export default function SignoutButton() {
         router.replace('/');
       }}
     >
-      <span className="btn" style={{ wordBreak: 'keep-all', color: 'red', fontSize: '13px' }}>
+      <span
+        className="btn"
+        style={{
+          wordBreak: 'keep-all',
+          color: '#FF2741',
+          fontSize: '13px',
+          padding: '1px 1px 1px 10px',
+          marginTop: '10px',
+        }}
+      >
         로그아웃
       </span>
     </div>
