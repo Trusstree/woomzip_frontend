@@ -32,7 +32,7 @@ export async function loadHouseData(searchParams, numShowItems) {
   }
 
   const params = {
-    skip: searchCondition ? 1 : numShowItems * (page - 1) + 1,
+    skip: numShowItems * (page - 1) + 1,
     limit: numShowItems,
     ...searchCondition,
   };

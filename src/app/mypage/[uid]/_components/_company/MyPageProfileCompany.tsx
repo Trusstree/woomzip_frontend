@@ -46,7 +46,9 @@ export default function MyPageProfileCompany({ uid, userData }) {
             {userData?.['nickname']}
           </div>
         </div>
-        <div style={{ width: '100%', margin: '30px 0', fontSize: '16px' }}>{userData?.one_line_introduce}</div>
+        <div style={{ width: '100%', margin: '30px 0', fontSize: '16px', whiteSpace: 'pre-wrap' }}>
+          {userData?.one_line_introduce}
+        </div>
         <div className="row">
           <div className="col-3" style={{ fontWeight: '600' }}>
             대표자명

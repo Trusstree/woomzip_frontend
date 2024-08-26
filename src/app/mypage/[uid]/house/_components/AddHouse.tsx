@@ -1,6 +1,6 @@
 'use client';
 
-import { ChangeEvent, ChangeEventHandler, useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { postHouse } from '@/actions/apis/houseAPI';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { HouseSpecificationComponent } from '@/app/mypage/[uid]/house/_components/HouseSpecificationComponent';

@@ -4,7 +4,7 @@ import { getPosts } from '@/actions/apis/postAPI';
 
 export async function loadPostData({ searchParams, numShowItems }) {
   const page = searchParams.page ? Number(searchParams.page) : 1;
-  const category = searchParams.tag;
+  const category = searchParams.category;
   const q = searchParams.q;
 
   const params = {
@@ -20,7 +20,6 @@ export async function loadPostData({ searchParams, numShowItems }) {
     console.error(error);
     return [undefined, undefined];
   }
-  console.log(error);
-  console.log(data);
+
   return [data?.data[0].posts, data?.data[0].total];
 }

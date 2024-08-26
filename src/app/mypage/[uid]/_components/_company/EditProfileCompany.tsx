@@ -2,6 +2,7 @@
 
 import { validateNickname, updateUser } from '@/actions/apis/userAPI';
 import SignupGenderRadio from '@/app/signup/_components/SignupRadio';
+import SignupTextArea from '@/app/signup/_components/SignupTextArea';
 import SignupTextBox from '@/app/signup/_components/SignupTextBox';
 import InputImageComponent from '@/components/InputImageComponent';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
@@ -55,7 +56,7 @@ export default function EditProfileCompany({ companyInfo }) {
     if (!isRequired(nickname)) {
       return alertError('별명', `별명을 입력해주세요!`);
     }
-    if (companyInfo.nickname != nickname) {
+    if (companyInfo.profile.nickname != nickname) {
       const [vnickname, vnicknameError] = await validateNickname(nickname);
       if (vnicknameError) {
         return alertError('별명', `별명이 중복되었어요!`);
@@ -70,7 +71,6 @@ export default function EditProfileCompany({ companyInfo }) {
     if (!isRequired(addr)) {
       return alertError('주소', `주소를 입력해주세요!`);
     }
-
     if (!isRequired(prUrl)) {
       return alertError('홈페이지 주소', `홈페이지 주소를 입력해주세요!`);
     }
@@ -129,7 +129,7 @@ export default function EditProfileCompany({ companyInfo }) {
         explain={'*기업회원은 회사명을 입력해주세요'}
       />
       <SignupTextBox title={'이메일'} name={'email'} data={email} setData={setEmail} />
-      <SignupTextBox
+      <SignupTextArea
         title={'한 줄 설명'}
         name={'introduce'}
         data={introduce}

@@ -15,7 +15,6 @@ export const getPosts = async (params: any) => {
     if (!error) error = err;
   }
 
-  console.log([data, error]);
   return [data, error];
 };
 

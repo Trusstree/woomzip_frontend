@@ -14,6 +14,7 @@ export default function EditProfileUser({ userInfo }) {
   const [name, setName] = useState(userInfo.name);
   const [nickname, setNickname] = useState(userInfo.nickname);
   const [email, setEmail] = useState(userInfo.email);
+  const [oneLineIntroduce, setOneLineIntroduce] = useState(userInfo.one_line_introduce);
   const [phoneNumber, setPhoneNumber] = useState(userInfo.phone_number);
   const [gender, setGender] = useState(userInfo.gender);
   const [birthday, setBirthday] = useState(userInfo.birthday);
@@ -33,9 +34,6 @@ export default function EditProfileUser({ userInfo }) {
   }, [phoneNumber]);
 
   const submit = async () => {
-    if (!isEmail(email)) {
-      return alertError('이메일', `이메일 형식에 맞게 입력해주세요!`);
-    }
     if (!isRequired(name)) {
       return alertError('이름', `이름을 입력해주세요!`);
     }
@@ -48,6 +46,9 @@ export default function EditProfileUser({ userInfo }) {
         return alertError('별명', `별명이 중복되었어요!`);
       }
     }
+    if (!isEmail(email)) {
+      return alertError('이메일', `이메일 형식에 맞게 입력해주세요!`);
+    }
     if (!isPhoneNumber(phoneNumber)) {
       return alertError('연락처', `연락처를 형식에 맞게 입력해주세요!`);
     }
@@ -59,6 +60,7 @@ export default function EditProfileUser({ userInfo }) {
       name: name,
       nickname: nickname,
       email: email,
+      one_line_introduce: oneLineIntroduce,
       phone_number: phoneNumber,
       gender: gender,
       birthday: birthday,
@@ -82,6 +84,12 @@ export default function EditProfileUser({ userInfo }) {
       <SignupTextBox title={'이름'} name={'name'} data={name} setData={setName} />
       <SignupTextBox title={'별명'} name={'nickname'} data={nickname} setData={setNickname} />
       <SignupTextBox title={'이메일'} name={'email'} data={email} setData={setEmail} />
+      <SignupTextBox
+        title={'한 줄 설명'}
+        name={'oneLineIntroduce'}
+        data={oneLineIntroduce}
+        setData={setOneLineIntroduce}
+      />
       <SignupGenderRadio data={gender} setData={setGender} />
       <SignupTextBox title={'연락처'} name={'phoneNumber'} data={phoneNumber} setData={handlePhoneNumber} />
       <SignupTextBox title={'생년월일'} name={'birthday'} data={birthday} setData={setBirthday} type={'date'} />
