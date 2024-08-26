@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { privateApi, publicApi } from "@/configs/axiosClient";
+import { privateApi, publicApi } from '@/configs/axiosClient';
 
 export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -13,6 +13,7 @@ export const getHouses = async (params: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -26,6 +27,7 @@ export const postPlanning = async (house: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -39,6 +41,7 @@ export const getPlanning = async () => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -52,6 +55,7 @@ export const postPlanningConfirm = async (pid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];

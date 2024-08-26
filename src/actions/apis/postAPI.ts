@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { privateApi, publicApi } from "@/configs/axiosClient";
+import { privateApi, publicApi } from '@/configs/axiosClient';
 
 export const getPosts = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -12,8 +12,10 @@ export const getPosts = async (params: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
+  console.log([data, error]);
   return [data, error];
 };
 
@@ -27,6 +29,7 @@ export const getPost = async (postNum: number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -40,6 +43,7 @@ export const postPost = async (post: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return { data, error };

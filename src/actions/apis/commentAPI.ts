@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { privateApi } from "@/configs/axiosClient";
+import { privateApi } from '@/configs/axiosClient';
 
 export const postComment = async (comment: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -10,6 +10,7 @@ export const postComment = async (comment: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];

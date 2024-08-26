@@ -13,6 +13,7 @@ export const getUser = async (uid: string | number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -28,6 +29,7 @@ export const getCompanyUser = async (uid: string | number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -41,6 +43,7 @@ export const postUser = async (user: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -54,6 +57,7 @@ export const updateUser = async (user: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
   return [data, error];
 };
@@ -76,6 +80,7 @@ export const signinUser = async (user: { login_id: string; password: string }) =
   } catch (err) {
     console.log(err);
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -89,6 +94,7 @@ export const signupUser = async (user: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -102,6 +108,7 @@ export const signupCompany = async (user: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -117,6 +124,7 @@ export const validateID = async (user_id: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -132,6 +140,7 @@ export const validateNickname = async (nickname: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];

@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { privateApi, publicApi } from "@/configs/axiosClient";
+import { privateApi, publicApi } from '@/configs/axiosClient';
 
 export const getLivings = async (params?: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -13,6 +13,7 @@ export const getLivings = async (params?: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -30,6 +31,7 @@ export const getLiving = async (livingNum: number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -47,6 +49,7 @@ export const getLivingReviews = async (livingNum: number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -60,6 +63,7 @@ export const postPavilionReview = async (body: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -73,28 +77,25 @@ export const postReservation = async (body: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
 };
 
-export const getReservation = async (
-  params: "pending" | "confirmed" | "rejected"
-) => {
+export const getReservation = async (params: 'pending' | 'confirmed' | 'rejected') => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(
-      `/pavilion/reservation/check-apply/${params}`,
-      {
-        params: {},
-        headers: {},
-      }
-    );
+    const result = await privateApi.get(`/pavilion/reservation/check-apply/${params}`, {
+      params: {},
+      headers: {},
+    });
 
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -104,17 +105,15 @@ export const getReservationConfirm = async (pid: number, params: 1 | 0) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.get(
-      `/pavilion/reservation/confirm/${pid}/${params}`,
-      {
-        params: {},
-        headers: {},
-      }
-    );
+    const result = await privateApi.get(`/pavilion/reservation/confirm/${pid}/${params}`, {
+      params: {},
+      headers: {},
+    });
 
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -124,17 +123,15 @@ export const getReservationUnavailable = async (reservationNum: number) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await publicApi.get(
-      `/pavilion/reservation/unavailable/${reservationNum}`,
-      {
-        params: {},
-        headers: {},
-      }
-    );
+    const result = await publicApi.get(`/pavilion/reservation/unavailable/${reservationNum}`, {
+      params: {},
+      headers: {},
+    });
 
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];

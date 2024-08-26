@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { privateApi } from "@/configs/axiosClient";
+import { privateApi } from '@/configs/axiosClient';
 
 export const getHouseHeartUser = async (hid: number, params?: any) => {
   let [count, countError] = [undefined, undefined] as any;
@@ -24,6 +24,7 @@ export const postHouseHeart = async (pid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
   return [data, error];
 };
@@ -36,6 +37,7 @@ export const postHouseHeartRemove = async (hid: number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -52,6 +54,7 @@ export const getPostHeartUser = async (pid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -65,6 +68,7 @@ export const postPostHeart = async (pid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
   return [data, error];
 };
@@ -77,6 +81,7 @@ export const postPostHeartRemove = async (pid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -93,6 +98,7 @@ export const getCommentHeartUser = async (cid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -106,6 +112,7 @@ export const postCommentHeart = async (cid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -119,6 +126,7 @@ export const postCommentHeartRemove = async (cid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];

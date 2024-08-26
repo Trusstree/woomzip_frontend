@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { privateApi, publicApi } from "@/configs/axiosClient";
+import { privateApi, publicApi } from '@/configs/axiosClient';
 
 export const getAccessToken = async () => {
   let [data, error] = [undefined, undefined] as any;
@@ -10,6 +10,7 @@ export const getAccessToken = async () => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -24,6 +25,7 @@ export const refreshAccessToken = async () => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];

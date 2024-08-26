@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { publicApi, privateApi } from "@/configs/axiosClient";
+import { publicApi, privateApi } from '@/configs/axiosClient';
 
 export const getLikeHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -12,6 +12,7 @@ export const getLikeHouses = async (params: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -25,6 +26,7 @@ export const getCompanyMypage = async (uid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -38,6 +40,7 @@ export const getCompanyConfirm = async (uid: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -51,6 +54,7 @@ export const getCompanyList = async () => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];

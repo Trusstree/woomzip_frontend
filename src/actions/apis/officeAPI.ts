@@ -1,4 +1,4 @@
-import { publicApi } from "@/configs/axiosClient";
+import { publicApi } from '@/configs/axiosClient';
 
 export const getOffices = async () => {
   let [data, error] = [undefined, undefined] as any;
@@ -10,6 +10,7 @@ export const getOffices = async () => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return { data, error };
@@ -25,6 +26,7 @@ export const getOffice = async (officeNum: number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return { data, error };
@@ -40,6 +42,7 @@ export const postOffice = async (office: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return { data, error };

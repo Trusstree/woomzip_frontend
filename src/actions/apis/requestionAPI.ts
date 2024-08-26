@@ -1,4 +1,4 @@
-import { publicApi } from "@/configs/axiosClient";
+import { publicApi } from '@/configs/axiosClient';
 
 export const getRequestions = async () => {
   let [data, error] = [undefined, undefined] as any;
@@ -10,6 +10,7 @@ export const getRequestions = async () => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return { data, error };
@@ -25,6 +26,7 @@ export const getRequestion = async (requestionNum: number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return { data, error };
@@ -38,6 +40,7 @@ export const postRequestion = async (requestion: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return { data, error };

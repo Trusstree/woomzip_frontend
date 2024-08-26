@@ -1,6 +1,6 @@
-"use server";
+'use server';
 
-import { privateApi, publicApi } from "@/configs/axiosClient";
+import { privateApi, publicApi } from '@/configs/axiosClient';
 
 export const getHouses = async (params: any) => {
   let [data, error] = [undefined, undefined] as any;
@@ -13,6 +13,7 @@ export const getHouses = async (params: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -30,6 +31,7 @@ export const getHouse = async (houseNum: number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -43,6 +45,7 @@ export const postHouse = async (house: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -56,6 +59,7 @@ export const updateHouse = async (house: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -69,6 +73,7 @@ export const postHouseReview = async (body: any) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
@@ -86,6 +91,7 @@ export const getHouseReviews = async (houseNum: number) => {
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
+    if (!error) error = err;
   }
 
   return [data, error];
