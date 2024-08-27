@@ -57,7 +57,7 @@ export default function SubCarousel() {
                   backgroundColor: SubCarouselData[i].backgroundColor,
                 }}
               >
-                <div className="row">
+                <div className="row" style={{ maxWidth: '1600px', margin: '0 auto' }}>
                   <div className="col-md-2 col-0"></div>
                   <div className="col-md-4 col-6">
                     <div
