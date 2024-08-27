@@ -1,6 +1,5 @@
-import DOMPurify from 'isomorphic-dompurify';
 import Link from 'next/link';
-import { cardCountText, elapsedTimeText } from '@/lib/stringUtil';
+import { cardCountText } from '@/lib/stringUtil';
 import Image from 'next/image';
 
 type PostCardProps = {
@@ -29,7 +28,7 @@ const style = {
 };
 
 export default function PostCard({ data, className }: PostCardProps) {
-  const regex = /<([^>]+)>/gi;
+  // const regex = /<([^>]+)>/gi;
   const imgSrcArr = data['content']
     .split(/img src="/g)
     .filter((e) => e.search(/https?/g) > -1)

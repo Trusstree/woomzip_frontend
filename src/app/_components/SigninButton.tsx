@@ -3,7 +3,8 @@
 import { useUser } from '@/app/_components/ContextSession';
 import Link from 'next/link';
 
-export default function SigninButton() {
+export default function SigninButton(props) {
+  console.log(props);
   const { userContext } = useUser();
   return userContext == undefined ? (
     <Link
