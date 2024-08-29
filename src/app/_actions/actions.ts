@@ -3,12 +3,9 @@
 import { getHouses } from '@/actions/apis/houseAPI';
 import { getPosts } from '@/actions/apis/postAPI';
 
-export async function loadPostData() {
+export async function loadPostData(searchConditions: Object) {
   const numShowItems: number = 10;
-  const params = {
-    skip: 1,
-    limit: numShowItems,
-  };
+  const params = { ...searchConditions, skip: 1, limit: numShowItems };
 
   const [data, error] = await getPosts(params);
 

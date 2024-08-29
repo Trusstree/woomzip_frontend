@@ -4,17 +4,15 @@ import SubCarousel from '@/app/_components/SubCarousel';
 import QnaPostList from '@/app/_components/QnaPostList';
 import HouseList from '@/app/_components/HouseList';
 import { loadHouseData, loadPostData } from '@/app/_actions/actions';
-import Image from 'next/image';
-import { relative } from 'path';
 import ColumnPostList from '@/app/_components/ColumnPostList';
 import VisitPostList from '@/app/_components/VisitPostList';
 
 export default async function Home() {
-  const postData = await loadPostData();
+  const visitPostData = await loadPostData({ category: '집들이' });
+  const QnAPostData = await loadPostData({ category: '질문' });
+  const ColumnPostData = await loadPostData({ category: '칼럼' });
   const semoHouseData = await loadHouseData({ tag: '세모지붕' });
   const nongchonHouseData = await loadHouseData({ tag: '체류형쉼터' });
-  // const nongmakHouseData = await loadHouseData({ tag: '농막' });
-  // const luxuryHouseData = await loadHouseData({ tag: '고급스러운' });
 
   return (
     <>
@@ -43,7 +41,9 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>{postData && <QnaPostList postData={postData} />}</div>
+            <div style={{ width: '100%', overflow: 'hidden' }}>
+              {QnAPostData && <QnaPostList postData={QnAPostData} />}
+            </div>
           </PostMenu>
         </div>
       </div>
@@ -63,7 +63,7 @@ export default async function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              {postData && <ColumnPostList postData={postData} />}
+              {ColumnPostData && <ColumnPostList postData={ColumnPostData} />}
             </div>
           </PostMenu>
         </div>
@@ -83,7 +83,9 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>{postData && <VisitPostList postData={postData} />}</div>
+            <div style={{ width: '100%', overflow: 'hidden' }}>
+              {visitPostData && <VisitPostList postData={visitPostData} />}
+            </div>
           </PostMenu>
         </div>
       </div>
@@ -124,7 +126,7 @@ export default async function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              {postData && <ColumnPostList postData={postData} />}
+              {ColumnPostData && <ColumnPostList postData={ColumnPostData} />}
             </div>
           </PostMenu>
         </div>

@@ -12,7 +12,7 @@ export default function WriteComponent() {
   const [dataTitle, setDataTitle] = useState('');
   const [dataText, setDataText] = useState('');
   const [dataCategory, setDataCategory] = useState('일반');
-  const category = ['일반', '질문', '공지', '칼럼'];
+  const category = ['일반', '질문', '공지', '칼럼', '집들이'];
 
   const handleSubmit = useCallback(async () => {
     const result = await confirmSuccess('포스팅 확인', '현재 입력하신 정보가 모두 맞습니까?', '맞습니다!', '아닙니다.');
