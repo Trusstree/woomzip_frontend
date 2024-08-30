@@ -11,6 +11,7 @@ export default async function Home() {
   const visitPostData = await loadPostData({ category: '집들이' });
   const QnAPostData = await loadPostData({ category: '질문' });
   const ColumnPostData = await loadPostData({ category: '칼럼' });
+  const AnnouncePostData = await loadPostData({ category: '공지' });
   const semoHouseData = await loadHouseData({ tag: '세모지붕' });
   const nongchonHouseData = await loadHouseData({ tag: '체류형쉼터' });
 
@@ -126,7 +127,7 @@ export default async function Home() {
             horizontalScroll={true}
           >
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              {ColumnPostData && <ColumnPostList postData={ColumnPostData} />}
+              {ColumnPostData && <ColumnPostList postData={AnnouncePostData} />}
             </div>
           </PostMenu>
         </div>
