@@ -42,18 +42,17 @@ export default function InputImageComponent({
 
     let resImgs = [];
     for (const [i, e] of inputImgs.entries()) {
-      const compressedImage = imageCompression(e, options);
+      const compressedBlob = await imageCompression(e, options);
+      const compressedImage = new File([compressedBlob], e.name, { type: e.type });
       const title = 'images' + moment().format(`YYYYMMDDHHmmss`) + `${i}`;
       const url = `${s3Url}/${title}.${e.type.split('/')[1]}`;
-      const [response, error] = await setS3Url(url, e);
+      const [response, error] = await setS3Url(url, compressedImage);
 
       if (error) {
         console.error(error);
         return;
       }
-      console.log(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`);
       resImgs.push(`${process.env.NEXT_PUBLIC_AWS_S3_URL}/${url}`);
-      console.log(resImgs);
     }
 
     setImages([...images, ...resImgs]);
