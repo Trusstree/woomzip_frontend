@@ -12,14 +12,14 @@ import { useState, useEffect } from 'react';
 
 export default function EditProfileUser({ userInfo }) {
   const router = useRouter();
-  const [name, setName] = useState(userInfo.name);
-  const [nickname, setNickname] = useState(userInfo.nickname);
-  const [email, setEmail] = useState(userInfo.email);
-  const [oneLineIntroduce, setOneLineIntroduce] = useState(userInfo.one_line_introduce);
+  const [name, setName] = useState(userInfo.name ?? '');
+  const [nickname, setNickname] = useState(userInfo.nickname ?? '');
+  const [email, setEmail] = useState(userInfo.email ?? '');
+  const [oneLineIntroduce, setOneLineIntroduce] = useState(userInfo.one_line_introduce ?? '');
   const [userImages, setUserImages] = useState(userInfo.user_img_url ?? []);
-  const [phoneNumber, setPhoneNumber] = useState(userInfo.phone_number);
-  const [gender, setGender] = useState(userInfo.gender);
-  const [birthday, setBirthday] = useState(userInfo.birthday);
+  const [phoneNumber, setPhoneNumber] = useState(userInfo.phone_number ?? '');
+  const [gender, setGender] = useState(userInfo.gender ?? '');
+  const [birthday, setBirthday] = useState(userInfo.birthday ?? '');
 
   const handlePhoneNumber = (e) => {
     const regex = new RegExp(/^[0-9\b -]{0,13}$/);
