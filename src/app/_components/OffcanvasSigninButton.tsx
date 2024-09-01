@@ -3,8 +3,7 @@
 import { useUser } from '@/app/_components/ContextSession';
 import Link from 'next/link';
 
-export default function SigninButton(props) {
-  console.log(props);
+export default function SigninButton() {
   const { userContext } = useUser();
   return userContext == undefined ? (
     <div data-bs-dismiss="offcanvas" aria-label="Close">

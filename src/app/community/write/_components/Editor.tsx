@@ -26,9 +26,8 @@ const formats = [
 const Editor = dynamic(
   async () => {
     const { default: QuillComponent } = await import('react-quill');
-    const ImageBlot = await getCustomImageBlot(QuillComponent, true);
-    QuillComponent.Quill.register(ImageBlot);
-
+    await getCustomImageBlot(QuillComponent, true);
+    
     const Quill = ({ quillRef, data, setData }) => {
       const imageHandler = () => {
         const input = document.createElement('input');
@@ -91,7 +90,7 @@ const Editor = dynamic(
             matchVisual: false,
           },
         }),
-        [imageHandler],
+        [],
       );
 
       return (

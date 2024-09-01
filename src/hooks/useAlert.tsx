@@ -20,5 +20,5 @@ export default function useAlert() {
       createQuery('alert');
       router.replace(getRouteParams());
     }
-  }, []);
+  }, [searchParams]);
 }

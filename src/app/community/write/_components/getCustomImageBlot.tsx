@@ -57,5 +57,6 @@ export async function getCustomImageBlot(QuillComponent: typeof ReactQuill, read
       };
     }
   }
-  return CustomImageBlot;
+
+  QuillComponent.Quill.register(CustomImageBlot);
 }
