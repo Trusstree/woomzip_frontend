@@ -5,15 +5,19 @@ import SelectBoxApp from "@/app/planning/application/_components/SelectBoxApp";
 import { useRouter, useSearchParams } from "next/navigation";
 import { alertError, alertSuccess } from "@/lib/alertUtil";
 import { postPlanning } from "@/actions/apis/planningAPI";
+import { useUser } from "@/app/_components/ContextSession";
 
 export default function PlanningApplicationClient() {
   const [planningData, setPlanningData] = useState({});
   const [requiredService, setRequiredService] = useState("");
   const [timeline, setTimeline] = useState("");
   const [finance, setFinance] = useState("");
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
 
   const params = useSearchParams();
   const router = useRouter();
+  const { userContext } = useUser();
 
   useEffect(() => {
     setPlanningData((oldValues) => ({
@@ -21,16 +25,24 @@ export default function PlanningApplicationClient() {
       required_service: requiredService,
       timeline: timeline,
       finance: finance,
+      name: name,
+      contact: contact
     }));
     console.log(planningData);
-  }, [requiredService, timeline, finance]);
+  }, [requiredService, timeline, finance, name, contact]);
 
   useEffect(() => {
     const res = {};
     params.forEach((value, key) => {
       res[key] = value;
     });
-    setPlanningData(res);
+    setPlanningData({
+      ...res,
+      auth:{
+        is_login: !!(userContext),
+        access_token: userContext?.at ?? null
+      }
+    });
   }, []);
 
   const submit = useCallback(async () => {
@@ -55,7 +67,10 @@ export default function PlanningApplicationClient() {
       );
       return;
     }
+
+    console.log(userContext);
     console.log(planningData);
+    
     const [data, error] = await postPlanning(planningData);
     if (error) {
       console.log(error);
@@ -65,6 +80,7 @@ export default function PlanningApplicationClient() {
       );
       return;
     }
+    
     console.log(data);
     alertSuccess("성공적으로 등록되었어요!", "제대로 입력되었습니다!");
     router.push("/");
@@ -212,7 +228,10 @@ export default function PlanningApplicationClient() {
                   borderRadius: "5px",
                   backgroundColor: "#F5F7FF",
                 }}
-              ></input>
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
             </div>
             <div className="col-md-8 col-12">
               <div>전화번호</div>
@@ -223,7 +242,9 @@ export default function PlanningApplicationClient() {
                   borderRadius: "5px",
                   backgroundColor: "#F5F7FF",
                 }}
-              ></input>
+                onChange={(e) => {
+                  setContact(e.target.value);
+                }}/>
             </div>
             <button
               onClick={submit}

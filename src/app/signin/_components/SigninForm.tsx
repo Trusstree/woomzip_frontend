@@ -55,6 +55,7 @@ export function SigninForm() {
     setUserContext({
       uid: userData.uid,
       role: userData.role,
+      at: data.data.access_token
     });
     router.push('/');
     return;
