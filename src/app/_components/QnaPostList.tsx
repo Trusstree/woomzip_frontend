@@ -1,6 +1,6 @@
 import QnaPostCard from '@/app/_components/QnaPostCard';
 
-export default async function QnaPostList({ postData }) {
+export default function QnaPostList({ postData }) {
   return (
     <div
       className="row flex-nowrap overflow-auto"

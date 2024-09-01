@@ -19,7 +19,7 @@ export default function MainCarousel() {
         {MainCarouselData.map((e, i) => (
           <Link key={i} href={e.url}>
             <div className={styles.container}>
-              <Image src={e.img} alt="mainPic" width={900} height={500} className={styles.img} />
+              <Image src={e.img} alt="mainPic" className={styles.img} fill />
             </div>
 
             <div key={`title-${i}`} className={styles.title}>

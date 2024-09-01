@@ -1,6 +1,6 @@
 import VisitPostCard from '@/app/_components/VisitPostCard';
 
-export default async function PostList({ postData }) {
+export default function PostList({ postData }) {
   return (
     <div className="row">
       {postData.slice(0, 3).map((e: any, i: number) => (

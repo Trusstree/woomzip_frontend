@@ -1,8 +1,9 @@
 'use client';
 
 import { Children } from '@/types/props';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { CSSProperties } from 'react';
+import Link from 'next/link'
 
 type RouteButtonProps = {
   url: string;
@@ -12,7 +13,6 @@ type RouteButtonProps = {
 };
 
 export default function RouteButton(props: RouteButtonProps) {
-  const router = useRouter();
   const pathname = usePathname();
 
   const { className, url, children, style } = props;
@@ -20,15 +20,12 @@ export default function RouteButton(props: RouteButtonProps) {
   let path = pathname.split('/')[1];
 
   return (
-    <button
+    <Link
       type="button"
       style={{ ...style }}
       className={`${className ? `${className} ` : ''}btn rounded-lg ${`/${path}` == url ? 'fw-bold' : ''} align-self-end`}
-      onClick={() => {
-        router.push(url);
-      }}
-    >
+      href={url} >
       {children}
-    </button>
+    </Link>
   );
 }

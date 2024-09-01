@@ -7,6 +7,9 @@ import { loadHouseData, loadPostData } from '@/app/_actions/actions';
 import ColumnPostList from '@/app/_components/ColumnPostList';
 import VisitPostList from '@/app/_components/VisitPostList';
 
+
+export const fetchCache = 'force-no-store';
+
 export default async function Home() {
   const visitPostData = await loadPostData({ category: '집들이' });
   const QnAPostData = await loadPostData({ category: '질문' });

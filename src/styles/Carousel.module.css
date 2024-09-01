@@ -16,7 +16,6 @@
 .img {
   width: 70%;
   height: 270px;
-  object-fit: contain;
 }
 
 @media screen and (max-width: 768px) {
