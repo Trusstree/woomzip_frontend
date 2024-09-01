@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import useQuery from '@/hooks/useQuery';
 import { useRouter } from 'next/navigation';
-import styles from '@/styles/SearchComponent.module.css'; // 외부 CSS 파일 import
 import Image from 'next/image';
 
 export default function SearchComponent() {

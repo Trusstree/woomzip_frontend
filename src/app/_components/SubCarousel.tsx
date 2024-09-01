@@ -41,14 +41,14 @@ const SubCarouselData = [
 
 export default function SubCarousel() {
   return (
-    <div id="Carousel" className={`carousel slide col-md-3 col-12`} data-bs-ride="carousel">
+    <div id="SubCarousel" className={`carousel slide col-md-3 col-12`} data-bs-ride="carousel">
       <div>
         <div className="carousel-indicators">
           {SubCarouselData.map((e, i) => (
             <button
               key={i}
               type="button"
-              data-bs-target="#Carousel"
+              data-bs-target="#SubCarousel"
               data-bs-slide-to={`${i}`}
               className={i === 0 ? 'active' : ''}
               aria-current={i === 0 ? 'true' : 'false'}
@@ -106,7 +106,7 @@ export default function SubCarousel() {
                         borderRadius: '5px',
                         objectFit: 'contain',
                       }}
-                    ></Image>
+                    />
                   </div>
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function SubCarousel() {
         <button
           className="carousel-control-prev"
           type="button"
-          data-bs-target="#Carousel"
+          data-bs-target="#SubCarousel"
           data-bs-slide="prev"
           style={{ mixBlendMode: 'difference' }}
         >
@@ -126,7 +126,7 @@ export default function SubCarousel() {
         <button
           className="carousel-control-next"
           type="button"
-          data-bs-target="#Carousel"
+          data-bs-target="#SubCarousel"
           data-bs-slide="next"
           style={{ mixBlendMode: 'difference' }}
         >
@@ -135,54 +135,5 @@ export default function SubCarousel() {
         </button>
       </div>
     </div>
-
-    // <div className="col-md-3 col-12" style={{ marginTop: '20px' }}>
-    //   {SubCarouselData.map((e, i) => (
-    //     <Link key={i} style={{ cursor: 'pointer' }} href={e.url}>
-    //       <div
-    //         style={{
-    //           width: '100%',
-    //           backgroundColor: SubCarouselData[i].backgroundColor,
-    //           borderRadius: '5px',
-    //           height: '450px',
-    //         }}
-    //       >
-    //         <div style={{ paddingTop: '30%' }}>
-    //           <div
-    //             style={{
-    //               backgroundColor: SubCarouselData[i].tagBackgroundColor,
-    //               color: SubCarouselData[i].tagColor,
-    //               width: '50px',
-    //               margin: '20px auto',
-    //               borderRadius: '5px',
-    //               textAlign: 'center',
-    //               fontSize: '14px',
-    //             }}
-    //           >
-    //             {e.tag}
-    //           </div>
-    //           <div
-    //             style={{
-    //               textAlign: 'center',
-    //               color: SubCarouselData[i].color,
-    //               margin: '20px 0',
-    //               fontSize: '16px',
-    //             }}
-    //           >
-    //             <div>{e.subTitle}</div>
-    //             <div style={{ fontSize: '18px', margin: '10px 0', fontWeight: '600' }}>{e.title}</div>
-    //           </div>
-    //           <Image
-    //             src={e.img}
-    //             alt={'mainPic'}
-    //             width={400}
-    //             height={450}
-    //             style={{ width: '100%', height: '100px', borderRadius: '5px', objectFit: 'cover', margin: '30px 0' }}
-    //           ></Image>
-    //         </div>
-    //       </div>
-    //     </Link>
-    //   ))}
-    // </div>
   );
 }
