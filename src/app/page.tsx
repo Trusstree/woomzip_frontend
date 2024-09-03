@@ -7,12 +7,13 @@ import { loadHouseData, loadPostData } from '@/app/_actions/actions';
 import ColumnPostList from '@/app/_components/ColumnPostList';
 import VisitPostList from '@/app/_components/VisitPostList';
 
-
 export const fetchCache = 'force-no-store';
+export const revalidate = 1;
 
 export default async function Home() {
   const visitPostData = await loadPostData({ category: '집들이' });
   const QnAPostData = await loadPostData({ category: '질문' });
+  const NormalPostData = await loadPostData({ category: '일반' });
   const ColumnPostData = await loadPostData({ category: '칼럼' });
   const AnnouncePostData = await loadPostData({ category: '공지' });
   const semoHouseData = await loadHouseData({ tag: '세모지붕' });
@@ -41,12 +42,12 @@ export default async function Home() {
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
             title={'전원생활 고민을 나눠보세요!🏕️'}
-            routeUrl={'/community'}
+            routeUrl={'/community?category=일반'}
             routeText={'더보기'}
             horizontalScroll={true}
           >
             <div style={{ width: '100%', overflow: 'hidden' }}>
-              {QnAPostData && <QnaPostList postData={QnAPostData} />}
+              {QnAPostData && NormalPostData && <QnaPostList postData={[...QnAPostData, ...NormalPostData]} />}
             </div>
           </PostMenu>
         </div>
@@ -62,7 +63,7 @@ export default async function Home() {
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
             title={'꼭 필요한 건축정보를 알려드려요!📚'}
-            routeUrl={'/community'}
+            routeUrl={'/community?category=칼럼'}
             routeText={'더보기'}
             horizontalScroll={true}
           >
@@ -83,7 +84,7 @@ export default async function Home() {
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
             title={'집들이 구경하고 가세요!🏠'}
-            routeUrl={'/community'}
+            routeUrl={'/community?category=집들이'}
             routeText={'더보기'}
             horizontalScroll={true}
           >
@@ -125,7 +126,7 @@ export default async function Home() {
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
             title={'움집 소식을 확인해보세요!'}
-            routeUrl={'/community'}
+            routeUrl={'/community?category=공지'}
             routeText={'더보기'}
             horizontalScroll={true}
           >

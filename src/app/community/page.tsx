@@ -6,6 +6,8 @@ import styles from '@/styles/Phrase.module.css';
 import { loadPostData } from '@/app/community/_actions/actions';
 import LoadPage from '@/components/app/LoadPage';
 
+export const revalidate = 1;
+
 export default async function Page({ searchParams }) {
   const [numShowItems, numShowPages] = [24, 10];
 

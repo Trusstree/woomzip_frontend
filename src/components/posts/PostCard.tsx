@@ -25,6 +25,7 @@ const style = {
   공지: { backgroundColor: '#FFCCCC', color: '#C03142', height: '260px' },
   질문: { backgroundColor: '#E2FFCC', color: '#8AC031', height: '260px' },
   칼럼: { backgroundColor: '#ECECF3', color: '#686875', height: '260px' },
+  집들이: { backgroundColor: '#ECECF3', color: '#686875', height: '260px' },
 };
 
 export default function PostCard({ data, className }: PostCardProps) {

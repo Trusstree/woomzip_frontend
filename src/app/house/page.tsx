@@ -9,6 +9,8 @@ import LoadPage from '@/components/app/LoadPage';
 import Carousel from '@/app/_components/Carousel';
 import Image from 'next/image';
 
+export const revalidate = 1;
+
 export default async function Home({ searchParams }) {
   const [numShowItems, numShowPages] = [24, 10];
   const [houseData, houseCount] = await loadHouseData(searchParams, numShowItems);
