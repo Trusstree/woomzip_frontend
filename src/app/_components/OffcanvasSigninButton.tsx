@@ -21,7 +21,7 @@ export default function SigninButton() {
     <div data-bs-dismiss="offcanvas" aria-label="Close">
       <Link
         className={'btn rounded-lg fw-bold align-self-end'}
-        style={{ fontSize: '28px', border: 'none' }}
+        style={{ fontSize: '25px', border: 'none' }}
         href={`/mypage/${userContext.uid}`}
       >
         마이페이지

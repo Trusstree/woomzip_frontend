@@ -46,7 +46,7 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {QnAPostData && NormalPostData && <QnaPostList postData={[...QnAPostData, ...NormalPostData]} />}
             </div>
           </PostMenu>
@@ -67,7 +67,7 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {ColumnPostData && <ColumnPostList postData={ColumnPostData} />}
             </div>
           </PostMenu>
@@ -88,7 +88,7 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {visitPostData && <VisitPostList postData={visitPostData} />}
             </div>
           </PostMenu>
@@ -109,7 +109,7 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {semoHouseData && <HouseList houseData={nongchonHouseData} />}
             </div>
           </PostMenu>
@@ -130,7 +130,7 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {ColumnPostData && <ColumnPostList postData={AnnouncePostData} />}
             </div>
           </PostMenu>

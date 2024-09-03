@@ -26,6 +26,7 @@ export default function Header() {
           data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup"
           aria-expanded="false"
+          style={{ border: 'none' }}
         >
           <span className="navbar-toggler-icon" style={{ border: 'none' }} />
         </button>

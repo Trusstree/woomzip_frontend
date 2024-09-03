@@ -14,7 +14,7 @@ export default function HouseCard({ data, className }: { data: any; className: s
         style={{ width: '100%', border: 'none' }}
         href={`/house/${data.house_id}`}
       >
-        <div className="row" style={{ marginTop: '10px' }}>
+        <div className="row g-1" style={{ marginTop: '10px' }}>
           <div className="col-md-12 col-6">
             <div
               style={{

@@ -59,11 +59,11 @@ export default function SubCarousel() {
               >
                 <div className="row" style={{ maxWidth: '1600px', margin: '0 auto' }}>
                   <div className="col-md-2 col-0"></div>
-                  <div className="col-md-4 col-6">
+                  <div className="col-md-5 col-7">
                     <div
+                      className={styles.titleContainer}
                       style={{
                         color: SubCarouselData[i].color,
-                        marginTop: '10%',
                       }}
                     >
                       <div className={styles.subTitle}>{e.subTitle}</div>
@@ -72,15 +72,8 @@ export default function SubCarousel() {
                       <div className={styles.subTitle}>{e.subTitle2}</div>
                     </div>
                   </div>
-                  <div className="col-6">
-                    <Image
-                      src={e.img}
-                      alt={'mainPic'}
-                      width={400}
-                      height={200}
-                      style={{ objectFit: 'cover' }}
-                      className={styles.img}
-                    />
+                  <div className="col-4 col-5">
+                    <Image src={e.img} alt={'mainPic'} width={400} height={200} className={styles.img} />
                   </div>
                 </div>
               </div>

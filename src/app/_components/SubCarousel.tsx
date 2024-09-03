@@ -73,7 +73,7 @@ export default function SubCarousel() {
                 }}
               >
                 <div className="row">
-                  <div className="col-md-12 col-6">
+                  <div className="col-md-12 col-7">
                     <div
                       className={styles.tag}
                       style={{
@@ -94,19 +94,8 @@ export default function SubCarousel() {
                       <div className={styles.title}>{e.title2}</div>
                     </div>
                   </div>
-                  <div className="col-md-12 col-6">
-                    <Image
-                      src={e.img}
-                      alt={'mainPic'}
-                      width={400}
-                      height={450}
-                      style={{
-                        width: '100%',
-                        height: '150px',
-                        borderRadius: '5px',
-                        objectFit: 'contain',
-                      }}
-                    />
+                  <div className="col-md-12 col-5">
+                    <Image src={e.img} alt={'mainPic'} width={400} height={450} className={styles.pic} />
                   </div>
                 </div>
               </div>
