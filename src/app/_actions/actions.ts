@@ -8,7 +8,6 @@ export async function loadPostData(searchConditions: Object) {
   const params = { ...searchConditions, skip: 1, limit: numShowItems };
 
   const [data, error] = await getPosts(params);
-
   if (error) {
     console.error(error);
     return undefined;
