@@ -1,0 +1,10 @@
+.specText {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .specText {
+    font-size: 11px;
+  }
+}

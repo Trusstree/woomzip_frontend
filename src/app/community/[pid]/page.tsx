@@ -16,7 +16,8 @@ const style = {
   일반: { backgroundColor: '#CCD6FF', color: '#314FC0' },
   공지: { backgroundColor: '#FFCCCC', color: '#C03142' },
   질문: { backgroundColor: '#E2FFCC', cololr: '#8AC031' },
-  칼럼: { backgroundColor: '#F9F871', color: '#FFC75F' },
+  칼럼: { backgroundColor: '#ECECF3', color: '#686875' },
+  집들이: { backgroundColor: '#FFEAC7', color: '#D5A71E' },
 };
 
 export default async function page({ params }: { params: PageParams }) {
@@ -107,7 +108,7 @@ export default async function page({ params }: { params: PageParams }) {
           <div className="row" style={{ marginTop: '20px' }}>
             <div style={{ width: '50px', height: '40px' }}>
               <Image
-                src={postData?.['user_img_url'] || '/blur_image.png'}
+                src={postData?.['user_img_url'] || '/blur_image.webp'}
                 alt={'user image'}
                 width={40}
                 height={40}

@@ -5,6 +5,8 @@ import EditProfileCompany from '@/app/mypage/[uid]/_components/_company/EditProf
 import MyPageProfileCompany from '@/app/mypage/[uid]/_components/_company/MyPageProfileCompany';
 import ReviewListCompany from '@/app/mypage/[uid]/_components/_company/ReviewListCompany';
 import Image from 'next/image';
+import { getUserdataByToken } from '@/lib/parseUtil';
+import { cookies } from 'next/headers';
 
 function parseData(companyData) {
   let [profile, companyImages, reviews, posts, pavilions, sellingHouses] = [
@@ -38,6 +40,9 @@ function parseData(companyData) {
 
 export default async function MypageCompany({ uid, userData, searchParams }) {
   const { profile, companyImages, reviews, posts, pavilions, sellingHouses } = parseData(userData);
+  const cookieStorge = cookies();
+  const accessToken = cookieStorge.get('accessToken')?.value;
+  const isSigned = accessToken && Number(uid) == getUserdataByToken(accessToken)?.uid;
 
   return (
     <>
@@ -171,11 +176,11 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
                 <div style={{ width: '100%', marginTop: '60px' }}>
                   <PostMenu
                     title={'판매자 제품'}
-                    routeText={'추가하기'}
+                    routeText={isSigned ? '추가하기' : undefined}
                     routeUrl={`${uid}/house`}
                     horizontalScroll={true}
                   >
-                    <MypageHouseList houses={sellingHouses} numShowItems={4} />
+                    <MypageHouseList houses={sellingHouses} numShowItems={2000} />
                   </PostMenu>
                 </div>
               </div>

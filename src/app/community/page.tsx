@@ -35,7 +35,14 @@ export default async function Page({ searchParams }) {
         </div>
 
         <PostMenu routeUrl={'/community/write'} routeText={'글쓰기'}>
-          <PostList postData={postData} postCount={postCount} numShowItems={numShowItems} numShowPages={numShowPages} />
+          <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
+            <PostList
+              postData={postData}
+              postCount={postCount}
+              numShowItems={numShowItems}
+              numShowPages={numShowPages}
+            />
+          </div>
         </PostMenu>
       </div>
     </div>

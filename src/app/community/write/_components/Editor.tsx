@@ -27,22 +27,21 @@ const Editor = dynamic(
   async () => {
     const { default: QuillComponent } = await import('react-quill');
     await getCustomImageBlot(QuillComponent, true);
-    
+
     const Quill = ({ quillRef, data, setData }) => {
       const imageHandler = () => {
         const input = document.createElement('input');
         input.setAttribute('type', 'file');
-        input.setAttribute('accept', 'image/jpg');
-        input.setAttribute('accept', 'image/png');
+        input.setAttribute('accept', 'image/png, image/jpg');
         input.click();
-
         input.onchange = async (e: any) => {
           const file = Array.from(e.target.files) as Array<any>;
+          console.log(file);
           if (!file) return;
           for (let i = 0; i < file.length; i++) {
-            const [fileType, fileExecutor] = file[i].type.split('/')[0];
+            const [fileType, fileExecutor] = file[i].type.split('/');
             if (fileType != 'image') continue;
-            if (fileExecutor != 'jpg' || fileExecutor != 'jpeg' || fileExecutor != 'png') continue;
+            if (fileExecutor != 'jpg' && fileExecutor != 'jpeg' && fileExecutor != 'png') continue;
             try {
               const title = `posts${moment().format('YYYYMMDDHHmmss')}${i}`;
               const url = `community/${title}.${fileExecutor}`;
