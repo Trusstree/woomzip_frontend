@@ -46,7 +46,7 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {QnAPostData && NormalPostData && <QnaPostList postData={[...QnAPostData, ...NormalPostData]} />}
             </div>
           </PostMenu>
@@ -62,12 +62,12 @@ export default async function Home() {
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
-            title={'꼭 필요한 건축정보를 알려드려요!📚'}
+            title={'필수 건축정보를 알려드려요!📚'}
             routeUrl={'/community?category=칼럼'}
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {ColumnPostData && <ColumnPostList postData={ColumnPostData} />}
             </div>
           </PostMenu>
@@ -83,12 +83,12 @@ export default async function Home() {
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
-            title={'집들이 구경하고 가세요!🏠'}
+            title={'집들이 구경하고 가세요!🏡'}
             routeUrl={'/community?category=집들이'}
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {visitPostData && <VisitPostList postData={visitPostData} />}
             </div>
           </PostMenu>
@@ -104,12 +104,12 @@ export default async function Home() {
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
-            title={'요즘 핫한 농촌 체류형 쉼터 구경하기🏡'}
+            title={'요즘 핫한 농촌 체류형쉼터🔥'}
             routeUrl={'/house?tag=체류형쉼터'}
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {semoHouseData && <HouseList houseData={nongchonHouseData} />}
             </div>
           </PostMenu>
@@ -130,7 +130,7 @@ export default async function Home() {
             routeText={'더보기'}
             horizontalScroll={true}
           >
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
               {ColumnPostData && <ColumnPostList postData={AnnouncePostData} />}
             </div>
           </PostMenu>

@@ -56,7 +56,7 @@ export default function Pagination(props: PagenationProps) {
   };
 
   return (
-    <nav aria-label="Page navigation">
+    <nav aria-label="Page navigation" className="col-12 p-0">
       <ul className="pagination justify-content-center">
         <li className="page-item">
           <button type="button" className="btn page-link link-dark" style={{ border: 'none' }} onClick={prevPage}>

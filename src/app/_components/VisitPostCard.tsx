@@ -46,7 +46,7 @@ export default function VisitPostCard({ data, className }: PostCardProps) {
           marginBottom: '20px',
         }}
       >
-        <div className="row">
+        <div className="row g-1">
           <div className="col-md-12 col-6">
             <Link href={{ pathname: `/community/${data['post_id']}` }}>
               <div
@@ -62,22 +62,10 @@ export default function VisitPostCard({ data, className }: PostCardProps) {
                   src={imgSrcArr[0] || '/111.webp'}
                   alt="post card img"
                   style={{ objectFit: 'cover' }}
-              fill
-              sizes="(max-width: 767px) 100vw, (max-width: 991px) 40vw, 20vw"
+                  fill
+                  sizes="(max-width: 767px) 100vw, (max-width: 991px) 40vw, 20vw"
                 />
               </div>
-
-              <div
-                className="card-body"
-                style={{
-                  width: '100%',
-                  height: '260px',
-                  borderRadius: '10px',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                }}
-              ></div>
             </Link>
           </div>
           <div className="col-md-12 col-6">
@@ -116,7 +104,7 @@ export default function VisitPostCard({ data, className }: PostCardProps) {
 
                 <div
                   className="d-flex justify-content-between"
-                  style={{ fontSize: '14px', width: 'auto', fontWeight: '400', marginTop: '5px', color: '#D1D1DA' }}
+                  style={{ fontSize: '14px', width: 'auto', fontWeight: '400', marginTop: '5px', color: 'gray' }}
                 >
                   <div style={{ fontWeight: '500' }}>{data['nickname']}</div>
 

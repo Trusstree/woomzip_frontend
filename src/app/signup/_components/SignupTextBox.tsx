@@ -24,7 +24,7 @@ export default function SignupTextBox({
       <label htmlFor={`signup_${name}`} className="col-2" style={{ fontSize: '18px' }}>
         {title}
       </label>
-      <div className={checked ? 'col-7' : 'col-10'}>
+      <div className={checked ? 'col-md-7 col-6' : 'col-10'}>
         <input
           className="w-100"
           type={type || 'text'}
@@ -39,7 +39,7 @@ export default function SignupTextBox({
         {explain && <div style={{ fontSize: '13px', color: 'blue' }}>{explain}</div>}
       </div>
       {checked && (
-        <div className="col-3 d-flex justify-content-center align-items-top">
+        <div className="col-4 col-md-3 d-flex justify-content-center align-items-top">
           <div
             className={`w-100 btn ${isChecked ? 'btn-success' : 'btn-secondary'}`}
             style={{
@@ -48,10 +48,11 @@ export default function SignupTextBox({
               height: '30px',
               wordBreak: 'break-word',
               whiteSpace: 'balance',
+              fontSize: '14px',
             }}
             onClick={checkedFunction}
           >
-            확인
+            중복확인
           </div>
         </div>
       )}

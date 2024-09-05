@@ -13,7 +13,7 @@ export default function Footer() {
     <footer
       className="text-muted text-left pt-4 pb-5 text-white"
       style={{
-        backgroundColor: '#F4F4FF',
+        backgroundColor: '#EEF7FF',
         color: 'white',
         paddingTop: '1rem',
         paddingBottom: '1rem',
@@ -79,8 +79,8 @@ export default function Footer() {
               </div>
 
               <div id="social">
-                <SocialIcon url={youtubeURL} network="youtube" bgColor="#F4F4FF" fgColor="gray" />
-                <SocialIcon url={instagrmaURL} network="instagram" bgColor="#F4F4FF" fgColor="gray" />
+                <SocialIcon url={youtubeURL} network="youtube" bgColor="#EEF7FF" fgColor="gray" />
+                <SocialIcon url={instagrmaURL} network="instagram" bgColor="#EEF7FF" fgColor="gray" />
                 <Link href={naverBlogURL} passHref style={{ border: 'none', outline: 'none' }}>
                   <div className="btn m-0 p-0">
                     <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111" width="40" height="40">

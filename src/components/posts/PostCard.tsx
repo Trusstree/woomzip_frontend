@@ -25,7 +25,7 @@ const style = {
   공지: { backgroundColor: '#FFCCCC', color: '#C03142', height: '260px' },
   질문: { backgroundColor: '#E2FFCC', color: '#8AC031', height: '260px' },
   칼럼: { backgroundColor: '#ECECF3', color: '#686875', height: '260px' },
-  집들이: { backgroundColor: '#ECECF3', color: '#686875', height: '260px' },
+  집들이: { backgroundColor: '#FFEAC7', color: '#D5A71E', height: '260px' },
 };
 
 export default function PostCard({ data, className }: PostCardProps) {
@@ -201,7 +201,7 @@ export default function PostCard({ data, className }: PostCardProps) {
 
             <div
               className="d-flex justify-content-between"
-              style={{ fontSize: '14px', width: 'auto', fontWeight: '400', marginTop: '5px', color: '#D1D1DA' }}
+              style={{ fontSize: '14px', width: 'auto', fontWeight: '400', marginTop: '5px', color: 'gray' }}
             >
               <div style={{ fontWeight: '500' }}>{data['nickname']}</div>
 

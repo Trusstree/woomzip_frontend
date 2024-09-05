@@ -3,6 +3,8 @@
 import { cardPriceText } from '@/lib/stringUtil';
 import Image from 'next/image';
 import Link from 'next/link';
+import HeartSolidSVG from '../svg/HeartSolidSVG';
+import styles from '@/app/house/_styles/HouseCard.module.css';
 
 export default function HouseCard({ data, className }: { data: any; className: string }) {
   const houseImage = data['house_img_urls'].split(',');
@@ -14,7 +16,7 @@ export default function HouseCard({ data, className }: { data: any; className: s
         style={{ width: '100%', border: 'none' }}
         href={`/house/${data.house_id}`}
       >
-        <div className="row" style={{ marginTop: '10px' }}>
+        <div className="row g-1" style={{ marginTop: '10px' }}>
           <div className="col-md-12 col-6">
             <div
               style={{
@@ -35,19 +37,20 @@ export default function HouseCard({ data, className }: { data: any; className: s
 
               <div
                 style={{
-                  fontSize: '15px',
-                  fontWeight: '500',
+                  fontSize: '13px',
+                  fontWeight: '300',
                   width: 'auto',
                   position: 'absolute',
-                  bottom: 9,
-                  right: 10,
-                  backgroundColor: '#D1D1DA',
-                  padding: '0 7px',
-                  borderRadius: '10px',
+                  top: 8,
+                  left: 10,
+                  backgroundColor: '#314FC0',
+                  color: 'white',
+                  padding: '3px 7px',
+                  borderRadius: '5px',
                 }}
               >
-                <span style={{ fontSize: '19px', fontWeight: '800', color: '#314FC0' }}>♥</span>{' '}
-                {data['like_count'] || '0'}
+                <HeartSolidSVG width={16} />
+                <span> {data['like_count'] || '0'}</span>
               </div>
             </div>
           </div>
@@ -125,7 +128,7 @@ export default function HouseCard({ data, className }: { data: any; className: s
                 </div> */}
                 </div>
               </div>
-              <div className="row g-0" style={{ fontSize: '14px', fontWeight: '400' }}>
+              <div className={`row g-0 ${styles.specText}`}>
                 <div className="col-4">
                   <Image src={'/houseIcons/pyeong.png'} alt={'pyeong.png'} width={28} height={28}></Image>
                   <span>{data['total_floor_area']?.toFixed(1) || 'NaN'}평</span>

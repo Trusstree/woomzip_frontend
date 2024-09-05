@@ -23,7 +23,7 @@ export default function MyPageProfileCompany({ uid, userData }) {
           <div style={{ width: '90px' }}>
             <Image
               className={'m-0 align-self-center'}
-              src={userData?.['user_img_url'] || 'blur_image.png'}
+              src={userData?.['user_img_url'] || 'blur_image.webp'}
               alt={`profile`}
               width={100}
               height={70}

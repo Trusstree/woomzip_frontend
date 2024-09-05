@@ -157,7 +157,6 @@ export function SignupForm() {
       <SignupGenderRadio data={gender} setData={setGender} />
       <SignupTextBox title={'연락처'} name={'phoneNumber'} data={phoneNumber} setData={handlePhoneNumber} />
       <SignupTextBox title={'생년월일'} name={'birthday'} data={birthday} setData={setBirthday} type={'date'} />
-      <SignupTextBox title={'위치'} name={'addr'} data={addr} setData={setAddr} />
       <div
         className="btn"
         style={{
@@ -211,9 +210,6 @@ const validate = ({ idCheck, pw, repw, name, nicknameCheck, phoneNumber, email, 
     alertError('성별', `성별을 입력해주세요!`);
     return false;
   }
-  if (!isRequired(addr)) {
-    alertError('주소', `주소를 입력해주세요!`);
-    return false;
-  }
+
   return true;
 };

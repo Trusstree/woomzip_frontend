@@ -3,24 +3,6 @@ import Link from 'next/link';
 import { cardCountText, elapsedTimeText } from '@/lib/stringUtil';
 import Image from 'next/image';
 
-type PostCardProps = {
-  data: DataProps;
-  className: string;
-};
-
-type DataProps = {
-  idx: number;
-  category: string;
-  title: string;
-  text: string;
-  author: string;
-  profilePicture: string;
-  updated_at: string;
-  viewCount: number;
-  commentCount: number;
-  likeCount: number;
-};
-
 const style = {
   일반: { backgroundColor: '#CCD6FF', color: '#314FC0', height: '260px' },
   공지: { backgroundColor: '#FFCCCC', color: '#C03142', height: '260px' },
@@ -28,7 +10,7 @@ const style = {
   칼럼: { backgroundColor: '#ECECF3', color: '#686875', height: '260px' },
 };
 
-export default function QnaPostCard({ data, className }: PostCardProps) {
+export default function QnaPostCard({ data, className }) {
   const regex = /<([^>]+)>/gi;
   const imgSrcArr = data['content']
     .split(/img src="/g)
@@ -77,7 +59,7 @@ export default function QnaPostCard({ data, className }: PostCardProps) {
             <div className="d-flex">
               <div style={{ width: '35px', height: '30px' }}>
                 <img
-                  src={data.profilePicture || '/blur_image.webp'}
+                  src={data?.['user_img_url'] || '/blur_image.webp'}
                   alt={'pic'}
                   width={30}
                   height={30}
@@ -212,7 +194,7 @@ export default function QnaPostCard({ data, className }: PostCardProps) {
             >
               <div
                 className="d-flex justify-content-center align-content-center"
-                style={{ fontSize: '13px', color: '#D1D1DA', width: 'auto', fontWeight: '400' }}
+                style={{ fontSize: '13px', color: 'gray', width: 'auto', fontWeight: '400' }}
               >
                 <div>댓글 {cardCountText(data?.['comment_count'])}</div>
                 <span style={{ padding: '0 5px' }}>·</span>

@@ -29,7 +29,7 @@ export default async function Home({ searchParams }) {
             width: '100%',
             marginLeft: '0',
             overflow: 'hidden',
-            paddingBottom: '6px',
+            padding: '0 0 6px 0',
             position: 'relative',
           }}
         >
@@ -44,7 +44,7 @@ export default async function Home({ searchParams }) {
               backgroundColor: 'white',
               borderLeft: '2px solid gray',
               borderRadius: '0',
-              padding: '0 0 0 10px',
+              padding: '0 10px',
             }}
             data-bs-toggle="modal"
             data-bs-target={`#search_modal`}
@@ -61,7 +61,14 @@ export default async function Home({ searchParams }) {
         <SearchModal />
 
         <PostMenu>
-          <HouseList houseData={houseData} count={houseCount} numShowItems={numShowItems} numShowPages={numShowPages} />
+          <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
+            <HouseList
+              houseData={houseData}
+              count={houseCount}
+              numShowItems={numShowItems}
+              numShowPages={numShowPages}
+            />
+          </div>
         </PostMenu>
       </div>
     </>
