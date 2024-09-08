@@ -2,16 +2,15 @@
 
 import { useUser } from '@/app/_components/ContextSession';
 import { AddressInputForm } from '@/app/test/_components/AddressInputForm';
-import InputImageComponent from '@/components/InputImageComponent';
 import { encryptPW } from '@/lib/authUtil';
 import React, { Suspense, useState } from 'react';
+import Tooltip from '@/components/TooltipPortal';
 
 export default function Page() {
   const { userContext } = useUser();
   const [addr, setAddr] = useState('');
   const [pw, setPW] = useState('');
   const [encryptedPW, setEncryptedPW] = useState('');
-  const [images, setImages] = useState([]);
 
   const handleClick = () => {
     console.log(userContext);
@@ -34,20 +33,6 @@ export default function Page() {
         <input onChange={handlePW}></input>
         <div>ori: {pw}</div>
         <div style={{ wordBreak: 'break-all' }}>en: {encryptedPW}</div>
-        <InputImageComponent
-          s3Url={'test/images'}
-          name={'images'}
-          images={images}
-          setImages={setImages}
-          maxLength={5}
-        />
-        <button
-          onClick={() => {
-            console.log(images);
-          }}
-        >
-          이미지
-        </button>
       </Suspense>
     </main>
   );

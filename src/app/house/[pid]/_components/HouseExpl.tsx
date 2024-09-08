@@ -251,7 +251,11 @@ export default function HouseExpl({
           <div style={{ fontSize: '16px', marginBottom: '20px' }}>
             {parseSpecificationInfo(specificationData['specification_description'])}
           </div>
-          <RowText name={'골조구조'} data={parseSpecificationInfo(specificationData['framework'])} />
+          <RowText
+            name={'골조구조'}
+            data={parseSpecificationInfo(specificationData['framework'])}
+            explain={<div>골조구조</div>}
+          />
           <RowText name={'외장재'} data={parseSpecificationInfo(specificationData['exterior_material'])} />
           <RowText name={'지붕재'} data={parseSpecificationInfo(specificationData['roofing_material'])} />
           <RowText name={'단열재'} data={parseSpecificationInfo(specificationData['insulation_material'])} />
