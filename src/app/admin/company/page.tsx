@@ -1,4 +1,4 @@
-import CompanyClient from "@/app/admin/company/CompanyClient";
+import CompanyClient from '@/app/admin/company/_components/CompanyClient';
 
 export default function Company() {
   return (

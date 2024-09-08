@@ -47,11 +47,11 @@ export const getPlanning = async () => {
   return [data, error];
 };
 
-export const postPlanningConfirm = async (pid: any) => {
+export const patchPlanningConfirm = async (pid: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.post(`/planning/admin/deliver`, { planningId: pid });
+    const result = await privateApi.patch(`/planning/admin/deliver`, { planningId: pid });
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
