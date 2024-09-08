@@ -17,6 +17,7 @@ export default function useAuth() {
         setUserContext({
           uid: userInfo.uid,
           role: userInfo.role,
+          at: userAccessToken.value,
         });
       } else {
         // 로그인이 안 되어있는 경우

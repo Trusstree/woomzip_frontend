@@ -1,80 +1,55 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import SelectBoxApp from '@/app/planning/application/_components/SelectBoxApp';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { alertError, alertSuccess } from '@/lib/alertUtil';
-import { postPlanning } from '@/actions/apis/planningAPI';
-import { useUser } from '@/app/_components/ContextSession';
+import { alertError } from '@/lib/alertUtil';
 
 export default function PlanningApplicationClient() {
-  const [planningData, setPlanningData] = useState({});
   const [requiredService, setRequiredService] = useState('');
   const [timeline, setTimeline] = useState('');
   const [finance, setFinance] = useState('');
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
 
-  const params = useSearchParams();
+  const searchParams = useSearchParams();
   const router = useRouter();
-  const { userContext } = useUser();
-
-  useEffect(() => {
-    setPlanningData((oldValues) => ({
-      ...oldValues,
-      required_service: requiredService,
-      timeline: timeline,
-      finance: finance,
-      name: name,
-      contact: contact,
-    }));
-  }, [requiredService, timeline, finance, name, contact]);
-
-  useEffect(() => {
-    const res = {};
-    params.forEach((value, key) => {
-      res[key] = value;
-    });
-    setPlanningData({
-      ...res,
-      auth: {
-        is_login: !!userContext,
-        access_token: userContext?.at ?? null,
-      },
-    });
-  }, []);
 
   const submit = useCallback(async () => {
+    const params = new URLSearchParams(searchParams);
+
     if (requiredService.length == 0) {
       alertError('입력이 빠져있어요!', "'어떤 도움이 필요하신가요?' 항목이 선택되지 않았어요!");
       return;
     }
-
-    // params.set('required_service', requiredService.toString());
+    params.set('required_service', requiredService.toString());
 
     if (timeline.length == 0) {
       alertError('입력이 빠져있어요!', "'언제 시작하실 계획이신가요?' 항목이 선택되지 않았어요!");
       return;
     }
+    params.set('timeline', timeline.toString());
+
     if (finance.length == 0) {
       alertError('입력이 빠져있어요!', "'건축비를 위해 도움이 필요하신가요?' 항목이 선택되지 않았어요!");
       return;
     }
+    params.set('finance', finance.toString());
 
-    console.log(userContext);
-    console.log(planningData);
-
-    const [data, error] = await postPlanning(planningData);
-    if (error) {
-      console.log(error);
-      alertError('에러', '입력값에 문제가 있어요. 새로고침하여 다시 시도해보세요!');
+    if (name.length == 0) {
+      alertError('입력이 빠져있어요!', '이름을 입력해주세요');
       return;
     }
+    params.set('name', name.toString());
 
-    console.log(data);
-    alertSuccess('성공적으로 등록되었어요!', '제대로 입력되었습니다!');
-    router.push('/');
-  }, [planningData]);
+    if (contact.length == 0) {
+      alertError('입력이 빠져있어요!', '전화번호를 입력해주세요');
+      return;
+    }
+    params.set('contact', contact.toString());
+
+    router.push(`/planning/confirm?${params.toString()}`);
+  }, [requiredService, timeline, finance, name, contact]);
 
   return (
     <>

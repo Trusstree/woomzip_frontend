@@ -1,3 +1,4 @@
+import TestButton from '@/app/_components/TestButton';
 import Link from 'next/link';
 import { SocialIcon } from 'react-social-icons';
 
@@ -71,6 +72,7 @@ export default function Footer() {
                   개인정보처리방침
                 </div>
               </Link>
+              <TestButton />
             </div>
             <div className="col-md-6 col-12">
               <div style={{ fontSize: '12px', fontWeight: '400', wordBreak: 'keep-all', color: 'gray' }}>
