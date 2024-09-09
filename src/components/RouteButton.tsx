@@ -3,7 +3,7 @@
 import { Children } from '@/types/props';
 import { usePathname } from 'next/navigation';
 import { CSSProperties } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 
 type RouteButtonProps = {
   url: string;
@@ -22,9 +22,13 @@ export default function RouteButton(props: RouteButtonProps) {
   return (
     <Link
       type="button"
-      style={{ ...style }}
-      className={`${className ? `${className} ` : ''}btn rounded-lg ${`/${path}` == url ? 'fw-bold' : ''} align-self-end`}
-      href={url} >
+      style={{
+        ...style,
+        color: `/${path}` == url ? '#314FC0' : 'black',
+      }}
+      className={`${className ? `${className} ` : ''}btn rounded-lg align-self-end`}
+      href={url}
+    >
       {children}
     </Link>
   );

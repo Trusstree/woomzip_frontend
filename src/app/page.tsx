@@ -26,7 +26,7 @@ export default async function Home() {
       </div> */}
 
       <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
-        <div className="row">
+        <div className="row" style={{ marginTop: '20px' }}>
           <MainCarousel />
           <SubCarousel />
         </div>
