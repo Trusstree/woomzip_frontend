@@ -5,24 +5,29 @@ import { useUser } from '@/app/_components/ContextSession';
 import useQuery from '@/hooks/useQuery';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function ConfirmComponent() {
   const { getParams } = useQuery();
   const router = useRouter();
   const { userContext } = useUser();
+  const [houseData, setHouseData] = useState({});
 
-  const submit = async () => {
-    const houseData = {};
+  useEffect(() => {
+    const data = {};
     getParams().forEach((value, key) => {
-      houseData[key] = value;
+      data[key] = value;
     });
 
-    houseData['auth'] = {
+    data['auth'] = {
       is_login: !!userContext,
       access_token: userContext ? userContext.at : undefined,
     };
-    console.log(houseData);
 
+    setHouseData(data);
+  }, []);
+
+  const submit = async () => {
     const [data, error] = await postPlanning(houseData);
     if (error) {
       console.log(error);
@@ -36,6 +41,58 @@ export default function ConfirmComponent() {
 
   return (
     <div className="row">
+      <div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['house_type']}</div>
+        </div>
+
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['house_id']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['house_type']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['addr']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['area']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['land_condition']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['road_condition']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['required_service']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['timeline']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['finance']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['name']}</div>
+        </div>
+        <div className="mb-5 col-12 row">
+          <div className="col-4">house type</div>
+          <div className="col-8">{houseData['contact']}</div>
+        </div>
+      </div>
+
       <div
         className="btn btn-lg btn-success"
         onClick={() => {
