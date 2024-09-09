@@ -2,7 +2,7 @@
   overflow: hidden;
   border-radius: 5px;
   width: 100%;
-  height: 450px;
+  height: 550px;
 }
 
 .img {
@@ -13,11 +13,11 @@
 
 .title {
   position: absolute;
-  bottom: 50px;
+  bottom: 30px;
   left: 40px;
   color: white;
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 34px;
+  font-weight: 550;
   word-break: keep-all;
   text-shadow: 3px 3px 13px rgba(0, 0, 0, 0.3);
 }

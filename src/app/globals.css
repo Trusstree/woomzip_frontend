@@ -20,3 +20,8 @@ body {
 .modal-backdrop {
   display: none;
 }
+
+#tooltips-portal {
+  position: absolute;
+  z-index: var(--z-index-tooltip);
+}

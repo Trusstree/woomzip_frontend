@@ -4,12 +4,13 @@ import styles from '@/styles/Carousel.module.css';
 
 const SubCarouselData = [
   {
-    backgroundColor: '#DBEFFF',
+    backgroundColor: '#EEF8FF',
     subTitle: '최대 20% 할인',
     title: '패시브하우스 명장,',
     title2: '모두가하우징 기획전!',
     subTitle2: '08.25~',
-    color: '#003F73',
+    color: '#1695F9',
+    subColor: 'black',
     img: '/CarouselImgs/moduga.webp',
     url: `/house?q=모두가하우징`,
   },
@@ -19,7 +20,8 @@ const SubCarouselData = [
     title: '목조 주택 전문가,',
     title2: '탑디자인의 새로운 제품!',
     subTitle2: '',
-    color: '#686875',
+    color: 'black',
+    subColor: 'black',
     img: '/CarouselImgs/topdesign.webp',
     url: `/house?q=탑디자인`,
   },
@@ -60,16 +62,39 @@ export default function SubCarousel() {
                 <div className="row" style={{ maxWidth: '1600px', margin: '0 auto' }}>
                   <div className="col-md-2 col-0"></div>
                   <div className="col-md-5 col-7">
-                    <div
-                      className={styles.titleContainer}
-                      style={{
-                        color: SubCarouselData[i].color,
-                      }}
-                    >
-                      <div className={styles.subTitle}>{e.subTitle}</div>
-                      <div className={styles.title}>{e.title}</div>
-                      <div className={styles.title}>{e.title2}</div>
-                      <div className={styles.subTitle}>{e.subTitle2}</div>
+                    <div className={styles.titleContainer}>
+                      <div
+                        className={styles.subTitle}
+                        style={{
+                          color: SubCarouselData[i].subColor,
+                        }}
+                      >
+                        {e.subTitle}
+                      </div>
+                      <div
+                        className={styles.title}
+                        style={{
+                          color: SubCarouselData[i].color,
+                        }}
+                      >
+                        {e.title}
+                      </div>
+                      <div
+                        className={styles.title}
+                        style={{
+                          color: SubCarouselData[i].color,
+                        }}
+                      >
+                        {e.title2}
+                      </div>
+                      <div
+                        className={styles.subTitle}
+                        style={{
+                          color: SubCarouselData[i].subColor,
+                        }}
+                      >
+                        {e.subTitle2}
+                      </div>
                     </div>
                   </div>
                   <div className="col-4 col-5">

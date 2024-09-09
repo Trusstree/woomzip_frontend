@@ -58,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Suspense>
           </ContextSession>
         </StyledComponentsRegistry>
+        <div id="tooltips-portal" />
       </body>
 
       {/* <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} /> */}

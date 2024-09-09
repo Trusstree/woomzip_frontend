@@ -3,18 +3,18 @@
 }
 
 .titleContainer {
-  margin-top: 10%;
+  margin-top: 7%;
 }
 
 .title {
-  font-size: 29px;
-  margin: 5px 0;
-  font-weight: 700;
+  font-size: 33px;
+  margin: 2px 0;
+  font-weight: 600;
 }
 
 .subTitle {
-  font-size: 16px;
-  font-weight: 330;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .img {

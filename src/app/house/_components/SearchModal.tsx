@@ -10,8 +10,8 @@ import useQuery from '@/hooks/useQuery';
 import { cardPriceText } from '@/lib/stringUtil';
 
 export function SearchModal() {
-  const [minPrice, maxPrice, stepPrice] = [0, 200000000, 10000000];
-  const [minArea, maxArea, stepArea] = [0, 30, 1];
+  const [minPrice, maxPrice, stepPrice] = [10000000, 200000000, 10000000];
+  const [minArea, maxArea, stepArea] = [1, 30, 1];
   const { getParams } = useQuery();
 
   return (

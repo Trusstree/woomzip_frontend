@@ -10,14 +10,15 @@ export default function Header() {
       className={`navbar navbar-expand-md justify-content-center sticky-top`}
       style={{
         backgroundColor: 'white',
+        borderBottom: '1px solid #EBEDEF',
       }}
     >
       <div
         className=" d-flex justify-content-between w-100"
-        style={{ height: '45px', width: '90%', maxWidth: '1150px' }}
+        style={{ height: '55px', width: '90%', maxWidth: '1150px' }}
       >
-        <RouteButton url="/" className="navbar-brand" style={{ marginLeft: '0', marginBottom: '3px', border: 'none' }}>
-          <Image src={'/woomzip_logo.webp'} alt={'Truss Logo'} width={110} height={29} />
+        <RouteButton url="/" className="navbar-brand" style={{ marginLeft: '0', border: 'none', marginBottom: '6px' }}>
+          <Image src={'/woomzip_logo.webp'} alt={'Truss Logo'} width={130} height={33} />
         </RouteButton>
         <button
           className="navbar-toggler ms-auto me-4"
@@ -33,16 +34,16 @@ export default function Header() {
         <div className="collapse navbar-collapse">
           <div className="navbar-nav d-none d-md-flex w-100 align-items-center">
             <div className="d-flex align-items-center me-auto">
-              <RouteButton url="/" style={{ fontSize: '15px', border: 'none' }}>
+              <RouteButton url="/" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
                 홈
               </RouteButton>
-              <RouteButton url="/community" style={{ fontSize: '15px', border: 'none' }}>
+              <RouteButton url="/community" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
                 커뮤니티
               </RouteButton>
               {/* <RouteButton url="/living" style={{ fontSize: "15px" }}>
               살아보기
             </RouteButton> */}
-              <RouteButton url="/house" style={{ fontSize: '15px', border: 'none' }}>
+              <RouteButton url="/house" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
                 찾아보기
               </RouteButton>
               {/* <RouteButton url="/planning" style={{ fontSize: "15px" }}>

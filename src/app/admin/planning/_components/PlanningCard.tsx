@@ -1,47 +1,49 @@
-"use client";
+'use client';
 
-import { postPlanningConfirm } from "@/actions/apis/planningAPI";
+import { patchPlanningConfirm } from '@/actions/apis/planningAPI';
+import Image from 'next/image';
 
 export default function PlanningCard({ data }) {
+  const { planning, user_profile } = data;
   return (
-    <div className="card col-3">
-      <div className="card-header p-0 m-0 d-flex justify-content-between">
-        <div className="ms-3 align-self-center">계획하기</div>
-        <div className="btn btn-danger">X</div>
-      </div>
-      <div className="card-body">
-        <div>
-          name: {data?.["name"]}
-          {"(" + data?.["nickname"] + ")"}
+    <div className="card col-12">
+      <div className="row no-gutters">
+        <div className="col-4">
+          <div className="col-3 p-0 m-0 d-flex justify-content-between">
+            <div>fk_house_id: {planning?.['fk_house_id']}</div>
+            <Image src={'/blur_image.webp'} alt={`house_image_${planning?.['fk_house_id']}`} width={400} height={400} />
+          </div>
         </div>
-        <div>phone_number: {data?.["phone_number"]}</div>
-        <div>email: {data?.["email"]}</div>
-        <div>gender: {data?.["gender"]}</div>
-        <div>birthday: {data?.["birthday"]}</div>
-        <br />
-        <div>fk_house_id: {data?.["fk_house_id"]}</div>
-        <div>housing_type: {data?.["housing_type"]}</div>
-        <div>addr: {data?.["addr"]}</div>
-        <div>land_area: {data?.["land_area"]}</div>
-        <div>land_condition: {data?.["land_condition"]}</div>
-        <div>road_condition: {data?.["road_condition"]}</div>
-        <div>required_service: {data?.["required_service"]}</div>
-        <div>planning_timing: {data?.["planning_timing"]}</div>
-        <div>funding_source: {data?.["funding_source"]}</div>
-      </div>
-      <div className="card-footer p-0 m-0 d-flex justify-content-around">
-        <div
-          className="btn btn-success"
-          onClick={async () => {
-            const [confirmData, error] = await postPlanningConfirm(data?.["planning_id"]);
-            if (error) {
-              console.error(error);
-              return;
-            }
-            console.log(confirmData);
-          }}
-        >
-          컨펌
+        <div className="col-8">
+          <div className="card-body">
+            <div>name: {planning?.['name']}</div>
+            <div>phone_number: {planning?.['phone_number']}</div>
+            <br />
+
+            <div>housing_type: {planning?.['housing_type']}</div>
+            <div>addr: {planning?.['addr']}</div>
+            <div>land_area: {planning?.['land_area']}</div>
+            <div>land_condition: {planning?.['land_condition']}</div>
+            <div>road_condition: {planning?.['road_condition']}</div>
+            <div>required_service: {planning?.['required_service']}</div>
+            <div>planning_timing: {planning?.['planning_timing']}</div>
+            <div>funding_source: {planning?.['funding_source']}</div>
+          </div>
+          <div className="card-footer p-0 m-0 d-flex justify-content-around">
+            <div
+              className="btn btn-success w-100"
+              onClick={async () => {
+                const [confirmData, error] = await patchPlanningConfirm(planning?.['planning_id']);
+                if (error) {
+                  console.error(error);
+                  return;
+                }
+                console.log(confirmData);
+              }}
+            >
+              컨펌
+            </div>
+          </div>
         </div>
       </div>
     </div>

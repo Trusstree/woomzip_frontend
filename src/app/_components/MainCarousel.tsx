@@ -4,11 +4,11 @@ import styles from '@/styles/MainCarousel.module.css';
 
 const MainCarouselData = [
   {
-    title: '모듈러주택 플랫폼, 움집이 곧 정식 출시될 예정이에요!',
-    img: '/444.webp',
+    title: '아일랜드형 주방이 매력적인 3인 가족의 집',
+    img: '/1414.webp',
     profileImg: '/woomzip_icon.webp',
     author: '움집',
-    url: `/community/17`,
+    url: `/community/33`,
   },
 ];
 

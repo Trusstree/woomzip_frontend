@@ -19,15 +19,16 @@ export default async function Home({ searchParams }) {
       <Carousel />
 
       <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
-        <div className={styles.mainPhrase}>
+        {/* <div className={styles.mainPhrase}>
           <span style={{ color: '#314FC0' }}>움집</span>에서 가장 쉽고 빠른 집 찾기
-        </div>
+        </div> */}
 
         <div
           className="container"
           style={{
             width: '100%',
             marginLeft: '0',
+            marginTop: '40px',
             overflow: 'hidden',
             padding: '0 0 6px 0',
             position: 'relative',
