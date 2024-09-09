@@ -3,6 +3,7 @@
 import useQuery from '@/hooks/useQuery';
 import { useRouter } from 'next/navigation';
 import styles from '@/styles/CategoryButton.module.css';
+import Image from 'next/image';
 
 export default function CategoryButton({
   title,
@@ -16,7 +17,7 @@ export default function CategoryButton({
   category?: string;
 }) {
   const router = useRouter();
-  const { createQuery, getRouteParams } = useQuery();
+  const { createQuery, getParams, getRouteParams } = useQuery();
   const handleClick = () => {
     createQuery('page');
     createQuery('q');
@@ -26,10 +27,14 @@ export default function CategoryButton({
 
   return (
     <div className={styles.categoryButton} onClick={handleClick} style={{ cursor: 'pointer' }}>
-      <div className={styles.categoryIcon}>
-        <img src={imgSrc} alt={title} />
+      <div className={getParams().get(queryName) == category ? styles.categoryIconBold : styles.categoryIcon}>
+        <Image src={imgSrc} alt={title} width={26} height={26} />
       </div>
-      <div className={styles.categoryButtonText}>{title}</div>
+      <div
+        className={getParams().get(queryName) == category ? styles.categoryButtonTextBold : styles.categoryButtonText}
+      >
+        {title}
+      </div>
     </div>
   );
 }

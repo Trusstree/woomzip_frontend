@@ -8,7 +8,7 @@ export default function FilterBadgeList() {
 
   return (
     <div className="d-flex flex-nowrap overflow-auto" style={{ height: '25px', paddingLeft: '10px', width: '3000px' }}>
-      {FilterBadges.filter((e) => !(e[0] == 'page')).map((e, i) => (
+      {FilterBadges.filter((e) => !(e[0] == 'page') && !(e[0] == 'tag')).map((e, i) => (
         <FilterBadge key={i} name={e[0]} value={e[1]} />
       ))}
     </div>
