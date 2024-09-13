@@ -50,7 +50,7 @@ export default function ColumnPostCard({ data, className }: PostCardProps) {
             style={{
               position: 'relative',
               width: '100%',
-              paddingTop: '65%', // 1:1 비율을 유지하기 위해 padding-top을 100%로 설정
+              paddingTop: '70%', // 1:1 비율을 유지하기 위해 padding-top을 100%로 설정
               borderRadius: '5px',
               overflow: 'hidden',
             }}

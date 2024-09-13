@@ -33,7 +33,7 @@ export default function QnaPostCard({ data, className }) {
             style={{
               position: 'relative',
               width: '100%',
-              paddingTop: '140%', // 1:1 비율을 유지하기 위해 padding-top을 100%로 설정
+              paddingTop: '130%', // 1:1 비율을 유지하기 위해 padding-top을 100%로 설정
               borderRadius: '5px',
               overflow: 'hidden',
             }}
