@@ -37,15 +37,15 @@ export default function Header() {
               <RouteButton url="/" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
                 홈
               </RouteButton>
+              <RouteButton url="/house" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
+                내집찾기
+              </RouteButton>
               <RouteButton url="/community" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
                 커뮤니티
               </RouteButton>
               {/* <RouteButton url="/living" style={{ fontSize: "15px" }}>
               살아보기
             </RouteButton> */}
-              <RouteButton url="/house" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
-                찾아보기
-              </RouteButton>
               {/* <RouteButton url="/planning" style={{ fontSize: "15px" }}>
                 계획하기
               </RouteButton> */}

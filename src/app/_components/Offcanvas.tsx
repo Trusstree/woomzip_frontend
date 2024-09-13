@@ -16,15 +16,17 @@ export default function Offcanvas({ id }) {
             홈
           </OffcanvasRouteButton>
 
+          <OffcanvasRouteButton url="/house" style={{ fontSize: '25px', border: 'none' }}>
+            내집찾기
+          </OffcanvasRouteButton>
+
           <OffcanvasRouteButton url="/community" style={{ fontSize: '25px', border: 'none' }}>
             커뮤니티
           </OffcanvasRouteButton>
           {/* <OffcanvasRouteButton url="/living" style={{ fontSize: "30px" }}>
               살아보기
             </OffcanvasRouteButton> */}
-          <OffcanvasRouteButton url="/house" style={{ fontSize: '25px', border: 'none' }}>
-            찾아보기
-          </OffcanvasRouteButton>
+
           {/* <OffcanvasRouteButton url="/planning" style={{ fontSize: "30px" }}>
                 계획하기
               </OffcanvasRouteButton> */}

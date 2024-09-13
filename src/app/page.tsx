@@ -18,6 +18,7 @@ export default async function Home() {
   const AnnouncePostData = await loadPostData({ category: '공지' });
   const semoHouseData = await loadHouseData({ tag: '세모지붕' });
   const nongchonHouseData = await loadHouseData({ tag: '체류형쉼터' });
+  const luxuryHouseData = await loadHouseData({ tag: '고급스러운' });
 
   return (
     <>
@@ -32,11 +33,32 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* 일반, 질문 */}
+      {/* 체류형 쉼터 */}
       <div
         style={{
           width: '100%',
           padding: '60px 0 20px 0',
+        }}
+      >
+        <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
+          <PostMenu
+            title={'요즘 핫한 농촌 체류형쉼터🔥'}
+            routeUrl={'/house?tag=체류형쉼터'}
+            routeText={'더보기'}
+            horizontalScroll={true}
+          >
+            <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
+              {semoHouseData && <HouseList houseData={nongchonHouseData} />}
+            </div>
+          </PostMenu>
+        </div>
+      </div>
+
+      {/* 일반, 질문 */}
+      <div
+        style={{
+          width: '100%',
+          padding: '30px 0 20px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
@@ -99,25 +121,25 @@ export default async function Home() {
       <div
         style={{
           width: '100%',
-          padding: '30px 0 20px 0',
+          padding: '30px 0 60px 0',
         }}
       >
         <div style={{ width: '90%', maxWidth: '1150px', margin: '0 auto' }}>
           <PostMenu
-            title={'요즘 핫한 농촌 체류형쉼터🔥'}
-            routeUrl={'/house?tag=체류형쉼터'}
+            title={'고급스러운 모듈러 주택은?💎'}
+            routeUrl={'/house?tag=고급스러운'}
             routeText={'더보기'}
             horizontalScroll={true}
           >
             <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
-              {semoHouseData && <HouseList houseData={nongchonHouseData} />}
+              {semoHouseData && <HouseList houseData={luxuryHouseData} />}
             </div>
           </PostMenu>
         </div>
       </div>
 
       {/* 공지 */}
-      <div
+      {/* <div
         style={{
           width: '100%',
           padding: '40px 0 50px 0',
@@ -135,7 +157,7 @@ export default async function Home() {
             </div>
           </PostMenu>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
