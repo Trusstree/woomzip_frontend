@@ -19,7 +19,7 @@ export default function MainCarousel() {
         {MainCarouselData.map((e, i) => (
           <Link key={i} href={e.url}>
             <div className={styles.container}>
-              <Image src={e.img} alt="mainPic" className={styles.img} fill />
+              <Image src={e.img} alt="mainPic" className={styles.img} fill style={{ mixBlendMode: 'darken' }} />
             </div>
 
             <div key={`title-${i}`} className={styles.title}>
