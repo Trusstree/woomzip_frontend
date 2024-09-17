@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback } from 'react';
-import { postHouse } from '@/actions/apis/houseAPI';
+import { useCallback, useEffect } from 'react';
+import { getHouse, postHouse } from '@/actions/apis/houseAPI';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { HouseSpecificationComponent } from '@/app/mypage/[uid]/house/_components/HouseSpecificationComponent';
 import { HouseImageComponent } from '@/app/mypage/[uid]/house/_components/HouseImageComponent';
@@ -15,7 +15,7 @@ import useImageInfo from '@/app/mypage/[uid]/house/_store/imageInfo';
 import useOptionInfo from '@/app/mypage/[uid]/house/_store/optionInfo';
 import useDeliveryInfo from '@/app/mypage/[uid]/house/_store/deliveryInfo';
 
-export default function AddHouse({ uid }) {
+export default function AddHouse({ uid, houseId }: { uid: string | number; houseId?: string }) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -24,6 +24,19 @@ export default function AddHouse({ uid }) {
   const deliveryInfo = useDeliveryInfo();
   const specificationInfo = useSpecificityInfo();
   const imageInfo = useImageInfo();
+
+  useEffect(() => {
+    (async () => {
+      if (!houseId) return;
+
+      const [houseData, houseError] = await getHouse(Number(houseId));
+      if (houseError) {
+        alertError('houseError', houseError.message || ' 데이터를 불러오지 못했습니다. 다시 시도해주세요!');
+        return;
+      }
+      console.log(houseData);
+    })();
+  }, []);
 
   const submit = useCallback(async () => {
     //validate를 위한 부분

@@ -1,7 +1,6 @@
 'use client';
 
 import { RadioComponent } from '@/components/forms/RadioComponent';
-import { HouseSelectComponent } from '@/app/mypage/[uid]/house/_components/HouseSelectComponent';
 import { TextAreaComponent } from '@/components/forms/TextAreaComponent';
 import { TextBoxComponent } from '@/components/forms/TextBoxComponent';
 import { ChangeEvent } from 'react';
