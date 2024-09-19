@@ -2,19 +2,38 @@
 
 import { cardPriceText } from '@/lib/stringUtil';
 import Image from 'next/image';
-import Link from 'next/link';
 import HeartSolidSVG from '@/components/svg/HeartSolidSVG';
 import styles from '@/app/house/_styles/HouseCard.module.css';
+import { usePathname, useRouter } from 'next/navigation';
+import { useCallback } from 'react';
 
-export default function HouseCard({ data, className }: { data: any; className: string }) {
+export default function MypageHouseCard({ data, className }: { data: any; className: string }) {
   const houseImage = data['house_img_urls'].split(',');
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleEdit = useCallback(async () => {
+    console.log();
+    router.push(`${pathname}/house?method=edit&house_id=${data.house_id}`);
+  }, []);
+
+  const handleDelete = useCallback(async () => {
+    console.log('delete');
+  }, []);
+
+  const handleRoute = useCallback(async (e) => {
+    const targetTxt = e.target.textContent;
+    if (targetTxt != '변경' && targetTxt != '삭제') router.push(`/house/${data.house_id}`);
+  }, []);
 
   return (
     <div className={`${className}`}>
-      <Link
+      <div
         className="card text-decoration-none"
         style={{ width: '100%', border: 'none' }}
-        href={`/house/${data.house_id}`}
+        onClick={async (e) => {
+          await handleRoute(e);
+        }}
       >
         <div className="row g-1" style={{ marginTop: '10px' }}>
           <div className="col-md-12 col-6">
@@ -51,6 +70,47 @@ export default function HouseCard({ data, className }: { data: any; className: s
               >
                 <HeartSolidSVG width={16} />
                 <span> {data['like_count'] || '0'}</span>
+              </div>
+              <div
+                className="btn"
+                style={{
+                  fontSize: '13px',
+                  fontWeight: '300',
+                  width: 'auto',
+                  position: 'absolute',
+                  bottom: 8,
+                  left: 10,
+                  backgroundColor: 'green',
+                  color: 'white',
+                  padding: '3px 7px',
+                  borderRadius: '5px',
+                }}
+                onClick={async () => {
+                  console.log();
+                  await handleEdit();
+                }}
+              >
+                변경
+              </div>
+              <div
+                className="btn"
+                style={{
+                  fontSize: '13px',
+                  fontWeight: '300',
+                  width: 'auto',
+                  position: 'absolute',
+                  bottom: 8,
+                  right: 10,
+                  backgroundColor: 'red',
+                  color: 'white',
+                  padding: '3px 7px',
+                  borderRadius: '5px',
+                }}
+                onClick={async () => {
+                  await handleDelete();
+                }}
+              >
+                삭제
               </div>
             </div>
           </div>
@@ -145,7 +205,7 @@ export default function HouseCard({ data, className }: { data: any; className: s
             </div>
           </div>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

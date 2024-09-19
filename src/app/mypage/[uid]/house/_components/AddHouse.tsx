@@ -1,22 +1,23 @@
 'use client';
 
-import { useCallback } from 'react';
-import { postHouse } from '@/actions/apis/houseAPI';
+import { useCallback, useEffect } from 'react';
+import { getHouse, postHouse, updateHouse } from '@/actions/apis/houseAPI';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { HouseSpecificationComponent } from '@/app/mypage/[uid]/house/_components/HouseSpecificationComponent';
 import { HouseImageComponent } from '@/app/mypage/[uid]/house/_components/HouseImageComponent';
 import { HouseDeliveryComponent } from '@/app/mypage/[uid]/house/_components/HouseDeliveryComponent';
 import { HouseInfoComponent } from '@/app/mypage/[uid]/house/_components/HouseInfoComponent';
 import { HousePriceComponent } from '@/app/mypage/[uid]/house/_components/HousePriceComponent';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import useHouseInfo from '@/app/mypage/[uid]/house/_store/houseInfo';
 import useSpecificityInfo from '@/app/mypage/[uid]/house/_store/specificationInfo';
 import useImageInfo from '@/app/mypage/[uid]/house/_store/imageInfo';
 import useOptionInfo from '@/app/mypage/[uid]/house/_store/optionInfo';
 import useDeliveryInfo from '@/app/mypage/[uid]/house/_store/deliveryInfo';
 
-export default function AddHouse({ uid }) {
+export default function AddHouse({ uid, houseId }: { uid: string | number; houseId?: string }) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
 
   const houseInfo = useHouseInfo();
@@ -25,8 +26,65 @@ export default function AddHouse({ uid }) {
   const specificationInfo = useSpecificityInfo();
   const imageInfo = useImageInfo();
 
+  useEffect(() => {
+    (async () => {
+      if (!houseId) return;
+
+      const [houseData, houseError] = await getHouse(Number(houseId));
+      if (houseError) {
+        alertError('houseError', houseError.message || ' 데이터를 불러오지 못했습니다. 다시 시도해주세요!');
+        return;
+      }
+      const loadedHouse = houseData.data[0];
+      console.log(loadedHouse);
+
+      houseInfo.setBasePrice(loadedHouse.house_info['base_price']);
+      houseInfo.setBuildingArea(loadedHouse.house_info['building_area']);
+      houseInfo.setDiscountPrice(loadedHouse.house_info['final_price']);
+      houseInfo.setEstimateDuration(loadedHouse.house_info['estimate_duration']);
+      houseInfo.setFloorCount(loadedHouse.house_info['floor']);
+      houseInfo.setGrossFloorArea(loadedHouse.house_info['gross_floor_area']);
+      houseInfo.setHasModel(loadedHouse.house_info['has_model']);
+      houseInfo.setHouseExplanation(loadedHouse.house_info['house_explanation']);
+      houseInfo.setHouseName(loadedHouse.house_info['house_name']);
+      houseInfo.setIsHut(loadedHouse.house_info['is_hut']);
+      houseInfo.setPriceVariation(loadedHouse.house_info['price_variation']);
+      houseInfo.setRoomCount(loadedHouse.house_info['room_count']);
+      houseInfo.setSpecificityInfo(loadedHouse.house_info['specificity_info']);
+      houseInfo.setToiletCount(loadedHouse.house_info['toilet_count']);
+      houseInfo.setTotalFloorArea(loadedHouse.house_info['total_floor_area']);
+      houseInfo.setWarranty(loadedHouse.house_info['warranty']);
+
+      optionInfo.setOptionInfo(loadedHouse.option_info);
+      deliveryInfo.setDeliveryInfo(loadedHouse.house_info.delivery_unavailable);
+
+      specificationInfo.setETCInfo(loadedHouse.house_info.specification_info['etc_info']);
+      specificationInfo.setExteriorMaterial(loadedHouse.house_info.specification_info['exterior_material']);
+      specificationInfo.setFramework(loadedHouse.house_info.specification_info['framework']);
+      specificationInfo.setFurniture(loadedHouse.house_info.specification_info['furniture']);
+      specificationInfo.setHeating(loadedHouse.house_info.specification_info['heating']);
+      specificationInfo.setInsulationMaterial(loadedHouse.house_info.specification_info['insulation_material']);
+      specificationInfo.setInteriorMaterial(loadedHouse.house_info.specification_info['interior_material']);
+      specificationInfo.setKitchen(loadedHouse.house_info.specification_info['kitchen']);
+      specificationInfo.setLighting(loadedHouse.house_info.specification_info['lighting']);
+      specificationInfo.setRoofingMaterial(loadedHouse.house_info.specification_info['roofing_material']);
+      specificationInfo.setSpecificationDescription(
+        loadedHouse.house_info.specification_info['specification_description'],
+      );
+      specificationInfo.setToilet(loadedHouse.house_info.specification_info['toilet']);
+      specificationInfo.setWall(loadedHouse.house_info.specification_info['wall']);
+      specificationInfo.setWindow(loadedHouse.house_info.specification_info['window']);
+
+      imageInfo.setElevationPlanImages(loadedHouse.house_image['elevation_plan_images']);
+      imageInfo.setExternalImages(loadedHouse.house_image['external_images']);
+      imageInfo.setFloorPlanImages(loadedHouse.house_image['floor_plan_images']);
+      imageInfo.setInternalImages(loadedHouse.house_image['internal_images']);
+      imageInfo.setRepresentativeImage(loadedHouse.house_image['representative_images']);
+    })();
+  }, []);
+
   const submit = useCallback(async () => {
-    //validate를 위한 부분
+    //valida위한 부분
     if (!validate(houseInfo, optionInfo, deliveryInfo, specificationInfo, imageInfo)) return;
 
     const data = {
@@ -35,7 +93,7 @@ export default function AddHouse({ uid }) {
         house_explanation: houseInfo.houseExplanation,
         floor: houseInfo.floorCount,
         building_area: houseInfo.buildingArea,
-        total_floor_area: houseInfo.totalFloorArea,
+        total_floor_areate를: houseInfo.totalFloorArea,
         room_count: houseInfo.roomCount,
         toilet_count: houseInfo.toiletCount,
         estimate_duration: houseInfo.estimateDuration,
@@ -73,15 +131,27 @@ export default function AddHouse({ uid }) {
       },
     };
 
-    const [response, error] = await postHouse(data);
-    if (error) {
-      console.error(error);
-      alertError('에러!', '뭐가 빠진 게 있나봐요 ㅠㅠ');
-      return;
-    }
+    if (searchParams.has('house_id')) {
+      const [response, error] = await updateHouse(searchParams.get('house_id'), data);
+      if (error) {
+        console.error(error);
+        alertError('에러!', '뭐가 빠진 게 있나봐요 ㅠㅠ');
+        return;
+      }
 
-    alertSuccess(houseInfo['house_name'], '제대로 들어갔어요~');
-    router.push(pathname.slice(0, pathname.length - 6));
+      alertSuccess(houseInfo['house_name'], '수정되었습니다!');
+      router.push(pathname.slice(0, pathname.length - 6));
+    } else {
+      const [response, error] = await postHouse(data);
+      if (error) {
+        console.error(error);
+        alertError('에러!', '뭐가 빠진 게 있나봐요 ㅠㅠ');
+        return;
+      }
+
+      alertSuccess(houseInfo['house_name'], '제대로 들어갔어요~');
+      router.push(pathname.slice(0, pathname.length - 6));
+    }
   }, [houseInfo, optionInfo, deliveryInfo, specificationInfo, imageInfo, pathname, router]);
 
   return (
@@ -182,11 +252,11 @@ const validate = (houseInfo, optionInfo, deliveryInfo, specificationInfo, imageI
     alertError('필수 데이터가 빠졌어요', 'AS 보증 기간을 입력해주세요!');
     return false;
   }
-  if (!houseInfo.hasModel) {
+  if (houseInfo.hasModel != 0 && houseInfo.hasModel != 1) {
     alertError('필수 데이터가 빠졌어요', '농촌 체류형 주택으로 사용 가능한지 여부를 입력해주세요!');
     return false;
   }
-  if (!houseInfo.isHut) {
+  if (houseInfo.isHut != 0 && houseInfo.isHut != 1) {
     alertError('필수 데이터가 빠졌어요', '농막으로 사용가능한지 여부를 입력해주세요!');
     return false;
   }
@@ -206,7 +276,14 @@ const validate = (houseInfo, optionInfo, deliveryInfo, specificationInfo, imageI
     alertError('이미지 에러!', '대표 이미지가 빠졌어요 ㅠㅠ');
     return false;
   }
-  if (imageInfo['externalImages'].length + imageInfo['internalImages'].length < 5) {
+
+  const imageLen =
+    imageInfo['externalImages'].length +
+    imageInfo['internalImages'].length +
+    imageInfo['elevationPlanImages'].length +
+    imageInfo['floorPlanImages'].length;
+
+  if (imageLen < 5) {
     alertError('이미지 에러!', '제품 내외부 사진을 합쳐서 5장 이상 채워주세요!');
     return false;
   }

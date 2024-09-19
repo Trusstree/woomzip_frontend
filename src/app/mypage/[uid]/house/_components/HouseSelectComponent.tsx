@@ -1,7 +1,7 @@
 'use client';
 
 import { SelectBoxComponent } from '@/components/forms/SelectBoxComponent';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 type SelectComponentProps = {
   title: string;
@@ -14,7 +14,7 @@ type SelectComponentProps = {
 
 export function HouseSelectComponent(props: SelectComponentProps) {
   const { title, name, value, dataList, onChange, className } = props;
-  const [ETC, setETC] = useState(true as any);
+  const [ETC, setETC] = useState(!!value?.etc);
 
   const onChangeDefault = (e: ChangeEvent<HTMLInputElement>) => {
     let def = value.default;
@@ -47,6 +47,10 @@ export function HouseSelectComponent(props: SelectComponentProps) {
     });
   };
 
+  useEffect(() => {
+    setETC(!!value?.etc);
+  }, [value]);
+
   return (
     <div className={`${className || ''} my-2 d-flex flex-column`}>
       <span style={{ fontSize: '17px' }}>{title}</span>
@@ -59,6 +63,7 @@ export function HouseSelectComponent(props: SelectComponentProps) {
               title={e}
               onChange={onChangeDefault}
               className={`${className || ''} mx-2`}
+              checked={value?.default?.includes(e)}
             />
           ))}
         </div>
@@ -67,8 +72,9 @@ export function HouseSelectComponent(props: SelectComponentProps) {
             className="form-check-input"
             type="checkbox"
             id={`${name}_etc`}
-            value={ETC}
+            value={''}
             onChange={checkChangeETC}
+            checked={ETC}
           />
           <label className="ms-2 fs-5 form-check-label" htmlFor={`${name}_etc`}>
             기타
@@ -79,8 +85,8 @@ export function HouseSelectComponent(props: SelectComponentProps) {
             id={`${name}_etc_input`}
             name={name}
             onChange={onChangeETC}
-            value={name['etc']}
-            disabled={ETC}
+            value={value?.etc ?? ''}
+            disabled={!ETC}
           />
         </div>
       </div>

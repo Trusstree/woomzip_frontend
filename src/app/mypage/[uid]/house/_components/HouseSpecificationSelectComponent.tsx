@@ -68,7 +68,7 @@ export function HouseSpecificationSelectComponent(props: SelectComponentProps) {
             title={e}
             onChange={onChangeDefault}
             className={`${className || ''} mx-2`}
-            disable={e != '없음' && disable}
+            disabled={e != '없음' && disable}
           />
         ))}
       </div>

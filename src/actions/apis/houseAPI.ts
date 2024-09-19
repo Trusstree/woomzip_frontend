@@ -51,11 +51,11 @@ export const postHouse = async (house: any) => {
   return [data, error];
 };
 
-export const updateHouse = async (house: any) => {
+export const updateHouse = async (hid: string | number, house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.post(`/house/`, house);
+    const result = await privateApi.patch(`/house/${hid}`, house);
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
