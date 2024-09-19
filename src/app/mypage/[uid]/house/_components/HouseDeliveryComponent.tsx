@@ -30,6 +30,7 @@ export function HouseDeliveryComponent() {
     const title = e.target.value;
     const checked = e.target.checked;
     let res: Array<string>;
+    console.log(e);
 
     if (title == '없음(전국 배송 가능)') {
       res = [];
@@ -57,8 +58,8 @@ export function HouseDeliveryComponent() {
         if (deliveryInfo.includes(title)) res = res.filter((el) => el != title);
       }
     }
+
     setDeliveryInfo(res);
-    console.log(res);
   };
 
   return (
@@ -84,7 +85,8 @@ export function HouseDeliveryComponent() {
               title={title}
               onChange={handleChange}
               className={`mx-2 col-2`}
-              disable={title != '없음(전국 배송 가능)' && disable}
+              disabled={title != '없음(전국 배송 가능)' && disable}
+              checked={deliveryInfo.includes(title)}
             />
           ))}
         </div>
