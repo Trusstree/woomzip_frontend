@@ -66,6 +66,11 @@ export function SigninForm() {
     return;
   };
 
+  const submitEnter = async (e)=>{
+    if(e.key != 'Enter') return;
+    submit();
+  }
+
   return (
     <div className="my-5">
       <div className={`d-flex mb-3`}>
@@ -79,6 +84,7 @@ export function SigninForm() {
           onChange={(e) => {
             setID(e.target.value);
           }}
+          onKeyDown={submitEnter}
           name={'id'}
           value={id}
         />
@@ -95,6 +101,7 @@ export function SigninForm() {
           onChange={(e) => {
             setPW(e.target.value);
           }}
+          onKeyDown={submitEnter}
           name={'pw'}
           value={pw}
         />
@@ -109,6 +116,7 @@ export function SigninForm() {
           padding: '10px',
         }}
         onClick={submit}
+        
       >
         로그인 하기
       </div>
