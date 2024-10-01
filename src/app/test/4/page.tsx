@@ -1,5 +1,5 @@
-import styles from '@/app/test2/test2.module.css';
 import Image from 'next/image';
+import { loadHouseData } from '@/app/test/4/_actions/actions';
 
 const filterItems = [
   { label: '카테고리', key: 'category' },
@@ -13,28 +13,48 @@ const filterItems = [
   { label: '특이사항', key: 'after_service' },
 ];
 
-const productData = [
-  {
-    company: '업체명',
-    productName: '제품명제품명제품명',
-    price: '1억 5400',
-    currency: '만원',
-  },
-  {
-    company: '업체명',
-    productName: '제품명제품명제품명',
-    price: '1억 5400',
-    currency: '만원',
-  },
-  {
-    company: '업체명',
-    productName: '제품명제품명제품명',
-    price: '1억 5400',
-    currency: '만원',
-  },
-];
+// const productData = [
+//   {
+//     company: '업체명',
+//     productName: '제품명제품명제품명',
+//     price: '1억 5400',
+//     currency: '만원',
+//   },
+//   {
+//     company: '업체명',
+//     productName: '제품명제품명제품명',
+//     price: '1억 5400',
+//     currency: '만원',
+//   },
+//   {
+//     company: '업체명',
+//     productName: '제품명제품명제품명',
+//     price: '1억 5400',
+//     currency: '만원',
+//   },
+// ];
 
-export default function test4() {
+export const HighlightCardPriceText = ({ price }: { price: number | string }) => {
+  let _price = Number(price);
+  if (isNaN(_price)) return <>'NaN원'</>; // 애초에 숫자가 아니면 에러처리
+  if (_price == 0) return <>'0원'</>; // 0원은 만원 단위가 아니라 제거
+  _price = Math.floor(_price); // 소수점은 제거
+
+  const man = _price % 10000 > 0 ? (_price % 10000) + '만' : '';
+  _price = Math.floor(_price / 10000);
+  const eok = _price % 10000 > 0 ? (_price % 10000) + '억' : ''; // 집은 억 단위까지
+  return (
+    <>
+      <span style={{ color: '#314FC0', fontSize: '20px' }}>{eok + man}</span>원
+    </>
+  );
+};
+
+export default async function test4({ searchParams }) {
+  const [numShowItems, numShowPages] = [24, 10];
+  const [houseData, houseCount] = await loadHouseData(searchParams, numShowItems);
+  console.log();
+  console.log('Adfds');
   return (
     <>
       <div style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
@@ -102,8 +122,8 @@ export default function test4() {
         </div>
 
         <div className="row">
-          {productData.map((product, index) => (
-            <div key={index} className="col-md-6 col-12">
+          {houseData.map((product, i) => (
+            <div key={i} className="col-md-6 col-12">
               <div className="card" style={{ width: '100%', border: 'none', marginBottom: '30px' }}>
                 <div
                   className="container"
@@ -112,15 +132,17 @@ export default function test4() {
                     width: '100%',
                     aspectRatio: '5 / 3',
                     borderRadius: '5px',
+                    position: 'relative',
                   }}
-                ></div>
+                >
+                  <Image src={product.house_img_urls} alt={product.house_name + ' image'} fill />
+                </div>
                 <div style={{ padding: '10px' }}>
-                  <div style={{ color: '#777777', fontSize: '16px' }}>{product.company}</div>
+                  <div style={{ color: '#777777', fontSize: '16px' }}>{product.company_name}</div>
                   <div className="d-flex justify-content-between">
-                    <div style={{ color: '#222222', fontSize: '18px' }}>{product.productName}</div>
+                    <div style={{ color: '#222222', fontSize: '18px' }}>{product.house_name}</div>
                     <div style={{ color: '#222222', fontSize: '18px' }}>
-                      <span style={{ color: '#314FC0', fontSize: '20px' }}>{product.price}</span>
-                      {product.currency}
+                      <HighlightCardPriceText price={product.final_price} />
                     </div>
                   </div>
                 </div>

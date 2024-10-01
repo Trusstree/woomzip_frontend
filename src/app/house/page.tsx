@@ -4,7 +4,6 @@ import HouseCategory from '@/app/house/_components/HouseCategory';
 import { SearchModal } from '@/app/house/_components/SearchModal';
 import HouseList from '@/app/house/_components/HouseList';
 import PostMenu from '@/components/posts/PostMenu';
-import styles from '@/styles/Phrase.module.css';
 import LoadPage from '@/components/app/LoadPage';
 import Carousel from '@/app/_components/Carousel';
 import Image from 'next/image';
