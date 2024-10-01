@@ -1,8 +1,10 @@
+import HouseCategory from '@/app/test/4/_components/HouseCategory';
+import FillteringList from '@/app/test/4/_components/FillteringList';
+import BadgeList from '@/app/test/4/_components/BadgeList';
 import Image from 'next/image';
 import { loadHouseData } from '@/app/test/4/_actions/actions';
 
 const filterItems = [
-  { label: '카테고리', key: 'category' },
   { label: '침실', key: 'bedrooms' },
   { label: '욕실', key: 'bathrooms' },
   { label: '층', key: 'floors' },
@@ -45,7 +47,7 @@ export const HighlightCardPriceText = ({ price }: { price: number | string }) =>
   const eok = _price % 10000 > 0 ? (_price % 10000) + '억' : ''; // 집은 억 단위까지
   return (
     <>
-      <span style={{ color: '#314FC0', fontSize: '20px' }}>{eok + man}</span>원
+      <span style={{ color: '#314FC0', fontSize: '24px' }}>{eok + man}</span>원
     </>
   );
 };
@@ -58,68 +60,9 @@ export default async function test4({ searchParams }) {
   return (
     <>
       <div style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
-        <div
-          className="row"
-          style={{ margin: '20px 0 40px 0', backgroundColor: '#F8F8FA', borderRadius: '10px', padding: '5px' }}
-        >
-          {/* 필터 아이템 생성 */}
-          {filterItems.map((item) => (
-            <div
-              key={item.key}
-              style={{
-                width: 'auto',
-                height: '35px',
-                padding: '0 30px',
-                backgroundColor: 'white',
-                borderRadius: '10px',
-                marginRight: '5px',
-                alignContent: 'center',
-              }}
-            >
-              <div className="row">
-                <div
-                  style={{ textAlign: 'center', fontSize: '15px', fontWeight: '500', width: 'auto', padding: '2px' }}
-                >
-                  {item.label}
-                </div>
-                <img
-                  src="/down.png"
-                  width={13}
-                  height={13}
-                  alt="down"
-                  style={{ width: '13px', padding: '0', marginTop: '6px' }}
-                />
-              </div>
-            </div>
-          ))}
-
-          {/* 초기화 버튼 */}
-          <div
-            style={{
-              width: 'auto',
-              height: '35px',
-              padding: '0 30px',
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              marginLeft: 'auto', // 오른쪽 정렬
-              alignContent: 'center',
-              cursor: 'pointer',
-            }}
-          >
-            <div className="row">
-              <div style={{ textAlign: 'center', fontSize: '15px', fontWeight: '500', width: 'auto', padding: '2px' }}>
-                초기화
-              </div>
-              <img
-                src="/reset.png"
-                width={13}
-                height={13}
-                alt="reset"
-                style={{ width: '13px', padding: '0', marginTop: '7px' }}
-              />
-            </div>
-          </div>
-        </div>
+        <HouseCategory></HouseCategory>
+        <FillteringList></FillteringList>
+        <BadgeList />
 
         <div className="row">
           {houseData.map((product, i) => (
@@ -138,10 +81,10 @@ export default async function test4({ searchParams }) {
                   <Image src={product.house_img_urls} alt={product.house_name + ' image'} fill />
                 </div>
                 <div style={{ padding: '10px' }}>
-                  <div style={{ color: '#777777', fontSize: '16px' }}>{product.company_name}</div>
+                  <div style={{ color: '#777777', fontSize: '17px' }}>{product.company_name}</div>
                   <div className="d-flex justify-content-between">
-                    <div style={{ color: '#222222', fontSize: '18px' }}>{product.house_name}</div>
-                    <div style={{ color: '#222222', fontSize: '18px' }}>
+                    <div style={{ color: '#222222', fontSize: '22px' }}>{product.house_name}</div>
+                    <div style={{ color: '#222222', fontSize: '22px' }}>
                       <HighlightCardPriceText price={product.final_price} />
                     </div>
                   </div>
