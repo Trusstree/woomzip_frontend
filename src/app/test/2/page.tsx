@@ -1,4 +1,4 @@
-import styles from '@/app/test2/test2.module.css';
+import styles from '@/app/test/2/test2.module.css';
 
 export default function test2() {
   return (
