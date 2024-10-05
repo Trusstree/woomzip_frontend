@@ -3,6 +3,7 @@ import FillteringList from '@/app/test/4/_components/FillteringList';
 import BadgeList from '@/app/test/4/_components/BadgeList';
 import Image from 'next/image';
 import { loadHouseData } from '@/app/test/4/_actions/actions';
+import { HighlightCardPriceText } from '@/app/test/4/_components/HighlightCardPriceText';
 
 const filterItems = [
   { label: '침실', key: 'bedrooms' },
@@ -36,27 +37,10 @@ const filterItems = [
 //   },
 // ];
 
-export const HighlightCardPriceText = ({ price }: { price: number | string }) => {
-  let _price = Number(price);
-  if (isNaN(_price)) return <>'NaN원'</>; // 애초에 숫자가 아니면 에러처리
-  if (_price == 0) return <>'0원'</>; // 0원은 만원 단위가 아니라 제거
-  _price = Math.floor(_price); // 소수점은 제거
-
-  const man = _price % 10000 > 0 ? (_price % 10000) + '만' : '';
-  _price = Math.floor(_price / 10000);
-  const eok = _price % 10000 > 0 ? (_price % 10000) + '억' : ''; // 집은 억 단위까지
-  return (
-    <>
-      <span style={{ color: '#314FC0', fontSize: '24px' }}>{eok + man}</span>원
-    </>
-  );
-};
-
 export default async function test4({ searchParams }) {
   const [numShowItems, numShowPages] = [24, 10];
   const [houseData, houseCount] = await loadHouseData(searchParams, numShowItems);
-  console.log();
-  console.log('Adfds');
+
   return (
     <>
       <div style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>

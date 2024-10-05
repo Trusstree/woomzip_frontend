@@ -47,10 +47,6 @@ export function HouseSelectComponent(props: SelectComponentProps) {
     });
   };
 
-  useEffect(() => {
-    setETC(!!value?.etc);
-  }, [value]);
-
   return (
     <div className={`${className || ''} my-2 d-flex flex-column`}>
       <span style={{ fontSize: '17px' }}>{title}</span>

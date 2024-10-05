@@ -21,45 +21,16 @@ const deliveryRegion = [
 
 export function HouseDeliveryComponent() {
   const { deliveryInfo, setDeliveryInfo } = useDeliveryInfo();
-  const [disable, setDisable] = useState(false);
-  const [dataCheckList, setDataCheckList] = useState(
-    deliveryRegion.filter((e) => e != '없음(전국 배송 가능)').map((e) => [e, false]) as Array<[string, boolean]>,
-  );
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const title = e.target.value;
     const checked = e.target.checked;
-    let res: Array<string>;
-    console.log(e);
 
-    if (title == '없음(전국 배송 가능)') {
-      res = [];
-      if (checked) {
-        setDisable(true);
-      } else {
-        dataCheckList.forEach((e) => {
-          if (e[1]) res.push(e[0]);
-        });
-        setDisable(false);
-      }
+    if (checked) {
+      if (!deliveryInfo.includes(title)) setDeliveryInfo([...deliveryInfo, title]);
     } else {
-      res = deliveryInfo;
-      setDataCheckList((oldValues) => {
-        let res = oldValues;
-        res.forEach((e) => {
-          if (e[0] == title) e[1] = checked;
-        });
-        return res;
-      });
-
-      if (checked) {
-        if (!deliveryInfo.includes(title)) res = [...deliveryInfo, title];
-      } else {
-        if (deliveryInfo.includes(title)) res = res.filter((el) => el != title);
-      }
+      if (deliveryInfo.includes(title)) setDeliveryInfo(deliveryInfo.filter((el) => el != title));
     }
-
-    setDeliveryInfo(res);
   };
 
   return (
@@ -85,7 +56,6 @@ export function HouseDeliveryComponent() {
               title={title}
               onChange={handleChange}
               className={`mx-2 col-2`}
-              disabled={title != '없음(전국 배송 가능)' && disable}
               checked={deliveryInfo.includes(title)}
             />
           ))}
