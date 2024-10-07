@@ -14,6 +14,7 @@ import useSpecificityInfo from '@/app/mypage/[uid]/house/_store/specificationInf
 import useImageInfo from '@/app/mypage/[uid]/house/_store/imageInfo';
 import useOptionInfo from '@/app/mypage/[uid]/house/_store/optionInfo';
 import useDeliveryInfo from '@/app/mypage/[uid]/house/_store/deliveryInfo';
+import { toMaxinumFixed } from '@/lib/stringUtil';
 
 export default function AddHouse({ uid, houseId }: { uid: string | number; houseId?: string }) {
   const pathname = usePathname();
@@ -39,11 +40,11 @@ export default function AddHouse({ uid, houseId }: { uid: string | number; house
       console.log(loadedHouse);
 
       houseInfo.setBasePrice(loadedHouse.house_info['base_price']);
-      houseInfo.setBuildingArea(loadedHouse.house_info['building_area']);
+      houseInfo.setBuildingArea(toMaxinumFixed(loadedHouse.house_info['building_area']));
       houseInfo.setDiscountPrice(loadedHouse.house_info['final_price']);
       houseInfo.setEstimateDuration(loadedHouse.house_info['estimate_duration']);
       houseInfo.setFloorCount(loadedHouse.house_info['floor']);
-      houseInfo.setGrossFloorArea(loadedHouse.house_info['gross_floor_area']);
+      houseInfo.setGrossFloorArea(toMaxinumFixed(loadedHouse.house_info['gross_floor_area']));
       houseInfo.setHasModel(loadedHouse.house_info['has_model']);
       houseInfo.setHouseExplanation(loadedHouse.house_info['house_explanation']);
       houseInfo.setHouseName(loadedHouse.house_info['house_name']);
@@ -52,7 +53,7 @@ export default function AddHouse({ uid, houseId }: { uid: string | number; house
       houseInfo.setRoomCount(loadedHouse.house_info['room_count']);
       houseInfo.setSpecificityInfo(loadedHouse.house_info['specificity_info']);
       houseInfo.setToiletCount(loadedHouse.house_info['toilet_count']);
-      houseInfo.setTotalFloorArea(loadedHouse.house_info['total_floor_area']);
+      houseInfo.setTotalFloorArea(toMaxinumFixed(loadedHouse.house_info['total_floor_area']));
       houseInfo.setWarranty(loadedHouse.house_info['warranty']);
 
       optionInfo.setOptionInfo(loadedHouse.option_info);
