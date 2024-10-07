@@ -180,7 +180,7 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
                     routeUrl={`${uid}/house`}
                     horizontalScroll={true}
                   >
-                    <MypageHouseList houses={sellingHouses} numShowItems={2000} />
+                    <MypageHouseList houses={sellingHouses} numShowItems={2000} isSigned={isSigned} />
                   </PostMenu>
                 </div>
               </div>

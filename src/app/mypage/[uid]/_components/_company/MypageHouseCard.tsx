@@ -7,13 +7,22 @@ import styles from '@/app/house/_styles/HouseCard.module.css';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
-export default function MypageHouseCard({ data, className }: { data: any; className: string }) {
+export default function MypageHouseCard({
+  data,
+  className,
+  edit,
+  destroy,
+}: {
+  data: any;
+  className: string;
+  edit?: boolean;
+  destroy?: boolean;
+}) {
   const houseImage = data['house_img_urls'].split(',');
   const router = useRouter();
   const pathname = usePathname();
 
   const handleEdit = useCallback(async () => {
-    console.log();
     router.push(`${pathname}/house?method=edit&house_id=${data.house_id}`);
   }, []);
 
@@ -71,47 +80,50 @@ export default function MypageHouseCard({ data, className }: { data: any; classN
                 <HeartSolidSVG width={16} />
                 <span> {data['like_count'] || '0'}</span>
               </div>
-              <div
-                className="btn"
-                style={{
-                  fontSize: '13px',
-                  fontWeight: '300',
-                  width: 'auto',
-                  position: 'absolute',
-                  bottom: 8,
-                  left: 10,
-                  backgroundColor: 'green',
-                  color: 'white',
-                  padding: '3px 7px',
-                  borderRadius: '5px',
-                }}
-                onClick={async () => {
-                  console.log();
-                  await handleEdit();
-                }}
-              >
-                변경
-              </div>
-              <div
-                className="btn"
-                style={{
-                  fontSize: '13px',
-                  fontWeight: '300',
-                  width: 'auto',
-                  position: 'absolute',
-                  bottom: 8,
-                  right: 10,
-                  backgroundColor: 'red',
-                  color: 'white',
-                  padding: '3px 7px',
-                  borderRadius: '5px',
-                }}
-                onClick={async () => {
-                  await handleDelete();
-                }}
-              >
-                삭제
-              </div>
+              {edit && (
+                <div
+                  className="btn"
+                  style={{
+                    fontSize: '13px',
+                    fontWeight: '300',
+                    width: 'auto',
+                    position: 'absolute',
+                    bottom: 8,
+                    left: 10,
+                    backgroundColor: 'green',
+                    color: 'white',
+                    padding: '3px 7px',
+                    borderRadius: '5px',
+                  }}
+                  onClick={async () => {
+                    await handleEdit();
+                  }}
+                >
+                  변경
+                </div>
+              )}
+              {destroy && (
+                <div
+                  className="btn"
+                  style={{
+                    fontSize: '13px',
+                    fontWeight: '300',
+                    width: 'auto',
+                    position: 'absolute',
+                    bottom: 8,
+                    right: 10,
+                    backgroundColor: 'red',
+                    color: 'white',
+                    padding: '3px 7px',
+                    borderRadius: '5px',
+                  }}
+                  onClick={async () => {
+                    await handleDelete();
+                  }}
+                >
+                  삭제
+                </div>
+              )}
             </div>
           </div>
 

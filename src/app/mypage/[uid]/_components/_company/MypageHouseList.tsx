@@ -1,7 +1,7 @@
 import MypageHouseCard from '@/app/mypage/[uid]/_components/_company/MypageHouseCard';
 import PostMenu from '@/components/posts/PostMenu';
 
-export default function MypageHouseList({ houses, numShowItems }) {
+export default function MypageHouseList({ houses, numShowItems, isSigned }) {
   const houseData = houses.filter((_, i) => i < numShowItems);
   return (
     <div>
@@ -10,7 +10,7 @@ export default function MypageHouseList({ houses, numShowItems }) {
       </div> */}
       <PostMenu>
         {houseData.map((e, i) => (
-          <MypageHouseCard key={i} data={e} className={'col-md-4'} />
+          <MypageHouseCard key={i} data={e} className={'col-md-4'} edit={isSigned} destroy={false} />
         ))}
       </PostMenu>
     </div>
