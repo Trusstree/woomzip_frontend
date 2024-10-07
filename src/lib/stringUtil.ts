@@ -85,3 +85,8 @@ export const elapsedTimeText = (date: any): string => {
 
   return `${start.toLocaleDateString()}`;
 };
+
+export const toMaxinumFixed = (num?: number): string => {
+  if (!num) return '0';
+  return Number(num.toFixed(2)).toString();
+};

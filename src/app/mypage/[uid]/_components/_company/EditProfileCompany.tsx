@@ -109,7 +109,7 @@ export default function EditProfileCompany({ companyInfo }) {
     }
 
     alertSuccess('프로필 수정 완료', '프로필이 성공적으로 수정되었습니다!');
-    router.push(`/mypage/${companyInfo.profile.user_profile_id}`);
+    router.push(`/mypage/${companyInfo.profile.fk_user_id}`);
   };
 
   return (
