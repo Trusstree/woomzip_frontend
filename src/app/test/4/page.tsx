@@ -3,14 +3,16 @@ import FilterButton from '@/app/test/4/_components/FilterButton';
 import BadgeList from '@/app/test/4/_components/BadgeList';
 import { loadHouseData } from '@/app/test/4/_actions/actions';
 import HouseCard from '@/app/test/4/_components/HouseCard';
+import FilterResetButton from '@/app/test/4/_components/FilterResetButton';
 
 const filterItems = [
-  { label: '침실', data: [1, 2] },
-  { label: '욕실', data: [1, 2] },
-  { label: '층', data: [1, 2] },
+  { label: '침실', queryName: 'room_count', queryData: [1, 2] },
+  { label: '욕실', queryName: 'toilet_count', queryData: [1, 2] },
+  { label: '층', queryName: 'floor_count', queryData: [1, 2] },
   {
     label: '가격',
-    data: [
+    queryName: ['min_price', 'max_price'],
+    queryData: [
       [0, 2500_0000],
       [2500_0000, 5000_0000],
       [5000_0000, 7500_0000],
@@ -20,7 +22,8 @@ const filterItems = [
   },
   {
     label: '평수',
-    data: [
+    queryName: ['floor_area_min', 'floor_area_max'],
+    queryData: [
       [0, 6],
       [6.1, 10],
       [10.1, 14],
@@ -29,9 +32,14 @@ const filterItems = [
       [22.1, 26],
     ],
   },
-  { label: '골조', data: ['경량목', '경량스틸', '기타'] },
-  { label: 'AS', data: [12, 24] },
-  { label: '특이사항', data: ['데크', '다락방', '발코니', '베란다', '옥상'] },
+  { label: '골조', queryName: 'frame', queryData: ['경량목', '경량스틸', '기타'], selected: true },
+  { label: 'AS', queryName: 'warranty', queryData: [12, 24] },
+  {
+    label: '특이사항',
+    queryName: 'specificity',
+    queryData: ['데크', '다락방', '발코니', '베란다', '옥상'],
+    selected: true,
+  },
 ];
 
 export default async function test4({ searchParams }) {
@@ -49,36 +57,17 @@ export default async function test4({ searchParams }) {
           style={{ margin: '10px 0', backgroundColor: '#F8F8FA', borderRadius: '10px', padding: '5px' }}
         >
           {filterItems.map((e, i) => (
-            <FilterButton key={i} label={e.label} data={e.data} />
+            <FilterButton
+              key={i}
+              label={e.label}
+              queryName={e.queryName}
+              queryData={e.queryData}
+              selected={e.selected}
+            />
           ))}
-          {/* 초기화 버튼 */}
-          <div
-            style={{
-              width: 'auto',
-              height: '35px',
-              padding: '0 30px',
-              backgroundColor: 'white',
-              borderRadius: '10px',
-              marginLeft: 'auto', // 오른쪽 정렬
-              alignContent: 'center',
-              cursor: 'pointer',
-            }}
-          >
-            <div className="row">
-              <div style={{ textAlign: 'center', fontSize: '15px', fontWeight: '500', width: 'auto', padding: '2px' }}>
-                초기화
-              </div>
-              <img
-                src="/reset.png"
-                width={13}
-                height={13}
-                alt="reset"
-                style={{ width: '13px', padding: '0', marginTop: '7px' }}
-              />
-            </div>
-          </div>
+          <FilterResetButton />
         </div>
-        {/* <FillteringList /> */}
+
         {/* <BadgeList /> */}
 
         <div className="row">
