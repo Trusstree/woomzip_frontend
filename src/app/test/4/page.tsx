@@ -4,38 +4,6 @@ import BadgeList from '@/app/test/4/_components/BadgeList';
 import Image from 'next/image';
 import { loadHouseData } from '@/app/test/4/_actions/actions';
 
-const filterItems = [
-  { label: '침실', key: 'bedrooms' },
-  { label: '욕실', key: 'bathrooms' },
-  { label: '층', key: 'floors' },
-  { label: '가격', key: 'price' },
-  { label: '평수', key: 'floor_area' },
-  { label: '골조', key: 'structure' },
-  { label: 'AS', key: 'after_service' },
-  { label: '특이사항', key: 'after_service' },
-];
-
-// const productData = [
-//   {
-//     company: '업체명',
-//     productName: '제품명제품명제품명',
-//     price: '1억 5400',
-//     currency: '만원',
-//   },
-//   {
-//     company: '업체명',
-//     productName: '제품명제품명제품명',
-//     price: '1억 5400',
-//     currency: '만원',
-//   },
-//   {
-//     company: '업체명',
-//     productName: '제품명제품명제품명',
-//     price: '1억 5400',
-//     currency: '만원',
-//   },
-// ];
-
 export const HighlightCardPriceText = ({ price }: { price: number | string }) => {
   let _price = Number(price);
   if (isNaN(_price)) return <>'NaN원'</>; // 애초에 숫자가 아니면 에러처리

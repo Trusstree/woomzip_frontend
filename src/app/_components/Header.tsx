@@ -13,10 +13,7 @@ export default function Header() {
         borderBottom: '1px solid #EBEDEF',
       }}
     >
-      <div
-        className=" d-flex justify-content-between w-100"
-        style={{ height: '55px', width: '90%', maxWidth: '1150px' }}
-      >
+      <div className=" d-flex justify-content-between" style={{ height: '55px', width: '95%' }}>
         <RouteButton url="/" className="navbar-brand" style={{ marginLeft: '0', border: 'none', marginBottom: '6px' }}>
           <Image src={'/woomzip_logo.webp'} alt={'Truss Logo'} width={130} height={33} />
         </RouteButton>
