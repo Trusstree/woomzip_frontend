@@ -13,12 +13,15 @@ export default function Header() {
         borderBottom: '1px solid #EBEDEF',
       }}
     >
-      <div className=" d-flex justify-content-between" style={{ height: '55px', width: '95%' }}>
+      <div className=" d-flex justify-content-between" style={{ height: '50px', width: '95%' }}>
         <RouteButton url="/" className="navbar-brand" style={{ marginLeft: '0', border: 'none', marginBottom: '6px' }}>
-        <div className='row'>
-          <Image src={'/woomzip_logo.webp'} alt={'Truss Logo'} width={100} height={33} />
-          <div>woomzip</div>
-        </div>
+          <div className="d-flex align-items-center">
+            {' '}
+            {/* Flexbox 적용 */}
+            <Image src={'/woomzip_icon.webp'} alt={'Truss Logo'} width={30} height={30} style={{ padding: '0' }} />
+            <div style={{ margin: '0', fontSize: '18px', fontWeight: '500' }}>woomzip</div>{' '}
+            {/* 텍스트 왼쪽 간격 추가 */}
+          </div>
         </RouteButton>
 
         <button
@@ -35,13 +38,13 @@ export default function Header() {
         <div className="collapse navbar-collapse">
           <div className="navbar-nav d-none d-md-flex w-100 align-items-center">
             <div className="d-flex align-items-center me-auto">
-              <RouteButton url="/" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
-                홈
+              <RouteButton url="/" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
+                움집소개
               </RouteButton>
-              <RouteButton url="/house" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
-                내집찾기
+              <RouteButton url="/house" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
+                제품찾기
               </RouteButton>
-              <RouteButton url="/community" style={{ fontSize: '17px', border: 'none', fontWeight: '600' }}>
+              <RouteButton url="/community" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
                 커뮤니티
               </RouteButton>
               {/* <RouteButton url="/living" style={{ fontSize: "15px" }}>
