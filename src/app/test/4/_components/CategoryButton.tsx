@@ -30,7 +30,7 @@ export default function CategoryButton({
       className={styles.categoryButton}
       onClick={handleClick}
       style={{
-        width: '70px',
+        width: '80px',
         height: '50px',
         padding: '3px',
         backgroundColor: 'white',

@@ -15,8 +15,12 @@ export default function Header() {
     >
       <div className=" d-flex justify-content-between" style={{ height: '55px', width: '95%' }}>
         <RouteButton url="/" className="navbar-brand" style={{ marginLeft: '0', border: 'none', marginBottom: '6px' }}>
-          <Image src={'/woomzip_logo.webp'} alt={'Truss Logo'} width={130} height={33} />
+        <div className='row'>
+          <Image src={'/woomzip_logo.webp'} alt={'Truss Logo'} width={100} height={33} />
+          <div>woomzip</div>
+        </div>
         </RouteButton>
+
         <button
           className="navbar-toggler ms-auto me-4"
           type="button"

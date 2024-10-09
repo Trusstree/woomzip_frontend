@@ -17,7 +17,7 @@ export default function FillteringList() {
         <div
           key={item.key}
           style={{
-            width: '80px',
+            width: '90px',
             height: '35px',
             padding: '0',
             backgroundColor: 'white',
@@ -30,7 +30,7 @@ export default function FillteringList() {
           }}
         >
           <div className="row">
-            <div style={{ textAlign: 'center', fontSize: '15px', fontWeight: '500', width: 'auto', padding: '2px' }}>
+            <div style={{ textAlign: 'center', fontSize: '14px', fontWeight: '500', width: 'auto', padding: '2px' }}>
               {item.label}
             </div>
             <img
@@ -58,7 +58,7 @@ export default function FillteringList() {
         }}
       >
         <div className="row">
-          <div style={{ textAlign: 'center', fontSize: '15px', fontWeight: '500', width: 'auto', padding: '2px' }}>
+          <div style={{ textAlign: 'center', fontSize: '14px', fontWeight: '500', width: 'auto', padding: '2px' }}>
             초기화
           </div>
           <img

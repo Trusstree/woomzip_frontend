@@ -5,40 +5,8 @@ import Image from 'next/image';
 import { loadHouseData } from '@/app/test/4/_actions/actions';
 import { HighlightCardPriceText } from '@/app/test/4/_components/HighlightCardPriceText';
 
-const filterItems = [
-  { label: '침실', key: 'bedrooms' },
-  { label: '욕실', key: 'bathrooms' },
-  { label: '층', key: 'floors' },
-  { label: '가격', key: 'price' },
-  { label: '평수', key: 'floor_area' },
-  { label: '골조', key: 'structure' },
-  { label: 'AS', key: 'after_service' },
-  { label: '특이사항', key: 'after_service' },
-];
-
-// const productData = [
-//   {
-//     company: '업체명',
-//     productName: '제품명제품명제품명',
-//     price: '1억 5400',
-//     currency: '만원',
-//   },
-//   {
-//     company: '업체명',
-//     productName: '제품명제품명제품명',
-//     price: '1억 5400',
-//     currency: '만원',
-//   },
-//   {
-//     company: '업체명',
-//     productName: '제품명제품명제품명',
-//     price: '1억 5400',
-//     currency: '만원',
-//   },
-// ];
-
 export default async function test4({ searchParams }) {
-  const [numShowItems, numShowPages] = [24, 10];
+  const [numShowItems, numShowPages] = [36, 10];
   const [houseData, houseCount] = await loadHouseData(searchParams, numShowItems);
 
   return (
@@ -62,7 +30,7 @@ export default async function test4({ searchParams }) {
                     position: 'relative',
                   }}
                 >
-                  <Image src={product.house_img_urls} alt={product.house_name + ' image'} fill />
+                  <Image style={{objectFit:'cover', borderRadius:'5px'}} src={product.house_img_urls} alt={product.house_name + ' image'} fill />
                 </div>
                 <div style={{ padding: '10px' }}>
                   <div style={{ color: '#777777', fontSize: '17px' }}>{product.company_name}</div>
