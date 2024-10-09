@@ -33,27 +33,31 @@ export default function FilterBadge({ name, value }) {
 
   return (
     <div
-      className="d-flex align-items-center"
       style={{
-        margin: '0 5px',
+        backgroundColor: '#314FC0',
+        marginRight: '5px',
         fontSize: '14px',
         fontWeight: '400',
         border: '1px solid #314FC0',
-        borderRadius: '15px',
+        borderRadius: '10px',
         padding: '0 4px 0 5px',
         height: '25px',
+        display: 'flex', // Flexbox 사용
+        flexDirection: 'row', // 수직 정렬
+        alignItems: 'center', // 수평 중앙 정렬
+        justifyContent: 'center', // 수직 중앙 정렬
       }}
     >
-      <span style={{ fontWeight: '600', marginLeft: '5px', color: '#314FC0', padding: '0' }}>
-        {parseValue(name, value)}
-      </span>
-      <div
+      <span style={{ fontWeight: 'semibold', color: '#ffffff', padding: '0 3px' }}>{parseValue(name, value)}</span>
+      <img
         className="btn"
-        style={{ color: 'gray', border: 'none', margin: '0', padding: '1px 5px' }}
+        src="/x.png"
+        width={13}
+        height={13}
+        alt="down"
+        style={{ width: '13px', padding: '0' }}
         onClick={handleClick}
-      >
-        x
-      </div>
+      />
     </div>
   );
 }
