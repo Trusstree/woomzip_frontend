@@ -17,7 +17,7 @@ export default async function test4({ searchParams }) {
         <BadgeList />
 
         <div className="row">
-          {houseData.map((product, i) => (
+          {houseData?.map((product, i) => (
             <div key={i} className="col-md-6 col-12">
               <div className="card" style={{ width: '100%', border: 'none', marginBottom: '30px' }}>
                 <div
