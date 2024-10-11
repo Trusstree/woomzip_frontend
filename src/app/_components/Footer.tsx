@@ -14,7 +14,7 @@ export default function Footer() {
     <footer
       className="text-muted text-left pt-4 pb-5 text-white"
       style={{
-        backgroundColor: '#EEF7FF',
+        backgroundColor: '#F8F8FA',
         color: 'white',
         paddingTop: '1rem',
         paddingBottom: '1rem',

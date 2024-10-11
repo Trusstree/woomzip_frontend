@@ -10,7 +10,6 @@ export default function Header() {
       className={`navbar navbar-expand-md justify-content-center sticky-top`}
       style={{
         backgroundColor: 'white',
-        borderBottom: '1px solid #EBEDEF',
       }}
     >
       <div className=" d-flex justify-content-between" style={{ height: '50px', width: '95%' }}>
@@ -18,7 +17,7 @@ export default function Header() {
           <div className="d-flex align-items-center">
             {' '}
             {/* Flexbox 적용 */}
-            <Image src={'/woomzip_icon.webp'} alt={'Truss Logo'} width={30} height={30} style={{ padding: '0' }} />
+            <Image src={'/woomzip_new_logo.png'} alt={'Truss Logo'} width={23} height={23} style={{ padding: '0' }} />
             <div style={{ margin: '0', fontSize: '18px', fontWeight: '500' }}>woomzip</div>{' '}
             {/* 텍스트 왼쪽 간격 추가 */}
           </div>
@@ -39,14 +38,15 @@ export default function Header() {
           <div className="navbar-nav d-none d-md-flex w-100 align-items-center">
             <div className="d-flex align-items-center me-auto">
               <RouteButton url="/" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
-                움집소개
-              </RouteButton>
-              <RouteButton url="/house" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
-                제품찾기
+                홈
               </RouteButton>
               <RouteButton url="/community" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
                 커뮤니티
               </RouteButton>
+              <RouteButton url="/house" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
+                움집소개
+              </RouteButton>
+
               {/* <RouteButton url="/living" style={{ fontSize: "15px" }}>
               살아보기
             </RouteButton> */}
