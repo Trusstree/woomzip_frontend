@@ -2,7 +2,6 @@
 
 import useQuery from '@/hooks/useQuery';
 import { useRouter } from 'next/navigation';
-import styles from '@/styles/CategoryButton.module.css';
 import Image from 'next/image';
 
 export default function CategoryButton({
@@ -27,15 +26,11 @@ export default function CategoryButton({
 
   return (
     <div
-      className={styles.categoryButton}
       onClick={handleClick}
       style={{
-        width: '80px',
-        height: '50px',
-        padding: '3px',
-        backgroundColor: 'white',
-        borderRadius: '10px',
-        marginRight: '5px',
+        width: '81px',
+        height: '60px',
+        marginRight: '10px',
         display: 'flex', // Flexbox 사용
         flexDirection: 'column', // 수직 정렬
         alignItems: 'center', // 수평 중앙 정렬
@@ -43,13 +38,23 @@ export default function CategoryButton({
         cursor: 'pointer',
       }}
     >
-      <div className={getParams().get(queryName) == category ? styles.categoryIconBold : styles.categoryIcon}>
-        <Image src={imgSrc} alt={title} width={25} height={25} style={{ width: '25px', padding: '0' }} />
+      <div>
+        {/* <div className={getParams().get(queryName) == category ? styles.categoryIconBold : styles.categoryIcon}> */}
+        <Image src={imgSrc} alt={title} width={30} height={28} style={{ width: '30px', padding: '0' }} />
       </div>
       <div
-        className={getParams().get(queryName) == category ? styles.categoryButtonTextBold : styles.categoryButtonText}
-        style={{ textAlign: 'center', fontSize: '14px', fontWeight: '500', width: 'auto' }}
+        style={{
+          fontSize: '13px',
+          fontWeight: '500',
+          borderBottom: getParams().get(queryName) == category ? '3px solid #314FC0' : 'none', // 조건부 border-bottom
+          paddingBottom: '2px',
+          marginTop: '7px',
+        }}
       >
+        {/* <div
+        className={getParams().get(queryName) == category ? styles.categoryButtonTextBold : styles.categoryButtonText}
+        style={{ fontSize: '14px', fontWeight: '500' }}
+      > */}
         {title}
       </div>
     </div>
