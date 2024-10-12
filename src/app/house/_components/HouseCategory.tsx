@@ -1,29 +1,32 @@
-import CategoryButton from '@/components/CategoryButton';
+import CategoryButton from '@/app/house/_components/CategoryButton';
 
 export default function HouseCategory() {
   return (
-    <div className="row w-100 flex-nowrap overflow-auto" style={{ marginLeft: '0' }}>
-      <CategoryButton title={'전체'} imgSrc={'/buttonIcons/all.png'} queryName={'tag'} />
-      <CategoryButton title={'농막'} imgSrc={'/buttonIcons/farmhouse.png'} queryName={'tag'} category={'농막'} />
+    <div
+      className="row w-100 flex-nowrap overflow-auto"
+      style={{
+        margin: '10px 0',
+        padding: '10px 0',
+      }}
+    >
+      <CategoryButton title={'전체'} imgSrc={'/buttonIcons/all1.png'} queryName={'tag'} />
+      <CategoryButton title={'농막'} imgSrc={'/buttonIcons/nongmak.png'} queryName={'tag'} category={'농막'} />
       <CategoryButton
         title={'체류형쉼터'}
         imgSrc={'/buttonIcons/farmvisit.png'}
         queryName={'tag'}
         category={'체류형쉼터'}
       />
-      <CategoryButton
-        title={'컨테이너'}
-        imgSrc={'/buttonIcons/container.png'}
-        queryName={'tag'}
-        category={'컨테이너'}
-      />
-      <CategoryButton title={'가성비'} imgSrc={'/buttonIcons/money.png'} queryName={'tag'} category={'가성비'} />
+      <CategoryButton title={'가성비'} imgSrc={'/buttonIcons/scale.png'} queryName={'tag'} category={'가성비'} />
       <CategoryButton
         title={'고급스러운'}
         imgSrc={'/buttonIcons/luxury.png'}
         queryName={'tag'}
         category={'고급스러운'}
       />
+      <CategoryButton title={'특이한'} imgSrc={'/buttonIcons/unique.png'} queryName={'tag'} category={'특이한'} />
+      <CategoryButton title={'한옥'} imgSrc={'/buttonIcons/hanok.png'} queryName={'tag'} category={'한옥'} />
+      <CategoryButton title={'찜질방'} imgSrc={'/buttonIcons/sauna.png'} queryName={'tag'} category={'찜질방'} />
       <CategoryButton
         title={'세모지붕'}
         imgSrc={'/buttonIcons/triangleloop.png'}
@@ -31,7 +34,6 @@ export default function HouseCategory() {
         category={'세모지붕'}
       />
       <CategoryButton title={'평지붕'} imgSrc={'/buttonIcons/flatloop.png'} queryName={'tag'} category={'평지붕'} />
-      <CategoryButton title={'특이한'} imgSrc={'/buttonIcons/unique.png'} queryName={'tag'} category={'특이한'} />
       {/* <CategoryButton
         title={"미국식"}
         imgSrc={

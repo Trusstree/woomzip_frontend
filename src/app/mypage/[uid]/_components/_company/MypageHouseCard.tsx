@@ -3,7 +3,7 @@
 import { cardPriceText } from '@/lib/stringUtil';
 import Image from 'next/image';
 import HeartSolidSVG from '@/components/svg/HeartSolidSVG';
-import styles from '@/app/house/_styles/HouseCard.module.css';
+import styles from '@/app/mypage/[uid]/_styles/HouseCard.module.css';
 import { usePathname, useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 

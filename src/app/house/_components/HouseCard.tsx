@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { HighlightCardPriceText } from '@/app/test/4/_components/HighlightCardPriceText';
+import { HighlightCardPriceText } from '@/app/house/_components/HighlightCardPriceText';
 import Link from 'next/link';
 
 export default function HouseCard({ imgUrl, houseId, houseName, companyName, price }) {

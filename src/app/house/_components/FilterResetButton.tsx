@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 
 export default function FilterResetButton() {
@@ -28,7 +29,7 @@ export default function FilterResetButton() {
         <div style={{ textAlign: 'center', fontSize: '15px', fontWeight: '500', width: 'auto', padding: '2px' }}>
           초기화
         </div>
-        <img
+        <Image
           src="/reset.png"
           width={13}
           height={13}

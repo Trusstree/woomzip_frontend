@@ -1,5 +1,5 @@
 import Count from '@/components/posts/Count';
-import PostList from '@/app/_components/PostList';
+import PostList from '@/app/community/[pid]/_components/PostList';
 import PostMenu from '@/components/posts/PostMenu';
 import DOMPurify from 'isomorphic-dompurify';
 import { loadPostData, loadRecommendPostData } from '@/app/community/[pid]/_actions/actions';
