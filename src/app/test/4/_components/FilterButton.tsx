@@ -3,8 +3,8 @@
 import ArrowDownSVG from '@/components/svg/ArrowDownSVG';
 import useQuery from '@/hooks/useQuery';
 import { cardPriceText } from '@/lib/stringUtil';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function FilterDropdown({
   label,
@@ -19,19 +19,9 @@ export default function FilterDropdown({
 }) {
   const router = useRouter();
   const { createQuery, getParams, getRouteParams } = useQuery();
-  const [activeData, setActiveData] = useState([]);
+  const searchParams = useSearchParams();
 
-  const handleClick = (data: string | number | Array<string | number>, index: number) => {
-    // active
-    if (selected) {
-      const ind = activeData.indexOf(index);
-      if (ind >= 0) {
-        setActiveData((val) => val.filter((_, i) => i != ind));
-      } else setActiveData((val) => [...val, index]);
-    } else {
-      setActiveData((val) => [index]);
-    }
-
+  const handleClick = (data: string | number | Array<string | number>) => {
     // query
     createQuery('page');
     if (typeof data == 'object') {
@@ -58,6 +48,31 @@ export default function FilterDropdown({
     }
     router.push(getRouteParams());
   };
+
+  const isActive = (e: string | number | Array<string | number>) => {
+    if(typeof queryName != typeof e) return false;
+
+    if(typeof queryName == "object"){
+      const _data0 = searchParams.get(queryName[0]);
+      const _data1 = searchParams.get(queryName[1]);
+      if(!_data0 || !_data1) return false;
+      else if(_data0==e[0] && _data1==e[1]) return true;
+    } else {
+      const _data = searchParams.get(queryName);
+      if(!_data) return false;
+      else {
+        const _parsedData=_data.split(",").filter((e)=>e.length>0);
+        if(_parsedData.includes(e.toString())) return true;
+      }
+    }  
+
+
+    return false;
+  }
+
+  useEffect(()=>{
+    
+  },[searchParams]);
 
   return (
     <div
@@ -94,9 +109,9 @@ export default function FilterDropdown({
             return (
               <div
                 key={i}
-                className={`dropdown-item${activeData.includes(i) ? ' active' : ''}`}
+                className={`dropdown-item${isActive(e) ? ' active' : ''}`}
                 onClick={() => {
-                  handleClick(e, i);
+                  handleClick(e);
                 }}
               >
                 {prettierText(label, e)}
@@ -124,7 +139,7 @@ function prettierText(label: string, str: string | Array<string>) {
     case '골조':
       return str;
     case 'AS':
-      return str == '12' ? '1년 이하' : '2년 이하';
+      return str == '12' ? '1년 이상' : '2년 이상';
     case '특이사항':
       return str;
   }
