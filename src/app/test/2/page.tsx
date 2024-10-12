@@ -102,14 +102,14 @@ export default function test2() {
           <div className="col-md-3 col-6" style={{ marginTop: '20px', padding: '30px' }}>
             <div style={{ fontSize: '20px', fontWeight: '400' }}>등록 업체</div>
             <div style={{ fontSize: '45px', color: '#314FC0', width: '100%', textAlign: 'right' }}>16+</div>
-            <RouteLink href={"/house"} styles={{float:"right"}}>
+            <RouteLink href={'/house'} styles={{ float: 'right' }}>
               <div style={{ fontSize: '16px', fontWeight: '400', padding: '10px 0' }}>더보기</div>
             </RouteLink>
           </div>
           <div className="col-md-3 col-6" style={{ marginTop: '20px', padding: '30px' }}>
             <div style={{ fontSize: '20px', fontWeight: '400' }}>등록 제품</div>
-            <div style={{ fontSize: '45px', color: '#314FC0', width: '100%', textAlign: 'right' }}>33+</div>
-            <RouteLink href={"/house"} styles={{float:"right"}}>
+            <div style={{ fontSize: '45px', color: '#314FC0', width: '100%', textAlign: 'right' }}>40+</div>
+            <RouteLink href={'/house'} styles={{ float: 'right' }}>
               <div style={{ fontSize: '16px', fontWeight: '400', padding: '10px 0' }}>더보기</div>
             </RouteLink>
           </div>
@@ -124,7 +124,7 @@ export default function test2() {
         <div className="row" style={{ marginTop: '20px' }}>
           <div className="col-md-4 col-12" style={{ padding: '40px', wordBreak: 'keep-all' }}>
             <Image src={'/buttonIcons/compass.png'} width={38} height={38} alt={'compass'} />
-            <RouteLink href={"/house"}>
+            <RouteLink href={'/house'}>
               <div style={{ fontSize: '20px', fontWeight: '400', padding: '10px 0' }}>나에게 맞는 제품 찾기</div>
             </RouteLink>
             <div style={{ fontSize: '16px', fontWeight: '400', color: '#666666' }}>
@@ -133,7 +133,7 @@ export default function test2() {
           </div>
           <div className="col-md-4 col-12" style={{ padding: '40px', wordBreak: 'keep-all' }}>
             <Image src={'/buttonIcons/chart.png'} width={38} height={38} alt={'compass'} />
-            <RouteLink href={"/house"}>
+            <RouteLink href={'/house/54'}>
               <div style={{ fontSize: '20px', fontWeight: '400', padding: '10px 0' }}>상세 자재 확인하기</div>
             </RouteLink>
             <div style={{ fontSize: '16px', fontWeight: '400', color: '#666666' }}>
@@ -142,7 +142,7 @@ export default function test2() {
           </div>
           <div className="col-md-4 col-12" style={{ padding: '40px', wordBreak: 'keep-all' }}>
             <Image src={'/buttonIcons/calculator.png'} width={38} height={38} alt={'compass'} />
-            <RouteLink href={"/house"}>
+            <RouteLink href={'/planning?house_id=54'}>
               <div style={{ fontSize: '20px', fontWeight: '400', padding: '10px 0' }}>내 집짓기 총 비용 계산해보기</div>
             </RouteLink>
             <div style={{ fontSize: '16px', fontWeight: '400', color: '#666666' }}>
