@@ -9,21 +9,19 @@ export default function HouseCard({ imgUrl, houseId, houseName, companyName, pri
         <Link
           className="container"
           style={{
-            backgroundColor: '#000000',
             width: '100%',
             aspectRatio: '5 / 3',
-            borderRadius: '5px',
             position: 'relative',
           }}
           href={`/house/${houseId}`}
         >
-          <Image src={imgUrl} alt={houseName + ' image'} fill />
+          <Image src={imgUrl} alt={houseName + ' image'} fill style={{ borderRadius: '5px', objectFit: 'cover' }} />
         </Link>
         <div style={{ padding: '10px' }}>
-          <div style={{ color: '#777777', fontSize: '17px' }}>{companyName}</div>
+          <div style={{ color: '#777777', fontSize: '16px' }}>{companyName}</div>
           <div className="d-flex justify-content-between">
-            <div style={{ color: '#222222', fontSize: '22px' }}>{houseName}</div>
-            <div style={{ color: '#222222', fontSize: '22px' }}>
+            <div style={{ color: '#222222', fontSize: '20px' }}>{houseName}</div>
+            <div style={{ color: '#222222', fontSize: '20px' }}>
               <HighlightCardPriceText price={price} />
             </div>
           </div>

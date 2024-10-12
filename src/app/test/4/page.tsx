@@ -68,7 +68,7 @@ export default async function test4({ searchParams }) {
           <FilterResetButton />
         </div>
 
-        {/* <BadgeList /> */}
+        <BadgeList />
 
         <div className="row">
           {houseData.map((product, i) => (
