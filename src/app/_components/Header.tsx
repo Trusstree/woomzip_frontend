@@ -18,7 +18,7 @@ export default function Header() {
             {' '}
             {/* Flexbox 적용 */}
             <Image src={'/woomzip_new_logo.png'} alt={'Truss Logo'} width={29} height={21} style={{ padding: '0' }} />
-            <div style={{ marginBottom: '3px', fontSize: '18px', fontWeight: '500' }}>woomzip</div>{' '}
+            <div style={{ marginBottom: '3px', fontSize: '18px', fontWeight: '500',color: '#314FC0' }}>woomzip</div>{' '}
             {/* 텍스트 왼쪽 간격 추가 */}
           </div>
         </RouteButton>

@@ -43,5 +43,6 @@ export async function loadHouseData(searchParams, numShowItems) {
     return [undefined, undefined];
   }
 
+  console.log(data.data[0].houses);
   return [data.data[0].houses, data.data[0].total_count];
 }
