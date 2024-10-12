@@ -21,7 +21,7 @@ const filterItems = [
     label: '평수',
     queryName: ['floor_area_min', 'floor_area_max'],
     queryData: [
-      [0, 6],
+      [1, 6],
       [6, 10],
       [10, 14],
       [14, 18],
@@ -30,7 +30,7 @@ const filterItems = [
     ],
   },
   { label: '침실', queryName: 'room_count', queryData: [1, 2] },
-  { label: '욕실', queryName: 'toilet_count', queryData: [1, 2] },
+  // { label: '욕실', queryName: 'toilet_count', queryData: [1, 2] },
   { label: '층', queryName: 'floor_count', queryData: [1, 2] },
   { label: '골조', queryName: 'frame', queryData: ['경량목', '경량스틸', '기타'], selected: true },
   { label: 'AS', queryName: 'warranty', queryData: [12, 24] },

@@ -23,7 +23,7 @@ export default function HouseCategory() {
         <CategoryButton title={'가성비'} imgSrc={'/buttonIcons/scale.png'} queryName={'tag'} category={'가성비'} />
         <CategoryButton
           title={'고급스러운'}
-          imgSrc={'/buttonIcons/Luxury.png'}
+          imgSrc={'/buttonIcons/luxury.png'}
           queryName={'tag'}
           category={'고급스러운'}
         />
