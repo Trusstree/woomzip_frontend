@@ -1,5 +1,6 @@
 import styles from '@/app/test/_css/test2.module.css';
 import Image from 'next/image';
+import RouteLink from './_components/RouteLink';
 
 export default function test2() {
   return (
@@ -101,24 +102,16 @@ export default function test2() {
           <div className="col-md-3 col-6" style={{ marginTop: '20px', padding: '30px' }}>
             <div style={{ fontSize: '20px', fontWeight: '400' }}>등록 업체</div>
             <div style={{ fontSize: '45px', color: '#314FC0', width: '100%', textAlign: 'right' }}>16+</div>
-            <button
-              className="d-flex align-items-center"
-              style={{ border: 'none', backgroundColor: '#ffffff', padding: '0', float: 'right' }}
-            >
+            <RouteLink href={"/house"} styles={{float:"right"}}>
               <div style={{ fontSize: '16px', fontWeight: '400', padding: '10px 0' }}>더보기</div>
-              <Image src={'/buttonIcons/next.png'} width={20} height={18} alt={'next'} style={{ marginLeft: '5px' }} />
-            </button>
+            </RouteLink>
           </div>
           <div className="col-md-3 col-6" style={{ marginTop: '20px', padding: '30px' }}>
             <div style={{ fontSize: '20px', fontWeight: '400' }}>등록 제품</div>
             <div style={{ fontSize: '45px', color: '#314FC0', width: '100%', textAlign: 'right' }}>33+</div>
-            <button
-              className="d-flex align-items-center"
-              style={{ border: 'none', backgroundColor: '#ffffff', padding: '0', float: 'right' }}
-            >
+            <RouteLink href={"/house"} styles={{float:"right"}}>
               <div style={{ fontSize: '16px', fontWeight: '400', padding: '10px 0' }}>더보기</div>
-              <Image src={'/buttonIcons/next.png'} width={20} height={18} alt={'next'} style={{ marginLeft: '5px' }} />
-            </button>
+            </RouteLink>
           </div>
         </div>
       </div>
@@ -131,39 +124,27 @@ export default function test2() {
         <div className="row" style={{ marginTop: '20px' }}>
           <div className="col-md-4 col-12" style={{ padding: '40px', wordBreak: 'keep-all' }}>
             <Image src={'/buttonIcons/compass.png'} width={38} height={38} alt={'compass'} />
-            <button
-              className="d-flex align-items-center"
-              style={{ border: 'none', backgroundColor: '#ffffff', padding: '0' }}
-            >
+            <RouteLink href={"/house"}>
               <div style={{ fontSize: '20px', fontWeight: '400', padding: '10px 0' }}>나에게 맞는 제품 찾기</div>
-              <Image src={'/buttonIcons/next.png'} width={22} height={20} alt={'next'} style={{ marginLeft: '5px' }} />
-            </button>
+            </RouteLink>
             <div style={{ fontSize: '16px', fontWeight: '400', color: '#666666' }}>
               40가지로 제품 정보를 분석해서 나에게 딱 맞는 제품을 찾기가 쉬워요.
             </div>
           </div>
           <div className="col-md-4 col-12" style={{ padding: '40px', wordBreak: 'keep-all' }}>
             <Image src={'/buttonIcons/chart.png'} width={38} height={38} alt={'compass'} />
-            <button
-              className="d-flex align-items-center"
-              style={{ border: 'none', backgroundColor: '#ffffff', padding: '0' }}
-            >
+            <RouteLink href={"/house"}>
               <div style={{ fontSize: '20px', fontWeight: '400', padding: '10px 0' }}>상세 자재 확인하기</div>
-              <Image src={'/buttonIcons/next.png'} width={22} height={20} alt={'next'} style={{ marginLeft: '5px' }} />
-            </button>
+            </RouteLink>
             <div style={{ fontSize: '16px', fontWeight: '400', color: '#666666' }}>
               어떤 자재가 사용되었는지, 좋은 자재인지 일반인들이 알기 어려운 정보들을 분석해두었어요.
             </div>
           </div>
           <div className="col-md-4 col-12" style={{ padding: '40px', wordBreak: 'keep-all' }}>
             <Image src={'/buttonIcons/calculator.png'} width={38} height={38} alt={'compass'} />
-            <button
-              className="d-flex align-items-center"
-              style={{ border: 'none', backgroundColor: '#ffffff', padding: '0' }}
-            >
+            <RouteLink href={"/house"}>
               <div style={{ fontSize: '20px', fontWeight: '400', padding: '10px 0' }}>내 집짓기 총 비용 계산해보기</div>
-              <Image src={'/buttonIcons/next.png'} width={22} height={20} alt={'next'} style={{ marginLeft: '5px' }} />
-            </button>
+            </RouteLink>
             <div style={{ fontSize: '16px', fontWeight: '400', color: '#666666' }}>
               제품 비용이 전부가 아니에요. 내 집을 짓기 위해 드는 모든 비용을 한 번에 예측해보세요.
             </div>
