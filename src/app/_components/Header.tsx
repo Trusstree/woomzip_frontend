@@ -41,10 +41,10 @@ export default function Header() {
                 홈
               </RouteButton>
               <RouteButton url="/community" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
-                커뮤니티
+                제품찾기
               </RouteButton>
               <RouteButton url="/house" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
-                움집소개
+                커뮤니티
               </RouteButton>
 
               {/* <RouteButton url="/living" style={{ fontSize: "15px" }}>

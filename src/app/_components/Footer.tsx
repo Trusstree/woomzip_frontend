@@ -80,8 +80,8 @@ export default function Footer() {
               </div>
 
               <div id="social">
-                <SocialIcon url={youtubeURL} network="youtube" bgColor="#EEF7FF" fgColor="gray" />
-                <SocialIcon url={instagrmaURL} network="instagram" bgColor="#EEF7FF" fgColor="gray" />
+                <SocialIcon url={youtubeURL} network="youtube" bgColor="#F8F8FA" fgColor="gray" />
+                <SocialIcon url={instagrmaURL} network="instagram" bgColor="#F8F8FA" fgColor="gray" />
                 <Link href={naverBlogURL} passHref style={{ border: 'none', outline: 'none' }}>
                   <div className="btn m-0 p-0">
                     <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111" width="40" height="40">
