@@ -17,16 +17,16 @@ export function HouseSelectComponent(props: SelectComponentProps) {
   const [ETC, setETC] = useState(!!value?.etc);
 
   const onChangeDefault = (e: ChangeEvent<HTMLInputElement>) => {
-    let def = value.default;
+    let def = value?.default ?? [];
     if (e.target.checked) {
-      if (!value.default.includes(e.target.value)) def = [...value.default, e.target.value];
+      if (!def.includes(e.target.value)) def = [...def, e.target.value];
     } else {
-      if (value.default.includes(e.target.value)) def = def.filter((el) => el != e.target.value);
+      if (def.includes(e.target.value)) def = def.filter((el) => el != e.target.value);
     }
 
     onChange({
       default: def,
-      etc: value.etc,
+      etc: value?.etc ?? "",
     });
   };
 
@@ -34,7 +34,7 @@ export function HouseSelectComponent(props: SelectComponentProps) {
     setETC(!ETC);
     if (!ETC) {
       onChange({
-        default: value.default,
+        default: value?.default??[],
         etc: '',
       });
     }

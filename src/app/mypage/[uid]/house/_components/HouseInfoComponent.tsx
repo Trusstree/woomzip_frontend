@@ -318,7 +318,7 @@ export function HouseInfoComponent() {
         <HouseSpecificationSelectComponent
           title={'제품 구조 특이사항 (다중선택 가능)'}
           name={'specificity_info'}
-          value={specificityInfo}
+          value={specificityInfo.default}
           onChange={setSpecificityInfo}
           dataList={['없음', '다락방', '발코니', '베란다', '옥상', '데크', '창고']}
           essential

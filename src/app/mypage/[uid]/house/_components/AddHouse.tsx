@@ -116,6 +116,7 @@ export default function AddHouse({ uid, houseId }: { uid: string | number; house
         insulation_material: specificationInfo.insulationMaterial,
         interior_material: specificationInfo.interiorMaterial,
         window: specificationInfo.window,
+        wall: specificationInfo.wall,
         heating: specificationInfo.heating,
         furniture: specificationInfo.furniture,
         toilet: specificationInfo.toilet,

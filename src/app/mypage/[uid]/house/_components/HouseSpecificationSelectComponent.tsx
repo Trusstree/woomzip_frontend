@@ -1,7 +1,7 @@
 'use client';
 
 import { SelectBoxComponent } from '@/components/forms/SelectBoxComponent';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 type SelectComponentProps = {
   title: string;
@@ -15,44 +15,18 @@ type SelectComponentProps = {
 
 export function HouseSpecificationSelectComponent(props: SelectComponentProps) {
   const { title, name, value, dataList, onChange, className, essential } = props;
-  const [disable, setDisable] = useState(false);
-  const [dataCheckList, setDataCheckList] = useState(
-    dataList.filter((e) => e != '없음').map((e) => [e, false]) as Array<[string, boolean]>,
-  );
+  const [def, setDef] = useState(value);
 
   const onChangeDefault = (e: ChangeEvent<HTMLInputElement>) => {
-    const title = e.target.value;
-    const checked = e.target.checked;
     let res: Array<string>;
-
-    if (title == '없음') {
-      res = [];
-      if (checked) {
-        setDisable(true);
-      } else {
-        dataCheckList.forEach((e) => {
-          if (e[1]) res.push(e[0]);
-        });
-        setDisable(false);
-      }
-    } else {
-      res = value;
-      setDataCheckList((oldValues) => {
-        let res = oldValues;
-        res.forEach((e) => {
-          if (e[0] == title) e[1] = checked;
-        });
-        return res;
-      });
-
-      if (checked) {
-        if (!value.includes(title)) res = [...value, title];
-      } else {
-        if (value.includes(title)) res = res.filter((el) => el != title);
-      }
-    }
-    onChange(res);
+    const title = e.target.value;
+    if(def.includes(title)) setDef(def.filter((e)=>e!=title));
+    else setDef((val)=>[...val, title]);
   };
+
+  useEffect(()=>{
+    onChange({default:def});
+  }, [def]);
 
   return (
     <div className={`${className || ''} my-2 d-flex flex-column`}>
@@ -67,8 +41,8 @@ export function HouseSpecificationSelectComponent(props: SelectComponentProps) {
             name={name}
             title={e}
             onChange={onChangeDefault}
-            className={`${className || ''} mx-2`}
-            disabled={e != '없음' && disable}
+            className={`mx-2`}
+            checked={def.includes(e)}
           />
         ))}
       </div>

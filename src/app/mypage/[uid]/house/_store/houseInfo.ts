@@ -16,7 +16,7 @@ interface HouseInfoState {
   basePrice: string;
   discountPrice: string;
   priceVariation: string;
-  specificityInfo: Array<string>;
+  specificityInfo: {default: Array<string>};
 }
 
 interface HouseInfoActions {
@@ -35,7 +35,7 @@ interface HouseInfoActions {
   setBasePrice: (basePrice: string) => void;
   setDiscountPrice: (discountPrice: string) => void;
   setPriceVariation: (priceVariation: string) => void;
-  setSpecificityInfo: (specificityInfo: Array<string>) => void;
+  setSpecificityInfo: (specificityInfo: {default: Array<string>}) => void;
 }
 
 const useHouseInfo = create<HouseInfoState & HouseInfoActions>((set) => ({
@@ -54,7 +54,7 @@ const useHouseInfo = create<HouseInfoState & HouseInfoActions>((set) => ({
   basePrice: '',
   discountPrice: '',
   priceVariation: '',
-  specificityInfo: [],
+  specificityInfo: {default: []},
   setHouseName: (houseName: string) => {
     set({ houseName });
   },
@@ -100,7 +100,7 @@ const useHouseInfo = create<HouseInfoState & HouseInfoActions>((set) => ({
   setPriceVariation: (priceVariation: string) => {
     set({ priceVariation });
   },
-  setSpecificityInfo: (specificityInfo: Array<string>) => {
+  setSpecificityInfo: (specificityInfo: {default: Array<string>}) => {
     set({ specificityInfo });
   },
 }));
