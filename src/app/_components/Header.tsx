@@ -17,7 +17,7 @@ export default function Header() {
           <div className="d-flex align-items-center">
             {' '}
             {/* Flexbox 적용 */}
-            <Image src={'/woomzip_new_logo.png'} alt={'Truss Logo'} width={23} height={23} style={{ padding: '0' }} />
+            <Image src={'/woomzip_new_logo.png'} alt={'Truss Logo'} width={30} height={22} style={{ padding: '0' }} />
             <div style={{ margin: '0', fontSize: '18px', fontWeight: '500' }}>woomzip</div>{' '}
             {/* 텍스트 왼쪽 간격 추가 */}
           </div>
