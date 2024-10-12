@@ -50,34 +50,31 @@ export default function FilterDropdown({
   };
 
   const isActive = (e: string | number | Array<string | number>) => {
-    if(typeof queryName != typeof e) return false;
+    if (typeof queryName != typeof e) return false;
 
-    if(typeof queryName == "object"){
+    if (typeof queryName == 'object') {
       const _data0 = searchParams.get(queryName[0]);
       const _data1 = searchParams.get(queryName[1]);
-      if(!_data0 || !_data1) return false;
-      else if(_data0==e[0] && _data1==e[1]) return true;
+      if (!_data0 || !_data1) return false;
+      else if (_data0 == e[0] && _data1 == e[1]) return true;
     } else {
       const _data = searchParams.get(queryName);
-      if(!_data) return false;
+      if (!_data) return false;
       else {
-        const _parsedData=_data.split(",").filter((e)=>e.length>0);
-        if(_parsedData.includes(e.toString())) return true;
+        const _parsedData = _data.split(',').filter((e) => e.length > 0);
+        if (_parsedData.includes(e.toString())) return true;
       }
-    }  
-
+    }
 
     return false;
-  }
+  };
 
-  useEffect(()=>{
-    
-  },[searchParams]);
+  useEffect(() => {}, [searchParams]);
 
   return (
     <div
       style={{
-        width: '80px',
+        width: '90px',
         height: '35px',
         padding: '0',
         backgroundColor: 'white',
@@ -98,8 +95,8 @@ export default function FilterDropdown({
         aria-expanded="false"
       >
         {label}
-        <span>
-          <ArrowDownSVG width={16} />
+        <span style={{ paddingLeft: '4px' }}>
+          <ArrowDownSVG width={16} strokeWidth={2} />
         </span>
       </div>
 

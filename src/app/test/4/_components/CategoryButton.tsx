@@ -28,9 +28,8 @@ export default function CategoryButton({
     <div
       onClick={handleClick}
       style={{
-        width: '81px',
+        width: '87px',
         height: '60px',
-        marginRight: '10px',
         display: 'flex', // Flexbox 사용
         flexDirection: 'column', // 수직 정렬
         alignItems: 'center', // 수평 중앙 정렬

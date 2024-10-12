@@ -6,9 +6,6 @@ import HouseCard from '@/app/test/4/_components/HouseCard';
 import FilterResetButton from '@/app/test/4/_components/FilterResetButton';
 
 const filterItems = [
-  { label: '침실', queryName: 'room_count', queryData: [1, 2] },
-  { label: '욕실', queryName: 'toilet_count', queryData: [1, 2] },
-  { label: '층', queryName: 'floor_count', queryData: [1, 2] },
   {
     label: '가격',
     queryName: ['min_price', 'max_price'],
@@ -32,6 +29,9 @@ const filterItems = [
       [22, 26],
     ],
   },
+  { label: '침실', queryName: 'room_count', queryData: [1, 2] },
+  { label: '욕실', queryName: 'toilet_count', queryData: [1, 2] },
+  { label: '층', queryName: 'floor_count', queryData: [1, 2] },
   { label: '골조', queryName: 'frame', queryData: ['경량목', '경량스틸', '기타'], selected: true },
   { label: 'AS', queryName: 'warranty', queryData: [12, 24] },
   {

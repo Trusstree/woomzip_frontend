@@ -1,10 +1,10 @@
-export default function ArrowDownSVG({ width }: { width: number }) {
+export default function ArrowDownSVG({ width, strokeWidth }: { width: number; strokeWidth: number }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth={1.5}
+      strokeWidth={strokeWidth}
       stroke="currentColor"
       className="size-6"
       width={width}
