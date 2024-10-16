@@ -1,6 +1,7 @@
 // { default?: Array<string>; etc?: string }
 export const parseSpecificationInfo = (data: any) => {
   if (!data) return undefined;
+  if (typeof data == 'string') return data;
   const def = data.default ? data.default.join(', ') : '';
   const etc = data.etc ? data.etc : '';
   return def ? def + (etc ? `, ${etc}` : '') : etc ? etc : '';
