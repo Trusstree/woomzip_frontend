@@ -80,6 +80,7 @@ export default function FilterDropdown({
         backgroundColor: 'white',
         borderRadius: '10px',
         marginRight: '5px',
+        marginBottom: '5px',
         display: 'flex', // Flexbox 사용
         flexDirection: 'column', // 수직 정렬
         alignItems: 'center', // 수평 중앙 정렬

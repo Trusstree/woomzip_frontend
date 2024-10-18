@@ -17,15 +17,20 @@ export default function HouseCategory() {
         queryName={'tag'}
         category={'체류형쉼터'}
       />
-      <CategoryButton title={'가성비'} imgSrc={'/buttonIcons/scale.png'} queryName={'tag'} category={'가성비'} />
       <CategoryButton
         title={'고급스러운'}
         imgSrc={'/buttonIcons/luxury.png'}
         queryName={'tag'}
         category={'고급스러운'}
       />
-      <CategoryButton title={'특이한'} imgSrc={'/buttonIcons/unique.png'} queryName={'tag'} category={'특이한'} />
+      <CategoryButton title={'가성비'} imgSrc={'/buttonIcons/scale.png'} queryName={'tag'} category={'가성비'} />
+
       <CategoryButton title={'한옥'} imgSrc={'/buttonIcons/hanok.png'} queryName={'tag'} category={'한옥'} />
+      <CategoryButton title={'통나무집'} imgSrc={'/buttonIcons/cabin.png'} queryName={'tag'} category={'통나무집'} />
+      <CategoryButton title={'특이한'} imgSrc={'/buttonIcons/unique.png'} queryName={'tag'} category={'특이한'} />
+      <CategoryButton title={'우주선'} imgSrc={'/buttonIcons/spaceship.png'} queryName={'tag'} category={'우주선'} />
+      <CategoryButton title={'다락방'} imgSrc={'/buttonIcons/garret.png'} queryName={'tag'} category={'다락방'} />
+
       <CategoryButton title={'찜질방'} imgSrc={'/buttonIcons/sauna.png'} queryName={'tag'} category={'찜질방'} />
       <CategoryButton
         title={'세모지붕'}
