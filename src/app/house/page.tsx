@@ -4,6 +4,7 @@ import BadgeList from '@/app/house/_components/BadgeList';
 import { loadHouseData } from '@/app/house/_actions/actions';
 import HouseCard from '@/app/house/_components/HouseCard';
 import FilterResetButton from '@/app/house/_components/FilterResetButton';
+import Pagination from '@/components/Pagination';
 
 const filterItems = [
   {
@@ -43,7 +44,7 @@ const filterItems = [
 ];
 
 export default async function test4({ searchParams }) {
-  const [numShowItems, numShowPages] = [72, 10];
+  const [numShowItems, numShowPages] = [30, 10];
   const [houseData, houseCount] = await loadHouseData(searchParams, numShowItems);
 
   return (
@@ -81,6 +82,7 @@ export default async function test4({ searchParams }) {
               price={product.final_price}
             />
           ))}
+          <Pagination numItems={houseCount} numShowItems={numShowItems} numShowPages={numShowPages} />
         </div>
       </div>
     </>
