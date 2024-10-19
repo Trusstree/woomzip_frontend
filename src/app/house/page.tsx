@@ -34,16 +34,16 @@ const filterItems = [
   { label: '층', queryName: 'floor_count', queryData: [1, 2] },
   { label: '골조', queryName: 'frame', queryData: ['경량목', '경량스틸', '기타'], selected: true },
   { label: 'AS', queryName: 'warranty', queryData: [12, 24] },
-  {
-    label: '특이사항',
-    queryName: 'specificity',
-    queryData: ['데크', '다락방', '발코니', '베란다', '옥상'],
-    selected: true,
-  },
+  // {
+  //   label: '특이사항',
+  //   queryName: 'specificity',
+  //   queryData: ['데크', '다락방', '발코니', '베란다', '옥상'],
+  //   selected: true,
+  // },
 ];
 
 export default async function test4({ searchParams }) {
-  const [numShowItems, numShowPages] = [36, 10];
+  const [numShowItems, numShowPages] = [72, 10];
   const [houseData, houseCount] = await loadHouseData(searchParams, numShowItems);
 
   return (
@@ -54,7 +54,7 @@ export default async function test4({ searchParams }) {
         {/* Filter List */}
         <div
           className="row"
-          style={{ margin: '10px 0', backgroundColor: '#F8F8FA', borderRadius: '10px', padding: '5px' }}
+          style={{ margin: '10px 0', backgroundColor: '#F8F8FA', borderRadius: '10px', padding: '5px 5px 0 5px' }}
         >
           {filterItems.map((e, i) => (
             <FilterButton
