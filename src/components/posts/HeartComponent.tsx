@@ -78,7 +78,7 @@ export default function HeartComponent({
   }, []);
 
   return (
-    <div className="d-flex" style={{ width: '60px', padding: '0' }}>
+    <div className="d-flex" style={{ width: '100%', padding: '0', alignItems: 'center' }}>
       <div onClick={handleLike}>
         {isLike ? (
           type == 'heart' ? (
@@ -92,8 +92,8 @@ export default function HeartComponent({
           <ThumbLineSVG width={23} />
         )}
       </div>
-      <div className="ps-1" style={{ width: '34px' }}>
-        {cardCountText(likeCount - isLiked + isLike)}
+      <div className="ps-1" style={{ width: '100%', fontSize: '14px' }}>
+        이 집을 <span style={{ color: '#314FC0' }}>{cardCountText(likeCount - isLiked + isLike)}명</span>이 좋아합니다.
       </div>
     </div>
   );

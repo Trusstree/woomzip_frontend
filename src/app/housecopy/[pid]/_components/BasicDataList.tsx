@@ -1,0 +1,60 @@
+import HeartComponent from '@/components/posts/HeartComponent';
+import { getHouseHeartUser, postHouseHeart, postHouseHeartRemove } from '@/actions/apis/heartAPI';
+import { detailPriceText } from '@/lib/stringUtil';
+import { parseSpecificationInfo } from '@/lib/parseUtil';
+import Image from 'next/image';
+
+export default function BasicDataList({ pid, houseData, specificationData }) {
+  const basicData = [
+    { src: '/houseIcons/room1.png', alt: 'room', text: `${houseData['room_count']}개 침실` },
+    { src: '/houseIcons/toilet1.png', alt: 'toilet', text: `${houseData['toilet_count']}개 욕실` },
+    { src: '/houseIcons/pyeong1.png', alt: 'pyeong', text: `${houseData['total_floor_area']}평` },
+    { src: '/houseIcons/floor.png', alt: 'floor', text: `${houseData['floor']}층` },
+    {
+      src: '/houseIcons/framework.png',
+      alt: 'framework',
+      text: `${parseSpecificationInfo(specificationData['framework'])} 구조`,
+    },
+    { src: '/houseIcons/pyeong1.png', alt: 'area', text: `${houseData['building_area'].toFixed(1)}㎡ 건축면적` },
+    { src: '/houseIcons/warranty.png', alt: 'warranty', text: `${houseData['warranty']} 보장` },
+    { src: '/houseIcons/duration.png', alt: 'duration', text: `완성까지 ${houseData['estimate_duration']}개월` },
+    { src: '/houseIcons/addition.png', alt: 'specificity', text: `${houseData['specificity_info']}` },
+  ];
+
+  return (
+    <div className="row" style={{ margin: '50px 0' }}>
+      <div className="col-md-6 col-12" style={{ marginBottom: '20px' }}>
+        <div style={{ fontSize: '22px' }}>{houseData['house_name']}</div>
+        <div style={{ fontSize: '22px', color: '#314FC0' }}>
+          {detailPriceText(houseData['final_price'])}
+          <span style={{ fontSize: '20px', color: 'black' }}>
+            <span style={{ fontSize: '18px', color: '#666666' }}>(부가세 미포함)</span>
+          </span>
+        </div>
+        <HeartComponent
+          heart_id={pid}
+          likeCount={houseData['like_count']}
+          getHeart={getHouseHeartUser}
+          postHeart={postHouseHeart}
+          postHeartRemove={postHouseHeartRemove}
+          type={'heart'}
+        />
+      </div>
+
+      <div className="row col-md-6 col-12">
+        {basicData.map((icon, index) => (
+          <div className="col-4 d-flex" style={{ alignItems: 'center', marginBottom: '15px' }} key={index}>
+            <Image
+              src={icon.src}
+              alt={icon.alt}
+              width={38}
+              height={38}
+              style={{ width: '22px', height: '22px' }}
+            ></Image>
+            <div style={{ fontSize: '14px', marginLeft: '5px', wordBreak: 'keep-all' }}>{icon.text}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
