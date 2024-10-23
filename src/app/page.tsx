@@ -101,14 +101,14 @@ export default function test2() {
           <div className="col-md-5 col-0"></div>
           <div className="col-md-3 col-6" style={{ marginTop: '20px', padding: '30px' }}>
             <div style={{ fontSize: '20px', fontWeight: '400' }}>등록 업체</div>
-            <div style={{ fontSize: '45px', color: '#314FC0', width: '100%', textAlign: 'right' }}>16+</div>
+            <div style={{ fontSize: '45px', color: '#314FC0', width: '100%', textAlign: 'right' }}>20+</div>
             <RouteLink href={'/house'} styles={{ float: 'right' }}>
               <div style={{ fontSize: '16px', fontWeight: '400', padding: '10px 0' }}>더보기</div>
             </RouteLink>
           </div>
           <div className="col-md-3 col-6" style={{ marginTop: '20px', padding: '30px' }}>
             <div style={{ fontSize: '20px', fontWeight: '400' }}>등록 제품</div>
-            <div style={{ fontSize: '45px', color: '#314FC0', width: '100%', textAlign: 'right' }}>40+</div>
+            <div style={{ fontSize: '45px', color: '#314FC0', width: '100%', textAlign: 'right' }}>70+</div>
             <RouteLink href={'/house'} styles={{ float: 'right' }}>
               <div style={{ fontSize: '16px', fontWeight: '400', padding: '10px 0' }}>더보기</div>
             </RouteLink>
@@ -235,7 +235,7 @@ export default function test2() {
           src={'/background2.webp'}
           width={1600}
           height={985}
-          style={{ objectFit: 'cover', width: '100%', height: '500px', borderRadius: '15px' }}
+          style={{ objectFit: 'cover', width: '100%', height: '600px', borderRadius: '15px' }}
           alt={'background2'}
         />
         <div
@@ -244,7 +244,7 @@ export default function test2() {
             top: 0,
             left: 0,
             width: '100%',
-            height: '500px',
+            height: '600px',
             borderRadius: '15px',
             background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))',
           }}
@@ -274,6 +274,39 @@ export default function test2() {
             무엇이든 물어보세요.
           </div>
           <Inquiry />
+          <div className="row" style={{ width: '90%', maxWidth: '500px' }}>
+            <div style={{ width: '30%' }}>
+              <div>이름</div>
+              <input style={{ border: 'none', borderRadius: '5px', width: '100%', opacity: '0.8' }}></input>
+            </div>
+            <div style={{ width: '70%' }}>
+              <div>이메일 혹은 전화번호</div>
+              <input style={{ border: 'none', borderRadius: '5px', width: '100%', opacity: '0.8' }}></input>
+            </div>
+            <div style={{ width: '100%', marginBottom: '30px' }}>
+              <div>문의사항</div>
+              <input
+                style={{ border: 'none', borderRadius: '5px', width: '100%', height: '200px', opacity: '0.8' }}
+              ></input>
+            </div>
+            <button
+              style={{
+                backgroundColor: '#314FC0',
+                opacity: '0.9',
+                margin: '0 auto',
+                padding: '15px',
+                color: '#ffffff',
+                fontSize: '18px',
+                fontWeight: '550',
+                border: 'none',
+                borderRadius: '10px',
+                boxShadow: '0 6px 10px rgba(255, 255, 255, 0.2)',
+                width: 'auto',
+              }}
+            >
+              12시간 내, 답변 요청하기
+            </button>
+          </div>
         </div>
       </div>
     </>

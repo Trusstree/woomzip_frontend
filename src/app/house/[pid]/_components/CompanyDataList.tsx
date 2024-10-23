@@ -6,10 +6,10 @@ import RouteLink from '@/app/_components/RouteLink';
 export default function CompanyDataList({ pid, houseData, userData }) {
   return (
     <div style={{ margin: '120px 0' }}>
-      <div style={{ fontSize: '22px', marginBottom: '20px' }}>신뢰할 수 있는 업체에서 제작을 책임집니다.</div>
+      <div style={{ fontSize: '22px', marginBottom: '25px' }}>신뢰할 수 있는 업체에서 제작을 책임집니다.</div>
       <div className="row" style={{ fontSize: '15px' }}>
         <div className="row col-md-8 col-12" style={{ marginBottom: '15px' }}>
-          <div className="col-4">
+          <div className="col-md-3 col-4">
             <Image
               src={userData?.['user_img_url'] || 'blur_image.png'}
               alt={`profile`}
