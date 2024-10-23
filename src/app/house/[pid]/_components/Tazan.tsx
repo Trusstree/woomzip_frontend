@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import useQuery from '@/hooks/useQuery';
 import { useRouter } from 'next/navigation';
+import { detailPriceText } from '@/lib/stringUtil';
 
 export default function Tazan({ pid, houseData }) {
   const { createQueryString } = useQuery();
@@ -48,7 +49,7 @@ export default function Tazan({ pid, houseData }) {
             <div style={{ fontSize: '20px' }}>
               당신의 총 예상비용은,
               <br />
-              <span style={{ color: '#314FC0' }}>{houseData['final_price']}원~???원</span>
+              <span style={{ color: '#314FC0' }}>{detailPriceText(houseData['final_price'])}~???원</span>
               <br />
               으로 예상 됩니다.
             </div>
@@ -57,7 +58,7 @@ export default function Tazan({ pid, houseData }) {
 
           <div className="d-flex justify-content-between" style={{ lineHeight: '35px' }}>
             <div style={{ fontSize: '16px' }}>주택가격</div>
-            <div style={{ fontSize: '14px' }}>{houseData['final_price']}원</div>
+            <div style={{ fontSize: '14px' }}>{detailPriceText(houseData['final_price'])}</div>
           </div>
           <div className="d-flex justify-content-between" style={{ lineHeight: '35px' }}>
             <div style={{ fontSize: '16px' }}>배송비</div>

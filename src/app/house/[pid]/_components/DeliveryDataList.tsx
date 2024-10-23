@@ -24,7 +24,7 @@ export default function DeliveryDataList({ pid, houseData, deliveryData }) {
         제품 배송 정보
       </div>
       {optionalData.map((optional, index) => (
-        <div className="col-md-2 col-sm-4 col-6" style={{ margin: '10px 0' }}>
+        <div key={index} className="col-md-2 col-sm-4 col-6" style={{ margin: '10px 0' }}>
           <div style={{ padding: '10px', borderRadius: '10px', backgroundColor: '#F5F7FF' }}>
             <div className="d-flex" style={{ alignItems: 'center' }}>
               <Image

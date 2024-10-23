@@ -35,7 +35,7 @@ export default function OptionDataList({ pid, houseData, optionData }) {
       </div>
       <div className="col-md-4 col-12">
         {serviceData.map((detail, index) => (
-          <div className="col-md-12" style={{ margin: '10px 0' }}>
+          <div key={index} className="col-md-12" style={{ margin: '10px 0' }}>
             <div
               style={{
                 padding: '15px',
