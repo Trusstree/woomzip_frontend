@@ -20,8 +20,8 @@ export default function OptionDataList({ pid, houseData, optionData }) {
       subtitle: '해당 제품 디자인 및 자재 동일하게 내부 구조 변경이 가능합니다.',
     },
     {
-      src: '/houseIcons/framework.png',
-      alt: 'framework',
+      src: '/houseIcons/warranty.png',
+      alt: 'fix',
       title: '자재 변경',
       text: '가능',
       subtitle: '해당 제품 내에서 특정 자재를 원하는 자재로 변경이 가능합니다.',

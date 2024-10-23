@@ -40,10 +40,11 @@ export default function DeliveryDataList({ pid, houseData, deliveryData }) {
             <div
               style={{
                 fontSize: '16px',
-                color: '#314FC0',
+                fontWeight: 'regural',
                 wordBreak: 'keep-all',
                 width: '100%',
                 textAlign: 'right',
+                marginTop: '5px',
               }}
             >
               {optional.text}

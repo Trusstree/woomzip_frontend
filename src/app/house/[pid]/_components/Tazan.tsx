@@ -24,20 +24,20 @@ export default function Tazan({ pid, houseData }) {
           잠시만요! 제품가격이 끝이 아닌거 아시죠?
         </div>
       </div>
-      <div className="col-md-4 col-12">
-        <div style={{ fontSize: '18px', wordBreak: 'keep-all', margin: '15px 0' }}>
+      <div className="col-md-4 col-12" style={{ fontSize: '16px' }}>
+        <div style={{ wordBreak: 'keep-all', margin: '15px 0' }}>
           모듈러 주택을 구매한다고 끝나는게 아니에요.
-          <div style={{ fontSize: '16px', color: '#555555' }}>
-            허가, 토지 공사, 세금 등 지금보고 있는 금액에서 평균적으로{' '}
+          <div>
+            허가, 토지 공사, 세금 등 지금 보고 있는 금액에서 평균적으로{' '}
             <span style={{ color: '#314FC0' }}>25%~35% </span>
             정도 추가돼요.
           </div>
         </div>
 
-        <div style={{ fontSize: '18px', wordBreak: 'keep-all', margin: '20px 0' }}>
+        <div style={{ fontSize: '16px', wordBreak: 'keep-all', margin: '20px 0' }}>
           이런 비용을 예상하지 못하고 있다가 갑자기 지출하게 된다면 계획에 차질이 생길 수 밖에 없어요.
           <br />
-          <span style={{ color: '#314FC0' }}>꼭 내 예상견적을 계산해보고 시작하세요!</span>
+          <span style={{ color: '#314FC0', fontSize: '18px' }}>꼭 내 예상견적을 계산해보고 시작하세요!</span>
         </div>
       </div>
       <div className="col-md-4 col-12">
