@@ -1,21 +1,21 @@
-import LivingCard from "@/components/living/LivingCard";
+import LivingCard from '@/components/living/LivingCard';
 
 const livingData = [
   {
     pavilion_id: 1,
-    company: "모두가하우징",
-    title: "힐링리버",
-    addr: "강원도 화천군",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg",
+    company: '모두가하우징',
+    title: '힐링리버',
+    addr: '강원도 화천군',
+    img: 'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/healingRiver1.jpeg',
     // url: `/living/1`,
-    context: "지금까지 5명이 살아봤어요!",
+    context: '지금까지 5명이 살아봤어요!',
   },
   {
-    company: "탑디자인",
-    title: "자연 속 작은 집",
-    addr: "경기도 이천시",
-    img: "https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/topDesign1.png",
-    context: "",
+    company: '탑디자인',
+    title: '자연 속 작은 집',
+    addr: '경기도 이천시',
+    img: 'https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/test_house/topDesign1.png',
+    context: '',
   },
 ];
 
@@ -34,11 +34,12 @@ export default function MypageLivingCardList({
       <div
         className="row flex-nowrap overflow-auto"
         style={{
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
         }}
       >
-        {pavilionData?.map((e, i) => (
+        살아보기 카드
+        {/* {pavilionData?.map((e, i) => (
           <div className="col-4" key={i}>
             <LivingCard
               company={e["company"]}
@@ -49,7 +50,7 @@ export default function MypageLivingCardList({
               context={e["context"]}
             />
           </div>
-        ))}
+        ))} */}
       </div>
     </>
   );
