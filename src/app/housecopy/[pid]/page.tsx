@@ -11,7 +11,7 @@ import { parseSpecificationInfo } from '@/lib/parseUtil';
 import Image from 'next/image';
 import { subtle } from 'crypto';
 
-import ImageList from '@/app/housecopy/[pid]/_components/ImageList';
+import ResponsiveGallery from '@/app/housecopy/[pid]/_components/ResponsiveGallery';
 import BasicDataList from '@/app/housecopy/[pid]/_components/BasicDataList';
 import ExplanationList from '@/app/housecopy/[pid]/_components/ExplanationList';
 import DetailDataList from '@/app/housecopy/[pid]/_components/DetailDataList';
@@ -33,7 +33,7 @@ export default async function House({ params }: { params: PageParams }) {
   return houseData ? (
     <>
       <div style={{ width: '90%', maxWidth: '1280px', margin: '0 auto' }}>
-        <ImageList pid={pid} imageData={imageData} />
+        <ResponsiveGallery pid={pid} imageData={imageData} />
         <BasicDataList pid={pid} houseData={houseData} specificationData={specificationData} />
         <ExplanationList pid={pid} houseData={houseData} />
         <DetailDataList pid={pid} houseData={houseData} specificationData={specificationData} />
