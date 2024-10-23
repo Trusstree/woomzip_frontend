@@ -1,5 +1,6 @@
 'use client';
 
+import Inquiry from '@/components/Inquiry';
 import Image from 'next/image';
 
 export default function CallWoomzip({ pid, houseData }) {
@@ -47,22 +48,7 @@ export default function CallWoomzip({ pid, houseData }) {
         <div style={{ fontSize: '32px', fontWeight: '700', textAlign: 'center', padding: '20px 0 30px 0' }}>
           무엇이든 물어보세요.
         </div>
-        <div className="row" style={{ width: '90%', maxWidth: '500px' }}>
-          <div style={{ width: '30%' }}>
-            <div>이름</div>
-            <input style={{ border: 'none', borderRadius: '5px', width: '100%', opacity: '0.8' }}></input>
-          </div>
-          <div style={{ width: '70%' }}>
-            <div>이메일 혹은 전화번호</div>
-            <input style={{ border: 'none', borderRadius: '5px', width: '100%', opacity: '0.8' }}></input>
-          </div>
-          <div style={{ width: '100%' }}>
-            <div>문의사항</div>
-            <input
-              style={{ border: 'none', borderRadius: '5px', width: '100%', height: '200px', opacity: '0.8' }}
-            ></input>
-          </div>
-        </div>
+        <Inquiry id={pid} />
       </div>
     </div>
   );
