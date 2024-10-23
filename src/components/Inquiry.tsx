@@ -12,13 +12,22 @@ export default function Inquiry({ id }: { id?: string | number }) {
   const submit = async () => {
     let [data, error] = [undefined, undefined];
 
-    const requestData = {
-      name: name,
-      contact: contact,
-      inquiry: inquiry,
-    };
-    if (id) [data, error] = await postInquiryHouse(requestData);
-    else [data, error] = await postInquiryMain(requestData);
+    if (id) {
+      const requestData = {
+        name: name,
+        contact: contact,
+        inquiry: inquiry,
+        houseId: id,
+      };
+      [data, error] = await postInquiryHouse(requestData);
+    } else {
+      const requestData = {
+        name: name,
+        contact: contact,
+        inquiry: inquiry,
+      };
+      [data, error] = await postInquiryMain(requestData);
+    }
 
     if (error) {
       console.log(error);
@@ -54,12 +63,20 @@ export default function Inquiry({ id }: { id?: string | number }) {
       </div>
       <div style={{ width: '100%', marginBottom: '30px' }}>
         <div>문의사항</div>
-        <input
-          style={{ border: 'none', borderRadius: '5px', width: '100%', height: '200px', opacity: '0.8' }}
+        <textarea
+          style={{
+            border: 'none',
+            borderRadius: '5px',
+            width: '100%',
+            height: '200px',
+            opacity: '0.8',
+            resize: 'none',
+          }}
           value={inquiry}
           onChange={(e) => {
             setInquiry(e.target.value);
           }}
+          rows={8}
         />
       </div>
       <button
