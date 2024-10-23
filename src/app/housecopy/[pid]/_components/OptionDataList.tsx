@@ -30,47 +30,50 @@ export default function OptionDataList({ pid, houseData, optionData }) {
 
   return (
     <div className="row" style={{ margin: '120px 0' }}>
-      <div className="col-12" style={{ fontSize: '22px' }}>
-        {houseData['house_name']}를 커스터마이징 할 수 있어요.
+      <div className="col-12" style={{ fontSize: '22px', marginBottom: '15px' }}>
+        {houseData['house_name']}, 커스터마이징도 가능해요.
       </div>
       <div className="col-md-4 col-12">
-        <div style={{ fontSize: '20px', marginTop: '15px' }}>문의가 필요한 변경</div>
         {serviceData.map((detail, index) => (
           <div className="col-md-12" style={{ margin: '10px 0' }}>
-            <div style={{ padding: '15px', border: '1px solid #314FC0', borderRadius: '10px' }}>
-              <div className="d-flex justify-content-between" style={{ margin: '5px 0' }}>
-                <div className="d-flex" style={{ alignItems: 'center' }}>
-                  <Image
-                    src={detail.src}
-                    alt={detail.alt}
-                    width={38}
-                    height={38}
-                    style={{ width: '22px', height: '22px' }}
-                  ></Image>
-                  <div style={{ fontSize: '16px', marginLeft: '10px' }}>{detail.title}</div>
-                </div>
-                <div style={{ fontSize: '16px', color: '#314FC0', wordBreak: 'keep-all' }}>{detail.text}</div>
+            <div
+              style={{
+                padding: '15px',
+                border: '1px solid #314FC0',
+                borderRadius: '10px',
+                fontSize: '16px',
+                color: '#555555',
+              }}
+            >
+              <div className="d-flex" style={{ alignItems: 'center', margin: '5px 0' }}>
+                <Image
+                  src={detail.src}
+                  alt={detail.alt}
+                  width={38}
+                  height={38}
+                  style={{ width: '22px', height: 'auto' }}
+                ></Image>
+                <div style={{ color: '#111111', fontWeight: 'regural', marginLeft: '10px' }}>{detail.title}</div>
               </div>
 
-              <div className="d-flex justify-content-between" style={{ margin: '5px 0' }}>
+              <div className="d-flex justify-content-between" style={{ margin: '10px 0' }}>
                 <div className="d-flex" style={{ alignItems: 'center' }}>
-                  <div style={{ fontSize: '16px', marginLeft: '34px' }}>추가비용</div>
+                  <div>추가 비용</div>
                 </div>
-                <div style={{ fontSize: '16px', color: '#314FC0', wordBreak: 'keep-all' }}>문의하여 알아보기</div>
+                <div style={{ color: '#111111', fontWeight: 'regural', wordBreak: 'keep-all' }}>문의하여 알아보기</div>
               </div>
 
-              <div style={{ fontSize: '14px', wordBreak: 'keep-all', color: '#555555' }}>{detail.subtitle}</div>
+              <div style={{ fontSize: '14px', wordBreak: 'keep-all' }}>{detail.subtitle}</div>
             </div>
           </div>
         ))}
       </div>
 
       <div className="col-md-4 col-12">
-        <div style={{ fontSize: '20px', marginTop: '15px' }}>추가 옵션구성</div>
         {optionData &&
           optionData.map((e, i) => (
             <div className="col-md-12" key={i}>
-              <div style={{ padding: '15px' }}>
+              <div style={{ padding: '15px', fontSize: '16px' }}>
                 <div style={{ margin: '5px 0' }}>
                   <div className="d-flex" style={{ alignItems: 'center' }}>
                     <Image
@@ -78,21 +81,17 @@ export default function OptionDataList({ pid, houseData, optionData }) {
                       alt={'option'}
                       width={38}
                       height={38}
-                      style={{ width: '22px', height: '22px' }}
+                      style={{ width: '22px', height: 'auto' }}
                     ></Image>
-                    <div style={{ fontSize: '16px', wordBreak: 'keep-all', marginLeft: '10px' }}>
-                      {e['option_product_name']}
-                    </div>
+                    <div style={{ wordBreak: 'keep-all', marginLeft: '10px' }}>{e['option_product_name']}</div>
                   </div>
                 </div>
 
-                <div className="d-flex justify-content-between" style={{ margin: '5px 0' }}>
+                <div className="d-flex justify-content-between" style={{ marginTop: '10px' }}>
                   <div className="d-flex" style={{ alignItems: 'center' }}>
-                    <div style={{ fontSize: '16px', marginLeft: '34px' }}>추가비용</div>
+                    <div style={{ color: '#555555' }}>추가 비용</div>
                   </div>
-                  <div style={{ fontSize: '16px', wordBreak: 'keep-all' }}>
-                    {detailPriceText(e['option_product_price'])}
-                  </div>
+                  <div style={{ wordBreak: 'keep-all' }}>{detailPriceText(e['option_product_price'])}</div>
                 </div>
               </div>
             </div>

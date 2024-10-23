@@ -108,24 +108,32 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
 
       {detailData.map((detail, index) => (
         <div className="col-md-3 col-sm-6 col-12" style={{ margin: '10px 0' }}>
-          <div style={{ padding: '15px', border: '1px solid #314FC0', borderRadius: '10px' }}>
+          <div
+            style={{
+              padding: '15px',
+              border: '1px solid #314FC0',
+              borderRadius: '10px',
+              fontSize: '16px',
+              color: '#555555',
+            }}
+          >
             <div className="d-flex" style={{ alignItems: 'center' }}>
-              <Image
+              {/* <Image
                 src={detail.src}
                 alt={detail.alt}
                 width={38}
                 height={38}
                 style={{ width: '22px', height: '22px' }}
-              ></Image>
-              <div style={{ fontSize: '18px', marginLeft: '10px' }}>{detail.title}</div>
+              ></Image> */}
+              <div>{detail.title}</div>
             </div>
 
             <div className="d-flex justify-content-between" style={{ margin: '10px 0' }}>
-              <div style={{ fontSize: '16px', width: '65px' }}>사용자재</div>
-              <div style={{ fontSize: '16px', color: '#314FC0', wordBreak: 'keep-all' }}>{detail.text}</div>
+              <div style={{ width: '65px' }}>사용자재</div>
+              <div style={{ wordBreak: 'keep-all', fontWeight: 'regular', color: '#111111' }}>{detail.text}</div>
             </div>
 
-            <div style={{ fontSize: '14px', wordBreak: 'keep-all', color: '#555555' }}>{detail.subtitle}</div>
+            <div style={{ fontSize: '14px', wordBreak: 'keep-all' }}>{detail.subtitle}</div>
           </div>
         </div>
       ))}
@@ -136,9 +144,17 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
 
       {optionalData.map((optional, index) => (
         <div className="col-md-2 col-sm-4 col-6" style={{ margin: '10px 0' }}>
-          <div style={{ padding: '10px', borderRadius: '10px', backgroundColor: '#F5F7FF' }}>
+          <div
+            style={{
+              padding: '10px',
+              borderRadius: '10px',
+              backgroundColor: '#F5F7FF',
+              color: '#555555',
+              fontSize: '16px',
+            }}
+          >
             <div className="d-flex" style={{ alignItems: 'center' }}>
-              <div style={{ fontSize: '16px', marginRight: '5px' }}>{optional.title}</div>
+              <div style={{ marginRight: '5px' }}>{optional.title}</div>
               {/* <Image
               src={optional.src}
               alt={optional.alt}
@@ -150,11 +166,10 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
 
             <div
               style={{
-                fontSize: '16px',
-                color: '#314FC0',
+                color: '#111111',
+                fontWeight: 'regural',
                 wordBreak: 'keep-all',
                 width: '100%',
-                textAlign: 'right',
               }}
             >
               {optional.text}

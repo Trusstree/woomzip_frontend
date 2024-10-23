@@ -5,13 +5,13 @@ import Image from 'next/image';
 export default function DeliveryDataList({ pid, houseData, deliveryData }) {
   const optionalData = [
     {
-      src: '/houseIcons/framework.png',
+      src: '/houseIcons/delivery.png',
       alt: 'location',
       title: '배송불가 지역',
       text: `${deliveryData}`,
     },
     {
-      src: '/houseIcons/framework.png',
+      src: '/houseIcons/money.png',
       alt: 'delivery',
       title: '배송비',
       text: `미포함(조건에 따라 변동)`,
@@ -32,7 +32,7 @@ export default function DeliveryDataList({ pid, houseData, deliveryData }) {
                 alt={optional.alt}
                 width={38}
                 height={38}
-                style={{ width: '22px', height: '22px' }}
+                style={{ width: '22px', height: 'auto' }}
               ></Image>
               <div style={{ fontSize: '16px', marginLeft: '5px' }}>{optional.title}</div>
             </div>

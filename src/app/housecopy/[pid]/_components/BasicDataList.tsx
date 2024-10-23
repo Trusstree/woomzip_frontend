@@ -49,7 +49,7 @@ export default function BasicDataList({ pid, houseData, specificationData }) {
               alt={icon.alt}
               width={38}
               height={38}
-              style={{ width: '22px', height: '22px' }}
+              style={{ width: '22px', height: 'auto' }}
             ></Image>
             <div style={{ fontSize: '14px', marginLeft: '5px', wordBreak: 'keep-all' }}>{icon.text}</div>
           </div>
