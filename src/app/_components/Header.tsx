@@ -18,7 +18,9 @@ export default function Header() {
             {' '}
             {/* Flexbox 적용 */}
             <Image src={'/woomzip_new_logo.png'} alt={'Truss Logo'} width={29} height={21} style={{ padding: '0' }} />
-            <div style={{ marginBottom: '3px', fontSize: '18px', fontWeight: '500',color: '#314FC0' }}>woomzip</div>{' '}
+            <div style={{ marginBottom: '3px', fontSize: '18px', fontWeight: '500', color: '#314FC0' }}>
+              woomzip
+            </div>{' '}
             {/* 텍스트 왼쪽 간격 추가 */}
           </div>
         </RouteButton>
@@ -37,9 +39,9 @@ export default function Header() {
         <div className="collapse navbar-collapse">
           <div className="navbar-nav d-none d-md-flex w-100 align-items-center">
             <div className="d-flex align-items-center me-auto">
-              <RouteButton url="/" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
+              {/* <RouteButton url="/" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
                 움집소개
-              </RouteButton>
+              </RouteButton> */}
 
               <RouteButton url="/house" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
                 제품찾기

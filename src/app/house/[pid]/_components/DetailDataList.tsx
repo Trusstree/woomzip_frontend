@@ -101,17 +101,17 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
   ];
 
   return (
-    <div className="row" style={{ margin: '120px 0' }}>
-      <div className="col-12" style={{ fontSize: '22px', marginBottom: '15px' }}>
+    <div className="row" style={{ margin: '140px 0' }}>
+      <div className="col-12" style={{ fontSize: '22px', marginBottom: '15px', fontWeight: '500' }}>
         {houseData['house_name']}, 이렇게 만들어집니다.
       </div>
 
       {detailData.map((detail, index) => (
-        <div key={index} className="col-md-3 col-sm-6 col-12" style={{ margin: '10px 0' }}>
+        <div key={index} className="col-md-4 col-sm-6 col-12" style={{ margin: '10px 0' }}>
           <div
             style={{
-              padding: '15px',
-              border: '1px solid #314FC0',
+              padding: '20px',
+
               borderRadius: '10px',
               fontSize: '16px',
               color: '#555555',
@@ -128,9 +128,8 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
               <div>{detail.title}</div>
             </div>
 
-            <div className="d-flex justify-content-between" style={{ margin: '10px 0' }}>
-              <div style={{ width: '65px' }}>사용자재</div>
-              <div style={{ wordBreak: 'keep-all', fontWeight: 'regular', color: '#111111' }}>{detail.text}</div>
+            <div style={{ wordBreak: 'keep-all', fontWeight: '500', color: '#111111', margin: '10px 0' }}>
+              {detail.text}
             </div>
 
             <div style={{ fontSize: '14px', wordBreak: 'keep-all' }}>{detail.subtitle}</div>
@@ -138,45 +137,53 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
         </div>
       ))}
 
-      <div className="col-12">
-        <div style={{ fontSize: '20px', marginTop: '15px' }}>기타사항</div>
-      </div>
-
-      {optionalData.map((optional, index) => (
-        <div key={index} className="col-md-2 col-sm-4 col-6" style={{ margin: '10px 0' }}>
-          <div
-            style={{
-              padding: '10px',
-              borderRadius: '10px',
-              backgroundColor: '#F5F7FF',
-              color: '#555555',
-              fontSize: '16px',
-            }}
-          >
-            <div className="d-flex" style={{ alignItems: 'center' }}>
-              <div style={{ marginRight: '5px' }}>{optional.title}</div>
-              {/* <Image
+      <div className="row" style={{ border: '1px solid #314FC0', borderRadius: '10px' }}>
+        <div className="col-md-2 col-sm-4 col-6">
+          <div className="d-flex" style={{ alignItems: 'center', marginTop: '35px' }}>
+            <Image
+              src={'/houseIcons/room1.png'}
+              alt={'room'}
+              width={38}
+              height={38}
+              style={{ width: '22px', height: 'auto' }}
+            ></Image>
+            <div style={{ fontSize: '16px', marginLeft: '5px' }}>인테리어</div>
+          </div>
+        </div>
+        {optionalData.map((optional, index) => (
+          <div key={index} className="col-md-2 col-sm-4 col-6" style={{ margin: '15px 0' }}>
+            <div
+              style={{
+                color: '#555555',
+                fontSize: '16px',
+              }}
+            >
+              <div className="d-flex" style={{ alignItems: 'center' }}>
+                <div style={{ marginRight: '5px' }}>{optional.title}</div>
+                {/* <Image
               src={optional.src}
               alt={optional.alt}
               width={38}
               height={38}
               style={{ width: '24px', height: '24px' }}
             ></Image> */}
-            </div>
+              </div>
 
-            <div
-              style={{
-                color: '#111111',
-                fontWeight: 'regural',
-                wordBreak: 'keep-all',
-                width: '100%',
-              }}
-            >
-              {optional.text}
+              <div
+                style={{
+                  color: '#111111',
+                  fontWeight: '500',
+                  wordBreak: 'keep-all',
+                  width: '100%',
+                  marginTop: '7px',
+                }}
+              >
+                {optional.text}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function Tazan({ pid, houseData }) {
   const gyeonjeokLink = `${'/planning'}?${createQueryString('house_id', pid.toString())}`;
 
   return (
-    <div className="row" style={{ margin: '120px 0' }}>
+    <div className="row" style={{ padding: '120px 0' }}>
       <div className="col-12 d-flex" style={{ marginBottom: '15px', alignItems: 'center' }}>
         <Image
           src={'/houseIcons/warning.png'}
@@ -20,7 +20,7 @@ export default function Tazan({ pid, houseData }) {
           height={38}
           style={{ width: '22px', height: '22px' }}
         ></Image>
-        <div style={{ fontSize: '22px', marginLeft: '10px', wordBreak: 'keep-all' }}>
+        <div style={{ fontSize: '22px', marginLeft: '10px', wordBreak: 'keep-all', fontWeight: '500' }}>
           잠시만요! 제품가격이 끝이 아닌거 아시죠?
         </div>
       </div>
@@ -42,7 +42,13 @@ export default function Tazan({ pid, houseData }) {
       </div>
       <div className="col-md-4 col-12">
         <div
-          style={{ width: '100%', borderRadius: '15px', boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)', padding: '15px' }}
+          style={{
+            width: '100%',
+            borderRadius: '15px',
+            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+            padding: '15px',
+            backgroundColor: 'white',
+          }}
         >
           <div style={{ fontSize: '20px', marginBottom: '15px' }}>안녕하세요!</div>
           <div className="d-flex justify-content-between" style={{ lineHeight: '35px', marginBottom: '10px' }}>

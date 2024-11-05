@@ -29,8 +29,8 @@ export default function OptionDataList({ pid, houseData, optionData }) {
   ];
 
   return (
-    <div className="row" style={{ margin: '120px 0' }}>
-      <div className="col-12" style={{ fontSize: '22px', marginBottom: '15px' }}>
+    <div className="row" style={{ margin: '140px 0' }}>
+      <div className="col-12" style={{ fontSize: '22px', marginBottom: '20px', fontWeight: '500' }}>
         {houseData['house_name']}, 커스터마이징도 가능해요.
       </div>
       <div className="col-md-4 col-12">
@@ -45,25 +45,21 @@ export default function OptionDataList({ pid, houseData, optionData }) {
                 color: '#555555',
               }}
             >
-              <div className="d-flex" style={{ alignItems: 'center', margin: '5px 0' }}>
-                <Image
-                  src={detail.src}
-                  alt={detail.alt}
-                  width={38}
-                  height={38}
-                  style={{ width: '22px', height: 'auto' }}
-                ></Image>
-                <div style={{ color: '#111111', fontWeight: 'regural', marginLeft: '10px' }}>{detail.title}</div>
-              </div>
-
-              <div className="d-flex justify-content-between" style={{ margin: '10px 0' }}>
+              <div className="d-flex justify-content-between" style={{ alignItems: 'center', margin: '5px 0' }}>
                 <div className="d-flex" style={{ alignItems: 'center' }}>
-                  <div>추가 비용</div>
+                  <Image
+                    src={detail.src}
+                    alt={detail.alt}
+                    width={38}
+                    height={38}
+                    style={{ width: '22px', height: 'auto' }}
+                  ></Image>
+                  <div style={{ color: '#111111', fontWeight: 'regural', marginLeft: '10px' }}>{detail.title}</div>
                 </div>
-                <div style={{ color: '#111111', fontWeight: 'regural', wordBreak: 'keep-all' }}>문의하여 알아보기</div>
+                <div style={{ color: '#111111', fontWeight: '500', wordBreak: 'keep-all' }}>문의하여 알아보기</div>
               </div>
 
-              <div style={{ fontSize: '14px', wordBreak: 'keep-all' }}>{detail.subtitle}</div>
+              <div style={{ fontSize: '14px', wordBreak: 'keep-all', marginTop: '5px' }}>{detail.subtitle}</div>
             </div>
           </div>
         ))}
@@ -72,7 +68,7 @@ export default function OptionDataList({ pid, houseData, optionData }) {
       <div className="col-md-4 col-12">
         {optionData &&
           optionData.map((e, i) => (
-            <div className="col-md-12" key={i}>
+            <div className="col-md-12" key={i} style={{ margin: '7px 0' }}>
               <div style={{ padding: '15px', fontSize: '16px' }}>
                 <div style={{ margin: '5px 0' }}>
                   <div className="d-flex" style={{ alignItems: 'center' }}>
@@ -87,7 +83,7 @@ export default function OptionDataList({ pid, houseData, optionData }) {
                   </div>
                 </div>
 
-                <div className="d-flex justify-content-between" style={{ marginTop: '10px' }}>
+                <div className="d-flex justify-content-between" style={{ marginTop: '5px' }}>
                   <div className="d-flex" style={{ alignItems: 'center' }}>
                     <div style={{ color: '#555555' }}>추가 비용</div>
                   </div>

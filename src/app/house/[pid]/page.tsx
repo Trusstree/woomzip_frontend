@@ -7,8 +7,9 @@ import ExplanationList from '@/app/house/[pid]/_components/ExplanationList';
 import DetailDataList from '@/app/house/[pid]/_components/DetailDataList';
 import OptionDataList from '@/app/house/[pid]/_components/OptionDataList';
 import DeliveryDataList from '@/app/house/[pid]/_components/DeliveryDataList';
-import Tazan from '@/app/house/[pid]/_components/Tazan';
 import CompanyDataList from '@/app/house/[pid]/_components/CompanyDataList';
+import SafeList from '@/app/house/[pid]/_components/SafeList';
+import Tazan from '@/app/house/[pid]/_components/Tazan';
 import CallWoomzip from '@/app/house/[pid]/_components/CallWoomzip';
 
 type PageParams = {
@@ -29,8 +30,13 @@ export default async function House({ params }: { params: PageParams }) {
         <DetailDataList pid={pid} houseData={houseData} specificationData={specificationData} />
         <OptionDataList pid={pid} houseData={houseData} optionData={optionData} />
         <DeliveryDataList pid={pid} houseData={houseData} deliveryData={deliveryData} />
-        <Tazan pid={pid} houseData={houseData} />
         <CompanyDataList pid={pid} houseData={houseData} userData={userData} />
+      </div>
+      <div style={{ backgroundColor: '#FAFBFF' }}>
+        <div style={{ width: '90%', maxWidth: '1280px', margin: '0 auto' }}>
+          <SafeList />
+          <Tazan pid={pid} houseData={houseData} />
+        </div>
       </div>
       <CallWoomzip pid={pid} houseData={houseData} />
       <ReviewModal id={'house_detail_modal'} images={imageData} isTwoCol />
