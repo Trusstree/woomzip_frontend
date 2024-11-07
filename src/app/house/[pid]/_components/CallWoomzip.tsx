@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function CallWoomzip({ pid, houseData }) {
   return (
-    <div style={{ marginTop: '60px', position: 'relative' }}>
+    <div style={{ position: 'relative' }}>
       <Image
         src={'/background2.webp'}
         width={1600}

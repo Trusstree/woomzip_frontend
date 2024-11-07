@@ -19,13 +19,13 @@ export default function DeliveryDataList({ pid, houseData, deliveryData }) {
   ];
 
   return (
-    <div className="row" style={{ margin: '120px 0' }}>
-      <div className="col-12" style={{ fontSize: '22px', marginBottom: '15px' }}>
-        제품 배송 정보
+    <div className="row" style={{ margin: '140px 0' }}>
+      <div className="col-12" style={{ fontSize: '22px', marginBottom: '15px', fontWeight: '500' }}>
+        어디까지 배송해드릴까요?
       </div>
       {optionalData.map((optional, index) => (
         <div key={index} className="col-md-2 col-sm-4 col-6" style={{ margin: '10px 0' }}>
-          <div style={{ padding: '10px', borderRadius: '10px', backgroundColor: '#F5F7FF' }}>
+          <div style={{ padding: '10px' }}>
             <div className="d-flex" style={{ alignItems: 'center' }}>
               <Image
                 src={optional.src}
@@ -40,10 +40,9 @@ export default function DeliveryDataList({ pid, houseData, deliveryData }) {
             <div
               style={{
                 fontSize: '16px',
-                fontWeight: 'regural',
+                fontWeight: '500',
                 wordBreak: 'keep-all',
                 width: '100%',
-                textAlign: 'right',
                 marginTop: '5px',
               }}
             >
