@@ -80,6 +80,9 @@ export default async function test4({ searchParams }) {
               houseName={product.house_name}
               companyName={product.company_name}
               price={product.final_price}
+              room={product.room_count}
+              toilet={product.toilet_count}
+              pyeong={product.total_floor_area}
             />
           ))}
           <Pagination numItems={houseCount} numShowItems={numShowItems} numShowPages={numShowPages} />

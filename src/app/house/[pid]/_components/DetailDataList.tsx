@@ -8,60 +8,60 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
     {
       src: '/houseIcons/framework.png',
       alt: 'framework',
-      title: '1.구조',
+      title: '구조',
       text: `${parseSpecificationInfo(specificationData['framework']) ?? '해당사항 없음'}`,
       subtitle: '먼저 제품의 뼈대를 제작하게 됩니다. 이때 뼈대 자재에 따라 경량목과 경량철골 구조로 나뉩니다.',
     },
     {
       src: '/houseIcons/framework.png',
       alt: 'wall',
-      title: '2.벽체',
+      title: '벽체',
       text: `${parseSpecificationInfo(specificationData['wall']) ?? '해당사항 없음'}`,
       subtitle: '다음으로 뼈대에 벽면을 만듭니다. 판넬, OSB 합판등의 자재가 사용됩니다.',
     },
     {
       src: '/houseIcons/framework.png',
-      alt: 'wall',
-      title: '3.단열',
+      alt: 'insulation',
+      title: '단열',
       text: `${parseSpecificationInfo(specificationData['insulation_material']) ?? '해당사항 없음'}`,
       subtitle:
         '벽을 세운 후, 단열작업을 시작합니다. 우레탄폼이나 단열자재를 사용하여 지역 단열기준에 맞추어 시공합니다.',
     },
     {
       src: '/houseIcons/framework.png',
-      alt: 'wall',
-      title: '4.난방',
+      alt: 'heating',
+      title: '난방',
       text: `${parseSpecificationInfo(specificationData['heating']) ?? '해당사항 없음'}`,
       subtitle:
         '단열 작업 후 바닥에 난방시설을 설치합니다. 전기매트나 온수난방, LPG 등 다양한 난방방식을 선택할 수 있습니다.',
     },
     {
       src: '/houseIcons/framework.png',
-      alt: 'wall',
-      title: '5.내장',
+      alt: 'interior',
+      title: '내장',
       text: `${parseSpecificationInfo(specificationData['interior_material']) ?? '해당사항 없음'}`,
       subtitle: '난방작업을 마무리 한 후, 내부 벽면 및 바닥을 마무리합니다. 벽지나 몰딩 등의 내장재를 사용하게 됩니다.',
     },
     {
       src: '/houseIcons/framework.png',
-      alt: 'wall',
-      title: '6.창호',
+      alt: 'window',
+      title: '창호',
       text: `${parseSpecificationInfo(specificationData['window']) ?? '해당사항 없음'}`,
       subtitle:
         '내장 작업 끝에 창문과 대문을 설치합니다. 2중창을 많이 사용하며, 자재 등급에 따라 완성도에 차이가 발생합니다.',
     },
     {
       src: '/houseIcons/framework.png',
-      alt: 'wall',
-      title: '7.외장',
+      alt: 'exterior',
+      title: '외장',
       text: `${parseSpecificationInfo(specificationData['exterior_material']) ?? '해당사항 없음'}`,
       subtitle:
         '외관을 마무리합니다. 방수포를 씌운 후 세라믹사이딩, 리얼징크, 방부목, 시멘트 등 다양한 자재를 사용하여 완성합니다.',
     },
     {
       src: '/houseIcons/framework.png',
-      alt: 'wall',
-      title: '8.지붕',
+      alt: 'roof',
+      title: '지붕',
       text: `${parseSpecificationInfo(specificationData['roofing_material']) ?? '해당사항 없음'}`,
       subtitle: '지붕을 씌웁니다. 일반적으로 리얼징크나 아스팔트 슁글을 많이 이용합니다.',
     },
@@ -123,7 +123,7 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
                 alt={detail.alt}
                 width={38}
                 height={38}
-                style={{ width: '22px', height: '22px' }}
+                style={{ width: '22px', height: '22px', marginRight: '5px' }}
               ></Image> */}
               <div>{detail.title}</div>
             </div>
@@ -137,52 +137,54 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
         </div>
       ))}
 
-      <div className="row" style={{ border: '1px solid #314FC0', borderRadius: '10px' }}>
-        <div className="col-md-2 col-sm-4 col-6">
-          <div className="d-flex" style={{ alignItems: 'center', marginTop: '35px' }}>
-            <Image
-              src={'/houseIcons/room1.png'}
-              alt={'room'}
-              width={38}
-              height={38}
-              style={{ width: '22px', height: 'auto' }}
-            ></Image>
-            <div style={{ fontSize: '16px', marginLeft: '5px' }}>인테리어</div>
+      <div className="col-12">
+        <div className="row" style={{ border: '1px solid #314FC0', borderRadius: '10px', margin: '0 5px' }}>
+          <div className="col-md-2 col-sm-4 col-6">
+            <div className="d-flex" style={{ alignItems: 'center', marginTop: '35px' }}>
+              <Image
+                src={'/houseIcons/room1.png'}
+                alt={'room'}
+                width={38}
+                height={38}
+                style={{ width: '22px', height: 'auto' }}
+              ></Image>
+              <div style={{ fontSize: '16px', marginLeft: '5px' }}>인테리어</div>
+            </div>
           </div>
-        </div>
-        {optionalData.map((optional, index) => (
-          <div key={index} className="col-md-2 col-sm-4 col-6" style={{ margin: '15px 0' }}>
-            <div
-              style={{
-                color: '#555555',
-                fontSize: '16px',
-              }}
-            >
-              <div className="d-flex" style={{ alignItems: 'center' }}>
-                <div style={{ marginRight: '5px' }}>{optional.title}</div>
-                {/* <Image
+          {optionalData.map((optional, index) => (
+            <div key={index} className="col-md-2 col-sm-4 col-6" style={{ margin: '15px 0' }}>
+              <div
+                style={{
+                  color: '#555555',
+                  fontSize: '16px',
+                }}
+              >
+                <div className="d-flex" style={{ alignItems: 'center' }}>
+                  <div style={{ marginRight: '5px' }}>{optional.title}</div>
+                  {/* <Image
               src={optional.src}
               alt={optional.alt}
               width={38}
               height={38}
               style={{ width: '24px', height: '24px' }}
             ></Image> */}
-              </div>
+                </div>
 
-              <div
-                style={{
-                  color: '#111111',
-                  fontWeight: '500',
-                  wordBreak: 'keep-all',
-                  width: '100%',
-                  marginTop: '7px',
-                }}
-              >
-                {optional.text}
+                <div
+                  style={{
+                    color: '#111111',
+                    fontWeight: '500',
+                    wordBreak: 'keep-all',
+                    width: '100%',
+                    marginTop: '7px',
+                  }}
+                >
+                  {optional.text}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
