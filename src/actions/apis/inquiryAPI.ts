@@ -1,5 +1,6 @@
 'use server';
 
+import { postDiscordWebhook } from '@/actions/apis/alarmAPI';
 import { publicApi } from '@/configs/axiosClient';
 
 export const postInquiryMain = async (inquiry: any) => {
@@ -7,6 +8,7 @@ export const postInquiryMain = async (inquiry: any) => {
 
   try {
     const result = await publicApi.post(`/planning/main`, inquiry);
+    postDiscordWebhook();
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
@@ -21,6 +23,7 @@ export const postInquiryHouse = async (inquiry: any) => {
 
   try {
     const result = await publicApi.post(`/planning/house`, inquiry);
+    postDiscordWebhook();
     data = result?.data;
   } catch (err) {
     error = err.response?.data;

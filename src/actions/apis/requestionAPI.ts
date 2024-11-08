@@ -1,3 +1,4 @@
+import { postDiscordWebhook } from '@/actions/apis/alarmAPI';
 import { publicApi } from '@/configs/axiosClient';
 
 export const getRequestions = async () => {
@@ -37,6 +38,7 @@ export const postRequestion = async (requestion: any) => {
 
   try {
     const result = await publicApi.post(`/requestion/`, requestion);
+    postDiscordWebhook();
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
