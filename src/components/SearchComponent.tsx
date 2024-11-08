@@ -45,14 +45,37 @@ export default function SearchComponent() {
       <div className="col-1" style={{ alignItems: 'right', padding: '0' }}>
         <div
           className={`btn`}
-          style={{ paddingLeft: '0' }}
+          style={{
+            width: 'auto',
+            height: '60px',
+            display: 'flex', // Flexbox 사용
+            flexDirection: 'column', // 수직 정렬
+            alignItems: 'center', // 수평 중앙 정렬
+            justifyContent: 'center', // 수직 중앙 정렬
+            cursor: 'pointer',
+          }}
           data-bs-toggle="modal"
           data-bs-target={`#search_modal`}
           onClick={handleClick}
         >
-          <div style={{ float: 'right', padding: '0' }}>
-            <Image width={30} height={30} src={'/buttonIcons/search.png'} alt={'search submit btn'} />
-            <div style={{ fontSize: '15px' }}>검색</div>
+          <div style={{ float: 'right' }}>
+            <Image
+              width={30}
+              height={28}
+              style={{ width: '30px', padding: '0' }}
+              src={'/buttonIcons/search.png'}
+              alt={'search submit btn'}
+            />
+            <div
+              style={{
+                fontSize: '13px',
+                fontWeight: '500',
+                paddingBottom: '2px',
+                marginTop: '7px',
+              }}
+            >
+              검색
+            </div>
           </div>
         </div>
       </div>

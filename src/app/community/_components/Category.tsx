@@ -1,10 +1,15 @@
 import CategoryButton from '@/components/CategoryButton';
-import styles from '@/styles/Category.module.css';
 
 export default function Category() {
   return (
     <div className="col-md-8 col-12 g-0">
-      <div className={`row ${styles.categoryRow}`}>
+      <div
+        className="row w-100 flex-nowrap overflow-auto"
+        style={{
+          margin: '10px 0',
+          padding: '10px 0',
+        }}
+      >
         <CategoryButton title={'전체'} imgSrc={'/buttonIcons/all.png'} queryName={'category'} />
         <CategoryButton title={'일반'} imgSrc={'/buttonIcons/free.png'} queryName={'category'} category={'일반'} />
         <CategoryButton title={'질문'} imgSrc={'/buttonIcons/qna.png'} queryName={'category'} category={'질문'} />
