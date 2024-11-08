@@ -19,31 +19,34 @@ export default function PlanningApplicationClient() {
     const params = new URLSearchParams(searchParams);
 
     if (requiredService.length == 0) {
-      alertError('입력이 빠져있어요!', "'어떤 도움이 필요하신가요?' 항목이 선택되지 않았어요!");
+      alertError('어떤 도움이 필요하신지 알려주세요!', '모든 항목에 대해 선택해야 합니다.');
       return;
     }
     params.set('required_service', requiredService.toString());
 
     if (timeline.length == 0) {
-      alertError('입력이 빠져있어요!', "'언제 시작하실 계획이신가요?' 항목이 선택되지 않았어요!");
+      alertError('건축 일정을 알려주세요!', '모든 항목에 대해 선택해야 합니다.');
       return;
     }
     params.set('timeline', timeline.toString());
 
     if (finance.length == 0) {
-      alertError('입력이 빠져있어요!', "'건축비를 위해 도움이 필요하신가요?' 항목이 선택되지 않았어요!");
+      alertError(
+        '가성비, 완성도, 신뢰성 중 어떤 항목을 가장 중요하게 생각하는지 알려주세요!',
+        '모든 항목에 대해 선택해야 합니다.',
+      );
       return;
     }
     params.set('finance', finance.toString());
 
     if (name.length == 0) {
-      alertError('입력이 빠져있어요!', '이름을 입력해주세요');
+      alertError('이름을 입력해주세요!', '');
       return;
     }
     params.set('name', name.toString());
 
     if (contact.length == 0) {
-      alertError('입력이 빠져있어요!', '전화번호를 입력해주세요');
+      alertError('전화번호를 입력해주세요!', '');
       return;
     }
     params.set('contact', contact.toString());
@@ -59,32 +62,31 @@ export default function PlanningApplicationClient() {
             <div
               style={{
                 fontSize: '25px',
-                marginBottom: '20px',
                 fontWeight: '600',
               }}
             >
               어떤 도움이 필요하신가요?
             </div>
-            <div style={{ fontSize: '19px', marginBottom: '30px' }}>같이 고민해드릴게요</div>
+            <div style={{ fontSize: '19px', marginBottom: '30px' }}>원하시는 도움에 따라 고민해드릴게요.</div>
             <div className="row g-2">
               <SelectBoxApp
-                title={'안심 계약'}
-                text={'계약과정을 안심할 수 있습니다.'}
-                value={'InquiryOnly'}
+                title={'단순 문의'}
+                text={'제품이나 과정이 궁금해요!'}
+                value={'단순 문의'}
                 data={requiredService}
                 setData={setRequiredService}
               />
               <SelectBoxApp
-                title={'이해관계자 연결'}
-                text={'건축사, 토목사 등을 이어드립니다.'}
-                value={'ConnectwithCompany'}
+                title={'상세 견적서 요청'}
+                text={'자세한 상담을 통해 정확한 견적을 알려드려요!'}
+                value={'상세 견적서 요청'}
                 data={requiredService}
                 setData={setRequiredService}
               />
               <SelectBoxApp
-                title={'통합 패키지'}
-                text={'모든 과정을 밀착 관리합니다.'}
-                value={'FullService'}
+                title={'통합 안심 서비스'}
+                text={'안심문의, 안심계약, 안심지불, 안심AS 서비스를 원해요!'}
+                value={'통합 안심 서비스'}
                 data={requiredService}
                 setData={setRequiredService}
               />
@@ -95,7 +97,6 @@ export default function PlanningApplicationClient() {
             <div
               style={{
                 fontSize: '25px',
-                marginBottom: '20px',
                 fontWeight: '600',
               }}
             >
@@ -105,22 +106,22 @@ export default function PlanningApplicationClient() {
             <div className="row g-2">
               <SelectBoxApp
                 title={'최대한 빠르게'}
-                text={'4~10주 내'}
-                value={'ASAP'}
+                text={'4~12주 이내'}
+                value={'최대한 빠르게'}
                 data={timeline}
                 setData={setTimeline}
               />
               <SelectBoxApp
-                title={'1년 이내'}
-                text={'12주 내'}
-                value={'Within1Year'}
+                title={'조금 여유가 있어요.'}
+                text={'4~8개월 이내'}
+                value={'4~8개월 이내'}
                 data={timeline}
                 setData={setTimeline}
               />
               <SelectBoxApp
-                title={'계획 없음'}
-                text={'견적만 알아보기'}
-                value={'NoPlan'}
+                title={'고민 중이에요.'}
+                text={'아직 모르겠어요.'}
+                value={'아직 모르겠어요.'}
                 data={timeline}
                 setData={setTimeline}
               />
@@ -131,32 +132,31 @@ export default function PlanningApplicationClient() {
             <div
               style={{
                 fontSize: '25px',
-                marginBottom: '20px',
                 fontWeight: '600',
               }}
             >
-              건축비를 위해 도움이 필요하신가요?
+              건축에서 무엇을 가장 중요하게 생각하시나요?
             </div>
-            <div style={{ fontSize: '19px', marginBottom: '30px' }}>은행권 대출을 연계해드립니다</div>
+            <div style={{ fontSize: '19px', marginBottom: '30px' }}>당신의 생각이 궁금합니다.</div>
             <div className="row g-2">
               <SelectBoxApp
-                title={'필요 없습니다.'}
-                text={'스스로 확보하겠습니다.'}
-                value={'Self-funded'}
+                title={'가성비'}
+                text={'가격이 가장 중요합니다.'}
+                value={'가성비'}
                 data={finance}
                 setData={setFinance}
               />
               <SelectBoxApp
-                title={'고민 중입니다.'}
-                text={'연계 서비스를 확인해보겠습니다.'}
-                value={'InterestedInFundraising'}
+                title={'완성도'}
+                text={'높은 완성도와 자재가 중요합니다.'}
+                value={'완성도'}
                 data={finance}
                 setData={setFinance}
               />
               <SelectBoxApp
-                title={'필요합니다.'}
-                text={'금융 서비스에 관심이 있습니다.'}
-                value={'HousingGuaranteeFund'}
+                title={'신뢰도'}
+                text={'믿을 수 있는 업체인지가 중요합니다.'}
+                value={'신뢰도'}
                 data={finance}
                 setData={setFinance}
               />
@@ -206,6 +206,18 @@ export default function PlanningApplicationClient() {
                 }}
               />
             </div>
+            <div className="col-12">
+              <div>추가 문의사항</div>
+              <input
+                style={{
+                  width: '100%',
+                  height: '100px',
+                  border: '1px solid #314FC0',
+                  borderRadius: '5px',
+                  backgroundColor: '#F5F7FF',
+                }}
+              />
+            </div>
             <button
               onClick={submit}
               style={{
@@ -222,7 +234,7 @@ export default function PlanningApplicationClient() {
                 textAlign: 'center',
               }}
             >
-              문의 요청하기
+              다음 단계로 가보기(2/3)
             </button>
             <div
               style={{

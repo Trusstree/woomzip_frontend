@@ -24,7 +24,16 @@ export default function BasicDataList({ pid, houseData, specificationData }) {
   return (
     <div className="row" style={{ margin: '50px 0' }}>
       <div className="col-md-6 col-12" style={{ marginBottom: '20px' }}>
-        <div style={{ fontSize: '24px', fontWeight: '500' }}>{houseData['house_name']}</div>
+        <div className="d-flex" style={{ alignItems: 'center' }}>
+          <div style={{ fontSize: '24px', fontWeight: '500' }}>{houseData['house_name']}</div>
+          <Image
+            src={'/houseIcons/safe.png'}
+            alt={'safe'}
+            width={24}
+            height={24}
+            style={{ width: '24px', height: '24px', marginLeft: '10px' }}
+          ></Image>
+        </div>
         <div style={{ fontSize: '22px', color: '#314FC0' }}>
           {detailPriceText(houseData['final_price'])}
           <span style={{ fontSize: '20px', color: 'black' }}>

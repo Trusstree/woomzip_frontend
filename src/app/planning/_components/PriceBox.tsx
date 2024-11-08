@@ -1,8 +1,8 @@
-"use client";
-import { useEffect, useState } from "react";
-import { algorithm } from "@/lib/algorithm";
-import { simplePriceText } from "@/lib/stringUtil";
-import PriceLine from "@/components/planning/PriceLine";
+'use client';
+import { useEffect, useState } from 'react';
+import { algorithm } from '@/lib/algorithm';
+import { simplePriceText } from '@/lib/stringUtil';
+import PriceLine from '@/components/planning/PriceLine';
 
 export default function PriceBox({ houseType, landCondition, roadCondition, addr, area, house }) {
   const [delivery, setDelivery] = useState([0, 0]);
@@ -24,52 +24,53 @@ export default function PriceBox({ houseType, landCondition, roadCondition, addr
       area: area,
       house: house,
     });
-    setDelivery(res["delivery"]);
-    setMeasure(res["measure"]);
-    setPermit(res["permit"]);
-    setGrounding(res["grounding"]);
-    setFoundation(res["foundation"]);
-    setInsurance(res["insurance"]);
-    setTax(res["tax"]);
-    setTotal(res["total"]);
-    setPrice(res["price"]);
+    setDelivery(res['delivery']);
+    setMeasure(res['measure']);
+    setPermit(res['permit']);
+    setGrounding(res['grounding']);
+    setFoundation(res['foundation']);
+    setInsurance(res['insurance']);
+    setTax(res['tax']);
+    setTotal(res['total']);
+    setPrice(res['price']);
   }, [houseType, landCondition, roadCondition, addr, area, house]);
 
   return (
-    <div className="container" style={{ borderColor: "white", width: "100%", position: "sticky", bottom: "0" }}>
-      <div style={{ fontSize: "20px", fontWeight: "600", marginBottom: "15px" }}>
+    <div className="container" style={{ borderColor: 'white', width: '100%', position: 'sticky', bottom: '0' }}>
+      <div style={{ fontSize: '20px', fontWeight: '600', marginBottom: '15px' }}>
         안녕하세요!
         <br />
-        저는 당신을 도와줄 <span style={{ color: "#314FC0" }}>타잔</span>입니다
+        <span style={{ color: '#314FC0' }}>움집</span>의 건축 전문가 <span style={{ color: '#314FC0' }}>타잔</span>
+        입니다.
       </div>
-      <div className="d-flex justify-content-between" style={{ lineHeight: "35px", marginBottom: "10px" }}>
-        <div style={{ fontSize: "20px", fontWeight: "600" }}>
-          당신의 총 공사비용은,
+      <div className="d-flex justify-content-between" style={{ lineHeight: '35px', marginBottom: '10px' }}>
+        <div style={{ fontSize: '20px', fontWeight: '600' }}>
+          당신의 총 건축비용은,
           <br />
-          <span style={{ color: "#314FC0" }}>
+          <span style={{ color: '#314FC0' }}>
             {simplePriceText(total[0])}~{simplePriceText(total[1])}
           </span>
           <br />
-          으로 예상 됩니다
+          으로 예상됩니다.
         </div>
       </div>
       <hr />
 
-      <div className="d-flex justify-content-between" style={{ lineHeight: "35px" }}>
-        <div style={{ fontSize: "16px", fontWeight: "500" }}>주택가격</div>
-        <div style={{ fontSize: "14px" }}>{simplePriceText(price[0])}</div>
+      <div className="d-flex justify-content-between" style={{ lineHeight: '35px' }}>
+        <div style={{ fontSize: '16px', fontWeight: '500' }}>주택가격</div>
+        <div style={{ fontSize: '14px' }}>{simplePriceText(price[0])}</div>
       </div>
-      <PriceLine title={"배송비"} minPrice={delivery[0]} maxPrice={delivery[1]} />
-      <PriceLine title={"측량비"} minPrice={measure[0]} maxPrice={measure[1]} />
-      <PriceLine title={"인허가비"} minPrice={permit[0]} maxPrice={permit[1]} />
-      <PriceLine title={"토목공사비"} minPrice={grounding[0]} maxPrice={grounding[1]} />
-      <PriceLine title={"기초공사비"} minPrice={foundation[0]} maxPrice={foundation[1]} />
-      <div className="d-flex justify-content-between" style={{ lineHeight: "35px" }}>
-        <div style={{ fontSize: "16px", fontWeight: "500" }}>전기, 상하수도 인입비</div>
-        <div style={{ fontSize: "14px" }}>토지에 따라 변동</div>
+      <PriceLine title={'배송비'} minPrice={delivery[0]} maxPrice={delivery[1]} />
+      <PriceLine title={'측량비'} minPrice={measure[0]} maxPrice={measure[1]} />
+      <PriceLine title={'인허가비'} minPrice={permit[0]} maxPrice={permit[1]} />
+      <PriceLine title={'토목공사비'} minPrice={grounding[0]} maxPrice={grounding[1]} />
+      <PriceLine title={'기초공사비'} minPrice={foundation[0]} maxPrice={foundation[1]} />
+      <div className="d-flex justify-content-between" style={{ lineHeight: '35px' }}>
+        <div style={{ fontSize: '16px', fontWeight: '500' }}>전기, 상하수도 인입비</div>
+        <div style={{ fontSize: '14px' }}>토지에 따라 변동</div>
       </div>
-      <PriceLine title={"보험비"} minPrice={insurance[0]} maxPrice={insurance[1]} />
-      <PriceLine title={"세금"} minPrice={tax[0]} maxPrice={tax[1]} />
+      <PriceLine title={'보험비'} minPrice={insurance[0]} maxPrice={insurance[1]} />
+      <PriceLine title={'세금'} minPrice={tax[0]} maxPrice={tax[1]} />
     </div>
   );
 }

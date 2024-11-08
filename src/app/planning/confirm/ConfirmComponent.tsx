@@ -31,83 +31,152 @@ export default function ConfirmComponent() {
     const [data, error] = await postPlanning(houseData);
     if (error) {
       console.log(error);
-      alertError('에러', '입력값에 문제가 있어요. 새로고침하여 다시 시도해보세요!');
+      alertError('새로고침 해주세요!', '문제가 발생했습니다.');
       return;
     }
     console.log(data);
-    alertSuccess('성공적으로 등록되었어요!', '제대로 입력되었습니다!');
+    alertSuccess('문의가 접수되었습니다!', '최대한 빠르게 답변드리겠습니다.');
     router.push('/');
   };
 
   return (
     <div className="row">
-      <div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['house_type']}</div>
+      <div className="row col-md-8 col-12">
+        <div className="col-12" style={{ marginBottom: '20px' }}>
+          <div style={{ fontSize: '20px', fontWeight: '500', marginBottom: '5px' }}>1. 기본 정보</div>
+          <div className="row" style={{ padding: '20px' }}>
+            <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
+              <div>문의자</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['name']}</div>
+            </div>
+            <div className="col-md-1 col-0"></div>
+            <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
+              <div>연락처</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['contact']}</div>
+            </div>
+            <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
+              <div>문의하신 제품</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['house_id']}</div>
+            </div>
+            <div className="col-md-1 col-0"></div>
+            <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
+              <div>건축방식</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['house_type']}</div>
+            </div>
+            <div className="col-12" style={{ padding: '10px' }}>
+              <div>문의 사항</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>문의사항 들어가는 공간</div>
+            </div>
+          </div>
         </div>
-
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['house_id']}</div>
+        <div className="col-12" style={{ margin: '20px 0' }}>
+          <div style={{ fontSize: '20px', fontWeight: '500', marginBottom: '5px' }}>2. 토지 정보</div>
+          <div className="row" style={{ padding: '20px' }}>
+            <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
+              <div>토지 위치</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['addr']}</div>
+            </div>
+            <div className="col-md-1 col-0"></div>
+            <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
+              <div>토지 면적</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['area']}</div>
+            </div>
+            <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
+              <div>토지 경사도 상태</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['land_condition']}</div>
+            </div>
+            <div className="col-md-1 col-0"></div>
+            <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
+              <div>토지 진입로 상태</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['road_condition']}</div>
+            </div>
+          </div>
         </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['house_type']}</div>
-        </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['addr']}</div>
-        </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['area']}</div>
-        </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['land_condition']}</div>
-        </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['road_condition']}</div>
-        </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['required_service']}</div>
-        </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['timeline']}</div>
-        </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['finance']}</div>
-        </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['name']}</div>
-        </div>
-        <div className="mb-5 col-12 row">
-          <div className="col-4">house type</div>
-          <div className="col-8">{houseData['contact']}</div>
+        <div className="col-12" style={{ margin: '20px 0' }}>
+          <div style={{ fontSize: '20px', fontWeight: '500', marginBottom: '5px' }}>3. 요청 정보</div>
+          <div className="row" style={{ padding: '20px' }}>
+            <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
+              <div>요청 서비스</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['required_service']}</div>
+            </div>
+            <div className="col-md-1 col-0"></div>
+            <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
+              <div>건축 예상 시기</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['timeline']}</div>
+            </div>
+            <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
+              <div>중요도 기준 </div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['finance']}</div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div
-        className="btn btn-lg btn-success"
-        onClick={() => {
-          submit();
-        }}
-      >
-        맞아요?
-      </div>
-      <div
-        className="btn btn-lg btn-danger"
-        onClick={() => {
-          router.back();
-        }}
-      >
-        아니에요?
+      <div className="col-md-4 col-12">
+        <div className="sticky-top row g-1">
+          <div className="container" style={{ height: '50px' }}></div>
+          <div
+            style={{
+              fontSize: '20px',
+              fontWeight: '600',
+              marginBottom: '15px',
+            }}
+          >
+            마지막 단계입니다.
+            <br />
+            <span style={{ color: '#314FC0' }}>최대한 빠르게 </span>
+            연락드리겠습니다.
+          </div>
+          <button
+            onClick={() => {
+              submit();
+            }}
+            style={{
+              width: '100%',
+              height: '50px',
+              borderRadius: '10px',
+              border: 'none',
+              padding: '10px',
+              marginTop: '10px',
+              backgroundColor: '#314FC0',
+              color: 'white',
+              fontSize: '20px',
+              fontWeight: '600',
+              textAlign: 'center',
+            }}
+          >
+            해당 정보로 문의 요청합니다.
+          </button>
+          <button
+            onClick={() => {
+              router.back();
+            }}
+            style={{
+              width: '100%',
+              height: '50px',
+              borderRadius: '10px',
+              border: 'none',
+              padding: '10px',
+              marginTop: '10px',
+              backgroundColor: '#F5F7FF',
+              color: '#314FC0',
+              fontSize: '18px',
+              fontWeight: '500',
+              textAlign: 'center',
+            }}
+          >
+            정보 수정하기
+          </button>
+          <div
+            style={{
+              fontSize: '14px',
+              fontWeight: '330',
+              textAlign: 'center',
+              margin: '10px 0',
+            }}
+          >
+            본 계약 전에는 요금이 청구되지 않습니다.
+          </div>
+        </div>
       </div>
     </div>
   );

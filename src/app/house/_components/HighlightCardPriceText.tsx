@@ -9,7 +9,7 @@ export const HighlightCardPriceText = ({ price }: { price: number | string }) =>
   const eok = _price % 10000 > 0 ? (_price % 10000) + '억' : ''; // 집은 억 단위까지
   return (
     <>
-      <span style={{ color: '#314FC0', fontSize: '20px' }}>{eok + man}</span>
+      <span style={{ color: '#314FC0', fontSize: '17px' }}>{eok + man}</span>
       {man.length > 0 ? '만' : ''}원
     </>
   );
