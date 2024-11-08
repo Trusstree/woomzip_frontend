@@ -29,6 +29,7 @@ export default function PlanningClient() {
       router.push('/house');
     }
     params.set('house_id', house_id.toString());
+    params.set('house_name', houseData['house_name']);
 
     if (houseType.length == 0) {
       alertError('농막인지 주택인지 선택해주세요!', '모든 항목에 대해 선택해야 합니다.');
@@ -150,7 +151,7 @@ export default function PlanningClient() {
               <SelectBox
                 title={'체류형쉼터, 농막'}
                 text={'건축 인허가가 필요 없습니다.'}
-                value={'체류형쉼터, 농막'}
+                value={'hut'}
                 data={houseType}
                 setData={setHouseType}
                 img={'/planningIcons/nongmak.png'}
@@ -160,7 +161,7 @@ export default function PlanningClient() {
               <SelectBox
                 title={'주택'}
                 text={'건축 인허가가 필요합니다.'}
-                value={'주택'}
+                value={'house'}
                 data={houseType}
                 setData={setHouseType}
                 img={'/planningIcons/house.png'}
@@ -200,12 +201,12 @@ export default function PlanningClient() {
             <span style={{ color: '#314FC0' }}>토지 면적</span>을 알려주세요.
           </div>
           <div style={{ fontSize: '19px', marginBottom: '30px' }}>아직 구매 전이라면 원하시는 면적을 알려주세요.</div>
-          <SelectMiniBox title={'50평 이하'} text={'~165㎡'} value={'50평'} data={area} setData={setArea} />
-          <SelectMiniBox title={'75평 이하'} text={'~248㎡'} value={'75평'} data={area} setData={setArea} />
-          <SelectMiniBox title={'100평 이하'} text={'~330㎡'} value={'100평'} data={area} setData={setArea} />
-          <SelectMiniBox title={'125평 이하'} text={'~413㎡'} value={'125평'} data={area} setData={setArea} />
-          <SelectMiniBox title={'150평 이하'} text={'~496㎡'} value={'150평'} data={area} setData={setArea} />
-          <SelectMiniBox title={'150평 초과'} text={'496㎡~'} value={'151평'} data={area} setData={setArea} />
+          <SelectMiniBox title={'50평 이하'} text={'~165㎡'} value={'50'} data={area} setData={setArea} />
+          <SelectMiniBox title={'75평 이하'} text={'~248㎡'} value={'75'} data={area} setData={setArea} />
+          <SelectMiniBox title={'100평 이하'} text={'~330㎡'} value={'100'} data={area} setData={setArea} />
+          <SelectMiniBox title={'125평 이하'} text={'~413㎡'} value={'125'} data={area} setData={setArea} />
+          <SelectMiniBox title={'150평 이하'} text={'~496㎡'} value={'150'} data={area} setData={setArea} />
+          <SelectMiniBox title={'150평 초과'} text={'496㎡~'} value={'151'} data={area} setData={setArea} />
         </div>
 
         <div style={{ marginBottom: '150px' }}>
@@ -223,7 +224,7 @@ export default function PlanningClient() {
               <SelectBox
                 title={'평평함'}
                 text={'토목공사가 필요 없습니다.'}
-                value={'평평함'}
+                value={'flat'}
                 data={landCondition}
                 setData={setLandCondition}
                 img={'planningIcons/flat.png'}
@@ -233,7 +234,7 @@ export default function PlanningClient() {
               <SelectBox
                 title={'조금 경사짐'}
                 text={'토목공사가 필요합니다.'}
-                value={'조금 경사짐'}
+                value={'SlightlySloped'}
                 data={landCondition}
                 setData={setLandCondition}
                 img={'planningIcons/slope.png'}
@@ -243,7 +244,7 @@ export default function PlanningClient() {
               <SelectBox
                 title={'많이 경사짐'}
                 text={'비용이 더 많이 소요됩니다.'}
-                value={'많이 경사짐'}
+                value={'SteeplySloped'}
                 data={landCondition}
                 setData={setLandCondition}
                 img={'planningIcons/veryslope.png'}
@@ -267,7 +268,7 @@ export default function PlanningClient() {
               <SelectBox
                 title={'넓음'}
                 text={'대형 트레일러가 진입할 수 있어요! 기본 배송비가 소요됩니다.'}
-                value={'넓음'}
+                value={'Wide'}
                 data={roadCondition}
                 setData={setRoadCondition}
                 img={'planningIcons/wide.png'}
@@ -277,7 +278,7 @@ export default function PlanningClient() {
               <SelectBox
                 title={'조금 좁음'}
                 text={'차량 두대 정도가 들어갈 수 있어요! 추가 트럭 및 인력이 필요합니다.'}
-                value={'조금 좁음'}
+                value={'Narrow'}
                 data={roadCondition}
                 setData={setRoadCondition}
                 img={'planningIcons/nerrow.png'}
@@ -287,7 +288,7 @@ export default function PlanningClient() {
               <SelectBox
                 title={'많이 좁음'}
                 text={'1톤 트럭이 겨우 들어가요! 현장건축이 필요합니다.'}
-                value={'많이 좁음'}
+                value={'VeryNarrow'}
                 data={roadCondition}
                 setData={setRoadCondition}
                 img={'planningIcons/verynerrow.png'}

@@ -24,6 +24,9 @@ export default function ConfirmComponent() {
       access_token: userContext ? userContext.at : undefined,
     };
 
+    data['house_id'] = Number(data['house_id']);
+    delete data['house_name'];
+
     setHouseData(data);
   }, []);
 
@@ -38,6 +41,17 @@ export default function ConfirmComponent() {
     alertSuccess('문의가 접수되었습니다!', '최대한 빠르게 답변드리겠습니다.');
     router.push('/');
   };
+
+  const houseTypeMap = { hut: '체류형쉼터, 농막', house: '주택' };
+  const landConditionMap = { Flat: '평평함', SlightlySloped: '조금 경사짐', SteeplySloped: '많이 경사짐' };
+  const roadConditionMap = { Wide: '넓음', Narrow: '조금 좁음', VeryNarrow: '많이 좁음' };
+  const requiredServiceMap = {
+    InquiryOnly: '단순 문의',
+    ConnectwithCompany: '상세 견적서 요청',
+    FullService: '통합 안심 서비스',
+  };
+  const timelineMap = { ASAP: '최대한 빠르게', Within1Year: '조금 여유가 있어요.', NoPlan: '고민 중이에요.' };
+  const financeMap = { 'Self-funded': '가성비', InterestedInFundraising: '완성도', HousingGuaranteeFund: '신뢰도' };
 
   return (
     <div className="row">
@@ -56,16 +70,16 @@ export default function ConfirmComponent() {
             </div>
             <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
               <div>문의하신 제품</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['house_id']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['house_name']}</div>
             </div>
             <div className="col-md-1 col-0"></div>
             <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
               <div>건축방식</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['house_type']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseTypeMap[houseData['house_type']]}</div>
             </div>
             <div className="col-12" style={{ padding: '10px' }}>
               <div>문의 사항</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>문의사항 들어가는 공간</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['text']}</div>
             </div>
           </div>
         </div>
@@ -79,16 +93,16 @@ export default function ConfirmComponent() {
             <div className="col-md-1 col-0"></div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>토지 면적</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['area']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['area']}㎡</div>
             </div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>토지 경사도 상태</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['land_condition']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{landConditionMap[houseData['land_condition']]}</div>
             </div>
             <div className="col-md-1 col-0"></div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>토지 진입로 상태</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['road_condition']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{roadConditionMap[houseData['road_condition']]}</div>
             </div>
           </div>
         </div>
@@ -97,16 +111,18 @@ export default function ConfirmComponent() {
           <div className="row" style={{ padding: '20px' }}>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>요청 서비스</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['required_service']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>
+                {requiredServiceMap[houseData['required_service']]}
+              </div>
             </div>
             <div className="col-md-1 col-0"></div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>건축 예상 시기</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['timeline']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{timelineMap[houseData['timeline']]}</div>
             </div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>중요도 기준 </div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['finance']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{financeMap[houseData['finance']]}</div>
             </div>
           </div>
         </div>

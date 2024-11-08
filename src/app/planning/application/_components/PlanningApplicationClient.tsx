@@ -11,6 +11,7 @@ export default function PlanningApplicationClient() {
   const [finance, setFinance] = useState('');
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
+  const [text, setText] = useState('');
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -50,9 +51,10 @@ export default function PlanningApplicationClient() {
       return;
     }
     params.set('contact', contact.toString());
+    params.set('text', text);
 
     router.push(`/planning/confirm?${params.toString()}`);
-  }, [requiredService, timeline, finance, name, contact]);
+  }, [requiredService, timeline, finance, name, contact, text]);
 
   return (
     <>
@@ -72,21 +74,21 @@ export default function PlanningApplicationClient() {
               <SelectBoxApp
                 title={'단순 문의'}
                 text={'제품이나 과정이 궁금해요!'}
-                value={'단순 문의'}
+                value={'InquiryOnly'}
                 data={requiredService}
                 setData={setRequiredService}
               />
               <SelectBoxApp
                 title={'상세 견적서 요청'}
                 text={'자세한 상담을 통해 정확한 견적을 알려드려요!'}
-                value={'상세 견적서 요청'}
+                value={'ConnectwithCompany'}
                 data={requiredService}
                 setData={setRequiredService}
               />
               <SelectBoxApp
                 title={'통합 안심 서비스'}
                 text={'안심문의, 안심계약, 안심지불, 안심AS 서비스를 원해요!'}
-                value={'통합 안심 서비스'}
+                value={'FullService'}
                 data={requiredService}
                 setData={setRequiredService}
               />
@@ -107,21 +109,21 @@ export default function PlanningApplicationClient() {
               <SelectBoxApp
                 title={'최대한 빠르게'}
                 text={'4~12주 이내'}
-                value={'최대한 빠르게'}
+                value={'ASAP'}
                 data={timeline}
                 setData={setTimeline}
               />
               <SelectBoxApp
                 title={'조금 여유가 있어요.'}
                 text={'4~8개월 이내'}
-                value={'4~8개월 이내'}
+                value={'Within1Year'}
                 data={timeline}
                 setData={setTimeline}
               />
               <SelectBoxApp
                 title={'고민 중이에요.'}
                 text={'아직 모르겠어요.'}
-                value={'아직 모르겠어요.'}
+                value={'NoPlan'}
                 data={timeline}
                 setData={setTimeline}
               />
@@ -142,21 +144,21 @@ export default function PlanningApplicationClient() {
               <SelectBoxApp
                 title={'가성비'}
                 text={'가격이 가장 중요합니다.'}
-                value={'가성비'}
+                value={'Self-funded'}
                 data={finance}
                 setData={setFinance}
               />
               <SelectBoxApp
                 title={'완성도'}
                 text={'높은 완성도와 자재가 중요합니다.'}
-                value={'완성도'}
+                value={'InterestedInFundraising'}
                 data={finance}
                 setData={setFinance}
               />
               <SelectBoxApp
                 title={'신뢰도'}
                 text={'믿을 수 있는 업체인지가 중요합니다.'}
-                value={'신뢰도'}
+                value={'HousingGuaranteeFund'}
                 data={finance}
                 setData={setFinance}
               />
@@ -208,13 +210,17 @@ export default function PlanningApplicationClient() {
             </div>
             <div className="col-12">
               <div>추가 문의사항</div>
-              <input
+              <textarea
                 style={{
                   width: '100%',
                   height: '100px',
                   border: '1px solid #314FC0',
                   borderRadius: '5px',
                   backgroundColor: '#F5F7FF',
+                }}
+                value={text}
+                onChange={(e) => {
+                  setText(e.target.value);
                 }}
               />
             </div>

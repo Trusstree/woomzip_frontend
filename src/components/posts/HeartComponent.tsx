@@ -58,22 +58,19 @@ export default function HeartComponent({
       const at = await getUserAccessToken();
       if (!at) return;
       setAT(at);
-
       if (typeof getHeart == 'function') {
-        // 로그인 확인하기
-
+        // // 로그인 확인하기
         const [heartData, heartError] = await getHeart(heart_id);
         if (heartError) {
           console.error(heartError);
           return;
         }
         const data = heartData.data[0];
-
         setIsLiked(data.isHouseLike || data.isPostLike);
         return;
-      } else {
-        setIsLiked(getHeart);
       }
+
+      setIsLiked(getHeart);
     })();
   }, []);
 

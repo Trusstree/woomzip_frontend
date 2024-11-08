@@ -1,5 +1,6 @@
 'use server';
 
+import { postDiscordWebhook } from '@/actions/apis/alarmAPI';
 import { privateApi, publicApi } from '@/configs/axiosClient';
 
 export const getHouses = async (params: any) => {
@@ -23,7 +24,8 @@ export const postPlanning = async (house: any) => {
   let [data, error] = [undefined, undefined] as any;
 
   try {
-    const result = await privateApi.post(`/planning/v2/apply`, house);
+    const result = await privateApi.post(`/planning/v3/apply`, house);
+    postDiscordWebhook();
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
