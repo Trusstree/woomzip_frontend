@@ -99,12 +99,10 @@ export function HouseInfoComponent() {
   };
 
   const handleHasModel = (e: ChangeEvent<HTMLInputElement>) => {
-    if (validateNumber(e)) return;
     setHasModel(e.target.value);
   };
 
   const handleIsHut = (e: ChangeEvent<HTMLInputElement>) => {
-    if (validateNumber(e)) return;
     setIsHut(e.target.value);
   };
 
