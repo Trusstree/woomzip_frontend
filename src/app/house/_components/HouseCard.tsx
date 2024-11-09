@@ -43,7 +43,7 @@ export default function HouseCard({ imgUrl, houseId, houseName, companyName, pri
                 height={18}
                 style={{ width: '18px', height: 'auto', marginRight: '2px' }}
               ></Image>
-              <div>{pyeong}평</div>
+              <div>{(pyeong).toFixed(0)}평</div>
             </div>
             <div className="d-flex" style={{ alignItems: 'center', marginRight: '20px' }}>
               <Image

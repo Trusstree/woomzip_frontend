@@ -8,7 +8,7 @@ export default function BasicDataList({ pid, houseData, specificationData }) {
   const basicData = [
     { src: '/houseIcons/room1.png', alt: 'room', text: `${houseData['room_count']}개 침실` },
     { src: '/houseIcons/toilet1.png', alt: 'toilet', text: `${houseData['toilet_count']}개 욕실` },
-    { src: '/houseIcons/pyeong1.png', alt: 'pyeong', text: `${houseData['total_floor_area']}평` },
+    { src: '/houseIcons/pyeong1.png', alt: 'pyeong', text: `${houseData['total_floor_area'].toFixed(1)}평` },
     { src: '/houseIcons/floor.png', alt: 'floor', text: `${houseData['floor']}층` },
     {
       src: '/houseIcons/framework.png',
