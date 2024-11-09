@@ -31,9 +31,9 @@ const style = {
 export default function PostCard({ data, className }: PostCardProps) {
   // const regex = /<([^>]+)>/gi;
   const imgSrcArr = data['content']
-    .split(/img src="/g)
-    .filter((e) => e.search(/https?/g) > -1)
-    .map((e) => e.split('"')[0]);
+  .match(/img src="https.*amazonaws.com\/.*\.(jpg|jpeg|png|gif|bmp|webp)/gim)?.[0]
+  .split('"')?.[1];
+  //console.log(imgSrcArr);
 
   return (
     <div className={`${className}`}>
@@ -57,7 +57,7 @@ export default function PostCard({ data, className }: PostCardProps) {
             }}
           >
             <Image
-              src={imgSrcArr[0] || '/111.webp'}
+              src={imgSrcArr || '/111.webp'}
               alt="post card img"
               style={{ objectFit: 'cover' }}
               fill
