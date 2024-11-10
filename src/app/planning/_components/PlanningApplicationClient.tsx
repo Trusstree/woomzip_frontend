@@ -4,57 +4,46 @@ import React, { useCallback, useState } from 'react';
 import SelectBoxApp from '@/app/planning/application/_components/SelectBoxApp';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { alertError } from '@/lib/alertUtil';
+import usePlanningInfo from '@/app/planning/_store/planningInfo';
 
 export default function PlanningApplicationClient() {
-  const [requiredService, setRequiredService] = useState('');
-  const [timeline, setTimeline] = useState('');
-  const [finance, setFinance] = useState('');
-  const [name, setName] = useState('');
-  const [contact, setContact] = useState('');
-  const [text, setText] = useState('');
-
   const searchParams = useSearchParams();
   const router = useRouter();
+  const planningInfo = usePlanningInfo();
 
   const submit = useCallback(async () => {
     const params = new URLSearchParams(searchParams);
 
-    if (requiredService.length == 0) {
+    if (planningInfo.requiredService.length == 0) {
       alertError('어떤 도움이 필요하신지 알려주세요!', '모든 항목에 대해 선택해야 합니다.');
       return;
     }
-    params.set('required_service', requiredService.toString());
 
-    if (timeline.length == 0) {
+    if (planningInfo.timeline.length == 0) {
       alertError('건축 일정을 알려주세요!', '모든 항목에 대해 선택해야 합니다.');
       return;
     }
-    params.set('timeline', timeline.toString());
 
-    if (finance.length == 0) {
+    if (planningInfo.finance.length == 0) {
       alertError(
         '가성비, 완성도, 신뢰성 중 어떤 항목을 가장 중요하게 생각하는지 알려주세요!',
         '모든 항목에 대해 선택해야 합니다.',
       );
       return;
     }
-    params.set('finance', finance.toString());
 
-    if (name.length == 0) {
+    if (planningInfo.name.length == 0) {
       alertError('이름을 입력해주세요!', '');
       return;
     }
-    params.set('name', name.toString());
 
-    if (contact.length == 0) {
+    if (planningInfo.contact.length == 0) {
       alertError('전화번호를 입력해주세요!', '');
       return;
     }
-    params.set('contact', contact.toString());
-    params.set('text', text);
-
-    router.push(`/planning/confirm?${params.toString()}`);
-  }, [requiredService, timeline, finance, name, contact, text]);
+    params.set('page', 'confirm');
+    router.push(`/planning/?${params.toString()}`);
+  }, [planningInfo]);
 
   return (
     <>
@@ -75,22 +64,22 @@ export default function PlanningApplicationClient() {
                 title={'단순 문의'}
                 text={'제품이나 과정이 궁금해요!'}
                 value={'InquiryOnly'}
-                data={requiredService}
-                setData={setRequiredService}
+                data={planningInfo.requiredService}
+                setData={planningInfo.setRequiredService}
               />
               <SelectBoxApp
                 title={'상세 견적서 요청'}
                 text={'자세한 상담을 통해 정확한 견적을 알려드려요!'}
                 value={'ConnectwithCompany'}
-                data={requiredService}
-                setData={setRequiredService}
+                data={planningInfo.requiredService}
+                setData={planningInfo.setRequiredService}
               />
               <SelectBoxApp
                 title={'통합 안심 서비스'}
                 text={'안심문의, 안심계약, 안심지불, 안심AS 서비스를 원해요!'}
                 value={'FullService'}
-                data={requiredService}
-                setData={setRequiredService}
+                data={planningInfo.requiredService}
+                setData={planningInfo.setRequiredService}
               />
             </div>
           </div>
@@ -110,22 +99,22 @@ export default function PlanningApplicationClient() {
                 title={'최대한 빠르게'}
                 text={'4~12주 이내'}
                 value={'ASAP'}
-                data={timeline}
-                setData={setTimeline}
+                data={planningInfo.timeline}
+                setData={planningInfo.setTimeline}
               />
               <SelectBoxApp
                 title={'조금 여유가 있어요.'}
                 text={'4~8개월 이내'}
                 value={'Within1Year'}
-                data={timeline}
-                setData={setTimeline}
+                data={planningInfo.timeline}
+                setData={planningInfo.setTimeline}
               />
               <SelectBoxApp
                 title={'고민 중이에요.'}
                 text={'아직 모르겠어요.'}
                 value={'NoPlan'}
-                data={timeline}
-                setData={setTimeline}
+                data={planningInfo.timeline}
+                setData={planningInfo.setTimeline}
               />
             </div>
           </div>
@@ -145,22 +134,22 @@ export default function PlanningApplicationClient() {
                 title={'가성비'}
                 text={'가격이 가장 중요합니다.'}
                 value={'Self-funded'}
-                data={finance}
-                setData={setFinance}
+                data={planningInfo.finance}
+                setData={planningInfo.setFinance}
               />
               <SelectBoxApp
                 title={'완성도'}
                 text={'높은 완성도와 자재가 중요합니다.'}
                 value={'InterestedInFundraising'}
-                data={finance}
-                setData={setFinance}
+                data={planningInfo.finance}
+                setData={planningInfo.setFinance}
               />
               <SelectBoxApp
                 title={'신뢰도'}
                 text={'믿을 수 있는 업체인지가 중요합니다.'}
                 value={'HousingGuaranteeFund'}
-                data={finance}
-                setData={setFinance}
+                data={planningInfo.finance}
+                setData={planningInfo.setFinance}
               />
             </div>
           </div>
@@ -190,7 +179,7 @@ export default function PlanningApplicationClient() {
                   backgroundColor: '#F5F7FF',
                 }}
                 onChange={(e) => {
-                  setName(e.target.value);
+                  planningInfo.setName(e.target.value);
                 }}
               />
             </div>
@@ -204,7 +193,7 @@ export default function PlanningApplicationClient() {
                   backgroundColor: '#F5F7FF',
                 }}
                 onChange={(e) => {
-                  setContact(e.target.value);
+                  planningInfo.setContact(e.target.value);
                 }}
               />
             </div>
@@ -218,9 +207,9 @@ export default function PlanningApplicationClient() {
                   borderRadius: '5px',
                   backgroundColor: '#F5F7FF',
                 }}
-                value={text}
+                value={planningInfo.text}
                 onChange={(e) => {
-                  setText(e.target.value);
+                  planningInfo.setText(e.target.value);
                 }}
               />
             </div>

@@ -1,4 +1,4 @@
-import ConfirmComponent from '@/app/planning/confirm/ConfirmComponent';
+import ConfirmComponent from '@/app/planning/_components/PlanningConfirmClient';
 import React from 'react';
 
 export default function Confirm() {

@@ -8,6 +8,12 @@ interface PlanningInfoState {
   area: string;
   addr: string;
   houseData: string;
+  requiredService: string;
+  timeline: string;
+  finance: string;
+  name: string;
+  contact: string;
+  text: string;
 }
 
 interface PlanningInfoActions {
@@ -18,16 +24,28 @@ interface PlanningInfoActions {
   setArea: (area: string) => void;
   setAddr: (addr: string) => void;
   setHouseData: (houseData: string) => void;
+  setRequiredService: (requiredService: string) => void;
+  setTimeline: (timeline: string) => void;
+  setFinance: (finance: string) => void;
+  setName: (name: string) => void;
+  setContact: (contact: string) => void;
+  setText: (text: string) => void;
 }
 
 const useHouseInfo = create<PlanningInfoState & PlanningInfoActions>((set) => ({
-  houseName:'',
-  houseType:'',
-  landCondition:'',
-  roadCondition:'',
-  area:'',
-  addr:'',
-  houseData:'',
+  houseName: '',
+  houseType: '',
+  landCondition: '',
+  roadCondition: '',
+  area: '',
+  addr: '',
+  houseData: '',
+  requiredService: '',
+  timeline: '',
+  finance: '',
+  name: '',
+  contact: '',
+  text: '',
   setHouseName: (houseName: string) => {
     set({ houseName });
   },
@@ -48,6 +66,24 @@ const useHouseInfo = create<PlanningInfoState & PlanningInfoActions>((set) => ({
   },
   setHouseData: (houseData: string) => {
     set({ houseData });
+  },
+  setRequiredService: (requiredService: string) => {
+    set({ requiredService });
+  },
+  setTimeline: (timeline: string) => {
+    set({ timeline });
+  },
+  setFinance: (finance: string) => {
+    set({ finance });
+  },
+  setName: (name: string) => {
+    set({ name });
+  },
+  setContact: (contact: string) => {
+    set({ contact });
+  },
+  setText: (text: string) => {
+    set({ text });
   },
 }));
 

@@ -2,42 +2,43 @@
 
 import { postPlanning } from '@/actions/apis/planningAPI';
 import { useUser } from '@/app/_components/ContextSession';
-import useQuery from '@/hooks/useQuery';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import usePlanningInfo from '@/app/planning/_store/planningInfo';
 
-export default function ConfirmComponent() {
-  const { getParams } = useQuery();
+export default function PlanningConfirmClient() {
+  const searchParams = useSearchParams();
+  const house_id = Number(searchParams.get('house_id'));
   const router = useRouter();
   const { userContext } = useUser();
-  const [houseData, setHouseData] = useState({});
-
-  useEffect(() => {
-    const data = {};
-    getParams().forEach((value, key) => {
-      data[key] = value;
-    });
-
-    data['auth'] = {
-      is_login: !!userContext,
-      access_token: userContext ? userContext.at : undefined,
-    };
-
-    data['house_id'] = Number(data['house_id']);
-    delete data['house_name'];
-
-    setHouseData(data);
-  }, []);
+  const planningInfo = usePlanningInfo();
 
   const submit = async () => {
+    const houseData = {
+      house_id: house_id,
+      auth: {
+        is_login: !!userContext,
+        access_token: userContext ? userContext.at : undefined,
+      },
+      house_type: planningInfo.houseType,
+      area: planningInfo.area,
+      addr: planningInfo.addr,
+      land_condition: planningInfo.landCondition,
+      road_condition: planningInfo.roadCondition,
+      required_service: planningInfo.requiredService,
+      timeline: planningInfo.timeline,
+      finance: planningInfo.finance,
+      name: planningInfo.name,
+      contact: planningInfo.contact,
+      text: planningInfo.text,
+    };
+
     const [data, error] = await postPlanning(houseData);
     if (error) {
       console.log(error);
       alertError('새로고침 해주세요!', '문제가 발생했습니다.');
       return;
     }
-    console.log(data);
     alertSuccess('문의가 접수되었습니다!', '최대한 빠르게 답변드리겠습니다.');
     router.push('/');
   };
@@ -61,25 +62,25 @@ export default function ConfirmComponent() {
           <div className="row" style={{ padding: '20px' }}>
             <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
               <div>문의자</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['name']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{planningInfo.name}</div>
             </div>
             <div className="col-md-1 col-0"></div>
             <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
               <div>연락처</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['contact']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{planningInfo.contact}</div>
             </div>
             <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
               <div>문의하신 제품</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['house_name']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{planningInfo.houseName}</div>
             </div>
             <div className="col-md-1 col-0"></div>
             <div className="d-flex justify-content-between col-md-5 col-12" style={{ padding: '10px' }}>
               <div>건축방식</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseTypeMap[houseData['house_type']]}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseTypeMap[planningInfo.houseType]}</div>
             </div>
             <div className="col-12" style={{ padding: '10px' }}>
               <div>문의 사항</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['text']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{planningInfo.text}</div>
             </div>
           </div>
         </div>
@@ -88,21 +89,21 @@ export default function ConfirmComponent() {
           <div className="row" style={{ padding: '20px' }}>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>토지 위치</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['addr']}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{planningInfo.addr}</div>
             </div>
             <div className="col-md-1 col-0"></div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>토지 면적</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{houseData['area']}㎡</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{planningInfo.area}㎡</div>
             </div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>토지 경사도 상태</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{landConditionMap[houseData['land_condition']]}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{landConditionMap[planningInfo.landCondition]}</div>
             </div>
             <div className="col-md-1 col-0"></div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>토지 진입로 상태</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{roadConditionMap[houseData['road_condition']]}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{roadConditionMap[planningInfo.roadCondition]}</div>
             </div>
           </div>
         </div>
@@ -112,17 +113,17 @@ export default function ConfirmComponent() {
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>요청 서비스</div>
               <div style={{ fontSize: '18px', fontWeight: '500' }}>
-                {requiredServiceMap[houseData['required_service']]}
+                {requiredServiceMap[planningInfo.requiredService]}
               </div>
             </div>
             <div className="col-md-1 col-0"></div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>건축 예상 시기</div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{timelineMap[houseData['timeline']]}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{timelineMap[planningInfo.timeline]}</div>
             </div>
             <div className="d-flex justify-content-between col-12 col-md-5" style={{ padding: '10px' }}>
               <div>중요도 기준 </div>
-              <div style={{ fontSize: '18px', fontWeight: '500' }}>{financeMap[houseData['finance']]}</div>
+              <div style={{ fontSize: '18px', fontWeight: '500' }}>{financeMap[planningInfo.finance]}</div>
             </div>
           </div>
         </div>

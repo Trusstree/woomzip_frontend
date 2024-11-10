@@ -2,14 +2,33 @@
 
 import { HighlightCardPriceText } from '@/app/house/_components/HighlightCardPriceText';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-export default function PlanningHouseCard({data}:{data:{ houseName: string, price:number, imgUrl:string, totalFloorArea:number, roomCount:number, toiletCount:number }}) {
+export default function PlanningHouseCard({
+  data,
+}: {
+  data: {
+    houseName: string;
+    price: number;
+    imgUrl: string;
+    totalFloorArea: number;
+    roomCount: number;
+    toiletCount: number;
+  };
+}) {
   const { houseName, price, imgUrl, totalFloorArea, roomCount, toiletCount } = data;
-
-  return (
+  const router = useRouter();
+  return houseName ? (
     <div className="col-md-4 col-sm-6 col-12">
       <div className="card" style={{ width: '100%', border: 'none', marginBottom: '30px' }}>
-        <Image src={imgUrl} alt={houseName + ' image'} fill style={{ borderRadius: '5px', objectFit: 'cover' }} />
+        <Image
+          src={imgUrl}
+          alt={houseName + ' image'}
+          width={320}
+          height={180}
+          style={{ borderRadius: '5px', objectFit: 'cover' }}
+        />
         <div style={{ padding: '10px' }}>
           {/* <div style={{ color: '#777777', fontSize: '16px' }}>{companyName}</div> */}
           <div className="d-flex justify-content-between">
@@ -36,7 +55,7 @@ export default function PlanningHouseCard({data}:{data:{ houseName: string, pric
                 height={18}
                 style={{ width: '18px', height: 'auto', marginRight: '2px' }}
               ></Image>
-              <div>{(totalFloorArea).toFixed(0)}평</div>
+              <div>{totalFloorArea}평</div>
             </div>
             <div className="d-flex" style={{ alignItems: 'center', marginRight: '20px' }}>
               <Image
@@ -62,5 +81,22 @@ export default function PlanningHouseCard({data}:{data:{ houseName: string, pric
         </div>
       </div>
     </div>
+  ) : (
+    <button
+      style={{
+        width: '50%',
+        borderRadius: '5px',
+        aspectRatio: '5 / 3',
+        overflow: 'hidden',
+        padding: '10px',
+      }}
+      onClick={() => {
+        router.push('/house');
+      }}
+    >
+      선택된 집이 없어요.
+      <br />
+      제품찾기에서 집을 선택해주세요.
+    </button>
   );
 }
