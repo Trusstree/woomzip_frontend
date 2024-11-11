@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 
 interface PlanningInfoState {
+  page: string;
   houseName: string;
   houseType: string;
   landCondition: string;
@@ -17,6 +18,7 @@ interface PlanningInfoState {
 }
 
 interface PlanningInfoActions {
+  setPage: (page: string) => void;
   setHouseName: (houseName: string) => void;
   setHouseType: (houseType: string) => void;
   setLandCondition: (landCondition: string) => void;
@@ -32,7 +34,8 @@ interface PlanningInfoActions {
   setText: (text: string) => void;
 }
 
-const useHouseInfo = create<PlanningInfoState & PlanningInfoActions>((set) => ({
+const usePlanningInfo = create<PlanningInfoState & PlanningInfoActions>((set) => ({
+  page: 'house',
   houseName: '',
   houseType: '',
   landCondition: '',
@@ -46,6 +49,9 @@ const useHouseInfo = create<PlanningInfoState & PlanningInfoActions>((set) => ({
   name: '',
   contact: '',
   text: '',
+  setPage: (page: string) => {
+    set({ page });
+  },
   setHouseName: (houseName: string) => {
     set({ houseName });
   },
@@ -87,4 +93,4 @@ const useHouseInfo = create<PlanningInfoState & PlanningInfoActions>((set) => ({
   },
 }));
 
-export default useHouseInfo;
+export default usePlanningInfo;

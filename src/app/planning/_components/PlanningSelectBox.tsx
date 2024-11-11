@@ -9,6 +9,8 @@ export default function SelectBox({
   value,
   data,
   setData,
+  width,
+  height,
 }: {
   title: any;
   text?: any;
@@ -16,12 +18,14 @@ export default function SelectBox({
   value: any;
   data: any;
   setData: any;
+  width: string;
+  height: string;
 }) {
   return (
     <button
       style={{
-        width: img ? '100%' : '100px',
-        height: img ? '200px' : text ? '100px' : '50px',
+        width: width, //img ? '100%' : '100px',
+        height: height, //img ? '200px' : text ? '100px' : '50px',
         borderRadius: '10px',
         borderStyle: 'solid',
         margin: '5px',

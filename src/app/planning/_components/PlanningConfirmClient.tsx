@@ -165,7 +165,8 @@ export default function PlanningConfirmClient() {
           </button>
           <button
             onClick={() => {
-              router.back();
+              planningInfo.setPage('application');
+              scrollTo({ top: 0 });
             }}
             style={{
               width: '100%',

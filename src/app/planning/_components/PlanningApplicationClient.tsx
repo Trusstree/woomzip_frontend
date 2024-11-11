@@ -1,14 +1,13 @@
 'use client';
 
-import React, { useCallback, useState } from 'react';
-import SelectBoxApp from '@/app/planning/application/_components/SelectBoxApp';
-import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useCallback } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { alertError } from '@/lib/alertUtil';
 import usePlanningInfo from '@/app/planning/_store/planningInfo';
+import PlanningSelectBox from '@/app/planning/_components/PlanningSelectBox';
 
 export default function PlanningApplicationClient() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const planningInfo = usePlanningInfo();
 
   const submit = useCallback(async () => {
@@ -41,8 +40,8 @@ export default function PlanningApplicationClient() {
       alertError('전화번호를 입력해주세요!', '');
       return;
     }
-    params.set('page', 'confirm');
-    router.push(`/planning/?${params.toString()}`);
+    planningInfo.setPage('confirm');
+    scrollTo({ top: 0 });
   }, [planningInfo]);
 
   return (
@@ -60,27 +59,39 @@ export default function PlanningApplicationClient() {
             </div>
             <div style={{ fontSize: '19px', marginBottom: '30px' }}>원하시는 도움에 따라 고민해드릴게요.</div>
             <div className="row g-2">
-              <SelectBoxApp
-                title={'단순 문의'}
-                text={'제품이나 과정이 궁금해요!'}
-                value={'InquiryOnly'}
-                data={planningInfo.requiredService}
-                setData={planningInfo.setRequiredService}
-              />
-              <SelectBoxApp
-                title={'상세 견적서 요청'}
-                text={'자세한 상담을 통해 정확한 견적을 알려드려요!'}
-                value={'ConnectwithCompany'}
-                data={planningInfo.requiredService}
-                setData={planningInfo.setRequiredService}
-              />
-              <SelectBoxApp
-                title={'통합 안심 서비스'}
-                text={'안심문의, 안심계약, 안심지불, 안심AS 서비스를 원해요!'}
-                value={'FullService'}
-                data={planningInfo.requiredService}
-                setData={planningInfo.setRequiredService}
-              />
+              <div className="col-md-4 col-12">
+                <PlanningSelectBox
+                  title={'단순 문의'}
+                  text={'제품이나 과정이 궁금해요!'}
+                  value={'InquiryOnly'}
+                  data={planningInfo.requiredService}
+                  setData={planningInfo.setRequiredService}
+                  width={'100%'}
+                  height={'130px'}
+                />
+              </div>
+              <div className="col-md-4 col-12">
+                <PlanningSelectBox
+                  title={'상세 견적서 요청'}
+                  text={'자세한 상담을 통해 정확한 견적을 알려드려요!'}
+                  value={'ConnectwithCompany'}
+                  data={planningInfo.requiredService}
+                  setData={planningInfo.setRequiredService}
+                  width={'100%'}
+                  height={'130px'}
+                />
+              </div>
+              <div className="col-md-4 col-12">
+                <PlanningSelectBox
+                  title={'통합 안심 서비스'}
+                  text={'안심문의, 안심계약, 안심지불, 안심AS 서비스를 원해요!'}
+                  value={'FullService'}
+                  data={planningInfo.requiredService}
+                  setData={planningInfo.setRequiredService}
+                  width={'100%'}
+                  height={'130px'}
+                />
+              </div>
             </div>
           </div>
 
@@ -95,27 +106,39 @@ export default function PlanningApplicationClient() {
             </div>
             <div style={{ fontSize: '19px', marginBottom: '30px' }}>대략적인 기간을 알려주세요</div>
             <div className="row g-2">
-              <SelectBoxApp
-                title={'최대한 빠르게'}
-                text={'4~12주 이내'}
-                value={'ASAP'}
-                data={planningInfo.timeline}
-                setData={planningInfo.setTimeline}
-              />
-              <SelectBoxApp
-                title={'조금 여유가 있어요.'}
-                text={'4~8개월 이내'}
-                value={'Within1Year'}
-                data={planningInfo.timeline}
-                setData={planningInfo.setTimeline}
-              />
-              <SelectBoxApp
-                title={'고민 중이에요.'}
-                text={'아직 모르겠어요.'}
-                value={'NoPlan'}
-                data={planningInfo.timeline}
-                setData={planningInfo.setTimeline}
-              />
+              <div className="col-md-4 col-12">
+                <PlanningSelectBox
+                  title={'최대한 빠르게'}
+                  text={'4~12주 이내'}
+                  value={'ASAP'}
+                  data={planningInfo.timeline}
+                  setData={planningInfo.setTimeline}
+                  width={'100%'}
+                  height={'130px'}
+                />
+              </div>
+              <div className="col-md-4 col-12">
+                <PlanningSelectBox
+                  title={'조금 여유가 있어요.'}
+                  text={'4~8개월 이내'}
+                  value={'Within1Year'}
+                  data={planningInfo.timeline}
+                  setData={planningInfo.setTimeline}
+                  width={'100%'}
+                  height={'130px'}
+                />
+              </div>
+              <div className="col-md-4 col-12">
+                <PlanningSelectBox
+                  title={'고민 중이에요.'}
+                  text={'아직 모르겠어요.'}
+                  value={'NoPlan'}
+                  data={planningInfo.timeline}
+                  setData={planningInfo.setTimeline}
+                  width={'100%'}
+                  height={'130px'}
+                />
+              </div>
             </div>
           </div>
 
@@ -130,27 +153,39 @@ export default function PlanningApplicationClient() {
             </div>
             <div style={{ fontSize: '19px', marginBottom: '30px' }}>당신의 생각이 궁금합니다.</div>
             <div className="row g-2">
-              <SelectBoxApp
-                title={'가성비'}
-                text={'가격이 가장 중요합니다.'}
-                value={'Self-funded'}
-                data={planningInfo.finance}
-                setData={planningInfo.setFinance}
-              />
-              <SelectBoxApp
-                title={'완성도'}
-                text={'높은 완성도와 자재가 중요합니다.'}
-                value={'InterestedInFundraising'}
-                data={planningInfo.finance}
-                setData={planningInfo.setFinance}
-              />
-              <SelectBoxApp
-                title={'신뢰도'}
-                text={'믿을 수 있는 업체인지가 중요합니다.'}
-                value={'HousingGuaranteeFund'}
-                data={planningInfo.finance}
-                setData={planningInfo.setFinance}
-              />
+              <div className="col-md-4 col-12">
+                <PlanningSelectBox
+                  title={'가성비'}
+                  text={'가격이 가장 중요합니다.'}
+                  value={'Self-funded'}
+                  data={planningInfo.finance}
+                  setData={planningInfo.setFinance}
+                  width={'100%'}
+                  height={'130px'}
+                />
+              </div>
+              <div className="col-md-4 col-12">
+                <PlanningSelectBox
+                  title={'완성도'}
+                  text={'높은 완성도와 자재가 중요합니다.'}
+                  value={'InterestedInFundraising'}
+                  data={planningInfo.finance}
+                  setData={planningInfo.setFinance}
+                  width={'100%'}
+                  height={'130px'}
+                />
+              </div>
+              <div className="col-md-4 col-12">
+                <PlanningSelectBox
+                  title={'신뢰도'}
+                  text={'믿을 수 있는 업체인지가 중요합니다.'}
+                  value={'HousingGuaranteeFund'}
+                  data={planningInfo.finance}
+                  setData={planningInfo.setFinance}
+                  width={'100%'}
+                  height={'130px'}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -178,6 +213,7 @@ export default function PlanningApplicationClient() {
                   borderRadius: '5px',
                   backgroundColor: '#F5F7FF',
                 }}
+                value={planningInfo.name}
                 onChange={(e) => {
                   planningInfo.setName(e.target.value);
                 }}
@@ -192,6 +228,7 @@ export default function PlanningApplicationClient() {
                   borderRadius: '5px',
                   backgroundColor: '#F5F7FF',
                 }}
+                value={planningInfo.contact}
                 onChange={(e) => {
                   planningInfo.setContact(e.target.value);
                 }}
@@ -230,6 +267,27 @@ export default function PlanningApplicationClient() {
               }}
             >
               다음 단계로 가보기(2/3)
+            </button>
+            <button
+              onClick={() => {
+                planningInfo.setPage('house');
+                scrollTo({ top: 0 });
+              }}
+              style={{
+                width: '100%',
+                height: '50px',
+                borderRadius: '10px',
+                border: 'none',
+                padding: '10px',
+                marginTop: '10px',
+                backgroundColor: '#F5F7FF',
+                color: '#314FC0',
+                fontSize: '18px',
+                fontWeight: '500',
+                textAlign: 'center',
+              }}
+            >
+              뒤로 가기
             </button>
             <div
               style={{
