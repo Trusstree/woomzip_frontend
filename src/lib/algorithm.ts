@@ -1,10 +1,10 @@
 export const algorithm = (data: any) => {
   console.log(data);
 
-  let systemConstant = 1;
-  if (data['houseType'] == '체류형쉼터, 농막') {
+  let systemConstant = 0;
+  if (data['houseType'] == 'hut') {
     systemConstant = 0;
-  } else if (data['houseType'] == '주택') {
+  } else if (data['houseType'] == 'house') {
     systemConstant = 1;
   }
 
@@ -29,36 +29,36 @@ export const algorithm = (data: any) => {
     cityConstant = 2;
   }
 
-  let areaConstant = 1;
+  let areaConstant = 165;
   if (data['area'] == '50평') {
     areaConstant = 165;
-  } else if (data['area'] == '75평') {
+  } else if (data['area'] == '75') {
     areaConstant = 248;
-  } else if (data['area'] == '100평') {
+  } else if (data['area'] == '100') {
     areaConstant = 330;
-  } else if (data['area'] == '125평') {
+  } else if (data['area'] == '125') {
     areaConstant = 413;
-  } else if (data['area'] == '150평') {
+  } else if (data['area'] == '150') {
     areaConstant = 496;
-  } else if (data['area'] == '151평') {
+  } else if (data['area'] == '151') {
     areaConstant = 550;
   }
 
-  let slopeConstant = 1;
-  if (data['landCondition'] == '평평함') {
+  let slopeConstant = 0;
+  if (data['landCondition'] == 'Flat') {
     slopeConstant = 0;
-  } else if (data['landCondition'] == '조금 경사짐') {
+  } else if (data['landCondition'] == 'SlightlySloped') {
     slopeConstant = 1;
-  } else if (data['landCondition'] == '많이 경사짐') {
+  } else if (data['landCondition'] == 'SteeplySloped') {
     slopeConstant = 1.5;
   }
 
   let roadConstant = 1;
-  if (data['roadCondition'] == '넓음') {
+  if (data['roadCondition'] == 'Wide') {
     roadConstant = 1;
-  } else if (data['roadCondition'] == '좁음') {
+  } else if (data['roadCondition'] == 'Narrow') {
     roadConstant = 1.5;
-  } else if (data['roadCondition'] == '많이 좁음') {
+  } else if (data['roadCondition'] == 'VeryNarrow') {
     roadConstant = 2;
   }
 

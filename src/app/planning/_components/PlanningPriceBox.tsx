@@ -4,7 +4,7 @@ import { algorithm } from '@/lib/algorithm';
 import { simplePriceText } from '@/lib/stringUtil';
 import PriceLine from '@/components/planning/PriceLine';
 
-export default function PriceBox({ houseType, landCondition, roadCondition, addr, area, house }) {
+export default function PlanningPriceBox({ houseType, landCondition, roadCondition, addr, area, house }) {
   const [delivery, setDelivery] = useState([0, 0]);
   const [permit, setPermit] = useState([0, 0]);
   const [measure, setMeasure] = useState([0, 0]);

@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import SelectBox from '@/app/planning/_components/PlanningSelectBox';
-import PriceBox from '@/app/planning/_components/PlanningPriceBox';
+import PlanningPriceBox from '@/app/planning/_components/PlanningPriceBox';
 import { useSearchParams } from 'next/navigation';
 import { getHouse } from '@/actions/apis/houseAPI';
 import { alertError } from '@/lib/alertUtil';
@@ -279,7 +279,7 @@ export default function PlanningHouseClient() {
             <SelectBox
               title={'평평함'}
               text={'토목공사가 필요 없습니다.'}
-              value={'flat'}
+              value={'Flat'}
               data={planningInfo.landCondition}
               setData={planningInfo.setLandCondition}
               img={'planningIcons/flat.png'}
@@ -362,7 +362,7 @@ export default function PlanningHouseClient() {
 
       <div className="col-md-4 col-12">
         <div className="py-5 sticky-top">
-          <PriceBox
+          <PlanningPriceBox
             houseType={planningInfo.houseType}
             landCondition={planningInfo.landCondition}
             roadCondition={planningInfo.roadCondition}
