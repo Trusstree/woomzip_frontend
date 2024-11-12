@@ -1,6 +1,4 @@
 export const algorithm = (data: any) => {
-  console.log(data);
-
   let systemConstant = 0;
   if (data['houseType'] == 'hut') {
     systemConstant = 0;
@@ -62,12 +60,12 @@ export const algorithm = (data: any) => {
     roadConstant = 2;
   }
 
-  let building_area = Math.round(data['house']?.['building_area']);
-  let final_price = Math.round(data['house']?.['final_price'] / 10000);
-  let total_floor_area = data['house']?.['total_floor_area'];
+  let building_area = Math.round(data['house']?.['buildingArea']);
+  let final_price = Math.round(data['house']?.['price'] / 10000);
+  let total_floor_area = data['house']?.['totalFloorArea'];
 
   let result = {
-    price: [final_price],
+    price: final_price,
     delivery: [Math.round(cityConstant * 200 * roadConstant), Math.round(cityConstant * 250 * roadConstant)],
     measure: [Math.round((areaConstant / 3.3) * 0.3 + 27), Math.round((areaConstant / 3.3) * 0.4 + 36)],
     permit: [systemConstant * total_floor_area * 20, systemConstant * total_floor_area * 50],
@@ -83,7 +81,7 @@ export const algorithm = (data: any) => {
 
   // Calculate tax[0] value
   result.tax[0] = Math.round(
-    (result.price[0] +
+    (result.price +
       result.delivery[0] +
       result.measure[0] +
       result.permit[0] +
@@ -95,7 +93,7 @@ export const algorithm = (data: any) => {
 
   // Calculate tax[1] value
   result.tax[1] = Math.round(
-    (result.price[0] +
+    (result.price +
       result.delivery[1] +
       result.measure[1] +
       result.permit[1] +
@@ -107,7 +105,7 @@ export const algorithm = (data: any) => {
 
   // Calculate total[0] value
   result.total[0] =
-    result.price[0] +
+    result.price +
     result.delivery[0] +
     result.measure[0] +
     result.permit[0] +
@@ -118,7 +116,7 @@ export const algorithm = (data: any) => {
 
   // Calculate total[0] value
   result.total[1] =
-    result.price[0] +
+    result.price +
     result.delivery[1] +
     result.measure[1] +
     result.permit[1] +

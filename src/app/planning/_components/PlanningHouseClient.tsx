@@ -67,6 +67,7 @@ export default function PlanningHouseClient() {
         price: data.data[0]['house_info']['final_price'],
         imgUrl: data.data[0]['house_image']['representative_images'][0],
         totalFloorArea: data.data[0]['house_info']['total_floor_area'],
+        buildingArea: data.data[0]['house_info']['building_area'],
         roomCount: data.data[0]['house_info']['room_count'],
         toiletCount: data.data[0]['house_info']['toilet_count'],
       });

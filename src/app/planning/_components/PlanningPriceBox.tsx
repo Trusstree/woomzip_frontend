@@ -13,7 +13,7 @@ export default function PlanningPriceBox({ houseType, landCondition, roadConditi
   const [insurance, setInsurance] = useState([0, 0]);
   const [tax, setTax] = useState([0, 0]);
   const [total, setTotal] = useState([0, 0]);
-  const [price, setPrice] = useState([0]);
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     const res = algorithm({
@@ -58,7 +58,7 @@ export default function PlanningPriceBox({ houseType, landCondition, roadConditi
 
       <div className="d-flex justify-content-between" style={{ lineHeight: '35px' }}>
         <div style={{ fontSize: '16px', fontWeight: '500' }}>주택가격</div>
-        <div style={{ fontSize: '14px' }}>{simplePriceText(price[0])}</div>
+        <div style={{ fontSize: '14px' }}>{simplePriceText(price)}</div>
       </div>
       <PriceLine title={'배송비'} minPrice={delivery[0]} maxPrice={delivery[1]} />
       <PriceLine title={'측량비'} minPrice={measure[0]} maxPrice={measure[1]} />
