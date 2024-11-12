@@ -4,7 +4,7 @@ import { algorithm } from '@/lib/algorithm';
 import { simplePriceText } from '@/lib/stringUtil';
 import PriceLine from '@/components/planning/PriceLine';
 
-export default function PriceBox({ houseType, landCondition, roadCondition, addr, area, house }) {
+export default function PlanningPriceBox({ houseType, landCondition, roadCondition, addr, area, house }) {
   const [delivery, setDelivery] = useState([0, 0]);
   const [permit, setPermit] = useState([0, 0]);
   const [measure, setMeasure] = useState([0, 0]);
@@ -13,7 +13,7 @@ export default function PriceBox({ houseType, landCondition, roadCondition, addr
   const [insurance, setInsurance] = useState([0, 0]);
   const [tax, setTax] = useState([0, 0]);
   const [total, setTotal] = useState([0, 0]);
-  const [price, setPrice] = useState([0]);
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     const res = algorithm({
@@ -58,7 +58,7 @@ export default function PriceBox({ houseType, landCondition, roadCondition, addr
 
       <div className="d-flex justify-content-between" style={{ lineHeight: '35px' }}>
         <div style={{ fontSize: '16px', fontWeight: '500' }}>주택가격</div>
-        <div style={{ fontSize: '14px' }}>{simplePriceText(price[0])}</div>
+        <div style={{ fontSize: '14px' }}>{simplePriceText(price)}</div>
       </div>
       <PriceLine title={'배송비'} minPrice={delivery[0]} maxPrice={delivery[1]} />
       <PriceLine title={'측량비'} minPrice={measure[0]} maxPrice={measure[1]} />
