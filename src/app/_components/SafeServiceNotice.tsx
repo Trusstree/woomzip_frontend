@@ -23,7 +23,7 @@ const dataSets = [
     withUmgipTitle: '움집 안심계약',
     withUmgipItems: [
       '움집, 고객, 제작사 셋이서 하는 제 3자 계약',
-      '어떤 사유든지 2주 내 계약금 환불 가능',
+      '어떤 사유든지 7일 이내 계약금 환불 가능',
       '20페이지 이상의 움집 안심 표준계약서 제공',
     ],
     src: '/houseIcons/safeContract.png',
@@ -36,9 +36,9 @@ const dataSets = [
     mainTitle: '지불은 확실하게',
     subTitle: '확실하게 확인하고, 안전하게 지불하세요.',
     soloTitle: '혼자라면',
-    soloItems: ['계약의 불확실성', '보장 내용 부족', '법적 대응 미비'],
+    soloItems: ['업체마다 다른 지불 과정', '제작과정 확인 어려움', '잔금 처리 후 배송'],
     withUmgipTitle: '움집 안심지불',
-    withUmgipItems: ['전문가 법률 검토 포함', '계약서 및 보장 강화', '법률 자문 서비스 제공'],
+    withUmgipItems: ['6단계로 지불 과정 통일', '제작 공정별 상황 파악', '주택 설치 후 잔금 처리'],
     src: '/houseIcons/safePay.png',
     alt: 'safeContract',
   },
@@ -48,9 +48,9 @@ const dataSets = [
     mainTitle: 'AS는 당연하게',
     subTitle: '2년 AS 당연하게 보호 받으세요.',
     soloTitle: '혼자라면',
-    soloItems: ['고객 맞춤 계약 부족', '유연성 부족', '일관된 가이드라인 부재'],
+    soloItems: ['AS 책임관계 불명확', '잦은 AS 거부'],
     withUmgipTitle: '움집 안심AS',
-    withUmgipItems: ['개인 맞춤형 계약 제공', '유연한 계약 조항', '업계 표준 가이드라인 제공'],
+    withUmgipItems: ['표준 AS 기준 제공', '하자 이행증권 필수 발행'],
     src: '/houseIcons/safeAS.png',
     alt: 'customContract',
   },
@@ -60,7 +60,7 @@ export default function SafeServiceNotice() {
   return (
     <>
       {dataSets.map((data, index) => (
-        <div key={index} style={{ backgroundColor: data.backgroundColor, padding: '120px 0' }}>
+        <div key={index} style={{ backgroundColor: data.backgroundColor, padding: '60px 0' }}>
           <div style={{ maxWidth: '1280px', width: '90%', margin: '0 auto' }}>
             <div
               style={{
