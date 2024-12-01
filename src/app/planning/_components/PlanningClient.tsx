@@ -4,9 +4,15 @@ import PlanningApplicationClient from '@/app/planning/_components/PlanningApplic
 import PlanningHouseClient from '@/app/planning/_components/PlanningHouseClient';
 import PlanningConfirmClient from '@/app/planning/_components/PlanningConfirmClient';
 import useHouseInfo from '@/app/planning/_store/planningInfo';
+import { useEffect } from 'react';
 
 export default function PlanningClient() {
   const houseInfo = useHouseInfo();
+
+  useEffect(() => {
+    houseInfo.reset();
+  }, []);
+
   return (
     <>
       <div

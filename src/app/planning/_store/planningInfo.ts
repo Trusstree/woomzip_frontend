@@ -32,6 +32,7 @@ interface PlanningInfoActions {
   setName: (name: string) => void;
   setContact: (contact: string) => void;
   setText: (text: string) => void;
+  reset: () => void;
 }
 
 const usePlanningInfo = create<PlanningInfoState & PlanningInfoActions>((set) => ({
@@ -90,6 +91,24 @@ const usePlanningInfo = create<PlanningInfoState & PlanningInfoActions>((set) =>
   },
   setText: (text: string) => {
     set({ text });
+  },
+  reset: () => {
+    set({
+      page: 'house',
+      houseName: '',
+      houseType: '',
+      landCondition: '',
+      roadCondition: '',
+      area: '',
+      addr: '',
+      houseData: '',
+      requiredService: '',
+      timeline: '',
+      finance: '',
+      name: '',
+      contact: '',
+      text: '',
+    });
   },
 }));
 
