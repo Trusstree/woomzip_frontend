@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 
 export default function DeliveryDataList({ pid, houseData, deliveryData }) {
@@ -33,7 +31,7 @@ export default function DeliveryDataList({ pid, houseData, deliveryData }) {
                 width={38}
                 height={38}
                 style={{ width: '22px', height: 'auto' }}
-              ></Image>
+              />
               <div style={{ fontSize: '16px', marginLeft: '5px' }}>{optional.title}</div>
             </div>
 

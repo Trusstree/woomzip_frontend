@@ -1,5 +1,3 @@
-'use client';
-
 import Inquiry from '@/components/Inquiry';
 import Image from 'next/image';
 

@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import RouteLink from '@/app/_components/RouteLink';
 
@@ -39,7 +37,7 @@ export default function CompanyDataList({ pid, houseData, userData }) {
               width={23}
               height={23}
               style={{ width: '23px', height: '23px' }}
-            ></Image>
+            />
           </div>
           <div
             style={{

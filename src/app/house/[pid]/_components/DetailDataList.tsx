@@ -1,5 +1,3 @@
-'use client';
-
 import { parseSpecificationInfo } from '@/lib/parseUtil';
 import Image from 'next/image';
 

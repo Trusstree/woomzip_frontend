@@ -1,5 +1,3 @@
-'use client';
-
 import { detailPriceText } from '@/lib/stringUtil';
 import Image from 'next/image';
 

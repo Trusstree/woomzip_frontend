@@ -90,3 +90,11 @@ export const toMaxinumFixed = (num?: number): string => {
   if (!num) return '0';
   return Number(num.toFixed(2)).toString();
 };
+
+export const checkBatchimEnding = (word: string): string => {
+  let lastLetter = word[word.length - 1];
+  let uni = lastLetter.charCodeAt(0);
+
+  if (uni < 44032 || uni > 55203) return '은(는)';
+  return (uni - 44032) % 28 != 0 ? '은' : '는';
+};

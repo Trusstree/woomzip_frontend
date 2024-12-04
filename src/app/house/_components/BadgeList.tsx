@@ -4,24 +4,7 @@ import FilterBadge from '@/app/house/_components/FilterBadge';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const badgeList = [
-  'min_price',
-  'max_price',
-  'floor_area_min',
-  'floor_area_max',
-  'room_count',
-  'toilet_count',
-  'floor_count',
-  'estimate_duration',
-  'warranty',
-  'tag',
-  'is_hut',
-  'has_model',
-  'specificity',
-  'frame'
-];
-
-export default function FilterBadgeList() {
+export default function FilterBadgeList({badgeList}) {
   
   const searchParams=useSearchParams();
   const [FilterBadges, setFilterBadges] = useState([]);

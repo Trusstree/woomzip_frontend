@@ -3,7 +3,7 @@ import RouteLink from '@/app/_components/RouteLink';
 import Inquiry from '@/components/Inquiry';
 import SafeServiceNotice from '@/app/_components/SafeServiceNotice';
 
-export default function test2() {
+export default function Home() {
   return (
     <>
       <div

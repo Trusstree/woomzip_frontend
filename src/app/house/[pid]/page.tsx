@@ -12,11 +12,7 @@ import SafeList from '@/app/house/[pid]/_components/SafeList';
 import Tazan from '@/app/house/[pid]/_components/Tazan';
 import CallWoomzip from '@/app/house/[pid]/_components/CallWoomzip';
 
-type PageParams = {
-  pid: number;
-};
-
-export default async function House({ params }: { params: PageParams }) {
+export default async function House({ params }: { params: { pid: number } }) {
   const { pid } = params;
   const { houseData, imageData, optionData, specificationData, userData, reviewData, deliveryData } =
     await loadData(pid);

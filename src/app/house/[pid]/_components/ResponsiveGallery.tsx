@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 
 // 사진 5개 보여주는 갤러리 컴포넌트
-const GalleryFive = ({ pid, imageData }) => {
+const GalleryFive = ({ imageData }) => {
   return (
     <div className="row g-2" style={{ width: '100%', position: 'relative', margin: '10px 0' }}>
       <div className="col-6">
@@ -72,7 +72,7 @@ const GalleryFive = ({ pid, imageData }) => {
 };
 
 // 사진 1개씩 보여주는 갤러리 컴포넌트
-const GalleryOne = ({ pid, imageData }) => {
+const GalleryOne = ({ imageData }) => {
   return (
     <Swiper
       cssMode={true}
@@ -116,11 +116,7 @@ const ResponsiveGallery = ({ pid, imageData }) => {
     };
   }, []);
 
-  return (
-    <div>
-      {isLargeScreen ? <GalleryFive pid={pid} imageData={imageData} /> : <GalleryOne pid={pid} imageData={imageData} />}
-    </div>
-  );
+  return <div>{isLargeScreen ? <GalleryFive imageData={imageData} /> : <GalleryOne imageData={imageData} />}</div>;
 };
 
 export default ResponsiveGallery;
