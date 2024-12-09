@@ -4,7 +4,7 @@ import ArrowDownSVG from '@/components/svg/ArrowDownSVG';
 import useQuery from '@/hooks/useQuery';
 import { cardPriceText } from '@/lib/stringUtil';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function FilterDropdown({
   label,

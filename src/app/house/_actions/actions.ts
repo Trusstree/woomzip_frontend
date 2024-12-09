@@ -42,6 +42,17 @@ export async function loadHouseData(searchParams, numShowItems) {
     console.error(error);
     return [undefined, undefined];
   }
-  
-  return [data.data[0].houses, data.data[0].total_count];
+
+  const houseData = data.data[0].houses.map((product) => ({
+    houseId: product.house_id,
+    imgUrl: product.house_img_urls,
+    houseName: product.house_name,
+    companyName: product.company_name,
+    price: product.final_price,
+    roomCount: product.room_count,
+    toiletCount: product.toilet_count,
+    totalFloorArea: product.total_floor_area,
+  }));
+
+  return [houseData, data.data[0].total_count];
 }

@@ -51,7 +51,7 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
         <div className="row g-2" style={{ width: '100%', position: 'relative' }}>
           <div className="col-6">
             <div style={{ borderRadius: '10px 0 0 10px', overflow: 'hidden' }}>
-              <img
+              <Image
                 src={companyImages[0]}
                 alt={'company images 0'}
                 style={{ width: '100%', height: '400px', objectFit: 'cover' }}
@@ -60,14 +60,14 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
           </div>
           <div className="col-3">
             <div style={{ height: '50%', overflow: 'hidden' }}>
-              <img
+              <Image
                 src={companyImages[1]}
                 alt={'company images 1'}
                 style={{ width: '100%', height: '196px', objectFit: 'cover' }}
               />
             </div>
             <div style={{ height: '50%', marginTop: '4px', overflow: 'hidden' }}>
-              <img
+              <Image
                 src={companyImages[2]}
                 alt={'company images 2'}
                 style={{ width: '100%', height: '196px', objectFit: 'cover' }}
@@ -82,7 +82,7 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
                 borderRadius: '0 10px 0 0',
               }}
             >
-              <img
+              <Image
                 src={companyImages[3]}
                 alt={'company images 3'}
                 style={{ width: '100%', height: '196px', objectFit: 'cover' }}
@@ -96,7 +96,7 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
                 borderRadius: '0 0 10px 0',
               }}
             >
-              <img
+              <Image
                 src={companyImages[4]}
                 alt={'company images 4'}
                 style={{ width: '100%', height: '196px', objectFit: 'cover' }}

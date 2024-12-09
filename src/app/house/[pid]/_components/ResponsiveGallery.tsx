@@ -12,7 +12,7 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from 'swiper/modules';
 // 사진 5개 보여주는 갤러리 컴포넌트
 const GalleryFive = ({ imageData }) => {
   return (
-    <div className="row g-2" style={{ width: '100%', position: 'relative', margin: '10px 0' }}>
+    <div className={`row g-2`} style={{ width: '100%', position: 'relative', margin: '10px 0', display: '' }}>
       <div className="col-6">
         <div style={{ borderRadius: '10px 0 0 10px', overflow: 'hidden' }}>
           <img className={styles.mainImg} src={imageData[0]} alt="main" />
@@ -81,7 +81,6 @@ const GalleryOne = ({ imageData }) => {
       mousewheel={true}
       keyboard={true}
       modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-      className="mySwiper"
     >
       {imageData.map((image, index) => (
         <SwiperSlide key={index}>
@@ -98,25 +97,17 @@ const GalleryOne = ({ imageData }) => {
   );
 };
 
-const ResponsiveGallery = ({ pid, imageData }) => {
+export default function ResponsiveGallery({ pid, imageData }) {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth > 768);
-    };
-
-    // 초기 크기 설정
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  return <div>{isLargeScreen ? <GalleryFive imageData={imageData} /> : <GalleryOne imageData={imageData} />}</div>;
-};
-
-export default ResponsiveGallery;
+  return (
+    <div>
+      {/* {isLargeScreen ? <GalleryFive imageData={imageData} /> : <GalleryOne imageData={imageData} />} */}
+      <div className={styles.gallary5} style={{ margin: 'none' }}>
+        <GalleryFive imageData={imageData} />
+      </div>
+      <div className={styles.gallary1}>
+        <GalleryOne imageData={imageData} />
+      </div>
+    </div>
+  );
+}

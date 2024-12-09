@@ -1,5 +1,3 @@
-'use client';
-
 import RowText from '@/app/house/[pid]/_components/RowText';
 import RowTextReverse from '@/app/house/[pid]/_components/RowTextReverse';
 import HalfRowText from '@/app/house/[pid]/_components/HalfRowText';

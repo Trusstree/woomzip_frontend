@@ -2,7 +2,9 @@ import Image from 'next/image';
 import { HighlightCardPriceText } from '@/app/house/_components/HighlightCardPriceText';
 import Link from 'next/link';
 
-export default function HouseCard({ imgUrl, houseId, houseName, companyName, price, room, toilet, pyeong }) {
+export default function HouseCard({ houseData }) {
+  const { imgUrl, houseId, houseName, companyName, price, roomCount, toiletCount, totalFloorArea } = houseData;
+
   return (
     <div className="col-md-4 col-sm-6 col-12">
       <div className="card" style={{ width: '100%', border: 'none', marginBottom: '30px' }}>
@@ -43,7 +45,7 @@ export default function HouseCard({ imgUrl, houseId, houseName, companyName, pri
                 height={18}
                 style={{ width: '18px', height: 'auto', marginRight: '2px' }}
               ></Image>
-              <div>{(pyeong).toFixed(0)}평</div>
+              <div>{totalFloorArea.toFixed(0)}평</div>
             </div>
             <div className="d-flex" style={{ alignItems: 'center', marginRight: '20px' }}>
               <Image
@@ -53,7 +55,7 @@ export default function HouseCard({ imgUrl, houseId, houseName, companyName, pri
                 height={18}
                 style={{ width: '18px', height: 'auto', marginRight: '2px' }}
               ></Image>
-              <div>{room}개</div>
+              <div>{roomCount}개</div>
             </div>
             <div className="d-flex" style={{ alignItems: 'center' }}>
               <Image
@@ -63,7 +65,7 @@ export default function HouseCard({ imgUrl, houseId, houseName, companyName, pri
                 height={18}
                 style={{ width: '18px', height: 'auto', marginRight: '2px' }}
               ></Image>
-              <div>{toilet}개</div>
+              <div>{toiletCount}개</div>
             </div>
           </div>
         </div>
