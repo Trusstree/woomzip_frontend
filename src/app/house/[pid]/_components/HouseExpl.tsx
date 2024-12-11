@@ -1,7 +1,7 @@
 import RowText from '@/app/house/[pid]/_components/RowText';
 import RowTextReverse from '@/app/house/[pid]/_components/RowTextReverse';
 import HalfRowText from '@/app/house/[pid]/_components/HalfRowText';
-import useQuery from '@/hooks/useQuery';
+import useQueryString from '@/hooks/useQueryString';
 import { parseSpecificationInfo } from '@/lib/parseUtil';
 import { detailPriceText } from '@/lib/stringUtil';
 import { useRouter } from 'next/navigation';
@@ -17,7 +17,7 @@ export default function HouseExpl({
   userData,
   reviewData,
 }) {
-  const { createQueryString } = useQuery();
+  const { createQueryString } = useQueryString();
   const router = useRouter();
   const gyeonjeokLink = `${'/planning'}?${createQueryString('house_id', pid.toString())}`;
 

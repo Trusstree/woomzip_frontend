@@ -1,12 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import useQuery from '@/hooks/useQuery';
+import useQueryString from '@/hooks/useQueryString';
 import { useRouter } from 'next/navigation';
 import { detailPriceText } from '@/lib/stringUtil';
 
 export default function Tazan({ pid, houseData }) {
-  const { createQueryString } = useQuery();
+  const { createQueryString } = useQueryString();
   const router = useRouter();
   const gyeonjeokLink = `${'/planning'}?${createQueryString('house_id', pid.toString())}`;
 

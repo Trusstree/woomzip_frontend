@@ -1,7 +1,7 @@
 'use client';
 
 import ArrowDownSVG from '@/components/svg/ArrowDownSVG';
-import useQuery from '@/hooks/useQuery';
+import useQueryString from '@/hooks/useQueryString';
 import { cardPriceText } from '@/lib/stringUtil';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
@@ -18,7 +18,7 @@ export default function FilterDropdown({
   selected?: boolean;
 }) {
   const router = useRouter();
-  const { createQuery, getParams, getRouteParams } = useQuery();
+  const { createQuery, getParams, getRouteParams } = useQueryString();
   const searchParams = useSearchParams();
 
   const handleClick = (data: string | number | Array<string | number>) => {

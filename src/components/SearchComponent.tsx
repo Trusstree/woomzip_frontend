@@ -1,14 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import useQuery from '@/hooks/useQuery';
+import useQueryString from '@/hooks/useQueryString';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 export default function SearchComponent() {
   const [q, setQ] = useState('');
   const router = useRouter();
-  const { createQuery, getRouteParams } = useQuery();
+  const { createQuery, getRouteParams } = useQueryString();
 
   const handleChange = (e) => {
     setQ(e.target.value);

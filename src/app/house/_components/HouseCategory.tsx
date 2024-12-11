@@ -10,9 +10,7 @@ export default function HouseCategory({ categoryList }) {
       }}
     >
       {categoryList.map((e, i) => (
-        <>
-          <CategoryButton title={e.title} imgSrc={e.imgSrc} queryName={e.queryName} category={e.category} />
-        </>
+        <CategoryButton key={i} title={e.title} imgSrc={e.imgSrc} queryName={e.queryName} category={e.category} />
       ))}
     </div>
   );
