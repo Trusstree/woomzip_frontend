@@ -109,7 +109,6 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
           <div
             style={{
               padding: '20px',
-
               borderRadius: '10px',
               fontSize: '16px',
               color: '#555555',
@@ -125,11 +124,9 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
               ></Image> */}
               <div>{detail.title}</div>
             </div>
-
             <div style={{ wordBreak: 'keep-all', fontWeight: '500', color: '#111111', margin: '10px 0' }}>
               {detail.text}
             </div>
-
             <div style={{ fontSize: '14px', wordBreak: 'keep-all' }}>{detail.subtitle}</div>
           </div>
         </div>
@@ -160,12 +157,12 @@ export default function DetailDataList({ pid, houseData, specificationData }) {
                 <div className="d-flex" style={{ alignItems: 'center' }}>
                   <div style={{ marginRight: '5px' }}>{optional.title}</div>
                   {/* <Image
-              src={optional.src}
-              alt={optional.alt}
-              width={38}
-              height={38}
-              style={{ width: '24px', height: '24px' }}
-            ></Image> */}
+                    src={optional.src}
+                    alt={optional.alt}
+                    width={38}
+                    height={38}
+                    style={{ width: '24px', height: '24px' }}
+                  ></Image> */}
                 </div>
 
                 <div

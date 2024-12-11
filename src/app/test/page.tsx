@@ -4,7 +4,7 @@ import { useUser } from '@/app/_components/ContextSession';
 import { AddressInputForm } from '@/app/test/_components/AddressInputForm';
 import { encryptPW } from '@/lib/authUtil';
 import React, { Suspense, useState } from 'react';
-import Tooltip from '@/components/TooltipPortal';
+import Tooltip from '@/components/app/TooltipPortal';
 
 export default function Page() {
   const { userContext } = useUser();

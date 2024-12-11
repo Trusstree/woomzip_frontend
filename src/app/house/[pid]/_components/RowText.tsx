@@ -1,5 +1,5 @@
 import 'react-tooltip/dist/react-tooltip.css';
-import withTooltipPortal from '@/components/withTooltipPortal';
+import withTooltipPortal from '@/components/app/withTooltipPortal';
 import { Tooltip } from 'react-tooltip';
 import QuestionSVG from '@/components/svg/QuestionSVG';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import styles from '@/app/house/[pid]/_styles/HouseClient.module.css';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // Swiper의 리액트 컴포넌트 가져오기
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -98,10 +98,8 @@ const GalleryOne = ({ imageData }) => {
 };
 
 export default function ResponsiveGallery({ pid, imageData }) {
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
   return (
     <div>
-      {/* {isLargeScreen ? <GalleryFive imageData={imageData} /> : <GalleryOne imageData={imageData} />} */}
       <div className={styles.gallary5} style={{ margin: 'none' }}>
         <GalleryFive imageData={imageData} />
       </div>

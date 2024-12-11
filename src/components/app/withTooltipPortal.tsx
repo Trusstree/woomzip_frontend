@@ -1,4 +1,4 @@
-import TooltipPortal from '@/components/TooltipPortal';
+import TooltipPortal from '@/components/app/TooltipPortal';
 import IntrinsicAttributes = React.JSX.IntrinsicAttributes;
 
 export default function withTooltipPortal<P extends IntrinsicAttributes>(TooltipComponent: React.ComponentType<P>) {

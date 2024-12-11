@@ -1,5 +1,4 @@
 import Image from 'next/image';
-
 export default function DeliveryDataList({ pid, houseData, deliveryData }) {
   const optionalData = [
     {

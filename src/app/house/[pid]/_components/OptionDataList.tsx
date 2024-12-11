@@ -1,31 +1,31 @@
 import { detailPriceText } from '@/lib/stringUtil';
 import Image from 'next/image';
 
-export default function OptionDataList({ pid, houseData, optionData }) {
-  const serviceData = [
-    {
-      src: '/houseIcons/pyeong1.png',
-      alt: 'pyeong',
-      title: '평수 확장',
-      text: '가능',
-      subtitle: '해당 제품 디자인 및 자재 동일하게 평수 확장이 가능합니다.',
-    },
-    {
-      src: '/houseIcons/framework.png',
-      alt: 'framework',
-      title: '구조 변경',
-      text: '가능',
-      subtitle: '해당 제품 디자인 및 자재 동일하게 내부 구조 변경이 가능합니다.',
-    },
-    {
-      src: '/houseIcons/warranty.png',
-      alt: 'fix',
-      title: '자재 변경',
-      text: '가능',
-      subtitle: '해당 제품 내에서 특정 자재를 원하는 자재로 변경이 가능합니다.',
-    },
-  ];
+const serviceData = [
+  {
+    src: '/houseIcons/pyeong1.png',
+    alt: 'pyeong',
+    title: '평수 확장',
+    text: '가능',
+    subtitle: '해당 제품 디자인 및 자재 동일하게 평수 확장이 가능합니다.',
+  },
+  {
+    src: '/houseIcons/framework.png',
+    alt: 'framework',
+    title: '구조 변경',
+    text: '가능',
+    subtitle: '해당 제품 디자인 및 자재 동일하게 내부 구조 변경이 가능합니다.',
+  },
+  {
+    src: '/houseIcons/warranty.png',
+    alt: 'fix',
+    title: '자재 변경',
+    text: '가능',
+    subtitle: '해당 제품 내에서 특정 자재를 원하는 자재로 변경이 가능합니다.',
+  },
+];
 
+export default function OptionDataList({ pid, houseData, optionData }) {
   return (
     <div className="row" style={{ margin: '140px 0' }}>
       <div className="col-12" style={{ fontSize: '22px', marginBottom: '20px', fontWeight: '500' }}>
@@ -51,7 +51,7 @@ export default function OptionDataList({ pid, houseData, optionData }) {
                     width={38}
                     height={38}
                     style={{ width: '22px', height: 'auto' }}
-                  ></Image>
+                  />
                   <div style={{ color: '#111111', fontWeight: 'regural', marginLeft: '10px' }}>{detail.title}</div>
                 </div>
                 <div style={{ color: '#111111', fontWeight: '500', wordBreak: 'keep-all' }}>문의하여 알아보기</div>
@@ -76,7 +76,7 @@ export default function OptionDataList({ pid, houseData, optionData }) {
                       width={38}
                       height={38}
                       style={{ width: '22px', height: 'auto' }}
-                    ></Image>
+                    />
                     <div style={{ wordBreak: 'keep-all', marginLeft: '10px' }}>{e['option_product_name']}</div>
                   </div>
                 </div>
