@@ -164,7 +164,6 @@ export const badgeList = [
   'floor_count',
   'estimate_duration',
   'warranty',
-  'tag',
   'is_hut',
   'has_model',
   'specificity',
