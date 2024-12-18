@@ -24,7 +24,7 @@ export default function RouteButton(props: RouteButtonProps) {
       type="button"
       style={{
         ...style,
-        color: `/${path}` == url ? '#314FC0' : 'black',
+        color: `/${path}` == url ? '#ffffff' : '#ffffff',
       }}
       className={`${className ? `${className} ` : ''}btn rounded-lg align-self-end`}
       href={url}

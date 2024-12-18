@@ -10,29 +10,29 @@ export default function Home() {
         style={{
           position: 'relative',
           width: '100%',
-          aspectRatio: '5 / 2',
-          minHeight: '300px',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          maxHeight: '1200px',
           overflow: 'hidden',
-          maxHeight: '500px',
         }}
       >
         <Image
-          src={'/background2.webp'}
+          src={'/1.jpg'}
           width={1600}
-          height={985}
-          style={{ objectFit: 'cover', width: '100%', maxHeight: '500px' }}
+          height={1300}
+          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
           alt={'background2'}
         />
         <div
           style={{
             position: 'absolute',
-            top: 0,
+            bottom: 0,
             left: 0,
             width: '100%',
-            aspectRatio: '5 / 1',
-            minHeight: '220px',
-            maxHeight: '300px',
-            background: 'linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
+            aspectRatio: '6 / 1',
+            minHeight: '150px',
+            maxHeight: '200px',
+            background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
           }}
         ></div>
 
@@ -40,71 +40,455 @@ export default function Home() {
           style={{
             width: '100%',
             position: 'absolute',
-            top: 0,
+            top: '50px',
             left: 0,
           }}
         >
           <div
-            className="row"
             style={{
-              padding: '30px 0',
-              maxWidth: '1280px',
-              width: '90%',
+              width: '95%',
               margin: '0 auto',
-              aspectRatio: '5 / 2',
-              minHeight: '300px',
+              fontSize: 'clamp(40px, 10vw, 100px)',
+              fontWeight: '700',
+              color: '#ffffff',
+              wordBreak: 'keep-all',
             }}
           >
-            <div className="col-md-7 col-12" style={{ fontSize: '32px', fontWeight: '500', color: '#333333' }}>
-              <span style={{ color: '#314FC0' }}>움집에선</span> 누구나 쉽게 <br />
-              자연 속 삶을 선택할 수 있어요.
-            </div>
+            움집에서 짓지 말고, 구매하세요
+          </div>
+        </div>
 
-            <div className="col-md-5 col-12" style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', bottom: 0, left: 30 }}>
-                <div
-                  style={{
-                    backgroundColor: '#314FC0',
-                    borderRadius: '50px',
-                    width: '10px',
-                    height: '10px',
-                  }}
-                ></div>
-                <div
-                  style={{
-                    padding: '10px 0',
-                    fontSize: '18px',
-                    fontWeight: '500',
-                    color: '#ffffff',
-                  }}
-                >
-                  든든한 전원생활 파트너
-                </div>
-                <div
-                  style={{
-                    fontSize: '16px',
-                    fontWeight: '400',
-                    wordBreak: 'keep-all',
-                    color: '#ffffff',
-                  }}
-                >
-                  전원생활을 가장 쉽게 시작할 수 있는 움집
-                </div>
-              </div>
+        <div
+          style={{
+            width: '100%',
+            position: 'absolute',
+            bottom: '50px',
+            left: 0,
+          }}
+        >
+          <div
+            style={{
+              width: '95%',
+              margin: '0 auto',
+              fontSize: 'clamp(35px, 6vw, 55px)',
+              fontWeight: '600',
+              color: '#ffffff',
+            }}
+          >
+            건축이 아닌 제조,
+            <br /> 복잡한 일이 아닌 간단한 일로.
+          </div>
+        </div>
+      </div>
+
+      <div
+        style={{
+          backgroundColor: 'black',
+          width: '100%',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            fontSize: 'clamp(35px, 6vw, 55px)',
+            fontWeight: '600',
+            wordBreak: 'keep-all',
+            width: '95%',
+            margin: '50px auto',
+            color: '#ffffff',
+          }}
+        >
+          어떤 집을 지어야 할지,
+          <br />
+          제작사를 믿을 수 있을지,
+          <br />
+          내 예산안에 가능할지 고민하시나요?
+          <br />
+          <br />그 모든 걱정, 움집에선 필요 없어요.
+        </div>
+      </div>
+
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          maxHeight: '1200px',
+          overflow: 'hidden',
+        }}
+      >
+        <Image
+          src={'/2.jpg'}
+          width={1600}
+          height={1300}
+          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
+          alt={'background2'}
+        />
+        <div
+          style={{
+            width: '100%',
+            position: 'absolute',
+            top: '100px',
+            left: 0,
+          }}
+        >
+          <div
+            style={{
+              width: '95%',
+              margin: '0 auto',
+              fontSize: '35px',
+              fontWeight: '700',
+              color: 'black',
+              wordBreak: 'keep-all',
+              textAlign: 'center',
+            }}
+          >
+            체류형쉼터
+          </div>
+          <div
+            style={{
+              width: '95%',
+              margin: '30px auto',
+              fontSize: '16px',
+              fontWeight: '600',
+              color: 'black',
+              wordBreak: 'keep-all',
+              textAlign: 'center',
+            }}
+          >
+            10평부터 17평까지 | 4,300만 원~
+          </div>
+        </div>
+
+        <div
+          style={{
+            width: '100%',
+            position: 'absolute',
+            bottom: '50px',
+            left: 0,
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            className="btn"
+            style={{
+              border: 'none',
+              borderRadius: '20px',
+              backgroundColor: '#333333',
+              color: '#ffffff',
+              fontSize: '14px',
+              fontWeight: '500',
+              margin: '5px',
+              padding: '10px 15px',
+            }}
+          >
+            상세정보 보기
+          </div>
+          <div
+            className="btn"
+            style={{
+              border: 'none',
+              borderRadius: '20px',
+              backgroundColor: '#ffffff',
+              color: 'black',
+              fontSize: '14px',
+              fontWeight: '500',
+              margin: '5px',
+              padding: '10px 15px',
+            }}
+          >
+            더 많은 제품보기
+          </div>
+        </div>
+      </div>
+
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          maxHeight: '1200px',
+          overflow: 'hidden',
+        }}
+      >
+        <Image
+          src={'/6.png'}
+          width={1600}
+          height={1300}
+          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
+          alt={'background2'}
+        />
+        <div
+          style={{
+            width: '100%',
+            position: 'absolute',
+            top: '100px',
+            left: 0,
+          }}
+        >
+          <div
+            style={{
+              width: '95%',
+              margin: '0 auto',
+              fontSize: '35px',
+              fontWeight: '700',
+              color: '#ffffff',
+              wordBreak: 'keep-all',
+              textAlign: 'center',
+            }}
+          >
+            일반 주택
+          </div>
+          <div
+            style={{
+              width: '95%',
+              margin: '30px auto',
+              fontSize: '16px',
+              fontWeight: '600',
+              color: '#ffffff',
+              wordBreak: 'keep-all',
+              textAlign: 'center',
+            }}
+          >
+            11평부터 28평까지 | 5,800만 원 ~
+          </div>
+        </div>
+
+        <div
+          style={{
+            width: '100%',
+            position: 'absolute',
+            bottom: '50px',
+            left: 0,
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            className="btn"
+            style={{
+              border: 'none',
+              borderRadius: '20px',
+              backgroundColor: '#333333',
+              color: '#ffffff',
+              fontSize: '14px',
+              fontWeight: '500',
+              margin: '5px',
+              padding: '10px 15px',
+            }}
+          >
+            상세정보 보기
+          </div>
+          <div
+            className="btn"
+            style={{
+              border: 'none',
+              borderRadius: '20px',
+              backgroundColor: '#ffffff',
+              color: 'black',
+              fontSize: '14px',
+              fontWeight: '500',
+              margin: '5px',
+              padding: '10px 15px',
+            }}
+          >
+            더 많은 제품보기
+          </div>
+        </div>
+      </div>
+
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          maxHeight: '1200px',
+          overflow: 'hidden',
+        }}
+      >
+        <Image
+          src={'/3.png'}
+          width={1600}
+          height={1200}
+          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
+          alt={'background2'}
+        />
+        <div
+          style={{
+            width: '100%',
+            position: 'absolute',
+            top: '35%',
+            left: 0,
+          }}
+        >
+          <div
+            style={{
+              width: '95%',
+              margin: '0 auto',
+              fontSize: '16px',
+              fontWeight: '600',
+              color: '#ffffff',
+              wordBreak: 'keep-all',
+              textAlign: 'center',
+            }}
+          >
+            오직 움집에서만
+          </div>
+          <div
+            style={{
+              width: '95%',
+              margin: '20px auto',
+              fontSize: '35px',
+              fontWeight: '700',
+              color: '#ffffff',
+              wordBreak: 'keep-all',
+              textAlign: 'center',
+            }}
+          >
+            움집 안심 서비스
+          </div>
+          <div
+            style={{
+              width: '95%',
+              margin: '0 auto',
+              fontSize: '17px',
+              fontWeight: '500',
+              color: '#ffffff',
+              wordBreak: 'keep-all',
+              textAlign: 'center',
+            }}
+          >
+            움집에서는 안심 상담, 안심 계약, 안심 지불, 안심 AS까지
+            <br />
+            건축주가 믿고 시작할 수 있도록
+            <br />
+            모든 서비스를 제공합니다.
+          </div>
+          <div style={{ width: '100%', display: 'flex', marginTop: '50px' }}>
+            <div
+              className="btn"
+              style={{
+                border: 'none',
+                borderRadius: '20px',
+                backgroundColor: '#ffffff',
+                color: 'black',
+                fontSize: '14px',
+                fontWeight: '500',
+                padding: '10px 120px',
+                margin: '0 auto',
+              }}
+            >
+              더 알아보기
             </div>
           </div>
         </div>
       </div>
 
-      <div style={{ padding: '120px 0', maxWidth: '1280px', width: '90%', margin: '0 auto' }}>
-        <div style={{ fontSize: '28px', fontWeight: '500', width: '100%', textAlign: 'center' }}>
-          어떤 집을 지어야 할지,
-          <br />
-          제작사를 믿을 수 있을지 걱정하시나요?
+      <div
+        style={{
+          position: 'relative',
+          width: '100%',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          overflow: 'hidden',
+        }}
+      >
+        <Image
+          src={'/4.png'}
+          width={1600}
+          height={985}
+          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32/17', minHeight: '600px' }}
+          alt={'background2'}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '30%',
+            height: '1000px',
+            background: 'linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
+          }}
+        ></div>
+
+        <div
+          style={{
+            width: '100%',
+            position: 'absolute',
+            bottom: '40px',
+            left: 0,
+          }}
+        >
+          <div className="col-12">
+            <div
+              style={{
+                width: '95%',
+                margin: '0 auto',
+                fontSize: '16px',
+                fontWeight: '600',
+                wordBreak: 'keep-all',
+              }}
+            >
+              움집 팀
+            </div>
+            <div
+              style={{
+                width: '95%',
+                margin: '20px auto',
+                fontSize: 'clamp(25px, 3vw, 35px)',
+                fontWeight: '700',
+                wordBreak: 'keep-all',
+              }}
+            >
+              움집은 누구나 쉽게
+              <br />내 삶을 찾을 수 있도록 돕습니다.
+            </div>
+            <div
+              style={{
+                width: '95%',
+                margin: '0 auto',
+                fontSize: 'clamp(14px, 2vw, 17px)',
+                fontWeight: '500',
+                wordBreak: 'keep-all',
+              }}
+            >
+              모든 팀원이 지방에서 자랐습니다.
+              <br />
+              우리가 자라온 마을이 소멸되지 않고 이어질 수 있도록 일합니다.
+              <br />
+              결국 누구나 꿈꾸는 내 집이란 로망을 이룰 수 있도록 돕습니다.
+            </div>
+            <div
+              className="btn"
+              style={{
+                border: 'none',
+                borderRadius: '20px',
+                backgroundColor: 'black',
+                color: '#ffffff',
+                fontSize: '14px',
+                fontWeight: '500',
+                padding: '10px 120px',
+                marginLeft: '2%',
+                marginTop: '50px',
+              }}
+            >
+              더 알아보기
+            </div>
+          </div>
         </div>
       </div>
 
-      <div style={{ backgroundColor: '#FAFBFF' }}>
+      {/* <div style={{ backgroundColor: '#FAFBFF' }}>
         <div style={{ padding: '120px 0', maxWidth: '1280px', width: '90%', margin: '0 auto' }}>
           <div
             style={{
@@ -252,7 +636,7 @@ export default function Home() {
           </div>
           <Inquiry />
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

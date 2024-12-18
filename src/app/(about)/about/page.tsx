@@ -2,86 +2,161 @@ import { PartnerList, WorkerList } from '@/app/(about)/about/_data/Data';
 import HistoryCard from '@/app/(about)/about/_components/HistoryCard';
 import PartnerCard from '@/app/(about)/about/_components/PartnerCard';
 import WorkerCard from '@/app/(about)/about/_components/WorkerCard';
+import Inquiry from '@/components/Inquiry';
 import Image from 'next/image';
 
 export default function About() {
   return (
     <div>
-      <div style={{ width: '100%', height: '700px', position: 'relative' }}>
+      <div
+        style={{
+          width: '100%',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          maxHeight: '1200px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
         <Image
-          src="/111.webp"
-          width={540}
-          height={304}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          src="/4.png"
+          width={1600}
+          height={1200}
+          style={{
+            objectFit: 'cover',
+            width: '100%',
+            aspectRatio: '32 / 17',
+            minHeight: '600px',
+            maxHeight: '1200px',
+          }}
           alt={'company'}
         />
         <div
           style={{
             position: 'absolute',
-            bottom: '10%',
-            left: '10%',
-            width: '90%',
-            color: 'white',
-            fontSize: '4vw',
-            fontWeight: '500',
+            top: 0,
+            left: 0,
+            width: '100%',
+            aspectRatio: '8 / 1',
+            minHeight: '200px',
+            maxHeight: '500px',
+            background: 'linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
+          }}
+        ></div>
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            aspectRatio: '16 / 1',
+            minHeight: '50px',
+            maxHeight: '200px',
+            background: 'linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
+          }}
+        ></div>
+        <div
+          style={{
+            position: 'absolute',
+            top: '10%',
+            left: 0,
+            width: '100%',
+            fontSize: '14px',
+            fontWeight: '600',
             wordBreak: 'keep-all',
+            textAlign: 'center',
           }}
         >
-          누구나 자연과 함께할 수 있도록,
-          <br />
-          단독주택 건축시장 디지털 전환을 이끕니다
+          ABOUT US
+          <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}>
+            <span style={{ fontSize: '34px' }}>움집</span>은 누구나 쉽게 자연 속 삶을
+            <br />
+            선택할 수 있도록 돕습니다.
+          </div>
         </div>
       </div>
 
       <div
         style={{
           width: '100%',
-          backgroundColor: '#FAFBFC',
-          padding: '130px 0',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          maxHeight: '1200px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <div
           style={{
-            width: '90%',
-            maxWidth: '1300px',
-            margin: '0 auto',
+            width: 'auto',
+            fontSize: '32px',
+            wordBreak: 'keep-all',
+            fontWeight: '700',
+            marginTop: '100px',
           }}
         >
-          <div
-            style={{
-              width: '100%',
-              fontSize: '4vw',
-              fontWeight: '600',
-            }}
-          >
-            VISION
-          </div>
+          누군가에는 아지트가 필요하고,
+          <br />
+          누군가에게는 숨 쉴 공간이자,
+          <br />
+          또 누군가에게는 치유의 공간일 것이고,
+          <br />
+          어떤 이에게는 마지막 공간일 수도 있습니다.
+          <br />
+          <br />
+          움집에서는 모든 사람들이 자신의 삶을 찾을 수 있길 바랍니다.
+          <br />
+          그리고 그 여정이 행복하길 바랍니다.
         </div>
+      </div>
+
+      <div
+        style={{
+          width: '100%',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          maxHeight: '1200px',
+          overflow: 'hidden',
+          position: 'relative',
+        }}
+      >
+        <Image
+          src="/5.jpg"
+          width={1600}
+          height={1200}
+          style={{
+            objectFit: 'cover',
+            width: '100%',
+            aspectRatio: '32 / 17',
+            minHeight: '600px',
+            maxHeight: '1200px',
+          }}
+          alt={'yard'}
+        />
         <div
           style={{
-            textAlign: 'center',
-            fontSize: '23px',
+            position: 'absolute',
+            top: '30%',
+            left: 0,
+            width: '100%',
+            fontSize: '14px',
             fontWeight: '600',
-            marginTop: '20px',
             wordBreak: 'keep-all',
-            width: '90%',
-            marginLeft: '5%',
+            textAlign: 'center',
+            color: '#ffffff',
           }}
         >
-          <div>
-            지방소멸 문제 해결에 한 발자국 나아갈 수 있도록,
-            <div style={{ color: 'gray', fontWeight: '500' }}>건축시장을 혁신하여 귀촌 결정의 허들을 낮추겠습니다.</div>
-          </div>
-          <div style={{ marginTop: '30px' }}>
-            대한민국에 아름다운 집들이 많아지도록,
-            <div style={{ color: 'gray', fontWeight: '500' }}>
-              기술을 통해 짓는 과정마저 아름다운 집들을 만들겠습니다.
-            </div>
+          Our Vision
+          <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}>
+            움집은 누구나 쉽게 자연 속 삶을
+            <br />
+            선택할 수 있도록 돕습니다.
           </div>
         </div>
       </div>
 
-      <div style={{ width: '100%', padding: '130px 0' }}>
+      {/* <div style={{ width: '100%', padding: '130px 0' }}>
         <div
           style={{
             width: '90%',
@@ -122,7 +197,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div
         style={{
@@ -141,19 +216,17 @@ export default function About() {
           <div
             style={{
               width: '100%',
-              fontSize: '4vw',
+              fontSize: '14px',
               fontWeight: '600',
+              wordBreak: 'keep-all',
             }}
           >
             History
-          </div>
-          <div
-            style={{
-              fontSize: '25px',
-              fontWeight: '500',
-            }}
-          >
-            우리가 지나온 길입니다.
+            <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}>
+              움집은 지속가능한 삶을 만들기 위해
+              <br />
+              최선을 다합니다.
+            </div>
           </div>
           <div>
             <HistoryCard year={2023}>
@@ -176,7 +249,60 @@ export default function About() {
         </div>
       </div>
 
-      <div style={{ width: '100%', padding: '130px 0' }}>
+      <div style={{ position: 'relative' }}>
+        <Image
+          src={'/background2.webp'}
+          width={1600}
+          height={985}
+          style={{ objectFit: 'cover', width: '100%', height: '800px', borderRadius: '15px 15px 0 0' }}
+          alt={'background2'}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            width: '100%',
+            height: '600px',
+            borderRadius: '15px',
+            background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))',
+          }}
+        ></div>
+
+        <div
+          style={{
+            padding: '40px 0',
+            width: '100%',
+            color: 'white',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'absolute',
+            top: '10%',
+            left: '0',
+          }}
+        >
+          <div
+            style={{
+              width: '100%',
+              fontSize: '14px',
+              fontWeight: '600',
+              wordBreak: 'keep-all',
+              textAlign: 'center',
+            }}
+          >
+            Contact Us
+            <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', margin: '30px 0' }}>
+              무엇이든 물어보세요.
+            </div>
+          </div>
+
+          <Inquiry />
+        </div>
+      </div>
+
+      {/* <div style={{ width: '100%', padding: '130px 0' }}>
         <div
           style={{
             width: '90%',
@@ -285,7 +411,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

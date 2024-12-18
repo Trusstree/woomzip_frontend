@@ -8,15 +8,31 @@ export default function SigninButton() {
   return userContext == undefined ? (
     <Link
       className={'btn rounded-lg align-self-end'}
-      style={{ fontSize: '15px', border: 'none', fontWeight: '500' }}
+      style={{
+        fontSize: '12px',
+        border: 'none',
+        borderRadius: '20px',
+        padding: '8px 12px',
+        fontWeight: '500',
+        backgroundColor: '#ffffff',
+        color: 'black',
+      }}
       href="/signin"
     >
-      로그인/회원가입
+      로그인
     </Link>
   ) : (
     <Link
       className={'btn rounded-lg align-self-end'}
-      style={{ fontSize: '15px', border: 'none', fontWeight: '500' }}
+      style={{
+        fontSize: '12px',
+        border: 'none',
+        borderRadius: '20px',
+        padding: '8px 12px',
+        fontWeight: '500',
+        backgroundColor: '#ffffff',
+        color: 'black',
+      }}
       href={`/mypage/${userContext.uid}`}
     >
       마이페이지
