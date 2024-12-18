@@ -90,13 +90,13 @@ export default function FilterDropdown({
       // onClick={handleClick}
     >
       <div
-        style={{ textAlign: 'center', fontSize: '15px', fontWeight: '500', width: 'auto', padding: '2px' }}
+        style={{ textAlign: 'center', fontSize: '14px', fontWeight: '600', width: 'auto', padding: '2px' }}
         data-bs-toggle="dropdown"
         data-bs-auto-close="outside"
         aria-expanded="false"
       >
         {label}
-        <span style={{ paddingLeft: '4px' }}>
+        <span style={{ paddingLeft: '6px' }}>
           <ArrowDownSVG width={16} strokeWidth={2} />
         </span>
       </div>
