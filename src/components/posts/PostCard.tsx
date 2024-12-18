@@ -31,8 +31,8 @@ const style = {
 export default function PostCard({ data, className }: PostCardProps) {
   // const regex = /<([^>]+)>/gi;
   const imgSrcArr = data['content']
-  .match(/img src="https.*amazonaws.com\/.*\.(jpg|jpeg|png|gif|bmp|webp)/gim)?.[0]
-  .split('"')?.[1];
+    .match(/img src="https.*amazonaws.com\/.*\.(jpg|jpeg|png|gif|bmp|webp)/gim)?.[0]
+    .split('"')?.[1];
   //console.log(imgSrcArr);
 
   return (
@@ -43,7 +43,7 @@ export default function PostCard({ data, className }: PostCardProps) {
           width: '100%',
           borderRadius: '5px',
           border: 'none',
-          marginBottom: '30px',
+          marginBottom: '50px',
         }}
       >
         <Link href={{ pathname: `/community/${data['post_id']}` }}>
@@ -51,7 +51,7 @@ export default function PostCard({ data, className }: PostCardProps) {
             style={{
               position: 'relative',
               width: '100%',
-              aspectRatio: '5 / 4',
+              aspectRatio: '16 / 9',
               borderRadius: '5px',
               overflow: 'hidden',
             }}
@@ -64,66 +64,21 @@ export default function PostCard({ data, className }: PostCardProps) {
               sizes="(max-width: 767px) 100vw, (max-width: 991px) 40vw, 20vw"
             />
           </div>
-
-          <div
-            className="card-body"
-            style={{
-              width: '100%',
-              height: '260px',
-              borderRadius: '10px',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-            }}
-          ></div>
         </Link>
-        <div
-          className={`card-footer`}
-          style={{
-            border: 'none',
-            backgroundColor: 'white',
-            padding: '6px',
-          }}
-        >
-          <div className="d-flex flex-column" style={{ width: '100%' }}>
-            {/* <div className="d-flex">
-              <img src={data.profilePicture} width={40} height={40}/>
-              <div className="mx-3 fw-bold align-self-center">{data.author}</div>
-            </div> */}
+        <div>
+          <div style={{ fontSize: '18px', fontWeight: '600', marginTop: '15px' }}>{data.title}</div>
+          <div
+            className="d-flex justify-content-between"
+            style={{ alignItems: 'center', fontSize: '15px', color: '#555555', fontWeight: '500', marginTop: '10px' }}
+          >
+            <div style={{ width: 'auto' }}>{data['nickname']}</div>
             <div
-              style={{
-                fontSize: '15px',
-                width: 'auto',
-                fontWeight: '600',
-                height: '50px',
-                overflow: 'hidden',
-                padding: '5px 0',
-              }}
+              className="d-flex justify-content-center align-content-center"
+              style={{ width: 'auto', fontSize: '14px' }}
             >
-              <span
-                style={{
-                  color: style[data.category].color,
-                  backgroundColor: style[data.category].backgroundColor,
-                  borderRadius: '20px',
-                  padding: '0 5px',
-                }}
-              >
-                {data['category']}
-              </span>{' '}
-              {data.title}
-            </div>
-
-            <div className="d-flex justify-content-between" style={{ alignItems: 'center' }}>
-              <div style={{ fontSize: '14px', width: 'auto' }}>{data['nickname']}</div>
-
-              <div
-                className="d-flex justify-content-center align-content-center"
-                style={{ fontSize: '13px', width: 'auto', fontWeight: '400', color: 'gray' }}
-              >
-                <div>댓글 {cardCountText(data?.['comment_count'])}</div>
-                <span style={{ padding: '0 5px' }}>·</span>
-                <div>좋아요 {cardCountText(data?.['post_like_count'])}</div>
-              </div>
+              <div>댓글 {cardCountText(data?.['comment_count'])}</div>
+              <span style={{ padding: '0 5px' }}>·</span>
+              <div>좋아요 {cardCountText(data?.['post_like_count'])}</div>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ export default async function Page({ searchParams }) {
 
   return postData ? (
     <div>
-      <div style={{ width: '90%', maxWidth: '1280px', margin: '0 auto' }}>
+      <div style={{ width: '90%', maxWidth: '800px', margin: '0 auto' }}>
         <div
           className="row"
           style={{
@@ -28,9 +28,6 @@ export default async function Page({ searchParams }) {
         >
           <Category />
           <SearchComponent />
-        </div>
-        <div style={{ fontSize: '24px', fontWeight: '500' }}>
-          <span style={{ color: '#314FC0' }}>움집</span>에서 당신의 이야기를 들려주세요.
         </div>
         <PostMenu routeUrl={'/community/write'} routeText={'글쓰기'}>
           <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
