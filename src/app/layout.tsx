@@ -70,6 +70,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <meta itemProp="image" content="hhttps://www.woomzip.com/metadataImage.jpg" />
         <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" />
+        {/* <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js" /> */}
       </head>
 
       <body className={inter.className}>

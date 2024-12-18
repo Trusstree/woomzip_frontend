@@ -10,6 +10,9 @@ export default function Header() {
       className={`navbar navbar-expand-md justify-content-center sticky-top`}
       style={{
         backgroundColor: 'black',
+        position:"fixed",
+        top:"0",
+        width:"100vw"
       }}
     >
       <div className=" d-flex justify-content-between" style={{ height: '45px', width: '95%' }}>

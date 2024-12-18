@@ -24,45 +24,47 @@ export default function Footer() {
           <div className="row">
             <div style={{ width: '200px', margin: '30px 0' }}>
               <div style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px', color: '#999999' }}>Company</div>
-              <Link href={infoURL} passHref>
-                <div
+              <div className='d-flex flex-column'>
+                <Link
+                  href={infoURL} 
                   style={{
-                    marginBottom: '5px',
                     border: 'none',
                     outline: 'none',
                     fontSize: '13px',
                     color: '#ffffff',
+                    textDecorationLine:'none'
                   }}
-                >
-                  About Us
-                </div>
-              </Link>
-              <Link href={serviceURL} passHref>
-                <div
+                  passHref
+                  >
+                    About Us
+                </Link>
+                <Link
+                  href={serviceURL}
                   style={{
-                    margin: '5px 0',
                     border: 'none',
                     outline: 'none',
                     fontSize: '13px',
                     color: '#ffffff',
+                    textDecorationLine:'none'
                   }}
-                >
+                  passHref
+                  >
                   News
-                </div>
-              </Link>
-              <Link href={termsURL} passHref>
-                <div
+                </Link>
+                <Link
+                  href={termsURL} 
                   style={{
-                    margin: '5px 0',
                     border: 'none',
                     outline: 'none',
                     fontSize: '13px',
                     color: '#ffffff',
+                    textDecorationLine:'none'
                   }}
-                >
+                  passHref
+                  >
                   Privacy policy
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
             <div style={{ width: '250px', margin: '30px 0' }}>
               <div style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px', color: '#999999' }}>
