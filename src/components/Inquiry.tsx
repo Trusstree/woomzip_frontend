@@ -81,15 +81,14 @@ export default function Inquiry({ id }: { id?: string | number }) {
       </div>
       <button
         style={{
-          backgroundColor: '#314FC0',
+          backgroundColor: '#ffffff',
           opacity: '0.9',
           margin: '0 auto',
-          padding: '15px',
-          color: '#ffffff',
-          fontSize: '18px',
-          fontWeight: '550',
+          padding: '10px 100px',
+          fontSize: '16px',
+          fontWeight: '700',
           border: 'none',
-          borderRadius: '10px',
+          borderRadius: '25px',
           boxShadow: '0 6px 10px rgba(255, 255, 255, 0.2)',
           width: 'auto',
         }}

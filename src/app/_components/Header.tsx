@@ -9,19 +9,14 @@ export default function Header() {
     <div
       className={`navbar navbar-expand-md justify-content-center sticky-top`}
       style={{
-        backgroundColor: 'white',
+        backgroundColor: 'black',
       }}
     >
-      <div className=" d-flex justify-content-between" style={{ height: '50px', width: '95%' }}>
+      <div className=" d-flex justify-content-between" style={{ height: '45px', width: '95%' }}>
         <RouteButton url="/" className="navbar-brand" style={{ marginLeft: '0', border: 'none', marginBottom: '6px' }}>
           <div className="d-flex align-items-center">
-            {' '}
-            {/* Flexbox 적용 */}
-            <Image src={'/woomzip_new_logo.png'} alt={'Truss Logo'} width={29} height={21} style={{ padding: '0' }} />
-            <div style={{ marginBottom: '3px', fontSize: '18px', fontWeight: '500', color: '#314FC0' }}>
-              woomzip
-            </div>{' '}
-            {/* 텍스트 왼쪽 간격 추가 */}
+            {/* <Image src={'/woomzip_new_logo.png'} alt={'Truss Logo'} width={29} height={21} style={{ padding: '0' }} /> */}
+            <div style={{ fontSize: '18px', fontWeight: '500', color: '#ffffff' }}>woomzip</div>{' '}
           </div>
         </RouteButton>
 
@@ -37,28 +32,34 @@ export default function Header() {
           <span className="navbar-toggler-icon" style={{ border: 'none' }} />
         </button>
         <div className="collapse navbar-collapse">
-          <div className="navbar-nav d-none d-md-flex w-100 align-items-center">
-            <div className="d-flex align-items-center me-auto">
+          <div className="navbar-nav d-none d-md-flex w-100 align-items-center" style={{ justifyContent: 'flex-end' }}>
+            <div className="d-flex align-items-center">
               {/* <RouteButton url="/" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
                 움집소개
               </RouteButton> */}
 
-              <RouteButton url="/house" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
+              <RouteButton
+                url="/house"
+                style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
+              >
                 제품찾기
               </RouteButton>
-              <RouteButton url="/community" style={{ fontSize: '16px', border: 'none', fontWeight: '500' }}>
+              <RouteButton
+                url="/community"
+                style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
+              >
                 커뮤니티
               </RouteButton>
 
               {/* <RouteButton url="/living" style={{ fontSize: "15px" }}>
-              살아보기
-            </RouteButton> */}
+                살아보기
+                </RouteButton> */}
               {/* <RouteButton url="/planning" style={{ fontSize: "15px" }}>
-                계획하기
-              </RouteButton> */}
-            </div>
-            <div style={{ textAlign: 'right', margin: '0', padding: '0', border: 'none' }}>
-              <SigninButton />
+                  계획하기
+                </RouteButton> */}
+              <div style={{ marginLeft: '25px' }}>
+                <SigninButton />
+              </div>
             </div>
           </div>
         </div>
