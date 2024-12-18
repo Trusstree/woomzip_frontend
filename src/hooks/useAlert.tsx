@@ -1,13 +1,13 @@
 'use client';
 
-import useQuery from '@/hooks/useQuery';
+import useQueryString from '@/hooks/useQueryString';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function useAlert() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { createQuery, getRouteParams } = useQuery();
+  const { createQuery, getRouteParams } = useQueryString();
 
   // 첫 렌더링 시에
   // 쿼리스트링에 alert가 있으면 알림 띄워주고

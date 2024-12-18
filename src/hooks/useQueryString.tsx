@@ -3,7 +3,7 @@
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-export default function useQuery() {
+export default function useQueryString() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [params, setParams] = useState(new URLSearchParams(searchParams));

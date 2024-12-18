@@ -1,13 +1,13 @@
 'use client';
 
-import useQuery from '@/hooks/useQuery';
+import useQueryString from '@/hooks/useQueryString';
 import { detailPriceText } from '@/lib/stringUtil';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import styles from '@/app/house/[pid]/_styles/HouseRemocon.module.css';
 
 export default function HouseRemocon({ pid, houseData, optionData }) {
-  const { createQueryString } = useQuery();
+  const { createQueryString } = useQueryString();
   const router = useRouter();
 
   const [selectedOptionData, setSelectedOptionData] = useState([]);

@@ -1,6 +1,6 @@
 'use client';
 
-import useQuery from '@/hooks/useQuery';
+import useQueryString from '@/hooks/useQueryString';
 import { arraySort } from '@/lib/functionUtil';
 import { cardPriceText } from '@/lib/stringUtil';
 import Image from 'next/image';
@@ -30,7 +30,7 @@ function parseValue(name: string | Array<string>, value: any) {
 
 export default function FilterBadge({ name, value }) {
   const router = useRouter();
-  const { createQuery, getRouteParams } = useQuery();
+  const { createQuery, getRouteParams } = useQueryString();
 
   const handleClick = () => {
     if (typeof name == 'object') {
