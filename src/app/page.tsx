@@ -6,7 +6,6 @@ import Comp3 from '@/app/_comp/Comp3';
 import Comp4 from '@/app/_comp/Comp4';
 import Comp5 from '@/app/_comp/Comp5';
 import Comp6 from '@/app/_comp/Comp6';
-
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -38,24 +37,27 @@ export default function Home() {
       //     pinSpacing: false,
       //   },
       // });
-      // gsap.to("#comp4", {
-      //   scrollTrigger: {
-      //     trigger: "#comp4",
-      //     start: "top 61",
-      //     pin: true, 
-      //     scrub: 3,
-      //     pinSpacing: false,
-      //   },
-      // });
+      gsap.to("#comp4", {
+        scrollTrigger: {
+          trigger: "#comp4",
+          start: "top 61",
+          pin: true, 
+          scrub: 3,
+          pinSpacing: false,
+        },
+      });
       gsap.to("#comp5", {
         // scale: 1.5,
-        // transformOrigin: "center center",
+        duration:0.5,
+        alpha:1,
+        //transformOrigin: "center center",
         scrollTrigger: {
           trigger: "#comp5",
           start: "top 61",
+          end: "bottom 61",
           pin: true, 
           scrub: 0.5,
-          pinSpacing: true,
+          pinSpacing: false,
         },
       });
       // gsap.to("#comp6", {
@@ -63,7 +65,7 @@ export default function Home() {
       //     trigger: "#comp6",
       //     start: "top 61",
       //     end: "top top",
-      //     pin: true, 
+      //     //pin: true, 
       //     scrub: 0.5,
       //     pinSpacing: true,
       //   },
@@ -75,7 +77,7 @@ export default function Home() {
   return (
     <div id={"container"} ref={container}>
       <Comp1 id={'comp1'} />
-      <Comp2 id={'comp2'} />
+      <Comp2 id={'comp2'} container={container} />
       <Comp3 id={'comp3'} />
       <Comp4 id={'comp4'} />
       <Comp5 id={'comp5'} />
