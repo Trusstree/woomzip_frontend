@@ -4,6 +4,7 @@ import Inquiry from '@/components/Inquiry';
 export default function Service() {
   return (
     <>
+      <div style={{ width: '100%', backgroundColor: 'black', height: '61px' }}></div>
       <div
         style={{
           width: '100%',
@@ -15,7 +16,7 @@ export default function Service() {
         }}
       >
         <Image
-          src="/1.jpg"
+          src="/8.jpg"
           width={1600}
           height={1200}
           style={{
@@ -33,7 +34,7 @@ export default function Service() {
             top: '10%',
             left: 0,
             width: '100%',
-            fontSize: '14px',
+            fontSize: '15px',
             fontWeight: '600',
             wordBreak: 'keep-all',
             textAlign: 'center',
@@ -43,6 +44,23 @@ export default function Service() {
           움집 서비스 소개
           <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}>
             계획부터 입주까지 움집이 당신과 함께합니다.
+          </div>
+        </div>
+        <div style={{ width: '100%', display: 'flex', position: 'absolute', bottom: '10%', left: '0' }}>
+          <div
+            className="btn"
+            style={{
+              border: 'none',
+              borderRadius: '20px',
+              backgroundColor: '#4067F8',
+              color: '#ffffff',
+              fontSize: '14px',
+              fontWeight: '500',
+              padding: '10px 70px',
+              margin: '0 auto',
+            }}
+          >
+            문의하기
           </div>
         </div>
       </div>

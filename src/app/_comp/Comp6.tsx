@@ -1,21 +1,19 @@
-"use client"
+'use client';
 
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Comp6({id}:{id:string}){
+export default function Comp6({ id }: { id: string }) {
   gsap.registerPlugin(useGSAP);
-  useGSAP(
-    () => {
-      gsap.to("#comp6BG", {
-        ease:"none",
-        xPercent: -100,
-        duration: 30,
-        repeat: -1,
-      });
-    }
-  );
+  useGSAP(() => {
+    gsap.to('#comp6BG', {
+      ease: 'none',
+      xPercent: -100,
+      duration: 30,
+      repeat: -1,
+    });
+  });
 
   return (
     <div
@@ -26,25 +24,26 @@ export default function Comp6({id}:{id:string}){
         aspectRatio: '32 / 17',
         minHeight: '600px',
         overflow: 'hidden',
+        backgroundColor: '#ffffff',
       }}
     >
-      <div id="comp6BG" className='d-flex'>
+      <div id="comp6BG" className="d-flex">
         <Image
           src={'/4.png'}
           width={1600}
           height={985}
-          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32/17', minHeight: '600px' }}
+          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32/17', minHeight: '600px', border: 'none' }}
           alt={'background2'}
         />
         <Image
           src={'/4.png'}
           width={1600}
           height={985}
-          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32/17', minHeight: '600px' }}
+          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32/17', minHeight: '600px', margin: '0' }}
           alt={'background2'}
         />
       </div>
-      {/* <div
+      <div
         style={{
           position: 'absolute',
           top: 0,
@@ -53,7 +52,7 @@ export default function Comp6({id}:{id:string}){
           height: '1000px',
           background: 'linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
         }}
-      /> */}
+      />
 
       <div
         style={{
