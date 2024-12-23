@@ -14,8 +14,8 @@ export default function Comp2({id, container}:{id:string, container:any}){
         opacity:1,
         scrollTrigger: {
           trigger: "#homeText1",
-          start: "50% 70%",
-          end: "50% 50%",
+          start: "50% 80%",
+          end: "50% 60%",
           scrub:0.5,
           // markers: {
           //   startColor: 'yellow',
@@ -29,8 +29,8 @@ export default function Comp2({id, container}:{id:string, container:any}){
         opacity:1,
         scrollTrigger: {
           trigger: "#homeText2",
-          start: "50% 70%",
-          end: "50% 50%",
+          start: "50% 80%",
+          end: "50% 60%",
           scrub:0.5,
           // markers: {
           //   startColor: 'yellow',
@@ -44,8 +44,8 @@ export default function Comp2({id, container}:{id:string, container:any}){
         opacity:1,
         scrollTrigger: {
           trigger: "#homeText3",
-          start: "50% 70%",
-          end: "50% 50%",
+          start: "50% 80%",
+          end: "50% 60%",
           scrub:0.5,
           // markers: {
           //   startColor: 'yellow',
@@ -59,8 +59,8 @@ export default function Comp2({id, container}:{id:string, container:any}){
         opacity:1,
         scrollTrigger: {
           trigger: "#homeText4",
-          start: "50% 70%",
-          end: "50% 50%",
+          start: "50% 80%",
+          end: "50% 60%",
           scrub:0.5,
           // markers: {
           //   startColor: 'yellow',

@@ -11,7 +11,7 @@ export default function Comp6({id}:{id:string}){
       gsap.to("#comp6BG", {
         ease:"none",
         xPercent: -100,
-        duration: 10,
+        duration: 30,
         repeat: -1,
       });
     }

@@ -37,29 +37,29 @@ export default function Home() {
       //     pinSpacing: false,
       //   },
       // });
-      gsap.to("#comp4", {
-        scrollTrigger: {
-          trigger: "#comp4",
-          start: "top 61",
-          pin: true, 
-          scrub: 3,
-          pinSpacing: false,
-        },
-      });
-      gsap.to("#comp5", {
-        // scale: 1.5,
-        duration:0.5,
-        alpha:1,
-        //transformOrigin: "center center",
-        scrollTrigger: {
-          trigger: "#comp5",
-          start: "top 61",
-          end: "bottom 61",
-          pin: true, 
-          scrub: 0.5,
-          pinSpacing: false,
-        },
-      });
+      // gsap.to("#comp4", {
+      //   scrollTrigger: {
+      //     trigger: "#comp4",
+      //     start: "top 61",
+      //     pin: true, 
+      //     scrub: 3,
+      //     pinSpacing: false,
+      //   },
+      // });
+      // gsap.to("#comp5", {
+      //   // scale: 1.5,
+      //   duration:0.5,
+      //   alpha:1,
+      //   //transformOrigin: "center center",
+      //   scrollTrigger: {
+      //     trigger: "#comp5",
+      //     start: "top 61",
+      //     end: "bottom 61",
+      //     pin: true, 
+      //     scrub: 0.5,
+      //     pinSpacing: false,
+      //   },
+      // });
       // gsap.to("#comp6", {
       //   scrollTrigger: {
       //     trigger: "#comp6",
@@ -80,7 +80,7 @@ export default function Home() {
       <Comp2 id={'comp2'} container={container} />
       <Comp3 id={'comp3'} />
       <Comp4 id={'comp4'} />
-      <Comp5 id={'comp5'} />
+      <Comp5 id={'comp5'} container={container}/>
       <Comp6 id={'comp6'} />
     </div>
   );
