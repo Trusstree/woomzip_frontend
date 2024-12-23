@@ -10,7 +10,7 @@ export default function Header() {
       className={`navbar navbar-expand-md justify-content-center sticky-top`}
       style={{
         backgroundColor: 'black',
-        position:"fixed",
+        position:"sticky",
         top:"0",
         width:"100vw"
       }}

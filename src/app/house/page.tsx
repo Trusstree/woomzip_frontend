@@ -12,7 +12,6 @@ export default async function House({ searchParams }) {
 
   return (
     <div>
-      <div style={{ width: '100%', backgroundColor: 'black', height: '61px' }}></div>
       <div style={{ width: '95%', margin: '0 auto' }}>
         <div style={{ fontSize: '32px', fontWeight: '600', margin: '45px 0' }}>움집 제품들</div>
         <hr style={{ borderColor: '#777777' }} />

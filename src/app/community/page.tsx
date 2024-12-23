@@ -14,7 +14,6 @@ export default async function Page({ searchParams }) {
 
   return postData ? (
     <div>
-      <div style={{ width: '100%', backgroundColor: 'black', height: '61px' }}></div>
       <div style={{ width: '90%', maxWidth: '800px', margin: '0 auto' }}>
         <div
           className="row"

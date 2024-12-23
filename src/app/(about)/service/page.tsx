@@ -4,7 +4,6 @@ import Inquiry from '@/components/Inquiry';
 export default function Service() {
   return (
     <>
-      <div style={{ width: '100%', backgroundColor: 'black', height: '61px' }}></div>
       <div
         style={{
           width: '100%',

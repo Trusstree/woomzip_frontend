@@ -5,39 +5,39 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function Comp3({ id, container }: { id: string; container: any }) {
+export default function HomeCategoryComponent({ container }: { container: any }) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(
     () => {
-      gsap.from('#comp3BG', {
+      gsap.from('#category1BG', {
         scale: 1.15,
         transformOrigin: 'center center',
         scrollTrigger: {
-          trigger: '#comp3BG',
+          trigger: '#category1BG',
           start: 'top bottom',
           scrub: 0.5,
           pinSpacing: false,
         },
       });
 
-      gsap.from('#comp4BG', {
+      gsap.from('#category2BG', {
         scale: 1.15,
         transformOrigin: 'center center',
         scrollTrigger: {
-          trigger: '#comp4BG',
+          trigger: '#category2BG',
           start: 'top bottom',
           scrub: 0.5,
           pinSpacing: false,
         },
       });
 
-      gsap.from('#comp5BG', {
+      gsap.from('#category3BG', {
         scale: 1.15,
         transformOrigin: 'center center',
         scrollTrigger: {
-          trigger: '#comp4BG',
+          trigger: '#category3BG',
           start: 'top bottom',
           scrub: 0.5,
           pinSpacing: false,
@@ -124,7 +124,7 @@ export default function Comp3({ id, container }: { id: string; container: any })
         </div>
 
         <div
-          id={id}
+          id={'category1'}
           style={{
             position: 'relative',
             width: '100%',
@@ -135,7 +135,7 @@ export default function Comp3({ id, container }: { id: string; container: any })
           }}
         >
           <Image
-            id={'comp3BG'}
+            id={'category1BG'}
             src={'/2.jpg'}
             width={1600}
             height={1300}
@@ -230,7 +230,7 @@ export default function Comp3({ id, container }: { id: string; container: any })
         </div>
 
         <div
-          id={id}
+          id={'category2'}
           style={{
             position: 'relative',
             width: '100%',
@@ -241,7 +241,7 @@ export default function Comp3({ id, container }: { id: string; container: any })
           }}
         >
           <Image
-            id={'comp4BG'}
+            id={'category2BG'}
             src={'/6.png'}
             width={1600}
             height={1300}
@@ -336,7 +336,7 @@ export default function Comp3({ id, container }: { id: string; container: any })
         </div>
 
         <div
-          id={id}
+          id={'category3'}
           style={{
             position: 'relative',
             width: '100%',
@@ -347,7 +347,7 @@ export default function Comp3({ id, container }: { id: string; container: any })
           }}
         >
           <Image
-            id={'comp5BG'}
+            id={'category3BG'}
             src={'/6.png'}
             width={1600}
             height={1300}

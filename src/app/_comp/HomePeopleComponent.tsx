@@ -4,10 +4,10 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Comp6({ id }: { id: string }) {
+export default function HomePeopleComponent() {
   gsap.registerPlugin(useGSAP);
   useGSAP(() => {
-    gsap.to('#comp7BG', {
+    gsap.to('#peopleBG', {
       ease: 'none',
       xPercent: -100,
       duration: 30,
@@ -17,7 +17,7 @@ export default function Comp6({ id }: { id: string }) {
 
   return (
     <div
-      id={id}
+      id={'people'}
       style={{
         position: 'relative',
         width: '100%',
@@ -27,7 +27,7 @@ export default function Comp6({ id }: { id: string }) {
         backgroundColor: '#ffffff',
       }}
     >
-      <div id="comp7BG" className="d-flex">
+      <div id="peopleBG" className="d-flex">
         <Image
           src={'/4.png'}
           width={1600}

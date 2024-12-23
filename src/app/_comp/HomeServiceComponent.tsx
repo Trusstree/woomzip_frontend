@@ -5,17 +5,17 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function Comp5({ id, container }: { id: string; container: any }) {
+export default function HomeServiceComponent({ id, container }: { id: string; container: any }) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(
     () => {
-      gsap.from('#comp6BG', {
+      gsap.from('#serviceBG', {
         scale: 1.2,
         transformOrigin: 'center center',
         scrollTrigger: {
-          trigger: '#comp6BG',
+          trigger: '#serviceBG',
           start: 'top bottom',
           scrub: 3,
           pinSpacing: false,
@@ -27,7 +27,7 @@ export default function Comp5({ id, container }: { id: string; container: any })
 
   return (
     <div
-      id={id}
+      id={'service'}
       style={{
         position: 'relative',
         width: '100%',
@@ -38,7 +38,7 @@ export default function Comp5({ id, container }: { id: string; container: any })
       }}
     >
       <Image
-        id={'comp6BG'}
+        id={'serviceBG'}
         src={'/3.png'}
         width={1600}
         height={1200}

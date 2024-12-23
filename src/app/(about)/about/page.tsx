@@ -8,7 +8,6 @@ import Image from 'next/image';
 export default function About() {
   return (
     <div>
-      <div style={{ width: '100%', backgroundColor: 'black', height: '61px' }}></div>
       <div
         style={{
           width: '100%',
