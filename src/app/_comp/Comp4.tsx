@@ -1,6 +1,30 @@
-import Image from 'next/image';
+'use client'
 
-export default function Comp4({id}:{id:string}){
+import Image from 'next/image';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+export default function Comp4({id, container}:{id:string, container:any}){
+  gsap.registerPlugin(useGSAP);
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(
+    () => {
+      gsap.from("#comp4BG", {
+      scale: 1.15,
+      transformOrigin: "center center",
+      scrollTrigger: {
+        trigger: "#comp4BG",
+        start: "top bottom",
+        scrub: 0.5,
+        pinSpacing: false,
+      },
+    })
+  }
+  ,{ scope: container.current }
+  );
+
   return (
     <div
       id={id}
@@ -14,10 +38,11 @@ export default function Comp4({id}:{id:string}){
       }}
     >
       <Image
+        id={'comp4BG'}
         src={'/6.png'}
         width={1600}
         height={1300}
-        style={{ objectFit: 'cover', width: '100%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
+        style={{ objectFit: 'cover', width: '115%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
         alt={'background2'}
       />
       <div

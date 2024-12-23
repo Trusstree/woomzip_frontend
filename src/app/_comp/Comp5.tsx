@@ -11,15 +11,13 @@ export default function Comp5({id, container}:{id:string, container:any}){
 
   useGSAP(
     () => {
-      gsap.to("#comp5", {
-      scale: 1.5,
-      duration:0.5,
-      alpha:1,
-      //transformOrigin: "center center",
+      gsap.from("#comp5BG", {
+      scale: 1.2,
+      transformOrigin: "center center",
       scrollTrigger: {
-        trigger: "#comp5",
-        start: "top 61",
-        scrub: 0.5,
+        trigger: "#comp5BG",
+        start: "top bottom",
+        scrub: 3,
         pinSpacing: false,
       },
     })
@@ -40,10 +38,11 @@ export default function Comp5({id, container}:{id:string, container:any}){
       }}
     >
       <Image
+        id={'comp5BG'}
         src={'/3.png'}
         width={1600}
         height={1200}
-        style={{ objectFit: 'cover', width: '100%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
+        style={{ objectFit: 'cover', width: '120%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
         alt={'background2'}
       />
       <div

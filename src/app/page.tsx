@@ -78,9 +78,9 @@ export default function Home() {
     <div id={"container"} ref={container}>
       <Comp1 id={'comp1'} />
       <Comp2 id={'comp2'} container={container} />
-      <Comp3 id={'comp3'} />
-      <Comp4 id={'comp4'} />
-      <Comp5 id={'comp5'} container={container}/>
+      <Comp3 id={'comp3'} container={container} />
+      <Comp4 id={'comp4'} container={container} />
+      <Comp5 id={'comp5'} container={container} />
       <Comp6 id={'comp6'} />
     </div>
   );
