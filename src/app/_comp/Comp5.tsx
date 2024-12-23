@@ -1,28 +1,28 @@
-'use client'
+'use client';
 
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function Comp5({id, container}:{id:string, container:any}){
+export default function Comp5({ id, container }: { id: string; container: any }) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(
     () => {
-      gsap.from("#comp5BG", {
-      scale: 1.2,
-      transformOrigin: "center center",
-      scrollTrigger: {
-        trigger: "#comp5BG",
-        start: "top bottom",
-        scrub: 3,
-        pinSpacing: false,
-      },
-    })
-  }
-  ,{ scope: container.current }
+      gsap.from('#comp6BG', {
+        scale: 1.2,
+        transformOrigin: 'center center',
+        scrollTrigger: {
+          trigger: '#comp6BG',
+          start: 'top bottom',
+          scrub: 3,
+          pinSpacing: false,
+        },
+      });
+    },
+    { scope: container.current },
   );
 
   return (
@@ -38,7 +38,7 @@ export default function Comp5({id, container}:{id:string, container:any}){
       }}
     >
       <Image
-        id={'comp5BG'}
+        id={'comp6BG'}
         src={'/3.png'}
         width={1600}
         height={1200}

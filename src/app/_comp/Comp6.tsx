@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 export default function Comp6({ id }: { id: string }) {
   gsap.registerPlugin(useGSAP);
   useGSAP(() => {
-    gsap.to('#comp6BG', {
+    gsap.to('#comp7BG', {
       ease: 'none',
       xPercent: -100,
       duration: 30,
@@ -27,7 +27,7 @@ export default function Comp6({ id }: { id: string }) {
         backgroundColor: '#ffffff',
       }}
     >
-      <div id="comp6BG" className="d-flex">
+      <div id="comp7BG" className="d-flex">
         <Image
           src={'/4.png'}
           width={1600}

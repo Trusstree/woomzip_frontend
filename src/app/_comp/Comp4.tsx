@@ -1,28 +1,28 @@
-'use client'
+'use client';
 
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function Comp4({id, container}:{id:string, container:any}){
+export default function Comp4({ id, container }: { id: string; container: any }) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(
     () => {
-      gsap.from("#comp4BG", {
-      scale: 1.15,
-      transformOrigin: "center center",
-      scrollTrigger: {
-        trigger: "#comp4BG",
-        start: "top bottom",
-        scrub: 0.5,
-        pinSpacing: false,
-      },
-    })
-  }
-  ,{ scope: container.current }
+      gsap.from('#comp4BG', {
+        scale: 1.15,
+        transformOrigin: 'center center',
+        scrollTrigger: {
+          trigger: '#comp4BG',
+          start: 'top bottom',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+    },
+    { scope: container.current },
   );
 
   return (
