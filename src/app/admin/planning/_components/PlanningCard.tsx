@@ -17,7 +17,9 @@ export default function PlanningCard({ data }) {
         <div className="col-8">
           <div className="card-body">
             <div>name: {planning?.['name']}</div>
-            <div>phone_number: {planning?.['phone_number']}</div>
+            <div>contact: {planning?.['contact']}</div>
+            <div>text</div>
+            <div>{planning?.['text']}</div>
             <br />
 
             <div>housing_type: {planning?.['housing_type']}</div>

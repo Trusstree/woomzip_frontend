@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { HighlightCardPriceText } from '@/app/house/_components/HighlightCardPriceText';
 import Link from 'next/link';
+import styles from '@/app/house/_styles/houseCard.module.css';
 
 export default function HouseCard({ houseData }) {
   const { imgUrl, houseId, houseName, companyName, price, roomCount, toiletCount, totalFloorArea } = houseData;
@@ -9,15 +10,10 @@ export default function HouseCard({ houseData }) {
     <div className="col-md-4 col-sm-6 col-12">
       <div className="card" style={{ width: '100%', border: 'none', marginBottom: '60px' }}>
         <Link
-          className="container"
-          style={{
-            width: '100%',
-            aspectRatio: '16 / 9',
-            position: 'relative',
-          }}
+          className={`container ${styles.container1} ${styles.img_hover}`}
           href={`/house/${houseId}`}
         >
-          <Image src={imgUrl} alt={houseName + ' image'} fill style={{ borderRadius: '7px', objectFit: 'cover' }} />
+          <Image src={imgUrl} alt={houseName + ' image'} fill  />
         </Link>
         <div>
           <div style={{ fontSize: '18px', fontWeight: '600', marginTop: '15px' }}>{houseName}</div>
