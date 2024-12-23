@@ -48,10 +48,22 @@ export default function Header() {
                 제품찾기
               </RouteButton>
               <RouteButton
+                url="/service"
+                style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
+              >
+                서비스소개
+              </RouteButton>
+              <RouteButton
+                url="/about"
+                style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
+              >
+                회사소개
+              </RouteButton>
+              <RouteButton
                 url="/community"
                 style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
               >
-                커뮤니티
+                뉴스
               </RouteButton>
 
               {/* <RouteButton url="/living" style={{ fontSize: "15px" }}>

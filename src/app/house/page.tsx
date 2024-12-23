@@ -11,7 +11,9 @@ export default async function House({ searchParams }) {
   const [houseData, houseCount] = await loadHouseData(searchParams, numShowItems);
 
   return (
-    <div style={{ width: '90%', maxWidth: '1300px', margin: '0 auto' }}>
+    <div style={{ width: '95%', margin: '0 auto' }}>
+      <div style={{ fontSize: '32px', fontWeight: '600', margin: '45px 0' }}>움집 제품들</div>
+      <hr style={{ borderColor: '#777777' }} />
       <HouseCategory categoryList={categoryList} />
       <FilterList filterList={filterList} />
       <BadgeList badgeList={badgeList} />

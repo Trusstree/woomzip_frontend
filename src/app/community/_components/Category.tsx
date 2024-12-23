@@ -2,7 +2,7 @@ import CategoryButton from '@/components/CategoryButton';
 
 export default function Category() {
   return (
-    <div className="col-md-8 col-12 g-0">
+    <div className="col-md-6 col-12 g-0">
       <div
         className="row w-100 flex-nowrap overflow-auto"
         style={{

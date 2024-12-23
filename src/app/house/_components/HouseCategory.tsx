@@ -6,7 +6,6 @@ export default function HouseCategory({ categoryList }) {
       className="row w-100 flex-nowrap overflow-auto"
       style={{
         margin: '10px 0',
-        padding: '10px 0',
       }}
     >
       {categoryList.map((e, i) => (

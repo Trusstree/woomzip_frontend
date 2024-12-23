@@ -26,7 +26,16 @@ export default function FilterResetButton() {
       onClick={handleClick}
     >
       <div className="row">
-        <div style={{ textAlign: 'center', fontSize: '15px', fontWeight: '500', width: 'auto', padding: '2px' }}>
+        <div
+          style={{
+            textAlign: 'center',
+            fontSize: '14px',
+            fontWeight: '600',
+            width: 'auto',
+            padding: '2px',
+            marginRight: '7px',
+          }}
+        >
           초기화
         </div>
         <Image

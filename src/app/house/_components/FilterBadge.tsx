@@ -43,28 +43,23 @@ export default function FilterBadge({ name, value }) {
   return (
     <div
       style={{
-        backgroundColor: '#F5F7FF',
         marginRight: '5px',
-        fontSize: '14px',
-        fontWeight: '400',
-        border: '1px solid #314FC0',
-        borderRadius: '10px',
-        padding: '0 4px 0 5px',
-        height: '25px',
+        fontSize: '13px',
+        fontWeight: '500',
         display: 'flex', // Flexbox 사용
         flexDirection: 'row', // 수직 정렬
         alignItems: 'center', // 수평 중앙 정렬
         justifyContent: 'center', // 수직 중앙 정렬
       }}
     >
-      <span style={{ fontWeight: 'semibold', padding: '0 3px' }}>{parseValue(name, value)}</span>
+      <span style={{ padding: '0 3px', color: '#555555' }}>{parseValue(name, value)}</span>
       <Image
         className="btn"
         src="/x.png"
-        width={14}
-        height={14}
+        width={13}
+        height={13}
         alt="down"
-        style={{ width: '14px', padding: '0' }}
+        style={{ width: '13px', padding: '0' }}
         onClick={handleClick}
       />
     </div>
