@@ -31,15 +31,23 @@ export default function Comp6({ id }: { id: string }) {
         <Image
           src={'/4.png'}
           width={1600}
-          height={985}
-          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32/17', minHeight: '600px', border: 'none' }}
+          height={850}
+          style={{
+            objectFit: 'contain',
+            width: '1600px',
+            border: 'none',
+          }}
           alt={'background2'}
         />
         <Image
           src={'/4.png'}
           width={1600}
-          height={985}
-          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32/17', minHeight: '600px', margin: '0' }}
+          height={850}
+          style={{
+            objectFit: 'contain',
+            width: '1600px',
+            border: 'none',
+          }}
           alt={'background2'}
         />
       </div>
@@ -48,8 +56,18 @@ export default function Comp6({ id }: { id: string }) {
           position: 'absolute',
           top: 0,
           left: 0,
-          width: '30%',
-          height: '1000px',
+          width: '300px',
+          height: '100%',
+          background: '#ffffff',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: '300px',
+          width: '150px',
+          height: '100%',
           background: 'linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
         }}
       />

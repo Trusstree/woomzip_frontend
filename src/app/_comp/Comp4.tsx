@@ -3,27 +3,17 @@
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function Comp4({ id, container }: { id: string; container: any }) {
+export default function Comp6({ id }: { id: string }) {
   gsap.registerPlugin(useGSAP);
-  gsap.registerPlugin(ScrollTrigger);
-
-  useGSAP(
-    () => {
-      gsap.from('#comp4BG', {
-        scale: 1.15,
-        transformOrigin: 'center center',
-        scrollTrigger: {
-          trigger: '#comp4BG',
-          start: 'top bottom',
-          scrub: 0.5,
-          pinSpacing: false,
-        },
-      });
-    },
-    { scope: container.current },
-  );
+  useGSAP(() => {
+    gsap.to('#comp7BG', {
+      ease: 'none',
+      xPercent: -100,
+      duration: 30,
+      repeat: -1,
+    });
+  });
 
   return (
     <div
@@ -33,95 +23,127 @@ export default function Comp4({ id, container }: { id: string; container: any })
         width: '100%',
         aspectRatio: '32 / 17',
         minHeight: '600px',
-        maxHeight: '1200px',
         overflow: 'hidden',
+        backgroundColor: 'black',
       }}
     >
-      <Image
-        id={'comp4BG'}
-        src={'/6.png'}
-        width={1600}
-        height={1300}
-        style={{ objectFit: 'cover', width: '115%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
-        alt={'background2'}
+      <div id="comp7BG" className="d-flex">
+        <Image
+          src={'/9.png'}
+          width={1600}
+          height={850}
+          style={{
+            objectFit: 'contain',
+            width: '1600px',
+            border: 'none',
+          }}
+          alt={'background2'}
+        />
+        <Image
+          src={'/9.png'}
+          width={1600}
+          height={850}
+          style={{
+            objectFit: 'contain',
+            width: '1600px',
+            border: 'none',
+          }}
+          alt={'background2'}
+        />
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '200px',
+          background: 'black',
+        }}
       />
       <div
         style={{
-          width: '100%',
           position: 'absolute',
-          top: '100px',
+          bottom: '200px',
           left: 0,
+          width: '100%',
+          height: '50px',
+          background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
         }}
-      >
-        <div
-          style={{
-            width: '95%',
-            margin: '0 auto',
-            fontSize: '35px',
-            fontWeight: '700',
-            color: '#ffffff',
-            wordBreak: 'keep-all',
-            textAlign: 'center',
-          }}
-        >
-          일반 주택
-        </div>
-        <div
-          style={{
-            width: '95%',
-            margin: '30px auto',
-            fontSize: '16px',
-            fontWeight: '600',
-            color: '#ffffff',
-            wordBreak: 'keep-all',
-            textAlign: 'center',
-          }}
-        >
-          11평부터 28평까지 | 5,800만 원 ~
-        </div>
-      </div>
+      />
 
       <div
+        className="row"
         style={{
-          width: '100%',
           position: 'absolute',
-          bottom: '50px',
+          bottom: '30px',
           left: 0,
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
+          width: '100%',
         }}
       >
-        <div
-          className="btn"
-          style={{
-            border: 'none',
-            borderRadius: '20px',
-            backgroundColor: '#333333',
-            color: '#ffffff',
-            fontSize: '14px',
-            fontWeight: '500',
-            margin: '5px',
-            padding: '10px 15px',
-          }}
-        >
-          상세정보 보기
+        <div className="col-md-6 col-12">
+          <div>
+            <div
+              style={{
+                width: '90%',
+                margin: '0 auto',
+                fontSize: '16px',
+                fontWeight: '600',
+                wordBreak: 'keep-all',
+                color: '#ffffff',
+              }}
+            >
+              파트너
+            </div>
+            <div
+              style={{
+                width: '90%',
+                margin: '0 auto',
+                paddingTop: '20px',
+                fontSize: 'clamp(25px, 3vw, 35px)',
+                fontWeight: '700',
+                wordBreak: 'keep-all',
+                color: '#ffffff',
+              }}
+            >
+              최고의 전문가들과 함께합니다.
+            </div>
+          </div>
         </div>
-        <div
-          className="btn"
-          style={{
-            border: 'none',
-            borderRadius: '20px',
-            backgroundColor: '#ffffff',
-            color: 'black',
-            fontSize: '14px',
-            fontWeight: '500',
-            margin: '5px',
-            padding: '10px 15px',
-          }}
-        >
-          더 많은 제품보기
+        <div className="row col-md-6 col-12">
+          <div style={{ width: '95%', marginLeft: '2.5%' }}>
+            <div
+              style={{
+                width: '95%',
+                margin: '20px auto',
+                fontSize: 'clamp(14px, 2vw, 17px)',
+                fontWeight: '500',
+                wordBreak: 'keep-all',
+                color: '#ffffff',
+                marginTop: '20px',
+              }}
+            >
+              모든 팀원이 지방에서 자랐습니다. 우리가 자라온 마을이 소멸되지 않고 이어질 수 있도록 일합니다.
+              <br />
+              결국 누구나 꿈꾸는 내 집이란 로망을 이룰 수 있도록 돕습니다.
+            </div>
+            <div
+              className="btn"
+              style={{
+                border: 'none',
+                borderRadius: '20px',
+                backgroundColor: '#ffffff',
+                color: 'black',
+                fontSize: '14px',
+                fontWeight: '500',
+                padding: '10px 100px',
+                marginLeft: '2%',
+                marginTop: '10px',
+              }}
+            >
+              더 알아보기
+            </div>
+          </div>
         </div>
       </div>
     </div>
