@@ -4,10 +4,16 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef, useState } from 'react';
+import HomeCategoryNav from './HomeCategoryNav';
 
 export default function HomeCategoryComponent({ container }: { container: any }) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
+
+  const category1 = useRef(null);
+  const category2 = useRef(null);
+  const category3 = useRef(null);
 
   useGSAP(
     () => {
@@ -50,81 +56,15 @@ export default function HomeCategoryComponent({ container }: { container: any })
   return (
     <>
       <div style={{ position: 'relative' }}>
-        <div
-          style={{
-            position: 'absolute',
-            top: '80px',
-            left: 0,
-            width: '100%',
-            height: '100%',
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center', // 좌우 중앙 정렬
-              position: 'sticky',
-              top: '100px',
-              zIndex: '1',
-              marginBottom: '100px',
-            }}
-          >
-            <div
-              style={{
-                border: 'none',
-                borderRadius: '25px',
-                backgroundColor: '#444444',
-                padding: '5px',
-                opacity: '0.9',
-              }}
-            >
-              <div
-                className="btn"
-                style={{
-                  border: 'none',
-                  borderRadius: '20px',
-                  backgroundColor: '#666666',
-                  color: '#ffffff',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  padding: '8px 15px',
-                }}
-              >
-                농촌 체류형쉼터
-              </div>
-              <div
-                className="btn"
-                style={{
-                  border: 'none',
-                  borderRadius: '20px',
-                  color: '#999999',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  padding: '8px 15px',
-                }}
-              >
-                일반 주택
-              </div>
-              <div
-                className="btn"
-                style={{
-                  border: 'none',
-                  borderRadius: '20px',
-                  color: '#999999',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  padding: '8px 15px',
-                }}
-              >
-                농막
-              </div>
-            </div>
-          </div>
-        </div>
+        <HomeCategoryNav
+          container={container}
+          category1={category1}
+          category2={category2}
+          category3={category3} />
 
         <div
           id={'category1'}
+          ref={category1}
           style={{
             position: 'relative',
             width: '100%',
@@ -231,6 +171,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
 
         <div
           id={'category2'}
+          ref={category2}
           style={{
             position: 'relative',
             width: '100%',
@@ -337,6 +278,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
 
         <div
           id={'category3'}
+          ref={category3}
           style={{
             position: 'relative',
             width: '100%',

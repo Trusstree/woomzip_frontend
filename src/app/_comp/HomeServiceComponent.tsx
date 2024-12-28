@@ -5,7 +5,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function HomeServiceComponent({ id, container }: { id: string; container: any }) {
+export default function HomeServiceComponent({ container }: { container: any }) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
 
