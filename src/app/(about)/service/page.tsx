@@ -1,13 +1,12 @@
-"use client"
+'use client';
 
 import Image from 'next/image';
 import Inquiry from '@/components/Inquiry';
 import { useRef } from 'react';
 
 export default function Service() {
-
   const inquiryRef = useRef(null);
-  const inquiryScrollIntoView = ()=> inquiryRef.current.scrollIntoView();
+  const inquiryScrollIntoView = () => inquiryRef.current.scrollIntoView();
 
   return (
     <>
@@ -167,11 +166,11 @@ export default function Service() {
                   }}
                 >
                   <Image
-                    src={'/10.jpg'}
+                    src={'/10.png'}
                     width={400}
                     height={260}
                     style={{
-                      objectFit: 'cover',
+                      objectFit: 'contain',
                       width: '100%',
                       aspectRatio: '5/4',
                       borderRadius: '10px',
@@ -350,7 +349,7 @@ export default function Service() {
                       color: '#ffffff',
                       width: '100%',
                       fontWeight: '700',
-                      margin: '20px',
+                      margin: '30px 20px',
                     }}
                   >
                     다양한 안심 서비스
@@ -432,7 +431,7 @@ export default function Service() {
                       color: '#ffffff',
                       width: '100%',
                       fontWeight: '700',
-                      margin: '20px',
+                      margin: '30px 20px',
                     }}
                   >
                     다양한 안심 서비스
@@ -534,7 +533,7 @@ export default function Service() {
             </div>
           </div>
 
-          <Inquiry/>
+          <Inquiry />
         </div>
       </div>
     </>

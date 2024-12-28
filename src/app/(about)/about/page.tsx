@@ -61,7 +61,7 @@ export default function About() {
             top: '10%',
             left: 0,
             width: '100%',
-            fontSize: '14px',
+            fontSize: '16px',
             fontWeight: '600',
             wordBreak: 'keep-all',
             textAlign: 'center',
@@ -90,35 +90,35 @@ export default function About() {
         <div
           style={{
             width: 'auto',
-            fontSize: '32px',
+            maxWidth: '90%',
+            fontSize: 'clamp(20px, 5vw, 32px)',
             wordBreak: 'keep-all',
             fontWeight: '700',
             marginTop: '100px',
+            lineHeight: 'clamp(45px, 4vw, 60px)',
           }}
         >
-          누군가에는 아지트가 필요하고,
+          "내 집을 짓는다" 라는 것은,
           <br />
-          누군가에게는 숨 쉴 공간이자,
+          다양한 의미를 가지겠지만 공통적으로 행복하기 위함일 것입니다.
           <br />
-          또 누군가에게는 치유의 공간일 것이고,
+          그런데 왜 짓는 과정은 행복하지 못할까요?
           <br />
-          어떤 이에게는 마지막 공간일 수도 있습니다.
+          움집은 꿈을 이뤄가는 과정이 제일 행복해야 한다는 생각에서 출발했습니다.
           <br />
           <br />
-          움집에서는 모든 사람들이 자신의 삶을 찾을 수 있길 바랍니다.
-          <br />
-          그리고 그 여정이 행복하길 바랍니다.
+          움집은 10년은 늙는다는 건축과정을 행복하게 만드는 서비스입니다.
         </div>
       </div>
 
       <div
         style={{
           width: '100%',
-          aspectRatio: '32 / 17',
-          minHeight: '600px',
-          maxHeight: '1200px',
+          padding: '100px 0',
           overflow: 'hidden',
           position: 'relative',
+          backgroundColor: 'black',
+          minHeight: '800px',
         }}
       >
         <Image
@@ -128,78 +128,212 @@ export default function About() {
           style={{
             objectFit: 'cover',
             width: '100%',
-            aspectRatio: '32 / 17',
-            minHeight: '600px',
-            maxHeight: '1200px',
+            height: '100%',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            zIndex: '0',
           }}
           alt={'yard'}
         />
         <div
           style={{
             position: 'absolute',
-            top: '30%',
+            bottom: 0,
             left: 0,
             width: '100%',
-            fontSize: '14px',
-            fontWeight: '600',
-            wordBreak: 'keep-all',
-            textAlign: 'center',
-            color: '#ffffff',
+            height: '90%',
+            background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))',
+            zIndex: '1',
+            border: 'none',
           }}
-        >
-          Our Vision
-          <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}>
-            움집은 누구나 쉽게 자연 속 삶을
-            <br />
-            선택할 수 있도록 돕습니다.
-          </div>
-        </div>
-      </div>
-
-      {/* <div style={{ width: '100%', padding: '130px 0' }}>
+        ></div>
         <div
           style={{
             width: '90%',
-            maxWidth: '1300px',
+            maxWidth: '1200px',
             margin: '0 auto',
+            position: 'relative',
+            zIndex: '2',
           }}
         >
           <div
             style={{
               width: '100%',
-              fontSize: '4vw',
+              fontSize: '16px',
               fontWeight: '600',
+              wordBreak: 'keep-all',
+              color: '#ffffff',
             }}
           >
-            TEAM
+            History
+            <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}>
+              움집은 23년부터 시작된 모듈러 주택 전문 스타트업입니다.
+            </div>
           </div>
-          <div
-            style={{
-              fontSize: '25px',
-              fontWeight: '500',
-              marginBottom: '30px',
-            }}
-          >
-            믿을 수 있는 파트너
-          </div>
-          <div className="row g-1">
-            {WorkerList.map((e, i) => (
-              <div key={i} className="col-md-6 col-12 row">
-                <WorkerCard
-                  name={e.name}
-                  dept={e.dept}
-                  position={e.position}
-                  src={e.src}
-                  introduce={e.introduce}
-                  email={e.email}
-                />
+          <div className="row" style={{ color: '#ffffff', marginTop: '100px' }}>
+            <div className="col-md-6 col-12" style={{ fontSize: '15px', wordBreak: 'keep-all' }}>
+              <div style={{ fontSize: '20px', margin: '50px 0 20px 0' }}>2023</div>
+              <div>
+                <div style={{ padding: '5px' }}>5月 서울시 주최 숭실대학교 주관, Pre-스타트업 창업경진대회 우수상</div>
+                <div style={{ padding: '5px' }}>6月 서울시 캠퍼스타운, 숭실대학교 챌린지스테이션 입주</div>
+                <div style={{ padding: '5px' }}>9月 하나금융그룹 주최 언더독스 주관, 하나소셜유니버시티 수료</div>
+                <div style={{ padding: '5px' }}>
+                  11月 국토교통부 주최 한국건설기술연구원 주관, 스마트건설 창업아이디어 공모전 장려상
+                </div>
+                <div style={{ padding: '5px' }}>12月 한국건설기술연구원 내 스마트건설지원센터 입주</div>
               </div>
-            ))}
+            </div>
+            <div className="col-md-6 col-12" style={{ fontSize: '15px', wordBreak: 'keep-all' }}>
+              <div style={{ fontSize: '20px', margin: '50px 0 20px 0' }}>2024</div>
+              <div>
+                <div style={{ padding: '5px' }}>1月 한국건설기술연구원 패밀리사 선정(애로기술해결기업)</div>
+                <div style={{ padding: '5px' }}>
+                  3月 모듈러 기반 단독주택 전문 프롭테크 플랫폼 '트러스' 베타서비스 출시
+                </div>
+                <div style={{ padding: '5px' }}>5月 주식회사 트러스트리 법인 설립</div>
+                <div style={{ padding: '5px' }}>7月 학생 창업유망팀 300 성장트랙 선정</div>
+                <div style={{ padding: '5px' }}>9月 '움집(woomzip)' 정식서비스 출시</div>
+                <div style={{ padding: '5px' }}>11月 스마트건설 EXPO 참가</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
       <div
+        style={{
+          width: '100%',
+          padding: '0 0 100px 0',
+        }}
+      >
+        <div
+          style={{
+            width: '90%',
+            maxWidth: '1200px',
+            margin: '0 auto',
+          }}
+        >
+          <div className="row" style={{ marginTop: '100px' }}>
+            <div className="col-md-6 col-12 order-md-2 order-1">
+              <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
+                <Image
+                  src={'/13.jpg'}
+                  width={600}
+                  height={600}
+                  style={{ objectFit: 'cover', width: '100%', aspectRatio: '1/1', borderRadius: '13px' }}
+                  alt={'background2'}
+                />
+              </div>
+            </div>
+            <div className="col-md-6 col-12 order-md-1 order-2">
+              <div style={{ width: '100%', padding: '15px' }}>
+                <div
+                  style={{
+                    width: '100%',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    wordBreak: 'keep-all',
+                    color: '#555555',
+                  }}
+                >
+                  움집은 어떤 팀인가요?
+                  <div
+                    style={{
+                      fontSize: '20px',
+                      fontWeight: '500',
+                      marginTop: '30px',
+                      color: '#111111',
+                    }}
+                  >
+                    움집은 지속가능한 삶을 만들기 위해 최선을 다합니다.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="row" style={{ marginTop: '100px' }}>
+            <div className="col-md-6 col-12 order-md-1 order-1">
+              <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
+                <Image
+                  src={'/14.jpeg'}
+                  width={600}
+                  height={600}
+                  style={{ objectFit: 'cover', width: '100%', aspectRatio: '1/1', borderRadius: '13px' }}
+                  alt={'background2'}
+                />
+              </div>
+            </div>
+            <div className="col-md-6 col-12 order-md-2 order-2">
+              <div style={{ width: '100%', padding: '15px' }}>
+                <div
+                  style={{
+                    width: '100%',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    wordBreak: 'keep-all',
+                    color: '#555555',
+                  }}
+                >
+                  왜 모듈러 주택 시장인가요?
+                  <div
+                    style={{
+                      fontSize: '20px',
+                      fontWeight: '500',
+                      marginTop: '30px',
+                      color: '#111111',
+                    }}
+                  >
+                    움집은 지속가능한 삶을 만들기 위해 최선을 다합니다.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="row" style={{ marginTop: '100px' }}>
+            <div className="col-md-6 col-12 order-md-2 order-1">
+              <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
+                <Image
+                  src={'/background2.webp'}
+                  width={600}
+                  height={600}
+                  style={{ objectFit: 'cover', width: '100%', aspectRatio: '1/1', borderRadius: '13px' }}
+                  alt={'background2'}
+                />
+              </div>
+            </div>
+            <div className="col-md-6 col-12 order-md-1 order-2">
+              <div style={{ width: '100%', padding: '15px' }}>
+                <div
+                  style={{
+                    width: '100%',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    wordBreak: 'keep-all',
+                    color: '#555555',
+                  }}
+                >
+                  움집 팀이 만들고 싶은 세상
+                  <div
+                    style={{
+                      fontSize: '20px',
+                      fontWeight: '500',
+                      marginTop: '30px',
+                      color: '#111111',
+                    }}
+                  >
+                    움집은 지속가능한 삶을 만들기 위해 최선을 다합니다.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div
         style={{
           width: '100%',
           padding: '130px 0',
@@ -216,7 +350,7 @@ export default function About() {
           <div
             style={{
               width: '100%',
-              fontSize: '14px',
+              fontSize: '16px',
               fontWeight: '600',
               wordBreak: 'keep-all',
             }}
@@ -247,7 +381,7 @@ export default function About() {
             </HistoryCard>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div style={{ position: 'relative' }}>
         <Image
@@ -268,7 +402,6 @@ export default function About() {
             background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))',
           }}
         ></div>
-
         <div
           style={{
             padding: '40px 0',
@@ -286,7 +419,7 @@ export default function About() {
           <div
             style={{
               width: '100%',
-              fontSize: '14px',
+              fontSize: '16px',
               fontWeight: '600',
               wordBreak: 'keep-all',
               textAlign: 'center',
@@ -301,117 +434,6 @@ export default function About() {
           <Inquiry />
         </div>
       </div>
-
-      {/* <div style={{ width: '100%', padding: '130px 0' }}>
-        <div
-          style={{
-            width: '90%',
-            maxWidth: '1300px',
-            margin: '0 auto',
-            marginBottom: '30px',
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              fontSize: '4vw',
-              fontWeight: '600',
-            }}
-          >
-            PARTNER
-          </div>
-          <div
-            style={{
-              fontSize: '25px',
-              fontWeight: '500',
-            }}
-          >
-            다양한 기관, 기업들과 함께 합니다.
-          </div>
-        </div>
-
-        <div
-          className={`row flex-nowrap overflow-auto`}
-          style={{
-            width: '103%',
-            marginLeft: '-3%',
-            padding: '0',
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-          }}
-        >
-          {PartnerList.map((e, i) => (
-            <PartnerCard key={i} src={e.img} title={e.title} />
-          ))}
-        </div>
-      </div>
-
-      <div
-        style={{
-          width: '100%',
-          backgroundColor: '#FAFBFC',
-          padding: '130px 0',
-        }}
-      >
-        <div
-          style={{
-            width: '90%',
-            maxWidth: '1300px',
-            margin: '0 auto',
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              fontSize: '4vw',
-              fontWeight: '600',
-            }}
-          >
-            CONTACK
-          </div>
-          <div className="row g-1">
-            <div className="col-md-6 col-12">
-              <div className="col-md-8 col-12">
-                <div
-                  style={{
-                    fontSize: '25px',
-                    fontWeight: '500',
-                  }}
-                >
-                  언제, 어디서든 연락을 기다립니다.
-                </div>
-                <div
-                  style={{
-                    padding: '50px 0',
-                    fontSize: '16px',
-                    fontWeight: '400',
-                    wordBreak: 'keep-all',
-                  }}
-                >
-                  전화번호 : 0507-1369-6158
-                  <br />
-                  이메일 : truss369@naver.com
-                  <br />
-                  주소 : 서울특별시 동작구 상도로 55길 8, 304호(상도동, 숭실대학교 챌린지스테이션)
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 col-12 row">
-              <Image
-                width={500}
-                height={400}
-                alt={'map'}
-                src="https://trussbucketdev.s3.ap-northeast-2.amazonaws.com/icons/map.png"
-                style={{
-                  width: '100%',
-                  objectFit: 'cover',
-                  borderRadius: '10px',
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }
