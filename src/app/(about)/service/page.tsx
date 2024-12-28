@@ -104,7 +104,7 @@ export default function Service() {
             textAlign: 'center',
           }}
         >
-          움집에서는 누구나 쉽고 빠르게 자연 속 삶을 시작할 수 있습니다.
+          어려움이 아닌, 기대만 가득한 여정
         </div>
         <div
           style={{
@@ -131,7 +131,7 @@ export default function Service() {
                 <div
                   style={{ fontSize: '20px', width: '100%', textAlign: 'center', fontWeight: '700', margin: '20px 0' }}
                 >
-                  다양한 안심 서비스
+                  나를 위한 다양한 제품들
                 </div>
                 <div
                   style={{
@@ -190,7 +190,7 @@ export default function Service() {
                 <div
                   style={{ fontSize: '20px', width: '100%', textAlign: 'center', fontWeight: '700', margin: '20px 0' }}
                 >
-                  다양한 안심 서비스
+                  문의와 계약도 어렵지 않게
                 </div>
                 <div
                   style={{
@@ -249,7 +249,7 @@ export default function Service() {
                 <div
                   style={{ fontSize: '20px', width: '100%', textAlign: 'center', fontWeight: '700', margin: '20px 0' }}
                 >
-                  다양한 안심 서비스
+                  지불과 AS까지 안전하게
                 </div>
                 <div
                   style={{

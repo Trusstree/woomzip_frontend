@@ -56,11 +56,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
   return (
     <>
       <div style={{ position: 'relative' }}>
-        <HomeCategoryNav
-          container={container}
-          category1={category1}
-          category2={category2}
-          category3={category3} />
+        <HomeCategoryNav container={container} category1={category1} category2={category2} category3={category3} />
 
         <div
           id={'category1'}
@@ -290,7 +286,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
         >
           <Image
             id={'category3BG'}
-            src={'/6.png'}
+            src={'/7.jpeg'}
             width={1600}
             height={1300}
             style={{
