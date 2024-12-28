@@ -19,7 +19,7 @@ export default function CompanyDataList({ pid, houseData, userData }) {
       <div className="row" style={{ marginBottom: '15px', fontSize: '15px' }}>
         <div className="col-md-2 col-12">
           <Image
-            src={userData?.['user_img_url'] || 'blur_image.png'}
+            src={userData?.['user_img_url'] || '/blur_image.png'}
             alt={`profile`}
             width={200}
             height={200}

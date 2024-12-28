@@ -1,7 +1,14 @@
+"use client"
+
 import Image from 'next/image';
 import Inquiry from '@/components/Inquiry';
+import { useRef } from 'react';
 
 export default function Service() {
+
+  const inquiryRef = useRef(null);
+  const inquiryScrollIntoView = ()=> inquiryRef.current.scrollIntoView();
+
   return (
     <>
       <div
@@ -58,6 +65,7 @@ export default function Service() {
               padding: '10px 70px',
               margin: '0 auto',
             }}
+            onClick={inquiryScrollIntoView}
           >
             문의하기
           </div>
@@ -428,7 +436,7 @@ export default function Service() {
         </div>
       </div>
 
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative' }} ref={inquiryRef}>
         <Image
           src={'/background2.webp'}
           width={1600}
@@ -477,7 +485,7 @@ export default function Service() {
             </div>
           </div>
 
-          <Inquiry />
+          <Inquiry/>
         </div>
       </div>
     </>

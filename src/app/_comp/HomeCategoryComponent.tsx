@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
 import HomeCategoryNav from './HomeCategoryNav';
+import Link from 'next/link';
 
 export default function HomeCategoryComponent({ container }: { container: any }) {
   gsap.registerPlugin(useGSAP);
@@ -132,7 +133,8 @@ export default function HomeCategoryComponent({ container }: { container: any })
               justifyContent: 'center',
             }}
           >
-            <div
+            <Link
+              href={"/house/110"}
               className="btn"
               style={{
                 border: 'none',
@@ -146,8 +148,9 @@ export default function HomeCategoryComponent({ container }: { container: any })
               }}
             >
               상세정보 보기
-            </div>
-            <div
+            </Link>
+            <Link
+              href={"/house?tag=체류형쉼터"}
               className="btn"
               style={{
                 border: 'none',
@@ -161,7 +164,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               }}
             >
               더 많은 제품보기
-            </div>
+            </Link>
           </div>
         </div>
 
@@ -239,7 +242,8 @@ export default function HomeCategoryComponent({ container }: { container: any })
               justifyContent: 'center',
             }}
           >
-            <div
+            <Link
+              href={"/house/58"}
               className="btn"
               style={{
                 border: 'none',
@@ -253,8 +257,9 @@ export default function HomeCategoryComponent({ container }: { container: any })
               }}
             >
               상세정보 보기
-            </div>
-            <div
+            </Link>
+            <Link
+              href={"/house?tag=일반주택"}
               className="btn"
               style={{
                 border: 'none',
@@ -268,7 +273,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               }}
             >
               더 많은 제품보기
-            </div>
+            </Link>
           </div>
         </div>
 
@@ -346,7 +351,8 @@ export default function HomeCategoryComponent({ container }: { container: any })
               justifyContent: 'center',
             }}
           >
-            <div
+            <Link
+              href={"/house/96"}
               className="btn"
               style={{
                 border: 'none',
@@ -360,8 +366,9 @@ export default function HomeCategoryComponent({ container }: { container: any })
               }}
             >
               상세정보 보기
-            </div>
-            <div
+            </Link>
+            <Link
+              href={"/house?tag=농막"}
               className="btn"
               style={{
                 border: 'none',
@@ -375,7 +382,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               }}
             >
               더 많은 제품보기
-            </div>
+            </Link>
           </div>
         </div>
       </div>

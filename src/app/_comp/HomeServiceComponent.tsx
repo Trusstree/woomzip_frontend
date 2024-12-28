@@ -4,6 +4,7 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 export default function HomeServiceComponent({ container }: { container: any }) {
   gsap.registerPlugin(useGSAP);
@@ -97,7 +98,8 @@ export default function HomeServiceComponent({ container }: { container: any }) 
           모든 서비스를 제공합니다.
         </div>
         <div style={{ width: '100%', display: 'flex', marginTop: '50px' }}>
-          <div
+          <Link
+            href={"/service"}
             className="btn"
             style={{
               border: 'none',
@@ -111,7 +113,7 @@ export default function HomeServiceComponent({ container }: { container: any }) 
             }}
           >
             더 알아보기
-          </div>
+          </Link>
         </div>
       </div>
     </div>

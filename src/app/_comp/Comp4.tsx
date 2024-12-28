@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import Link from 'next/link';
 
 export default function Comp4({ id }: { id: string }) {
   gsap.registerPlugin(useGSAP);
@@ -127,7 +128,8 @@ export default function Comp4({ id }: { id: string }) {
               <br />
               결국 누구나 꿈꾸는 내 집이란 로망을 이룰 수 있도록 돕습니다.
             </div>
-            <div
+            <Link
+              href={"/about"}
               className="btn"
               style={{
                 border: 'none',
@@ -142,7 +144,7 @@ export default function Comp4({ id }: { id: string }) {
               }}
             >
               더 알아보기
-            </div>
+            </Link>
           </div>
         </div>
       </div>

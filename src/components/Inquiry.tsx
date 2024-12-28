@@ -4,7 +4,7 @@ import { postInquiryHouse, postInquiryMain } from '@/actions/apis/inquiryAPI';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { useState } from 'react';
 
-export default function Inquiry({ id }: { id?: string | number }) {
+export default function Inquiry({ hid }: { hid?: string | number }) {
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
   const [inquiry, setInquiry] = useState('');
@@ -12,12 +12,12 @@ export default function Inquiry({ id }: { id?: string | number }) {
   const submit = async () => {
     let [data, error] = [undefined, undefined];
 
-    if (id) {
+    if (hid) {
       const requestData = {
         name: name,
         contact: contact,
         inquiry: inquiry,
-        houseId: id,
+        houseId: hid,
       };
       [data, error] = await postInquiryHouse(requestData);
     } else {

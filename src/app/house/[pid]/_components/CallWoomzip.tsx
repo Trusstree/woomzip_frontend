@@ -46,7 +46,7 @@ export default function CallWoomzip({ pid, houseData }) {
         <div style={{ fontSize: '32px', fontWeight: '700', textAlign: 'center', padding: '20px 0 30px 0' }}>
           무엇이든 물어보세요.
         </div>
-        <Inquiry id={pid} />
+        <Inquiry hid={pid} />
       </div>
     </div>
   );
