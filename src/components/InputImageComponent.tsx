@@ -68,7 +68,18 @@ export default function InputImageComponent({
     <div>
       <div>
         <label htmlFor={`images_${name}`}>
-          <div className="btn btn-lg" style={{ backgroundColor: '#314FC0', color: 'white' }}>
+          <div
+            className="btn btn-lg"
+            style={{
+              backgroundColor: 'black',
+              color: '#ffffff',
+              width: '100%',
+              borderRadius: '25px',
+              fontSize: '15px',
+              height: '36px',
+              padding: '5px 12px',
+            }}
+          >
             클릭하여 추가
           </div>
         </label>

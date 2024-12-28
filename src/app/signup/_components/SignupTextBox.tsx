@@ -21,12 +21,13 @@ export default function SignupTextBox({
 }) {
   return (
     <div className={`d-flex mb-3`}>
-      <label htmlFor={`signup_${name}`} className="col-2" style={{ fontSize: '18px' }}>
+      <label htmlFor={`signup_${name}`} className="col-2" style={{ fontSize: '20px', fontWeight: '700' }}>
         {title}
       </label>
       <div className={checked ? 'col-md-7 col-6' : 'col-10'}>
         <input
           className="w-100"
+          style={{ borderRadius: '25px', padding: '5px 10px', border: '1px solid black' }}
           type={type || 'text'}
           id={`signup_${name}`}
           onChange={(e) => {
@@ -41,14 +42,15 @@ export default function SignupTextBox({
       {checked && (
         <div className="col-4 col-md-3 d-flex justify-content-center align-items-top">
           <div
-            className={`w-100 btn ${isChecked ? 'btn-success' : 'btn-secondary'}`}
+            className={`btn ${isChecked ? 'btn-success' : 'btn-secondary'}`}
             style={{
-              paddingTop: '3px',
-              maxWidth: '150px',
-              height: '30px',
+              borderRadius: '25px',
+              padding: '5px 20px',
               wordBreak: 'break-word',
               whiteSpace: 'balance',
-              fontSize: '14px',
+              height: '36px',
+              backgroundColor: 'black',
+              color: '#ffffff',
             }}
             onClick={checkedFunction}
           >

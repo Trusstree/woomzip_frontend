@@ -1,7 +1,7 @@
 export default function SignupGenderRadio({ data, setData }) {
   return (
     <div className="d-flex mb-3">
-      <div className="col-2" style={{ fontSize: '18px' }}>
+      <div className="col-2" style={{ fontSize: '20px', fontWeight: '700' }}>
         성별
       </div>
       <div className={`form-check mx-2`}>
