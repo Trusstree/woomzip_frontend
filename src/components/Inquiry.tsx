@@ -2,7 +2,8 @@
 
 import { postInquiryHouse, postInquiryMain } from '@/actions/apis/inquiryAPI';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
-import { useState } from 'react';
+import { isPhoneNumber } from '@/lib/validator';
+import { useEffect, useState } from 'react';
 
 export default function Inquiry({ hid }: { hid?: string | number }) {
   const [name, setName] = useState('');
@@ -11,6 +12,21 @@ export default function Inquiry({ hid }: { hid?: string | number }) {
 
   const submit = async () => {
     let [data, error] = [undefined, undefined];
+
+    if(name.length==0){
+      alertError("이름이 필요해요.", "이름을 적어주세요");
+      return;
+    }
+
+    if(contact.length==0){
+      alertError("연락처가 필요해요", "연락처를 적어주세요.");
+      return;
+    }
+
+    if(inquiry.length==0){
+      alertError("문의할 내용을 적어주세요.", "어떤 문의인지 궁금해요.");
+      return;
+    }
 
     if (hid) {
       const requestData = {

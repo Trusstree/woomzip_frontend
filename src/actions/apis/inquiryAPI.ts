@@ -8,7 +8,7 @@ export const postInquiryMain = async (inquiry: any) => {
 
   try {
     const result = await publicApi.post(`/planning/main`, inquiry);
-    postDiscordWebhook();
+    postDiscordWebhook(inquiry);
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
@@ -23,7 +23,7 @@ export const postInquiryHouse = async (inquiry: any) => {
 
   try {
     const result = await publicApi.post(`/planning/house`, inquiry);
-    postDiscordWebhook();
+    postDiscordWebhook(inquiry);
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
