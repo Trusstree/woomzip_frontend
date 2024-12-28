@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { cardCountText } from '@/lib/stringUtil';
 import Image from 'next/image';
+import styles from '@/app/house/_styles/houseCard.module.css';
 
 type PostCardProps = {
   data: DataProps;
@@ -20,13 +21,13 @@ type DataProps = {
   likeCount: number;
 };
 
-const style = {
-  일반: { backgroundColor: '#CCD6FF', color: '#314FC0', height: '260px' },
-  공지: { backgroundColor: '#FFCCCC', color: '#C03142', height: '260px' },
-  질문: { backgroundColor: '#E2FFCC', color: '#8AC031', height: '260px' },
-  칼럼: { backgroundColor: '#ECECF3', color: '#686875', height: '260px' },
-  집들이: { backgroundColor: '#FFEAC7', color: '#D5A71E', height: '260px' },
-};
+// const styleColor = {
+//   일반: { backgroundColor: '#CCD6FF', color: '#314FC0', height: '260px' },
+//   공지: { backgroundColor: '#FFCCCC', color: '#C03142', height: '260px' },
+//   질문: { backgroundColor: '#E2FFCC', color: '#8AC031', height: '260px' },
+//   칼럼: { backgroundColor: '#ECECF3', color: '#686875', height: '260px' },
+//   집들이: { backgroundColor: '#FFEAC7', color: '#D5A71E', height: '260px' },
+// };
 
 export default function PostCard({ data, className }: PostCardProps) {
   // const regex = /<([^>]+)>/gi;
@@ -46,15 +47,9 @@ export default function PostCard({ data, className }: PostCardProps) {
           marginBottom: '50px',
         }}
       >
-        <Link href={{ pathname: `/community/${data['post_id']}` }}>
-          <div
-            style={{
-              position: 'relative',
-              width: '100%',
-              aspectRatio: '16 / 9',
-              borderRadius: '5px',
-              overflow: 'hidden',
-            }}
+        <Link
+          href={{ pathname: `/community/${data['post_id']}` }}
+          className={`${styles.img_container} ${styles.img_hover}`}
           >
             <Image
               src={imgSrcArr || '/111.webp'}
@@ -63,7 +58,6 @@ export default function PostCard({ data, className }: PostCardProps) {
               fill
               sizes="(max-width: 767px) 100vw, (max-width: 991px) 40vw, 20vw"
             />
-          </div>
         </Link>
         <div>
           <div style={{ fontSize: '18px', fontWeight: '600', marginTop: '15px' }}>{data.title}</div>

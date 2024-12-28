@@ -10,7 +10,7 @@ export default function HouseCard({ houseData }) {
     <div className="col-md-4 col-sm-6 col-12">
       <div className="card" style={{ width: '100%', border: 'none', marginBottom: '60px' }}>
         <Link
-          className={`container ${styles.container} ${styles.img_hover}`}
+          className={`container ${styles.img_container} ${styles.img_hover}`}
           href={`/house/${houseId}`}
         >
           <Image src={imgUrl} alt={houseName + ' image'} fill  />

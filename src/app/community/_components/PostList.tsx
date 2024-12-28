@@ -1,13 +1,8 @@
 'use client';
 
-import PostCard from '@/components/posts/PostCard';
-import PostCardPlaceHolder from '@/components/posts/PostCardPlaceholder';
+import PostCard from '@/app/community/_components/PostCard';
+import PostCardPlaceHolder from '@/app/community/_components/PostCardPlaceholder';
 import Pagination from '@/components/Pagination';
-
-type PostListProps = {
-  numShowItems: number;
-  numShowPages?: number;
-};
 
 export default function PostList({ postData, postCount, numShowItems, numShowPages }) {
   return (
