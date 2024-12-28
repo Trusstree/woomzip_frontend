@@ -71,7 +71,7 @@ export default function HomeServiceComponent({ container }: { container: any }) 
           style={{
             width: '95%',
             margin: '20px auto',
-            fontSize: '35px',
+            fontSize: 'clamp(25px, 3vw, 35px)',
             fontWeight: '700',
             color: '#ffffff',
             wordBreak: 'keep-all',
@@ -84,7 +84,7 @@ export default function HomeServiceComponent({ container }: { container: any }) 
           style={{
             width: '95%',
             margin: '0 auto',
-            fontSize: '17px',
+            fontSize: 'clamp(14px, 2vw, 17px)',
             fontWeight: '500',
             color: '#ffffff',
             wordBreak: 'keep-all',
@@ -99,7 +99,7 @@ export default function HomeServiceComponent({ container }: { container: any }) 
         </div>
         <div style={{ width: '100%', display: 'flex', marginTop: '50px' }}>
           <Link
-            href={"/service"}
+            href={'/service'}
             className="btn"
             style={{
               border: 'none',

@@ -97,7 +97,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               style={{
                 width: '95%',
                 margin: '0 auto',
-                fontSize: '35px',
+                fontSize: 'clamp(25px, 3vw, 35px)',
                 fontWeight: '700',
                 color: 'black',
                 wordBreak: 'keep-all',
@@ -134,7 +134,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
             }}
           >
             <Link
-              href={"/house/110"}
+              href={'/house/110'}
               className="btn"
               style={{
                 border: 'none',
@@ -150,7 +150,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               상세정보 보기
             </Link>
             <Link
-              href={"/house?tag=체류형쉼터"}
+              href={'/house?tag=체류형쉼터'}
               className="btn"
               style={{
                 border: 'none',
@@ -206,7 +206,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               style={{
                 width: '95%',
                 margin: '0 auto',
-                fontSize: '35px',
+                fontSize: 'clamp(25px, 3vw, 35px)',
                 fontWeight: '700',
                 color: '#ffffff',
                 wordBreak: 'keep-all',
@@ -243,7 +243,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
             }}
           >
             <Link
-              href={"/house/58"}
+              href={'/house/58'}
               className="btn"
               style={{
                 border: 'none',
@@ -259,7 +259,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               상세정보 보기
             </Link>
             <Link
-              href={"/house?tag=일반주택"}
+              href={'/house?tag=일반주택'}
               className="btn"
               style={{
                 border: 'none',
@@ -315,7 +315,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               style={{
                 width: '95%',
                 margin: '0 auto',
-                fontSize: '35px',
+                fontSize: 'clamp(25px, 3vw, 35px)',
                 fontWeight: '700',
                 color: 'black',
                 wordBreak: 'keep-all',
@@ -352,7 +352,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
             }}
           >
             <Link
-              href={"/house/96"}
+              href={'/house/96'}
               className="btn"
               style={{
                 border: 'none',
@@ -368,7 +368,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               상세정보 보기
             </Link>
             <Link
-              href={"/house?tag=농막"}
+              href={'/house?tag=농막'}
               className="btn"
               style={{
                 border: 'none',

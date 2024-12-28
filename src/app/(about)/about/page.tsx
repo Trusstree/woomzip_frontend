@@ -68,8 +68,10 @@ export default function About() {
           }}
         >
           ABOUT US
-          <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}>
-            <span style={{ fontSize: '34px' }}>움집</span>은 누구나 쉽게 자연 속 삶을
+          <div
+            style={{ fontSize: 'clamp(20px, 5vw, 32px)', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}
+          >
+            움집은 누구나 쉽게 자연 속 삶을
             <br />
             선택할 수 있도록 돕습니다.
           </div>
@@ -167,11 +169,18 @@ export default function About() {
             }}
           >
             History
-            <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}>
+            <div
+              style={{
+                fontSize: 'clamp(20px, 5vw, 32px)',
+                wordBreak: 'keep-all',
+                fontWeight: '700',
+                marginTop: '30px',
+              }}
+            >
               움집은 23년부터 시작된 모듈러 주택 전문 스타트업입니다.
             </div>
           </div>
-          <div className="row" style={{ color: '#ffffff', marginTop: '100px' }}>
+          <div className="row" style={{ color: '#ffffff', marginTop: '50px' }}>
             <div className="col-md-6 col-12" style={{ fontSize: '15px', wordBreak: 'keep-all' }}>
               <div style={{ fontSize: '20px', margin: '50px 0 20px 0' }}>2023</div>
               <div>
@@ -235,6 +244,7 @@ export default function About() {
                     fontWeight: '600',
                     wordBreak: 'keep-all',
                     color: '#555555',
+                    marginTop: '20px',
                   }}
                 >
                   움집은 어떤 팀인가요?
@@ -288,6 +298,7 @@ export default function About() {
                     fontWeight: '600',
                     wordBreak: 'keep-all',
                     color: '#555555',
+                    marginTop: '20px',
                   }}
                 >
                   왜 모듈러 주택 시장인가요?
@@ -326,7 +337,7 @@ export default function About() {
             <div className="col-md-6 col-12 order-md-2 order-1">
               <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
                 <Image
-                  src={'/background2.webp'}
+                  src={'/15.jpg'}
                   width={600}
                   height={600}
                   style={{ objectFit: 'cover', width: '100%', aspectRatio: '1/1', borderRadius: '13px' }}
@@ -343,6 +354,7 @@ export default function About() {
                     fontWeight: '600',
                     wordBreak: 'keep-all',
                     color: '#555555',
+                    marginTop: '20px',
                   }}
                 >
                   움집 팀이 만들고 싶은 세상

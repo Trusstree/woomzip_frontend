@@ -39,7 +39,7 @@ export default function Service() {
             top: '10%',
             left: 0,
             width: '100%',
-            fontSize: '15px',
+            fontSize: '16px',
             fontWeight: '600',
             wordBreak: 'keep-all',
             textAlign: 'center',
@@ -47,7 +47,9 @@ export default function Service() {
           }}
         >
           움집 서비스 소개
-          <div style={{ fontSize: '32px', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}>
+          <div
+            style={{ fontSize: 'clamp(20px, 5vw, 32px)', wordBreak: 'keep-all', fontWeight: '700', marginTop: '30px' }}
+          >
             계획부터 입주까지 움집이 당신과 함께합니다.
           </div>
         </div>
@@ -85,10 +87,12 @@ export default function Service() {
         <div
           style={{
             width: 'auto',
-            fontSize: '32px',
+            fontSize: 'clamp(20px, 5vw, 32px)',
             wordBreak: 'keep-all',
             fontWeight: '700',
             marginTop: '100px',
+            maxWidth: '90%',
+            textAlign: 'center',
           }}
         >
           움집에서는 누구나 쉽고 빠르게 자연 속 삶을 시작할 수 있습니다.
@@ -105,7 +109,7 @@ export default function Service() {
         <div
           style={{
             width: '100%',
-            fontSize: '32px',
+            fontSize: 'clamp(20px, 5vw, 32px)',
             wordBreak: 'keep-all',
             fontWeight: '700',
             textAlign: 'center',
@@ -150,11 +154,10 @@ export default function Service() {
                     marginBottom: '40px',
                   }}
                 >
-                  안심 계약부터, 안심 지불을 통해 내 재산을 지키세요!
+                  다양한 제품들은 한 눈에 비교해보세요!
                   <br />
-                  이제는 걱정할 필요 없습니다.
-                  <br />
-                  세분화된 지불 과정과 제 3자 계약을 통해 더 이상의 불안한 상황은 끝! 내 집짓기는 즐거워야죠!
+                  전국에서 가장 많은 제품들을 모아두었어요.
+                  <br />더 이상 발품 팔지 말고 움집에서 내 조건에 맞는 제품을 찾고 비교해보세요!
                 </div>
                 <div
                   style={{
@@ -209,11 +212,8 @@ export default function Service() {
                     marginBottom: '40px',
                   }}
                 >
-                  안심 계약부터, 안심 지불을 통해 내 재산을 지키세요!
-                  <br />
-                  이제는 걱정할 필요 없습니다.
-                  <br />
-                  세분화된 지불 과정과 제 3자 계약을 통해 더 이상의 불안한 상황은 끝! 내 집짓기는 즐거워야죠!
+                  내 조건에 따라 쉽게 문의하고, 가장 빠르게 견적을 받아보세요.
+                  <br />더 이상 불안해하지 말고 건축주 우선의 움집 안심표준계약을 통해 모든 권리를 보장 받으세요!
                 </div>
                 <div
                   style={{
@@ -311,7 +311,7 @@ export default function Service() {
         <div
           style={{
             width: '100%',
-            fontSize: '32px',
+            fontSize: 'clamp(20px, 5vw, 32px)',
             wordBreak: 'keep-all',
             fontWeight: '700',
             textAlign: 'center',
@@ -521,7 +521,7 @@ export default function Service() {
           <div
             style={{
               width: '100%',
-              fontSize: '14px',
+              fontSize: '16px',
               fontWeight: '600',
               wordBreak: 'keep-all',
               textAlign: 'center',
