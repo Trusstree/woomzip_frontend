@@ -30,145 +30,80 @@ export default async function page({ params }: { params: PageParams }) {
       className="row"
       style={{
         width: '90%',
-        maxWidth: '1100px',
+        maxWidth: '800px',
         margin: '0 auto',
       }}
     >
-      {/* <div
+      <div
         style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          padding: "40px 0",
+          backgroundColor: '#ffffff',
+          width: '100%',
         }}
       >
-        <button
-          style={{
-            padding: "3px 10px",
-            marginRight: "12px",
-            borderRadius: "4px",
-            border: "1px solid #EDF0F4",
-            backgroundColor: "#EDF0F4",
-            color: "#ADB3BF",
-            fontWeight: 600,
-          }}
-        >
-          이전글
-        </button>
-        <button
-          style={{
-            padding: "3px 10px",
-            marginRight: "12px",
-            borderRadius: "4px",
-            border: "1px solid #EDF0F4",
-            backgroundColor: "#EDF0F4",
-            color: "#ADB3BF",
-            fontWeight: 600,
-          }}
-        >
-          다음글
-        </button>
-        <button
-          style={{
-            padding: "3px 10px",
-            borderRadius: "4px",
-            border: "1px solid #EDF0F4",
-            backgroundColor: "#EDF0F4",
-            color: "#ADB3BF",
-            fontWeight: 600,
-          }}
-        >
-          목록
-        </button>
-      </div> */}
-      <div className="col-md-8 col-12">
         <div
           style={{
-            backgroundColor: '#ffffff',
-            width: '100%',
+            backgroundColor: style[postData.category].backgroundColor,
+            borderColor: style[postData.category].backgroundColor,
+            width: '60px',
+            fontSize: '16px',
+            color: style[postData.category].color,
+            borderRadius: '15px',
+            padding: '3px 7px',
+            textAlign: 'center',
+            marginTop: '30px',
           }}
         >
+          {postData['category']}
+        </div>
+
+        <h3 style={{ paddingTop: '30px' }}>{postData.title}</h3>
+
+        <div className="row" style={{ marginTop: '20px' }}>
+          <div style={{ width: '50px', height: '40px' }}>
+            <Image
+              src={postData?.['user_img_url'] || '/blur_image.webp'}
+              alt={'user image'}
+              width={40}
+              height={40}
+              style={{
+                objectFit: 'cover',
+                borderRadius: '50px',
+                overflow: 'hidden',
+                width: '35px',
+                height: '35px',
+              }}
+            />
+          </div>
           <div
             style={{
-              backgroundColor: style[postData.category].backgroundColor,
-              borderColor: style[postData.category].backgroundColor,
-              width: '60px',
               fontSize: '16px',
-              color: style[postData.category].color,
-              borderRadius: '15px',
-              padding: '3px 7px',
-              textAlign: 'center',
-              marginTop: '30px',
+              fontWeight: '400',
+              width: 'auto',
+              margin: '5px 0 0 0',
             }}
           >
-            {postData['category']}
+            {postData['nickname']}
           </div>
-
-          <h3 style={{ paddingTop: '30px' }}>{postData.title}</h3>
-
-          <div className="row" style={{ marginTop: '20px' }}>
-            <div style={{ width: '50px', height: '40px' }}>
-              <Image
-                src={postData?.['user_img_url'] || '/blur_image.webp'}
-                alt={'user image'}
-                width={40}
-                height={40}
-                style={{
-                  objectFit: 'cover',
-                  borderRadius: '50px',
-                  overflow: 'hidden',
-                  width: '35px',
-                  height: '35px',
-                }}
-              />
-            </div>
-            <div
-              style={{
-                fontSize: '16px',
-                fontWeight: '400',
-                width: 'auto',
-                margin: '5px 0 0 0',
-              }}
-            >
-              {postData['nickname']}
-            </div>
-          </div>
-          <div
-            className="d-flex justify-content-between"
-            style={{ fontSize: '15px', color: 'gray', marginTop: '10px' }}
-          >
-            <div style={{ width: 'auto' }}>{elapsedTimeText(postData['created_at'])}</div>
-            <div style={{ width: 'auto' }}>
-              <Count
-                pid={pid}
-                viewCount={postData['view_count']}
-                commentCount={comments.length}
-                likeCount={postData['post_like_count']}
-              />
-            </div>
-          </div>
-          <hr />
-
-          <div
-            style={{ width: '100%', minHeight: '500px', margin: '40px 0' }}
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(String(postData['content'])),
-            }}
-          />
-          {/* <div
-            className={`card-footer rounded-bottom-3 fw-normal px-2`}
-            style={{ backgroundColor: "white", borderColor: "white" }}
-          >
-            <div className="d-flex justify-content-between" style={{ backgroundColor: "#ffffff" }}>
-              <Count
-                pid={pid}
-                viewCount={postData["view_count"]}
-                commentCount={comments.length}
-                likeCount={postData["post_like_count"]}
-                isPostLike={isPostLike}
-              />
-            </div>
-          </div> */}
         </div>
+        <div className="d-flex justify-content-between" style={{ fontSize: '15px', color: 'gray', marginTop: '10px' }}>
+          <div style={{ width: 'auto' }}>{elapsedTimeText(postData['created_at'])}</div>
+          <div style={{ width: 'auto' }}>
+            <Count
+              pid={pid}
+              viewCount={postData['view_count']}
+              commentCount={comments.length}
+              likeCount={postData['post_like_count']}
+            />
+          </div>
+        </div>
+        <hr />
+
+        <div
+          style={{ width: '100%', minHeight: '500px', margin: '40px 0' }}
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(String(postData['content'])),
+          }}
+        />
 
         <CommentComponent pid={pid} initialComments={comments} />
       </div>
