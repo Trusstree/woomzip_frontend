@@ -81,16 +81,17 @@ export default function Inquiry({ id }: { id?: string | number }) {
       </div>
       <button
         style={{
-          backgroundColor: '#ffffff',
+          backgroundColor: '#4067F8',
           opacity: '0.9',
           margin: '0 auto',
           padding: '10px 100px',
-          fontSize: '16px',
-          fontWeight: '700',
+          fontSize: '14px',
+          fontWeight: '500',
           border: 'none',
           borderRadius: '25px',
           boxShadow: '0 6px 10px rgba(255, 255, 255, 0.2)',
           width: 'auto',
+          color: '#ffffff',
         }}
         onClick={submit}
       >
