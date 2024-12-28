@@ -316,12 +316,12 @@ export default function HomeCategoryComponent({ container }: { container: any })
                 margin: '0 auto',
                 fontSize: '35px',
                 fontWeight: '700',
-                color: '#ffffff',
+                color: 'black',
                 wordBreak: 'keep-all',
                 textAlign: 'center',
               }}
             >
-              일반 주택
+              농막
             </div>
             <div
               style={{
@@ -329,12 +329,12 @@ export default function HomeCategoryComponent({ container }: { container: any })
                 margin: '30px auto',
                 fontSize: '16px',
                 fontWeight: '600',
-                color: '#ffffff',
+                color: 'black',
                 wordBreak: 'keep-all',
                 textAlign: 'center',
               }}
             >
-              11평부터 28평까지 | 5,800만 원 ~
+              4평부터 11평까지 | 2,800만 원 ~
             </div>
           </div>
 
