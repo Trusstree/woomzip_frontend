@@ -28,7 +28,7 @@ export default function HomePeopleComponent() {
         backgroundColor: '#ffffff',
       }}
     >
-      <div id="peopleBG" className="d-flex">
+      {/* <div id="peopleBG" className="d-flex">
         <Image
           src={'/4.png'}
           width={1600}
@@ -51,7 +51,18 @@ export default function HomePeopleComponent() {
           }}
           alt={'background2'}
         />
-      </div>
+      </div> */}
+      <Image
+        src={'/4.png'}
+        width={1600}
+        height={850}
+        style={{
+          objectFit: 'contain',
+          width: '1600px',
+          border: 'none',
+        }}
+        alt={'background2'}
+      />
       <div
         style={{
           position: 'absolute',
@@ -121,7 +132,7 @@ export default function HomePeopleComponent() {
             결국 누구나 꿈꾸는 내 집이란 로망을 이룰 수 있도록 돕습니다.
           </div>
           <Link
-            href={"/about"}
+            href={'/about'}
             className="btn"
             style={{
               border: 'none',
