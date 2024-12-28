@@ -54,6 +54,8 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
               <Image
                 src={companyImages[0]}
                 alt={'company images 0'}
+                width={1000}
+                height={1000}
                 style={{ width: '100%', height: '400px', objectFit: 'cover' }}
               />
             </div>
@@ -63,6 +65,8 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
               <Image
                 src={companyImages[1]}
                 alt={'company images 1'}
+                width={1000}
+                height={1000}
                 style={{ width: '100%', height: '196px', objectFit: 'cover' }}
               />
             </div>
@@ -70,6 +74,8 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
               <Image
                 src={companyImages[2]}
                 alt={'company images 2'}
+                width={1000}
+                height={1000}
                 style={{ width: '100%', height: '196px', objectFit: 'cover' }}
               />
             </div>
@@ -85,6 +91,8 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
               <Image
                 src={companyImages[3]}
                 alt={'company images 3'}
+                width={1000}
+                height={1000}
                 style={{ width: '100%', height: '196px', objectFit: 'cover' }}
               />
             </div>
@@ -99,6 +107,8 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
               <Image
                 src={companyImages[4]}
                 alt={'company images 4'}
+                width={1000}
+                height={1000}
                 style={{ width: '100%', height: '196px', objectFit: 'cover' }}
               />
             </div>
