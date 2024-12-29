@@ -16,7 +16,7 @@ export default function EditProfileUser({ userInfo }) {
   const [nickname, setNickname] = useState(userInfo.nickname ?? '');
   const [email, setEmail] = useState(userInfo.email ?? '');
   const [oneLineIntroduce, setOneLineIntroduce] = useState(userInfo.one_line_introduce ?? '');
-  const [userImages, setUserImages] = useState([userInfo.user_img_url] ?? []);
+  const [userImages, setUserImages] = useState(userInfo.user_img_url ? [userInfo.user_img_url] : []);
   const [phoneNumber, setPhoneNumber] = useState(userInfo.phone_number ?? '');
   const [gender, setGender] = useState(userInfo.gender ?? '');
   const [birthday, setBirthday] = useState(userInfo.birthday ?? '');
