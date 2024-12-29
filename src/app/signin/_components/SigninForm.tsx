@@ -66,19 +66,24 @@ export function SigninForm() {
     return;
   };
 
-  const submitEnter = async (e)=>{
-    if(e.key != 'Enter') return;
+  const submitEnter = async (e) => {
+    if (e.key != 'Enter') return;
     submit();
-  }
+  };
 
   return (
     <div className="my-5">
       <div className={`d-flex mb-3`}>
-        <label htmlFor={`signin_ID`} className="fs-5 col-2">
+        <label
+          htmlFor={`signin_ID`}
+          className="col-2"
+          style={{ fontSize: '20px', fontWeight: '700', textAlign: 'center' }}
+        >
           {'ID'}
         </label>
         <input
           className="w-100"
+          style={{ borderRadius: '25px', padding: '5px 10px', border: '1px solid black' }}
           type="text"
           id={`signin_ID`}
           onChange={(e) => {
@@ -91,11 +96,16 @@ export function SigninForm() {
       </div>
 
       <div className={`w-100 d-flex mt-3 mb-5`}>
-        <label htmlFor={`signin_PW`} className="fs-5 col-2" style={{ color: '#101648' }}>
+        <label
+          htmlFor={`signin_PW`}
+          className="col-2"
+          style={{ fontSize: '20px', fontWeight: '700', textAlign: 'center' }}
+        >
           {'PW'}
         </label>
         <input
           className="w-100"
+          style={{ borderRadius: '25px', padding: '5px 10px', border: '1px solid black' }}
           type="password"
           id={`signin_PW`}
           onChange={(e) => {
@@ -110,13 +120,13 @@ export function SigninForm() {
       <div
         className="btn"
         style={{
-          backgroundColor: '#314FC0',
-          color: 'white',
+          backgroundColor: 'black',
+          color: '#ffffff',
           width: '100%',
           padding: '10px',
+          borderRadius: '25px',
         }}
         onClick={submit}
-        
       >
         로그인 하기
       </div>

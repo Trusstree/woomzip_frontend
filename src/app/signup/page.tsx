@@ -1,34 +1,31 @@
-import { SignupForm } from "@/app/signup/_components/SignupForm";
-import { SignupFormCompany } from "./_components/SignupFormCompany";
-import Link from "next/link";
+import { SignupForm } from '@/app/signup/_components/SignupForm';
+import { SignupFormCompany } from './_components/SignupFormCompany';
+import Link from 'next/link';
 
 export default async function Page({ searchParams }) {
   return (
-    <main className={`container my-5 d-flex flex-column align-items-center`}>
+    <div style={{ width: '90%', maxWidth: '500px', margin: '0 auto', minHeight: '800px' }}>
       <div
         style={{
-          textAlign: "center",
-          fontSize: "28px",
-          fontWeight: "600",
-          marginBottom: "10px",
+          width: '100%',
+          textAlign: 'center',
+          fontSize: '24px',
+          fontWeight: '600',
+          margin: '100px 0',
+          wordBreak: 'keep-all',
         }}
       >
-        <span style={{ color: "#314FC0" }}>움집</span> 회원가입
+        움집 회원가입
+        <div style={{ fontSize: '16px', marginTop: '10px' }}>
+          {searchParams.user == 'company' ? (
+            <Link href={'/signup'}>일반회원으로 이동</Link>
+          ) : (
+            <Link href={'/signup?user=company'}>기업회원으로 이동</Link>
+          )}
+        </div>
       </div>
-      <div>
-        {searchParams.user == "company" ? (
-          <Link href={"/signup"}>일반회원으로 이동</Link>
-        ) : (
-          <Link href={"/signup?user=company"}>기업회원으로 이동</Link>
-        )}
-      </div>
-      <div style={{ maxWidth: "800px", width: "90%" }}>
-        {searchParams.user == "company" ? (
-          <SignupFormCompany />
-        ) : (
-          <SignupForm />
-        )}
-      </div>
-    </main>
+
+      <div style={{ width: '100%' }}>{searchParams.user == 'company' ? <SignupFormCompany /> : <SignupForm />}</div>
+    </div>
   );
 }

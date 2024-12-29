@@ -160,10 +160,12 @@ export function SignupForm() {
       <div
         className="btn"
         style={{
-          backgroundColor: '#314FC0',
-          color: 'white',
+          backgroundColor: 'black',
+          color: '#ffffff',
           width: '100%',
           padding: '10px',
+          borderRadius: '25px',
+          marginTop: '20px',
         }}
         onClick={submit}
       >

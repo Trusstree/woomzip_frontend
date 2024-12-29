@@ -77,7 +77,7 @@ export default function Comp4({ id }: { id: string }) {
         className="row"
         style={{
           position: 'absolute',
-          bottom: '30px',
+          bottom: '40px',
           left: 0,
           width: '100%',
         }}
@@ -124,12 +124,12 @@ export default function Comp4({ id }: { id: string }) {
                 marginTop: '20px',
               }}
             >
-              모든 팀원이 지방에서 자랐습니다. 우리가 자라온 마을이 소멸되지 않고 이어질 수 있도록 일합니다.
+              수 십 개의 모듈러 주택 제조사 중 직접 검증한 각 분야 최고 전문가들과 함께 합니다.
               <br />
-              결국 누구나 꿈꾸는 내 집이란 로망을 이룰 수 있도록 돕습니다.
+              기술력과 경험을 바탕으로 가장 높은 품질과 서비스를 제공합니다.
             </div>
             <Link
-              href={"/about"}
+              href={'/about'}
               className="btn"
               style={{
                 border: 'none',

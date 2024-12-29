@@ -178,7 +178,7 @@ export function SignupFormCompany() {
       />
       <SignupTextBox title={'이메일'} name={'email'} data={email} setData={setEmail} />
       <SignupTextBox
-        title={'한 줄 설명'}
+        title={'한줄설명'}
         name={'introduce'}
         data={introduce}
         setData={setIntroduce}
@@ -189,7 +189,7 @@ export function SignupFormCompany() {
       <SignupTextBox title={'개업일'} name={'birthday'} data={birthday} setData={setBirthday} type={'date'} />
 
       <div className="row">
-        <div className="col-2" style={{ fontSize: '18px' }}>
+        <div className="col-2" style={{ fontSize: '20px', fontWeight: '700' }}>
           프로필 사진
         </div>
         <div className="col-10">
@@ -207,8 +207,8 @@ export function SignupFormCompany() {
       </div>
 
       <div className="row">
-        <div className="col-2" style={{ fontSize: '18px' }}>
-          대문 사진
+        <div className="col-2" style={{ fontSize: '20px', fontWeight: '700' }}>
+          대문사진
         </div>
         <div className="col-10">
           <InputImageComponent
@@ -248,10 +248,12 @@ export function SignupFormCompany() {
       <div
         className="btn"
         style={{
-          backgroundColor: '#314FC0',
-          color: 'white',
+          backgroundColor: 'black',
+          color: '#ffffff',
           width: '100%',
           padding: '10px',
+          borderRadius: '25px',
+          marginTop: '20px',
         }}
         onClick={submit}
       >
