@@ -1,6 +1,7 @@
 'use server';
 
 import { postDiscordWebhook } from '@/actions/apis/alarmAPI';
+import Inquiry from '@/components/Inquiry';
 import { privateApi, publicApi } from '@/configs/axiosClient';
 
 export const getHouses = async (params: any) => {
@@ -25,7 +26,12 @@ export const postPlanning = async (house: any) => {
 
   try {
     const result = await privateApi.post(`/planning/v3/apply`, house);
-    postDiscordWebhook();
+    postDiscordWebhook({
+      houseId: house.house_id,
+      name: house.name,
+      contact: house.contact,
+      Inquiry: "알람문구 지정해주세요. (계획하기 부분)"
+    });
     data = result?.data;
   } catch (err) {
     error = err.response?.data;
