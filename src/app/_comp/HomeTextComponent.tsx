@@ -67,18 +67,11 @@ export default function HomeTextComponent({ container }: { container: any }) {
         style={{
           position: 'relative',
           width: '100%',
-          aspectRatio: '32 / 17',
-          minHeight: '600px',
-          maxHeight: '1200px',
+          height: 'calc(100svh - 61px)',
           overflow: 'hidden',
         }}
       >
-        <Image
-          src={'/1.webp'}
-          fill
-          style={{ objectFit: 'cover', aspectRatio: '16 / 9', minHeight: '600px', maxHeight: '1200px' }}
-          alt={'background2'}
-        />
+        <Image src={'/1.webp'} fill style={{ objectFit: 'cover', aspectRatio: '16 / 9' }} alt={'background2'} />
         <div
           style={{
             position: 'absolute',
@@ -129,6 +122,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
               fontSize: 'clamp(35px, 6vw, 55px)',
               fontWeight: '600',
               color: '#ffffff',
+              wordBreak: 'keep-all',
             }}
           >
             건축이 아닌 제조,
@@ -142,8 +136,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
         style={{
           backgroundColor: 'black',
           width: '100%',
-          aspectRatio: '32 / 17',
-          minHeight: '600px',
+          height: 'calc(100svh - 61px)',
           overflow: 'hidden',
         }}
       >
@@ -153,8 +146,9 @@ export default function HomeTextComponent({ container }: { container: any }) {
             fontWeight: '600',
             wordBreak: 'keep-all',
             width: '95%',
-            margin: '50px auto',
+            height: 'calc(100svh - 61px)',
             color: '#ffffff',
+            margin: '100px auto',
           }}
         >
           <span

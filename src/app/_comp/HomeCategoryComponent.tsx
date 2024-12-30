@@ -65,9 +65,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
           style={{
             position: 'relative',
             width: '100%',
-            aspectRatio: '32 / 17',
-            minHeight: '600px',
-            maxHeight: '1200px',
+            height: 'calc(100svh)',
             overflow: 'hidden',
           }}
         >
@@ -77,9 +75,6 @@ export default function HomeCategoryComponent({ container }: { container: any })
             fill
             style={{
               objectFit: 'cover',
-              aspectRatio: '32 / 17',
-              minHeight: '600px',
-              maxHeight: '1200px',
             }}
             alt={'background2'}
           />
@@ -172,9 +167,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
           style={{
             position: 'relative',
             width: '100%',
-            aspectRatio: '32 / 17',
-            minHeight: '600px',
-            maxHeight: '1200px',
+            height: 'calc(100svh)',
             overflow: 'hidden',
           }}
         >
@@ -184,9 +177,6 @@ export default function HomeCategoryComponent({ container }: { container: any })
             fill
             style={{
               objectFit: 'cover',
-              aspectRatio: '32 / 17',
-              minHeight: '600px',
-              maxHeight: '1200px',
             }}
             alt={'background2'}
           />
@@ -279,9 +269,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
           style={{
             position: 'relative',
             width: '100%',
-            aspectRatio: '32 / 17',
-            minHeight: '600px',
-            maxHeight: '1200px',
+            height: 'calc(100svh)',
             overflow: 'hidden',
           }}
         >
@@ -291,9 +279,6 @@ export default function HomeCategoryComponent({ container }: { container: any })
             fill
             style={{
               objectFit: 'cover',
-              aspectRatio: '32 / 17',
-              minHeight: '600px',
-              maxHeight: '1200px',
             }}
             alt={'background2'}
           />
