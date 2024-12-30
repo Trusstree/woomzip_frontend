@@ -12,7 +12,7 @@ export default function SigninButton() {
     <div data-bs-dismiss="offcanvas" aria-label="Close">
       <button
         className={'btn rounded-lg fw-bold align-self-end'}
-        style={{ fontSize: '28px', border: 'none' }}
+        style={{ fontSize: '18px', border: 'none' }}
         onClick={() => {
           router.push('/signin');
         }}
