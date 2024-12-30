@@ -4,15 +4,26 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function HomeCategoryNav({ container, category1, category2, category3 }: { container: any, category1:any, category2:any, category3:any }) {
+export default function HomeCategoryNav({
+  container,
+  category1,
+  category2,
+  category3,
+}: {
+  container: any;
+  category1: any;
+  category2: any;
+  category3: any;
+}) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
 
   const scrollCategory1 = () => category1.current.scrollIntoView();
   const scrollCategory2 = () => category2.current.scrollIntoView();
   const scrollCategory3 = () => category3.current.scrollIntoView();
-  
-  useGSAP(() => {
+
+  useGSAP(
+    () => {
       gsap.to('#category1Btn', {
         backgroundColor: '#666666',
         color: '#ffffff',
@@ -20,10 +31,10 @@ export default function HomeCategoryNav({ container, category1, category2, categ
           trigger: '#category1BG',
           start: 'top center',
           end: '70% center',
-          toggleActions:"play reverse play reverse",
+          toggleActions: 'play reverse play reverse',
         },
       });
-      
+
       gsap.to('#category2Btn', {
         backgroundColor: '#666666',
         color: '#ffffff',
@@ -31,7 +42,7 @@ export default function HomeCategoryNav({ container, category1, category2, categ
           trigger: '#category2BG',
           start: 'top center',
           end: '70% center',
-          toggleActions:"play reverse play reverse",
+          toggleActions: 'play reverse play reverse',
         },
       });
 
@@ -42,7 +53,7 @@ export default function HomeCategoryNav({ container, category1, category2, categ
           trigger: '#category3BG',
           start: 'top center',
           end: '70% center',
-          toggleActions:"play reverse play reverse",
+          toggleActions: 'play reverse play reverse',
         },
       });
     },
@@ -53,21 +64,20 @@ export default function HomeCategoryNav({ container, category1, category2, categ
     <div
       style={{
         position: 'absolute',
-        top: '80px',
+        top: '50px',
         left: 0,
         width: '100%',
-        height: '100%',
+        height: '70%',
       }}
     >
       <div
         style={{
           width: '100%',
           display: 'flex',
-          justifyContent: 'center', // 좌우 중앙 정렬
+          justifyContent: 'center',
           position: 'sticky',
-          top: '100px',
+          top: '80px',
           zIndex: '1',
-          marginBottom: '100px',
         }}
       >
         <div
@@ -75,7 +85,7 @@ export default function HomeCategoryNav({ container, category1, category2, categ
             border: 'none',
             borderRadius: '25px',
             backgroundColor: '#444444',
-            padding: '5px',
+            padding: '4px',
             opacity: '0.9',
           }}
         >
@@ -88,7 +98,7 @@ export default function HomeCategoryNav({ container, category1, category2, categ
               color: '#999999',
               fontSize: '14px',
               fontWeight: '500',
-              padding: '8px 15px',
+              padding: '5px 15px',
             }}
             onClick={scrollCategory1}
           >
@@ -103,7 +113,7 @@ export default function HomeCategoryNav({ container, category1, category2, categ
               color: '#999999',
               fontSize: '14px',
               fontWeight: '500',
-              padding: '8px 15px',
+              padding: '5px 15px',
             }}
             onClick={scrollCategory2}
           >
@@ -118,7 +128,7 @@ export default function HomeCategoryNav({ container, category1, category2, categ
               color: '#999999',
               fontSize: '14px',
               fontWeight: '500',
-              padding: '8px 15px',
+              padding: '5px 15px',
             }}
             onClick={scrollCategory3}
           >
@@ -127,5 +137,5 @@ export default function HomeCategoryNav({ container, category1, category2, categ
         </div>
       </div>
     </div>
-);
+  );
 }
