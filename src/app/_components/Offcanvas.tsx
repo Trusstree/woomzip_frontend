@@ -26,7 +26,7 @@ export default function Offcanvas({ id }) {
             회사소개
           </OffcanvasRouteButton>
 
-          <OffcanvasRouteButton url="/community" style={{ fontSize: '25px', border: 'none' }}>
+          <OffcanvasRouteButton url="/news" style={{ fontSize: '25px', border: 'none' }}>
             뉴스
           </OffcanvasRouteButton>
         </div>

@@ -26,7 +26,7 @@ export default function WriteComponent() {
         console.log(error);
         return;
       }
-      router.push(`/community`);
+      router.push(`/news`);
     }
   }, [dataTitle, dataText, dataCategory, router]);
 

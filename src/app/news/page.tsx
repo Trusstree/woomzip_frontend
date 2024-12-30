@@ -31,7 +31,7 @@ export default async function Page({ searchParams }) {
           <Category />
           <SearchComponent />
         </div>
-        <PostMenu routeUrl={'/community/write'} routeText={'글쓰기'}>
+        <PostMenu routeUrl={'/news/write'} routeText={'글쓰기'}>
           <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
             <PostList
               postData={postData}

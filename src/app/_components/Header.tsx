@@ -60,7 +60,7 @@ export default function Header() {
                 회사소개
               </RouteButton>
               <RouteButton
-                url="/community"
+                url="/news"
                 style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
               >
                 뉴스

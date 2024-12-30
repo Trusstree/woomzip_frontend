@@ -161,7 +161,7 @@ export default async function MypageCompany({ uid, userData, searchParams }) {
                 {/* <div style={{ width: "100%", marginTop: "60px" }}>
                 <PostMenu
                   title={"판매자 연관 칼럼"}
-                  routeUrl={"/community"}
+                  routeUrl={"/news"}
                   routeText={"더보기"}
                   horizontalScroll={true}
                 >

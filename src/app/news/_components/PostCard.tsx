@@ -48,7 +48,7 @@ export default function PostCard({ data, className }: PostCardProps) {
         }}
       >
         <Link
-          href={{ pathname: `/community/${data['post_id']}` }}
+          href={{ pathname: `/news/${data['post_id']}` }}
           className={`${styles.img_container} ${styles.img_hover}`}
           >
             <Image

@@ -114,7 +114,7 @@ export default async function page({ params }: { params: PageParams }) {
         </div>
         <PostMenu
           title={'더 많은 글을 구경해보세요!'}
-          routeUrl={'/community'}
+          routeUrl={'/news'}
           routeText={'더보기'}
           horizontalScroll={true}
         >

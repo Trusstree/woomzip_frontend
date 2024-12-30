@@ -31,7 +31,7 @@ export default function MypageUser({ uid, userData, searchParams }) {
                 <div style={{ width: '100%', marginTop: '60px' }}>
                   {/* <PostMenu
                   title={"내가 좋아하는 집"}
-                  routeUrl={"/community"}
+                  routeUrl={"/news"}
                   routeText={"더보기"}
                   horizontalScroll={true}
                 >
