@@ -345,32 +345,34 @@ export default function Service() {
                   overflow: 'hidden',
                 }}
               >
-                <div style={{ width: '50%', zIndex: '3', position: 'relative' }}>
-                  <div
-                    style={{
-                      fontSize: '23px',
-                      color: '#ffffff',
-                      width: '100%',
-                      fontWeight: '700',
-                      margin: '30px 20px',
-                    }}
-                  >
-                    다양한 안심 서비스
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '17px',
-                      color: '#ffffff',
-                      width: '100%',
-                      fontWeight: '450',
-                      margin: '20px',
-                    }}
-                  >
-                    안심 계약부터, 안심 지불을 통해 내 재산을 지키세요!
-                    <br />
-                    이제는 걱정할 필요 없습니다.
-                    <br />
-                    세분화된 지불 과정과 제 3자 계약을 통해 더 이상의 불안한 상황은 끝! 내 집짓기는 즐거워야죠!
+                <div style={{ width: '95%', zIndex: '3', position: 'relative' }}>
+                  <div className="col-md-6 col-12">
+                    <div
+                      style={{
+                        fontSize: '23px',
+                        color: '#ffffff',
+                        width: '100%',
+                        fontWeight: '700',
+                        margin: '30px 20px',
+                      }}
+                    >
+                      다양한 안심 서비스
+                    </div>
+                    <div
+                      style={{
+                        fontSize: '17px',
+                        color: '#ffffff',
+                        width: '100%',
+                        fontWeight: '450',
+                        margin: '20px',
+                      }}
+                    >
+                      안심 계약부터, 안심 지불을 통해 내 재산을 지키세요!
+                      <br />
+                      이제는 걱정할 필요 없습니다.
+                      <br />
+                      세분화된 지불 과정과 제 3자 계약을 통해 더 이상의 불안한 상황은 끝! 내 집짓기는 즐거워야죠!
+                    </div>
                   </div>
                 </div>
                 <div
@@ -427,32 +429,34 @@ export default function Service() {
                   overflow: 'hidden',
                 }}
               >
-                <div style={{ width: '50%', zIndex: '3', position: 'relative' }}>
-                  <div
-                    style={{
-                      fontSize: '23px',
-                      color: '#ffffff',
-                      width: '100%',
-                      fontWeight: '700',
-                      margin: '30px 20px',
-                    }}
-                  >
-                    다양한 안심 서비스
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '17px',
-                      color: '#ffffff',
-                      width: '100%',
-                      fontWeight: '450',
-                      margin: '20px',
-                    }}
-                  >
-                    안심 계약부터, 안심 지불을 통해 내 재산을 지키세요!
-                    <br />
-                    이제는 걱정할 필요 없습니다.
-                    <br />
-                    세분화된 지불 과정과 제 3자 계약을 통해 더 이상의 불안한 상황은 끝! 내 집짓기는 즐거워야죠!
+                <div style={{ width: '95%', zIndex: '3', position: 'relative' }}>
+                  <div className="col-md-6 col-12">
+                    <div
+                      style={{
+                        fontSize: '23px',
+                        color: '#ffffff',
+                        width: '100%',
+                        fontWeight: '700',
+                        margin: '30px 20px',
+                      }}
+                    >
+                      다양한 안심 서비스
+                    </div>
+                    <div
+                      style={{
+                        fontSize: '17px',
+                        color: '#ffffff',
+                        width: '100%',
+                        fontWeight: '450',
+                        margin: '20px',
+                      }}
+                    >
+                      안심 계약부터, 안심 지불을 통해 내 재산을 지키세요!
+                      <br />
+                      이제는 걱정할 필요 없습니다.
+                      <br />
+                      세분화된 지불 과정과 제 3자 계약을 통해 더 이상의 불안한 상황은 끝! 내 집짓기는 즐거워야죠!
+                    </div>
                   </div>
                 </div>
                 <div
