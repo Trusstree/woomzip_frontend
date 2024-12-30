@@ -20,71 +20,70 @@ export default function Footer() {
       }}
     >
       <div style={{ width: '95%', margin: '0 auto' }}>
-        <div className="d-flex justify-content-between" style={{ color: '#ffffff' }}>
-          <div className="row">
-            <div style={{ width: '200px', margin: '30px 0' }}>
-              <div style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px', color: '#999999' }}>Company</div>
-              <div className='d-flex flex-column'>
-                <Link
-                  href={infoURL} 
-                  style={{
-                    border: 'none',
-                    outline: 'none',
-                    fontSize: '13px',
-                    color: '#ffffff',
-                    textDecorationLine:'none'
-                  }}
-                  passHref
-                  >
-                    About Us
-                </Link>
-                <Link
-                  href={serviceURL}
-                  style={{
-                    border: 'none',
-                    outline: 'none',
-                    fontSize: '13px',
-                    color: '#ffffff',
-                    textDecorationLine:'none'
-                  }}
-                  passHref
-                  >
-                  News
-                </Link>
-                <Link
-                  href={termsURL} 
-                  style={{
-                    border: 'none',
-                    outline: 'none',
-                    fontSize: '13px',
-                    color: '#ffffff',
-                    textDecorationLine:'none'
-                  }}
-                  passHref
-                  >
-                  Privacy policy
-                </Link>
-              </div>
-            </div>
-            <div style={{ width: '250px', margin: '30px 0' }}>
-              <div style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px', color: '#999999' }}>
-                Contact Us
-              </div>
-              <div style={{ fontWeight: '600', fontSize: '13px' }}>0507-1369-6158</div>
-              <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>09:00~23:00</div>
-              <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>연중무휴 상담 운영</div>
-              <div style={{ marginTop: '13px', fontSize: '15px', fontWeight: '600' }}>truss369@naver.com</div>
-              <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>입점 문의</div>
-              <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>제휴 문의</div>
+        <div className="row" style={{ color: '#ffffff' }}>
+          <div className="col-md-2 col-12  order-md-1 order-2" style={{ margin: '30px 0' }}>
+            <div style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px', color: '#999999' }}>Company</div>
+            <div className="d-flex flex-column">
+              <Link
+                href={infoURL}
+                style={{
+                  border: 'none',
+                  outline: 'none',
+                  fontSize: '13px',
+                  color: '#ffffff',
+                  textDecorationLine: 'none',
+                }}
+                passHref
+              >
+                About Us
+              </Link>
+              <Link
+                href={serviceURL}
+                style={{
+                  border: 'none',
+                  outline: 'none',
+                  fontSize: '13px',
+                  color: '#ffffff',
+                  textDecorationLine: 'none',
+                }}
+                passHref
+              >
+                News
+              </Link>
+              <Link
+                href={termsURL}
+                style={{
+                  border: 'none',
+                  outline: 'none',
+                  fontSize: '13px',
+                  color: '#ffffff',
+                  textDecorationLine: 'none',
+                }}
+                passHref
+              >
+                Privacy policy
+              </Link>
             </div>
           </div>
-          <div className="col-md-2 col-12" style={{ width: 'auto', margin: '20px 0' }}>
-            <div id="social">
+          <div className="col-md-7 col-12 order-md-2 order-3" style={{ margin: '30px 0' }}>
+            <div style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px', color: '#999999' }}>
+              Contact Us
+            </div>
+            <div style={{ fontWeight: '600', fontSize: '13px' }}>0507-1369-6158</div>
+            <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>09:00~23:00</div>
+            <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>연중무휴 상담 운영</div>
+            <div style={{ marginTop: '13px', fontSize: '15px', fontWeight: '600' }}>truss369@naver.com</div>
+            <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>입점 문의</div>
+            <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>제휴 문의</div>
+          </div>
+
+          <div className="col-md-3 col-12 order-md-3 order-1" style={{ margin: '20px 0' }}>
+            <div className="d-flex justify-content-end" id="social" style={{ width: 'auto' }}>
               <SocialIcon url={youtubeURL} network="youtube" bgColor="black" fgColor="#ffffff" />
               <SocialIcon url={instagrmaURL} network="instagram" bgColor="black" fgColor="#ffffff" />
               <Link href={naverBlogURL} passHref style={{ border: 'none', outline: 'none' }}>
                 <div className="btn m-0 p-0">
-                  <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111" width="40" height="40">
+                  <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111" width="45" height="45">
                     <rect className="cls-2" fill="#101648" y="0" rx="9.05" ry="9.05" />
                     <polygon
                       className="cls-1"
@@ -102,7 +101,8 @@ export default function Footer() {
           <div style={{ fontSize: '11px', fontWeight: '400', wordBreak: 'keep-all', color: 'gray' }}>
             <span style={{ fontSize: '18px', color: '#ffffff', fontWeight: '600', marginRight: '10px' }}>WOOMZIP</span>
             (주)트러스트리 | 사업자 등록번호 : 788-87-03092 | 대표 : 양준우 | 개인정보보호책임자 : 박세홍 | 통신판매업
-            신고번호 : 2024-서울동작-0730 | 주소 : 06978 서울특별시 동작구 상도로 55길 8, 304호(상도동)
+            신고번호 : 2024-서울동작-0730 | 본사주소 : 06978 서울특별시 동작구 상도로 55길 8, 304호(숭실대학교
+            캠퍼스타운) | 지사주소 : 10223 경기도 고양시 일산서구 고양대로 283, 25동 104호(한국건설기술연구원)
           </div>
 
           <div style={{ fontSize: '9px', fontWeight: '400', wordBreak: 'keep-all', color: 'gray', marginTop: '15px' }}>
