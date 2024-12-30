@@ -5,9 +5,7 @@ export default function Offcanvas({ id }) {
   return (
     <div className="collapse offcanvas offcanvas-end" tabIndex={-1} id={id} aria-labelledby={`${id}_Label`}>
       <div className="offcanvas-header">
-        <h1 className="offcanvas-title" id={`${id}_Label`}>
-          메뉴
-        </h1>
+        <h1 className="offcanvas-title" id={`${id}_Label`}></h1>
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" />
       </div>
       <div className="offcanvas-body">
@@ -17,21 +15,22 @@ export default function Offcanvas({ id }) {
           </OffcanvasRouteButton>
 
           <OffcanvasRouteButton url="/house" style={{ fontSize: '25px', border: 'none' }}>
-            내집찾기
+            제품찾기
+          </OffcanvasRouteButton>
+
+          <OffcanvasRouteButton url="/service" style={{ fontSize: '25px', border: 'none' }}>
+            서비스소개
+          </OffcanvasRouteButton>
+
+          <OffcanvasRouteButton url="/about" style={{ fontSize: '25px', border: 'none' }}>
+            회사소개
           </OffcanvasRouteButton>
 
           <OffcanvasRouteButton url="/community" style={{ fontSize: '25px', border: 'none' }}>
-            커뮤니티
+            뉴스
           </OffcanvasRouteButton>
-          {/* <OffcanvasRouteButton url="/living" style={{ fontSize: "30px" }}>
-              살아보기
-            </OffcanvasRouteButton> */}
-
-          {/* <OffcanvasRouteButton url="/planning" style={{ fontSize: "30px" }}>
-                계획하기
-              </OffcanvasRouteButton> */}
         </div>
-        <div style={{ textAlign: 'right', margin: '0', padding: '0', border: 'none' }}>
+        <div style={{ textAlign: 'right', marginTop: '30px', padding: '0', border: 'none' }}>
           <OffcanvasSigninButton data-bs-dismiss="offcanvas" aria-label="Close" />
         </div>
       </div>

@@ -10,9 +10,9 @@ export default function Header() {
       className={`navbar navbar-expand-md justify-content-center sticky-top`}
       style={{
         backgroundColor: 'black',
-        position:"sticky",
-        top:"0",
-        width:"100vw"
+        position: 'sticky',
+        top: '0',
+        width: '100%',
       }}
     >
       <div className=" d-flex justify-content-between" style={{ height: '45px', width: '95%' }}>
@@ -24,7 +24,7 @@ export default function Header() {
         </RouteButton>
 
         <button
-          className="navbar-toggler ms-auto me-4"
+          className="navbar-toggler ms-auto me-3"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#navbarNavAltMarkup"
