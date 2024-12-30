@@ -72,52 +72,49 @@ export default function FilterDropdown({
   useEffect(() => {}, [searchParams]);
 
   return (
-    <div
-      style={{
-        width: '90px',
-        height: '35px',
-        padding: '0',
-        backgroundColor: 'white',
-        borderRadius: '10px',
-        marginRight: '5px',
-        marginBottom: '5px',
-        display: 'flex', // Flexbox 사용
-        flexDirection: 'column', // 수직 정렬
-        alignItems: 'center', // 수평 중앙 정렬
-        justifyContent: 'center', // 수직 중앙 정렬
-      }}
-      className={'dropdown'}
-      // onClick={handleClick}
-    >
+    <div className="col-md-1 col-2">
       <div
-        style={{ textAlign: 'center', fontSize: '14px', fontWeight: '600', width: 'auto', padding: '2px' }}
-        data-bs-toggle="dropdown"
-        data-bs-auto-close="outside"
-        aria-expanded="false"
+        style={{
+          width: 'auto',
+          height: '35px',
+          padding: '0',
+          backgroundColor: 'white',
+          borderRadius: '10px',
+          marginLeft: '7px',
+        }}
+        className={'dropdown'}
+        // onClick={handleClick}
       >
-        {label}
-        <span style={{ paddingLeft: '6px' }}>
-          <ArrowDownSVG width={16} strokeWidth={2} />
-        </span>
-      </div>
+        <div
+          style={{ fontSize: '14px', fontWeight: '600', width: 'auto', padding: '2px' }}
+          data-bs-toggle="dropdown"
+          data-bs-auto-close="outside"
+          aria-expanded="false"
+        >
+          {label}
+          <span style={{ paddingLeft: '6px' }}>
+            <ArrowDownSVG width={16} strokeWidth={2} />
+          </span>
+        </div>
 
-      <ul className="dropdown-menu">
-        <li>
-          {queryData.map((e, i) => {
-            return (
-              <div
-                key={i}
-                className={`dropdown-item${isActive(e) ? ' active' : ''}`}
-                onClick={() => {
-                  handleClick(e);
-                }}
-              >
-                {prettierText(label, e)}
-              </div>
-            );
-          })}
-        </li>
-      </ul>
+        <ul className="dropdown-menu">
+          <li>
+            {queryData.map((e, i) => {
+              return (
+                <div
+                  key={i}
+                  className={`dropdown-item${isActive(e) ? ' active' : ''}`}
+                  onClick={() => {
+                    handleClick(e);
+                  }}
+                >
+                  {prettierText(label, e)}
+                </div>
+              );
+            })}
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

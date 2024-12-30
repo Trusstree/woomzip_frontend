@@ -60,21 +60,20 @@ export default function HomeCategoryNav({
     <div
       style={{
         position: 'absolute',
-        top: '80px',
+        top: '50px',
         left: 0,
         width: '100%',
-        height: '100%',
+        height: '70%',
       }}
     >
       <div
         style={{
           width: '100%',
           display: 'flex',
-          justifyContent: 'center', // 좌우 중앙 정렬
+          justifyContent: 'center',
           position: 'sticky',
-          top: '100px',
+          top: '80px',
           zIndex: '1',
-          marginBottom: '100px',
         }}
       >
         <div
@@ -82,7 +81,7 @@ export default function HomeCategoryNav({
             border: 'none',
             borderRadius: '25px',
             backgroundColor: '#444444',
-            padding: '5px',
+            padding: '4px',
             opacity: '0.9',
           }}
         >
@@ -95,7 +94,7 @@ export default function HomeCategoryNav({
               color: '#999999',
               fontSize: '14px',
               fontWeight: '500',
-              padding: '8px 15px',
+              padding: '5px 15px',
             }}
             onClick={scrollCategory1}
           >
@@ -110,7 +109,7 @@ export default function HomeCategoryNav({
               color: '#999999',
               fontSize: '14px',
               fontWeight: '500',
-              padding: '8px 15px',
+              padding: '5px 15px',
             }}
             onClick={scrollCategory2}
           >
@@ -125,7 +124,7 @@ export default function HomeCategoryNav({
               color: '#999999',
               fontSize: '14px',
               fontWeight: '500',
-              padding: '8px 15px',
+              padding: '5px 15px',
             }}
             onClick={scrollCategory3}
           >
