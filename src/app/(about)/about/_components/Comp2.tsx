@@ -24,9 +24,7 @@ export default function Comp2({ container }: { container: any }) {
     <div
       style={{
         width: '100%',
-        aspectRatio: '32 / 17',
-        minHeight: '600px',
-        maxHeight: '1200px',
+        height: 'calc(100svh)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
