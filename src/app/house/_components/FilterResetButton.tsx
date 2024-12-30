@@ -12,39 +12,41 @@ export default function FilterResetButton() {
   };
 
   return (
-    <div
-      style={{
-        width: 'auto',
-        height: '35px',
-        padding: '0 30px',
-        backgroundColor: 'white',
-        borderRadius: '10px',
-        marginLeft: 'auto', // 오른쪽 정렬
-        alignContent: 'center',
-        cursor: 'pointer',
-      }}
-      onClick={handleClick}
-    >
-      <div className="row">
+    <div className="col-md-7 col-12">
+      <div className="d-flex justify-content-end" style={{ width: '100%' }}>
         <div
+          className="row"
           style={{
-            textAlign: 'center',
-            fontSize: '14px',
-            fontWeight: '600',
             width: 'auto',
-            padding: '2px',
-            marginRight: '7px',
+            height: '35px',
+            padding: '0 30px',
+            backgroundColor: 'white',
+            borderRadius: '10px',
+            alignContent: 'center',
+            cursor: 'pointer',
           }}
+          onClick={handleClick}
         >
-          초기화
+          <div
+            style={{
+              textAlign: 'center',
+              fontSize: '14px',
+              fontWeight: '600',
+              width: 'auto',
+              padding: '2px',
+              marginRight: '7px',
+            }}
+          >
+            초기화
+          </div>
+          <Image
+            src="/reset.png"
+            width={13}
+            height={13}
+            alt="reset"
+            style={{ width: '13px', padding: '0', marginTop: '7px' }}
+          />
         </div>
-        <Image
-          src="/reset.png"
-          width={13}
-          height={13}
-          alt="reset"
-          style={{ width: '13px', padding: '0', marginTop: '7px' }}
-        />
       </div>
     </div>
   );
