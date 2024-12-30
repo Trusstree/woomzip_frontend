@@ -30,7 +30,7 @@ export default function Comp4({ id }: { id: string }) {
     >
       <div id="comp7BG" className="d-flex">
         <Image
-          src={'/9.png'}
+          src={'/9.webp'}
           width={1600}
           height={850}
           style={{
@@ -41,7 +41,18 @@ export default function Comp4({ id }: { id: string }) {
           alt={'background2'}
         />
         <Image
-          src={'/9.png'}
+          src={'/9.webp'}
+          width={1600}
+          height={850}
+          style={{
+            objectFit: 'contain',
+            width: '1600px',
+            border: 'none',
+          }}
+          alt={'background2'}
+        />
+        <Image
+          src={'/9.webp'}
           width={1600}
           height={850}
           style={{
@@ -52,6 +63,7 @@ export default function Comp4({ id }: { id: string }) {
           alt={'background2'}
         />
       </div>
+
       <div
         style={{
           position: 'absolute',

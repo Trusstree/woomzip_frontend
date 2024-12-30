@@ -21,9 +21,9 @@ export default function Service() {
         }}
       >
         <Image
-          src="/8.jpg"
+          src="/8.webp"
           width={1600}
-          height={1200}
+          height={900}
           style={{
             objectFit: 'cover',
             width: '100%',
@@ -129,7 +129,7 @@ export default function Service() {
               <div
                 style={{
                   width: '90%',
-                  height: '530px',
+                  height: '550px',
                   borderRadius: '15px',
                   padding: '20px',
                   wordBreak: 'keep-all',
@@ -151,7 +151,8 @@ export default function Service() {
                     textAlign: 'center',
                     fontWeight: '500',
                     color: '#555555',
-                    marginBottom: '40px',
+                    marginBottom: '20px',
+                    height: '130px',
                   }}
                 >
                   다양한 제품들은 한 눈에 비교해보세요!
@@ -169,7 +170,7 @@ export default function Service() {
                   }}
                 >
                   <Image
-                    src={'/10.png'}
+                    src={'/10.webp'}
                     width={400}
                     height={260}
                     style={{
@@ -187,7 +188,7 @@ export default function Service() {
               <div
                 style={{
                   width: '90%',
-                  height: '530px',
+                  height: '550px',
                   borderRadius: '15px',
                   padding: '20px',
                   wordBreak: 'keep-all',
@@ -209,7 +210,8 @@ export default function Service() {
                     textAlign: 'center',
                     fontWeight: '500',
                     color: '#555555',
-                    marginBottom: '40px',
+                    marginBottom: '20px',
+                    height: '130px',
                   }}
                 >
                   내 조건에 따라 쉽게 문의하고, 가장 빠르게 견적을 받아보세요.
@@ -225,7 +227,7 @@ export default function Service() {
                   }}
                 >
                   <Image
-                    src={'/11.jpg'}
+                    src={'/11.webp'}
                     width={400}
                     height={260}
                     style={{
@@ -243,7 +245,7 @@ export default function Service() {
               <div
                 style={{
                   width: '90%',
-                  height: '530px',
+                  height: '550px',
                   borderRadius: '15px',
                   padding: '20px',
                   wordBreak: 'keep-all',
@@ -265,7 +267,8 @@ export default function Service() {
                     textAlign: 'center',
                     fontWeight: '500',
                     color: '#555555',
-                    marginBottom: '40px',
+                    marginBottom: '20px',
+                    height: '130px',
                   }}
                 >
                   안심 계약부터, 안심 지불을 통해 내 재산을 지키세요!
@@ -284,7 +287,7 @@ export default function Service() {
                   }}
                 >
                   <Image
-                    src={'/12.jpg'}
+                    src={'/12.webp'}
                     width={300}
                     height={260}
                     style={{

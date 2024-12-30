@@ -40,9 +40,9 @@ export default function HomeServiceComponent({ container }: { container: any }) 
     >
       <Image
         id={'serviceBG'}
-        src={'/3.png'}
+        src={'/3.webp'}
         width={1600}
-        height={1200}
+        height={900}
         style={{ objectFit: 'cover', width: '120%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
         alt={'background2'}
       />
