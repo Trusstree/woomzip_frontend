@@ -25,11 +25,13 @@ export default function Comp3({ container }: { container: any }) {
     <div
       style={{
         width: '100%',
-        padding: '100px 0',
+        height: 'calc(100svh)',
         overflow: 'hidden',
         position: 'relative',
         backgroundColor: 'black',
-        minHeight: '800px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <Image

@@ -25,9 +25,7 @@ export default function Comp1({ container }: { container: any }) {
     <div
       style={{
         width: '100%',
-        aspectRatio: '32 / 17',
-        minHeight: '600px',
-        maxHeight: '1200px',
+        height: 'calc(-61px + 100svh)',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -35,14 +33,9 @@ export default function Comp1({ container }: { container: any }) {
       <Image
         src="/4.webp"
         id="about1BG"
-        width={1600}
-        height={1300}
+        fill
         style={{
-          objectFit: 'cover',
-          width: '100%',
-          aspectRatio: '32 / 17',
-          minHeight: '600px',
-          maxHeight: '1200px',
+          objectFit: 'contain',
         }}
         alt={'company'}
       />
