@@ -3,9 +3,9 @@
 import { getPostHeartUser } from '@/actions/apis/heartAPI';
 import { getPost } from '@/actions/apis/postAPI';
 import { getUserAccessToken } from '@/actions/auth/authAction';
-import CommentForm from '@/app/community/[pid]/_components/CommentForm';
-import CommentPagination from '@/app/community/[pid]/_components/CommentPagination';
-import CommentText from '@/app/community/[pid]/_components/CommentText';
+import CommentForm from '@/app/news/[pid]/_components/CommentForm';
+import CommentPagination from '@/app/news/[pid]/_components/CommentPagination';
+import CommentText from '@/app/news/[pid]/_components/CommentText';
 import { useEffect, useState } from 'react';
 
 export default function CommentComponent({ pid, initialComments }) {

@@ -30,7 +30,7 @@ export const postPlanning = async (house: any) => {
       houseId: house.house_id,
       name: house.name,
       contact: house.contact,
-      Inquiry: "알람문구 지정해주세요. (계획하기 부분)"
+      inquiry: "알람문구 지정해주세요. (계획하기 부분)"
     });
     data = result?.data;
   } catch (err) {

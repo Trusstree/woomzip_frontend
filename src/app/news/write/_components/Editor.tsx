@@ -4,7 +4,7 @@ import 'react-quill/dist/quill.snow.css';
 import { useMemo } from 'react';
 import { setS3Url } from '@/lib/s3Util';
 import moment from 'moment';
-import { getCustomImageBlot } from '@/app/community/write/_components/getCustomImageBlot';
+import { getCustomImageBlot } from '@/app/news/write/_components/getCustomImageBlot';
 import dynamic from 'next/dynamic';
 
 const formats = [
@@ -57,7 +57,7 @@ const Editor = dynamic(
                   const delta = editor.insertEmbed(range?.index || 0, 'image', {
                     src: imageUrl,
                     alt: 'post image',
-                    width: '80%',
+                    width: '100%',
                     dataSrc: imageUrl,
                   });
                 }

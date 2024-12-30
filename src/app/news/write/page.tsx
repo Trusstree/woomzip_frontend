@@ -1,4 +1,4 @@
-import WriteComponent from '@/app/community/write/_components/WriteComponent';
+import WriteComponent from '@/app/news/write/_components/WriteComponent';
 
 export default function Write() {
   return (

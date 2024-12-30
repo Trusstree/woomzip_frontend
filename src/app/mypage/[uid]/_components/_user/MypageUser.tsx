@@ -20,7 +20,7 @@ export default function MypageUser({ uid, userData, searchParams }) {
                 <div style={{ width: '100%', marginTop: '60px' }}>
                   <PostMenu
                     title={'내가 작성한 글'}
-                    routeUrl={`/community?q=${userData.userInfo.nickname}`}
+                    routeUrl={`/news?q=${userData.userInfo.nickname}`}
                     routeText={'더보기'}
                     horizontalScroll={true}
                   >

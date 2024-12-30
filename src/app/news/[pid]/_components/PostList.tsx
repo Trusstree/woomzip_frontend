@@ -1,4 +1,4 @@
-import PostCard from '@/app/community/_components/PostCard';
+import PostCard from '@/app/news/_components/PostCard';
 
 export default async function PostList({ postData }) {
   return (

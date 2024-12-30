@@ -1,8 +1,8 @@
 import PostMenu from '@/components/posts/PostMenu';
-import PostList from '@/app/community/_components/PostList';
+import PostList from '@/app/news/_components/PostList';
 import SearchComponent from '@/components/SearchComponent';
-import Category from '@/app/community/_components/Category';
-import { loadPostData } from '@/app/community/_actions/actions';
+import Category from '@/app/news/_components/Category';
+import { loadPostData } from '@/app/news/_actions/actions';
 import LoadPage from '@/components/app/LoadPage';
 
 export const revalidate = 1;

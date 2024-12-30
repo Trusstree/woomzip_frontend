@@ -1,9 +1,9 @@
 import Count from '@/components/posts/Count';
-import PostList from '@/app/community/[pid]/_components/PostList';
+import PostList from '@/app/news/[pid]/_components/PostList';
 import PostMenu from '@/components/posts/PostMenu';
 import DOMPurify from 'isomorphic-dompurify';
-import { loadPostData, loadRecommendPostData } from '@/app/community/[pid]/_actions/actions';
-import CommentComponent from '@/app/community/[pid]/_components/CommentComponent';
+import { loadPostData, loadRecommendPostData } from '@/app/news/[pid]/_actions/actions';
+import CommentComponent from '@/app/news/[pid]/_components/CommentComponent';
 import LoadPage from '@/components/app/LoadPage';
 import { elapsedTimeText } from '@/lib/stringUtil';
 import Image from 'next/image';

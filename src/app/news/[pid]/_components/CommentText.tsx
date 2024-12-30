@@ -5,7 +5,7 @@ import { postCommentHeart, postCommentHeartRemove } from '@/actions/apis/heartAP
 import HeartComponent from '@/components/posts/HeartComponent';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import styles from '@/app/community/[pid]/_styles/CommentText.module.css';
+import styles from '@/app/news/[pid]/_styles/CommentText.module.css';
 
 export default function CommentText({ data, isCommentLike }) {
   const [isLike, setIsLike] = useState(0);

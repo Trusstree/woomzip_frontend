@@ -4,7 +4,7 @@ import { getUserAccessToken } from '@/actions/auth/authAction';
 import { postComment } from '@/actions/apis/commentAPI';
 import { useEffect, useState } from 'react';
 import { getUserdataByToken } from '@/lib/parseUtil';
-import styles from '@/app/community/[pid]/_styles/CommentForm.module.css';
+import styles from '@/app/news/[pid]/_styles/CommentForm.module.css';
 
 export default function CommentForm({ pid, setNeedRender }: { pid: number | string; setNeedRender: any }) {
   const [comment, setComment] = useState('');

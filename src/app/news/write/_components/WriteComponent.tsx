@@ -4,7 +4,7 @@ import { postPost } from '@/actions/apis/postAPI';
 import { confirmSuccess } from '@/lib/alertUtil';
 import { useCallback, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Editor from '@/app/community/write/_components/Editor';
+import Editor from '@/app/news/write/_components/Editor';
 
 export default function WriteComponent() {
   const quillRef = useRef(null);
