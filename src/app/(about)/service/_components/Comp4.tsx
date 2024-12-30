@@ -5,6 +5,52 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 export default function Comp4({ container }: { container: any }) {
+  useGSAP(
+    () => {
+      gsap.from('#serviceInfo1', {
+        y: '50%',
+        scrollTrigger: {
+          trigger: '#serviceInfo1',
+          start: 'top bottom',
+          end: 'bottom 80%',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.to('#serviceInfo1', {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#serviceInfo1',
+          start: 'top bottom',
+          end: 'bottom 80%',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.from('#serviceInfo2', {
+        y: '50%',
+        scrollTrigger: {
+          trigger: '#serviceInfo2',
+          start: 'top bottom',
+          end: 'bottom 80%',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.to('#serviceInfo2', {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#serviceInfo2',
+          start: 'top bottom',
+          end: 'bottom 80%',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+    },
+    { scope: container.current },
+  );
+
   return (
     <div
       style={{
@@ -31,7 +77,7 @@ export default function Comp4({ container }: { container: any }) {
         }}
       >
         <div className="row g-0" style={{ marginTop: '80px' }}>
-          <div className="col-12">
+          <div id={'serviceInfo1'} className="col-12" style={{ opacity: 0 }}>
             <div
               style={{
                 width: '95%',
@@ -115,7 +161,7 @@ export default function Comp4({ container }: { container: any }) {
             </div>
           </div>
 
-          <div className="col-12">
+          <div id={'serviceInfo2'} className="col-12" style={{ opacity: 0 }}>
             <div
               style={{
                 width: '95%',

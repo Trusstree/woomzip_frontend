@@ -5,6 +5,72 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 export default function Comp3({ container }: { container: any }) {
+  useGSAP(
+    () => {
+      gsap.from('#serviceCard1', {
+        y: '20%',
+        scrollTrigger: {
+          trigger: '#serviceCard1',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.to('#serviceCard1', {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#serviceCard1',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.from('#serviceCard2', {
+        y: '20%',
+        scrollTrigger: {
+          trigger: '#serviceCard2',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.to('#serviceCard2', {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#serviceCard2',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.from('#serviceCard3', {
+        y: '20%',
+        scrollTrigger: {
+          trigger: '#serviceCard3',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.to('#serviceCard3', {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#serviceCard3',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+    },
+    { scope: container.current },
+  );
+
   return (
     <div
       style={{
@@ -32,7 +98,7 @@ export default function Comp3({ container }: { container: any }) {
         }}
       >
         <div className="row g-0" style={{ marginTop: '80px' }}>
-          <div className="col-md-4 col-12">
+          <div id={'serviceCard1'} className="col-md-4 col-12" style={{ opacity: 0 }}>
             <div
               style={{
                 width: '90%',
@@ -91,7 +157,7 @@ export default function Comp3({ container }: { container: any }) {
               </div>
             </div>
           </div>
-          <div className="col-md-4 col-12">
+          <div id={'serviceCard2'} className="col-md-4 col-12" style={{ opacity: 0 }}>
             <div
               style={{
                 width: '90%',
@@ -148,7 +214,7 @@ export default function Comp3({ container }: { container: any }) {
               </div>
             </div>
           </div>
-          <div className="col-md-4 col-12">
+          <div id={'serviceCard3'} className="col-md-4 col-12" style={{ opacity: 0 }}>
             <div
               style={{
                 width: '90%',

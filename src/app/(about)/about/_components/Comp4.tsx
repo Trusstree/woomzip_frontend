@@ -8,8 +8,6 @@ export default function Comp4({ container }: { container: any }) {
   useGSAP(
     () => {
       gsap.to('#aboutExplanation1BG', {
-        // scale: 1.05,
-        //transformOrigin: 'center center',
         opacity: 1,
         scrollTrigger: {
           trigger: '#aboutExplanation1BG',
@@ -20,8 +18,6 @@ export default function Comp4({ container }: { container: any }) {
         },
       });
       gsap.to('#aboutExplanation2BG', {
-        //scale: 1.05,
-        //transformOrigin: 'center center',
         opacity: 1,
         scrollTrigger: {
           trigger: '#aboutExplanation2BG',
@@ -32,8 +28,6 @@ export default function Comp4({ container }: { container: any }) {
         },
       });
       gsap.to('#aboutExplanation3BG', {
-        // scale: 1.05,
-        //transformOrigin: 'center center',
         opacity: 1,
         scrollTrigger: {
           trigger: '#aboutExplanation3BG',

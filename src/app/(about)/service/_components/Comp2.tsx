@@ -1,20 +1,34 @@
 'use client';
 
-import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 export default function Comp2({ container }: { container: any }) {
+  useGSAP(
+    () => {
+      gsap.to('#serviceText', {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#serviceText',
+          start: '50% 80%',
+          end: '50% 60%',
+          scrub: 0.5,
+        },
+      });
+    },
+    { scope: container.current },
+  );
+
   return (
     <div
+      id={'serviceText'}
       style={{
         width: '100%',
-        aspectRatio: '32 / 17',
-        minHeight: '600px',
-        maxHeight: '1200px',
+        height: 'calc(100svh)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        opacity: 0,
       }}
     >
       <div
