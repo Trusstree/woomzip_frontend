@@ -74,11 +74,9 @@ export default function HomeCategoryComponent({ container }: { container: any })
           <Image
             id={'category1BG'}
             src={'/2.webp'}
-            width={840}
-            height={900}
+            fill
             style={{
               objectFit: 'cover',
-              width: '115%',
               aspectRatio: '32 / 17',
               minHeight: '600px',
               maxHeight: '1200px',
@@ -182,12 +180,10 @@ export default function HomeCategoryComponent({ container }: { container: any })
         >
           <Image
             id={'category2BG'}
-            src={'/6.jpg'}
-            width={1600}
-            height={900}
+            src={'/6.webp'}
+            fill
             style={{
               objectFit: 'cover',
-              width: '115%',
               aspectRatio: '32 / 17',
               minHeight: '600px',
               maxHeight: '1200px',
@@ -291,12 +287,10 @@ export default function HomeCategoryComponent({ container }: { container: any })
         >
           <Image
             id={'category3BG'}
-            src={'/7.jpeg'}
-            width={1600}
-            height={1300}
+            src={'/7.webp'}
+            fill
             style={{
               objectFit: 'cover',
-              width: '115%',
               aspectRatio: '32 / 17',
               minHeight: '600px',
               maxHeight: '1200px',

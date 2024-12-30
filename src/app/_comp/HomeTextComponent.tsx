@@ -14,7 +14,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
       gsap.to('#homeTextComponent2', {
         scrollTrigger: {
           trigger: '#homeTextComponent2',
-          start: 'top 61',
+          start: 'top top',
           pin: true,
           scrub: 0.5,
           pinSpacing: false,
@@ -75,9 +75,8 @@ export default function HomeTextComponent({ container }: { container: any }) {
       >
         <Image
           src={'/1.webp'}
-          width={1600}
-          height={900}
-          style={{ objectFit: 'cover', width: '100%', aspectRatio: '16 / 9', minHeight: '600px', maxHeight: '1200px' }}
+          fill
+          style={{ objectFit: 'cover', aspectRatio: '16 / 9', minHeight: '600px', maxHeight: '1200px' }}
           alt={'background2'}
         />
         <div
