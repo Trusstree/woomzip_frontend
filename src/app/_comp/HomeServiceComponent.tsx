@@ -32,19 +32,11 @@ export default function HomeServiceComponent({ container }: { container: any }) 
       style={{
         position: 'relative',
         width: '100%',
-        aspectRatio: '32 / 17',
-        minHeight: '600px',
-        maxHeight: '1200px',
+        height: 'calc(100svh)',
         overflow: 'hidden',
       }}
     >
-      <Image
-        id={'serviceBG'}
-        src={'/3.webp'}
-        fill
-        style={{ objectFit: 'cover', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
-        alt={'background2'}
-      />
+      <Image id={'serviceBG'} src={'/3.webp'} fill style={{ objectFit: 'cover' }} alt={'background2'} />
       <div
         style={{
           width: '100%',

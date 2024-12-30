@@ -22,8 +22,7 @@ export default function Comp4({ id }: { id: string }) {
       style={{
         position: 'relative',
         width: '100%',
-        aspectRatio: '32 / 17',
-        minHeight: '600px',
+        height: 'calc(100svh)',
         overflow: 'hidden',
         backgroundColor: 'black',
       }}
@@ -36,7 +35,6 @@ export default function Comp4({ id }: { id: string }) {
           style={{
             objectFit: 'contain',
             width: '1600px',
-            border: 'none',
           }}
           alt={'background2'}
         />
@@ -47,7 +45,6 @@ export default function Comp4({ id }: { id: string }) {
           style={{
             objectFit: 'contain',
             width: '1600px',
-            border: 'none',
           }}
           alt={'background2'}
         />
@@ -58,7 +55,6 @@ export default function Comp4({ id }: { id: string }) {
           style={{
             objectFit: 'contain',
             width: '1600px',
-            border: 'none',
           }}
           alt={'background2'}
         />
@@ -150,7 +146,7 @@ export default function Comp4({ id }: { id: string }) {
                 color: 'black',
                 fontSize: '14px',
                 fontWeight: '500',
-                padding: '10px 100px',
+                padding: '10px 120px',
                 marginLeft: '2%',
                 marginTop: '10px',
               }}

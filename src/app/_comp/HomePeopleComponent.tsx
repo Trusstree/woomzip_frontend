@@ -22,8 +22,7 @@ export default function HomePeopleComponent() {
       style={{
         position: 'relative',
         width: '100%',
-        aspectRatio: '32 / 17',
-        minHeight: '600px',
+        height: 'calc(100svh)',
         overflow: 'hidden',
         backgroundColor: '#ffffff',
       }}
@@ -59,7 +58,6 @@ export default function HomePeopleComponent() {
         style={{
           objectFit: 'contain',
           width: '1600px',
-          border: 'none',
         }}
         alt={'background2'}
       />
