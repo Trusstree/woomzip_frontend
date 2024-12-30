@@ -4,7 +4,22 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Comp2() {
+export default function Comp2({ container }: { container: any }) {
+  useGSAP(
+    () => {
+      gsap.to('#aboutText', {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#aboutText',
+          start: '50% 80%',
+          end: '50% 60%',
+          scrub: 0.5,
+        },
+      });
+    },
+    { scope: container.current },
+  );
+
   return (
     <div
       style={{
@@ -18,6 +33,7 @@ export default function Comp2() {
       }}
     >
       <div
+        id={`aboutText`}
         style={{
           width: 'auto',
           maxWidth: '90%',
@@ -26,6 +42,7 @@ export default function Comp2() {
           fontWeight: '700',
           marginTop: '100px',
           lineHeight: 'clamp(45px, 4vw, 60px)',
+          opacity: 0,
         }}
       >
         "내 집을 짓는다" 라는 것은,

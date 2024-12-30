@@ -3,13 +3,9 @@
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 
 export default function HomeServiceComponent({ container }: { container: any }) {
-  gsap.registerPlugin(useGSAP);
-  gsap.registerPlugin(ScrollTrigger);
-
   useGSAP(
     () => {
       gsap.from('#serviceBG', {

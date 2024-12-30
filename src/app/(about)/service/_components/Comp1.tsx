@@ -4,7 +4,7 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Comp1({ inquiryRef }: { inquiryRef?: any }) {
+export default function Comp1({ container, inquiryRef }: { container: any; inquiryRef?: any }) {
   const inquiryScrollIntoView = () => inquiryRef.current.scrollIntoView();
   return (
     <div

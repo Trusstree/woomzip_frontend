@@ -2,17 +2,24 @@
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function HomeCategoryNav({ container, category1, category2, category3 }: { container: any, category1:any, category2:any, category3:any }) {
-  gsap.registerPlugin(useGSAP);
-  gsap.registerPlugin(ScrollTrigger);
-
+export default function HomeCategoryNav({
+  container,
+  category1,
+  category2,
+  category3,
+}: {
+  container: any;
+  category1: any;
+  category2: any;
+  category3: any;
+}) {
   const scrollCategory1 = () => category1.current.scrollIntoView();
   const scrollCategory2 = () => category2.current.scrollIntoView();
   const scrollCategory3 = () => category3.current.scrollIntoView();
-  
-  useGSAP(() => {
+
+  useGSAP(
+    () => {
       gsap.to('#category1Btn', {
         backgroundColor: '#666666',
         color: '#ffffff',
@@ -20,10 +27,10 @@ export default function HomeCategoryNav({ container, category1, category2, categ
           trigger: '#category1BG',
           start: 'top center',
           end: '70% center',
-          toggleActions:"play reverse play reverse",
+          toggleActions: 'play reverse play reverse',
         },
       });
-      
+
       gsap.to('#category2Btn', {
         backgroundColor: '#666666',
         color: '#ffffff',
@@ -31,7 +38,7 @@ export default function HomeCategoryNav({ container, category1, category2, categ
           trigger: '#category2BG',
           start: 'top center',
           end: '70% center',
-          toggleActions:"play reverse play reverse",
+          toggleActions: 'play reverse play reverse',
         },
       });
 
@@ -42,7 +49,7 @@ export default function HomeCategoryNav({ container, category1, category2, categ
           trigger: '#category3BG',
           start: 'top center',
           end: '70% center',
-          toggleActions:"play reverse play reverse",
+          toggleActions: 'play reverse play reverse',
         },
       });
     },
@@ -127,5 +134,5 @@ export default function HomeCategoryNav({ container, category1, category2, categ
         </div>
       </div>
     </div>
-);
+  );
 }

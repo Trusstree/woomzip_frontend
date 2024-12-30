@@ -4,7 +4,7 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Comp2() {
+export default function Comp2({ container }: { container: any }) {
   return (
     <div
       style={{

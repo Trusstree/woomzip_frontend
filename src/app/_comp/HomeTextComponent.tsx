@@ -3,12 +3,8 @@
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function HomeTextComponent({ container }: { container: any }) {
-  gsap.registerPlugin(useGSAP);
-  gsap.registerPlugin(ScrollTrigger);
-
   useGSAP(
     () => {
       gsap.to('#homeTextComponent2', {

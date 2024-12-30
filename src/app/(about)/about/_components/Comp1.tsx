@@ -1,6 +1,26 @@
-import Image from 'next/image';
+'use client';
 
-export default function Comp1() {
+import Image from 'next/image';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+export default function Comp1({ container }: { container: any }) {
+  useGSAP(
+    () => {
+      gsap.from('#about1BG', {
+        scale: 1.15,
+        transformOrigin: 'center center',
+        scrollTrigger: {
+          trigger: '#about1BG',
+          start: 'top bottom',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+    },
+    { scope: container.current },
+  );
+
   return (
     <div
       style={{
@@ -14,6 +34,7 @@ export default function Comp1() {
     >
       <Image
         src="/4.webp"
+        id="about1BG"
         width={1600}
         height={1300}
         style={{

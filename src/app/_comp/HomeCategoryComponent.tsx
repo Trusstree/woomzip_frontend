@@ -3,15 +3,11 @@
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
 import HomeCategoryNav from './HomeCategoryNav';
 import Link from 'next/link';
 
 export default function HomeCategoryComponent({ container }: { container: any }) {
-  gsap.registerPlugin(useGSAP);
-  gsap.registerPlugin(ScrollTrigger);
-
   const category1 = useRef(null);
   const category2 = useRef(null);
   const category3 = useRef(null);

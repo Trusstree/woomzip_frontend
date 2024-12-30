@@ -4,7 +4,23 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Comp3() {
+export default function Comp3({ container }: { container: any }) {
+  useGSAP(
+    () => {
+      gsap.from('#aboutHistoryBG', {
+        scale: 1.15,
+        transformOrigin: 'center center',
+        scrollTrigger: {
+          trigger: '#aboutHistoryBG',
+          start: 'top bottom',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+    },
+    { scope: container.current },
+  );
+
   return (
     <div
       style={{
@@ -17,6 +33,7 @@ export default function Comp3() {
       }}
     >
       <Image
+        id={'aboutHistoryBG'}
         src="/5.webp"
         width={1600}
         height={900}

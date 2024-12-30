@@ -6,7 +6,6 @@ import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
 
 export default function HomePeopleComponent() {
-  gsap.registerPlugin(useGSAP);
   useGSAP(() => {
     gsap.to('#peopleBG', {
       ease: 'none',

@@ -4,7 +4,49 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Comp4() {
+export default function Comp4({ container }: { container: any }) {
+  useGSAP(
+    () => {
+      gsap.to('#aboutExplanation1BG', {
+        // scale: 1.05,
+        //transformOrigin: 'center center',
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#aboutExplanation1BG',
+          start: 'bottom bottom',
+          end: 'bottom 80%',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.to('#aboutExplanation2BG', {
+        //scale: 1.05,
+        //transformOrigin: 'center center',
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#aboutExplanation2BG',
+          start: 'bottom bottom',
+          end: 'bottom 80%',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.to('#aboutExplanation3BG', {
+        // scale: 1.05,
+        //transformOrigin: 'center center',
+        opacity: 1,
+        scrollTrigger: {
+          trigger: '#aboutExplanation3BG',
+          start: 'bottom bottom',
+          end: 'bottom 80%',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+    },
+    { scope: container.current },
+  );
+
   return (
     <div
       style={{
@@ -19,7 +61,7 @@ export default function Comp4() {
           margin: '0 auto',
         }}
       >
-        <div className="row" style={{ marginTop: '100px' }}>
+        <div className="row" id={'aboutExplanation1BG'} style={{ marginTop: '100px', opacity: 0 }}>
           <div className="col-md-6 col-12 order-md-2 order-1">
             <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
               <Image
@@ -73,7 +115,7 @@ export default function Comp4() {
           </div>
         </div>
 
-        <div className="row" style={{ marginTop: '100px' }}>
+        <div className="row" id={'aboutExplanation2BG'} style={{ marginTop: '100px', opacity: 0 }}>
           <div className="col-md-6 col-12 order-md-1 order-1">
             <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
               <Image
@@ -129,7 +171,7 @@ export default function Comp4() {
           </div>
         </div>
 
-        <div className="row" style={{ marginTop: '100px' }}>
+        <div className="row" id={'aboutExplanation3BG'} style={{ marginTop: '100px', opacity: 0 }}>
           <div className="col-md-6 col-12 order-md-2 order-1">
             <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
               <Image
