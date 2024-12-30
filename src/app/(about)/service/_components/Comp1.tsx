@@ -45,7 +45,7 @@ export default function Comp1({ container, inquiryRef }: { container: any; inqui
     >
       <Image
         id={'serviceIntroFrame'}
-        src="/8.png"
+        src="/8.webp"
         width={1600}
         height={1300}
         style={{
@@ -59,7 +59,7 @@ export default function Comp1({ container, inquiryRef }: { container: any; inqui
       />
       <Image
         id={'serviceIntroBG'}
-        src="/8_1.jpg"
+        src="/8_1.webp"
         width={1600}
         height={1300}
         style={{
