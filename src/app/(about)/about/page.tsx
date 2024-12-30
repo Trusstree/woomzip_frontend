@@ -21,7 +21,7 @@ export default function About() {
         <Image
           src="/4.webp"
           width={1600}
-          height={900}
+          height={1300}
           style={{
             objectFit: 'cover',
             width: '100%',
