@@ -19,9 +19,9 @@ export default function About() {
         }}
       >
         <Image
-          src="/4.png"
+          src="/4.webp"
           width={1600}
-          height={1200}
+          height={900}
           style={{
             objectFit: 'cover',
             width: '100%',
@@ -124,9 +124,9 @@ export default function About() {
         }}
       >
         <Image
-          src="/5.jpg"
+          src="/5.webp"
           width={1600}
-          height={1200}
+          height={900}
           style={{
             objectFit: 'cover',
             width: '100%',
@@ -227,7 +227,7 @@ export default function About() {
             <div className="col-md-6 col-12 order-md-2 order-1">
               <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
                 <Image
-                  src={'/13.jpg'}
+                  src={'/13.webp'}
                   width={600}
                   height={600}
                   style={{ objectFit: 'cover', width: '100%', aspectRatio: '1/1', borderRadius: '13px' }}
@@ -281,7 +281,7 @@ export default function About() {
             <div className="col-md-6 col-12 order-md-1 order-1">
               <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
                 <Image
-                  src={'/14.jpeg'}
+                  src={'/14.webp'}
                   width={600}
                   height={600}
                   style={{ objectFit: 'cover', width: '100%', aspectRatio: '1/1', borderRadius: '13px' }}
@@ -337,7 +337,7 @@ export default function About() {
             <div className="col-md-6 col-12 order-md-2 order-1">
               <div style={{ width: '95%', aspectRatio: '1/1', overflow: 'hidden', borderRadius: '13px' }}>
                 <Image
-                  src={'/15.jpg'}
+                  src={'/15.webp'}
                   width={600}
                   height={600}
                   style={{ objectFit: 'cover', width: '100%', aspectRatio: '1/1', borderRadius: '13px' }}

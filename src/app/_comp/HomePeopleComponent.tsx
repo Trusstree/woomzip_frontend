@@ -30,7 +30,7 @@ export default function HomePeopleComponent() {
     >
       {/* <div id="peopleBG" className="d-flex">
         <Image
-          src={'/4.png'}
+          src={'/4.webp'}
           width={1600}
           height={850}
           style={{
@@ -41,7 +41,7 @@ export default function HomePeopleComponent() {
           alt={'background2'}
         />
         <Image
-          src={'/4.png'}
+          src={'/4.webp'}
           width={1600}
           height={850}
           style={{
@@ -53,7 +53,7 @@ export default function HomePeopleComponent() {
         />
       </div> */}
       <Image
-        src={'/4.png'}
+        src={'/4.webp'}
         width={1600}
         height={850}
         style={{

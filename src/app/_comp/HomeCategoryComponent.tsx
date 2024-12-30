@@ -73,9 +73,9 @@ export default function HomeCategoryComponent({ container }: { container: any })
         >
           <Image
             id={'category1BG'}
-            src={'/2.jpg'}
-            width={1600}
-            height={1300}
+            src={'/2.webp'}
+            width={840}
+            height={900}
             style={{
               objectFit: 'cover',
               width: '115%',
@@ -182,9 +182,9 @@ export default function HomeCategoryComponent({ container }: { container: any })
         >
           <Image
             id={'category2BG'}
-            src={'/6.png'}
+            src={'/6.jpg'}
             width={1600}
-            height={1300}
+            height={900}
             style={{
               objectFit: 'cover',
               width: '115%',

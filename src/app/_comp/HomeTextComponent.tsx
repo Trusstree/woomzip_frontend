@@ -1,11 +1,11 @@
-"use client"
+'use client';
 
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export default function HomeTextComponent({container}:{container:any}){
+export default function HomeTextComponent({ container }: { container: any }) {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
 
@@ -20,44 +20,44 @@ export default function HomeTextComponent({container}:{container:any}){
           pinSpacing: false,
         },
       });
-      gsap.to("#homeText1", {
-        opacity:1,
+      gsap.to('#homeText1', {
+        opacity: 1,
         scrollTrigger: {
-          trigger: "#homeText1",
-          start: "50% 80%",
-          end: "50% 60%",
-          scrub:0.5,
+          trigger: '#homeText1',
+          start: '50% 80%',
+          end: '50% 60%',
+          scrub: 0.5,
         },
       });
-      gsap.to("#homeText2", {
-        opacity:1,
+      gsap.to('#homeText2', {
+        opacity: 1,
         scrollTrigger: {
-          trigger: "#homeText2",
-          start: "50% 80%",
-          end: "50% 60%",
-          scrub:0.5,
+          trigger: '#homeText2',
+          start: '50% 80%',
+          end: '50% 60%',
+          scrub: 0.5,
         },
       });
-      gsap.to("#homeText3", {
-        opacity:1,
+      gsap.to('#homeText3', {
+        opacity: 1,
         scrollTrigger: {
-          trigger: "#homeText3",
-          start: "50% 80%",
-          end: "50% 60%",
-          scrub:0.5,
+          trigger: '#homeText3',
+          start: '50% 80%',
+          end: '50% 60%',
+          scrub: 0.5,
         },
       });
-      gsap.to("#homeText4", {
-        opacity:1,
+      gsap.to('#homeText4', {
+        opacity: 1,
         scrollTrigger: {
-          trigger: "#homeText4",
-          start: "50% 80%",
-          end: "50% 60%",
-          scrub:0.5,
+          trigger: '#homeText4',
+          start: '50% 80%',
+          end: '50% 60%',
+          scrub: 0.5,
         },
       });
     },
-    { scope: container.current }
+    { scope: container.current },
   );
 
   return (
@@ -74,10 +74,10 @@ export default function HomeTextComponent({container}:{container:any}){
         }}
       >
         <Image
-          src={'/1.jpg'}
+          src={'/1.webp'}
           width={1600}
-          height={1300}
-          style={{ objectFit: 'cover', width: '100%', aspectRatio: '32 / 17', minHeight: '600px', maxHeight: '1200px' }}
+          height={900}
+          style={{ objectFit: 'cover', width: '100%', aspectRatio: '16 / 9', minHeight: '600px', maxHeight: '1200px' }}
           alt={'background2'}
         />
         <div
@@ -119,7 +119,7 @@ export default function HomeTextComponent({container}:{container:any}){
           style={{
             width: '100%',
             position: 'absolute',
-            bottom: '50px',
+            bottom: '60px',
             left: 0,
           }}
         >
@@ -139,64 +139,64 @@ export default function HomeTextComponent({container}:{container:any}){
       </div>
 
       <div
-      id={'homeTextComponent2'}
-      style={{
-        backgroundColor: 'black',
-        width: '100%',
-        aspectRatio: '32 / 17',
-        minHeight: '600px',
-        overflow: 'hidden',
-      }}
-    >
-      <div
+        id={'homeTextComponent2'}
         style={{
-          fontSize: 'clamp(35px, 6vw, 55px)',
-          fontWeight: '600',
-          wordBreak: 'keep-all',
-          width: '95%',
-          margin: '50px auto',
-          color: '#ffffff',
+          backgroundColor: 'black',
+          width: '100%',
+          aspectRatio: '32 / 17',
+          minHeight: '600px',
+          overflow: 'hidden',
         }}
       >
-        <span
-          id={"homeText1"}
+        <div
           style={{
-            opacity:0,
+            fontSize: 'clamp(35px, 6vw, 55px)',
+            fontWeight: '600',
+            wordBreak: 'keep-all',
+            width: '95%',
+            margin: '50px auto',
+            color: '#ffffff',
           }}
         >
-          어떤 집을 지어야 할지,
-        </span>
-        <br />
-        
-        <span
-          id={"homeText2"}
-          style={{
-            opacity:0,
-          }}
-        >
-          제작사를 믿을 수 있을지,
-        </span>
-        <br />
-        <span
-          id={"homeText3"}
-          style={{
-            opacity:0,
-          }}
-        >
-          내 예산안에 가능할지 고민하시나요?
-        </span>
-        <br />
-        <br />
-        <span
-          id={"homeText4"}
-          style={{
-            opacity:0,
-          }}
-        >
-          그 모든 걱정, 움집에선 필요 없어요.
-        </span>
+          <span
+            id={'homeText1'}
+            style={{
+              opacity: 0,
+            }}
+          >
+            어떤 집을 지어야 할지,
+          </span>
+          <br />
+
+          <span
+            id={'homeText2'}
+            style={{
+              opacity: 0,
+            }}
+          >
+            제작사를 믿을 수 있을지,
+          </span>
+          <br />
+          <span
+            id={'homeText3'}
+            style={{
+              opacity: 0,
+            }}
+          >
+            내 예산안에 가능할지 고민하시나요?
+          </span>
+          <br />
+          <br />
+          <span
+            id={'homeText4'}
+            style={{
+              opacity: 0,
+            }}
+          >
+            그 모든 걱정, 움집에선 필요 없어요.
+          </span>
+        </div>
       </div>
-    </div>
     </>
   );
 }
