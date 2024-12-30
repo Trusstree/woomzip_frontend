@@ -1,6 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import Comp1 from '@/app/(about)/service/_components/Comp1';
 import Comp2 from '@/app/(about)/service/_components/Comp2';
