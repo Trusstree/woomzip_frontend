@@ -23,7 +23,7 @@ export default function Service() {
         <Image
           src="/8.webp"
           width={1600}
-          height={900}
+          height={1300}
           style={{
             objectFit: 'cover',
             width: '100%',
