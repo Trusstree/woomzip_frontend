@@ -10,7 +10,7 @@ export default function Header() {
       className={`navbar navbar-expand-md justify-content-center sticky-top`}
       style={{
         backgroundColor: 'black',
-        position: 'sticky',
+        position: 'fixed',
         top: '0',
         width: '100%',
       }}
@@ -59,10 +59,7 @@ export default function Header() {
               >
                 회사소개
               </RouteButton>
-              <RouteButton
-                url="/news"
-                style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
-              >
+              <RouteButton url="/news" style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}>
                 뉴스
               </RouteButton>
 

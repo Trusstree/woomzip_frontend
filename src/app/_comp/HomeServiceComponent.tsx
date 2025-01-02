@@ -28,7 +28,7 @@ export default function HomeServiceComponent({ container }: { container: any }) 
       style={{
         position: 'relative',
         width: '100%',
-        height: 'calc(100svh)',
+        height: '100svh',
         overflow: 'hidden',
       }}
     >

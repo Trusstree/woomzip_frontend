@@ -67,7 +67,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
           overflow: 'hidden',
         }}
       >
-        <Image src={'/1.webp'} fill style={{ objectFit: 'cover', aspectRatio: '16 / 9' }} alt={'background2'} />
+        <Image src={'/1.webp'} fill style={{ objectFit: 'cover' }} alt={'background2'} />
         <div
           style={{
             position: 'absolute',
