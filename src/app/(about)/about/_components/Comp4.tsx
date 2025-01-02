@@ -7,12 +7,32 @@ import { useGSAP } from '@gsap/react';
 export default function Comp4({ container }: { container: any }) {
   useGSAP(
     () => {
+      gsap.from('#aboutExplanation1BG', {
+        y: '20%',
+        scrollTrigger: {
+          trigger: '#aboutExplanation1BG',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
       gsap.to('#aboutExplanation1BG', {
         opacity: 1,
         scrollTrigger: {
           trigger: '#aboutExplanation1BG',
-          start: 'bottom bottom',
-          end: 'bottom 80%',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.from('#aboutExplanation2BG', {
+        y: '20%',
+        scrollTrigger: {
+          trigger: '#aboutExplanation2BG',
+          start: 'top bottom',
+          end: 'bottom center',
           scrub: 0.5,
           pinSpacing: false,
         },
@@ -21,8 +41,18 @@ export default function Comp4({ container }: { container: any }) {
         opacity: 1,
         scrollTrigger: {
           trigger: '#aboutExplanation2BG',
-          start: 'bottom bottom',
-          end: 'bottom 80%',
+          start: 'top bottom',
+          end: 'bottom center',
+          scrub: 0.5,
+          pinSpacing: false,
+        },
+      });
+      gsap.from('#aboutExplanation3BG', {
+        y: '20%',
+        scrollTrigger: {
+          trigger: '#aboutExplanation3BG',
+          start: 'top bottom',
+          end: 'bottom center',
           scrub: 0.5,
           pinSpacing: false,
         },
@@ -31,8 +61,8 @@ export default function Comp4({ container }: { container: any }) {
         opacity: 1,
         scrollTrigger: {
           trigger: '#aboutExplanation3BG',
-          start: 'bottom bottom',
-          end: 'bottom 80%',
+          start: 'top bottom',
+          end: 'bottom center',
           scrub: 0.5,
           pinSpacing: false,
         },

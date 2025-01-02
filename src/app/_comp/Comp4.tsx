@@ -22,7 +22,7 @@ export default function Comp4({ id }: { id: string }) {
       style={{
         position: 'relative',
         width: '100%',
-        height: 'calc(100svh)',
+        height: 'calc(-61px + 100svh)',
         overflow: 'hidden',
         backgroundColor: 'black',
       }}

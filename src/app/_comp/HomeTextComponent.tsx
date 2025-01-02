@@ -63,7 +63,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
         style={{
           position: 'relative',
           width: '100%',
-          height: 'calc(100svh - 61px)',
+          height: '100svh',
           overflow: 'hidden',
         }}
       >
@@ -74,9 +74,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
             bottom: 0,
             left: 0,
             width: '100%',
-            aspectRatio: '6 / 1',
-            minHeight: '150px',
-            maxHeight: '200px',
+            height: '200px',
             background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
           }}
         />
@@ -85,7 +83,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
           style={{
             width: '100%',
             position: 'absolute',
-            top: '50px',
+            top: '80px',
             left: 0,
           }}
         >
@@ -107,7 +105,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
           style={{
             width: '100%',
             position: 'absolute',
-            bottom: '60px',
+            bottom: '50px',
             left: 0,
           }}
         >

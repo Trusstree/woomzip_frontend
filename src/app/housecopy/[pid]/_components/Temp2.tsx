@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function Temp1({ imageData }) {
+export default function Temp2({ imageData }) {
   return (
     <div
       style={{
@@ -55,7 +55,7 @@ export default function Temp1({ imageData }) {
         <div
           style={{
             color: '#ffffff',
-            fontSize: 'clamp(25px, 4vw, 45px)',
+            fontSize: 'clamp(30px, 4vw, 45px)',
             fontWeight: '700',
             marginTop: '20px',
             textAlign: 'center',
