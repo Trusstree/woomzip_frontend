@@ -7,7 +7,9 @@ import Temp1 from '@/app/housecopy/[pid]/_components/Temp1';
 import Temp2 from '@/app/housecopy/[pid]/_components/Temp2';
 import Temp3 from '@/app/housecopy/[pid]/_components/Temp3';
 import Masterplan from '@/app/housecopy/[pid]/_components/Masterplan';
+import Detail from '@/app/housecopy/[pid]/_components/Detail';
 import Tazan from '@/app/housecopy/[pid]/_components/Tazan';
+import Service from '@/app/housecopy/[pid]/_components/Service';
 import CallWoomzip from '@/app/housecopy/[pid]/_components/CallWoomzip';
 
 export default async function House({ params }: { params: { pid: number } }) {
@@ -23,8 +25,10 @@ export default async function House({ params }: { params: { pid: number } }) {
       <Temp2 imageData={imageData} />
       <Temp3 imageData={imageData} />
       <Masterplan imageData={imageData} />
+      <Detail houseData={houseData} specificationData={specificationData} />
       <Tazan pid={pid} houseData={houseData} />
-      <CallWoomzip pid={pid} houseData={houseData} />
+      <Service />
+      {/* <CallWoomzip pid={pid} houseData={houseData} /> */}
     </>
   ) : (
     <LoadPage />
