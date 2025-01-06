@@ -37,7 +37,7 @@ export default function Comp1({ imageData }) {
             position: 'relative',
           }}
         >
-          <div style={{ marginTop: '100px', color: '#ffffff', fontSize: 'clamp(10px, 3vw, 20px)', fontWeight: '600' }}>
+          <div style={{ marginTop: '100px', color: '#ffffff', fontSize: 'clamp(12px, 3vw, 18px)', fontWeight: '350' }}>
             움집 제품
           </div>
           <div
@@ -58,8 +58,8 @@ export default function Comp1({ imageData }) {
             <div
               style={{
                 color: '#ffffff',
-                fontSize: 'clamp(9px, 3vw, 13px)',
-                fontWeight: '500',
+                fontSize: 'clamp(11px, 3vw, 13px)',
+                fontWeight: '350',
                 textAlign: 'center',
               }}
             >
@@ -68,8 +68,8 @@ export default function Comp1({ imageData }) {
             <div
               style={{
                 color: '#ffffff',
-                fontSize: 'clamp(10px, 3vw, 16px)',
-                fontWeight: '600',
+                fontSize: 'clamp(12px, 3vw, 16px)',
+                fontWeight: '350',
                 textAlign: 'center',
               }}
             >
@@ -151,7 +151,7 @@ export default function Comp1({ imageData }) {
           <div
             style={{
               color: '#ffffff',
-              fontSize: 'clamp(25px, 4vw, 45px)',
+              fontSize: 'clamp(22px, 4vw, 40px)',
               fontWeight: '700',
               wordBreak: 'keep-all',
             }}

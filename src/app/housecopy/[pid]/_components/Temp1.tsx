@@ -55,7 +55,7 @@ export default function Temp1({ imageData }) {
         <div
           style={{
             color: '#ffffff',
-            fontSize: 'clamp(25px, 4vw, 45px)',
+            fontSize: 'clamp(23px, 4vw, 40px)',
             fontWeight: '700',
             marginTop: '20px',
             textAlign: 'center',
@@ -66,8 +66,8 @@ export default function Temp1({ imageData }) {
         <div
           style={{
             color: '#ffffff',
-            fontSize: 'clamp(16px, 3vw, 19px)',
-            fontWeight: '500',
+            fontSize: 'clamp(14px, 3vw, 18px)',
+            fontWeight: '350',
             marginBottom: '50px',
             maxWidth: '800px',
             margin: '50px auto',

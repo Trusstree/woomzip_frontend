@@ -38,7 +38,7 @@ export default function Comp2({ imageData }) {
           <div
             style={{
               color: '#ffffff',
-              fontSize: 'clamp(30px, 4vw, 45px)',
+              fontSize: 'clamp(35px, 4vw, 45px)',
               fontWeight: '700',
               margin: '10px 0',
             }}
@@ -49,7 +49,7 @@ export default function Comp2({ imageData }) {
             style={{
               color: '#ffffff',
               fontSize: 'clamp(9px, 3vw, 13px)',
-              fontWeight: '500',
+              fontWeight: '350',
               marginTop: '10px',
             }}
           >

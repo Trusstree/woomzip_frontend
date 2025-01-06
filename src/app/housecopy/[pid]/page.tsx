@@ -10,7 +10,7 @@ import Masterplan from '@/app/housecopy/[pid]/_components/Masterplan';
 import Detail from '@/app/housecopy/[pid]/_components/Detail';
 import Tazan from '@/app/housecopy/[pid]/_components/Tazan';
 import Service from '@/app/housecopy/[pid]/_components/Service';
-import CallWoomzip from '@/app/housecopy/[pid]/_components/CallWoomzip';
+import FAQList from '@/app/housecopy/[pid]/_components/FAQList';
 
 export default async function House({ params }: { params: { pid: number } }) {
   const { pid } = params;
@@ -28,7 +28,7 @@ export default async function House({ params }: { params: { pid: number } }) {
       <Detail houseData={houseData} specificationData={specificationData} />
       <Tazan pid={pid} houseData={houseData} />
       <Service />
-      {/* <CallWoomzip pid={pid} houseData={houseData} /> */}
+      <FAQList />
     </>
   ) : (
     <LoadPage />

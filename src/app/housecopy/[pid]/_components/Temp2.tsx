@@ -6,7 +6,7 @@ export default function Temp2({ imageData }) {
       style={{
         width: '100%',
         backgroundColor: 'black',
-        padding: '100px 0',
+        padding: '150px 0',
       }}
     >
       <div>
@@ -22,10 +22,10 @@ export default function Temp2({ imageData }) {
           >
             <div
               style={{
-                width: '95%',
+                width: '90%',
                 marginLeft: '5%',
                 color: '#ffffff',
-                fontSize: '27px',
+                fontSize: 'clamp(25px, 3vw, 27px)',
                 fontWeight: '700',
                 wordBreak: 'keep-all',
               }}
@@ -34,10 +34,10 @@ export default function Temp2({ imageData }) {
             </div>
             <div
               style={{
-                width: '95%',
+                width: '90%',
                 color: '#ffffff',
-                fontSize: '16px',
-                fontWeight: '600',
+                fontSize: 'clamp(14px, 3vw, 16px)',
+                fontWeight: '350',
                 wordBreak: 'keep-all',
                 margin: '30px 0 30px 5%',
               }}
@@ -50,25 +50,25 @@ export default function Temp2({ imageData }) {
           <div className="col-md-6 col-12">
             <div style={{ width: '100%', aspectRatio: '1', overflow: 'hidden' }}>
               <Image
-                width={800}
-                height={800}
+                width={900}
+                height={900}
                 src={imageData[1]}
                 alt={'pic3'}
-                style={{ objectFit: 'cover', height: 'calc(-61px + 100svh)', width: '100%', aspectRatio: '1' }}
+                style={{ objectFit: 'cover', height: 'auto', width: '100%' }}
               />
             </div>
           </div>
         </div>
 
-        <div className="row" style={{ margin: '100px 0' }}>
+        <div className="row" style={{ margin: '100px 0', padding: '100px 0' }}>
           <div className="col-md-6 col-12 order-md-1 order-2">
             <div style={{ width: '100%', aspectRatio: '1', overflow: 'hidden' }}>
               <Image
-                width={800}
-                height={800}
+                width={900}
+                height={900}
                 src={imageData[2]}
                 alt={'pic3'}
-                style={{ objectFit: 'cover', height: 'calc(-61px + 100svh)', width: '100%', aspectRatio: '1' }}
+                style={{ objectFit: 'cover', height: 'auto', width: '100%', aspectRatio: '1' }}
               />
             </div>
           </div>
@@ -83,10 +83,10 @@ export default function Temp2({ imageData }) {
           >
             <div
               style={{
-                width: '97%',
+                width: '90%',
                 marginLeft: '3%',
                 color: '#ffffff',
-                fontSize: '27px',
+                fontSize: 'clamp(25px, 3vw, 27px)',
                 fontWeight: '700',
                 wordBreak: 'keep-all',
               }}
@@ -95,10 +95,10 @@ export default function Temp2({ imageData }) {
             </div>
             <div
               style={{
-                width: '97%',
+                width: '90%',
                 color: '#ffffff',
-                fontSize: '16px',
-                fontWeight: '600',
+                fontSize: 'clamp(14px, 3vw, 16px)',
+                fontWeight: '350',
                 wordBreak: 'keep-all',
                 margin: '30px 0 30px 3%',
               }}
@@ -136,8 +136,8 @@ export default function Temp2({ imageData }) {
               style={{
                 width: '95%',
                 color: '#ffffff',
-                fontSize: '16px',
-                fontWeight: '600',
+                fontSize: 'clamp(14px, 3vw, 16px)',
+                fontWeight: '350',
                 wordBreak: 'keep-all',
                 margin: '30px 0 30px 5%',
               }}
@@ -154,7 +154,7 @@ export default function Temp2({ imageData }) {
                 height={800}
                 src={imageData[3]}
                 alt={'pic3'}
-                style={{ objectFit: 'cover', height: 'calc(-61px + 100svh)', width: '100%', aspectRatio: '1' }}
+                style={{ objectFit: 'cover', height: 'auto', width: '100%', aspectRatio: '1' }}
               />
             </div>
           </div>

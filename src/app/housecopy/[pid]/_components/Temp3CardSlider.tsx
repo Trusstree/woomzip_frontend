@@ -1,9 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const Temp3CardSlider = ({ imageData }) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize(); // 초기 화면 크기 체크
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -47,8 +56,8 @@ const Temp3CardSlider = ({ imageData }) => {
           <div key={index}>
             <div
               style={{
-                width: '500px',
-                height: '600px',
+                width: isMobile ? '300px' : '500px',
+                height: isMobile ? '360px' : '600px',
                 borderRadius: '20px',
                 overflow: 'hidden',
                 position: 'relative',
@@ -59,7 +68,7 @@ const Temp3CardSlider = ({ imageData }) => {
                 height={600}
                 src={src}
                 alt={`img${index}`}
-                style={{ borderRadius: '20px', objectFit: 'cover' }}
+                style={{ borderRadius: '20px', objectFit: 'cover', height: isMobile ? '360px' : '600px' }}
               />
               <div
                 style={{
@@ -75,17 +84,25 @@ const Temp3CardSlider = ({ imageData }) => {
               <div
                 style={{
                   position: 'absolute',
-                  left: '30px',
-                  bottom: '30px',
+                  left: isMobile ? '15px' : '30px',
+                  bottom: isMobile ? '15px' : '30px',
                   color: '#ffffff',
-                  fontSize: '20px',
+                  fontSize: isMobile ? '16px' : '20px',
                   fontWeight: '750',
                 }}
               >
                 3번 템플릿 요소 1번 제목이옵니다.
               </div>
             </div>
-            <div style={{ color: '#ffffff', marginTop: '20px', width: '100%' }}>
+            <div
+              style={{
+                color: '#ffffff',
+                marginTop: '20px',
+                width: '100%',
+                fontSize: isMobile ? '14px' : '16px',
+                fontWeight: '350',
+              }}
+            >
               3번 템플릿 요소 1번의 설명글 설명글 설명글 설명글설명글 설명글 설명글 설명글설명글 설명글 설명글
               설명글설명글 설명글 설명글 설명글설명글 설명글 설명글 설명글 설명글 설명글 설명글 설명글
             </div>

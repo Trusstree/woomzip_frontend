@@ -1,7 +1,19 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Temp3CardSlider from '@/app/housecopy/[pid]/_components/Temp3CardSlider';
 
 export default function Temp3({ imageData }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize(); // 초기 화면 크기 체크
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div
       style={{
@@ -31,7 +43,7 @@ export default function Temp3({ imageData }) {
             fontSize: 'clamp(25px, 4vw, 45px)',
             fontWeight: '700',
             marginTop: '20px',
-            textAlign: 'center',
+            textAlign: isMobile ? 'left' : 'center',
           }}
         >
           이 곳은 3번 템플릿의 제목이 들어가는 곳입니다. 한줄 추천합니다.
@@ -39,10 +51,10 @@ export default function Temp3({ imageData }) {
         <div
           style={{
             color: '#ffffff',
-            fontSize: 'clamp(16px, 3vw, 19px)',
-            fontWeight: '500',
-            marginBottom: '50px',
-            textAlign: 'center',
+            fontSize: 'clamp(14px, 3vw, 16px)',
+            fontWeight: '350',
+            margin: '10px 0 50px 0',
+            textAlign: isMobile ? 'left' : 'center',
           }}
         >
           이 곳은 이 3번 템플릿의 설명란입니다. <br /> 제품을 한 번 멋들어지게 설명해보세요. 한 세줄 추천합니다. 빠진
