@@ -151,7 +151,7 @@ export default function Comp1({ imageData }) {
           <div
             style={{
               color: '#ffffff',
-              fontSize: 'clamp(30px, 4vw, 45px)',
+              fontSize: 'clamp(25px, 4vw, 45px)',
               fontWeight: '700',
               wordBreak: 'keep-all',
             }}

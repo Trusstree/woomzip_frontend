@@ -96,12 +96,11 @@ export default function Temp2({ imageData }) {
             <div
               style={{
                 width: '97%',
-                marginLeft: '3%',
                 color: '#ffffff',
                 fontSize: '16px',
                 fontWeight: '600',
                 wordBreak: 'keep-all',
-                margin: '30px 0 30px 5%',
+                margin: '30px 0 30px 3%',
               }}
             >
               이 곳은 이 2번 템플릿의 첫번째 요소 설명란입니다. <br /> 제품을 한 번 멋들어지게 설명해보세요. 한 세줄

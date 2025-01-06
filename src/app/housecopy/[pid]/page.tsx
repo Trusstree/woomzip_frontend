@@ -5,6 +5,8 @@ import Comp1 from '@/app/housecopy/[pid]/_components/Comp1';
 import Comp2 from '@/app/housecopy/[pid]/_components/Comp2';
 import Temp1 from '@/app/housecopy/[pid]/_components/Temp1';
 import Temp2 from '@/app/housecopy/[pid]/_components/Temp2';
+import Temp3 from '@/app/housecopy/[pid]/_components/Temp3';
+import Masterplan from '@/app/housecopy/[pid]/_components/Masterplan';
 import Tazan from '@/app/housecopy/[pid]/_components/Tazan';
 import CallWoomzip from '@/app/housecopy/[pid]/_components/CallWoomzip';
 
@@ -19,6 +21,8 @@ export default async function House({ params }: { params: { pid: number } }) {
       <Comp2 imageData={imageData} />
       <Temp1 imageData={imageData} />
       <Temp2 imageData={imageData} />
+      <Temp3 imageData={imageData} />
+      <Masterplan imageData={imageData} />
       <Tazan pid={pid} houseData={houseData} />
       <CallWoomzip pid={pid} houseData={houseData} />
     </>
