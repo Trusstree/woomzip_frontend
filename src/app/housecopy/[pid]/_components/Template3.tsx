@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Temp3CardSlider from '@/app/housecopy/[pid]/_components/Temp3CardSlider';
 
-export default function Temp3({ imageData }) {
+export default function Template3({ imageData }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

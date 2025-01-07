@@ -1,0 +1,23 @@
+type DetailDataType = {
+  house_name: string;
+  final_price: string;
+  room_count: number;
+  toilet_count: number;
+  total_floor_area: number;
+  building_area: number;
+  warranty: string;
+  specificity_info: string;
+  framework: string;
+  wall: string;
+  insulation_material: string;
+  heating: string;
+  interior_material: string;
+  window: string;
+  exterior_material: string;
+  roofing_material: string;
+  kitchen: string;
+  toilet: string;
+  lighting: string;
+  furniture: string;
+  etc_info: string;
+};

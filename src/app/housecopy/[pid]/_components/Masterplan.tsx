@@ -1,6 +1,11 @@
-import Image from 'next/image';
+'use client';
 
-export default function Masterplan({ imageData }) {
+import Image from 'next/image';
+import { useState } from 'react';
+
+export default function Masterplan({ masterplanData }) {
+  const [floor, setFloor] = useState(0);
+
   return (
     <div
       style={{
@@ -49,7 +54,17 @@ export default function Masterplan({ imageData }) {
                 fontSize: '25px',
               }}
             >
-              <div style={{ textAlign: 'left', padding: '5px 10px' }}>1층</div>
+              {masterplanData.map((_, i) => (
+                <div
+                  key={i}
+                  style={{ textAlign: 'left', padding: '5px 10px' }}
+                  onClick={() => {
+                    setFloor(i);
+                  }}
+                >
+                  {i + 1}층
+                </div>
+              ))}
             </div>
           </div>
           <div style={{ width: 'calc(-300px + 100%)' }}>
@@ -65,7 +80,7 @@ export default function Masterplan({ imageData }) {
               <Image
                 width={900}
                 height={700}
-                src={imageData[1]}
+                src={masterplanData[floor]}
                 alt={'masterplan'}
                 style={{ width: '100%', aspectRatio: '4/3', objectFit: 'contain', borderRadius: '15px' }}
               />

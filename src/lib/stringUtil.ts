@@ -29,7 +29,11 @@ export const detailPriceText = (price: number | string) => {
   return Number(price).toLocaleString('ko-KR') + '원';
 };
 
-export function toStringByFormatting(source, delimiter = '-') {
+export const pyeong = (area: number) => {
+  return Math.round(area / 3.3058);
+};
+
+export const toStringByFormatting = (source, delimiter = '-') => {
   function leftPad(value) {
     if (value >= 10) {
       return value;
@@ -42,7 +46,7 @@ export function toStringByFormatting(source, delimiter = '-') {
   const day = leftPad(source.getDate());
 
   return [year, month, day].join(delimiter);
-}
+};
 
 export const cardCountText = (count: number | string) => {
   const _count = Number(count);

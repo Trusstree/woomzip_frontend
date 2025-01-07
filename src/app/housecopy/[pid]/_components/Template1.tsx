@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function Temp1({ imageData }) {
+export default function Template1({ imageData }) {
   return (
     <div
       style={{
