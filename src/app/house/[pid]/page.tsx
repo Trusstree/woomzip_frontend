@@ -19,6 +19,7 @@ export default async function House({ params }: { params: { pid: number } }) {
 
   return houseData ? (
     <>
+      <div style={{ width: '100%', height: '61px', backgroundColor: 'black' }}></div>
       <div style={{ width: '90%', maxWidth: '1280px', margin: '0 auto' }}>
         <ResponsiveGallery pid={pid} imageData={imageData} />
         <BasicDataList pid={pid} houseData={houseData} specificationData={specificationData} />

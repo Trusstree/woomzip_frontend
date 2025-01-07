@@ -14,6 +14,7 @@ export default async function Page({ searchParams }) {
 
   return postData ? (
     <div>
+      <div style={{ width: '100%', height: '61px', backgroundColor: 'black' }}></div>
       <div style={{ width: '90%', maxWidth: '800px', margin: '0 auto' }}>
         <div style={{ fontSize: '32px', fontWeight: '600', margin: '45px 0' }}>움집 뉴스</div>
         <hr style={{ borderColor: '#777777' }} />

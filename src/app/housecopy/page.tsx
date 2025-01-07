@@ -1,7 +1,7 @@
 import HouseCategory from '@/app/house/_components/HouseCategory';
 import BadgeList from '@/app/house/_components/BadgeList';
 import { loadHouseData } from '@/app/house/_actions/actions';
-import HouseCard from '@/app/house/_components/HouseCard';
+import HouseCard from '@/app/housecopy/_components/HouseCard';
 import Pagination from '@/components/Pagination';
 import { badgeList, categoryList, filterList } from '@/app/house/_data/Data';
 import FilterList from '@/app/house/_components/FilterList';
