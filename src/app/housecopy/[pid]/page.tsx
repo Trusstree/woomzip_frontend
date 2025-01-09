@@ -14,12 +14,12 @@ import FAQList from '@/components/FAQList';
 
 export default async function House({ params }: { params: { pid: number } }) {
   const { pid } = params;
-  const { houseData, imageData, specificationData, userData } = await loadData(pid);
+  const { houseData, imageData, specificationData, vendorData, productCardData } = await loadData(pid);
 
   return houseData ? (
     <>
       <HouseSummary houseData={houseData} imageData={imageData} />
-      <HouseDesigner userData={userData} />
+      <HouseDesigner userData={vendorData} />
       <Template1 imageData={imageData} />
       <Template2 imageData={imageData} />
       <Template3 imageData={imageData} />

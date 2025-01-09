@@ -1,4 +1,4 @@
-import CategoryButton from '@/app/house/_components/CategoryButton';
+import CategoryButton from '@/app/housecopy/_components/CategoryButton';
 
 export default function HouseCategory({ categoryList }) {
   return (

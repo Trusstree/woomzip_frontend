@@ -1,92 +1,79 @@
-'use server';
+import { getProductData } from '@/actions/apis2/productAPI';
+import { getProductCard } from '@/actions/apis2/productCardAPI'; // productCardAPI에서 getProductCardData 가져오기
 
-import { getUserAccessToken } from '@/actions/auth/authAction';
-import { getHouseHeartUser } from '@/actions/apis/heartAPI';
-import { getHouse } from '@/actions/apis/houseAPI';
-import { getExplanationHTML, parseSpecificationInfo } from '@/lib/parseUtil';
-import { getUser } from '@/actions/apis/userAPI';
-
-export async function loadData(hid: number) {
+export async function loadData(productId: number) {
   'use server';
-  let [houseData, imageData, optionData, specificationData, userData, reviewData, deliveryData] = [
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-  ];
 
-  const [data, error] = await getHouse(hid);
-  if (error) {
-    console.error(error);
-    return {
-      houseData,
-      imageData,
-      optionData,
-      specificationData,
-      userData,
-      reviewData,
-      deliveryData,
-    };
+  // 데이터 초기화
+  let houseData = undefined;
+  let imageData = undefined;
+  let specificationData = undefined;
+  let vendorData = undefined;
+  let productCardData = undefined;
+
+  try {
+    // API 호출: 상품, 상품 카드 데이터
+    const [productResponse, productCardResponse] = await Promise.all([
+      getProductData(productId),
+      getProductCard(), // productCardData는 배열 형태로 반환된다고 가정
+    ]);
+
+    // 데이터 처리 - Product API
+    if (productResponse[0]) {
+      const payload = productResponse[0].payload;
+
+      houseData = {
+        productId: payload.productId,
+        productName: payload.productName,
+        price: payload.price,
+        bedroom: payload.bedroom,
+        bathroom: payload.bathroom,
+        realUsableArea: payload.realUsableArea,
+        buildingArea: payload.buildingArea,
+        warrantyPeriod: payload.warrantyPeriod,
+        specialFeature: payload.specialFeature,
+        structureMaterial: payload.structureMaterial,
+        wallMaterial: payload.wallMaterial,
+        insulationMaterial: payload.insulationMaterial,
+        heatingMethod: payload.heatingMethod,
+        interiorMaterial: payload.interiorMaterial,
+        windowMaterial: payload.windowMaterial,
+        exteriorMaterial: payload.exteriorMaterial,
+        roofMaterial: payload.roofMaterial,
+        kitchenMaterial: payload.kitchenMaterial,
+        bathroomMaterial: payload.bathroomMaterial,
+        lightingMaterial: payload.lightingMaterial,
+        includedFurniture: payload.includedFurniture,
+        otherDetail: payload.otherDetail,
+        priceIncludes: payload.priceIncludes,
+        vendorId: payload.vendorId,
+        vendorName: payload.vendorName,
+      };
+
+      // 이미지 데이터 처리
+      imageData = payload.productTemplates.map((template) => ({
+        templateId: template.templateId,
+        title: template.title,
+        description: template.description,
+        productTemplateImageUrl: template.productTemplateImageUrl,
+        productTemplateType: template.productTemplateType,
+      }));
+
+      // 사양 데이터 처리
+      specificationData = {
+        specialFeature: payload.specialFeature,
+      };
+    }
+
+    // 데이터 처리 - ProductCard API
+    if (Array.isArray(productCardResponse)) {
+      productCardData = productCardResponse; // 바로 배열 형태로 사용
+    }
+
+    // 모든 데이터 반환
+    return { houseData, imageData, specificationData, vendorData, productCardData };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return { houseData, imageData, specificationData, vendorData, productCardData };
   }
-
-  houseData = {
-    ...data.data[0]['house_info'],
-    specificity_info: parseSpecificationInfo(data.data[0]['house_info']['specificity_info']),
-  };
-  houseData.house_explanation = getExplanationHTML(houseData.house_explanation);
-  houseData.price_variation = getExplanationHTML(houseData.price_variation);
-  houseData.specification_info.specification_description = getExplanationHTML(
-    houseData.specification_info.specification_description,
-  );
-
-  imageData = [
-    ...data.data[0]['house_image']['representative_images'],
-    ...data.data[0]['house_image']['external_images'],
-    ...data.data[0]['house_image']['internal_images'],
-    ...data.data[0]['house_image']['elevation_plan_images'],
-    ...data.data[0]['house_image']['floor_plan_images'],
-  ];
-  optionData = data.data[0]['option_info'];
-  specificationData = data.data[0]['house_info']['specification_info'];
-  deliveryData = data.data[0]['house_info']['delivery_unavailable'].join(', ');
-
-  const [user, userError] = await getUser(houseData['fk_seller_id']);
-  if (userError) {
-    console.log(userError);
-    return {
-      houseData,
-      imageData,
-      optionData,
-      specificationData,
-      userData,
-      reviewData,
-      deliveryData,
-    };
-  }
-
-  userData = user.data[0].companyInfo?.profile || user.data[0].profile;
-  reviewData = user.data[0].reviews;
-  reviewData.houseReview = reviewData.houseReview?.map((e) => ({
-    nickname: e.nickname,
-    tag: typeof e['tag'] == 'string' ? JSON.parse(e['tag']) : e['tag'],
-    rating: e.rating,
-    created_at: e.created_at,
-    updated_at: e.updated_at,
-    id: e.house_review_id,
-    comment: e.review_text,
-    images: e.images,
-  }));
-
-  return {
-    houseData,
-    imageData,
-    optionData,
-    specificationData,
-    userData,
-    reviewData,
-    deliveryData,
-  };
 }
