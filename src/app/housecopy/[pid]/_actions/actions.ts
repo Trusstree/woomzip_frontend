@@ -1,79 +1,102 @@
-import { getProductData } from '@/actions/apis2/productAPI';
-import { getProductCard } from '@/actions/apis2/productCardAPI'; // productCardAPI에서 getProductCardData 가져오기
+import { getProduct } from '@/actions/apis2/productAPI';
 
-export async function loadData(productId: number) {
-  'use server';
-
+export async function loadProductData(
+  productId: number,
+): Promise<
+  | [SummaryData, VenderData, TemplatesData, MasterplanData, DetailData]
+  | [undefined, undefined, undefined, undefined, undefined]
+> {
   // 데이터 초기화
-  let houseData = undefined;
-  let imageData = undefined;
-  let specificationData = undefined;
-  let vendorData = undefined;
-  let productCardData = undefined;
 
-  try {
-    // API 호출: 상품, 상품 카드 데이터
-    const [productResponse, productCardResponse] = await Promise.all([
-      getProductData(productId),
-      getProductCard(), // productCardData는 배열 형태로 반환된다고 가정
-    ]);
+  const [productResponse, productError] = await getProduct(productId);
+  if (productError) {
+    console.error(productError);
+    return [undefined, undefined, undefined, undefined, undefined];
+  }
 
-    // 데이터 처리 - Product API
-    if (productResponse[0]) {
-      const payload = productResponse[0].payload;
+  const summaryData: SummaryData = {
+    productId: productResponse.payload.productId,
+    productName: productResponse.payload.productName,
+    price: productResponse.payload.price,
+    bedroom: productResponse.payload.bedroom,
+    bathroom: productResponse.payload.bathroom,
+    realUsableArea: productResponse.payload.realUsableArea,
+    buildingArea: productResponse.payload.buildingArea,
+    productImageUrl: '/blur_image.png', //productResponse.payload.productImageUrl,
+    vendorName: productResponse.payload.vendorName,
+    introduce: '이 설명이 보인다면 housecopy/[pid]의 _actions에서 고치세요.',
+  };
 
-      houseData = {
-        productId: payload.productId,
-        productName: payload.productName,
-        price: payload.price,
-        bedroom: payload.bedroom,
-        bathroom: payload.bathroom,
-        realUsableArea: payload.realUsableArea,
-        buildingArea: payload.buildingArea,
-        warrantyPeriod: payload.warrantyPeriod,
-        specialFeature: payload.specialFeature,
-        structureMaterial: payload.structureMaterial,
-        wallMaterial: payload.wallMaterial,
-        insulationMaterial: payload.insulationMaterial,
-        heatingMethod: payload.heatingMethod,
-        interiorMaterial: payload.interiorMaterial,
-        windowMaterial: payload.windowMaterial,
-        exteriorMaterial: payload.exteriorMaterial,
-        roofMaterial: payload.roofMaterial,
-        kitchenMaterial: payload.kitchenMaterial,
-        bathroomMaterial: payload.bathroomMaterial,
-        lightingMaterial: payload.lightingMaterial,
-        includedFurniture: payload.includedFurniture,
-        otherDetail: payload.otherDetail,
-        priceIncludes: payload.priceIncludes,
-        vendorId: payload.vendorId,
-        vendorName: payload.vendorName,
-      };
+  const vendorData: VenderData = {
+    venderImageUrl: '/blue_image.png', //productResponse.payload.venderImageUrl,
+    vendorName: productResponse.payload.vendorName,
+    venderIntroduce: '이 설명이 보인다면 housecopy/[pid]의 _actions에서 고치세요.', //productResponse.payload.venderIntroduce,
+  };
 
-      // 이미지 데이터 처리
-      imageData = payload.productTemplates.map((template) => ({
-        templateId: template.templateId,
+  const template1Data: Template1Data = productResponse.payload.productTemplates
+    .filter((template) => template.productTemplateType == '1')
+    .sort((a, b) => a.index - b.index)
+    .map((template) => ({
+      title: template.title,
+      description: template.description,
+      productTemplateImageUrl: template.productTemplateImageUrl,
+    }));
+
+  const template2Data: Template2Data = productResponse.payload.productTemplates
+    .filter((template) => template.productTemplateType == '2')
+    .sort((a, b) => a.index - b.index)
+    .map((template) => ({
+      title: template.title,
+      description: template.description,
+      productTemplateImageUrl: template.productTemplateImageUrl,
+    }));
+
+  const template3Data: Template3Data = {
+    title: '으응...',
+    description: '헤으응...;;',
+    template: productResponse.payload.productTemplates
+      .filter((template) => template.productTemplateType == '3')
+      .sort((a, b) => a.index - b.index)
+      .map((template) => ({
         title: template.title,
         description: template.description,
         productTemplateImageUrl: template.productTemplateImageUrl,
-        productTemplateType: template.productTemplateType,
-      }));
+      })),
+  };
+  const templatesData: TemplatesData = {
+    template1: template1Data,
+    template2: template2Data,
+    template3: template3Data,
+  };
 
-      // 사양 데이터 처리
-      specificationData = {
-        specialFeature: payload.specialFeature,
-      };
-    }
+  const masterplanData: MasterplanData = [];
 
-    // 데이터 처리 - ProductCard API
-    if (Array.isArray(productCardResponse)) {
-      productCardData = productCardResponse; // 바로 배열 형태로 사용
-    }
+  const detailData: DetailData = {
+    productId: productResponse.payload.productId,
+    productName: productResponse.payload.productName,
+    price: productResponse.payload.price,
+    bedroom: productResponse.payload.bedroom,
+    bathroom: productResponse.payload.bathroom,
+    realUsableArea: productResponse.payload.realUsableArea,
+    buildingArea: productResponse.payload.buildingArea,
+    productImageUrl: productResponse.payload.productImageUrl,
+    //vendorName: productResponse.payload.vendorName,
+    structureMaterial: productResponse.payload.structureMaterial,
+    wallMaterial: productResponse.payload.wallMaterial,
+    insulationMaterial: productResponse.payload.insulationMaterial,
+    heatingMethod: productResponse.payload.heatingMethod,
+    interiorMaterial: productResponse.payload.interiorMaterial,
+    windowMaterial: productResponse.payload.windowMaterial,
+    exteriorMaterial: productResponse.payload.exteriorMaterial,
+    roofMaterial: productResponse.payload.roofMaterial,
+    kitchenMaterial: productResponse.payload.kitchenMaterial,
+    bathroomMaterial: productResponse.payload.bathroomMaterial,
+    lightingMaterial: productResponse.payload.lightingMaterial,
+    includedFurniture: productResponse.payload.includedFurniture,
+    otherDetail: productResponse.payload.otherDetail,
+    warrantyPeriod: productResponse.payload.warrantyPeriod,
+    specialFeature: productResponse.payload.specialFeature,
+  };
 
-    // 모든 데이터 반환
-    return { houseData, imageData, specificationData, vendorData, productCardData };
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return { houseData, imageData, specificationData, vendorData, productCardData };
-  }
+  return [summaryData, vendorData, templatesData, masterplanData, detailData];
 }

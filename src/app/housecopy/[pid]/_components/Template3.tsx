@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Temp3CardSlider from '@/app/housecopy/[pid]/_components/Temp3CardSlider';
 
-export default function Template3({ imageData }) {
+export default function Template3({ templateData }: { templateData: Template3Data }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function Template3({ imageData }) {
             textAlign: isMobile ? 'left' : 'center',
           }}
         >
-          이 곳은 3번 템플릿의 제목이 들어가는 곳입니다. 한줄 추천합니다.
+          {templateData.title}
         </div>
         <div
           style={{
@@ -56,10 +56,9 @@ export default function Template3({ imageData }) {
             textAlign: isMobile ? 'left' : 'center',
           }}
         >
-          이 곳은 이 3번 템플릿의 설명란입니다. <br /> 제품을 한 번 멋들어지게 설명해보세요. 한 세줄 추천합니다. 빠진
-          내용 없이, 만약 이곳에 거실 관련 설명 글이면 거실을 잘 설명해주시면 됩니다. 잘 아시겠죠?
+          {templateData.description}
         </div>
-        <Temp3CardSlider imageData={imageData} />;
+        <Temp3CardSlider template={templateData.template} />;
       </div>
     </div>
   );

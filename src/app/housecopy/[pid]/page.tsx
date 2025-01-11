@@ -1,4 +1,3 @@
-import { loadData } from '@/app/housecopy/[pid]/_actions/actions';
 import LoadPage from '@/components/app/LoadPage';
 
 import HouseSummary from '@/app/housecopy/[pid]/_components/HouseSummary';
@@ -11,21 +10,22 @@ import Detail from '@/app/housecopy/[pid]/_components/Detail';
 import Tazan from '@/app/housecopy/[pid]/_components/Tazan';
 import Service from '@/app/housecopy/[pid]/_components/Service';
 import FAQList from '@/components/FAQList';
+import { loadProductData } from './_actions/actions';
 
 export default async function House({ params }: { params: { pid: number } }) {
   const { pid } = params;
-  const { houseData, imageData, specificationData, vendorData, productCardData } = await loadData(pid);
+  const [summaryData, vendorData, templatesData, masterplanData, detailData] = await loadProductData(pid);
 
-  return houseData ? (
+  return summaryData ? (
     <>
-      <HouseSummary houseData={houseData} imageData={imageData} />
-      <HouseDesigner userData={vendorData} />
-      <Template1 imageData={imageData} />
-      <Template2 imageData={imageData} />
-      <Template3 imageData={imageData} />
-      <Masterplan masterplanData={imageData} />
-      <Detail houseData={houseData} specificationData={specificationData} />
-      <Tazan pid={pid} houseData={houseData} />
+      <HouseSummary summaryData={summaryData} />
+      <HouseDesigner venderData={vendorData} />
+      <Template1 templateData={templatesData.template1} />
+      <Template2 templateData={templatesData.template2} />
+      <Template3 templateData={templatesData.template3} />
+      <Masterplan masterplanData={masterplanData} />
+      <Detail detailData={detailData} />
+      <Tazan pid={summaryData.productId} />
       <Service />
       <FAQList />
     </>

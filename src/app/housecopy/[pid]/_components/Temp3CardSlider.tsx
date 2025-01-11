@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const Temp3CardSlider = ({ imageData }) => {
+const Temp3CardSlider = ({ template }: { template: Array<TemplateData> }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Temp3CardSlider = ({ imageData }) => {
           gap: '30px',
         }}
       >
-        {imageData.map((src, index) => (
+        {template.map((t, index) => (
           <div key={index}>
             <div
               style={{
@@ -66,7 +66,7 @@ const Temp3CardSlider = ({ imageData }) => {
               <Image
                 width={500}
                 height={600}
-                src={src}
+                src={t.productTemplateImageUrl}
                 alt={`img${index}`}
                 style={{ borderRadius: '20px', objectFit: 'cover', height: isMobile ? '360px' : '600px' }}
               />
@@ -91,7 +91,7 @@ const Temp3CardSlider = ({ imageData }) => {
                   fontWeight: '750',
                 }}
               >
-                3번 템플릿 요소 1번 제목이옵니다.
+                {t.title}
               </div>
             </div>
             <div
@@ -103,8 +103,7 @@ const Temp3CardSlider = ({ imageData }) => {
                 fontWeight: '350',
               }}
             >
-              3번 템플릿 요소 1번의 설명글 설명글 설명글 설명글설명글 설명글 설명글 설명글설명글 설명글 설명글
-              설명글설명글 설명글 설명글 설명글설명글 설명글 설명글 설명글 설명글 설명글 설명글 설명글
+              {t.description}
             </div>
           </div>
         ))}

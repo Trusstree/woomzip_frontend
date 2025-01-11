@@ -1,73 +1,36 @@
 // porductAPI.ts
 
-// API 응답 타입 정의
-interface ProductTemplate {
-  templateId: number;
-  title: string;
-  description: string;
-  productTemplateImageUrl: string;
-  productTemplateType: string;
-  index: number;
-}
+import { publicApi } from '@/configs/axiosClient';
 
-interface ProductPayload {
-  productId: number;
-  productName: string;
-  productImageUrl: string;
-  price: number;
-  bedroom: number;
-  bathroom: number;
-  realUsableArea: number;
-  buildingArea: number;
-  warrantyPeriod: number;
-  specialFeature: string;
-  structureMaterial: string;
-  wallMaterial: string;
-  insulationMaterial: string;
-  heatingMethod: string;
-  interiorMaterial: string;
-  windowMaterial: string;
-  exteriorMaterial: string;
-  roofMaterial: string;
-  kitchenMaterial: string;
-  bathroomMaterial: string;
-  lightingMaterial: string;
-  includedFurniture: string;
-  otherDetail: string;
-  priceIncludes: string;
-  vendorId: number;
-  vendorName: string;
-  productTemplates: ProductTemplate[];
-}
+// API 호출 함수
+export async function getProduct(productId: number): Promise<[ApiProductResponse, any]> {
+  let [response, error] = [undefined, undefined] as [ApiProductResponse, any];
 
-interface ApiResponse {
-  result: {
-    code: number;
-    message: string;
-  };
-  payload: ProductPayload;
+  try {
+    const result = await publicApi.get(`/products/${productId}`);
+    response = result?.data;
+  } catch (err) {
+    error = err.response?.data;
+    if (!error) error = err;
+  }
+
+  return [response, error];
 }
 
 // API 호출 함수
-export async function getProductData(productId: number): Promise<[ApiResponse | null, Error | null]> {
-  const url = `/products/${productId}`;
+export async function getProducts(): Promise<[ApiProductsResponse, any]> {
+  let [response, error] = [undefined, undefined] as [ApiProductsResponse, any];
 
   try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-      },
+    const result = await publicApi.get(`/products`, {
+      params: {},
+      headers: {},
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data: ApiResponse = await response.json();
-    return [data, null];
-  } catch (error) {
-    console.error('Error fetching house data:', error);
-    return [null, error as Error];
+    response = result?.data;
+  } catch (err) {
+    error = err.response?.data;
+    if (!error) error = err;
   }
+
+  return [response, error];
 }

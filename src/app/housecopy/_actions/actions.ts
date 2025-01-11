@@ -1,45 +1,57 @@
-import { getProductCard } from '@/actions/apis2/productCardAPI';
+import { getProducts } from '@/actions/apis2/productAPI';
+import { arrayMin, arraySort } from '@/lib/functionUtil';
 
-// 상품 카드 데이터 타입 정의
-type ProductCardData = {
-  id: number;
-  productName: string;
-  realUsableArea: number;
-  bedroom: number;
-  bathroom: number;
-  price: number;
-  productImageUrl: string;
-};
+export async function loadProductsData(searchParams, numShowItems): Promise<[Array<ProductsData>]> {
+  const rawPage = Number(searchParams['page']);
+  const page = rawPage > 0 ? rawPage : 1;
 
-export async function loadProductCardData() {
-  'use server';
+  const searchCondition = {
+    q: searchParams['q'],
+    price_min: searchParams['min_price'],
+    price_max: searchParams['max_price'],
+    floor_area_min: searchParams['floor_area_min'],
+    floor_area_max: searchParams['floor_area_max'],
+    room_count: Number(arraySort(searchParams['room_count']?.split(',').map((e) => Number(e)))),
+    toilet_count: Number(arraySort(searchParams['toilet_count']?.split(',').map((e) => Number(e)))),
+    floor_count: Number(arraySort(searchParams['floor_count']?.split(',').map((e) => Number(e)))),
+    warranty: Number(arrayMin(searchParams['warranty']?.split(',').map((e) => Number(e)))),
+    estimate_duration: Number(arrayMin(searchParams['estimate_duration']?.split(',').map((e) => Number(e)))),
+    frame: arraySort(searchParams['frame']?.split(',')),
+    specificity: arraySort(searchParams['specificity']?.split(',')),
+    has_model: searchParams['has_model'] == '1' ? 1 : undefined,
+    is_hut: searchParams['is_hut'] == '1' ? 1 : undefined,
+    tag: searchParams['tag'],
+  };
 
-  // 초기화: productCardData는 undefined로 설정
-  let productCardData: ProductCardData[] | undefined = undefined;
-
-  try {
-    // API 호출: 상품 카드 데이터
-    const productCardResponse = await getProductCard();
-
-    // 데이터 처리 - ProductCard API
-    if (Array.isArray(productCardResponse)) {
-      // API 응답 데이터를 각 상품 카드 데이터에 맞게 변환
-      productCardData = productCardResponse.map((product) => {
-        return {
-          id: product.id, // API에서 받은 id
-          productName: product.productName, // API에서 받은 productName
-          realUsableArea: product.realUsableArea, // API에서 받은 realUsableArea
-          bedroom: product.bedroom, // API에서 받은 침실 수
-          bathroom: product.bathroom, // API에서 받은 욕실 수
-          price: product.price, // 가격
-          productImageUrl: product.productImageUrl, // 이미지 URL
-        };
-      });
+  for (const key in searchCondition) {
+    if (!searchCondition.hasOwnProperty(key)) {
+      delete searchCondition[key];
+    } else if (!searchCondition[key] || searchCondition[key].length == 0) {
+      delete searchCondition[key];
     }
-
-    return { productCardData };
-  } catch (error) {
-    console.error('Error fetching product card data:', error);
-    return { productCardData };
   }
+
+  const params = {
+    skip: numShowItems * (page - 1) + 1,
+    limit: numShowItems,
+    ...searchCondition,
+  };
+
+  const [data, error] = await getProducts();
+  if (error) {
+    console.error(error);
+    return [undefined];
+  }
+
+  const productData: Array<ProductsData> = data.payload.map((product) => ({
+    productId: product.id,
+    productImageUrl: product.productImageUrl,
+    productName: product.productName,
+    price: product.price,
+    bedroom: product.bedroom,
+    bathroom: product.bathroom,
+    realUsableArea: product.realUsableArea,
+  }));
+
+  return [productData];
 }
