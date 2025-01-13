@@ -3,16 +3,26 @@ import { getProduct } from '@/actions/apis2/productAPI';
 export async function loadProductData(
   productId: number,
 ): Promise<
-  | [SummaryData, VenderData, TemplatesData, MasterplanData, DetailData]
-  | [undefined, undefined, undefined, undefined, undefined]
+  | [
+      SummaryData,
+      VendorData,
+      FullTemplatesData,
+      HalfTemplatesData,
+      CardEntireTemplatesData,
+      MasterPlanTemplatesData,
+      DetailData,
+    ]
+  | [undefined, undefined, undefined, undefined, undefined, undefined, undefined]
 > {
   // 데이터 초기화
 
   const [productResponse, productError] = await getProduct(productId);
   if (productError) {
     console.error(productError);
-    return [undefined, undefined, undefined, undefined, undefined];
+    return [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   }
+
+  console.log(productResponse.payload);
 
   const summaryData: SummaryData = {
     productId: productResponse.payload.productId,
@@ -23,53 +33,28 @@ export async function loadProductData(
     realUsableArea: productResponse.payload.realUsableArea,
     buildingArea: productResponse.payload.buildingArea,
     productImageUrl: '/blur_image.png', //productResponse.payload.productImageUrl,
-    vendorName: productResponse.payload.vendorName,
-    introduce: '이 설명이 보인다면 housecopy/[pid]의 _actions에서 고치세요.',
+    vendorName: productResponse.payload.vendor.vendorName,
+    introduce: productResponse.payload.vendor.vendorIntro,
   };
 
-  const vendorData: VenderData = {
-    venderImageUrl: '/blue_image.png', //productResponse.payload.venderImageUrl,
-    vendorName: productResponse.payload.vendorName,
-    venderIntroduce: '이 설명이 보인다면 housecopy/[pid]의 _actions에서 고치세요.', //productResponse.payload.venderIntroduce,
+  const vendorData: VendorData = {
+    vendorImageUrl: '/blue_image.png', //productResponse.payload.vendorImageUrl,
+    representativeName: productResponse.payload.vendor.representativeName,
+    vendorIntroduce: productResponse.payload.vendor.representativeIntro, //productResponse.payload.vendorIntroduce,
   };
 
-  const template1Data: Template1Data = productResponse.payload.productTemplates
-    .filter((template) => template.productTemplateType == '1')
-    .sort((a, b) => a.index - b.index)
-    .map((template) => ({
-      title: template.title,
-      description: template.description,
-      productTemplateImageUrl: template.productTemplateImageUrl,
-    }));
+  const fullTemplatesData: FullTemplatesData = productResponse.payload.fullTemplates;
+  // .filter((template) => template.productTemplateType == '1')
+  // .sort((a, b) => a.index - b.index)
+  // .map((template) => ({
+  //   title: template.title,
+  //   description: template.description,
+  //   productTemplateImageUrl: template.productTemplateImageUrl,
+  // }));
 
-  const template2Data: Template2Data = productResponse.payload.productTemplates
-    .filter((template) => template.productTemplateType == '2')
-    .sort((a, b) => a.index - b.index)
-    .map((template) => ({
-      title: template.title,
-      description: template.description,
-      productTemplateImageUrl: template.productTemplateImageUrl,
-    }));
-
-  const template3Data: Template3Data = {
-    title: '으응...',
-    description: '헤으응...;;',
-    template: productResponse.payload.productTemplates
-      .filter((template) => template.productTemplateType == '3')
-      .sort((a, b) => a.index - b.index)
-      .map((template) => ({
-        title: template.title,
-        description: template.description,
-        productTemplateImageUrl: template.productTemplateImageUrl,
-      })),
-  };
-  const templatesData: TemplatesData = {
-    template1: template1Data,
-    template2: template2Data,
-    template3: template3Data,
-  };
-
-  const masterplanData: MasterplanData = [];
+  const halfTemplatesData: HalfTemplatesData = productResponse.payload.fullTemplates;
+  const cardEntireTemplatesData: CardEntireTemplatesData = productResponse.payload.cardEntireResponse;
+  const masterPlanTemplatesData: MasterPlanTemplatesData = productResponse.payload.masterPlanTemplates;
 
   const detailData: DetailData = {
     productId: productResponse.payload.productId,
@@ -80,7 +65,7 @@ export async function loadProductData(
     realUsableArea: productResponse.payload.realUsableArea,
     buildingArea: productResponse.payload.buildingArea,
     productImageUrl: productResponse.payload.productImageUrl,
-    //vendorName: productResponse.payload.vendorName,
+    vendorName: productResponse.payload.vendor.vendorName,
     structureMaterial: productResponse.payload.structureMaterial,
     wallMaterial: productResponse.payload.wallMaterial,
     insulationMaterial: productResponse.payload.insulationMaterial,
@@ -96,7 +81,16 @@ export async function loadProductData(
     otherDetail: productResponse.payload.otherDetail,
     warrantyPeriod: productResponse.payload.warrantyPeriod,
     specialFeature: productResponse.payload.specialFeature,
+    priceIncludes: productResponse.payload.priceIncludes,
   };
 
-  return [summaryData, vendorData, templatesData, masterplanData, detailData];
+  return [
+    summaryData,
+    vendorData,
+    fullTemplatesData,
+    halfTemplatesData,
+    cardEntireTemplatesData,
+    masterPlanTemplatesData,
+    detailData,
+  ];
 }

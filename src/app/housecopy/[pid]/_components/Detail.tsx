@@ -61,12 +61,8 @@ export default function Detail({ detailData }: { detailData: DetailData }) {
           <div>포함가구 : {detailData.includedFurniture}</div>
           <div>기타사항 : {detailData.otherDetail}</div>
           <div>판매사 : 움집, (주)트러스트리</div>
-          <div>디자인 및 제작사 : (주)풍산패시브하우스</div>
-          <div>
-            가격에 포함된 사항 : 본 제품의 가격은 제품 제작비용만을 포함합니다. 배송비용 및 기타 추가비용은 요청에 따라
-            추가부가될 수 있습니다. 제품을 설치하기 위하여 토지에 기초 및 토목공사와 인입공사 등의 비용은 포함되어 있지
-            않으며 해당 공사들은 건축주가 직접 시행해야 하며 서비스 요청시 해당 비용이 추가됩니다.
-          </div>
+          <div>디자인 및 제작사 : {detailData.vendorName}</div>
+          <div>가격에 포함된 사항 : {detailData.priceIncludes}</div>
         </div>
       </div>
     </div>

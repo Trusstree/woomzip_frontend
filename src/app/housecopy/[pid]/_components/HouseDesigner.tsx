@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function HouseDesigner({ venderData }: { venderData: VenderData }) {
+export default function HouseDesigner({ vendorData }: { vendorData: VendorData }) {
   return (
     <div
       style={{
@@ -18,7 +18,7 @@ export default function HouseDesigner({ venderData }: { venderData: VenderData }
             <Image
               width={800}
               height={500}
-              src={venderData.venderImageUrl}
+              src={vendorData.vendorImageUrl}
               alt="pic2"
               style={{ width: '100%', aspectRatio: '1', objectFit: 'cover' }}
             />
@@ -43,7 +43,7 @@ export default function HouseDesigner({ venderData }: { venderData: VenderData }
               margin: '10px 0',
             }}
           >
-            {venderData.vendorName}
+            {vendorData.representativeName}
           </div>
           <div
             style={{
@@ -53,7 +53,7 @@ export default function HouseDesigner({ venderData }: { venderData: VenderData }
               marginTop: '10px',
             }}
           >
-            {venderData.venderIntroduce}
+            {vendorData.vendorIntroduce}
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-export default function Masterplan({ masterplanData }) {
+export default function MasterPlanTemplate({ templatesData }: { templatesData: MasterPlanTemplatesData }) {
   const [floor, setFloor] = useState(0);
 
   return (
@@ -54,7 +54,7 @@ export default function Masterplan({ masterplanData }) {
                 fontSize: '25px',
               }}
             >
-              {masterplanData.map((_, i) => (
+              {templatesData.map((masterplan, i) => (
                 <div
                   key={i}
                   style={{ textAlign: 'left', padding: '5px 10px' }}
@@ -62,7 +62,7 @@ export default function Masterplan({ masterplanData }) {
                     setFloor(i);
                   }}
                 >
-                  {i + 1}층
+                  {masterplan.title}
                 </div>
               ))}
             </div>
@@ -80,7 +80,7 @@ export default function Masterplan({ masterplanData }) {
               <Image
                 width={900}
                 height={700}
-                src={masterplanData[floor]}
+                src={templatesData[floor].productTemplateImageUrl}
                 alt={'masterplan'}
                 style={{ width: '100%', aspectRatio: '4/3', objectFit: 'contain', borderRadius: '15px' }}
               />

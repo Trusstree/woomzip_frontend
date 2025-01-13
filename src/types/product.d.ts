@@ -34,6 +34,16 @@ type ProductTemplate = {
 };
 
 type ApiProductData = {
+  vendor: {
+    createdDate: string;
+    updatedDate: string;
+    id: number;
+    representativeName: string;
+    representativeImageUrl: string;
+    representativeIntro: string;
+    vendorName: string;
+    vendorIntro: string;
+  };
   productId: number;
   productName: string;
   productImageUrl: string;
@@ -58,9 +68,10 @@ type ApiProductData = {
   includedFurniture: string;
   otherDetail: string;
   priceIncludes: string;
-  vendorId: number;
-  vendorName: string;
-  productTemplates: ProductTemplate[];
+  fullTemplates: FullTemplatesData;
+  halfTemplates: HalfTemplatesData;
+  cardEntireResponse: CardEntireTemplatesData;
+  masterPlanTemplates: MasterplanTemplatesData;
 };
 
 type SummaryData = {
@@ -76,37 +87,47 @@ type SummaryData = {
   introduce: string;
 };
 
-type VenderData = {
-  venderImageUrl: string;
-  vendorName: string;
-  venderIntroduce: string;
+type VendorData = {
+  vendorImageUrl: string;
+  representativeName: string;
+  vendorIntroduce: string;
 };
 
-type TemplateData = {
+type FullTemplateData = {
   title: string;
   description: string;
   productTemplateImageUrl: string;
 };
-type Template1Data = Array<TemplateData>;
-type Template2Data = Array<TemplateData>;
-type Template3Data = {
+type HalfTemplateData = {
   title: string;
   description: string;
-  template: Array<TemplateData>;
+  productTemplateImageUrl: string;
+};
+type CardTemplateData = {
+  title: string;
+  description: string;
+  productTemplateImageUrl: string;
+};
+type MasterPlanTemplateData = {
+  title: string;
+  description: string;
+  productTemplateImageUrl: string;
 };
 
-type TemplatesData = {
-  template1: Template1Data;
-  template2: Template2Data;
-  template3: Template3Data;
+type FullTemplatesData = Array<FuulTemplateData>;
+type HalfTemplatesData = Array<HalfTemplateData>;
+type CardEntireTemplatesData = {
+  cardTemplateTitle: string;
+  cardTemplateDescription: string;
+  cardResponse: Array<CardTemplateData>;
 };
-
-type MasterplanData = Array<Image>;
+type MasterPlanTemplatesData = Array<MasterplanTemplateData>;
 
 type DetailData = {
   productId: number;
   productName: string;
   productImageUrl: string;
+  vendorName: string;
   price: number;
   bedroom: number;
   bathroom: number;
@@ -127,4 +148,5 @@ type DetailData = {
   lightingMaterial: string;
   includedFurniture: string;
   otherDetail: string;
+  priceIncludes: string;
 };

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Temp3CardSlider from '@/app/housecopy/[pid]/_components/Temp3CardSlider';
+import CardTemplate from '@/app/housecopy/[pid]/_components/CardTemplate';
 
-export default function Template3({ templateData }: { templateData: Template3Data }) {
+export default function CardEntireTemplate({ templatesData }: { templatesData: CardEntireTemplatesData }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function Template3({ templateData }: { templateData: Template3Dat
             textAlign: isMobile ? 'left' : 'center',
           }}
         >
-          {templateData.title}
+          {templatesData.cardTemplateTitle}
         </div>
         <div
           style={{
@@ -56,9 +56,9 @@ export default function Template3({ templateData }: { templateData: Template3Dat
             textAlign: isMobile ? 'left' : 'center',
           }}
         >
-          {templateData.description}
+          {templatesData.cardTemplateDescription}
         </div>
-        <Temp3CardSlider template={templateData.template} />;
+        <CardTemplate templates={templatesData.cardResponse} />;
       </div>
     </div>
   );

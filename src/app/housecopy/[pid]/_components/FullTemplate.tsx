@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-export default function Template1({ templateData }: { templateData: Template1Data }) {
+export default function FullTemplates({ templatesData }: { templatesData: FullTemplatesData }) {
   return (
     <>
-      {templateData.map((t, i) => (
+      {templatesData.map((t, i) => (
         <div
           key={i}
           style={{

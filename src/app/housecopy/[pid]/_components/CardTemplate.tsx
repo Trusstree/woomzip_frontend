@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const Temp3CardSlider = ({ template }: { template: Array<TemplateData> }) => {
+export default function CardTemplate({ templates }: { templates: Array<CardTemplateData> }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Temp3CardSlider = ({ template }: { template: Array<TemplateData> }) => {
           gap: '30px',
         }}
       >
-        {template.map((t, index) => (
+        {templates.map((card, index) => (
           <div key={index}>
             <div
               style={{
@@ -66,7 +66,8 @@ const Temp3CardSlider = ({ template }: { template: Array<TemplateData> }) => {
               <Image
                 width={500}
                 height={600}
-                src={t.productTemplateImageUrl}
+                src={'/blur_image.png'}
+                //src={card.productTemplateImageUrl}
                 alt={`img${index}`}
                 style={{ borderRadius: '20px', objectFit: 'cover', height: isMobile ? '360px' : '600px' }}
               />
@@ -91,7 +92,7 @@ const Temp3CardSlider = ({ template }: { template: Array<TemplateData> }) => {
                   fontWeight: '750',
                 }}
               >
-                {t.title}
+                {card.title}
               </div>
             </div>
             <div
@@ -103,7 +104,7 @@ const Temp3CardSlider = ({ template }: { template: Array<TemplateData> }) => {
                 fontWeight: '350',
               }}
             >
-              {t.description}
+              {card.description}
             </div>
           </div>
         ))}
@@ -128,6 +129,4 @@ const Temp3CardSlider = ({ template }: { template: Array<TemplateData> }) => {
       </button>
     </div>
   );
-};
-
-export default Temp3CardSlider;
+}

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function Template2({ templateData }: { templateData: Template2Data }) {
+export default function HalfTemplate({ templatesData }: { templatesData: HalfTemplatesData }) {
   return (
     <div
       style={{
@@ -10,7 +10,7 @@ export default function Template2({ templateData }: { templateData: Template2Dat
       }}
     >
       <div>
-        {templateData.map((t, i) =>
+        {templatesData.map((t, i) =>
           i % 2 == 1 ? (
             <div key={i} className="row">
               <div
