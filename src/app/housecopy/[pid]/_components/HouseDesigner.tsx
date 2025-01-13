@@ -1,12 +1,6 @@
 import Image from 'next/image';
 
-type UserDataType = {
-  user_img_url: string;
-  name: string;
-  one_line_introduce: string;
-};
-
-export default function HouseDesigner({ userData }: { userData: UserDataType }) {
+export default function HouseDesigner({ vendorData }: { vendorData: VendorData }) {
   return (
     <div
       style={{
@@ -24,7 +18,7 @@ export default function HouseDesigner({ userData }: { userData: UserDataType }) 
             <Image
               width={800}
               height={500}
-              src={userData['user_img_url']}
+              src={vendorData.vendorImageUrl}
               alt="pic2"
               style={{ width: '100%', aspectRatio: '1', objectFit: 'cover' }}
             />
@@ -49,7 +43,7 @@ export default function HouseDesigner({ userData }: { userData: UserDataType }) 
               margin: '10px 0',
             }}
           >
-            {userData['name']}
+            {vendorData.representativeName}
           </div>
           <div
             style={{
@@ -59,7 +53,7 @@ export default function HouseDesigner({ userData }: { userData: UserDataType }) 
               marginTop: '10px',
             }}
           >
-            {userData['one_line_introduce']}
+            {vendorData.vendorIntroduce}
           </div>
         </div>
       </div>

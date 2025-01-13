@@ -1,79 +1,96 @@
-import { getProductData } from '@/actions/apis2/productAPI';
-import { getProductCard } from '@/actions/apis2/productCardAPI'; // productCardAPI에서 getProductCardData 가져오기
+import { getProduct } from '@/actions/apis2/productAPI';
 
-export async function loadData(productId: number) {
-  'use server';
-
+export async function loadProductData(
+  productId: number,
+): Promise<
+  | [
+      SummaryData,
+      VendorData,
+      FullTemplatesData,
+      HalfTemplatesData,
+      CardEntireTemplatesData,
+      MasterPlanTemplatesData,
+      DetailData,
+    ]
+  | [undefined, undefined, undefined, undefined, undefined, undefined, undefined]
+> {
   // 데이터 초기화
-  let houseData = undefined;
-  let imageData = undefined;
-  let specificationData = undefined;
-  let vendorData = undefined;
-  let productCardData = undefined;
 
-  try {
-    // API 호출: 상품, 상품 카드 데이터
-    const [productResponse, productCardResponse] = await Promise.all([
-      getProductData(productId),
-      getProductCard(), // productCardData는 배열 형태로 반환된다고 가정
-    ]);
-
-    // 데이터 처리 - Product API
-    if (productResponse[0]) {
-      const payload = productResponse[0].payload;
-
-      houseData = {
-        productId: payload.productId,
-        productName: payload.productName,
-        price: payload.price,
-        bedroom: payload.bedroom,
-        bathroom: payload.bathroom,
-        realUsableArea: payload.realUsableArea,
-        buildingArea: payload.buildingArea,
-        warrantyPeriod: payload.warrantyPeriod,
-        specialFeature: payload.specialFeature,
-        structureMaterial: payload.structureMaterial,
-        wallMaterial: payload.wallMaterial,
-        insulationMaterial: payload.insulationMaterial,
-        heatingMethod: payload.heatingMethod,
-        interiorMaterial: payload.interiorMaterial,
-        windowMaterial: payload.windowMaterial,
-        exteriorMaterial: payload.exteriorMaterial,
-        roofMaterial: payload.roofMaterial,
-        kitchenMaterial: payload.kitchenMaterial,
-        bathroomMaterial: payload.bathroomMaterial,
-        lightingMaterial: payload.lightingMaterial,
-        includedFurniture: payload.includedFurniture,
-        otherDetail: payload.otherDetail,
-        priceIncludes: payload.priceIncludes,
-        vendorId: payload.vendorId,
-        vendorName: payload.vendorName,
-      };
-
-      // 이미지 데이터 처리
-      imageData = payload.productTemplates.map((template) => ({
-        templateId: template.templateId,
-        title: template.title,
-        description: template.description,
-        productTemplateImageUrl: template.productTemplateImageUrl,
-        productTemplateType: template.productTemplateType,
-      }));
-
-      // 사양 데이터 처리
-      specificationData = {
-        specialFeature: payload.specialFeature,
-      };
-    }
-
-    // 데이터 처리 - ProductCard API
-    if (Array.isArray(productCardResponse)) {
-      productCardData = productCardResponse; // 바로 배열 형태로 사용
-    }
-
-    // 모든 데이터 반환
-    return { houseData, imageData, specificationData, vendorData, productCardData };
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return { houseData, imageData, specificationData, vendorData, productCardData };
+  const [productResponse, productError] = await getProduct(productId);
+  if (productError) {
+    console.error(productError);
+    return [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   }
+
+  console.log(productResponse.payload);
+
+  const summaryData: SummaryData = {
+    productId: productResponse.payload.productId,
+    productName: productResponse.payload.productName,
+    price: productResponse.payload.price,
+    bedroom: productResponse.payload.bedroom,
+    bathroom: productResponse.payload.bathroom,
+    realUsableArea: productResponse.payload.realUsableArea,
+    buildingArea: productResponse.payload.buildingArea,
+    productImageUrl: '/blur_image.png', //productResponse.payload.productImageUrl,
+    vendorName: productResponse.payload.vendor.vendorName,
+    introduce: productResponse.payload.vendor.vendorIntro,
+  };
+
+  const vendorData: VendorData = {
+    vendorImageUrl: '/blue_image.png', //productResponse.payload.vendorImageUrl,
+    representativeName: productResponse.payload.vendor.representativeName,
+    vendorIntroduce: productResponse.payload.vendor.representativeIntro, //productResponse.payload.vendorIntroduce,
+  };
+
+  const fullTemplatesData: FullTemplatesData = productResponse.payload.fullTemplates;
+  // .filter((template) => template.productTemplateType == '1')
+  // .sort((a, b) => a.index - b.index)
+  // .map((template) => ({
+  //   title: template.title,
+  //   description: template.description,
+  //   productTemplateImageUrl: template.productTemplateImageUrl,
+  // }));
+
+  const halfTemplatesData: HalfTemplatesData = productResponse.payload.fullTemplates;
+  const cardEntireTemplatesData: CardEntireTemplatesData = productResponse.payload.cardEntireResponse;
+  const masterPlanTemplatesData: MasterPlanTemplatesData = productResponse.payload.masterPlanTemplates;
+
+  const detailData: DetailData = {
+    productId: productResponse.payload.productId,
+    productName: productResponse.payload.productName,
+    price: productResponse.payload.price,
+    bedroom: productResponse.payload.bedroom,
+    bathroom: productResponse.payload.bathroom,
+    realUsableArea: productResponse.payload.realUsableArea,
+    buildingArea: productResponse.payload.buildingArea,
+    productImageUrl: productResponse.payload.productImageUrl,
+    vendorName: productResponse.payload.vendor.vendorName,
+    structureMaterial: productResponse.payload.structureMaterial,
+    wallMaterial: productResponse.payload.wallMaterial,
+    insulationMaterial: productResponse.payload.insulationMaterial,
+    heatingMethod: productResponse.payload.heatingMethod,
+    interiorMaterial: productResponse.payload.interiorMaterial,
+    windowMaterial: productResponse.payload.windowMaterial,
+    exteriorMaterial: productResponse.payload.exteriorMaterial,
+    roofMaterial: productResponse.payload.roofMaterial,
+    kitchenMaterial: productResponse.payload.kitchenMaterial,
+    bathroomMaterial: productResponse.payload.bathroomMaterial,
+    lightingMaterial: productResponse.payload.lightingMaterial,
+    includedFurniture: productResponse.payload.includedFurniture,
+    otherDetail: productResponse.payload.otherDetail,
+    warrantyPeriod: productResponse.payload.warrantyPeriod,
+    specialFeature: productResponse.payload.specialFeature,
+    priceIncludes: productResponse.payload.priceIncludes,
+  };
+
+  return [
+    summaryData,
+    vendorData,
+    fullTemplatesData,
+    halfTemplatesData,
+    cardEntireTemplatesData,
+    masterPlanTemplatesData,
+    detailData,
+  ];
 }

@@ -1,31 +1,39 @@
-import { loadData } from '@/app/housecopy/[pid]/_actions/actions';
 import LoadPage from '@/components/app/LoadPage';
 
 import HouseSummary from '@/app/housecopy/[pid]/_components/HouseSummary';
 import HouseDesigner from '@/app/housecopy/[pid]/_components/HouseDesigner';
-import Template1 from '@/app/housecopy/[pid]/_components/Template1';
-import Template2 from '@/app/housecopy/[pid]/_components/Template2';
-import Template3 from '@/app/housecopy/[pid]/_components/Template3';
-import Masterplan from '@/app/housecopy/[pid]/_components/Masterplan';
 import Detail from '@/app/housecopy/[pid]/_components/Detail';
 import Tazan from '@/app/housecopy/[pid]/_components/Tazan';
 import Service from '@/app/housecopy/[pid]/_components/Service';
 import FAQList from '@/components/FAQList';
+import { loadProductData } from './_actions/actions';
+import FullTemplate from '@/app/housecopy/[pid]/_components/FullTemplate';
+import HalfTemplate from '@/app/housecopy/[pid]/_components/HalfTemplate';
+import CardEntireTemplate from '@/app/housecopy/[pid]/_components/CardEntireTemplate';
+import MasterPlanTemplate from '@/app/housecopy/[pid]/_components/MasterPlanTemplate';
 
 export default async function House({ params }: { params: { pid: number } }) {
   const { pid } = params;
-  const { houseData, imageData, specificationData, vendorData, productCardData } = await loadData(pid);
+  const [
+    summaryData,
+    vendorData,
+    fullTemplatesData,
+    halfTemplatesData,
+    cardEntireTemplatesData,
+    masterPlanTemplatesData,
+    detailData,
+  ] = await loadProductData(pid);
 
-  return houseData ? (
+  return summaryData ? (
     <>
-      <HouseSummary houseData={houseData} imageData={imageData} />
-      <HouseDesigner userData={vendorData} />
-      <Template1 imageData={imageData} />
-      <Template2 imageData={imageData} />
-      <Template3 imageData={imageData} />
-      <Masterplan masterplanData={imageData} />
-      <Detail houseData={houseData} specificationData={specificationData} />
-      <Tazan pid={pid} houseData={houseData} />
+      <HouseSummary summaryData={summaryData} />
+      <HouseDesigner vendorData={vendorData} />
+      {fullTemplatesData?.length > 0 && <FullTemplate templatesData={fullTemplatesData} />}
+      {halfTemplatesData?.length > 0 && <HalfTemplate templatesData={halfTemplatesData} />}
+      {cardEntireTemplatesData && <CardEntireTemplate templatesData={cardEntireTemplatesData} />}
+      {masterPlanTemplatesData?.length > 0 && <MasterPlanTemplate templatesData={masterPlanTemplatesData} />}
+      <Detail detailData={detailData} />
+      <Tazan pid={summaryData.productId} />
       <Service />
       <FAQList />
     </>

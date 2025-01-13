@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-const Temp3CardSlider = ({ imageData }) => {
+export default function CardTemplate({ templates }: { templates: Array<CardTemplateData> }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Temp3CardSlider = ({ imageData }) => {
           gap: '30px',
         }}
       >
-        {imageData.map((src, index) => (
+        {templates.map((card, index) => (
           <div key={index}>
             <div
               style={{
@@ -66,7 +66,8 @@ const Temp3CardSlider = ({ imageData }) => {
               <Image
                 width={500}
                 height={600}
-                src={src}
+                src={'/blur_image.png'}
+                //src={card.productTemplateImageUrl}
                 alt={`img${index}`}
                 style={{ borderRadius: '20px', objectFit: 'cover', height: isMobile ? '360px' : '600px' }}
               />
@@ -91,7 +92,7 @@ const Temp3CardSlider = ({ imageData }) => {
                   fontWeight: '750',
                 }}
               >
-                3번 템플릿 요소 1번 제목이옵니다.
+                {card.title}
               </div>
             </div>
             <div
@@ -103,8 +104,7 @@ const Temp3CardSlider = ({ imageData }) => {
                 fontWeight: '350',
               }}
             >
-              3번 템플릿 요소 1번의 설명글 설명글 설명글 설명글설명글 설명글 설명글 설명글설명글 설명글 설명글
-              설명글설명글 설명글 설명글 설명글설명글 설명글 설명글 설명글 설명글 설명글 설명글 설명글
+              {card.description}
             </div>
           </div>
         ))}
@@ -129,6 +129,4 @@ const Temp3CardSlider = ({ imageData }) => {
       </button>
     </div>
   );
-};
-
-export default Temp3CardSlider;
+}

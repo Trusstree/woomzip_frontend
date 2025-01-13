@@ -5,7 +5,7 @@ import useQueryString from '@/hooks/useQueryString';
 import { useRouter } from 'next/navigation';
 import { detailPriceText } from '@/lib/stringUtil';
 
-export default function Tazan({ pid, houseData }) {
+export default function Tazan({ pid }) {
   const { createQueryString } = useQueryString();
   const router = useRouter();
   const gyeonjeokLink = `${'/planning'}?${createQueryString('house_id', pid.toString())}`;
