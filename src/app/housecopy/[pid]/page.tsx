@@ -23,7 +23,6 @@ export default async function House({ params }: { params: { pid: number } }) {
     masterPlanTemplatesData,
     detailData,
   ] = await loadProductData(pid);
-
   return summaryData ? (
     <>
       <HouseSummary summaryData={summaryData} />

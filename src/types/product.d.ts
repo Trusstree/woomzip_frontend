@@ -119,7 +119,7 @@ type HalfTemplatesData = Array<HalfTemplateData>;
 type CardEntireTemplatesData = {
   cardTemplateTitle: string;
   cardTemplateDescription: string;
-  cardResponse: Array<CardTemplateData>;
+  cardResponses: Array<CardTemplateData>;
 };
 type MasterPlanTemplatesData = Array<MasterplanTemplateData>;
 

@@ -22,7 +22,7 @@ export async function loadProductData(
     return [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   }
 
-  console.log(productResponse.payload);
+  //console.log(productResponse.payload);
 
   const summaryData: SummaryData = {
     productId: productResponse.payload.productId,
@@ -32,13 +32,13 @@ export async function loadProductData(
     bathroom: productResponse.payload.bathroom,
     realUsableArea: productResponse.payload.realUsableArea,
     buildingArea: productResponse.payload.buildingArea,
-    productImageUrl: '/blur_image.png', //productResponse.payload.productImageUrl,
+    productImageUrl: productResponse.payload.productImageUrl,
     vendorName: productResponse.payload.vendor.vendorName,
     introduce: productResponse.payload.vendor.vendorIntro,
   };
 
   const vendorData: VendorData = {
-    vendorImageUrl: '/blue_image.png', //productResponse.payload.vendorImageUrl,
+    vendorImageUrl: productResponse.payload.productImageUrl,
     representativeName: productResponse.payload.vendor.representativeName,
     vendorIntroduce: productResponse.payload.vendor.representativeIntro, //productResponse.payload.vendorIntroduce,
   };

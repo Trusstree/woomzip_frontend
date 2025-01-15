@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export default function MasterPlanTemplate({ templatesData }: { templatesData: MasterPlanTemplatesData }) {
   const [floor, setFloor] = useState(0);
-
+  console.log(templatesData[floor].productTemplateImageUrl);
   return (
     <div
       style={{

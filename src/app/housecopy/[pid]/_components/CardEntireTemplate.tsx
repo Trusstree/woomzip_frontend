@@ -58,7 +58,7 @@ export default function CardEntireTemplate({ templatesData }: { templatesData: C
         >
           {templatesData.cardTemplateDescription}
         </div>
-        <CardTemplate templates={templatesData.cardResponse} />;
+        <CardTemplate templatesData={templatesData.cardResponses} />;
       </div>
     </div>
   );

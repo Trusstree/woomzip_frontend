@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
-export default function CardTemplate({ templates }: { templates: Array<CardTemplateData> }) {
+export default function CardTemplate({ templatesData }: { templatesData: Array<CardTemplateData> }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export default function CardTemplate({ templates }: { templates: Array<CardTempl
           gap: '30px',
         }}
       >
-        {templates.map((card, index) => (
+        {templatesData.map((card, index) => (
           <div key={index}>
             <div
               style={{
@@ -66,8 +66,7 @@ export default function CardTemplate({ templates }: { templates: Array<CardTempl
               <Image
                 width={500}
                 height={600}
-                src={'/blur_image.png'}
-                //src={card.productTemplateImageUrl}
+                src={card.productTemplateImageUrl}
                 alt={`img${index}`}
                 style={{ borderRadius: '20px', objectFit: 'cover', height: isMobile ? '360px' : '600px' }}
               />
