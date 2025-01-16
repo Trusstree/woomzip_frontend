@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { cardCountText } from '@/lib/stringUtil';
 import Image from 'next/image';
-import styles from '@/app/housecopy/_styles/houseCard.module.css';
+import styles from '@/app/product/_styles/houseCard.module.css';
 
 type PostCardProps = {
   data: DataProps;

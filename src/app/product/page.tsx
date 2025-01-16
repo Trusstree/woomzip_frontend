@@ -1,10 +1,10 @@
-import HouseCategory from '@/app/housecopy/_components/HouseCategory';
-import BadgeList from '@/app/housecopy/_components/BadgeList';
-import HouseCard from '@/app/housecopy/_components/HouseCard';
+import HouseCategory from '@/app/product/_components/HouseCategory';
+import BadgeList from '@/app/product/_components/BadgeList';
+import HouseCard from '@/app/product/_components/HouseCard';
 import Pagination from '@/components/Pagination';
-import { badgeList, categoryList, filterList } from '@/app/housecopy/_data/Data';
-import FilterList from '@/app/housecopy/_components/FilterList';
-import { loadProductsData } from '@/app/housecopy/_actions/actions';
+import { badgeList, categoryList, filterList } from '@/app/product/_data/Data';
+import FilterList from '@/app/product/_components/FilterList';
+import { loadProductsData } from '@/app/product/_actions/actions';
 
 export default async function House({ searchParams }) {
   const [numShowItems, numShowPages] = [30, 10];

@@ -14,7 +14,7 @@ export default function Offcanvas({ id }) {
             홈
           </OffcanvasRouteButton>
 
-          <OffcanvasRouteButton url="/house" style={{ fontSize: '25px', border: 'none' }}>
+          <OffcanvasRouteButton url="/product" style={{ fontSize: '25px', border: 'none' }}>
             제품찾기
           </OffcanvasRouteButton>
 

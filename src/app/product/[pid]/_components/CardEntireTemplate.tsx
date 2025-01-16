@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import CardTemplate from '@/app/housecopy/[pid]/_components/CardTemplate';
+import CardTemplate from '@/app/product/[pid]/_components/CardTemplate';
 
 export default function CardEntireTemplate({ templatesData }: { templatesData: CardEntireTemplatesData }) {
   const [isMobile, setIsMobile] = useState(false);

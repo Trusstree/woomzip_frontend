@@ -1,6 +1,6 @@
 'use client';
 
-import FilterBadge from '@/app/housecopy/_components/FilterBadge';
+import FilterBadge from '@/app/product/_components/FilterBadge';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 

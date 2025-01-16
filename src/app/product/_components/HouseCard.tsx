@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { HighlightCardPriceText } from '@/app/housecopy/_components/HighlightCardPriceText';
+import { HighlightCardPriceText } from '@/app/product/_components/HighlightCardPriceText';
 import Link from 'next/link';
-import styles from '@/app/housecopy/_styles/houseCard.module.css';
+import styles from '@/app/product/_styles/houseCard.module.css';
 
 export default function productData({ productData }: { productData: ProductsData }) {
   const { productId, productName, realUsableArea, bedroom, bathroom, price, productImageUrl } = productData;
@@ -9,7 +9,7 @@ export default function productData({ productData }: { productData: ProductsData
   return (
     <div className="col-md-4 col-sm-6 col-12">
       <div className="card" style={{ width: '100%', border: 'none', marginBottom: '60px' }}>
-        <Link className={`container ${styles.img_container} ${styles.img_hover}`} href={`/housecopy/${productId}`}>
+        <Link className={`container ${styles.img_container} ${styles.img_hover}`} href={`/product/${productId}`}>
           <Image src={productImageUrl} alt={productName + ' image'} fill />
         </Link>
         <div>
