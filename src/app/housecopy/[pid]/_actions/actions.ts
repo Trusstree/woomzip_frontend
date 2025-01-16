@@ -52,7 +52,7 @@ export async function loadProductData(
   //   productTemplateImageUrl: template.productTemplateImageUrl,
   // }));
 
-  const halfTemplatesData: HalfTemplatesData = productResponse.payload.fullTemplates;
+  const halfTemplatesData: HalfTemplatesData = productResponse.payload.halfTemplates;
   const cardEntireTemplatesData: CardEntireTemplatesData = productResponse.payload.cardEntireResponse;
   const masterPlanTemplatesData: MasterPlanTemplatesData = productResponse.payload.masterPlanTemplates;
 
