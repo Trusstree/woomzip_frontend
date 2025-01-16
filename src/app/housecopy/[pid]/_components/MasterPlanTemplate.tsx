@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export default function MasterPlanTemplate({ templatesData }: { templatesData: MasterPlanTemplatesData }) {
   const [floor, setFloor] = useState(0);
-  console.log(templatesData[floor].productTemplateImageUrl);
+
   return (
     <div
       style={{
@@ -21,13 +21,8 @@ export default function MasterPlanTemplate({ templatesData }: { templatesData: M
         style={{
           width: '90%',
           margin: '0 auto',
-          zIndex: '2',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          height: '100%',
-          wordBreak: 'keep-all',
           maxWidth: '1200px',
+          wordBreak: 'keep-all',
         }}
       >
         <div
@@ -42,32 +37,36 @@ export default function MasterPlanTemplate({ templatesData }: { templatesData: M
           설계도
         </div>
         <hr style={{ color: '#ffffff', margin: '50px 0' }} />
+
+        {/* 반응형 레이아웃 */}
         <div className="row">
-          <div style={{ width: '300px' }}>
-            <div
-              className="btn"
-              style={{
-                width: '100%',
-                border: '2px solid #ffffff',
-                borderRadius: '15px',
-                color: '#ffffff',
-                fontSize: '25px',
-              }}
-            >
-              {templatesData.map((masterplan, i) => (
-                <div
-                  key={i}
-                  style={{ textAlign: 'left', padding: '5px 10px' }}
-                  onClick={() => {
-                    setFloor(i);
-                  }}
-                >
-                  {masterplan.title}
-                </div>
-              ))}
-            </div>
+          {/* 버튼 영역 */}
+          <div className="button-container">
+            {templatesData.map((masterplan, i) => (
+              <button
+                key={i}
+                style={{
+                  width: '100%',
+                  padding: '10px',
+                  border: `2px solid ${i === floor ? '#ffffff' : '#888888'}`,
+                  borderRadius: '15px',
+                  backgroundColor: 'transparent',
+                  color: i === floor ? '#ffffff' : '#888888',
+                  fontSize: 'clamp(18px, 3vw, 25px)',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  marginBottom: '10px',
+                  textAlign: 'left',
+                }}
+                onClick={() => setFloor(i)}
+              >
+                {masterplan.title}
+              </button>
+            ))}
           </div>
-          <div style={{ width: 'calc(-300px + 100%)' }}>
+
+          {/* 이미지 영역 */}
+          <div className="image-container">
             <div
               style={{
                 width: '100%',
@@ -82,12 +81,44 @@ export default function MasterPlanTemplate({ templatesData }: { templatesData: M
                 height={700}
                 src={templatesData[floor].productTemplateImageUrl}
                 alt={'masterplan'}
-                style={{ width: '100%', aspectRatio: '4/3', objectFit: 'contain', borderRadius: '15px' }}
+                style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '15px' }}
               />
             </div>
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @media (min-width: 768px) {
+          .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+          .button-container {
+            width: 270px;
+          }
+          .image-container {
+            width: calc(100% - 270px);
+          }
+        }
+        @media (max-width: 768px) {
+          .row {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+          .button-container {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            gap: 10px;
+            padding-bottom: 10px;
+          }
+          .image-container {
+            width: 100%;
+          }
+        }
+      `}</style>
     </div>
   );
 }

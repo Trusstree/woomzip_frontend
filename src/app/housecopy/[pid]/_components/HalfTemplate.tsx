@@ -6,7 +6,7 @@ export default function HalfTemplate({ templatesData }: { templatesData: HalfTem
       style={{
         width: '100%',
         backgroundColor: 'black',
-        padding: '150px 0',
+        padding: '100px 0',
       }}
     >
       <div>
@@ -54,7 +54,7 @@ export default function HalfTemplate({ templatesData }: { templatesData: HalfTem
                     height={900}
                     src={t.productTemplateImageUrl}
                     alt={'pic3'}
-                    style={{ objectFit: 'cover', height: 'auto', width: '100%' }}
+                    style={{ objectFit: 'cover', height: 'auto', width: '100%', aspectRatio: '1' }}
                   />
                 </div>
               </div>
