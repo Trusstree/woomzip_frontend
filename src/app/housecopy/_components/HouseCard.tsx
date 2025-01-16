@@ -10,7 +10,7 @@ export default function productData({ productData }: { productData: ProductsData
     <div className="col-md-4 col-sm-6 col-12">
       <div className="card" style={{ width: '100%', border: 'none', marginBottom: '60px' }}>
         <Link className={`container ${styles.img_container} ${styles.img_hover}`} href={`/housecopy/${productId}`}>
-          <Image src={'/blur_image.png'} alt={productName + ' image'} fill />
+          <Image src={productImageUrl} alt={productName + ' image'} fill />
         </Link>
         <div>
           <div style={{ fontSize: '18px', fontWeight: '600', marginTop: '15px' }}>{productName}</div>
