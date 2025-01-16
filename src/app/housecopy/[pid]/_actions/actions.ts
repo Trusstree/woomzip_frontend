@@ -22,7 +22,7 @@ export async function loadProductData(
     return [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   }
 
-  //console.log(productResponse.payload);
+  console.log(productResponse.payload);
 
   const summaryData: SummaryData = {
     productId: productResponse.payload.productId,
@@ -38,7 +38,7 @@ export async function loadProductData(
   };
 
   const vendorData: VendorData = {
-    vendorImageUrl: productResponse.payload.productImageUrl,
+    vendorImageUrl: productResponse.payload.vendor.representativeImageUrl,
     representativeName: productResponse.payload.vendor.representativeName,
     vendorIntroduce: productResponse.payload.vendor.representativeIntro, //productResponse.payload.vendorIntroduce,
   };
