@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { cardCountText } from '@/lib/stringUtil';
 import Image from 'next/image';
-import styles from '@/app/house/_styles/houseCard.module.css';
+import styles from '@/app/housecopy/_styles/houseCard.module.css';
 
 type PostCardProps = {
   data: DataProps;
@@ -47,17 +47,14 @@ export default function PostCard({ data, className }: PostCardProps) {
           marginBottom: '50px',
         }}
       >
-        <Link
-          href={{ pathname: `/news/${data['post_id']}` }}
-          className={`${styles.img_container} ${styles.img_hover}`}
-          >
-            <Image
-              src={imgSrcArr || '/111.webp'}
-              alt="post card img"
-              style={{ objectFit: 'cover' }}
-              fill
-              sizes="(max-width: 767px) 100vw, (max-width: 991px) 40vw, 20vw"
-            />
+        <Link href={{ pathname: `/news/${data['post_id']}` }} className={`${styles.img_container} ${styles.img_hover}`}>
+          <Image
+            src={imgSrcArr || '/111.webp'}
+            alt="post card img"
+            style={{ objectFit: 'cover' }}
+            fill
+            sizes="(max-width: 767px) 100vw, (max-width: 991px) 40vw, 20vw"
+          />
         </Link>
         <div>
           <div style={{ fontSize: '18px', fontWeight: '600', marginTop: '15px' }}>{data.title}</div>
