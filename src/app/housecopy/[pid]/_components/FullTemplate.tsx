@@ -35,7 +35,7 @@ export default function FullTemplates({ templatesData }: { templatesData: FullTe
               bottom: '100px',
               left: 0,
               width: '100%',
-              height: '30%',
+              height: '20%',
               background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
             }}
           />
@@ -65,9 +65,9 @@ export default function FullTemplates({ templatesData }: { templatesData: FullTe
             <div
               style={{
                 color: '#ffffff',
-                fontSize: 'clamp(23px, 4vw, 40px)',
-                fontWeight: '700',
-                marginTop: '20px',
+                fontSize: 'clamp(24px, 4vw, 45px)',
+                fontWeight: '600',
+                marginTop: '40px',
                 textAlign: 'center',
               }}
             >

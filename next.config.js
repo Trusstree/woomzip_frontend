@@ -12,11 +12,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**',
       },
-      // {
-      //   protocol: 'https',
-      //   hostname: 'trussbucket.s3.ap-northeast-2.amazonaws.com',
-      //   pathname: '**',
-      // },
+      {
+        protocol: 'https',
+        hostname: 'woomzip-prod.s3.ap-northeast-2.amazonaws.com',
+        pathname: '**',
+      },
       // {
       //   protocol: 'https',
       //   hostname: 'trussbucketdev.s3.ap-northeast-2.amazonaws.com',
