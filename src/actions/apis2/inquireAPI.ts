@@ -2,12 +2,13 @@
 
 import { publicApi } from '@/configs/axiosClient';
 
-// API 호출 함수
-export const postVendors = async (body: any): Promise<[ApiProductResponse, any]> => {
+export const postInquire = async (
+  body: InquireHouseInfoState & InquireServiceInfoState & InquireContactInfoState,
+): Promise<[ApiProductResponse, any]> => {
   let [data, error] = [undefined, undefined] as [ApiProductResponse, any];
 
   try {
-    const result = await publicApi.post(`/vendors`, body);
+    const result = await publicApi.post(`/inquiries`, body);
     data = result?.data;
   } catch (err) {
     error = err.response?.data;

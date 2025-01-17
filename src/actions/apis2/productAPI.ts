@@ -1,8 +1,7 @@
-// porductAPI.ts
+'use server';
 
 import { publicApi } from '@/configs/axiosClient';
 
-// API 호출 함수
 export async function getProduct(productId: number): Promise<[ApiProductResponse, any]> {
   let [response, error] = [undefined, undefined] as [ApiProductResponse, any];
 
@@ -17,7 +16,6 @@ export async function getProduct(productId: number): Promise<[ApiProductResponse
   return [response, error];
 }
 
-// API 호출 함수
 export async function getProducts(): Promise<[ApiProductsResponse, any]> {
   let [response, error] = [undefined, undefined] as [ApiProductsResponse, any];
 

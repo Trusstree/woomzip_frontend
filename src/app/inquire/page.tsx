@@ -63,7 +63,7 @@ export default async function Inquire() {
                     fontSize: '14px',
                     marginTop: '40px ',
                   }}
-                  onClick={() => router.push('/inquire/1')}
+                  onClick={() => router.push('/inquire/house')}
                 >
                   시작해보기 {'>'}
                 </div>
@@ -95,7 +95,7 @@ export default async function Inquire() {
                     fontSize: '14px',
                     marginTop: '40px ',
                   }}
-                  onClick={() => router.push('/inquire/3')}
+                  onClick={() => router.push('/inquire/contact')}
                 >
                   시작해보기 {'>'}
                 </div>

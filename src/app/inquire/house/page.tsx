@@ -1,19 +1,28 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Col6Button from '@/app/inquire/_components/Col6Button';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
+import useInquireHouseInfo from '@/app/inquire/_store/inquireHouseInfo';
 
-export default function Inquire1() {
-  const [isLandOwner, setIsLandOwner] = useState('');
-  const [purpose, setPurpose] = useState('');
-  const [location, setLocation] = useState('');
-  const [landArea, setLandArea] = useState('');
-  const [landSlope, setLandSlope] = useState('');
-  const [landAccess, setLandAccess] = useState('');
+export default function InquireHouse() {
   const router = useRouter();
+  const {
+    isLandOwner,
+    purpose,
+    location,
+    landArea,
+    landSlope,
+    landAccess,
+    setIsLandOwner,
+    setPurpose,
+    setLocation,
+    setLandArea,
+    setLandSlope,
+    setLandAccess,
+    reset,
+  } = useInquireHouseInfo();
 
   return (
     <>
@@ -175,7 +184,7 @@ export default function Inquire1() {
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '15px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/2')}
+              onClick={() => router.push('/inquire/service')}
             >
               다음으로
             </div>

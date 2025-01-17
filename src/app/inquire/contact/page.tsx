@@ -1,19 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Col6Button from '@/app/inquire/_components/Col6Button';
-import Col3Button from '@/app/inquire/_components/Col3Button';
-import Col4Button from '@/app/inquire/_components/Col4Button';
+import useInquireContactInfo from '@/app/inquire/_store/inquireContactInfo';
 
-export default function Inquire3() {
-  const [isLandOwner, setIsLandOwner] = useState('');
-  const [purpose, setPurpose] = useState('');
-  const [location, setLocation] = useState('');
-  const [landArea, setLandArea] = useState('');
-  const [landSlope, setLandSlope] = useState('');
-  const [landAccess, setLandAccess] = useState('');
+export default function InquireContact() {
   const router = useRouter();
+
+  const { name, contact, additionalRequest, type, setName, setContact, setAdditionalRequest, setType, reset } =
+    useInquireContactInfo();
 
   return (
     <>
@@ -62,6 +57,10 @@ export default function Inquire3() {
                   wordBreak: 'break-word',
                   lineHeight: '1.5',
                 }}
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
               ></textarea>
             </div>
             <div className="col-8">
@@ -78,6 +77,10 @@ export default function Inquire3() {
                   overflowWrap: 'break-word',
                   wordBreak: 'break-word',
                   lineHeight: '1.5',
+                }}
+                value={contact}
+                onChange={(e) => {
+                  setContact(e.target.value);
                 }}
               ></textarea>
             </div>
@@ -102,6 +105,10 @@ export default function Inquire3() {
                   wordBreak: 'break-word',
                   lineHeight: '1.5',
                 }}
+                value={additionalRequest}
+                onChange={(e) => {
+                  setAdditionalRequest(e.target.value);
+                }}
               ></textarea>
             </div>
           </div>
@@ -113,15 +120,15 @@ export default function Inquire3() {
               title={'전화 상담'}
               text={'직접 전화를 통한 빠른 상담을 희망해요.'}
               value={'normal'}
-              data={landSlope}
-              setData={setLandSlope}
+              data={type}
+              setData={setType}
             />
             <Col6Button
               title={'문자 상담'}
               text={'카카오톡 움집 채널을 통한 문자 상담을 희망해요.'}
               value={'little'}
-              data={landSlope}
-              setData={setLandSlope}
+              data={type}
+              setData={setType}
             />
           </div>
         </div>
@@ -148,14 +155,14 @@ export default function Inquire3() {
             <div
               className="btn"
               style={{ marginTop: '20px', color: '#ffffff' }}
-              onClick={() => router.push('/inquire/2')}
+              onClick={() => router.push('/inquire/service')}
             >
               {'<'} 이전으로
             </div>
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '20px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/4')}
+              onClick={() => router.push('/inquire/confirm')}
             >
               문의 요청하기
             </div>

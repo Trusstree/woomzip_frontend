@@ -1,16 +1,15 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
+import useInquireServiceInfo from '@/app/inquire/_store/inquireServiceInfo';
 
-export default function Inquire2() {
-  const [helpType, setHelpType] = useState('');
-  const [startPlan, setStartPlan] = useState('');
-  const [priority, setPriority] = useState('');
-  const [budget, setBudget] = useState('');
+export default function InquireService() {
   const router = useRouter();
+
+  const { helpType, startPlan, priority, budget, setHelpType, setStartPlan, setPriority, setBudget, reset } =
+    useInquireServiceInfo();
 
   return (
     <>
@@ -151,14 +150,14 @@ export default function Inquire2() {
             <div
               className="btn"
               style={{ marginTop: '20px', color: '#ffffff' }}
-              onClick={() => router.push('/inquire/1')}
+              onClick={() => router.push('/inquire/house')}
             >
               {'<'} 이전으로
             </div>
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '15px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/3')}
+              onClick={() => router.push('/inquire/contact')}
             >
               다음으로
             </div>
