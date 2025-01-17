@@ -1,19 +1,28 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Col6Button from '@/app/inquire/_components/Col6Button';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
+import useInquireHouseInfo from '@/app/inquire/_store/inquireHouseInfo';
 
 export default function InquireHouse() {
-  const [isLandOwner, setIsLandOwner] = useState('');
-  const [purpose, setPurpose] = useState('');
-  const [location, setLocation] = useState('');
-  const [landArea, setLandArea] = useState('');
-  const [landSlope, setLandSlope] = useState('');
-  const [landAccess, setLandAccess] = useState('');
   const router = useRouter();
+  const {
+    isLandOwner,
+    purpose,
+    location,
+    landArea,
+    landSlope,
+    landAccess,
+    setIsLandOwner,
+    setPurpose,
+    setLocation,
+    setLandArea,
+    setLandSlope,
+    setLandAccess,
+    reset,
+  } = useInquireHouseInfo();
 
   return (
     <>

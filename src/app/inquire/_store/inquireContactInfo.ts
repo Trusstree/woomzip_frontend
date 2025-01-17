@@ -4,6 +4,7 @@ const useInquireContactInfo = create<InquireContactInfoState & InquireContactInf
   name: '',
   contact: '',
   additionalRequest: '',
+  type: '',
   setName: (name: string) => {
     set({ name });
   },
@@ -12,6 +13,9 @@ const useInquireContactInfo = create<InquireContactInfoState & InquireContactInf
   },
   setAdditionalRequest: (additionalRequest: string) => {
     set({ additionalRequest });
+  },
+  setType: (type: string) => {
+    set({ type });
   },
   reset: () => {
     set({

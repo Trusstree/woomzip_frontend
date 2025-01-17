@@ -1,16 +1,15 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
+import useInquireServiceInfo from '@/app/inquire/_store/inquireServiceInfo';
 
 export default function InquireService() {
-  const [helpType, setHelpType] = useState('');
-  const [startPlan, setStartPlan] = useState('');
-  const [priority, setPriority] = useState('');
-  const [budget, setBudget] = useState('');
   const router = useRouter();
+
+  const { helpType, startPlan, priority, budget, setHelpType, setStartPlan, setPriority, setBudget, reset } =
+    useInquireServiceInfo();
 
   return (
     <>

@@ -21,6 +21,7 @@ interface InquireContactInfoState {
   name: string;
   contact: string;
   additionalRequest: string;
+  type: string;
 }
 
 interface InquireHouseInfoActions {
@@ -45,5 +46,6 @@ interface InquireContactInfoActions {
   setName: (name: string) => void;
   setContact: (contact: string) => void;
   setAdditionalRequest: (additionalRequest: string) => void;
+  setType: (type: string) => void;
   reset: () => void;
 }
