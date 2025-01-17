@@ -6,7 +6,7 @@ import Col6Button from '@/app/inquire/_components/Col6Button';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
 
-export default function Inquire1() {
+export default function InquireHouse() {
   const [isLandOwner, setIsLandOwner] = useState('');
   const [purpose, setPurpose] = useState('');
   const [location, setLocation] = useState('');
@@ -175,7 +175,7 @@ export default function Inquire1() {
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '15px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/2')}
+              onClick={() => router.push('/inquire/service')}
             >
               다음으로
             </div>

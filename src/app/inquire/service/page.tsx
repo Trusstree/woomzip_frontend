@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
 
-export default function Inquire2() {
+export default function InquireService() {
   const [helpType, setHelpType] = useState('');
   const [startPlan, setStartPlan] = useState('');
   const [priority, setPriority] = useState('');
@@ -151,14 +151,14 @@ export default function Inquire2() {
             <div
               className="btn"
               style={{ marginTop: '20px', color: '#ffffff' }}
-              onClick={() => router.push('/inquire/1')}
+              onClick={() => router.push('/inquire/house')}
             >
               {'<'} 이전으로
             </div>
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '15px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/3')}
+              onClick={() => router.push('/inquire/contact')}
             >
               다음으로
             </div>

@@ -6,7 +6,7 @@ import Col6Button from '@/app/inquire/_components/Col6Button';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
 
-export default function Inquire4() {
+export default function InquireConfirm() {
   const [isLandOwner, setIsLandOwner] = useState('');
   const [purpose, setPurpose] = useState('');
   const [location, setLocation] = useState('');

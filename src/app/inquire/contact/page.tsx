@@ -6,7 +6,7 @@ import Col6Button from '@/app/inquire/_components/Col6Button';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
 
-export default function Inquire3() {
+export default function InquireContact() {
   const [isLandOwner, setIsLandOwner] = useState('');
   const [purpose, setPurpose] = useState('');
   const [location, setLocation] = useState('');
@@ -148,14 +148,14 @@ export default function Inquire3() {
             <div
               className="btn"
               style={{ marginTop: '20px', color: '#ffffff' }}
-              onClick={() => router.push('/inquire/2')}
+              onClick={() => router.push('/inquire/service')}
             >
               {'<'} 이전으로
             </div>
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '20px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/4')}
+              onClick={() => router.push('/inquire/confirm')}
             >
               문의 요청하기
             </div>
