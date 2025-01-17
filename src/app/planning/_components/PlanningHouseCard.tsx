@@ -1,6 +1,6 @@
 'use client';
 
-import { HighlightCardPriceText } from '@/app/house/_components/HighlightCardPriceText';
+import { HighlightCardPriceText } from '@/app/product/_components/HighlightCardPriceText';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';

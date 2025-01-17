@@ -41,7 +41,7 @@ export default function Header() {
               </RouteButton> */}
 
               <RouteButton
-                url="/house"
+                url="/product"
                 style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
               >
                 제품찾기

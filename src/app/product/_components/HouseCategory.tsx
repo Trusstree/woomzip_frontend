@@ -1,0 +1,16 @@
+import CategoryButton from '@/app/product/_components/CategoryButton';
+
+export default function HouseCategory({ categoryList }) {
+  return (
+    <div
+      className="row w-100 flex-nowrap overflow-auto"
+      style={{
+        margin: '10px 0',
+      }}
+    >
+      {categoryList.map((e, i) => (
+        <CategoryButton key={i} title={e.title} imgSrc={e.imgSrc} queryName={e.queryName} category={e.category} />
+      ))}
+    </div>
+  );
+}

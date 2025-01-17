@@ -5,15 +5,23 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'trussbucket.s3.ap-northeast-2.amazonaws.com',
-        pathname: '**',
+        protocol: 'http',
+        hostname: '**',
       },
       {
         protocol: 'https',
-        hostname: 'trussbucketdev.s3.ap-northeast-2.amazonaws.com',
+        hostname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'woomzip-prod.s3.ap-northeast-2.amazonaws.com',
         pathname: '**',
       },
+      // {
+      //   protocol: 'https',
+      //   hostname: 'trussbucketdev.s3.ap-northeast-2.amazonaws.com',
+      //   pathname: '**',
+      // },
     ],
     formats: ['image/avif', 'image/webp'],
   },
