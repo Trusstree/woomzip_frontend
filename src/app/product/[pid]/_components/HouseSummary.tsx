@@ -61,7 +61,7 @@ export default function HouseSummary({ summaryData }: { summaryData: SummaryData
           <div
             style={{
               color: '#ffffff',
-              fontSize: 'clamp(36px, 5vw, 100px)',
+              fontSize: 'clamp(50px, 6vw, 100px)',
               fontWeight: '700',
               letterSpacing: '0.03rem',
             }}

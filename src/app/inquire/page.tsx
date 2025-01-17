@@ -1,4 +1,9 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 export default async function Inquire() {
+  const router = useRouter();
   return (
     <>
       <div style={{ backgroundColor: 'black', height: '61px', width: '100%' }}></div>
@@ -58,6 +63,7 @@ export default async function Inquire() {
                     fontSize: '14px',
                     marginTop: '40px ',
                   }}
+                  onClick={() => router.push('/inquire/1')}
                 >
                   시작해보기 {'>'}
                 </div>
@@ -89,6 +95,7 @@ export default async function Inquire() {
                     fontSize: '14px',
                     marginTop: '40px ',
                   }}
+                  onClick={() => router.push('/inquire/3')}
                 >
                   시작해보기 {'>'}
                 </div>
