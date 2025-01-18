@@ -1,7 +1,7 @@
 'use client';
 
+import Image from '@/components/ImageFallback';
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 
 export default function CardTemplate({ templatesData }: { templatesData: Array<CardTemplateData> }) {
   const [isMobile, setIsMobile] = useState(false);

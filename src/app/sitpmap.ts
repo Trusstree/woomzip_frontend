@@ -21,25 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: 'https://www.woomzip.com/house',
+      url: 'https://www.woomzip.com/product',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: 'https://www.woomzip.com/living',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: 'https://www.woomzip.com/mypage',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
-    },
-    {
-      url: 'https://www.woomzip.com/planning',
+      url: 'https://www.woomzip.com/inquire',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,

@@ -4,7 +4,7 @@ import { elapsedTimeText } from '@/lib/stringUtil';
 import { postCommentHeart, postCommentHeartRemove } from '@/actions/apis/heartAPI';
 import HeartComponent from '@/components/posts/HeartComponent';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import Image from '@/components/ImageFallback';
 import styles from '@/app/news/[pid]/_styles/CommentText.module.css';
 
 export default function CommentText({ data, isCommentLike }) {

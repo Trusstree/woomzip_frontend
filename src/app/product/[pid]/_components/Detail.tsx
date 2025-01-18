@@ -1,6 +1,3 @@
-import { detailPriceText } from '@/lib/stringUtil';
-import { parseSpecificationInfo } from '@/lib/parseUtil';
-
 export default function Detail({ detailData }: { detailData: DetailData }) {
   return (
     <div

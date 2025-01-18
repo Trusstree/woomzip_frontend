@@ -6,7 +6,7 @@ import { loadPostData, loadRecommendPostData } from '@/app/news/[pid]/_actions/a
 import CommentComponent from '@/app/news/[pid]/_components/CommentComponent';
 import LoadPage from '@/components/app/LoadPage';
 import { elapsedTimeText } from '@/lib/stringUtil';
-import Image from 'next/image';
+import Image from '@/components/ImageFallback';
 
 type PageParams = {
   pid: number;

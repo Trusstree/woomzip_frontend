@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from '@/components/ImageFallback';
 
 export default function HalfTemplate({ templatesData }: { templatesData: HalfTemplatesData }) {
   return (

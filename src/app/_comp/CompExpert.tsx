@@ -1,14 +1,14 @@
 'use client';
 
-import Image from 'next/image';
+import Image from '@/components/ImageFallback';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
 
-export default function Comp4({ id }: { id: string }) {
+export default function CompExpert() {
   gsap.registerPlugin(useGSAP);
   useGSAP(() => {
-    gsap.to('#comp7BG', {
+    gsap.to('#compExpertBG', {
       ease: 'none',
       xPercent: -100,
       duration: 30,
@@ -18,7 +18,7 @@ export default function Comp4({ id }: { id: string }) {
 
   return (
     <div
-      id={id}
+      id={'compExpert'}
       style={{
         position: 'relative',
         width: '100%',
@@ -27,7 +27,7 @@ export default function Comp4({ id }: { id: string }) {
         backgroundColor: 'black',
       }}
     >
-      <div id="comp7BG" className="d-flex">
+      <div id="compExpertBG" className="d-flex">
         <Image
           src={'/9.webp'}
           width={1600}

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { cardCountText } from '@/lib/stringUtil';
-import Image from 'next/image';
+import Image from '@/components/ImageFallback';
 import styles from '@/app/product/_styles/houseCard.module.css';
 
 type PostCardProps = {

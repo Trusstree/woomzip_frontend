@@ -14,7 +14,7 @@ export async function getProduct(productId: number): Promise<[ApiProductResponse
     if (result.data.result.code >= 400) throw result.data;
     response = result?.data;
   } catch (err) {
-    if (!err.result)
+    if (!err?.result)
       error = {
         title: '서버 에러',
         message: '서버에 문제가 생겼습니다. 새로고침 후에 다시 시도해주세요!',

@@ -1,6 +1,6 @@
-import Image from 'next/image';
+import Image from '@/components/ImageFallback';
 
-export default function HouseDesigner({ vendorData }: { vendorData: VendorData }) {
+export default function ProductDesigner({ vendorData }: { vendorData: VendorData }) {
   return (
     <div
       style={{

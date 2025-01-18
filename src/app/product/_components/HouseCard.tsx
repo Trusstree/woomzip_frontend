@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import { HighlightCardPriceText } from '@/app/product/_components/HighlightCardPriceText';
 import Link from 'next/link';
 import styles from '@/app/product/_styles/houseCard.module.css';
+import Image from '@/components/ImageFallback';
 
 export default function productData({ productData }: { productData: ProductsData }) {
   const { productId, productName, realUsableArea, bedroom, bathroom, price, productImageUrl } = productData;

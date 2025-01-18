@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image from '@/components/ImageFallback';
 import { useState } from 'react';
 
 export default function MasterPlanTemplate({ templatesData }: { templatesData: MasterPlanTemplatesData }) {
