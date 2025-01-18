@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 
 const useInquireServiceInfo = create<InquireServiceInfoState & InquireServiceInfoActions>((set) => ({
-  helpType: '',
-  startPlan: '',
-  priority: '',
-  budget: 0,
+  helpType: 'SIMPLE_INQUIRY',
+  startPlan: 'ASAP',
+  priority: 'COST_EFFICIENCY',
+  budget: 40_000_000,
   setHelpType: (helpType: string) => {
     set({ helpType });
   },
@@ -19,10 +19,10 @@ const useInquireServiceInfo = create<InquireServiceInfoState & InquireServiceInf
   },
   reset: () => {
     set({
-      helpType: '',
-      startPlan: '',
-      priority: '',
-      budget: 0,
+      helpType: 'SIMPLE_INQUIRY',
+      startPlan: 'ASAP',
+      priority: 'COST_EFFICIENCY',
+      budget: 40_000_000,
     });
   },
 }));

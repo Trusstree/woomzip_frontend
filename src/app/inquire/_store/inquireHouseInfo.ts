@@ -11,11 +11,11 @@ interface InquireHouseInfoActions {
 
 const useInquireHouseInfo = create<InquireHouseInfoState & InquireHouseInfoActions>((set) => ({
   isLandOwner: true,
-  purpose: '',
-  location: '',
-  landArea: '',
-  landSlope: '',
-  landAccess: '',
+  purpose: 'HOUSE',
+  location: 'SEOUL',
+  landArea: 'UNDER_100',
+  landSlope: 'FLAT',
+  landAccess: 'WIDE',
   setIsLandOwner: (isLandOwner: boolean) => {
     set({ isLandOwner });
   },
@@ -37,11 +37,11 @@ const useInquireHouseInfo = create<InquireHouseInfoState & InquireHouseInfoActio
   reset: () => {
     set({
       isLandOwner: true,
-      purpose: '',
-      location: '',
-      landArea: '',
-      landSlope: '',
-      landAccess: '',
+      purpose: 'HOUSE',
+      location: 'SEOUL',
+      landArea: 'UNDER_100',
+      landSlope: 'FLAT',
+      landAccess: 'WIDE',
     });
   },
 }));

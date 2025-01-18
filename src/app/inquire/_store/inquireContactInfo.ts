@@ -4,7 +4,7 @@ const useInquireContactInfo = create<InquireContactInfoState & InquireContactInf
   name: '',
   contact: '',
   additionalRequest: '',
-  responseType: '',
+  responseType: 'CALL',
   setName: (name: string) => {
     set({ name });
   },
@@ -21,7 +21,7 @@ const useInquireContactInfo = create<InquireContactInfoState & InquireContactInf
     set({
       name: '',
       contact: '',
-      additionalRequest: '',
+      additionalRequest: 'CALL',
     });
   },
 }));

@@ -1,45 +1,11 @@
 'use client';
 
-import { postInquire } from '@/actions/apis2/inquireAPI';
-import useInquireContactInfo from '@/app/inquire/_store/inquireContactInfo';
-import useInquireHouseInfo from '@/app/inquire/_store/inquireHouseInfo';
-import useInquireServiceInfo from '@/app/inquire/_store/inquireServiceInfo';
-import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { useRouter } from 'next/navigation';
+import useInquireContactInfo from '@/app/inquire/_store/inquireContactInfo';
 
 export default function InquireConfirm() {
   const router = useRouter();
-  const { isLandOwner, purpose, location, landArea, landSlope, landAccess } = useInquireHouseInfo();
-  const { helpType, startPlan, priority, budget } = useInquireServiceInfo();
-  const { name, contact, additionalRequest, type } = useInquireContactInfo();
-
-  const submit = async () => {
-    const apiBody = {
-      isLandOwner,
-      purpose,
-      location,
-      landArea,
-      landSlope,
-      landAccess,
-      helpType,
-      startPlan,
-      priority,
-      budget,
-      name,
-      contact,
-      additionalRequest,
-      type,
-    };
-
-    const [data, error] = await postInquire(apiBody);
-    if (error) {
-      await alertError('에러', '문의 넣는 중 에러가 나옴');
-      return;
-    }
-
-    console.log(data);
-    await alertSuccess('성공', '아마 여기에 택일 내용을 넣어야 함');
-  };
+  const { name, contact, additionalRequest, responseType } = useInquireContactInfo();
 
   return (
     <>
@@ -84,6 +50,10 @@ export default function InquireConfirm() {
           {/* 개인정보 질문 */}
           <div className="row" style={{ width: '100%', marginBottom: '50px' }}>
             <h2 style={{ fontSize: '23px', fontWeight: 600, marginBottom: '10px' }}>문의 내용</h2>
+            {/* <div className="col-12">
+              <span className="fs-5 fw-bold"> {responseType == 'CALL' ? '전화상담' : '문자상담'}</span>
+              {`으로 하고 싶습니다.`}
+            </div> */}
             <div className="col-12">{additionalRequest}</div>
           </div>
         </div>
@@ -117,7 +87,7 @@ export default function InquireConfirm() {
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '20px', padding: '10px 20px' }}
-              onClick={submit}
+              onClick={() => router.push('/product')}
             >
               문의넣기
             </div>

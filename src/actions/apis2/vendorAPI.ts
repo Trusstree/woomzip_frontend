@@ -8,10 +8,11 @@ export const postVendors = async (body: any): Promise<[ApiProductResponse, any]>
 
   try {
     const result = await publicApi.post(`/vendors`, body);
+    if (result.data.result.code >= 400) throw result.data.result.message;
     data = result?.data;
   } catch (err) {
-    error = err.response?.data;
-    if (!error) error = err;
+    error = err;
   }
   return [data, error];
 };
+

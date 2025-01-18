@@ -3,6 +3,12 @@
 import { useRouter } from 'next/navigation';
 import Col6Button from '@/app/inquire/_components/Col6Button';
 import useInquireContactInfo from '@/app/inquire/_store/inquireContactInfo';
+import useInquireHouseInfo from '@/app/inquire/_store/inquireHouseInfo';
+import useInquireServiceInfo from '@/app/inquire/_store/inquireServiceInfo';
+import { postInquire } from '@/actions/apis2/inquireAPI';
+import { alertError } from '@/lib/alertUtil';
+import { isPhoneNumber, notMaxLength, notMinLength } from '@/lib/validator';
+import { useEffect } from 'react';
 
 export default function InquireContact() {
   const router = useRouter();
@@ -18,6 +24,58 @@ export default function InquireContact() {
     setResponseType,
     reset,
   } = useInquireContactInfo();
+  const { isLandOwner, purpose, location, landArea, landSlope, landAccess } = useInquireHouseInfo();
+  const { helpType, startPlan, priority, budget } = useInquireServiceInfo();
+
+  const submit = async () => {
+    const apiBody = {
+      isLandOwner,
+      purpose,
+      location,
+      landArea,
+      landSlope,
+      landAccess,
+      helpType,
+      startPlan,
+      priority,
+      budget,
+      name,
+      contact,
+      additionalRequest,
+      responseType,
+    };
+
+    if (!notMinLength(name, 2)) {
+      await alertError('이름을 확인해주세요', '이름을 2글자 이상 입력해주세요!');
+      return;
+    }
+
+    if (!notMaxLength(name, 10)) {
+      await alertError('이름을 확인해주세요', '이름을 10글자 이하로로 입력해주세요!');
+      return;
+    }
+
+    if (!isPhoneNumber(contact)) {
+      await alertError('전화전호를를 확인해주세요', '전화번호가 맞는지 확인해주세요!');
+      return;
+    }
+
+    const [data, error] = await postInquire(apiBody);
+    if (error) {
+      await alertError(error.title, error.message);
+      return;
+    }
+
+    console.log(data);
+    router.push('/inquire/confirm');
+  };
+
+  useEffect(() => {
+    if (contact.length === 10) setContact(contact.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+    if (contact.length === 11) setContact(contact.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+    if (contact.length === 13) setContact(contact.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+    if (contact.length === 14) setContact(contact.replace(/-/g, '').replace(/(\d{4})(\d{4})(\d{4})/, '$1-$2-$3'));
+  }, [contact]);
 
   return (
     <>
@@ -70,6 +128,7 @@ export default function InquireContact() {
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
+                placeholder="예) 움집이"
               ></textarea>
             </div>
             <div className="col-8">
@@ -91,6 +150,7 @@ export default function InquireContact() {
                 onChange={(e) => {
                   setContact(e.target.value);
                 }}
+                placeholder="예) 0507-1369-6158"
               ></textarea>
             </div>
           </div>
@@ -118,6 +178,7 @@ export default function InquireContact() {
                 onChange={(e) => {
                   setAdditionalRequest(e.target.value);
                 }}
+                placeholder="예) 구매 문의합니다."
               ></textarea>
             </div>
           </div>
@@ -128,14 +189,14 @@ export default function InquireContact() {
             <Col6Button
               title={'전화 상담'}
               text={'직접 전화를 통한 빠른 상담을 희망해요.'}
-              value={'normal'}
+              value={'CALL'}
               data={responseType}
               setData={setResponseType}
             />
             <Col6Button
               title={'문자 상담'}
               text={'카카오톡 움집 채널을 통한 문자 상담을 희망해요.'}
-              value={'little'}
+              value={'MESSAGE'}
               data={responseType}
               setData={setResponseType}
             />
@@ -171,7 +232,7 @@ export default function InquireContact() {
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '20px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/confirm')}
+              onClick={submit}
             >
               문의 요청하기
             </div>
