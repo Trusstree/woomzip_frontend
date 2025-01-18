@@ -3,7 +3,7 @@
 import { publicApi } from '@/configs/axiosClient';
 
 export const postInquire = async (
-  body: InquireHouseInfoState & InquireServiceInfoState & InquireContactInfoState,
+  body: Omit<InquireHouseInfoState, 'houseData'> & InquireServiceInfoState & InquireContactInfoState,
 ): Promise<[ApiProductResponse, any]> => {
   let [data, error] = [undefined, undefined] as [ApiProductResponse, ApiError];
 

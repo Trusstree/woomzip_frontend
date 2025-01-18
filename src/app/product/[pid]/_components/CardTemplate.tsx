@@ -106,9 +106,8 @@ export default function CardTemplate({ templatesData }: { templatesData: Array<C
         onTouchStart={handleDrag as any}
       >
         {templatesData.map((card, index) => (
-          <div>
+          <div key={index}>
             <div
-              key={index}
               style={{
                 flex: '0 0 auto',
                 width: isMobile ? '300px' : '500px',

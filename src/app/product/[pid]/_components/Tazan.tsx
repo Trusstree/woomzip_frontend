@@ -1,15 +1,8 @@
-'use client';
-
 import Image from 'next/image';
-import useQueryString from '@/hooks/useQueryString';
-import { useRouter } from 'next/navigation';
-import { detailPriceText } from '@/lib/stringUtil';
+import Link from 'next/link';
 
 export default function Tazan({ pid }) {
-  const { createQueryString } = useQueryString();
-  const router = useRouter();
-  const gyeonjeokLink = `${'/planning'}?${createQueryString('house_id', pid.toString())}`;
-
+  //
   return (
     <div
       style={{
@@ -42,25 +35,24 @@ export default function Tazan({ pid }) {
         <br />꼭 내 예상견적을 계산해보고 시작하세요!
       </div>
       <Image width={400} height={350} src={'/10.webp'} alt={'pic'} style={{ width: '90%', maxWidth: '400px' }} />
-      <div
-        className="btn text-white d-flex justify-content-center align-items-center"
-        style={{
-          backgroundColor: '#314FC0',
-          height: '60px',
-          width: '200px',
-          marginTop: '50px',
-          borderRadius: '40px',
-        }}
-        onClick={() => {
-          router.push(gyeonjeokLink);
-        }}
-      >
-        <span style={{ wordBreak: 'keep-all', fontSize: '15px' }}>
-          20초만에 내 예상 견적
-          <br />
-          자가진단 하기
-        </span>
-      </div>
+      <Link href={`/inquire/product/?product_id=${pid}`}>
+        <button
+          className="btn text-white d-flex justify-content-center align-items-center"
+          style={{
+            backgroundColor: '#314FC0',
+            height: '60px',
+            width: '200px',
+            marginTop: '50px',
+            borderRadius: '40px',
+          }}
+        >
+          <span style={{ wordBreak: 'keep-all', fontSize: '15px' }}>
+            20초만에 내 예상 견적
+            <br />
+            자가진단 하기
+          </span>
+        </button>
+      </Link>
     </div>
   );
 }

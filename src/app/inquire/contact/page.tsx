@@ -3,31 +3,49 @@
 import { useRouter } from 'next/navigation';
 import Col6Button from '@/app/inquire/_components/Col6Button';
 import useInquireContactInfo from '@/app/inquire/_store/inquireContactInfo';
-import useInquireHouseInfo from '@/app/inquire/_store/inquireHouseInfo';
+import useInquireHouseInfo from '@/app/inquire/_store/inquireProductInfo';
 import useInquireServiceInfo from '@/app/inquire/_store/inquireServiceInfo';
 import { postInquire } from '@/actions/apis2/inquireAPI';
 import { alertError } from '@/lib/alertUtil';
 import { isPhoneNumber, notMaxLength, notMinLength } from '@/lib/validator';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+import useQueryString from '@/hooks/useQueryString';
 
 export default function InquireContact() {
   const router = useRouter();
 
-  const {
-    name,
-    contact,
-    additionalRequest,
-    responseType,
-    setName,
-    setContact,
-    setAdditionalRequest,
-    setResponseType,
-    reset,
-  } = useInquireContactInfo();
-  const { isLandOwner, purpose, location, landArea, landSlope, landAccess } = useInquireHouseInfo();
-  const { helpType, startPlan, priority, budget } = useInquireServiceInfo();
+  const { name, contact, additionalRequest, responseType, setName, setContact, setAdditionalRequest, setResponseType } =
+    useInquireContactInfo();
+  const { isLandOwner, purpose, location, landArea, landSlope, landAccess, initProduct, resetProduct } =
+    useInquireHouseInfo();
+  const { helpType, startPlan, priority, budget, initService, resetService } = useInquireServiceInfo();
+
+  const { getParams, createQuery } = useQueryString();
 
   const submit = async () => {
+    // validate
+    if (!notMinLength(name, 2)) {
+      await alertError('이름을 확인해주세요', '이름을 2글자 이상 입력해주세요!');
+      return;
+    }
+
+    if (!notMaxLength(name, 10)) {
+      await alertError('이름을 확인해주세요', '이름을 10글자 이하로로 입력해주세요!');
+      return;
+    }
+
+    if (!isPhoneNumber(contact)) {
+      await alertError('전화전호를 확인해주세요', '전화번호가 맞는지 확인해주세요!');
+      return;
+    }
+
+    // 단순 문의면 앞 데이터가 필요 없음
+    if (getParams().get('type') == 'simple') {
+      resetProduct();
+      resetService();
+    }
+
+    // api request
     const apiBody = {
       isLandOwner,
       purpose,
@@ -45,30 +63,26 @@ export default function InquireContact() {
       responseType,
     };
 
-    if (!notMinLength(name, 2)) {
-      await alertError('이름을 확인해주세요', '이름을 2글자 이상 입력해주세요!');
-      return;
-    }
-
-    if (!notMaxLength(name, 10)) {
-      await alertError('이름을 확인해주세요', '이름을 10글자 이하로로 입력해주세요!');
-      return;
-    }
-
-    if (!isPhoneNumber(contact)) {
-      await alertError('전화전호를를 확인해주세요', '전화번호가 맞는지 확인해주세요!');
-      return;
-    }
-
+    // api response
     const [data, error] = await postInquire(apiBody);
     if (error) {
       await alertError(error.title, error.message);
       return;
     }
 
-    console.log(data);
+    console.log(data); // 데이터 확인용용
     router.push('/inquire/confirm');
   };
+
+  const goPrevPage = useCallback(() => {
+    if (getParams().get('type') == 'simple') {
+      createQuery('type');
+      initProduct();
+      initService();
+    }
+
+    router.push('/inquire/service');
+  }, []);
 
   useEffect(() => {
     if (contact.length === 10) setContact(contact.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
@@ -222,11 +236,7 @@ export default function InquireContact() {
           }}
         >
           <div className="d-flex justify-content-between">
-            <div
-              className="btn"
-              style={{ marginTop: '20px', color: '#ffffff' }}
-              onClick={() => router.push('/inquire/service')}
-            >
+            <div className="btn" style={{ marginTop: '20px', color: '#ffffff' }} onClick={goPrevPage}>
               {'<'} 이전으로
             </div>
             <div

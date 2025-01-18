@@ -4,25 +4,51 @@ import { useRouter } from 'next/navigation';
 import Col6Button from '@/app/inquire/_components/Col6Button';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
-import useInquireHouseInfo from '@/app/inquire/_store/inquireHouseInfo';
+import useInquireproductInfo from '@/app/inquire/_store/inquireProductInfo';
+import useQueryString from '@/hooks/useQueryString';
+import { useCallback, useEffect } from 'react';
+import { getProduct } from '@/actions/apis2/productAPI';
+import { isNumber } from '@/lib/validator';
+import { alertError } from '@/lib/alertUtil';
 
-export default function InquireHouse() {
+export default function Inquireproduct() {
   const router = useRouter();
+  const { getParams } = useQueryString();
   const {
+    productData,
     isLandOwner,
     purpose,
     location,
     landArea,
     landSlope,
     landAccess,
+    setProductData,
     setIsLandOwner,
     setPurpose,
     setLocation,
     setLandArea,
     setLandSlope,
     setLandAccess,
-    reset,
-  } = useInquireHouseInfo();
+  } = useInquireproductInfo();
+
+  const goNextPage = useCallback(() => {
+    router.push('/inquire/service');
+  }, []);
+
+  // 쿼리스트링에 product_id 가 있다면 집 데이터를 받아와야 함
+  useEffect(() => {
+    (async () => {
+      const product_id = getParams().get('product_id');
+      if (!isNumber(product_id)) return;
+      const [data, error] = await getProduct(Number(product_id));
+      if (error) {
+        alertError('집 데이터를 불러올 수 없습니다.', '서버에 문제가 생겨 집 데이터를 불러오지 못했습니다.');
+        return;
+      }
+      setProductData(data.payload);
+      console.log(data.payload);
+    })();
+  }, []);
 
   return (
     <>
@@ -180,17 +206,24 @@ export default function InquireHouse() {
           }}
         >
           <div className="d-flex justify-content-between">
-            <div style={{ marginTop: '25px', color: '#ffffff' }}>그린하이브</div>
+            <div style={{ marginTop: '25px', color: '#ffffff' }}>{productData && productData.productName}</div>
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '15px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/service')}
+              onClick={goNextPage}
             >
               다음으로
             </div>
           </div>
         </div>
       </div>
+      {/* 만약 집 데이터가 있다면 여기서 볼 수 있음 */}
+      {productData && (
+        <div>
+          {productData.productName}
+          <img src={productData.productImageUrl}></img>
+        </div>
+      )}
     </>
   );
 }

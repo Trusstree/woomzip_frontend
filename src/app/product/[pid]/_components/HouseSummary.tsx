@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HouseSummary({ summaryData }: { summaryData: SummaryData }) {
   return (
@@ -127,21 +128,23 @@ export default function HouseSummary({ summaryData }: { summaryData: SummaryData
                 </div>
               </div>
             </div>
-            <div
-              className="btn"
-              style={{
-                border: 'none',
-                borderRadius: '20px',
-                backgroundColor: '#4067F8',
-                color: '#ffffff',
-                fontSize: '14px',
-                fontWeight: '500',
-                padding: '10px 70px',
-                margin: '0 auto',
-              }}
-            >
-              문의하기
-            </div>
+            <Link href={`/inquire/product/?product_id=${summaryData.productId}`}>
+              <button
+                className="btn"
+                style={{
+                  border: 'none',
+                  borderRadius: '20px',
+                  backgroundColor: '#4067F8',
+                  color: '#ffffff',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  padding: '10px 70px',
+                  margin: '0 auto',
+                }}
+              >
+                문의하기
+              </button>
+            </Link>
           </div>
         </div>
         <div

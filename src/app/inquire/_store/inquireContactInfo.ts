@@ -17,7 +17,14 @@ const useInquireContactInfo = create<InquireContactInfoState & InquireContactInf
   setResponseType: (responseType: string) => {
     set({ responseType });
   },
-  reset: () => {
+  initContact: () => {
+    set({
+      name: '',
+      contact: '',
+      additionalRequest: 'CALL',
+    });
+  },
+  resetContact: () => {
     set({
       name: '',
       contact: '',

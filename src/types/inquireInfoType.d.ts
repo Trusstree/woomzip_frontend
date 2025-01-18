@@ -1,7 +1,8 @@
 //   "responseType": "CALL",
 //   "productId": 1,
 
-interface InquireHouseInfoState {
+interface InquireProductInfoState {
+  productData: ApiProductData;
   isLandOwner: boolean;
   purpose: string;
   location: string;
@@ -24,14 +25,16 @@ interface InquireContactInfoState {
   responseType: string;
 }
 
-interface InquireHouseInfoActions {
+interface InquireProductInfoActions {
+  setProductData: (productData: any) => void;
   setIsLandOwner: (isLandOwner: boolean) => void;
   setPurpose: (purpose: string) => void;
   setLocation: (location: string) => void;
   setLandArea: (landArea: string) => void;
   setLandSlope: (landSlope: string) => void;
   setLandAccess: (landAccess: string) => void;
-  reset: () => void;
+  initProduct: () => void;
+  resetProduct: () => void;
 }
 
 interface InquireServiceInfoActions {
@@ -39,7 +42,8 @@ interface InquireServiceInfoActions {
   setStartPlan: (startPlan: string) => void;
   setPriority: (priority: string) => void;
   setBudget: (budget: number) => void;
-  reset: () => void;
+  initService: () => void;
+  resetService: () => void;
 }
 
 interface InquireContactInfoActions {
@@ -47,5 +51,6 @@ interface InquireContactInfoActions {
   setContact: (contact: string) => void;
   setAdditionalRequest: (additionalRequest: string) => void;
   setResponseType: (responseType: string) => void;
-  reset: () => void;
+  initContact: () => void;
+  resetContact: () => void;
 }

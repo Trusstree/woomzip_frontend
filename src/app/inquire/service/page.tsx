@@ -4,12 +4,21 @@ import { useRouter } from 'next/navigation';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
 import useInquireServiceInfo from '@/app/inquire/_store/inquireServiceInfo';
+import { useCallback } from 'react';
 
 export default function InquireService() {
   const router = useRouter();
 
-  const { helpType, startPlan, priority, budget, setHelpType, setStartPlan, setPriority, setBudget, reset } =
+  const { helpType, startPlan, priority, budget, setHelpType, setStartPlan, setPriority, setBudget } =
     useInquireServiceInfo();
+
+  const goPrevPage = useCallback(() => {
+    router.push('/inquire/product');
+  }, []);
+
+  const goNextPage = useCallback(() => {
+    router.push('/inquire/contact');
+  }, []);
 
   return (
     <>
@@ -147,17 +156,13 @@ export default function InquireService() {
           }}
         >
           <div className="d-flex justify-content-between">
-            <div
-              className="btn"
-              style={{ marginTop: '20px', color: '#ffffff' }}
-              onClick={() => router.push('/inquire/house')}
-            >
+            <div className="btn" style={{ marginTop: '20px', color: '#ffffff' }} onClick={goPrevPage}>
               {'<'} 이전으로
             </div>
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '15px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/contact')}
+              onClick={goNextPage}
             >
               다음으로
             </div>
