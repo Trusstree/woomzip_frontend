@@ -5,3 +5,8 @@ interface ApiResponse<T> {
   };
   payload: T;
 }
+
+interface ApiError {
+  title: string;
+  message: string;
+}

@@ -1,9 +1,18 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useCallback } from 'react';
 
 export default async function Inquire() {
   const router = useRouter();
+  const goDetailInquire = useCallback(() => {
+    router.push(`/inquire/product/`);
+  }, []);
+
+  const goSimpleInquire = useCallback(() => {
+    router.push(`/inquire/contact/?type=simple`);
+  }, []);
+
   return (
     <>
       <div style={{ backgroundColor: 'black', height: '61px', width: '100%' }}></div>
@@ -63,7 +72,7 @@ export default async function Inquire() {
                     fontSize: '14px',
                     marginTop: '40px ',
                   }}
-                  onClick={() => router.push('/inquire/house')}
+                  onClick={goDetailInquire}
                 >
                   시작해보기 {'>'}
                 </div>
@@ -95,7 +104,7 @@ export default async function Inquire() {
                     fontSize: '14px',
                     marginTop: '40px ',
                   }}
-                  onClick={() => router.push('/inquire/contact')}
+                  onClick={goSimpleInquire}
                 >
                   시작해보기 {'>'}
                 </div>

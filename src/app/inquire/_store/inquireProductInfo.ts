@@ -1,21 +1,16 @@
 import { create } from 'zustand';
-interface InquireHouseInfoActions {
-  setIsLandOwner: (isLandOwner: boolean) => void;
-  setPurpose: (purpose: string) => void;
-  setLocation: (location: string) => void;
-  setLandArea: (landArea: string) => void;
-  setLandSlope: (landSlope: string) => void;
-  setLandAccess: (landAccess: string) => void;
-  reset: () => void;
-}
 
-const useInquireHouseInfo = create<InquireHouseInfoState & InquireHouseInfoActions>((set) => ({
+const useInquireProductInfo = create<InquireProductInfoState & InquireProductInfoActions>((set) => ({
+  productData: null,
   isLandOwner: true,
-  purpose: '',
-  location: '',
-  landArea: '',
-  landSlope: '',
-  landAccess: '',
+  purpose: 'HOUSE',
+  location: 'SEOUL',
+  landArea: 'UNDER_100',
+  landSlope: 'FLAT',
+  landAccess: 'WIDE',
+  setProductData: (productData: any) => {
+    set({ productData });
+  },
   setIsLandOwner: (isLandOwner: boolean) => {
     set({ isLandOwner });
   },
@@ -34,8 +29,20 @@ const useInquireHouseInfo = create<InquireHouseInfoState & InquireHouseInfoActio
   setLandAccess: (landAccess: string) => {
     set({ landAccess });
   },
-  reset: () => {
+  initProduct: () => {
     set({
+      productData: null,
+      isLandOwner: true,
+      purpose: 'HOUSE',
+      location: 'SEOUL',
+      landArea: 'UNDER_100',
+      landSlope: 'FLAT',
+      landAccess: 'WIDE',
+    });
+  },
+  resetProduct: () => {
+    set({
+      productData: null,
       isLandOwner: true,
       purpose: '',
       location: '',
@@ -46,4 +53,4 @@ const useInquireHouseInfo = create<InquireHouseInfoState & InquireHouseInfoActio
   },
 }));
 
-export default useInquireHouseInfo;
+export default useInquireProductInfo;

@@ -1,6 +1,6 @@
 export function isRequired(value: any) {
   if (value == null || value == undefined || (value?.length ?? 0) <= 0) {
-    return false; // customMessage || '해당 항목을 반드시 입력해주세요.';
+    return false;
   }
 
   return true;
@@ -12,7 +12,7 @@ export function isID(value: any, minLength = 8, maxLength = 16) {
   const pattern = new RegExp(`^[a-z][a-z0-9]{${minLength - 1},${maxLength - 1}}$`);
 
   if (!pattern.test(value)) {
-    return false; // customMessage || `아이디를 영문, 숫자 포함하여 ${minLength} - ${maxLength}자리 사이로 입력해주세요.`;
+    return false;
   }
 
   return true;
@@ -24,9 +24,8 @@ export function isPassword(value: any, minLength = 8, maxLength = 16) {
   const pattern = new RegExp(`^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$~!@$!%*#^?&\\(\\)\-_=+]).{${minLength},${maxLength}}$`);
 
   if (!pattern.test(value)) {
-    return false; // customMessage || `비밀번호를 영문, 숫자, 특수문자를 최소 하나 포함하여 ${minLength} - ${maxLength}자리 사이로 입력해주세요.`;
+    return false;
   }
-
   return true;
 }
 
@@ -36,7 +35,7 @@ export function isEmail(value: any) {
   const pattern = new RegExp(`^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$`);
 
   if (!pattern.test(value)) {
-    return false; // customMessage || `이메일을 올바르게 입력해 주세요.`;
+    return false;
   }
 
   return true;
@@ -48,68 +47,68 @@ export function isPhoneNumber(value: any) {
   const pattern = new RegExp(/^[0-9\b -]{0,13}$/);
 
   if (!pattern.test(value)) {
-    return false; // customMessage || `이메일을 올바르게 입력해 주세요.`;
+    return false;
   }
 
   return true;
 }
 
-export function notMinLength(value: any, minLength = 2, customMessage?: string) {
-  if (!value?.length) return undefined;
+export function notMinLength(value: any, minLength = 2) {
+  if (!value?.length) return false;
 
   if (value.length < minLength) {
-    return customMessage || `해당 항목을 ${minLength}글자 이상 입력해 주세요.`;
+    return false;
   }
 
-  return undefined;
+  return true;
 }
 
-export function notMaxLength(value: any, maxLength = 10, customMessage?: string) {
-  if (!value?.length) return undefined;
+export function notMaxLength(value: any, maxLength = 10) {
+  if (!value?.length) return false;
 
   if ((value?.length ?? 0) > maxLength) {
-    return customMessage || `해당 항목을 ${maxLength}글자 이하로 입력해 주세요.`;
+    return false;
   }
 
-  return undefined;
+  return true;
 }
 
-export function isInt(value: any, customMessage?: string) {
-  if (!value?.length) return undefined;
+export function isInt(value: any) {
+  if (!value?.length) return false;
 
   if (!Number.isInteger(value)) {
-    return customMessage || `해당 항목을 정수로만 입력해 주세요.`;
+    return false;
   }
 
-  return undefined;
+  return true;
 }
 
-export function isNumber(value: any, customMessage?: string) {
-  if (!value?.length) return undefined;
+export function isNumber(value: any) {
+  if (!value?.length) return false;
 
   if (isNaN(value)) {
-    return customMessage || `해당 항목은 숫자로만 입력해 주세요.`;
+    return false;
   }
 
-  return undefined;
+  return true;
 }
 
-export function notMin(value: any, min = 0, customMessage?: string) {
-  if (!value?.length) return undefined;
+export function notMin(value: any, min = 0) {
+  if (!value?.length) return false;
 
   if (value < min) {
-    return customMessage || `해당 항목을 ${min} 이상으로 입력해 주세요.`;
+    return false;
   }
 
-  return undefined;
+  return true;
 }
 
-export function notMax(value: any, max = 10, customMessage?: string) {
-  if (!value?.length) return undefined;
+export function notMax(value: any, max = 10) {
+  if (!value?.length) return false;
 
   if (value > max) {
-    return customMessage || `해당 항목을 ${max} 이하로 입력해 주세요.`;
+    return false;
   }
 
-  return undefined;
+  return true;
 }

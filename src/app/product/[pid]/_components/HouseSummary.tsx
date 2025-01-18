@@ -1,24 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function HouseSummary({ summaryData }: { summaryData: SummaryData }) {
-  // const summaryData: SummaryDataType = {
-  //   houseName: houseData['house_name'],
-  //   designer: houseData['seller_nickname'],
-  //   price: detailPriceText(houseData['final_price']),
-  //   roomCount: houseData['room_count'],
-  //   toiletCount: houseData['toilet_count'],
-  //   totalFloorArea: houseData['total_floor_area'],
-  //   introduce: (
-  //     <>
-  //       이 집은 정말 아름다운 집입니다. 걱정 마십시오.
-  //       <br />
-  //       당신의 전원생활 행복은 바로 요 놈이 해결합니다.
-  //       <br />이 녀석으로 말할 것 같으면 아주 괴물같은 녀석입니다. 목조주택의 최정상입니다. 패시브하우스란 겨울엔
-  //       따듯하고 여름엔 시원한! 아주 좋은 제품이란 말입니다.
-  //     </>
-  //   ),
-  // };
-
   return (
     <div style={{ position: 'relative', width: '100%' }}>
       <div style={{ width: '100%', height: '200svh', position: 'absolute', zIndex: '0' }}>
@@ -35,7 +18,6 @@ export default function HouseSummary({ summaryData }: { summaryData: SummaryData
           }}
         />
       </div>
-
       <div
         style={{
           width: '90%',
@@ -146,21 +128,23 @@ export default function HouseSummary({ summaryData }: { summaryData: SummaryData
                 </div>
               </div>
             </div>
-            <div
-              className="btn"
-              style={{
-                border: 'none',
-                borderRadius: '20px',
-                backgroundColor: '#4067F8',
-                color: '#ffffff',
-                fontSize: '14px',
-                fontWeight: '500',
-                padding: '10px 70px',
-                margin: '0 auto',
-              }}
-            >
-              문의하기
-            </div>
+            <Link href={`/inquire/product/?product_id=${summaryData.productId}`}>
+              <button
+                className="btn"
+                style={{
+                  border: 'none',
+                  borderRadius: '20px',
+                  backgroundColor: '#4067F8',
+                  color: '#ffffff',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  padding: '10px 70px',
+                  margin: '0 auto',
+                }}
+              >
+                문의하기
+              </button>
+            </Link>
           </div>
         </div>
         <div
@@ -180,7 +164,7 @@ export default function HouseSummary({ summaryData }: { summaryData: SummaryData
               wordBreak: 'keep-all',
             }}
           >
-            {summaryData.introduce}
+            {summaryData.productIntro}
           </div>
         </div>
       </div>

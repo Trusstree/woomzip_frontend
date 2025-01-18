@@ -4,12 +4,21 @@ import { useRouter } from 'next/navigation';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
 import useInquireServiceInfo from '@/app/inquire/_store/inquireServiceInfo';
+import { useCallback } from 'react';
 
 export default function InquireService() {
   const router = useRouter();
 
-  const { helpType, startPlan, priority, budget, setHelpType, setStartPlan, setPriority, setBudget, reset } =
+  const { helpType, startPlan, priority, budget, setHelpType, setStartPlan, setPriority, setBudget } =
     useInquireServiceInfo();
+
+  const goPrevPage = useCallback(() => {
+    router.push('/inquire/product');
+  }, []);
+
+  const goNextPage = useCallback(() => {
+    router.push('/inquire/contact');
+  }, []);
 
   return (
     <>
@@ -44,21 +53,21 @@ export default function InquireService() {
             <Col4Button
               title={'단순 문의'}
               text={'서비스 과정이나 제품에 대한 정보가 궁금해요.'}
-              value={'normal'}
+              value={'SIMPLE_INQUIRY'}
               data={helpType}
               setData={setHelpType}
             />
             <Col4Button
               title={'상세 견적'}
               text={'내 조건을 토대로한 여러 제작사의 상세 견적서가 필요해요.'}
-              value={'little'}
+              value={'DETAILED_QUOTE'}
               data={helpType}
               setData={setHelpType}
             />
             <Col4Button
               title={'통합 서비스'}
               text={'안심 계약, 안심 지불, 안심 AS 서비스를 통한 구매를 원해요.'}
-              value={'very'}
+              value={'SAFETY_SERVICE'}
               data={helpType}
               setData={setHelpType}
             />
@@ -70,21 +79,21 @@ export default function InquireService() {
             <Col4Button
               title={'최대한 빠르게'}
               text={'4~12주 이내 입주 희망'}
-              value={'normal'}
+              value={'ASAP'}
               data={startPlan}
               setData={setStartPlan}
             />
             <Col4Button
               title={'조금 여유있게'}
               text={'3~6개월 이내 입주 희망'}
-              value={'little'}
+              value={'FLEXIBLE'}
               data={startPlan}
               setData={setStartPlan}
             />
             <Col4Button
               title={'확실하지 않습니다'}
               text={'아직 정확한 시기를 정하지 않았습니다.'}
-              value={'very'}
+              value={'UNDECIDED'}
               data={startPlan}
               setData={setStartPlan}
             />
@@ -96,21 +105,21 @@ export default function InquireService() {
             <Col4Button
               title={'가성비'}
               text={'합리적인 품질의 저렴한 가격이 가장 중요합니다.'}
-              value={'normal'}
+              value={'COST_EFFICIENCY'}
               data={priority}
               setData={setPriority}
             />
             <Col4Button
               title={'완성도'}
               text={'좋은 자재와 완성도 있는 마감이 가장 중요합니다.'}
-              value={'little'}
+              value={'QUALITY'}
               data={priority}
               setData={setPriority}
             />
             <Col4Button
               title={'신뢰도'}
               text={'권리를 보장 받을 수 있는 것이 가장 중요합니다.'}
-              value={'very'}
+              value={'TRUST'}
               data={priority}
               setData={setPriority}
             />
@@ -119,12 +128,12 @@ export default function InquireService() {
           {/* 예산 질문 */}
           <div className="row" style={{ width: '100%', marginBottom: '50px' }}>
             <h2 style={{ fontSize: '23px', fontWeight: 600, marginBottom: '10px' }}>대략적인 예산을 알려주세요.</h2>
-            <Col3Button title="~4천만원" value="4000" data={budget} setData={setBudget} />
-            <Col3Button title="~7천만원" value="7000" data={budget} setData={setBudget} />
-            <Col3Button title="~1억원" value="10000" data={budget} setData={setBudget} />
-            <Col3Button title="~1.5억" value="15000" data={budget} setData={setBudget} />
-            <Col3Button title="~2억원" value="20000" data={budget} setData={setBudget} />
-            <Col3Button title="상관 없음" value="777777" data={budget} setData={setBudget} />
+            <Col3Button title="~4천만원" value={40_000_000} data={budget} setData={setBudget} />
+            <Col3Button title="~7천만원" value={70_000_000} data={budget} setData={setBudget} />
+            <Col3Button title="~1억원" value={100_000_000} data={budget} setData={setBudget} />
+            <Col3Button title="~1.5억" value={150_000_000} data={budget} setData={setBudget} />
+            <Col3Button title="~2억원" value={200_000_000} data={budget} setData={setBudget} />
+            <Col3Button title="상관 없음" value={777_777_777} data={budget} setData={setBudget} />
           </div>
         </div>
       </div>
@@ -147,17 +156,13 @@ export default function InquireService() {
           }}
         >
           <div className="d-flex justify-content-between">
-            <div
-              className="btn"
-              style={{ marginTop: '20px', color: '#ffffff' }}
-              onClick={() => router.push('/inquire/house')}
-            >
+            <div className="btn" style={{ marginTop: '20px', color: '#ffffff' }} onClick={goPrevPage}>
               {'<'} 이전으로
             </div>
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '15px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/contact')}
+              onClick={goNextPage}
             >
               다음으로
             </div>

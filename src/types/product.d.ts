@@ -47,6 +47,7 @@ type ApiProductData = {
   productId: number;
   productName: string;
   productImageUrl: string;
+  productIntro: string;
   price: number;
   bedroom: number;
   bathroom: number;
@@ -78,13 +79,13 @@ type SummaryData = {
   productId: number;
   productName: string;
   productImageUrl: string;
+  productIntro: string;
   price: number;
   bedroom: number;
   bathroom: number;
   realUsableArea: number;
   buildingArea: number;
   vendorName: string;
-  introduce: string;
 };
 
 type VendorData = {

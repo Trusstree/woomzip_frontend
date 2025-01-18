@@ -34,7 +34,7 @@ export async function loadProductData(
     buildingArea: productResponse.payload.buildingArea,
     productImageUrl: productResponse.payload.productImageUrl,
     vendorName: productResponse.payload.vendor.vendorName,
-    introduce: productResponse.payload.vendor.vendorIntro,
+    productIntro: productResponse.payload.productIntro,
   };
 
   const vendorData: VendorData = {

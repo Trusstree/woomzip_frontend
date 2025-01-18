@@ -4,25 +4,51 @@ import { useRouter } from 'next/navigation';
 import Col6Button from '@/app/inquire/_components/Col6Button';
 import Col3Button from '@/app/inquire/_components/Col3Button';
 import Col4Button from '@/app/inquire/_components/Col4Button';
-import useInquireHouseInfo from '@/app/inquire/_store/inquireHouseInfo';
+import useInquireproductInfo from '@/app/inquire/_store/inquireProductInfo';
+import useQueryString from '@/hooks/useQueryString';
+import { useCallback, useEffect } from 'react';
+import { getProduct } from '@/actions/apis2/productAPI';
+import { isNumber } from '@/lib/validator';
+import { alertError } from '@/lib/alertUtil';
 
-export default function InquireHouse() {
+export default function Inquireproduct() {
   const router = useRouter();
+  const { getParams } = useQueryString();
   const {
+    productData,
     isLandOwner,
     purpose,
     location,
     landArea,
     landSlope,
     landAccess,
+    setProductData,
     setIsLandOwner,
     setPurpose,
     setLocation,
     setLandArea,
     setLandSlope,
     setLandAccess,
-    reset,
-  } = useInquireHouseInfo();
+  } = useInquireproductInfo();
+
+  const goNextPage = useCallback(() => {
+    router.push('/inquire/service');
+  }, []);
+
+  // 쿼리스트링에 product_id 가 있다면 집 데이터를 받아와야 함
+  useEffect(() => {
+    (async () => {
+      const product_id = getParams().get('product_id');
+      if (!isNumber(product_id)) return;
+      const [data, error] = await getProduct(Number(product_id));
+      if (error) {
+        alertError('집 데이터를 불러올 수 없습니다.', '서버에 문제가 생겨 집 데이터를 불러오지 못했습니다.');
+        return;
+      }
+      setProductData(data.payload);
+      console.log(data.payload);
+    })();
+  }, []);
 
   return (
     <>
@@ -57,14 +83,14 @@ export default function InquireHouse() {
             <Col6Button
               title={'네, 있습니다.'}
               text={'제품을 설치할 토지의 조건을 알려주세요.'}
-              value={'1'}
+              value={true}
               data={isLandOwner}
               setData={setIsLandOwner}
             />
             <Col6Button
               title={'아니요, 없습니다.'}
               text={'제품을 설치할 토지의 조건을 알려주세요.'}
-              value={'0'}
+              value={false}
               data={isLandOwner}
               setData={setIsLandOwner}
             />
@@ -76,14 +102,14 @@ export default function InquireHouse() {
             <Col6Button
               title={'주택'}
               text={'일반적인 단독주택 건축과정입니다. 인허가가 필요합니다.'}
-              value={'house'}
+              value={'HOUSE'}
               data={purpose}
               setData={setPurpose}
             />
             <Col6Button
               title={'체류형쉼터, 농막'}
               text={'농지 등에 설치 후 신고하는 세컨하우스 방식입니다. 인허가가 필요 없습니다.'}
-              value={'shelter'}
+              value={'SHELTER'}
               data={purpose}
               setData={setPurpose}
             />
@@ -92,20 +118,20 @@ export default function InquireHouse() {
           {/* 위치 질문 */}
           <div className="row" style={{ width: '100%', marginBottom: '50px' }}>
             <h2 style={{ fontSize: '23px', fontWeight: 600, marginBottom: '10px' }}>위치를 알려주세요.</h2>
-            <Col3Button title="수도권" value="seoul" data={location} setData={setLocation} />
-            <Col3Button title="강원도" value="gangwon" data={location} setData={setLocation} />
-            <Col3Button title="충청도" value="chungcheong" data={location} setData={setLocation} />
-            <Col3Button title="경상도" value="gyeongsang" data={location} setData={setLocation} />
-            <Col3Button title="경상도" value="jeolla" data={location} setData={setLocation} />
-            <Col3Button title="제주도" value="jeju" data={location} setData={setLocation} />
+            <Col3Button title="수도권" value="SEOUL" data={location} setData={setLocation} />
+            <Col3Button title="강원도" value="GANGWON" data={location} setData={setLocation} />
+            <Col3Button title="충청도" value="CHUNGNAM" data={location} setData={setLocation} />
+            <Col3Button title="경상도" value="GYEONGNAM" data={location} setData={setLocation} />
+            <Col3Button title="경상도" value="JEONNAM" data={location} setData={setLocation} />
+            <Col3Button title="제주도" value="JEJU" data={location} setData={setLocation} />
           </div>
 
           {/* 면적 질문 */}
           <div className="row" style={{ width: '100%', marginBottom: '50px' }}>
             <h2 style={{ fontSize: '23px', fontWeight: 600, marginBottom: '10px' }}>면적을 알려주세요.</h2>
-            <Col3Button title="100평" value="100" data={landArea} setData={setLandArea} />
-            <Col3Button title="200평" value="200" data={landArea} setData={setLandArea} />
-            <Col3Button title="300평" value="300" data={landArea} setData={setLandArea} />
+            <Col3Button title="100평" value="UNDER_100" data={landArea} setData={setLandArea} />
+            <Col3Button title="200평" value="UNDER_200" data={landArea} setData={setLandArea} />
+            <Col3Button title="300평" value="UNDER_300" data={landArea} setData={setLandArea} />
           </div>
 
           {/* 경사도 질문 */}
@@ -114,21 +140,21 @@ export default function InquireHouse() {
             <Col4Button
               title={'평평함'}
               text={'토목공사가 필요 없고, 바로 주택을 설치 가능한 상태입니다.'}
-              value={'normal'}
+              value={'FLAT'}
               data={landSlope}
               setData={setLandSlope}
             />
             <Col4Button
               title={'조금 경사짐'}
               text={'약간의 평탄화 작업을 거치면 주택을 설치 가능한 상태입니다.'}
-              value={'little'}
+              value={'SLIGHT_SLOPE'}
               data={landSlope}
               setData={setLandSlope}
             />
             <Col4Button
               title={'많이 경사짐'}
               text={'제품을 설치하기 위해 땅을 많이 깎아야 합니다.'}
-              value={'very'}
+              value={'STEEP_SLOPE'}
               data={landSlope}
               setData={setLandSlope}
             />
@@ -140,21 +166,21 @@ export default function InquireHouse() {
             <Col4Button
               title={'넓음'}
               text={'대형 트레일러가 진입 가능할 정도의 도로폭입니다.'}
-              value={'wide'}
+              value={'WIDE'}
               data={landAccess}
               setData={setLandAccess}
             />
             <Col4Button
               title={'조금 좁음'}
               text={'차량 두대가 동시에 통과 가능할 정도의 도로폭입니다.'}
-              value={'littlenerrow'}
+              value={'NARROW'}
               data={landAccess}
               setData={setLandAccess}
             />
             <Col4Button
               title={'많이 좁음'}
               text={'1톤 트럭 한대가 지나갈 수 있을 정도의 도로폭입니다.'}
-              value={'nerrow'}
+              value={'VERY_NARROW'}
               data={landAccess}
               setData={setLandAccess}
             />
@@ -180,17 +206,24 @@ export default function InquireHouse() {
           }}
         >
           <div className="d-flex justify-content-between">
-            <div style={{ marginTop: '25px', color: '#ffffff' }}>그린하이브</div>
+            <div style={{ marginTop: '25px', color: '#ffffff' }}>{productData && productData.productName}</div>
             <div
               className="btn"
               style={{ backgroundColor: '#ffffff', borderRadius: '50px', marginTop: '15px', padding: '10px 20px' }}
-              onClick={() => router.push('/inquire/service')}
+              onClick={goNextPage}
             >
               다음으로
             </div>
           </div>
         </div>
       </div>
+      {/* 만약 집 데이터가 있다면 여기서 볼 수 있음 */}
+      {productData && (
+        <div>
+          {productData.productName}
+          <img src={productData.productImageUrl}></img>
+        </div>
+      )}
     </>
   );
 }
