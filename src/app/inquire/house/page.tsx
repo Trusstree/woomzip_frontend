@@ -57,14 +57,14 @@ export default function InquireHouse() {
             <Col6Button
               title={'네, 있습니다.'}
               text={'제품을 설치할 토지의 조건을 알려주세요.'}
-              value={'1'}
+              value={true}
               data={isLandOwner}
               setData={setIsLandOwner}
             />
             <Col6Button
               title={'아니요, 없습니다.'}
               text={'제품을 설치할 토지의 조건을 알려주세요.'}
-              value={'0'}
+              value={false}
               data={isLandOwner}
               setData={setIsLandOwner}
             />

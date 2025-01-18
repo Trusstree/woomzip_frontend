@@ -7,8 +7,17 @@ import useInquireContactInfo from '@/app/inquire/_store/inquireContactInfo';
 export default function InquireContact() {
   const router = useRouter();
 
-  const { name, contact, additionalRequest, type, setName, setContact, setAdditionalRequest, setType, reset } =
-    useInquireContactInfo();
+  const {
+    name,
+    contact,
+    additionalRequest,
+    responseType,
+    setName,
+    setContact,
+    setAdditionalRequest,
+    setResponseType,
+    reset,
+  } = useInquireContactInfo();
 
   return (
     <>
@@ -120,15 +129,15 @@ export default function InquireContact() {
               title={'전화 상담'}
               text={'직접 전화를 통한 빠른 상담을 희망해요.'}
               value={'normal'}
-              data={type}
-              setData={setType}
+              data={responseType}
+              setData={setResponseType}
             />
             <Col6Button
               title={'문자 상담'}
               text={'카카오톡 움집 채널을 통한 문자 상담을 희망해요.'}
               value={'little'}
-              data={type}
-              setData={setType}
+              data={responseType}
+              setData={setResponseType}
             />
           </div>
         </div>
