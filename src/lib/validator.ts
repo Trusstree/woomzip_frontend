@@ -44,7 +44,7 @@ export function isEmail(value: any) {
 export function isPhoneNumber(value: any) {
   if (!value?.length) return false;
 
-  const pattern = new RegExp(/^[0-9\b -]{0,13}$/);
+  const pattern = new RegExp(/^[0-9\b -]{0,14}$/);
 
   if (!pattern.test(value)) {
     return false;

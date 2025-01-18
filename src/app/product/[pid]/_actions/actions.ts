@@ -22,8 +22,6 @@ export async function loadProductData(
     return [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   }
 
-  console.log(productResponse.payload);
-
   const summaryData: SummaryData = {
     productId: productResponse.payload.productId,
     productName: productResponse.payload.productName,
