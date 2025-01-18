@@ -46,7 +46,6 @@ export default function Inquireproduct() {
         return;
       }
       setProductData(data.payload);
-      console.log(data.payload);
     })();
   }, []);
 
