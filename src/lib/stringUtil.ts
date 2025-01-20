@@ -96,8 +96,8 @@ export const toMaxinumFixed = (num?: number): string => {
 };
 
 export const checkBatchimEnding = (word: string): string => {
-  let lastLetter = word[word.length - 1];
-  let uni = lastLetter.charCodeAt(0);
+  const lastLetter = word[word.length - 1];
+  const uni = lastLetter.charCodeAt(0);
 
   if (uni < 44032 || uni > 55203) return '은(는)';
   return (uni - 44032) % 28 != 0 ? '은' : '는';

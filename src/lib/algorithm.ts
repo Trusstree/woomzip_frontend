@@ -60,11 +60,11 @@ export const algorithm = (data: any) => {
     roadConstant = 2;
   }
 
-  let building_area = Math.round(data['house']?.['buildingArea']);
-  let final_price = Math.round(data['house']?.['price'] / 10000);
-  let total_floor_area = data['house']?.['totalFloorArea'];
+  const building_area = Math.round(data['house']?.['buildingArea']);
+  const final_price = Math.round(data['house']?.['price'] / 10000);
+  const total_floor_area = data['house']?.['totalFloorArea'];
 
-  let result = {
+  const result = {
     price: final_price,
     delivery: [Math.round(cityConstant * 200 * roadConstant), Math.round(cityConstant * 250 * roadConstant)],
     measure: [Math.round((areaConstant / 3.3) * 0.3 + 27), Math.round((areaConstant / 3.3) * 0.4 + 36)],

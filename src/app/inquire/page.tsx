@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 
-export default async function Inquire() {
+export default function Inquire() {
   const router = useRouter();
   const goDetailInquire = useCallback(() => {
     router.push(`/inquire/product/`);

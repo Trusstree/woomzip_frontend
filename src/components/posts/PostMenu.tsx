@@ -1,5 +1,4 @@
 import RouteButton from '@/components/RouteButton';
-import { Children } from '@/types/props';
 
 type PostMenuProps = {
   title?: string;

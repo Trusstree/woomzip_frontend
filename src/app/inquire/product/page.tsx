@@ -10,6 +10,7 @@ import { useCallback, useEffect } from 'react';
 import { getProduct } from '@/actions/apis2/productAPI';
 import { isNumber } from '@/lib/validator';
 import { alertError } from '@/lib/alertUtil';
+import Image from '@/components/ImageFallback';
 
 export default function Inquireproduct() {
   const router = useRouter();
@@ -220,7 +221,7 @@ export default function Inquireproduct() {
       {productData && (
         <div>
           {productData.productName}
-          <img src={productData.productImageUrl}></img>
+          <Image src={productData.productImageUrl} alt={'선택된 집 사진'} />
         </div>
       )}
     </>

@@ -6,8 +6,8 @@ type Category = {
 };
 
 type Filter = {
-  label: String;
-  queryName: String | Array<String>;
+  label: string;
+  queryName: string | Array<string>;
   queryData: Array<any>;
   selected?: boolean;
 };

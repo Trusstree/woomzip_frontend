@@ -34,8 +34,21 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  eslint: {
+    dirs: ['src'],
+    ignoreDuringBuilds: false,
+  },
   experimental: {
     missingSuspenseWithCSRBailout: false,
+  },
+  async redirects() {
+    return [
+      {
+        source: '/legacy',
+        destination: '/', // 리디렉션할 URL
+        permanent: false,
+      },
+    ];
   },
 };
 

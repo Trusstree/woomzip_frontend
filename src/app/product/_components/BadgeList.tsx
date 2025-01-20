@@ -13,7 +13,7 @@ export default function FilterBadgeList({ badgeList }) {
       let res = Object.entries(Object.fromEntries(searchParams)) as Array<string | Array<string> | any>;
       let [minp, maxp, minf, maxf] = [undefined, undefined, undefined, undefined];
 
-      for await (let e of res) {
+      for await (const e of res) {
         if (e[0] == 'min_price') {
           minp = e[1];
         }
