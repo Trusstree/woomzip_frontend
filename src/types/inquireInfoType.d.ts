@@ -1,6 +1,3 @@
-//   "responseType": "CALL",
-//   "productId": 1,
-
 interface InquireProductInfoState {
   productData: ApiProductData;
   isLandOwner: boolean;

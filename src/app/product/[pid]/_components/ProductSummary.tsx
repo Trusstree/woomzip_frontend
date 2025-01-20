@@ -1,7 +1,7 @@
 import Image from '@/components/ImageFallback';
 import Link from 'next/link';
 
-export default function ProductSummary({ summaryData }: { summaryData: SummaryData }) {
+export default function ProductSummary({ summaryData }: { summaryData: ProductSummaryData }) {
   return (
     <div style={{ position: 'relative', width: '100%' }}>
       <div style={{ width: '100%', height: '200svh', position: 'absolute', zIndex: '0' }}>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import CardTemplate from '@/app/product/[pid]/_components/CardTemplate';
 
-export default function CardEntireTemplate({ templatesData }: { templatesData: CardEntireTemplatesData }) {
+export default function CardEntireTemplate({ templatesData }: { templatesData: ProductCardEntireTemplatesData }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {

@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Tazan({ pid }) {
-  //
   return (
     <div
       style={{
@@ -32,7 +31,7 @@ export default function Tazan({ pid }) {
         허가, 토지 공사, 세금 등 지금 보고 있는 금액에서 평균적으로 25%~35% 정도 추가돼요.
         <br />
         이런 비용을 예상하지 못하고 있다가 갑자기 지출하게 된다면 계획에 차질이 생길 수 밖에 없어요.
-        <br />꼭 내 예상견적을 계산해보고 시작하세요!
+        <br /> 꼭 내 예상견적을 계산해보고 시작하세요!
       </div>
       <Image width={400} height={350} src={'/10.webp'} alt={'pic'} style={{ width: '90%', maxWidth: '400px' }} />
       <Link href={`/inquire/product/?product_id=${pid}`}>

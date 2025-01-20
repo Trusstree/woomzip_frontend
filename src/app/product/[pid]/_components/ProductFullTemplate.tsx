@@ -1,6 +1,6 @@
 import Image from '@/components/ImageFallback';
 
-export default function FullTemplates({ templatesData }: { templatesData: FullTemplatesData }) {
+export default function FullTemplates({ templatesData }: { templatesData: ProductFullTemplatesData }) {
   return (
     <>
       {templatesData.map((t, i) => (

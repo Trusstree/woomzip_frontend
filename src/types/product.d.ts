@@ -75,7 +75,7 @@ type ApiProductData = {
   masterPlanTemplates: MasterplanTemplatesData;
 };
 
-type SummaryData = {
+type ProductSummaryData = {
   productId: number;
   productName: string;
   productImageUrl: string;
@@ -88,43 +88,43 @@ type SummaryData = {
   vendorName: string;
 };
 
-type VendorData = {
+type ProductVendorData = {
   vendorImageUrl: string;
   representativeName: string;
   vendorIntroduce: string;
 };
 
-type FullTemplateData = {
+type ProductFullTemplateData = {
   title: string;
   description: string;
   productTemplateImageUrl: string;
 };
-type HalfTemplateData = {
+type ProductHalfTemplateData = {
   title: string;
   description: string;
   productTemplateImageUrl: string;
 };
-type CardTemplateData = {
+type ProductCardTemplateData = {
   title: string;
   description: string;
   productTemplateImageUrl: string;
 };
-type MasterPlanTemplateData = {
+type ProductMasterPlanTemplateData = {
   title: string;
   description: string;
   productTemplateImageUrl: string;
 };
 
-type FullTemplatesData = Array<FuulTemplateData>;
-type HalfTemplatesData = Array<HalfTemplateData>;
-type CardEntireTemplatesData = {
+type ProductFullTemplatesData = Array<ProductFullTemplateData>;
+type ProductHalfTemplatesData = Array<ProductHalfTemplateData>;
+type ProductCardEntireTemplatesData = {
   cardTemplateTitle: string;
   cardTemplateDescription: string;
   cardResponses: Array<CardTemplateData>;
 };
-type MasterPlanTemplatesData = Array<MasterplanTemplateData>;
+type ProductMasterPlanTemplatesData = Array<ProductMasterplanTemplateData>;
 
-type DetailData = {
+type ProductDetailData = {
   productId: number;
   productName: string;
   productImageUrl: string;

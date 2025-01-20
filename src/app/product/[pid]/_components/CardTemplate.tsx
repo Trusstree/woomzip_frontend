@@ -3,7 +3,7 @@
 import Image from '@/components/ImageFallback';
 import { useState, useEffect, useRef } from 'react';
 
-export default function CardTemplate({ templatesData }: { templatesData: Array<CardTemplateData> }) {
+export default function CardTemplate({ templatesData }: { templatesData: Array<ProductCardTemplateData> }) {
   const [isMobile, setIsMobile] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const cardContainerRef = useRef<HTMLDivElement | null>(null);

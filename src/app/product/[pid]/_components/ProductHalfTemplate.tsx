@@ -1,6 +1,6 @@
 import Image from '@/components/ImageFallback';
 
-export default function HalfTemplate({ templatesData }: { templatesData: HalfTemplatesData }) {
+export default function HalfTemplate({ templatesData }: { templatesData: ProductHalfTemplatesData }) {
   return (
     <div
       style={{

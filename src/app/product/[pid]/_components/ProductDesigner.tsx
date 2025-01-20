@@ -1,6 +1,6 @@
 import Image from '@/components/ImageFallback';
 
-export default function ProductDesigner({ vendorData }: { vendorData: VendorData }) {
+export default function ProductDesigner({ vendorData }: { vendorData: ProductVendorData }) {
   return (
     <div
       style={{

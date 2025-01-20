@@ -2,15 +2,15 @@ import LoadPage from '@/components/app/LoadPage';
 
 import ProductSummary from '@/app/product/[pid]/_components/ProductSummary';
 import ProductDesigner from '@/app/product/[pid]/_components/ProductDesigner';
-import Detail from '@/app/product/[pid]/_components/Detail';
-import Tazan from '@/app/product/[pid]/_components/Tazan';
-import Service from '@/app/product/[pid]/_components/Service';
+import Detail from '@/app/product/[pid]/_components/ProductDetail';
+import Tazan from '@/app/product/[pid]/_components/ProductTazan';
+import Service from '@/app/product/[pid]/_components/ProductService';
 import FAQList from '@/components/FAQList';
 import { loadProductData } from '@/app/product/[pid]/_actions/actions';
-import FullTemplate from '@/app/product/[pid]/_components/FullTemplate';
-import HalfTemplate from '@/app/product/[pid]/_components/HalfTemplate';
+import FullTemplate from '@/app/product/[pid]/_components/ProductFullTemplate';
+import HalfTemplate from '@/app/product/[pid]/_components/ProductHalfTemplate';
 import CardEntireTemplate from '@/app/product/[pid]/_components/CardEntireTemplate';
-import MasterPlanTemplate from '@/app/product/[pid]/_components/MasterPlanTemplate';
+import MasterPlanTemplate from '@/app/product/[pid]/_components/ProductMasterPlanTemplate';
 
 export default async function Product({ params }: { params: { pid: number } }) {
   const { pid } = params;

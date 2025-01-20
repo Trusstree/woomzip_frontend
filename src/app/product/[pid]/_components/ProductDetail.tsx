@@ -1,4 +1,4 @@
-export default function Detail({ detailData }: { detailData: DetailData }) {
+export default function Detail({ detailData }: { detailData: ProductDetailData }) {
   return (
     <div
       style={{

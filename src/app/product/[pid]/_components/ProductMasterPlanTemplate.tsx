@@ -3,7 +3,7 @@
 import Image from '@/components/ImageFallback';
 import { useState } from 'react';
 
-export default function MasterPlanTemplate({ templatesData }: { templatesData: MasterPlanTemplatesData }) {
+export default function MasterPlanTemplate({ templatesData }: { templatesData: ProductMasterPlanTemplatesData }) {
   const [floor, setFloor] = useState(0);
 
   return (
