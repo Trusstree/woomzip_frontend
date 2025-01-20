@@ -61,13 +61,13 @@ export default function HomeCategoryComponent({ container }: { container: any })
           style={{
             position: 'relative',
             width: '100%',
-            height: 'calc(-61px + 100svh)',
+            height: '100svh',
             overflow: 'hidden',
           }}
         >
           <Image
             id={'category1BG'}
-            src={'/2.webp'}
+            src={'/333.webp'}
             fill
             style={{
               objectFit: 'cover',
@@ -86,9 +86,9 @@ export default function HomeCategoryComponent({ container }: { container: any })
               style={{
                 width: '95%',
                 margin: '0 auto',
-                fontSize: 'clamp(25px, 3vw, 35px)',
+                fontSize: 'clamp(27px, 3vw, 35px)',
                 fontWeight: '700',
-                color: 'black',
+                color: '#ffffff',
                 wordBreak: 'keep-all',
                 textAlign: 'center',
               }}
@@ -100,8 +100,8 @@ export default function HomeCategoryComponent({ container }: { container: any })
                 width: '95%',
                 margin: '30px auto',
                 fontSize: '16px',
-                fontWeight: '600',
-                color: 'black',
+                fontWeight: '500',
+                color: '#ffffff',
                 wordBreak: 'keep-all',
                 textAlign: 'center',
               }}
@@ -163,13 +163,13 @@ export default function HomeCategoryComponent({ container }: { container: any })
           style={{
             position: 'relative',
             width: '100%',
-            height: 'calc(-61px + 100svh)',
+            height: '100svh',
             overflow: 'hidden',
           }}
         >
           <Image
             id={'category2BG'}
-            src={'/6.webp'}
+            src={'/222.webp'}
             fill
             style={{
               objectFit: 'cover',
@@ -188,7 +188,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               style={{
                 width: '95%',
                 margin: '0 auto',
-                fontSize: 'clamp(25px, 3vw, 35px)',
+                fontSize: 'clamp(27px, 3vw, 35px)',
                 fontWeight: '700',
                 color: '#ffffff',
                 wordBreak: 'keep-all',
@@ -202,7 +202,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
                 width: '95%',
                 margin: '30px auto',
                 fontSize: '16px',
-                fontWeight: '600',
+                fontWeight: '500',
                 color: '#ffffff',
                 wordBreak: 'keep-all',
                 textAlign: 'center',
@@ -265,13 +265,13 @@ export default function HomeCategoryComponent({ container }: { container: any })
           style={{
             position: 'relative',
             width: '100%',
-            height: 'calc(-61px + 100svh)',
+            height: '100svh',
             overflow: 'hidden',
           }}
         >
           <Image
             id={'category3BG'}
-            src={'/7.webp'}
+            src={'/111.jpeg'}
             fill
             style={{
               objectFit: 'cover',
@@ -290,9 +290,9 @@ export default function HomeCategoryComponent({ container }: { container: any })
               style={{
                 width: '95%',
                 margin: '0 auto',
-                fontSize: 'clamp(25px, 3vw, 35px)',
+                fontSize: 'clamp(27px, 3vw, 35px)',
                 fontWeight: '700',
-                color: 'black',
+                color: '#ffffff',
                 wordBreak: 'keep-all',
                 textAlign: 'center',
               }}
@@ -304,8 +304,8 @@ export default function HomeCategoryComponent({ container }: { container: any })
                 width: '95%',
                 margin: '30px auto',
                 fontSize: '16px',
-                fontWeight: '600',
-                color: 'black',
+                fontWeight: '500',
+                color: '#ffffff',
                 wordBreak: 'keep-all',
                 textAlign: 'center',
               }}
