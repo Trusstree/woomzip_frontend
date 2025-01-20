@@ -23,15 +23,7 @@ export default async function Product({ params }: { params: { pid: number } }) {
     masterPlanTemplatesData,
     detailData,
   ] = await loadProductData(pid);
-  console.log([
-    summaryData,
-    vendorData,
-    fullTemplatesData,
-    halfTemplatesData,
-    cardEntireTemplatesData,
-    masterPlanTemplatesData,
-    detailData,
-  ]);
+
   return summaryData ? (
     <>
       <ProductSummary summaryData={summaryData} />

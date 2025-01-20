@@ -1,4 +1,5 @@
 import Image from '@/components/ImageFallback';
+import DOMPurify from 'isomorphic-dompurify';
 import Link from 'next/link';
 
 export default function ProductSummary({ summaryData }: { summaryData: ProductSummaryData }) {
@@ -156,16 +157,15 @@ export default function ProductSummary({ summaryData }: { summaryData: ProductSu
             flexDirection: 'column',
           }}
         >
-          <div
+          <p
             style={{
               color: '#ffffff',
               fontSize: 'clamp(22px, 4vw, 40px)',
               fontWeight: '700',
               wordBreak: 'keep-all',
             }}
-          >
-            {summaryData.productIntro}
-          </div>
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(summaryData.productIntro.toString()) }}
+          />
         </div>
       </div>
     </div>

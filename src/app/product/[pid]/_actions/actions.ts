@@ -4,13 +4,13 @@ export async function loadProductData(
   productId: number,
 ): Promise<
   | [
-      SummaryData,
-      VendorData,
-      FullTemplatesData,
-      HalfTemplatesData,
-      CardEntireTemplatesData,
-      MasterPlanTemplatesData,
-      DetailData,
+      ProductSummaryData,
+      ProductVendorData,
+      ProductFullTemplatesData,
+      ProductHalfTemplatesData,
+      ProductCardEntireTemplatesData,
+      ProductMasterPlanTemplatesData,
+      ProductDetailData,
     ]
   | [undefined, undefined, undefined, undefined, undefined, undefined, undefined]
 > {
@@ -22,7 +22,10 @@ export async function loadProductData(
     return [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   }
 
-  const summaryData: SummaryData = {
+  // product intro는 개행문자 후처리해주어야 함
+  const productIntro = productResponse.payload.productIntro.replaceAll('\n', '<br></br>');
+
+  const summaryData: ProductSummaryData = {
     productId: productResponse.payload.productId,
     productName: productResponse.payload.productName,
     price: productResponse.payload.price,
@@ -32,29 +35,22 @@ export async function loadProductData(
     buildingArea: productResponse.payload.buildingArea,
     productImageUrl: productResponse.payload.productImageUrl,
     vendorName: productResponse.payload.vendor.vendorName,
-    productIntro: productResponse.payload.productIntro,
+    productIntro: productIntro,
   };
 
-  const vendorData: VendorData = {
+  const vendorData: ProductVendorData = {
     vendorImageUrl: productResponse.payload.vendor.representativeImageUrl,
     representativeName: productResponse.payload.vendor.representativeName,
-    vendorIntroduce: productResponse.payload.vendor.representativeIntro, //productResponse.payload.vendorIntroduce,
+    vendorIntroduce: productResponse.payload.vendor.representativeIntro,
   };
 
-  const fullTemplatesData: FullTemplatesData = productResponse.payload.fullTemplates;
-  // .filter((template) => template.productTemplateType == '1')
-  // .sort((a, b) => a.index - b.index)
-  // .map((template) => ({
-  //   title: template.title,
-  //   description: template.description,
-  //   productTemplateImageUrl: template.productTemplateImageUrl,
-  // }));
+  const fullTemplatesData: ProductFullTemplatesData = productResponse.payload.fullTemplates;
 
-  const halfTemplatesData: HalfTemplatesData = productResponse.payload.halfTemplates;
-  const cardEntireTemplatesData: CardEntireTemplatesData = productResponse.payload.cardEntireResponse;
-  const masterPlanTemplatesData: MasterPlanTemplatesData = productResponse.payload.masterPlanTemplates;
+  const halfTemplatesData: ProductHalfTemplatesData = productResponse.payload.halfTemplates;
+  const cardEntireTemplatesData: ProductCardEntireTemplatesData = productResponse.payload.cardEntireResponse;
+  const masterPlanTemplatesData: ProductMasterPlanTemplatesData = productResponse.payload.masterPlanTemplates;
 
-  const detailData: DetailData = {
+  const detailData: ProductDetailData = {
     productId: productResponse.payload.productId,
     productName: productResponse.payload.productName,
     price: productResponse.payload.price,

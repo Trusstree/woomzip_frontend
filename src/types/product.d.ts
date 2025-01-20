@@ -79,7 +79,7 @@ type ProductSummaryData = {
   productId: number;
   productName: string;
   productImageUrl: string;
-  productIntro: string;
+  productIntro: string | Children;
   price: number;
   bedroom: number;
   bathroom: number;
