@@ -2,7 +2,7 @@
 
 import { getHouse } from '@/actions/apis/houseAPI';
 import { ReservationConfirm } from '@/app/admin/living/1/_components/ReservationConfirm';
-import RouteButton from '@/app/living/[pid]/_components/RouteButton';
+import RouteButton from '@/components/RouteButton';
 import { toStringByFormatting } from '@/lib/stringUtil';
 import { useEffect, useState } from 'react';
 
@@ -25,13 +25,13 @@ export function AdminLivingClient({ house_id }) {
     <div>
       <div className="row">
         <div style={{ width: '200px' }}>
-          <RouteButton url={'/living/reservation/confirm'} text={'신청내역'} />
+          <RouteButton url={'/living/reservation/confirm'} >신청내역</RouteButton>
         </div>
         <div style={{ width: '200px' }}>
-          <RouteButton url={'/living/reservation/confirm/accept'} text={'수락내역'} />
+          <RouteButton url={'/living/reservation/confirm/accept'} >수락내역</RouteButton>
         </div>
         <div style={{ width: '200px' }}>
-          <RouteButton url={'/living/reservation/confirm/reject'} text={'거절내역'} />
+          <RouteButton url={'/living/reservation/confirm/reject'} >거절내역</RouteButton>
         </div>
       </div>
       <div>

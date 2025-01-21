@@ -5,7 +5,6 @@ import useQueryString from '@/hooks/useQueryString';
 import { parseSpecificationInfo } from '@/lib/parseUtil';
 import { detailPriceText } from '@/lib/stringUtil';
 import { useRouter } from 'next/navigation';
-import ReviewList from '@/app/mypage/[uid]/_components/_company/ReviewListCompany';
 import Image from 'next/image';
 
 export default function HouseExpl({
@@ -271,12 +270,12 @@ export default function HouseExpl({
 
       <div className="w-full h-screen relative flex flex-col" style={{ marginTop: '50px' }}>
         <div style={{ marginBottom: '60px' }}>
-          <ReviewList
+          {/* <ReviewList
             uid={houseData['fk_seller_id']}
             review={reviewData?.['houseReview'] || []}
             rating={reviewData?.['averageRating'] || 0.0}
             url={`/mypage/${houseData['fk_seller_id']}/review`}
-          />
+          /> */}
         </div>
       </div>
     </>
