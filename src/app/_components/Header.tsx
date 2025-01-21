@@ -72,9 +72,9 @@ export default function Header() {
               {/* <RouteButton url="/planning" style={{ fontSize: "15px" }}>
                   계획하기
                 </RouteButton> */}
-              <div style={{ marginLeft: '25px' }}>
+              {/* <div style={{ marginLeft: '25px' }}>
                 <SigninButton />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
