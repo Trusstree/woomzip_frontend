@@ -1,8 +1,6 @@
 'use client';
 
 import { elapsedTimeText } from '@/lib/stringUtil';
-import { postCommentHeart, postCommentHeartRemove } from '@/actions/apis/heartAPI';
-import HeartComponent from '@/components/posts/HeartComponent';
 import { useEffect, useState } from 'react';
 import Image from '@/components/ImageFallback';
 import styles from '@/app/news/[pid]/_styles/CommentText.module.css';
@@ -35,14 +33,6 @@ export default function CommentText({ data, isCommentLike }) {
         </div>
         <div className="d-flex" style={{ width: 'auto' }}>
           <div className={styles.createdTime}>{elapsedTimeText(data['updated_at'] || data['created_at'])}</div>
-          <HeartComponent
-            heart_id={data['comment_id']}
-            likeCount={data['comment_like_count']}
-            getHeart={isCommentLike}
-            postHeart={postCommentHeart}
-            postHeartRemove={postCommentHeartRemove}
-            type={'thumb'}
-          />
         </div>
       </div>
       <div className={styles.content}>{data['content']}</div>

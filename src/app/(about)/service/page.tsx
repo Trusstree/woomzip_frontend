@@ -4,26 +4,25 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import Comp1 from '@/app/(about)/service/_components/Comp1';
-import Comp2 from '@/app/(about)/service/_components/Comp2';
-import Comp3 from '@/app/(about)/service/_components/Comp3';
-import Comp4 from '@/app/(about)/service/_components/Comp4';
-import InquiryComponent from '@/app/(about)/service/_components/InquiryComponent';
+import ServiceHomeComponent from '@/app/(about)/service/_components/ServiceHomeComponent';
+import ServiceExplanationComponent from '@/app/(about)/service/_components/ServiceExplanationComponent';
+import ServiceSequenceComponent from '@/app/(about)/service/_components/ServiceSequenceComponent';
+import ServiceStrongPointComponent from '@/app/(about)/service/_components/ServiceStrongPointComponent';
+import InquiryComponent from '@/components/InquiryComponent';
 
 export default function Service() {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
 
-  const inquiryRef = useRef(null);
   const container = useRef(null);
 
   return (
     <div id={'container'} ref={container}>
       <div style={{ width: '100%', height: '61px', backgroundColor: 'black' }}></div>
-      <Comp1 container={container} inquiryRef={inquiryRef} />
-      <Comp2 container={container} />
-      <Comp3 container={container} />
-      <Comp4 container={container} />
+      <ServiceHomeComponent container={container} />
+      <ServiceExplanationComponent container={container} />
+      <ServiceSequenceComponent container={container} />
+      <ServiceStrongPointComponent container={container} />
       <InquiryComponent />
     </div>
   );

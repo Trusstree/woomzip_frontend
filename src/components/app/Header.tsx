@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import RouteButton from '@/components/RouteButton';
-import Offcanvas from '@/app/_components/Offcanvas';
+import HomeOffcanvas from '@/app/_components/HomeOffcanvas';
 
 export default function Header() {
   return (
@@ -82,7 +82,7 @@ export default function Header() {
         </div>
         {/* off canvas */}
       </div>
-      <Offcanvas id={'navbarNavAltMarkup'} />
+      <HomeOffcanvas id={'navbarNavAltMarkup'} />
     </div>
   );
 }

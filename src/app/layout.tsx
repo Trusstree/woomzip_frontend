@@ -2,12 +2,12 @@ import '@/app/globals.css';
 import { Inter } from 'next/font/google';
 import { GoogleTagManager } from '@next/third-parties/google';
 import StyledComponentsRegistry from '@/components/app/StyledComponentsRegistry';
-import ContextSession from '@/app/_components/ContextSession';
-import Header from '@/app/_components/Header';
-import Footer from '@/app/_components/Footer';
-import Options from '@/app/_components/Options';
+import ContextSession from '@/components/app/ContextSession';
+import Header from '@/components/app/Header';
+import Footer from '@/components/app/Footer';
+import Options from '@/components/app/Options';
 import { Suspense } from 'react';
-import { WebVitals } from '@/app/_components/WebVitals';
+import { WebVitals } from '@/components/app/WebVitals';
 
 const inter = Inter({ subsets: ['latin'] });
 

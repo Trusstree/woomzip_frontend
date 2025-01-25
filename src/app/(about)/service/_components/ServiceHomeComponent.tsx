@@ -3,9 +3,11 @@
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useRouter } from 'next/navigation';
 
-export default function Comp1({ container, inquiryRef }: { container: any; inquiryRef?: any }) {
-  const inquiryScrollIntoView = () => inquiryRef.current.scrollIntoView();
+export default function ServiceHomeComponent({ container }: { container: any }) {
+  const router = useRouter();
+  const inquiryScrollIntoView = () => router.push('inquire');
   useGSAP(
     () => {
       gsap.to('#serviceIntroFrame', {

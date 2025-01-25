@@ -3,7 +3,7 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Comp2({ container }: { container: any }) {
+export default function AboutExplanationComponent({ container }: { container: any }) {
   useGSAP(
     () => {
       gsap.to('#aboutText', {

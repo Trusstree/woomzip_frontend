@@ -4,7 +4,7 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-export default function Comp3({ container }: { container: any }) {
+export default function AboutHistoryComponent({ container }: { container: any }) {
   useGSAP(
     () => {
       gsap.from('#aboutHistoryBG', {

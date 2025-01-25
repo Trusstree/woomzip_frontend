@@ -4,11 +4,11 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import HomeTextComponent from '@/app/_comp/HomeTextComponent';
-import HomeCategoryComponent from '@/app/_comp/HomeCategoryComponent';
-import HomeServiceComponent from '@/app/_comp/HomeServiceComponent';
-import HomePeopleComponent from '@/app/_comp/HomePeopleComponent';
-import CompExpert from '@/app/_comp/CompExpert';
+import HomeTextComponent from '@/app/_components/HomeTextComponent';
+import HomeCategoryComponent from '@/app/_components/HomeCategoryComponent';
+import HomeServiceComponent from '@/app/_components/HomeServiceComponent';
+import HomePeopleComponent from '@/app/_components/HomePeopleComponent';
+import HomeExpertComponent from '@/app/_components/HomeExpertComponent';
 
 export default function Home() {
   gsap.registerPlugin(useGSAP);
@@ -21,7 +21,7 @@ export default function Home() {
       <HomeTextComponent container={container} />
       <HomeCategoryComponent container={container} />
       <HomeServiceComponent container={container} />
-      <CompExpert />
+      <HomeExpertComponent />
       <HomePeopleComponent />
     </div>
   );
