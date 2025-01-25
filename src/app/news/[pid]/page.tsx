@@ -1,10 +1,7 @@
-import Count from '@/components/posts/Count';
 import PostList from '@/app/news/[pid]/_components/PostList';
 import PostMenu from '@/components/posts/PostMenu';
 import DOMPurify from 'isomorphic-dompurify';
 import { loadPostData, loadRecommendPostData } from '@/app/news/[pid]/_actions/actions';
-import CommentComponent from '@/app/news/[pid]/_components/CommentComponent';
-import LoadPage from '@/components/app/LoadPage';
 import { elapsedTimeText } from '@/lib/stringUtil';
 import Image from '@/components/ImageFallback';
 
@@ -21,7 +18,7 @@ export default async function page({ params }: { params: { pid: number } }) {
   const { postData, comments } = await loadPostData(pid);
   const recommendPostData = await loadRecommendPostData(pid);
 
-  return postData ? (
+  return (
     <div>
       <div
         className="row"
@@ -88,14 +85,6 @@ export default async function page({ params }: { params: { pid: number } }) {
             style={{ fontSize: '15px', color: 'gray', marginTop: '10px' }}
           >
             <div style={{ width: 'auto' }}>{elapsedTimeText(postData['created_at'])}</div>
-            <div style={{ width: 'auto' }}>
-              <Count
-                pid={pid}
-                viewCount={postData['view_count']}
-                commentCount={comments.length}
-                likeCount={postData['post_like_count']}
-              />
-            </div>
           </div>
           <hr />
 
@@ -105,15 +94,11 @@ export default async function page({ params }: { params: { pid: number } }) {
               __html: DOMPurify.sanitize(String(postData['content'])),
             }}
           />
-
-          <CommentComponent pid={pid} initialComments={comments} />
         </div>
         <PostMenu title={'더 많은 글을 구경해보세요!'} routeUrl={'/news'} routeText={'더보기'} horizontalScroll={true}>
           <PostList postData={recommendPostData} />
         </PostMenu>
       </div>
     </div>
-  ) : (
-    <LoadPage />
   );
 }

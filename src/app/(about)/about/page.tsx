@@ -4,11 +4,11 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import Comp1 from '@/app/(about)/about/_components/Comp1';
-import Comp2 from '@/app/(about)/about/_components/Comp2';
-import Comp3 from '@/app/(about)/about/_components/Comp3';
-import Comp4 from '@/app/(about)/about/_components/Comp4';
-import InquiryComponent from '@/app/(about)/about/_components/InquiryComponent';
+import AboutHomeComponent from '@/app/(about)/about/_components/AboutHomeComponent';
+import AboutExplanationComponent from '@/app/(about)/about/_components/AboutExplanationComponent';
+import AboutHistoryComponent from '@/app/(about)/about/_components/AboutHistoryComponent';
+import AboutTeamCompoment from '@/app/(about)/about/_components/AboutTeamCompoment';
+import InquiryComponent from '@/components/InquiryComponent';
 
 export default function About() {
   gsap.registerPlugin(useGSAP);
@@ -19,10 +19,10 @@ export default function About() {
   return (
     <div id={'container'} ref={container}>
       <div style={{ width: '100%', height: '61px', backgroundColor: 'black' }}></div>
-      <Comp1 container={container} />
-      <Comp2 container={container} />
-      <Comp3 container={container} />
-      <Comp4 container={container} />
+      <AboutHomeComponent container={container} />
+      <AboutExplanationComponent container={container} />
+      <AboutHistoryComponent container={container} />
+      <AboutTeamCompoment container={container} />
       <InquiryComponent />
     </div>
   );

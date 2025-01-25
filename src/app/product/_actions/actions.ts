@@ -1,7 +1,7 @@
 import { getProducts } from '@/actions/apis2/productAPI';
 import { arrayMin, arraySort } from '@/lib/functionUtil';
 
-export async function loadProductsData(searchParams, numShowItems): Promise<[Array<ProductsData>]> {
+export async function loadProductsData(searchParams, numShowItems): Promise<Array<ProductsData>> {
   const rawPage = Number(searchParams['page']);
   const page = rawPage > 0 ? rawPage : 1;
 
@@ -40,7 +40,7 @@ export async function loadProductsData(searchParams, numShowItems): Promise<[Arr
   const [data, error] = await getProducts();
   if (error) {
     console.error(error);
-    return [undefined];
+    return undefined;
   }
 
   const productData: Array<ProductsData> = data.payload.map((product) => ({
@@ -53,5 +53,5 @@ export async function loadProductsData(searchParams, numShowItems): Promise<[Arr
     realUsableArea: product.realUsableArea,
   }));
 
-  return [productData];
+  return productData;
 }

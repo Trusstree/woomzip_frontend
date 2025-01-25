@@ -3,7 +3,6 @@ import PostList from '@/app/news/_components/PostList';
 import SearchComponent from '@/components/SearchComponent';
 import Category from '@/app/news/_components/Category';
 import { loadPostData } from '@/app/news/_actions/actions';
-import LoadPage from '@/components/app/LoadPage';
 
 export const revalidate = 1;
 
@@ -12,7 +11,7 @@ export default async function Page({ searchParams }) {
 
   const [postData, postCount] = await loadPostData({ searchParams, numShowItems });
 
-  return postData ? (
+  return (
     <div>
       <div style={{ width: '100%', height: '61px', backgroundColor: 'black' }}></div>
       <div style={{ width: '90%', maxWidth: '800px', margin: '0 auto' }}>
@@ -44,7 +43,5 @@ export default async function Page({ searchParams }) {
         </PostMenu>
       </div>
     </div>
-  ) : (
-    <LoadPage />
   );
 }

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { algorithm } from '@/lib/algorithm';
 import { simplePriceText } from '@/lib/stringUtil';
-import PriceLine from '@/components/planning/PriceLine';
+import PriceLine from '@/app/planning/_components/PriceLine';
 
 export default function PlanningPriceBox({ houseType, landCondition, roadCondition, addr, area, house }) {
   const [delivery, setDelivery] = useState([0, 0]);

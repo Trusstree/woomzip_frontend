@@ -1,7 +1,6 @@
 'use server';
 
 import { postDiscordWebhook } from '@/actions/apis/alarmAPI';
-import Inquiry from '@/components/Inquiry';
 import { privateApi, publicApi } from '@/configs/axiosClient';
 
 export const getHouses = async (params: any) => {

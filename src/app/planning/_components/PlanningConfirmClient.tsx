@@ -1,7 +1,7 @@
 'use client';
 
 import { postPlanning } from '@/actions/apis/planningAPI';
-import { useUser } from '@/app/_components/ContextSession';
+import { useUser } from '@/components/app/ContextSession';
 import { alertError, alertSuccess } from '@/lib/alertUtil';
 import { useRouter, useSearchParams } from 'next/navigation';
 import usePlanningInfo from '@/app/planning/_store/planningInfo';

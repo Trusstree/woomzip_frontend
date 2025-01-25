@@ -1,7 +1,7 @@
 'use client';
 
 import { getUserAccessToken } from '@/actions/auth/authAction';
-import { useUser } from '@/app/_components/ContextSession';
+import { useUser } from '@/components/app/ContextSession';
 import { getUserdataByToken } from '@/lib/parseUtil';
 import { useEffect } from 'react';
 
