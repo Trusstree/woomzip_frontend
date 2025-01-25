@@ -38,6 +38,7 @@ export default function AboutHomeComponent({ container }: { container: any }) {
           objectFit: 'cover',
         }}
         alt={'company'}
+        priority
       />
       <div
         style={{

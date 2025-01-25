@@ -19,10 +19,11 @@ export default function Image({ src, alt, ...rest }) {
       alt={alt}
       {...rest}
       src={imgSrc}
-      onLoadingComplete={(result) => {
+      onLoad={(result) => {
         // Broken image
-        if (result.naturalWidth === 0) setImgSrc('/blur_image.png');
+        if (result.currentTarget.clientWidth === 0) setImgSrc('/blur_image.png');
       }}
+      sizes={'100wh'}
       onError={() => {
         console.error(`alt: ${alt}\nimage src has error causes`);
         setImgSrc('/blur_image.png');

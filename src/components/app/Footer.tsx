@@ -22,18 +22,19 @@ export default function Footer() {
       <div style={{ width: '95%', margin: '0 auto' }}>
         <div className="row" style={{ color: '#ffffff' }}>
           <div className="col-md-2 col-12  order-md-1 order-2" style={{ margin: '30px 0' }}>
-            <div style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px', color: '#999999' }}>Company</div>
+            <div style={{ fontSize: '17px', fontWeight: '600', marginBottom: '5px', color: '#999999' }}>Company</div>
             <div className="d-flex flex-column">
               <Link
                 href={infoURL}
                 style={{
                   border: 'none',
                   outline: 'none',
-                  fontSize: '13px',
+                  fontSize: '14px',
                   color: '#ffffff',
                   textDecorationLine: 'none',
                 }}
                 passHref
+                className="my-1"
               >
                 About Us
               </Link>
@@ -42,11 +43,12 @@ export default function Footer() {
                 style={{
                   border: 'none',
                   outline: 'none',
-                  fontSize: '13px',
+                  fontSize: '14px',
                   color: '#ffffff',
                   textDecorationLine: 'none',
                 }}
                 passHref
+                className="my-1"
               >
                 Service
               </Link>
@@ -55,26 +57,25 @@ export default function Footer() {
                 style={{
                   border: 'none',
                   outline: 'none',
-                  fontSize: '13px',
+                  fontSize: '14px',
                   color: '#ffffff',
                   textDecorationLine: 'none',
                 }}
                 passHref
+                className="my-1"
               >
                 Privacy policy
               </Link>
             </div>
           </div>
           <div className="col-md-7 col-12 order-md-2 order-3" style={{ margin: '30px 0' }}>
-            <div style={{ fontSize: '16px', fontWeight: '600', marginBottom: '10px', color: '#999999' }}>
-              Contact Us
-            </div>
-            <div style={{ fontWeight: '600', fontSize: '13px' }}>0507-1369-6158</div>
-            <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>09:00~23:00</div>
-            <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>연중무휴 상담 운영</div>
-            <div style={{ marginTop: '13px', fontSize: '15px', fontWeight: '600' }}>truss369@naver.com</div>
-            <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>입점 문의</div>
-            <div style={{ fontSize: '13px', fontWeight: '300', color: '#999999' }}>제휴 문의</div>
+            <div style={{ fontSize: '17px', fontWeight: '600', marginBottom: '5px', color: '#999999' }}>Contact Us</div>
+            <div style={{ fontSize: '14px', fontWeight: '600' }}>0507-1369-6158</div>
+            <div style={{ fontSize: '14px', fontWeight: '300', color: '#999999' }}>09:00~23:00</div>
+            <div style={{ fontSize: '14px', fontWeight: '300', color: '#999999' }}>연중무휴 상담 운영</div>
+            <div style={{ marginTop: '14px', fontSize: '15px', fontWeight: '600' }}>truss369@naver.com</div>
+            <div style={{ fontSize: '14px', fontWeight: '300', color: '#999999' }}>입점 문의</div>
+            <div style={{ fontSize: '14px', fontWeight: '300', color: '#999999' }}>제휴 문의</div>
           </div>
 
           <div className="col-md-3 col-12 order-md-3 order-1" style={{ margin: '20px 0' }}>
@@ -83,7 +84,14 @@ export default function Footer() {
               <SocialIcon url={instagrmaURL} network="instagram" bgColor="black" fgColor="#ffffff" />
               <Link href={naverBlogURL} passHref style={{ border: 'none', outline: 'none' }}>
                 <div className="btn m-0 p-0">
-                  <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111" width="45" height="45">
+                  <svg
+                    aria-label="naver blog"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 111 111"
+                    width="45"
+                    height="45"
+                  >
                     <rect className="cls-2" fill="#101648" y="0" rx="9.05" ry="9.05" />
                     <polygon
                       className="cls-1"

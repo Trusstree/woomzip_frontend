@@ -43,6 +43,7 @@ export default function HomePeopleComponent() {
           objectFit: 'cover',
           width: isMobile ? '100%' : '85%',
           marginLeft: isMobile ? 0 : '15%',
+          height: 'auto',
         }}
         alt={'background2'}
       />

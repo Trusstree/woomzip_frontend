@@ -58,6 +58,7 @@ export default function ServiceHomeComponent({ container }: { container: any }) 
           zIndex: -1,
         }}
         alt={'company'}
+        priority
       />
       <Image
         id={'serviceIntroBG'}
@@ -72,6 +73,7 @@ export default function ServiceHomeComponent({ container }: { container: any }) 
           zIndex: -2,
         }}
         alt={'company'}
+        priority
       />
       <div
         style={{
