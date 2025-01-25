@@ -1,5 +1,6 @@
 'use server';
 
+import { postErrorDiscordWebhook } from '@/actions/apis/alarmAPI';
 import { publicApi } from '@/configs/axiosClient';
 
 export const postAPI = async (url: string, body: any): Promise<[ApiResponse<any>, ApiError]> => {
@@ -11,6 +12,7 @@ export const postAPI = async (url: string, body: any): Promise<[ApiResponse<any>
     if (result.data.result.code >= 400) throw result.data;
     data = result?.data;
   } catch (err) {
+    postErrorDiscordWebhook(err);
     if (!err.result)
       error = {
         title: '서버 에러',
@@ -21,6 +23,7 @@ export const postAPI = async (url: string, body: any): Promise<[ApiResponse<any>
         title: err.result.message,
         message: err.payload,
       };
+    postErrorDiscordWebhook({ name: error.title, message: error.message, stack: err.stack, cause: err.cause });
   }
   return [data, error];
 };
@@ -47,6 +50,7 @@ export async function getAPI(url: string, params = {}): Promise<[ApiResponse<any
         title: err.result.message,
         message: err.payload,
       };
+    postErrorDiscordWebhook({ name: error.title, message: error.message, stack: err.stack, cause: err.cause });
   }
   return [response, error];
 }

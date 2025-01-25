@@ -10,9 +10,9 @@ export default async function House({ searchParams }) {
   const [numShowItems, numShowPages] = [30, 10];
 
   // 상품 카드 데이터 호출
-  const [productCardData] = await loadProductsData(searchParams, 0);
+  const productCardData = await loadProductsData(searchParams, 0);
 
-  return productCardData ? (
+  return (
     <div>
       <div style={{ width: '100%', height: '61px', backgroundColor: 'black' }}></div>
       <div style={{ width: '95%', margin: '0 auto' }}>
@@ -28,13 +28,6 @@ export default async function House({ searchParams }) {
           ))}
           <Pagination numItems={productCardData.length} numShowItems={numShowItems} numShowPages={numShowPages} />
         </div>
-      </div>
-    </div>
-  ) : (
-    <div>
-      <div style={{ width: '100%', height: '61px', backgroundColor: 'black' }}></div>
-      <div style={{ width: '95%', margin: '0 auto' }}>
-        <div style={{ fontSize: '32px', fontWeight: '600', margin: '45px 0' }}>움집 제품이 없습니다.</div>
       </div>
     </div>
   );

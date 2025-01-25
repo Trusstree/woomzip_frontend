@@ -4,7 +4,6 @@ import PostMenu from '@/components/posts/PostMenu';
 import DOMPurify from 'isomorphic-dompurify';
 import { loadPostData, loadRecommendPostData } from '@/app/news/[pid]/_actions/actions';
 import CommentComponent from '@/app/news/[pid]/_components/CommentComponent';
-import LoadPage from '@/components/app/LoadPage';
 import { elapsedTimeText } from '@/lib/stringUtil';
 import Image from '@/components/ImageFallback';
 
@@ -21,7 +20,7 @@ export default async function page({ params }: { params: { pid: number } }) {
   const { postData, comments } = await loadPostData(pid);
   const recommendPostData = await loadRecommendPostData(pid);
 
-  return postData ? (
+  return (
     <div>
       <div
         className="row"
@@ -113,7 +112,5 @@ export default async function page({ params }: { params: { pid: number } }) {
         </PostMenu>
       </div>
     </div>
-  ) : (
-    <LoadPage />
   );
 }

@@ -19,3 +19,24 @@ export const postDiscordWebhook = async (inquiry:any) => {
   );
   console.log(asdf);
 };
+
+export const postErrorDiscordWebhook = async (error: Error) => {
+  const asdf = await fetch(
+    'https://discord.com/api/webhooks/1332571005356474368/GG5G7aM841_JBGhgdkymLPHTxh5eGJ8jHM20et6hiO0zbgf2jMl-IyaWhqlPeZu6RR74',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        content: null,
+        embeds: [
+          {
+            title: `${error.name} 에러가 들어왓땃쥐!`,
+            description: `${error.message}\nstack: ${error.stack}\ncause: ${error.cause}`,
+            color: 5763719,
+          },
+        ],
+        attachments: [],
+      }),
+    },
+  );
+};

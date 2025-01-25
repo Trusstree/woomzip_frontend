@@ -1,5 +1,3 @@
-import LoadPage from '@/components/app/LoadPage';
-
 import ProductSummary from '@/app/product/[pid]/_components/ProductSummary';
 import ProductDesigner from '@/app/product/[pid]/_components/ProductDesigner';
 import Detail from '@/app/product/[pid]/_components/ProductDetail';
@@ -24,7 +22,7 @@ export default async function Product({ params }: { params: { pid: number } }) {
     detailData,
   ] = await loadProductData(pid);
 
-  return summaryData ? (
+  return (
     <>
       <ProductSummary summaryData={summaryData} />
       <ProductDesigner vendorData={vendorData} />
@@ -37,7 +35,5 @@ export default async function Product({ params }: { params: { pid: number } }) {
       <Service />
       <FAQList />
     </>
-  ) : (
-    <LoadPage />
   );
 }
