@@ -97,7 +97,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
               wordBreak: 'keep-all',
             }}
           >
-            움집에서 짓지 말고, 구매하세요
+            짓지 말고, 움집에서 구매하세요.
           </div>
         </div>
 
@@ -119,8 +119,8 @@ export default function HomeTextComponent({ container }: { container: any }) {
               wordBreak: 'keep-all',
             }}
           >
-            건축이 아닌 제조,
-            <br /> 복잡한 일이 아닌 간단한 일로.
+            움집에서 시작되는
+            <br /> 가장 쉽고 빠른 자연 속 삶
           </div>
         </div>
       </div>

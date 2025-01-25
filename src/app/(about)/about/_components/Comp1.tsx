@@ -31,11 +31,11 @@ export default function Comp1({ container }: { container: any }) {
       }}
     >
       <Image
-        src="/4.webp"
+        src="/trusstree3.png"
         id="about1BG"
         fill
         style={{
-          objectFit: 'contain',
+          objectFit: 'cover',
         }}
         alt={'company'}
       />
@@ -51,18 +51,7 @@ export default function Comp1({ container }: { container: any }) {
           background: 'linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
         }}
       ></div>
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          aspectRatio: '16 / 1',
-          minHeight: '50px',
-          maxHeight: '200px',
-          background: 'linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
-        }}
-      ></div>
+
       <div
         style={{
           position: 'absolute',
