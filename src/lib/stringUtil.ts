@@ -29,7 +29,11 @@ export const detailPriceText = (price: number | string) => {
   return Number(price).toLocaleString('ko-KR') + '원';
 };
 
-export function toStringByFormatting(source, delimiter = '-') {
+export const pyeong = (area: number) => {
+  return Math.round(area / 3.3058);
+};
+
+export const toStringByFormatting = (source, delimiter = '-') => {
   function leftPad(value) {
     if (value >= 10) {
       return value;
@@ -42,7 +46,7 @@ export function toStringByFormatting(source, delimiter = '-') {
   const day = leftPad(source.getDate());
 
   return [year, month, day].join(delimiter);
-}
+};
 
 export const cardCountText = (count: number | string) => {
   const _count = Number(count);
@@ -92,8 +96,8 @@ export const toMaxinumFixed = (num?: number): string => {
 };
 
 export const checkBatchimEnding = (word: string): string => {
-  let lastLetter = word[word.length - 1];
-  let uni = lastLetter.charCodeAt(0);
+  const lastLetter = word[word.length - 1];
+  const uni = lastLetter.charCodeAt(0);
 
   if (uni < 44032 || uni > 55203) return '은(는)';
   return (uni - 44032) % 28 != 0 ? '은' : '는';

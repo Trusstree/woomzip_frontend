@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image from '@/components/ImageFallback';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
@@ -28,7 +28,7 @@ export default function HomeServiceComponent({ container }: { container: any }) 
       style={{
         position: 'relative',
         width: '100%',
-        height: 'calc(100svh)',
+        height: 'calc(-61px + 100svh)',
         overflow: 'hidden',
       }}
     >

@@ -40,7 +40,7 @@ export default function InputImageComponent({
       inputImgs = inputImgs.filter((_, i) => imagesLen + i < maxLength);
     }
 
-    let resImgs = [];
+    const resImgs = [];
     for (const [i, e] of inputImgs.entries()) {
       const compressedBlob = await imageCompression(e, options);
       const compressedImage = new File([compressedBlob], e.name, { type: e.type });

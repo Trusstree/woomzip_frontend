@@ -1,6 +1,5 @@
 'use client';
 
-import { Children } from '@/types/props';
 import { CSSProperties } from 'react';
 
 type CollapsingButtonProps = {

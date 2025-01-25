@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image from '@/components/ImageFallback';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -63,20 +63,18 @@ export default function HomeTextComponent({ container }: { container: any }) {
         style={{
           position: 'relative',
           width: '100%',
-          height: 'calc(100svh - 61px)',
+          height: '100svh',
           overflow: 'hidden',
         }}
       >
-        <Image src={'/1.webp'} fill style={{ objectFit: 'cover', aspectRatio: '16 / 9' }} alt={'background2'} />
+        <Image src={'/1.webp'} fill style={{ objectFit: 'cover' }} alt={'background2'} />
         <div
           style={{
             position: 'absolute',
             bottom: 0,
             left: 0,
             width: '100%',
-            aspectRatio: '6 / 1',
-            minHeight: '150px',
-            maxHeight: '200px',
+            height: '200px',
             background: 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))',
           }}
         />
@@ -85,7 +83,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
           style={{
             width: '100%',
             position: 'absolute',
-            top: '50px',
+            top: '80px',
             left: 0,
           }}
         >
@@ -99,7 +97,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
               wordBreak: 'keep-all',
             }}
           >
-            움집에서 짓지 말고, 구매하세요
+            짓지 말고, 움집에서 구매하세요.
           </div>
         </div>
 
@@ -107,7 +105,7 @@ export default function HomeTextComponent({ container }: { container: any }) {
           style={{
             width: '100%',
             position: 'absolute',
-            bottom: '60px',
+            bottom: '50px',
             left: 0,
           }}
         >
@@ -121,8 +119,8 @@ export default function HomeTextComponent({ container }: { container: any }) {
               wordBreak: 'keep-all',
             }}
           >
-            건축이 아닌 제조,
-            <br /> 복잡한 일이 아닌 간단한 일로.
+            움집에서 시작되는
+            <br /> 가장 쉽고 빠른 자연 속 삶
           </div>
         </div>
       </div>

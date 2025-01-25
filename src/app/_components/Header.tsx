@@ -1,6 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
-import SigninButton from '@/app/_components/SigninButton';
+import Link from 'next/link';
 import RouteButton from '@/components/RouteButton';
 import Offcanvas from '@/app/_components/Offcanvas';
 
@@ -10,7 +9,7 @@ export default function Header() {
       className={`navbar navbar-expand-md justify-content-center sticky-top`}
       style={{
         backgroundColor: 'black',
-        position: 'sticky',
+        position: 'fixed',
         top: '0',
         width: '100%',
       }}
@@ -42,7 +41,7 @@ export default function Header() {
               </RouteButton> */}
 
               <RouteButton
-                url="/house"
+                url="/product"
                 style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
               >
                 제품찾기
@@ -59,22 +58,25 @@ export default function Header() {
               >
                 회사소개
               </RouteButton>
-              <RouteButton
-                url="/news"
-                style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}
-              >
+              <RouteButton url="/news" style={{ fontSize: '13px', border: 'none', fontWeight: '400', margin: '0 5px' }}>
                 뉴스
               </RouteButton>
-
-              {/* <RouteButton url="/living" style={{ fontSize: "15px" }}>
-                살아보기
-                </RouteButton> */}
-              {/* <RouteButton url="/planning" style={{ fontSize: "15px" }}>
-                  계획하기
-                </RouteButton> */}
-              {/* <div style={{ marginLeft: '25px' }}>
-                <SigninButton />
-              </div> */}
+              <Link
+                className={'btn rounded-lg align-self-end'}
+                style={{
+                  fontSize: '12px',
+                  border: 'none',
+                  borderRadius: '20px',
+                  padding: '8px 15px',
+                  fontWeight: '500',
+                  backgroundColor: '#ffffff',
+                  color: 'black',
+                  marginLeft: '20px',
+                }}
+                href="/inquire"
+              >
+                문의하기
+              </Link>
             </div>
           </div>
         </div>

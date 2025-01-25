@@ -25,13 +25,14 @@ export default function Comp3({ container }: { container: any }) {
     <div
       style={{
         width: '100%',
-        height: 'calc(100svh)',
+        minHeight: 'calc(-61px + 100svh)',
         overflow: 'hidden',
         position: 'relative',
         backgroundColor: 'black',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: '30px 0',
       }}
     >
       <Image
@@ -86,15 +87,15 @@ export default function Comp3({ container }: { container: any }) {
               fontSize: 'clamp(20px, 5vw, 32px)',
               wordBreak: 'keep-all',
               fontWeight: '700',
-              marginTop: '30px',
+              marginTop: '20px',
             }}
           >
             움집은 23년부터 시작된 모듈러 주택 전문 스타트업입니다.
           </div>
         </div>
-        <div className="row" style={{ color: '#ffffff', marginTop: '50px' }}>
+        <div className="row" style={{ color: '#ffffff', marginTop: '30px' }}>
           <div className="col-md-6 col-12" style={{ fontSize: '15px', wordBreak: 'keep-all' }}>
-            <div style={{ fontSize: '20px', margin: '50px 0 20px 0' }}>2023</div>
+            <div style={{ fontSize: '20px', margin: '30px 0' }}>2023</div>
             <div>
               <div style={{ padding: '5px' }}>5月 서울시 주최 숭실대학교 주관, Pre-스타트업 창업경진대회 우수상</div>
               <div style={{ padding: '5px' }}>6月 서울시 캠퍼스타운, 숭실대학교 챌린지스테이션 입주</div>
@@ -106,7 +107,7 @@ export default function Comp3({ container }: { container: any }) {
             </div>
           </div>
           <div className="col-md-6 col-12" style={{ fontSize: '15px', wordBreak: 'keep-all' }}>
-            <div style={{ fontSize: '20px', margin: '50px 0 20px 0' }}>2024</div>
+            <div style={{ fontSize: '20px', margin: '30px 0' }}>2024</div>
             <div>
               <div style={{ padding: '5px' }}>1月 한국건설기술연구원 패밀리사 선정(애로기술해결기업)</div>
               <div style={{ padding: '5px' }}>

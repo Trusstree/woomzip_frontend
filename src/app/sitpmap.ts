@@ -27,13 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
-      url: 'https://www.woomzip.com/house',
+      url: 'https://www.woomzip.com/product',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: 'https://www.woomzip.com/planning',
+      url: 'https://www.woomzip.com/inquire',
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,

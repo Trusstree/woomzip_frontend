@@ -1,6 +1,5 @@
 'use client';
 
-import { Children } from '@/types/props';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 

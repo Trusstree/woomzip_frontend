@@ -6,11 +6,7 @@ import { loadPostData, loadRecommendPostData } from '@/app/news/[pid]/_actions/a
 import CommentComponent from '@/app/news/[pid]/_components/CommentComponent';
 import LoadPage from '@/components/app/LoadPage';
 import { elapsedTimeText } from '@/lib/stringUtil';
-import Image from 'next/image';
-
-type PageParams = {
-  pid: number;
-};
+import Image from '@/components/ImageFallback';
 
 const style = {
   일반: { backgroundColor: '#CCD6FF', color: '#314FC0' },
@@ -20,7 +16,7 @@ const style = {
   집들이: { backgroundColor: '#FFEAC7', color: '#D5A71E' },
 };
 
-export default async function page({ params }: { params: PageParams }) {
+export default async function page({ params }: { params: { pid: number } }) {
   const { pid } = params;
   const { postData, comments } = await loadPostData(pid);
   const recommendPostData = await loadRecommendPostData(pid);
@@ -63,7 +59,7 @@ export default async function page({ params }: { params: PageParams }) {
           <div className="row" style={{ marginTop: '20px' }}>
             <div style={{ width: '50px', height: '40px' }}>
               <Image
-                src={postData?.['user_img_url'] || '/blur_image.webp'}
+                src={postData?.['user_img_url']}
                 alt={'user image'}
                 width={40}
                 height={40}
@@ -112,12 +108,7 @@ export default async function page({ params }: { params: PageParams }) {
 
           <CommentComponent pid={pid} initialComments={comments} />
         </div>
-        <PostMenu
-          title={'더 많은 글을 구경해보세요!'}
-          routeUrl={'/news'}
-          routeText={'더보기'}
-          horizontalScroll={true}
-        >
+        <PostMenu title={'더 많은 글을 구경해보세요!'} routeUrl={'/news'} routeText={'더보기'} horizontalScroll={true}>
           <PostList postData={recommendPostData} />
         </PostMenu>
       </div>

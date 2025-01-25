@@ -1,6 +1,5 @@
 'use client';
 
-import { Children } from '@/types/props';
 import { usePathname, useRouter } from 'next/navigation';
 import { CSSProperties } from 'react';
 
@@ -17,7 +16,7 @@ export default function OffcanvasRouteButton(props: RouteButtonProps) {
 
   const { className, url, children, style } = props;
 
-  let path = pathname.split('/')[1];
+  const path = pathname.split('/')[1];
 
   return (
     <button

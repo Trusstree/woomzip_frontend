@@ -18,6 +18,7 @@ export default function About() {
 
   return (
     <div id={'container'} ref={container}>
+      <div style={{ width: '100%', height: '61px', backgroundColor: 'black' }}></div>
       <Comp1 container={container} />
       <Comp2 container={container} />
       <Comp3 container={container} />

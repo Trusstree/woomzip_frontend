@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import useQueryString from '@/hooks/useQueryString';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 
 export default function SearchComponent() {
   const [q, setQ] = useState('');

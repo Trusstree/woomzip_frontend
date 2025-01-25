@@ -1,19 +1,28 @@
 'use client';
 
-import Image from 'next/image';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
+import Image from '@/components/ImageFallback';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function HomePeopleComponent() {
-  useGSAP(() => {
-    gsap.to('#peopleBG', {
-      ease: 'none',
-      xPercent: -100,
-      duration: 30,
-      repeat: -1,
-    });
-  });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add resize event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <div
@@ -21,42 +30,19 @@ export default function HomePeopleComponent() {
       style={{
         position: 'relative',
         width: '100%',
-        height: 'calc(100svh)',
+        height: 'calc(-61px + 100svh)',
         overflow: 'hidden',
         backgroundColor: '#ffffff',
       }}
     >
-      {/* <div id="peopleBG" className="d-flex">
-        <Image
-          src={'/4.webp'}
-          width={1600}
-          height={850}
-          style={{
-            objectFit: 'contain',
-            width: '1600px',
-            border: 'none',
-          }}
-          alt={'background2'}
-        />
-        <Image
-          src={'/4.webp'}
-          width={1600}
-          height={850}
-          style={{
-            objectFit: 'contain',
-            width: '1600px',
-            border: 'none',
-          }}
-          alt={'background2'}
-        />
-      </div> */}
       <Image
-        src={'/4.webp'}
+        src={'/trusstree3.png'}
         width={1600}
-        height={850}
+        height={900}
         style={{
-          objectFit: 'contain',
-          width: '1600px',
+          objectFit: 'cover',
+          width: isMobile ? '100%' : '85%',
+          marginLeft: isMobile ? 0 : '15%',
         }}
         alt={'background2'}
       />
@@ -65,7 +51,7 @@ export default function HomePeopleComponent() {
           position: 'absolute',
           top: 0,
           left: 0,
-          width: '300px',
+          width: isMobile ? 0 : '250px',
           height: '100%',
           background: '#ffffff',
         }}
@@ -73,11 +59,13 @@ export default function HomePeopleComponent() {
       <div
         style={{
           position: 'absolute',
-          top: 0,
-          left: '300px',
-          width: '150px',
-          height: '100%',
-          background: 'linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
+          bottom: 0,
+          left: isMobile ? 0 : '250px',
+          width: isMobile ? '100%' : '150px',
+          height: isMobile ? '430px' : '100%',
+          background: isMobile
+            ? 'linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))'
+            : 'linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))',
         }}
       />
 

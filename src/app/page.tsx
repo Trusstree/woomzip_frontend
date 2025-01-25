@@ -8,7 +8,7 @@ import HomeTextComponent from '@/app/_comp/HomeTextComponent';
 import HomeCategoryComponent from '@/app/_comp/HomeCategoryComponent';
 import HomeServiceComponent from '@/app/_comp/HomeServiceComponent';
 import HomePeopleComponent from '@/app/_comp/HomePeopleComponent';
-import Comp4 from '@/app/_comp/Comp4';
+import CompExpert from '@/app/_comp/CompExpert';
 
 export default function Home() {
   gsap.registerPlugin(useGSAP);
@@ -21,7 +21,7 @@ export default function Home() {
       <HomeTextComponent container={container} />
       <HomeCategoryComponent container={container} />
       <HomeServiceComponent container={container} />
-      <Comp4 id={'comp4'}/>
+      <CompExpert />
       <HomePeopleComponent />
     </div>
   );
