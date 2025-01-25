@@ -5,7 +5,7 @@ export default function Footer() {
   const infoURL = '/about';
   const serviceURL = '/service';
   const termsURL = '/terms';
-  const youtubeURL = 'https://www.youtube.com/@buildintruss';
+  const youtubeURL = 'https://www.youtube.com/@woomzip';
   const instagrmaURL = 'https://www.instagram.com/woomzip/';
   const naverBlogURL = 'https://blog.naver.com/truss369';
 
@@ -48,7 +48,7 @@ export default function Footer() {
                 }}
                 passHref
               >
-                News
+                Service
               </Link>
               <Link
                 href={termsURL}
