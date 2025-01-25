@@ -7,7 +7,6 @@ import Header from '@/components/app/Header';
 import Footer from '@/components/app/Footer';
 import Options from '@/components/app/Options';
 import { Suspense } from 'react';
-import { WebVitals } from '@/components/app/WebVitals';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -69,13 +68,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content="전원생활의 시작을 함께, 움집. 이제는 주택도 쇼핑할 때! 나만의 농막, 농촌 체류형 쉼터 찾기."
         />
         <meta itemProp="image" content="hhttps://www.woomzip.com/metadataImage.jpg" />
-        {/* <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js" />
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js" /> */}
       </head>
 
       <body className={inter.className}>
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
-        <WebVitals />
         <StyledComponentsRegistry>
           <ContextSession>
             <Suspense>
