@@ -8,7 +8,7 @@ import usePlanningInfo from '@/app/planning/_store/planningInfo';
 
 export default function PlanningConfirmClient() {
   const searchParams = useSearchParams();
-  const house_id = Number(searchParams.get('house_id'));
+  const house_id = Number(searchParams?.get('house_id'));
   const router = useRouter();
   const { userContext } = useUser();
   const planningInfo = usePlanningInfo();

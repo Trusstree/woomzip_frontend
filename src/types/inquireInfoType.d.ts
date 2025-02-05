@@ -1,5 +1,5 @@
 interface InquireProductInfoState {
-  productData: ApiProductData;
+  productData: ApiProductData | null;
   isLandOwner: boolean;
   purpose: string;
   location: string;

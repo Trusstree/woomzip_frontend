@@ -12,12 +12,12 @@ import PlanningSelectSection from '@/app/planning/_components/PlanningSelectSect
 
 export default function PlanningHouseClient() {
   const searchParams = useSearchParams();
-  const house_id = Number(searchParams.get('house_id'));
+  const house_id = Number(searchParams?.get('house_id'));
   const [houseData, setHouseData] = useState({} as any);
   const planningInfo = usePlanningInfo();
 
   const submit = useCallback(() => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams || '');
     if (isNaN(house_id) || house_id <= 0) {
       alertError('집이 선택되지 않았어요!', '집이 선택되지 않았어요!');
       return;

@@ -1,6 +1,6 @@
 import PostCard from '@/app/news/_components/PostCard';
 
-export default async function PostList({ postData }) {
+export default function PostList({ postData }) {
   return (
     <div
       className="row flex-nowrap overflow-auto"

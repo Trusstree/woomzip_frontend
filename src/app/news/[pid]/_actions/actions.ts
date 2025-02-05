@@ -2,7 +2,7 @@
 
 import { getPost, getPosts } from '@/actions/apis/postAPI';
 
-export async function loadPostData(pid: any) {
+export async function loadPostData(pid: any): Promise<any> {
   let [postData, comments] = [undefined, undefined];
 
   const [data, error] = await getPost(pid);

@@ -16,7 +16,7 @@ export default function OffcanvasRouteButton(props: RouteButtonProps) {
 
   const { className, url, children, style } = props;
 
-  const path = pathname.split('/')[1];
+  const path = pathname?.split('/')[1];
 
   return (
     <button

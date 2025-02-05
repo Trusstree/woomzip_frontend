@@ -16,7 +16,7 @@ export const metadata = {
   author: '움집',
   description: '전원생활의 시작을 함께, 움집. 이제는 주택도 쇼핑할 때! 나만의 농막, 농촌 체류형 쉼터 찾기.',
   keywords: '전원생활의 시작을 함께, 움집. 이제는 주택도 쇼핑할 때! 나만의 농막, 농촌 체류형 쉼터 찾기.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_CALLBACKURL),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_CALLBACKURL || ''),
   alternates: {
     canonical: 'https://woomzip.com/',
   },
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body className={inter.className}>
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
         <StyledComponentsRegistry>
           <ContextSession>
             <Suspense>

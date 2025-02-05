@@ -11,8 +11,6 @@ export default function PlanningApplicationClient() {
   const planningInfo = usePlanningInfo();
 
   const submit = useCallback(async () => {
-    const params = new URLSearchParams(searchParams);
-
     if (planningInfo.requiredService.length == 0) {
       alertError('어떤 도움이 필요하신지 알려주세요!', '모든 항목에 대해 선택해야 합니다.');
       return;

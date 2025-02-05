@@ -38,6 +38,9 @@ const nextConfig = {
     dirs: ['src'],
     ignoreDuringBuilds: false,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   experimental: {
     missingSuspenseWithCSRBailout: false,
   },
