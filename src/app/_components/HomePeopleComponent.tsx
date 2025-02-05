@@ -36,14 +36,13 @@ export default function HomePeopleComponent() {
       }}
     >
       <Image
-        src={'/trusstree3.png'}
+        src={'/trusstree4.png'}
         width={1600}
         height={900}
         style={{
           objectFit: 'cover',
           width: isMobile ? '100%' : '85%',
           marginLeft: isMobile ? 0 : '15%',
-          height: 'auto',
         }}
         alt={'background2'}
       />

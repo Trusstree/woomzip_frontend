@@ -31,7 +31,7 @@ export default function AboutHomeComponent({ container }: { container: any }) {
       }}
     >
       <Image
-        src="/trusstree3.png"
+        src="/trusstree4.png"
         id="about1BG"
         fill
         style={{
