@@ -6,7 +6,7 @@ export default function ProductSummary({ summaryData }: { summaryData: ProductSu
   return (
     <div style={{ position: 'relative', width: '100%' }}>
       <div style={{ width: '100%', height: '200svh', position: 'absolute', zIndex: '0' }}>
-        <Image fill src={summaryData.productImageUrl} alt="pic1" style={{ objectFit: 'cover' }} />
+        <Image loading={"eager"} fill src={summaryData.productImageUrl} alt="pic1" style={{ objectFit: 'cover' }} />
         <div
           style={{
             position: 'absolute',

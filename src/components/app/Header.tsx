@@ -25,6 +25,7 @@ export default function Header() {
         <button
           className="navbar-toggler ms-auto me-3"
           type="button"
+          aria-label="menu button"
           data-bs-toggle="offcanvas"
           data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup"

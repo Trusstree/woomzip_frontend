@@ -106,8 +106,9 @@ export default function InquiryComponent({ hid }: { hid?: string | number }) {
 
         <div className="row" style={{ width: '90%', maxWidth: '500px' }}>
           <div style={{ width: '30%' }}>
-            <div>이름</div>
+            <label htmlFor='inquiryName'>이름</label>
             <input
+              id={"inquiryName"}
               style={{ border: 'none', borderRadius: '5px', width: '100%', opacity: '0.8' }}
               value={name}
               onChange={(e) => {
@@ -116,8 +117,9 @@ export default function InquiryComponent({ hid }: { hid?: string | number }) {
             />
           </div>
           <div style={{ width: '70%' }}>
-            <div>이메일 혹은 전화번호</div>
+            <label htmlFor='inquiryContact'>이메일 혹은 전화번호</label>
             <input
+              id={"inquiryContact"}
               style={{ border: 'none', borderRadius: '5px', width: '100%', opacity: '0.8' }}
               value={contact}
               onChange={(e) => {
@@ -126,8 +128,9 @@ export default function InquiryComponent({ hid }: { hid?: string | number }) {
             />
           </div>
           <div style={{ width: '100%', marginBottom: '30px' }}>
-            <div>문의사항</div>
+            <label htmlFor='inquiryInquiry'>문의사항</label>
             <textarea
+              id={"inquiryInquiry"}
               style={{
                 border: 'none',
                 borderRadius: '5px',

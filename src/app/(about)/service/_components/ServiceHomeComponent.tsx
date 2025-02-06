@@ -48,6 +48,7 @@ export default function ServiceHomeComponent({ container }: { container: any }) 
       <Image
         id={'serviceIntroFrame'}
         src="/8.webp"
+        loading={"eager"} 
         width={1600}
         height={1300}
         style={{
