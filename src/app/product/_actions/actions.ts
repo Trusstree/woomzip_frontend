@@ -37,7 +37,7 @@ export async function loadProductsData(searchParams, numShowItems): Promise<Arra
     ...searchCondition,
   };
 
-  const [data, error] = await getProducts({ 'Cache-Control': 'public, max-age=3600' });
+  const [data, error] = await getProducts({ 'Cache-Control': 'public, max-age=2592000' }); // 한 달
   if (error) {
     console.error(error);
     return undefined;
