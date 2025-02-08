@@ -61,7 +61,7 @@ export default function InquiryComponent({ hid }: { hid?: string | number }) {
         src={'/background2.webp'}
         width={1600}
         height={985}
-        style={{ objectFit: 'cover', width: '100%', height: '800px', borderRadius: '15px 15px 0 0' }}
+        style={{ objectFit: 'cover', width: '100%', height: '800px' }}
         alt={'background2'}
       />
       <div
@@ -71,7 +71,6 @@ export default function InquiryComponent({ hid }: { hid?: string | number }) {
           left: 0,
           width: '100%',
           height: '600px',
-          borderRadius: '15px',
           background: 'linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0))',
         }}
       ></div>
@@ -106,9 +105,9 @@ export default function InquiryComponent({ hid }: { hid?: string | number }) {
 
         <div className="row" style={{ width: '90%', maxWidth: '500px' }}>
           <div style={{ width: '30%' }}>
-            <label htmlFor='inquiryName'>이름</label>
+            <label htmlFor="inquiryName">이름</label>
             <input
-              id={"inquiryName"}
+              id={'inquiryName'}
               style={{ border: 'none', borderRadius: '5px', width: '100%', opacity: '0.8' }}
               value={name}
               onChange={(e) => {
@@ -117,9 +116,9 @@ export default function InquiryComponent({ hid }: { hid?: string | number }) {
             />
           </div>
           <div style={{ width: '70%' }}>
-            <label htmlFor='inquiryContact'>이메일 혹은 전화번호</label>
+            <label htmlFor="inquiryContact">이메일 혹은 전화번호</label>
             <input
-              id={"inquiryContact"}
+              id={'inquiryContact'}
               style={{ border: 'none', borderRadius: '5px', width: '100%', opacity: '0.8' }}
               value={contact}
               onChange={(e) => {
@@ -128,9 +127,9 @@ export default function InquiryComponent({ hid }: { hid?: string | number }) {
             />
           </div>
           <div style={{ width: '100%', marginBottom: '30px' }}>
-            <label htmlFor='inquiryInquiry'>문의사항</label>
+            <label htmlFor="inquiryInquiry">문의사항</label>
             <textarea
-              id={"inquiryInquiry"}
+              id={'inquiryInquiry'}
               style={{
                 border: 'none',
                 borderRadius: '5px',
