@@ -13,10 +13,11 @@ export default function Image({ src, alt, ...rest }) {
 
   return (
     <NextImage
-      {...rest} 
+      {...rest}
       alt={alt}
-      src={src??'/blur_image.png'}
-      placeholder='blur'
+      src={src ?? '/blur_image.png'}
+      placeholder="blur"
+      blurDataURL="/blur_image.png"
       sizes={'100wh'}
       // onLoad={(result) => {
       //   // Broken image
