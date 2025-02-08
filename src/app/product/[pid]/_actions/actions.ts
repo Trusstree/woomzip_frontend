@@ -16,7 +16,7 @@ export async function loadProductData(
 > {
   // 데이터 초기화
 
-  const [productResponse, productError] = await getProduct(productId);
+  const [productResponse, productError] = await getProduct(productId, { 'Cache-Control': 'public, max-age=3600' });
   if (productError) {
     console.error(productError);
     return [undefined, undefined, undefined, undefined, undefined, undefined, undefined];
