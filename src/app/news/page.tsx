@@ -9,8 +9,8 @@ export const revalidate = 1;
 export default async function Page({ searchParams }) {
   const [numShowItems, numShowPages] = [24, 10];
 
-  const [postData, postCount] = await loadPostData({ searchParams, numShowItems });
-
+  const postData = await loadPostData({ searchParams, numShowItems });
+  console.log(postData);
   return (
     <div>
       <div style={{ width: '100%', height: '61px', backgroundColor: 'black' }}></div>
@@ -33,12 +33,7 @@ export default async function Page({ searchParams }) {
         </div>
         <PostMenu routeUrl={'/news/write'} routeText={'글쓰기'}>
           <div style={{ width: '100%', overflow: 'hidden', padding: '0' }}>
-            <PostList
-              postData={postData}
-              postCount={postCount}
-              numShowItems={numShowItems}
-              numShowPages={numShowPages}
-            />
+            <PostList postData={postData} postCount={1} numShowItems={numShowItems} numShowPages={numShowPages} />
           </div>
         </PostMenu>
       </div>
