@@ -1,9 +1,8 @@
 'use server';
 
-import { getPosts } from '@/actions/apis/postAPI';
 import { getNewss } from '@/actions/apis2/newsAPI';
 
-export async function loadPostData({ searchParams, numShowItems }) {
+export async function loadPostData(searchParams, numShowItems) {
   const page = searchParams.page ? Number(searchParams.page) : 1;
   const category = searchParams.category;
   const q = searchParams.q;

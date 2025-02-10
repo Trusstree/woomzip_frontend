@@ -3,16 +3,15 @@
 import useQueryString from '@/hooks/useQueryString';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-//컴포넌트가 받을 props
-interface PagenationProps {
+export default function Pagination({
+  numItems,
+  numShowItems,
+  numShowPages,
+}: {
   numItems: number;
   numShowItems: number;
   numShowPages: number;
-}
-
-export default function Pagination(props: PagenationProps) {
-  const { numItems, numShowItems, numShowPages } = props;
-
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const rawPage = Number(searchParams.get('page'));

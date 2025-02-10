@@ -1,9 +1,6 @@
-import PostList from '@/app/news/[pid]/_components/PostList';
-import PostMenu from '@/components/posts/PostMenu';
 import DOMPurify from 'isomorphic-dompurify';
 import { loadPostData } from '@/app/news/[pid]/_actions/actions';
 import { elapsedTimeText } from '@/lib/stringUtil';
-import Image from '@/components/ImageFallback';
 
 const style = {
   일반: { backgroundColor: '#CCD6FF', color: '#314FC0' },
@@ -16,7 +13,6 @@ const style = {
 export default async function page({ params }: { params: { pid: number } }) {
   const { pid } = params;
   const postData = await loadPostData(pid);
-  console.log(postData);
 
   return (
     <div>
