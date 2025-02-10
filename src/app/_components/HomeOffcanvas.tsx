@@ -1,6 +1,6 @@
 import HomeOffcanvasRouteButton from '@/app/_components/HomeOffcanvasRouteButton';
 
-export default function Offcanvas({ id }) {
+export default function Offcanvas({ id }:{id:string}) {
   return (
     <div className="collapse offcanvas offcanvas-end" tabIndex={-1} id={id} aria-labelledby={`${id}_Label`}>
       <div className="offcanvas-header">
