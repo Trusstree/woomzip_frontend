@@ -48,7 +48,7 @@ export default function ServiceHomeComponent({ container }: { container: any }) 
       <Image
         id={'serviceIntroFrame'}
         src="/8.webp"
-        loading={"eager"} 
+        loading={'eager'}
         width={1600}
         height={1300}
         style={{
@@ -99,24 +99,6 @@ export default function ServiceHomeComponent({ container }: { container: any }) 
           >
             계획부터 입주까지 움집이 당신과 함께합니다.
           </div>
-        </div>
-      </div>
-      <div style={{ width: '100%', display: 'flex', position: 'absolute', bottom: '10%', left: '0' }}>
-        <div
-          className="btn"
-          style={{
-            border: 'none',
-            borderRadius: '20px',
-            backgroundColor: '#4067F8',
-            color: '#ffffff',
-            fontSize: '14px',
-            fontWeight: '500',
-            padding: '10px 70px',
-            margin: '0 auto',
-          }}
-          onClick={inquiryScrollIntoView}
-        >
-          문의하기
         </div>
       </div>
     </div>
