@@ -22,6 +22,7 @@ export default function Header() {
           </div>
         </RouteButton>
 
+        {/* menu button */}
         <button
           className="navbar-toggler ms-auto me-3"
           type="button"
@@ -34,6 +35,7 @@ export default function Header() {
         >
           <span className="navbar-toggler-icon" style={{ border: 'none' }} />
         </button>
+
         <div className="collapse navbar-collapse">
           <div className="navbar-nav d-none d-md-flex w-100 align-items-center" style={{ justifyContent: 'flex-end' }}>
             <div className="d-flex align-items-center">
