@@ -90,7 +90,7 @@ export default function AboutHistoryComponent({ container }: { container: any })
               marginTop: '20px',
             }}
           >
-            움집은 23년부터 시작된 모듈러 주택 전문 스타트업입니다.
+            움집은 모듈러 주택 전문 스타트업입니다.
           </div>
         </div>
         <div className="row" style={{ color: '#ffffff', marginTop: '30px' }}>

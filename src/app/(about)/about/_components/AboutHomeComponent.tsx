@@ -33,7 +33,7 @@ export default function AboutHomeComponent({ container }: { container: any }) {
       <Image
         src="/trusstree4.png"
         id="about1BG"
-        loading={"eager"} 
+        loading={'eager'}
         fill
         style={{
           objectFit: 'cover',
