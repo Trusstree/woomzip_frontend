@@ -1,12 +1,11 @@
 import Image from '@/components/ImageFallback';
 import DOMPurify from 'isomorphic-dompurify';
-import Link from 'next/link';
 
 export default function ProductSummary({ summaryData }: { summaryData: ProductSummaryData }) {
   return (
     <div style={{ position: 'relative', width: '100%' }}>
       <div style={{ width: '100%', height: '200svh', position: 'absolute', zIndex: '0' }}>
-        <Image loading={"eager"} fill src={summaryData.productImageUrl} alt="pic1" style={{ objectFit: 'cover' }} />
+        <Image loading={'eager'} fill src={summaryData.productImageUrl} alt="pic1" style={{ objectFit: 'cover' }} />
         <div
           style={{
             position: 'absolute',
@@ -84,7 +83,7 @@ export default function ProductSummary({ summaryData }: { summaryData: ProductSu
               flexDirection: 'column',
               position: 'absolute',
               left: '0',
-              bottom: '50px',
+              bottom: '90px',
               width: '100%',
             }}
           >
@@ -129,23 +128,6 @@ export default function ProductSummary({ summaryData }: { summaryData: ProductSu
                 </div>
               </div>
             </div>
-            <Link href={`/inquire/product/?product_id=${summaryData.productId}`}>
-              <button
-                className="btn"
-                style={{
-                  border: 'none',
-                  borderRadius: '20px',
-                  backgroundColor: '#4067F8',
-                  color: '#ffffff',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  padding: '10px 70px',
-                  margin: '0 auto',
-                }}
-              >
-                문의하기
-              </button>
-            </Link>
           </div>
         </div>
         <div
