@@ -22,7 +22,7 @@ export default function CompExpert() {
       style={{
         position: 'relative',
         width: '100%',
-        height: 'calc(-61px + 100svh)',
+        height: '100svh',
         overflow: 'hidden',
         backgroundColor: 'black',
       }}

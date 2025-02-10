@@ -12,7 +12,7 @@ export default function FilterResetButton() {
   };
 
   return (
-    <div className="col-md-7 col-12">
+    <div className="col-md-8 col-4">
       <div className="d-flex justify-content-end" style={{ width: '100%' }}>
         <div
           className="row"
@@ -35,6 +35,7 @@ export default function FilterResetButton() {
               width: 'auto',
               padding: '2px',
               marginRight: '7px',
+              marginBottom: '10px',
             }}
           >
             초기화

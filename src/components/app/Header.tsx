@@ -14,7 +14,7 @@ export default function Header() {
         width: '100%',
       }}
     >
-      <div className=" d-flex justify-content-between" style={{ height: '45px', width: '95%' }}>
+      <div className=" d-flex justify-content-between" style={{ height: '45px', width: '95%', margin: '0 auto' }}>
         <RouteButton url="/" className="navbar-brand" style={{ marginLeft: '0', border: 'none', marginBottom: '6px' }}>
           <div className="d-flex align-items-center">
             {/* <Image src={'/woomzip_new_logo.png'} alt={'Truss Logo'} width={29} height={21} style={{ padding: '0' }} /> */}
@@ -22,6 +22,7 @@ export default function Header() {
           </div>
         </RouteButton>
 
+        {/* menu button */}
         <button
           className="navbar-toggler ms-auto me-3"
           type="button"
@@ -34,6 +35,7 @@ export default function Header() {
         >
           <span className="navbar-toggler-icon" style={{ border: 'none' }} />
         </button>
+
         <div className="collapse navbar-collapse">
           <div className="navbar-nav d-none d-md-flex w-100 align-items-center" style={{ justifyContent: 'flex-end' }}>
             <div className="d-flex align-items-center">

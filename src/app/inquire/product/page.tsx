@@ -40,7 +40,7 @@ export default function Inquireproduct() {
   useEffect(() => {
     (async () => {
       const product_id = getParams().get('product_id');
-      if (!isNumber(product_id)) return;
+      if (!isNumber(product_id)) {setProductData(null); return;}
       const [data, error] = await getProduct(Number(product_id));
       if (error) {
         alertError('집 데이터를 불러올 수 없습니다.', '서버에 문제가 생겨 집 데이터를 불러오지 못했습니다.');
@@ -218,12 +218,12 @@ export default function Inquireproduct() {
         </div>
       </div>
       {/* 만약 집 데이터가 있다면 여기서 볼 수 있음 */}
-      {productData && (
+      {/* {productData && (
         <div>
           {productData.productName}
-          <Image src={productData.productImageUrl} alt={'선택된 집 사진'} />
+          <Image src={productData.productImageUrl} alt={'선택된 집 사진'} width={100} height={100}/>
         </div>
-      )}
+      )} */}
     </>
   );
 }

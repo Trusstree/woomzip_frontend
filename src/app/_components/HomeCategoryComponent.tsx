@@ -123,7 +123,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
             }}
           >
             <Link
-              href={'/house/110'}
+              href={'/product'}
               className="btn"
               style={{
                 border: 'none',
@@ -139,7 +139,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               상세정보 보기
             </Link>
             <Link
-              href={'/house?tag=체류형쉼터'}
+              href={'/product?tag=체류형쉼터'}
               className="btn"
               style={{
                 border: 'none',
@@ -225,7 +225,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
             }}
           >
             <Link
-              href={'/house/58'}
+              href={'/product'}
               className="btn"
               style={{
                 border: 'none',
@@ -241,7 +241,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               상세정보 보기
             </Link>
             <Link
-              href={'/house?tag=일반주택'}
+              href={'/product?tag=일반주택'}
               className="btn"
               style={{
                 border: 'none',
@@ -327,7 +327,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
             }}
           >
             <Link
-              href={'/house/96'}
+              href={'/product/3'}
               className="btn"
               style={{
                 border: 'none',
@@ -343,7 +343,7 @@ export default function HomeCategoryComponent({ container }: { container: any })
               상세정보 보기
             </Link>
             <Link
-              href={'/house?tag=농막'}
+              href={'/product?tag=농막'}
               className="btn"
               style={{
                 border: 'none',

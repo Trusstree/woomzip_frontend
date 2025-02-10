@@ -30,7 +30,7 @@ export default function HomePeopleComponent() {
       style={{
         position: 'relative',
         width: '100%',
-        height: 'calc(-61px + 100svh)',
+        height: '100svh',
         overflow: 'hidden',
         backgroundColor: '#ffffff',
       }}
@@ -43,6 +43,7 @@ export default function HomePeopleComponent() {
           objectFit: 'cover',
           width: isMobile ? '100%' : '85%',
           marginLeft: isMobile ? 0 : '15%',
+          height: '101%',
         }}
         alt={'background2'}
       />
