@@ -1,13 +1,10 @@
-import PostList from '@/app/news/[pid]/_components/PostList';
-import PostMenu from '@/components/posts/PostMenu';
 import DOMPurify from 'isomorphic-dompurify';
-import { loadPostData, loadRecommendPostData } from '@/app/news/[pid]/_actions/actions';
+import { loadPostData } from '@/app/news/[pid]/_actions/actions';
 import { elapsedTimeText } from '@/lib/stringUtil';
-import Image from '@/components/ImageFallback';
 
 const style = {
   일반: { backgroundColor: '#CCD6FF', color: '#314FC0' },
-  공지: { backgroundColor: '#FFCCCC', color: '#C03142' },
+  NEWS: { backgroundColor: '#FFCCCC', color: '#C03142' },
   질문: { backgroundColor: '#E2FFCC', cololr: '#8AC031' },
   칼럼: { backgroundColor: '#ECECF3', color: '#686875' },
   집들이: { backgroundColor: '#FFEAC7', color: '#D5A71E' },
@@ -15,8 +12,7 @@ const style = {
 
 export default async function page({ params }: { params: { pid: number } }) {
   const { pid } = params;
-  const { postData, comments } = await loadPostData(pid);
-  const recommendPostData = await loadRecommendPostData(pid);
+  const postData = await loadPostData(pid);
 
   return (
     <div>
@@ -37,24 +33,24 @@ export default async function page({ params }: { params: { pid: number } }) {
         >
           <div
             style={{
-              backgroundColor: style[postData.category].backgroundColor,
-              borderColor: style[postData.category].backgroundColor,
+              backgroundColor: style[postData.postType].backgroundColor,
+              borderColor: style[postData.postType].backgroundColor,
               width: '60px',
               fontSize: '16px',
-              color: style[postData.category].color,
+              color: style[postData.postType].color,
               borderRadius: '15px',
               padding: '3px 7px',
               textAlign: 'center',
               marginTop: '30px',
             }}
           >
-            {postData['category']}
+            {postData.postType}
           </div>
 
           <h3 style={{ paddingTop: '30px' }}>{postData.title}</h3>
 
           <div className="row" style={{ marginTop: '20px' }}>
-            <div style={{ width: '50px', height: '40px' }}>
+            {/* <div style={{ width: '50px', height: '40px' }}>
               <Image
                 src={postData?.['user_img_url']}
                 alt={'user image'}
@@ -78,26 +74,26 @@ export default async function page({ params }: { params: { pid: number } }) {
               }}
             >
               {postData['nickname']}
-            </div>
+            </div> */}
           </div>
           <div
             className="d-flex justify-content-between"
             style={{ fontSize: '15px', color: 'gray', marginTop: '10px' }}
           >
-            <div style={{ width: 'auto' }}>{elapsedTimeText(postData['created_at'])}</div>
+            <div style={{ width: 'auto' }}>{elapsedTimeText(postData.createdDate)}</div>
           </div>
           <hr />
 
           <div
             style={{ width: '100%', minHeight: '500px', margin: '40px 0' }}
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(String(postData['content'])),
+              __html: DOMPurify.sanitize(String(postData.postContent)),
             }}
           />
         </div>
-        <PostMenu title={'더 많은 글을 구경해보세요!'} routeUrl={'/news'} routeText={'더보기'} horizontalScroll={true}>
+        {/* <PostMenu title={'더 많은 글을 구경해보세요!'} routeUrl={'/news'} routeText={'더보기'} horizontalScroll={true}>
           <PostList postData={recommendPostData} />
-        </PostMenu>
+        </PostMenu> */}
       </div>
     </div>
   );
