@@ -23,6 +23,7 @@ export default async function page({ params }: { params: { pid: number } }) {
           margin: '0 auto',
         }}
       >
+        <div className="container" style={{ height: '61px' }}></div>
         <div
           style={{
             backgroundColor: '#ffffff',
@@ -31,55 +32,15 @@ export default async function page({ params }: { params: { pid: number } }) {
             margin: '0 auto',
           }}
         >
-          <div
-            style={{
-              backgroundColor: style[postData.postType].backgroundColor,
-              borderColor: style[postData.postType].backgroundColor,
-              width: '60px',
-              fontSize: '16px',
-              color: style[postData.postType].color,
-              borderRadius: '15px',
-              padding: '3px 7px',
-              textAlign: 'center',
-              marginTop: '30px',
-            }}
-          >
-            {postData.postType}
-          </div>
+          <h3 style={{ marginTop: '50px' }}>{postData.title}</h3>
 
-          <h3 style={{ paddingTop: '30px' }}>{postData.title}</h3>
-
-          <div className="row" style={{ marginTop: '20px' }}>
-            {/* <div style={{ width: '50px', height: '40px' }}>
-              <Image
-                src={postData?.['user_img_url']}
-                alt={'user image'}
-                width={40}
-                height={40}
-                style={{
-                  objectFit: 'cover',
-                  borderRadius: '50px',
-                  overflow: 'hidden',
-                  width: '35px',
-                  height: '35px',
-                }}
-              />
-            </div>
-            <div
-              style={{
-                fontSize: '16px',
-                fontWeight: '400',
-                width: 'auto',
-                margin: '5px 0 0 0',
-              }}
-            >
-              {postData['nickname']}
-            </div> */}
-          </div>
           <div
             className="d-flex justify-content-between"
-            style={{ fontSize: '15px', color: 'gray', marginTop: '10px' }}
+            style={{ fontSize: '14px', color: 'gray', marginTop: '30px' }}
           >
+            <div style={{}}>
+              움집뉴스 {'>'} {postData.postType}
+            </div>
             <div style={{ width: 'auto' }}>{elapsedTimeText(postData.createdDate)}</div>
           </div>
           <hr />
