@@ -68,7 +68,7 @@ export default function CardTemplate({ templatesData }: { templatesData: Array<P
   };
 
   return (
-    <div style={{ width: '100%', position: 'relative' }}>
+    <div style={{ width: '100%', overflow: 'hidden', position: 'relative' }}>
       {/* 이전 버튼 */}
       {currentIndex > 0 && (
         <button

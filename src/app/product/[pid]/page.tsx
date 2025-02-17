@@ -10,6 +10,7 @@ import FullTemplate from '@/app/product/[pid]/_components/ProductFullTemplate';
 import HalfTemplate from '@/app/product/[pid]/_components/ProductHalfTemplate';
 import CardEntireTemplate from '@/app/product/[pid]/_components/CardEntireTemplate';
 import MasterPlanTemplate from '@/app/product/[pid]/_components/ProductMasterPlanTemplate';
+import InquireStickyButton from '@/app/product/[pid]/_components/InquireStickyButton';
 
 export default async function Product({ params }: { params: { pid: number } }) {
   const { pid } = params;
@@ -36,37 +37,7 @@ export default async function Product({ params }: { params: { pid: number } }) {
         <Tazan pid={summaryData.productId} />
         <Service />
         <FAQList />
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'column',
-            position: 'sticky',
-            left: '0',
-            bottom: '50px',
-            marginBottom: '50px',
-            width: '100%',
-            zIndex: '10',
-          }}
-        >
-          <Link href={`/inquire/product/?product_id=${summaryData.productId}`}>
-            <button
-              className="btn"
-              style={{
-                border: 'none',
-                borderRadius: '20px',
-                backgroundColor: '#4067F8',
-                color: '#ffffff',
-                fontSize: '14px',
-                fontWeight: '500',
-                padding: '10px 70px',
-                margin: '0 auto',
-              }}
-            >
-              문의하기
-            </button>
-          </Link>
-        </div>
+        <InquireStickyButton pid={summaryData.productId} />
       </div>
     </>
   );
