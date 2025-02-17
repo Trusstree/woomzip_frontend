@@ -12,7 +12,7 @@ export default function HalfTemplate({ templatesData }: { templatesData: Product
       <div>
         {templatesData.map((t, i) =>
           i % 2 == 1 ? (
-            <div key={i} className="row">
+            <div key={i} className="row w-100">
               <div
                 className="col-md-6 col-12"
                 style={{

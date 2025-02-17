@@ -20,7 +20,7 @@ export default function Footer() {
       }}
     >
       <div style={{ width: '95%', margin: '0 auto' }}>
-        <div className="row" style={{ color: '#ffffff' }}>
+        <div className="w-100 row" style={{ color: '#ffffff' }}>
           <div className="col-md-2 col-12  order-md-1 order-2" style={{ margin: '30px 0' }}>
             <div style={{ fontSize: '17px', fontWeight: '600', marginBottom: '5px', color: '#999999' }}>Company</div>
             <div className="d-flex flex-column">
