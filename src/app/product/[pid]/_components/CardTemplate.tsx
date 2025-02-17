@@ -98,7 +98,7 @@ export default function CardTemplate({ templatesData }: { templatesData: Array<P
         style={{
           display: 'flex',
           gap: '30px',
-          transform: `translateX(-${currentIndex * (isMobile ? 300 : 530)}px)`,
+          transform: `translateX(-${currentIndex * (isMobile ? 330 : 530)}px)`,
           transition: 'transform 0.3s ease-in-out',
           cursor: 'grab',
         }}
