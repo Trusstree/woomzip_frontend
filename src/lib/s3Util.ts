@@ -3,7 +3,7 @@ import { PutObjectCommand, GetObjectCommand, DeleteObjectCommand } from '@aws-sd
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 export async function getS3Url(key: string) {
-  let [response, error] = [undefined, undefined] as any[];
+  let [response, error]: [any, any] = [undefined, undefined];
   const command = new GetObjectCommand({
     Bucket: process.env.NEXT_PUBLIC_AWS_S3_BUCKETNAME,
     Key: key,
@@ -19,7 +19,7 @@ export async function getS3Url(key: string) {
 }
 
 export async function setS3Url(key: string, body: any) {
-  let [response, error] = [undefined, undefined] as any[];
+  let [response, error]: [any, any] = [undefined, undefined];
   const command = new PutObjectCommand({
     Bucket: process.env.NEXT_PUBLIC_AWS_S3_BUCKETNAME,
     Key: key,
@@ -36,7 +36,7 @@ export async function setS3Url(key: string, body: any) {
 }
 
 export async function deleteS3Url(key: string) {
-  let [response, error] = [undefined, undefined] as any[];
+  let [response, error]: [any, any] = [undefined, undefined];
   const command = new DeleteObjectCommand({
     Bucket: process.env.NEXT_PUBLIC_AWS_S3_BUCKETNAME,
     Key: key,

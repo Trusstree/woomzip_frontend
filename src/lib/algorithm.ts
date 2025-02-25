@@ -1,62 +1,62 @@
 export const algorithm = (data: any) => {
   let systemConstant = 0;
-  if (data['houseType'] == 'hut') {
+  if (data['houseType'] === 'hut') {
     systemConstant = 0;
-  } else if (data['houseType'] == 'house') {
+  } else if (data['houseType'] === 'house') {
     systemConstant = 1;
   }
 
   let cityConstant = 1;
-  if (data['addr'] == '경기도') {
+  if (data['addr'] === '경기도') {
     cityConstant = 1;
-  } else if (data['addr'] == '강원도') {
+  } else if (data['addr'] === '강원도') {
     cityConstant = 1;
-  } else if (data['addr'] == '충청북도') {
+  } else if (data['addr'] === '충청북도') {
     cityConstant = 1;
-  } else if (data['addr'] == '충청남도') {
+  } else if (data['addr'] === '충청남도') {
     cityConstant = 1;
-  } else if (data['addr'] == '경상북도') {
+  } else if (data['addr'] === '경상북도') {
     cityConstant = 1;
-  } else if (data['addr'] == '경상남도') {
+  } else if (data['addr'] === '경상남도') {
     cityConstant = 1;
-  } else if (data['addr'] == '전라북도') {
+  } else if (data['addr'] === '전라북도') {
     cityConstant = 1;
-  } else if (data['addr'] == '전라남도') {
+  } else if (data['addr'] === '전라남도') {
     cityConstant = 1;
-  } else if (data['addr'] == '제주도') {
+  } else if (data['addr'] === '제주도') {
     cityConstant = 2;
   }
 
   let areaConstant = 165;
-  if (data['area'] == '50평') {
+  if (data['area'] === '50평') {
     areaConstant = 165;
-  } else if (data['area'] == '75') {
+  } else if (data['area'] === '75') {
     areaConstant = 248;
-  } else if (data['area'] == '100') {
+  } else if (data['area'] === '100') {
     areaConstant = 330;
-  } else if (data['area'] == '125') {
+  } else if (data['area'] === '125') {
     areaConstant = 413;
-  } else if (data['area'] == '150') {
+  } else if (data['area'] === '150') {
     areaConstant = 496;
-  } else if (data['area'] == '151') {
+  } else if (data['area'] === '151') {
     areaConstant = 550;
   }
 
   let slopeConstant = 0;
-  if (data['landCondition'] == 'Flat') {
+  if (data['landCondition'] === 'Flat') {
     slopeConstant = 0;
-  } else if (data['landCondition'] == 'SlightlySloped') {
+  } else if (data['landCondition'] === 'SlightlySloped') {
     slopeConstant = 1;
-  } else if (data['landCondition'] == 'SteeplySloped') {
+  } else if (data['landCondition'] === 'SteeplySloped') {
     slopeConstant = 1.5;
   }
 
   let roadConstant = 1;
-  if (data['roadCondition'] == 'Wide') {
+  if (data['roadCondition'] === 'Wide') {
     roadConstant = 1;
-  } else if (data['roadCondition'] == 'Narrow') {
+  } else if (data['roadCondition'] === 'Narrow') {
     roadConstant = 1.5;
-  } else if (data['roadCondition'] == 'VeryNarrow') {
+  } else if (data['roadCondition'] === 'VeryNarrow') {
     roadConstant = 2;
   }
 

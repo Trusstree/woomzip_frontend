@@ -111,11 +111,11 @@ export default function AboutHistoryComponent({ container }: { container: any })
             <div>
               <div style={{ padding: '5px' }}>1月 한국건설기술연구원 패밀리사 선정(애로기술해결기업)</div>
               <div style={{ padding: '5px' }}>
-                3月 모듈러 기반 단독주택 전문 프롭테크 플랫폼 '트러스' 베타서비스 출시
+                3月 모듈러 기반 단독주택 전문 프롭테크 플랫폼 &apos;트러스&apos; 베타서비스 출시
               </div>
               <div style={{ padding: '5px' }}>5月 주식회사 트러스트리 법인 설립</div>
               <div style={{ padding: '5px' }}>7月 학생 창업유망팀 300 성장트랙 선정</div>
-              <div style={{ padding: '5px' }}>9月 '움집(woomzip)' 정식서비스 출시</div>
+              <div style={{ padding: '5px' }}>9月 &apos;움집(woomzip)&apos; 정식서비스 출시</div>
               <div style={{ padding: '5px' }}>11月 스마트건설 EXPO 참가</div>
             </div>
           </div>
