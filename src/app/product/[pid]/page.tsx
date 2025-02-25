@@ -5,13 +5,14 @@ import Tazan from '@/app/product/[pid]/_components/ProductTazan';
 import Service from '@/app/product/[pid]/_components/ProductService';
 import FAQList from '@/components/FAQList';
 import { loadProductData } from '@/app/product/[pid]/_actions/actions';
-import Link from 'next/link';
 import FullTemplate from '@/app/product/[pid]/_components/ProductFullTemplate';
 import HalfTemplate from '@/app/product/[pid]/_components/ProductHalfTemplate';
 import CardEntireTemplate from '@/app/product/[pid]/_components/CardEntireTemplate';
 import MasterPlanTemplate from '@/app/product/[pid]/_components/ProductMasterPlanTemplate';
 import InquireStickyButton from '@/app/product/[pid]/_components/InquireStickyButton';
+import ErrorPage from '@/app/product/[pid]/error';
 
+export const revalidate = 2592000;
 export default async function Product({ params }: { params: { pid: number } }) {
   const { pid } = params;
   const [
@@ -24,7 +25,7 @@ export default async function Product({ params }: { params: { pid: number } }) {
     detailData,
   ] = await loadProductData(pid);
 
-  return (
+  return summaryData ? (
     <>
       <div>
         <ProductSummary summaryData={summaryData} />
@@ -40,5 +41,7 @@ export default async function Product({ params }: { params: { pid: number } }) {
         <InquireStickyButton pid={summaryData.productId} />
       </div>
     </>
+  ) : (
+    <ErrorPage />
   );
 }
