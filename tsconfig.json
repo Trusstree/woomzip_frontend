@@ -29,7 +29,6 @@
         "./src/*"
       ]
     },
-    "strictNullChecks": true
   },
   "include": [
     "**/global.d.ts",
