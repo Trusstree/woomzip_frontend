@@ -3,7 +3,7 @@
 import { getNews } from '@/actions/apis2/newsAPI';
 
 export async function loadPostData(pid: any): Promise<any> {
-  let [postData, comments] = [undefined, undefined];
+  let [postData, comments]:[any, any] = [undefined, undefined];
   const [data, error] = await getNews(pid);
 
   if (error) {
