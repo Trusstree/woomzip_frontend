@@ -14,7 +14,7 @@ export async function loadProductData(
     ]
   | [undefined, undefined, undefined, undefined, undefined, undefined, undefined]
 > {
-  console.time('getProduct API 호출');
+  //console.time('getProduct API 호출');
   // 데이터 초기화
   const [productResponse, productError] = await getProduct(productId, { 'Cache-Control': 'public, max-age=2592000' }); // 한 달
   if (productError) {
@@ -78,7 +78,7 @@ export async function loadProductData(
     priceIncludes: productResponse.payload.priceIncludes,
   };
 
-  console.timeEnd('getProduct API 호출');
+  //console.timeEnd('getProduct API 호출');
   return [
     summaryData,
     vendorData,
