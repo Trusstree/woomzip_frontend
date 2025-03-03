@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 
 export default function ServiceHomeComponent({ container }: { container: any }) {
   const router = useRouter();
-  const inquiryScrollIntoView = () => router.push('inquire');
   useGSAP(
     () => {
       gsap.to('#serviceIntroFrame', {

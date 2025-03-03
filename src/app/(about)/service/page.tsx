@@ -9,7 +9,6 @@ import ServiceHomeComponent from '@/app/(about)/service/_components/ServiceHomeC
 import ServiceExplanationComponent from '@/app/(about)/service/_components/ServiceExplanationComponent';
 import ServiceSequenceComponent from '@/app/(about)/service/_components/ServiceSequenceComponent';
 import ServiceStrongPointComponent from '@/app/(about)/service/_components/ServiceStrongPointComponent';
-import InquiryComponent from '@/components/InquiryComponent';
 
 export default function Service() {
   const router = useRouter();
