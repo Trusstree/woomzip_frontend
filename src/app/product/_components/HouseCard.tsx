@@ -9,7 +9,7 @@ export default function productData({ productData }: { productData: ProductsData
   return (
     <div className="col-md-4 col-sm-6 col-12">
       <div className="card" style={{ width: '100%', border: 'none', marginBottom: '60px' }}>
-        <Link className={`container ${styles.img_container} ${styles.img_hover}`} href={`/product/${productId}`}>
+        <Link prefetch={true} passHref className={`container ${styles.img_container} ${styles.img_hover}`} href={`/product/${productId}`}>
           <Image loading={"eager"} src={productImageUrl} alt={productName + ' image'} fill/>
         </Link>
         <div>

@@ -26,7 +26,6 @@ export default async function Product({ params }: { params: { pid: number } }) {
   ] = await loadProductData(pid);
 
   return summaryData ? (
-    <>
       <div>
         <ProductSummary summaryData={summaryData} />
         <ProductDesigner vendorData={vendorData} />
@@ -40,7 +39,6 @@ export default async function Product({ params }: { params: { pid: number } }) {
         <FAQList />
         <InquireStickyButton pid={summaryData.productId} />
       </div>
-    </>
   ) : (
     <ErrorPage />
   );
