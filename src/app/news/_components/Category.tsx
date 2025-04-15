@@ -1,4 +1,4 @@
-import CategoryButton from '@/app/product/_components/CategoryButton';
+import CategoryButton from '@/app/house/_components/CategoryButton';
 
 export default function Category() {
   return (
