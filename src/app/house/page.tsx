@@ -1,10 +1,10 @@
-import HouseCategory from '@/app/product/_components/HouseCategory';
-import BadgeList from '@/app/product/_components/BadgeList';
-import HouseCard from '@/app/product/_components/HouseCard';
+import HouseCategory from '@/app/house/_components/HouseCategory';
+import BadgeList from '@/app/house/_components/BadgeList';
+import HouseCard from '@/app/house/_components/HouseCard';
 import Pagination from '@/components/Pagination';
-import { badgeList, categoryList, filterList } from '@/app/product/_data/Data';
-import FilterList from '@/app/product/_components/FilterList';
-import { loadProductsData } from '@/app/product/_actions/actions';
+import { badgeList, categoryList, filterList } from '@/app/house/_data/Data';
+import FilterList from '@/app/house/_components/FilterList';
+import { loadProductsData } from '@/app/house/_actions/actions';
 
 export default async function House({ searchParams }) {
   const [numShowItems, numShowPages] = [30, 10];
