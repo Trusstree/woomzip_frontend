@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { cardCountText, elapsedTimeText } from '@/lib/stringUtil';
 import Image from '@/components/ImageFallback';
-import styles from '@/app/product/_styles/houseCard.module.css';
+import styles from '@/app/house/_styles/houseCard.module.css';
 
 // const styleColor = {
 //   일반: { backgroundColor: '#CCD6FF', color: '#314FC0', height: '260px' },
