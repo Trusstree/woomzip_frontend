@@ -1,16 +1,16 @@
-import ProductSummary from '@/app/product/[pid]/_components/ProductSummary';
-import ProductDesigner from '@/app/product/[pid]/_components/ProductDesigner';
-import Detail from '@/app/product/[pid]/_components/ProductDetail';
-import Tazan from '@/app/product/[pid]/_components/ProductTazan';
-import Service from '@/app/product/[pid]/_components/ProductService';
+import ProductSummary from '@/app/house/[pid]/_components/ProductSummary';
+import ProductDesigner from '@/app/house/[pid]/_components/ProductDesigner';
+import Detail from '@/app/house/[pid]/_components/ProductDetail';
+import Tazan from '@/app/house/[pid]/_components/ProductTazan';
+import Service from '@/app/house/[pid]/_components/ProductService';
 import FAQList from '@/components/FAQList';
-import { loadProductData } from '@/app/product/[pid]/_actions/actions';
-import FullTemplate from '@/app/product/[pid]/_components/ProductFullTemplate';
-import HalfTemplate from '@/app/product/[pid]/_components/ProductHalfTemplate';
-import CardEntireTemplate from '@/app/product/[pid]/_components/CardEntireTemplate';
-import MasterPlanTemplate from '@/app/product/[pid]/_components/ProductMasterPlanTemplate';
-import InquireStickyButton from '@/app/product/[pid]/_components/InquireStickyButton';
-import ErrorPage from '@/app/product/[pid]/error';
+import { loadProductData } from '@/app/house/[pid]/_actions/actions';
+import FullTemplate from '@/app/house/[pid]/_components/ProductFullTemplate';
+import HalfTemplate from '@/app/house/[pid]/_components/ProductHalfTemplate';
+import CardEntireTemplate from '@/app/house/[pid]/_components/CardEntireTemplate';
+import MasterPlanTemplate from '@/app/house/[pid]/_components/ProductMasterPlanTemplate';
+import InquireStickyButton from '@/app/house/[pid]/_components/InquireStickyButton';
+import ErrorPage from '@/app/house/[pid]/error';
 
 export const revalidate = 2592000;
 export default async function Product({ params }: { params: { pid: number } }) {

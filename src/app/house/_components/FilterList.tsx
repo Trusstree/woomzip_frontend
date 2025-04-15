@@ -1,5 +1,5 @@
-import FilterButton from '@/app/product/_components/FilterButton';
-import FilterResetButton from '@/app/product/_components/FilterResetButton';
+import FilterButton from '@/app/house/_components/FilterButton';
+import FilterResetButton from '@/app/house/_components/FilterResetButton';
 
 export default function FilterList({ filterList }) {
   return (
