@@ -1,0 +1,139 @@
+@startuml Truss Frontend Data Flow Diagram
+
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor #f8f9fa
+skinparam component {
+    BackgroundColor #ffffff
+    BorderColor #495057
+    FontColor #212529
+}
+
+title 움집(Truss) Frontend 데이터 흐름 및 상태 관리
+
+package "User Interface Layer" {
+    component [Product Page] as productPage
+    component [News Page] as newsPage
+    component [Inquire Page] as inquirePage
+    component [Search Component] as searchComponent
+    component [Filter Components] as filterComponents
+}
+
+package "State Management Layer" {
+    component [useQueryString] as useQueryString
+    component [useForm] as useForm
+    component [usePage] as usePage
+    component [useAuth] as useAuth
+    component [useAlert] as useAlert
+    component [ContextSession] as contextSession
+}
+
+package "API Layer" {
+    component [Product APIs] as productApis
+    component [News APIs] as newsApis
+    component [Auth APIs] as authApis
+    component [General APIs] as generalApis
+}
+
+package "Data Layer" {
+    component [Product Data] as productData
+    component [News Data] as newsData
+    component [User Data] as userData
+    component [Static Data] as staticData
+}
+
+package "Type System" {
+    component [Product Types] as productTypes
+    component [News Types] as newsTypes
+    component [Inquiry Types] as inquiryTypes
+    component [User Types] as userTypes
+}
+
+' User Interface to State Management
+productPage --> useQueryString : "Filter State"
+productPage --> usePage : "Pagination State"
+newsPage --> useQueryString : "Category State"
+newsPage --> usePage : "Pagination State"
+inquirePage --> useForm : "Form State"
+searchComponent --> useQueryString : "Search State"
+filterComponents --> useQueryString : "Filter State"
+
+' State Management to API
+useQueryString --> productApis : "Filter Parameters"
+useQueryString --> newsApis : "Category Parameters"
+useForm --> generalApis : "Form Submission"
+useAuth --> authApis : "Authentication"
+usePage --> productApis : "Page Parameters"
+usePage --> newsApis : "Page Parameters"
+
+' API to Data Layer
+productApis --> productData : "Fetch Products"
+newsApis --> newsData : "Fetch News"
+authApis --> userData : "User Authentication"
+generalApis --> staticData : "Static Data"
+
+' Type System Dependencies
+productApis --> productTypes : "API Response"
+newsApis --> newsTypes : "API Response"
+authApis --> userTypes : "User Data"
+generalApis --> inquiryTypes : "Inquiry Data"
+
+' State Management Dependencies
+useQueryString --> productTypes : "Filter Types"
+useQueryString --> newsTypes : "Category Types"
+useForm --> inquiryTypes : "Form Types"
+useAuth --> userTypes : "User Types"
+
+' Context Session Dependencies
+contextSession --> useAuth : "Session State"
+contextSession --> useAlert : "Alert State"
+
+' Data Flow Notes
+note right of useQueryString
+  URL 쿼리 파라미터를 통한
+  상태 관리 및 동기화
+end note
+
+note right of useForm
+  폼 상태 관리 및
+  유효성 검증
+end note
+
+note right of productApis
+  제품 데이터 API
+  필터링 및 페이징
+end note
+
+note right of newsApis
+  뉴스 데이터 API
+  카테고리별 조회
+end note
+
+note right of authApis
+  사용자 인증 및
+  세션 관리
+end note
+
+' Data Flow Arrows with Labels
+productPage -down-> useQueryString : "Filter Changes"
+useQueryString -down-> productApis : "API Call"
+productApis -down-> productData : "Data Fetch"
+productData -up-> productApis : "Response"
+productApis -up-> useQueryString : "State Update"
+useQueryString -up-> productPage : "UI Update"
+
+newsPage -down-> useQueryString : "Category Changes"
+useQueryString -down-> newsApis : "API Call"
+newsApis -down-> newsData : "Data Fetch"
+newsData -up-> newsApis : "Response"
+newsApis -up-> useQueryString : "State Update"
+useQueryString -up-> newsPage : "UI Update"
+
+inquirePage -down-> useForm : "Form Input"
+useForm -down-> generalApis : "Submit Data"
+generalApis -down-> staticData : "Process"
+staticData -up-> generalApis : "Response"
+generalApis -up-> useForm : "Success/Error"
+useForm -up-> inquirePage : "UI Feedback"
+
+@enduml

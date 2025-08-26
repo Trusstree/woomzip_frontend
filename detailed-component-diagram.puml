@@ -1,0 +1,225 @@
+@startuml Truss Frontend Detailed Component Diagram
+
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor #f8f9fa
+skinparam component {
+    BackgroundColor #ffffff
+    BorderColor #495057
+    FontColor #212529
+}
+
+title 움집(Truss) Frontend 상세 컴포넌트 아키텍처
+
+package "App Router Structure" {
+    component [RootLayout] as root
+    component [Main Page] as mainPage
+    component [Product Page] as productPage
+    component [News Page] as newsPage
+    component [Inquire Page] as inquirePage
+    component [Admin Page] as adminPage
+    component [About Page] as aboutPage
+}
+
+package "Core Infrastructure" {
+    component [StyledComponentsRegistry] as styledRegistry
+    component [ContextSession] as contextSession
+    component [Header] as header
+    component [Footer] as footer
+    component [Options] as options
+    component [Analytics] as analytics
+    component [Middleware] as middleware
+}
+
+package "Navigation System" {
+    component [RouteButton] as routeButton
+    component [HomeOffcanvas] as homeOffcanvas
+    component [HomeOffcanvasRouteButton] as offcanvasRouteButton
+}
+
+package "Home Page (/)" {
+    component [HomeCategoryComponent] as homeCategory
+    component [HomeCategoryNav] as homeCategoryNav
+    component [HomeExpertComponent] as homeExpert
+    component [HomePeopleComponent] as homePeople
+    component [HomeServiceComponent] as homeService
+    component [HomeTextComponent] as homeText
+}
+
+package "Product Page (/product)" {
+    component [HouseCard] as houseCard
+    component [HouseCategory] as houseCategory
+    component [FilterButton] as filterButton
+    component [FilterList] as filterList
+    component [FilterBadge] as filterBadge
+    component [FilterResetButton] as filterReset
+    component [CategoryButton] as categoryButton
+    component [BadgeList] as badgeList
+    component [HighlightCardPriceText] as priceText
+}
+
+package "News Page (/news)" {
+    component [PostList] as postList
+    component [PostCard] as postCard
+    component [Category] as newsCategory
+    component [Icon] as newsIcon
+}
+
+package "Inquire Page (/inquire)" {
+    component [InquiryComponent] as inquiryComponent
+    component [Col3Button] as col3Button
+    component [Col4Button] as col4Button
+    component [Col6Button] as col6Button
+}
+
+package "Utility Components" {
+    component [Pagination] as pagination
+    component [SearchComponent] as searchComponent
+    component [ImageFallback] as imageFallback
+    component [FAQList] as faqList
+    component [FAQItem] as faqItem
+}
+
+package "Custom Hooks" {
+    component [useAuth] as useAuth
+    component [useQueryString] as useQueryString
+    component [useAlert] as useAlert
+    component [usePage] as usePage
+    component [useForm] as useForm
+    component [useEditor] as useEditor
+}
+
+package "API Layer" {
+    component [Auth APIs] as authApis
+    component [Product APIs] as productApis
+    component [News APIs] as newsApis
+    component [General APIs] as generalApis
+}
+
+package "Type System" {
+    component [Product Types] as productTypes
+    component [News Types] as newsTypes
+    component [Inquiry Types] as inquiryTypes
+    component [API Types] as apiTypes
+    component [Global Types] as globalTypes
+}
+
+package "Data & Configuration" {
+    component [Configs] as configs
+    component [Data] as data
+    component [Store] as store
+}
+
+' Root Layout Dependencies
+root --> styledRegistry : "Styled Components"
+root --> contextSession : "Session Management"
+root --> header : "Navigation"
+root --> footer : "Footer"
+root --> options : "Options"
+root --> analytics : "Analytics"
+
+' Header Dependencies
+header --> routeButton : "Navigation"
+header --> homeOffcanvas : "Mobile Menu"
+
+' Home Offcanvas Dependencies
+homeOffcanvas --> offcanvasRouteButton : "Mobile Navigation"
+
+' Main Page Dependencies
+mainPage --> homeCategory : "Category Section"
+mainPage --> homeCategoryNav : "Category Navigation"
+mainPage --> homeExpert : "Expert Section"
+mainPage --> homePeople : "People Section"
+mainPage --> homeService : "Service Section"
+mainPage --> homeText : "Text Content"
+
+' Product Page Dependencies
+productPage --> houseCard : "Product Display"
+productPage --> houseCategory : "Category Filter"
+productPage --> filterButton : "Filter Controls"
+productPage --> filterList : "Filter Options"
+productPage --> filterBadge : "Active Filters"
+productPage --> filterReset : "Reset Filters"
+productPage --> categoryButton : "Category Selection"
+productPage --> badgeList : "Filter Badges"
+productPage --> priceText : "Price Display"
+
+' News Page Dependencies
+newsPage --> postList : "News List"
+newsPage --> postCard : "News Item"
+newsPage --> newsCategory : "News Category"
+newsPage --> newsIcon : "Category Icon"
+
+' Inquire Page Dependencies
+inquirePage --> inquiryComponent : "Inquiry Form"
+inquirePage --> col3Button : "3-Column Layout"
+inquirePage --> col4Button : "4-Column Layout"
+inquirePage --> col6Button : "6-Column Layout"
+
+' Component Dependencies
+homeCategory --> categoryButton : "Category Selection"
+filterButton --> filterList : "Filter Options"
+filterList --> filterBadge : "Filter Display"
+postList --> postCard : "News Items"
+faqList --> faqItem : "FAQ Items"
+
+' Hook Dependencies
+inquiryComponent --> useForm : "Form Management"
+searchComponent --> useQueryString : "Query Parameters"
+pagination --> usePage : "Page Management"
+productPage --> useQueryString : "Filter State"
+newsPage --> useQueryString : "Category State"
+
+' API Dependencies
+inquiryComponent --> generalApis : "Submit Inquiry"
+productApis --> productTypes : "Product Data"
+newsApis --> newsTypes : "News Data"
+authApis --> apiTypes : "Authentication"
+
+' Type Dependencies
+houseCard --> productTypes : "Product Interface"
+postCard --> newsTypes : "News Interface"
+inquiryComponent --> inquiryTypes : "Inquiry Interface"
+productApis --> productTypes : "API Response"
+newsApis --> newsTypes : "API Response"
+
+' Configuration Dependencies
+styledRegistry --> configs : "Styling Config"
+middleware --> configs : "Route Config"
+
+' Data Flow
+data --> productApis : "Static Data"
+data --> newsApis : "Static Data"
+store --> contextSession : "State Management"
+
+note right of root
+  Next.js App Router 기반
+  전체 애플리케이션 레이아웃
+end note
+
+note right of productPage
+  제품 검색 및 필터링
+  시스템
+end note
+
+note right of newsPage
+  뉴스 및 공지사항
+  관리 시스템
+end note
+
+note right of inquirePage
+  문의하기 폼 및
+  고객 서비스
+end note
+
+note right of useForm
+  폼 상태 관리 및
+  유효성 검증
+end note
+
+note right of productApis
+  제품 데이터 API
+  및 필터링 로직
+end note
+
+@enduml

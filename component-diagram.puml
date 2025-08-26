@@ -1,0 +1,226 @@
+@startuml Truss Frontend Component Diagram
+
+!theme plain
+skinparam componentStyle rectangle
+skinparam backgroundColor #f5f5f5
+skinparam component {
+    BackgroundColor #ffffff
+    BorderColor #333333
+    FontColor #333333
+}
+
+title 움집(Truss) Frontend 컴포넌트 아키텍처
+
+package "Next.js App Router" {
+    component [RootLayout] as root
+    component [Page] as mainPage
+    component [Loading] as loading
+    component [Error] as error
+    component [NotFound] as notFound
+}
+
+package "Core Components" {
+    component [StyledComponentsRegistry] as styledRegistry
+    component [ContextSession] as contextSession
+    component [Header] as header
+    component [Footer] as footer
+    component [Options] as options
+    component [Analytics] as analytics
+}
+
+package "Navigation Components" {
+    component [RouteButton] as routeButton
+    component [HomeOffcanvas] as homeOffcanvas
+    component [HomeOffcanvasRouteButton] as offcanvasRouteButton
+}
+
+package "Home Page Components" {
+    component [HomeCategoryComponent] as homeCategory
+    component [HomeCategoryNav] as homeCategoryNav
+    component [HomeExpertComponent] as homeExpert
+    component [HomePeopleComponent] as homePeople
+    component [HomeServiceComponent] as homeService
+    component [HomeTextComponent] as homeText
+}
+
+package "Product Components" {
+    component [HouseCard] as houseCard
+    component [HouseCategory] as houseCategory
+    component [FilterButton] as filterButton
+    component [FilterList] as filterList
+    component [FilterBadge] as filterBadge
+    component [FilterResetButton] as filterReset
+    component [CategoryButton] as categoryButton
+    component [BadgeList] as badgeList
+    component [HighlightCardPriceText] as priceText
+}
+
+package "News Components" {
+    component [PostList] as postList
+    component [PostCard] as postCard
+    component [Category] as newsCategory
+    component [Icon] as newsIcon
+}
+
+package "Inquiry Components" {
+    component [InquiryComponent] as inquiryComponent
+    component [Col3Button] as col3Button
+    component [Col4Button] as col4Button
+    component [Col6Button] as col6Button
+}
+
+package "Utility Components" {
+    component [Pagination] as pagination
+    component [SearchComponent] as searchComponent
+    component [ImageFallback] as imageFallback
+    component [FAQList] as faqList
+    component [FAQItem] as faqItem
+}
+
+package "SVG Components" {
+    component [SVG Components] as svgComponents
+}
+
+package "Review Components" {
+    component [Review Components] as reviewComponents
+}
+
+package "Posts Components" {
+    component [Posts Components] as postsComponents
+}
+
+package "Custom Hooks" {
+    component [useAuth] as useAuth
+    component [useQueryString] as useQueryString
+    component [useAlert] as useAlert
+    component [usePage] as usePage
+    component [useForm] as useForm
+    component [useEditor] as useEditor
+}
+
+package "API Actions" {
+    component [Auth APIs] as authApis
+    component [Product APIs] as productApis
+    component [News APIs] as newsApis
+    component [General APIs] as generalApis
+}
+
+package "Types & Configs" {
+    component [Product Types] as productTypes
+    component [News Types] as newsTypes
+    component [Inquiry Types] as inquiryTypes
+    component [API Types] as apiTypes
+    component [Global Types] as globalTypes
+    component [Configs] as configs
+}
+
+package "Data & Store" {
+    component [Data] as data
+    component [Store] as store
+}
+
+' Root Layout Dependencies
+root --> styledRegistry
+root --> contextSession
+root --> header
+root --> footer
+root --> options
+root --> analytics
+
+' Header Dependencies
+header --> routeButton
+header --> homeOffcanvas
+
+' Home Offcanvas Dependencies
+homeOffcanvas --> offcanvasRouteButton
+
+' Main Page Dependencies
+mainPage --> homeCategory
+mainPage --> homeCategoryNav
+mainPage --> homeExpert
+mainPage --> homePeople
+mainPage --> homeService
+mainPage --> homeText
+
+' Product Page Dependencies
+mainPage --> houseCard
+mainPage --> houseCategory
+mainPage --> filterButton
+mainPage --> filterList
+mainPage --> filterBadge
+mainPage --> filterReset
+mainPage --> categoryButton
+mainPage --> badgeList
+mainPage --> priceText
+
+' News Page Dependencies
+mainPage --> postList
+mainPage --> postCard
+mainPage --> newsCategory
+mainPage --> newsIcon
+
+' Inquiry Page Dependencies
+mainPage --> inquiryComponent
+mainPage --> col3Button
+mainPage --> col4Button
+mainPage --> col6Button
+
+' Utility Components
+mainPage --> pagination
+mainPage --> searchComponent
+mainPage --> imageFallback
+mainPage --> faqList
+mainPage --> faqItem
+
+' Component Dependencies
+homeCategory --> categoryButton
+filterButton --> filterList
+filterList --> filterBadge
+postList --> postCard
+faqList --> faqItem
+
+' Hook Dependencies
+inquiryComponent --> useForm
+searchComponent --> useQueryString
+pagination --> usePage
+
+' API Dependencies
+inquiryComponent --> generalApis
+productApis --> productTypes
+newsApis --> newsTypes
+authApis --> apiTypes
+
+' Type Dependencies
+houseCard --> productTypes
+postCard --> newsTypes
+inquiryComponent --> inquiryTypes
+
+' Styling Dependencies
+styledRegistry --> configs
+
+note right of root
+  Next.js App Router 기반의
+  움집 프론트엔드 아키텍처
+end note
+
+note right of header
+  네비게이션 및 메뉴
+  관리 컴포넌트
+end note
+
+note right of homeCategory
+  홈페이지 메인
+  카테고리 섹션
+end note
+
+note right of houseCard
+  제품 카드 및
+  필터링 시스템
+end note
+
+note right of inquiryComponent
+  문의하기 폼
+  및 관련 컴포넌트
+end note
+
+@enduml
